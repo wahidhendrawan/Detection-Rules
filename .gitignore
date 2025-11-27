@@ -1,0 +1,13 @@
+# Python / tooling
+__pycache__/
+.pytest_cache/
+.venv/
+venv/
+.idea/
+.vscode/
+
+# Output / temp
+out/
+tmp/
+*.log
+*.tmp

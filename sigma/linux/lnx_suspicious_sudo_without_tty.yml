@@ -1,0 +1,26 @@
+title: Linux Suspicious Sudo Without TTY
+id: 9e5ef6c9-1283-42b8-8e3c-ln-sudo-notty
+status: experimental
+description: |
+  Mendeteksi eksekusi sudo tanpa TTY yang sering digunakan oleh malware
+  atau attacker untuk menjalankan perintah dari script / automation.
+author: Wahid (base template)
+date: 2025/11/27
+logsource:
+  product: linux
+  service: sudo
+detection:
+  selection:
+    message|contains: "TTY=unknown"
+  condition: selection
+fields:
+  - user
+  - pid
+  - message
+  - host
+falsepositives:
+  - Automation / tool internal yang menjalankan sudo dari non-interactive shell
+level: medium
+tags:
+  - attack.t1068
+  - attack.privilege_escalation

@@ -1,0 +1,10 @@
+# Suspicious DNS Tunnel-Like Queries
+# MITRE ATT&CK: T1071.004 (Application Layer Protocol: DNS)
+# Severity: High
+
+index=dns OR index=network
+(len(query) >= 80)
+| rex field=query "(?<root_domain>[^.]+\.[^.]+)$"
+| stats count as cnt avg(len(query)) as avg_len values(query) as queries by src_ip, root_domain
+| where cnt > 20 AND avg_len >= 60
+| sort - cnt

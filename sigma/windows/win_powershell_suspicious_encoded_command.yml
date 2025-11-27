@@ -1,0 +1,36 @@
+title: Suspicious PowerShell EncodedCommand
+id: 6a4fe4af-4e3c-4b6f-9f2c-ps-encoded-command
+status: experimental
+description: |
+  Mendeteksi penggunaan PowerShell dengan parameter -EncodedCommand
+  yang sering digunakan untuk obfuscation dan eksekusi payload.
+author: Wahid (base template)
+date: 2025/11/27
+logsource:
+  product: windows
+  service: powershell
+  category: process_creation
+detection:
+  selection:
+    Image|endswith:
+      - '\powershell.exe'
+      - '\pwsh.exe'
+    CommandLine|contains:
+      - '-EncodedCommand'
+      - '/EncodedCommand'
+  condition: selection
+fields:
+  - Image
+  - CommandLine
+  - User
+  - ParentImage
+  - ParentCommandLine
+  - ComputerName
+falsepositives:
+  - Script administrasi yang sah menggunakan encoding untuk alasan kompatibilitas
+level: high
+tags:
+  - attack.t1059
+  - attack.t1059.001
+  - attack.execution
+  - car.2013-05-009

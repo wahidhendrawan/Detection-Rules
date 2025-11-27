@@ -1,0 +1,29 @@
+title: Suspicious DNS Tunnel-Like Queries
+id: 3a74f3e1-4ef3-44f0-bd5a-net-dns-tunnel
+status: experimental
+description: |
+  Mendeteksi pola query DNS yang mirip tunneling (label sangat panjang,
+  random, dan berulang ke domain yang sama).
+author: Wahid (base template)
+date: 2025/11/27
+logsource:
+  category: dns
+  product: network
+detection:
+  selection:
+    query_length|gte: 80
+    query|contains: "."
+  condition: selection
+fields:
+  - client_ip
+  - server_ip
+  - query
+  - query_type
+  - response_code
+falsepositives:
+  - Aplikasi legitimate yang menggunakan DNS untuk telemetry atau load balancing
+level: high
+tags:
+  - attack.t1071
+  - attack.t1071.004
+  - attack.command_and_control

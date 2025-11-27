@@ -1,0 +1,10 @@
+# Suspicious PowerShell EncodedCommand
+# MITRE ATT&CK: T1059, T1059.001 (Command and Scripting Interpreter: PowerShell)
+# Severity: High
+
+index=windows OR index=endpoint
+sourcetype IN ("XmlWinEventLog:Microsoft-Windows-Sysmon/Operational", "WinEventLog:Security", "XmlWinEventLog:Microsoft-Windows-PowerShell/Operational")
+(Image="*\\powershell.exe" OR Image="*\\pwsh.exe")
+CommandLine="*EncodedCommand*" OR CommandLine="*/EncodedCommand*"
+| stats values(CommandLine) as cmd by _time, host, user, Image, ParentImage, ParentCommandLine
+| sort - _time

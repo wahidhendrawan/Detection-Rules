@@ -1,0 +1,31 @@
+title: GCP IAM Suspicious Role Grant (Owner / Admin)
+id: 5d47c8fb-7e8a-4f52-9f0e-gcp-iam-priv-grant
+status: experimental
+description: |
+  Mendeteksi pemberian role IAM sensitif (owner/editor/admin) ke akun baru
+  atau service account yang tidak biasa di GCP.
+author: Wahid (base template)
+date: 2025/11/27
+logsource:
+  product: gcp
+  service: gcp.audit
+detection:
+  selection:
+    protoPayload.methodName: "SetIamPolicy"
+    protoPayload.serviceData.policyDelta.bindingDeltas.role|contains:
+      - "roles/owner"
+      - "roles/editor"
+      - "roles/iam.serviceAccountUser"
+  condition: selection
+fields:
+  - protoPayload.authenticationInfo.principalEmail
+  - protoPayload.serviceData.policyDelta.bindingDeltas.member
+  - protoPayload.serviceData.policyDelta.bindingDeltas.role
+  - resource.labels.project_id
+falsepositives:
+  - Aktivitas provisioning awal yang sudah di-approve dan terdokumentasi
+level: high
+tags:
+  - attack.t1098
+  - attack.persistence
+  - attack.privilege_escalation

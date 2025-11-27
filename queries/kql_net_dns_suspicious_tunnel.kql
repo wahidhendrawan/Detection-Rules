@@ -1,0 +1,2 @@
+dns.question.name_length >= 80 and
+not dns.question.name: (*.microsoft.com or *.windowsupdate.com)

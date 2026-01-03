@@ -67,7 +67,3 @@ Setiap rule dianjurkan menambahkan tag:
    - Ada `title`, `description`, `status`, `author`, `date`, `references` (jika ada).
    - Ada mapping MITRE ATT&CK di `tags`.
 3. Lakukan PR ke branch utama.
-
----
-
-Dibuat untuk menjadi base repository detection rules yang bisa langsung di-push ke GitHub.

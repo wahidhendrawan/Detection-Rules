@@ -1,0 +1,38 @@
+title: Suspicious Mshta Execution
+id: e32a4e23-78b4-4321-9e2c-mshta-suspicious
+status: experimental
+description: |
+  Detects suspicious execution of mshta.exe with arguments typically used for
+  Living off the Land (LotL) attacks, such as executing scripts (vbscript/javascript)
+  or downloading content from remote URLs.
+author: Jules
+date: 2025/05/22
+logsource:
+  product: windows
+  category: process_creation
+detection:
+  selection:
+    Image|endswith:
+      - '\mshta.exe'
+    CommandLine|contains:
+      - 'javascript:'
+      - 'vbscript:'
+      - 'http://'
+      - 'https://'
+      - '.xls'
+      - '.doc'
+  condition: selection
+fields:
+  - Image
+  - CommandLine
+  - User
+  - ParentImage
+  - ParentCommandLine
+  - ComputerName
+falsepositives:
+  - Legitimate administrative scripts or software using mshta for HTML applications (rare but possible).
+level: high
+tags:
+  - attack.t1218.005
+  - attack.defense_evasion
+  - attack.execution

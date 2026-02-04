@@ -1,0 +1,35 @@
+title: Suspicious Cron File Modification
+id: f41b2a12-87c3-5412-0f1d-cron-modification
+status: experimental
+description: |
+  Detects file creation or modification in system cron directories or files.
+  Adversaries often use cron jobs to maintain persistence on a Linux system.
+author: Jules
+date: 2025/05/22
+logsource:
+  product: linux
+  category: file_event
+detection:
+  selection_dirs:
+    TargetFilename|startswith:
+      - '/etc/cron.d/'
+      - '/etc/cron.daily/'
+      - '/etc/cron.hourly/'
+      - '/etc/cron.monthly/'
+      - '/etc/cron.weekly/'
+      - '/var/spool/cron/'
+  selection_file:
+    TargetFilename: '/etc/crontab'
+  condition: selection_dirs or selection_file
+fields:
+  - Image
+  - TargetFilename
+  - User
+  - ComputerName
+falsepositives:
+  - Legitimate system administration and package updates (e.g., apt/yum installing cron jobs).
+level: medium
+tags:
+  - attack.t1053.003
+  - attack.persistence
+  - attack.privilege_escalation

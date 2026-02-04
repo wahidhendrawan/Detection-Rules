@@ -1,0 +1,31 @@
+title: Suspicious Download to /tmp
+id: 201834c7-4dee-4537-80b3-6799707715f0
+status: experimental
+description: |
+  Detects wget or curl usage downloading files directly to world-writable
+  directories like /tmp or /dev/shm, often used by malware droppers.
+author: Jules
+date: 2025/05/22
+logsource:
+  product: linux
+  category: process_creation
+detection:
+  selection:
+    Image|endswith:
+      - '/wget'
+      - '/curl'
+    CommandLine|contains:
+      - '/tmp/'
+      - '/dev/shm/'
+  condition: selection
+fields:
+  - Image
+  - CommandLine
+  - User
+  - ComputerName
+falsepositives:
+  - Legitimate user downloading temporary files (less common in production servers).
+level: medium
+tags:
+  - attack.t1105
+  - attack.ingress_tool_transfer

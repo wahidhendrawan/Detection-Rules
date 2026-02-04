@@ -1,0 +1,22 @@
+title: Suspicious HTTP Traffic
+id: 26c14386-6d04-415c-b1b4-64ed20751d2f
+status: experimental
+description: |
+  Detects potential abuse or anomalies in HTTP traffic.
+author: Jules
+date: 2026/02/04
+logsource:
+  product: network
+  category: firewall
+
+detection:
+  selection:
+    Protocol: http
+  condition: selection
+fields:
+  - DestinationPort
+falsepositives:
+  - Legitimate administrative activity
+level: medium
+tags:
+  - attack.command_and_control

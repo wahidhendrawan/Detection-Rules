@@ -1,0 +1,22 @@
+title: Suspicious Execution of regsvcs.exe
+id: e25a1a97-cfc5-42ca-a075-86b929ce9dd0
+status: experimental
+description: |
+  Detects suspicious execution of regsvcs.exe which may be used for Living off the Land attacks.
+author: Jules
+date: 2026/02/04
+logsource:
+  product: windows
+  category: process_creation
+
+detection:
+  selection:
+    Image|endswith: '\regsvcs.exe'
+  condition: selection
+fields:
+  - CommandLine
+falsepositives:
+  - Legitimate administrative activity
+level: medium
+tags:
+  - attack.execution

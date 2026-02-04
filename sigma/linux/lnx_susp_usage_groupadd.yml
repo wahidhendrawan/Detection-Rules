@@ -1,0 +1,22 @@
+title: Suspicious Usage of groupadd
+id: c1bc52c0-3889-4e36-993a-87943685b5cf
+status: experimental
+description: |
+  Detects suspicious usage of groupadd in command line.
+author: Jules
+date: 2026/02/04
+logsource:
+  product: linux
+  category: process_creation
+
+detection:
+  selection:
+    CommandLine|contains: 'groupadd'
+  condition: selection
+fields:
+  - CommandLine
+falsepositives:
+  - Legitimate administrative activity
+level: medium
+tags:
+  - attack.execution

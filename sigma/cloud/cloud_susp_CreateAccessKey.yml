@@ -1,0 +1,22 @@
+title: Suspicious Cloud Action CreateAccessKey
+id: 1ce14504-37c1-48ba-96b5-be4959fc3e44
+status: experimental
+description: |
+  Detects sensitive cloud action CreateAccessKey.
+author: Jules
+date: 2026/02/04
+logsource:
+  product: aws
+  category: cloudtrail
+  service: cloudtrail
+detection:
+  selection:
+    EventName: CreateAccessKey
+  condition: selection
+fields:
+  - UserIdentityArn
+falsepositives:
+  - Legitimate administrative activity
+level: high
+tags:
+  - attack.persistence

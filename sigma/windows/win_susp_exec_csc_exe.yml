@@ -1,0 +1,22 @@
+title: Suspicious Execution of csc.exe
+id: 9c419147-c464-4d1f-8789-55d57fb50843
+status: experimental
+description: |
+  Detects suspicious execution of csc.exe which may be used for Living off the Land attacks.
+author: Jules
+date: 2026/02/04
+logsource:
+  product: windows
+  category: process_creation
+
+detection:
+  selection:
+    Image|endswith: '\csc.exe'
+  condition: selection
+fields:
+  - CommandLine
+falsepositives:
+  - Legitimate administrative activity
+level: medium
+tags:
+  - attack.execution

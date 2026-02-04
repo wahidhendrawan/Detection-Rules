@@ -1,0 +1,22 @@
+title: Suspicious Cloud Action DeleteAccessKey
+id: 5057fc46-470a-47e1-862d-267c4e2ba4bb
+status: experimental
+description: |
+  Detects sensitive cloud action DeleteAccessKey.
+author: Jules
+date: 2026/02/04
+logsource:
+  product: aws
+  category: cloudtrail
+  service: cloudtrail
+detection:
+  selection:
+    EventName: DeleteAccessKey
+  condition: selection
+fields:
+  - UserIdentityArn
+falsepositives:
+  - Legitimate administrative activity
+level: high
+tags:
+  - attack.persistence

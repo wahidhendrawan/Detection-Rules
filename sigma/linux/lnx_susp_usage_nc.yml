@@ -1,0 +1,22 @@
+title: Suspicious Usage of nc
+id: 0db30792-db2a-4ca9-8ac5-53b41a0df85d
+status: experimental
+description: |
+  Detects suspicious usage of nc in command line.
+author: Jules
+date: 2026/02/04
+logsource:
+  product: linux
+  category: process_creation
+
+detection:
+  selection:
+    CommandLine|contains: 'nc'
+  condition: selection
+fields:
+  - CommandLine
+falsepositives:
+  - Legitimate administrative activity
+level: medium
+tags:
+  - attack.execution

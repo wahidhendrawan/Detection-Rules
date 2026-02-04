@@ -1,0 +1,32 @@
+title: Mimikatz Command Execution
+id: 8a6572fc-548c-4c33-92f8-e6d795227808
+status: high
+description: |
+  Detects command line arguments commonly associated with Mimikatz, a tool used for
+  credential dumping.
+author: Jules
+date: 2025/05/22
+logsource:
+  product: windows
+  category: process_creation
+detection:
+  selection:
+    CommandLine|contains:
+      - 'sekurlsa::logonpasswords'
+      - 'lsadump::sam'
+      - 'lsadump::secrets'
+      - 'lsadump::lsa'
+      - 'privilege::debug'
+      - 'token::elevate'
+  condition: selection
+fields:
+  - Image
+  - CommandLine
+  - User
+  - ParentImage
+falsepositives:
+  - Penetration testing or red teaming activities.
+level: critical
+tags:
+  - attack.t1003.001
+  - attack.credential_access

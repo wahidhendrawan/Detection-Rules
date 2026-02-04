@@ -1,0 +1,29 @@
+title: SSH Authorized Keys Modification
+id: 6fe022eb-bf08-4997-92e7-faa907023979
+status: experimental
+description: |
+  Detects modification of the SSH authorized_keys file, which can be used
+  for persistence.
+author: Jules
+date: 2025/05/22
+logsource:
+  product: linux
+  category: file_event
+detection:
+  selection:
+    TargetFilename|endswith:
+      - '/.ssh/authorized_keys'
+      - '/.ssh/authorized_keys2'
+  condition: selection
+fields:
+  - Image
+  - TargetFilename
+  - User
+  - ComputerName
+falsepositives:
+  - Legitimate user adding their own keys.
+  - Automated deployment scripts (Ansible, Puppet).
+level: medium
+tags:
+  - attack.t1098.004
+  - attack.persistence

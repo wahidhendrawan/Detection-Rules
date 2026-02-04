@@ -1,0 +1,32 @@
+title: User Added to Local Administrators
+id: 94348ec6-33c1-42b5-96a7-3d95a9ed78bb
+status: stable
+description: |
+  Detects the addition of a user to the local Administrators group using net.exe.
+author: Jules
+date: 2025/05/22
+logsource:
+  product: windows
+  category: process_creation
+detection:
+  selection:
+    Image|endswith:
+      - '\net.exe'
+      - '\net1.exe'
+    CommandLine|contains|all:
+      - 'localgroup'
+      - 'administrators'
+      - '/add'
+  condition: selection
+fields:
+  - Image
+  - CommandLine
+  - User
+  - ParentImage
+falsepositives:
+  - Legitimate user management by administrators.
+level: high
+tags:
+  - attack.t1098
+  - attack.privilege_escalation
+  - attack.persistence

@@ -1,0 +1,10 @@
+# GCP IAM Suspicious Role Grant
+# MITRE ATT&CK: T1098 (Account Manipulation)
+# Severity: High
+# Description: Detects granting of sensitive IAM roles (Owner, Editor, ServiceAccountUser).
+
+index=gcp_audit OR sourcetype="google:gcp:pubsub:message"
+protoPayload.methodName="SetIamPolicy"
+(protoPayload.serviceData.policyDelta.bindingDeltas{}.role="roles/owner" OR protoPayload.serviceData.policyDelta.bindingDeltas{}.role="roles/editor" OR protoPayload.serviceData.policyDelta.bindingDeltas{}.role="roles/iam.serviceAccountUser")
+| stats count by _time, protoPayload.authenticationInfo.principalEmail, resource.labels.project_id
+| sort - _time

@@ -1,0 +1,28 @@
+title: New User Account Added
+id: 30343fb5-d2c9-4c03-8384-e1d0b2cd928f
+status: experimental
+description: |
+  Detects the creation of a new user account using useradd or adduser.
+  Adversaries may create accounts for persistence.
+author: Jules
+date: 2025/05/22
+logsource:
+  product: linux
+  category: process_creation
+detection:
+  selection:
+    Image|endswith:
+      - '/useradd'
+      - '/adduser'
+  condition: selection
+fields:
+  - Image
+  - CommandLine
+  - User
+  - ComputerName
+falsepositives:
+  - Legitimate system administration.
+level: medium
+tags:
+  - attack.t1136.001
+  - attack.persistence

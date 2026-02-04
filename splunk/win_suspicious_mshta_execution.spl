@@ -1,0 +1,11 @@
+# Suspicious Mshta Execution
+# MITRE ATT&CK: T1218.005 (Signed Binary Proxy Execution: Mshta)
+# Severity: High
+# Description: Detects suspicious execution of mshta.exe with arguments typically used for Living off the Land (LotL) attacks.
+
+index=windows OR index=endpoint
+sourcetype IN ("XmlWinEventLog:Microsoft-Windows-Sysmon/Operational", "WinEventLog:Security", "XmlWinEventLog:Microsoft-Windows-PowerShell/Operational")
+Image="*\\mshta.exe"
+(CommandLine="*javascript:*" OR CommandLine="*vbscript:*" OR CommandLine="*http://*" OR CommandLine="*https://*" OR CommandLine="*.xls*" OR CommandLine="*.doc*")
+| stats values(CommandLine) as cmd by _time, host, user, Image, ParentImage, ParentCommandLine
+| sort - _time

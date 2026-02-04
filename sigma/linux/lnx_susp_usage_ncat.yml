@@ -1,0 +1,22 @@
+title: Suspicious Usage of ncat
+id: 6bb385fe-7e46-454a-a771-cbdf8a88df27
+status: experimental
+description: |
+  Detects suspicious usage of ncat in command line.
+author: Jules
+date: 2026/02/04
+logsource:
+  product: linux
+  category: process_creation
+
+detection:
+  selection:
+    CommandLine|contains: 'ncat'
+  condition: selection
+fields:
+  - CommandLine
+falsepositives:
+  - Legitimate administrative activity
+level: medium
+tags:
+  - attack.execution

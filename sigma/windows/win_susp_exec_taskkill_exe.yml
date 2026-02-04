@@ -1,0 +1,22 @@
+title: Suspicious Execution of taskkill.exe
+id: b8194746-b9f8-4556-8b4d-225391be11cc
+status: experimental
+description: |
+  Detects suspicious execution of taskkill.exe which may be used for Living off the Land attacks.
+author: Jules
+date: 2026/02/04
+logsource:
+  product: windows
+  category: process_creation
+
+detection:
+  selection:
+    Image|endswith: '\taskkill.exe'
+  condition: selection
+fields:
+  - CommandLine
+falsepositives:
+  - Legitimate administrative activity
+level: medium
+tags:
+  - attack.execution

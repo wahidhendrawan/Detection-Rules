@@ -1,0 +1,22 @@
+title: Suspicious DNS Traffic
+id: 3c77cf4a-8810-4178-aff8-c967f2994b52
+status: experimental
+description: |
+  Detects potential abuse or anomalies in DNS traffic.
+author: Jules
+date: 2026/02/04
+logsource:
+  product: network
+  category: firewall
+
+detection:
+  selection:
+    Protocol: dns
+  condition: selection
+fields:
+  - DestinationPort
+falsepositives:
+  - Legitimate administrative activity
+level: medium
+tags:
+  - attack.command_and_control

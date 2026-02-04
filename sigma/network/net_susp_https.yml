@@ -1,0 +1,22 @@
+title: Suspicious HTTPS Traffic
+id: 1ccacd62-58a2-4b46-a412-c1f70c7499c1
+status: experimental
+description: |
+  Detects potential abuse or anomalies in HTTPS traffic.
+author: Jules
+date: 2026/02/04
+logsource:
+  product: network
+  category: firewall
+
+detection:
+  selection:
+    Protocol: https
+  condition: selection
+fields:
+  - DestinationPort
+falsepositives:
+  - Legitimate administrative activity
+level: medium
+tags:
+  - attack.command_and_control

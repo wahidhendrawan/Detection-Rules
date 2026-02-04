@@ -1,0 +1,22 @@
+title: Suspicious Cloud Action CreateUser
+id: 9da46b40-6dc5-4948-a572-3f2c3e79140e
+status: experimental
+description: |
+  Detects sensitive cloud action CreateUser.
+author: Jules
+date: 2026/02/04
+logsource:
+  product: aws
+  category: cloudtrail
+  service: cloudtrail
+detection:
+  selection:
+    EventName: CreateUser
+  condition: selection
+fields:
+  - UserIdentityArn
+falsepositives:
+  - Legitimate administrative activity
+level: high
+tags:
+  - attack.persistence

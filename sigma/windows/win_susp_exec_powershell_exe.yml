@@ -1,0 +1,22 @@
+title: Suspicious Execution of powershell.exe
+id: 3c023d2d-0f9e-413d-8665-225224cc8079
+status: experimental
+description: |
+  Detects suspicious execution of powershell.exe which may be used for Living off the Land attacks.
+author: Jules
+date: 2026/02/04
+logsource:
+  product: windows
+  category: process_creation
+
+detection:
+  selection:
+    Image|endswith: '\powershell.exe'
+  condition: selection
+fields:
+  - CommandLine
+falsepositives:
+  - Legitimate administrative activity
+level: medium
+tags:
+  - attack.execution

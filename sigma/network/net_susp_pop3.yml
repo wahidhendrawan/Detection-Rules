@@ -1,0 +1,22 @@
+title: Suspicious POP3 Traffic
+id: 643f885f-ca38-4899-98f8-f37e8344a455
+status: experimental
+description: |
+  Detects potential abuse or anomalies in POP3 traffic.
+author: Jules
+date: 2026/02/04
+logsource:
+  product: network
+  category: firewall
+
+detection:
+  selection:
+    Protocol: pop3
+  condition: selection
+fields:
+  - DestinationPort
+falsepositives:
+  - Legitimate administrative activity
+level: medium
+tags:
+  - attack.command_and_control

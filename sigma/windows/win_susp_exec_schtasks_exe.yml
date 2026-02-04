@@ -1,0 +1,22 @@
+title: Suspicious Execution of schtasks.exe
+id: 8f3250ec-e858-4163-b537-cc4820bc363a
+status: experimental
+description: |
+  Detects suspicious execution of schtasks.exe which may be used for Living off the Land attacks.
+author: Jules
+date: 2026/02/04
+logsource:
+  product: windows
+  category: process_creation
+
+detection:
+  selection:
+    Image|endswith: '\schtasks.exe'
+  condition: selection
+fields:
+  - CommandLine
+falsepositives:
+  - Legitimate administrative activity
+level: medium
+tags:
+  - attack.execution

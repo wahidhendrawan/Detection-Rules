@@ -1,0 +1,28 @@
+title: Sudoers File Modification
+id: 5344ca4a-04d3-4835-b58f-380fdd2836b6
+status: high
+description: |
+  Detects changes to the /etc/sudoers file or files in /etc/sudoers.d/.
+  This may indicate a privilege escalation attempt or persistence.
+author: Jules
+date: 2025/05/22
+logsource:
+  product: linux
+  category: file_event
+detection:
+  selection:
+    TargetFilename|startswith:
+      - '/etc/sudoers'
+      - '/etc/sudoers.d/'
+  condition: selection
+fields:
+  - Image
+  - TargetFilename
+  - User
+  - ComputerName
+falsepositives:
+  - Legitimate system administration.
+level: high
+tags:
+  - attack.t1548.003
+  - attack.privilege_escalation

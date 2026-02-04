@@ -1,0 +1,22 @@
+title: Suspicious Execution of regsvr32.exe
+id: efe7c083-6e2c-457f-9798-caddbfa0b315
+status: experimental
+description: |
+  Detects suspicious execution of regsvr32.exe which may be used for Living off the Land attacks.
+author: Jules
+date: 2026/02/04
+logsource:
+  product: windows
+  category: process_creation
+
+detection:
+  selection:
+    Image|endswith: '\regsvr32.exe'
+  condition: selection
+fields:
+  - CommandLine
+falsepositives:
+  - Legitimate administrative activity
+level: medium
+tags:
+  - attack.execution

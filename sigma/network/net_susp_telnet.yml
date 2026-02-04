@@ -1,0 +1,22 @@
+title: Suspicious TELNET Traffic
+id: eeaf6bcb-b699-4f94-b794-f8fc847dd029
+status: experimental
+description: |
+  Detects potential abuse or anomalies in TELNET traffic.
+author: Jules
+date: 2026/02/04
+logsource:
+  product: network
+  category: firewall
+
+detection:
+  selection:
+    Protocol: telnet
+  condition: selection
+fields:
+  - DestinationPort
+falsepositives:
+  - Legitimate administrative activity
+level: medium
+tags:
+  - attack.command_and_control

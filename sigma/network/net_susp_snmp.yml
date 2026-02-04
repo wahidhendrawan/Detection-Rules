@@ -1,0 +1,22 @@
+title: Suspicious SNMP Traffic
+id: dfbe56fa-5f52-46b8-9590-f4d04e570abc
+status: experimental
+description: |
+  Detects potential abuse or anomalies in SNMP traffic.
+author: Jules
+date: 2026/02/04
+logsource:
+  product: network
+  category: firewall
+
+detection:
+  selection:
+    Protocol: snmp
+  condition: selection
+fields:
+  - DestinationPort
+falsepositives:
+  - Legitimate administrative activity
+level: medium
+tags:
+  - attack.command_and_control

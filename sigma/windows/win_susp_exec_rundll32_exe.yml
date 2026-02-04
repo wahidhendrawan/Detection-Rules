@@ -1,0 +1,22 @@
+title: Suspicious Execution of rundll32.exe
+id: 171b99c1-423b-4c54-89a6-3933aae8f588
+status: experimental
+description: |
+  Detects suspicious execution of rundll32.exe which may be used for Living off the Land attacks.
+author: Jules
+date: 2026/02/04
+logsource:
+  product: windows
+  category: process_creation
+
+detection:
+  selection:
+    Image|endswith: '\rundll32.exe'
+  condition: selection
+fields:
+  - CommandLine
+falsepositives:
+  - Legitimate administrative activity
+level: medium
+tags:
+  - attack.execution

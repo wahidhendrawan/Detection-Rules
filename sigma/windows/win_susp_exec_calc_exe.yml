@@ -1,0 +1,22 @@
+title: Suspicious Execution of calc.exe
+id: 0d14ce13-09e9-4295-8ede-03760cdbee67
+status: experimental
+description: |
+  Detects suspicious execution of calc.exe which may be used for Living off the Land attacks.
+author: Jules
+date: 2026/02/04
+logsource:
+  product: windows
+  category: process_creation
+
+detection:
+  selection:
+    Image|endswith: '\calc.exe'
+  condition: selection
+fields:
+  - CommandLine
+falsepositives:
+  - Legitimate administrative activity
+level: medium
+tags:
+  - attack.execution

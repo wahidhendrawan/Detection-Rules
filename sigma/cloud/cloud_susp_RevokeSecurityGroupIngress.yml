@@ -1,0 +1,22 @@
+title: Suspicious Cloud Action RevokeSecurityGroupIngress
+id: 59c6fb26-1c2e-440e-af39-c9f0347c9f05
+status: experimental
+description: |
+  Detects sensitive cloud action RevokeSecurityGroupIngress.
+author: Jules
+date: 2026/02/04
+logsource:
+  product: aws
+  category: cloudtrail
+  service: cloudtrail
+detection:
+  selection:
+    EventName: RevokeSecurityGroupIngress
+  condition: selection
+fields:
+  - UserIdentityArn
+falsepositives:
+  - Legitimate administrative activity
+level: high
+tags:
+  - attack.persistence

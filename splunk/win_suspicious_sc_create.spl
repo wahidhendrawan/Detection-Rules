@@ -1,0 +1,6 @@
+# Suspicious SC Service Create
+# MITRE ATT&CK: T1543.003
+# Severity: High
+# Description: Detects service creation via SC.
+
+index=windows Image=*sc.exe CommandLine=*create*

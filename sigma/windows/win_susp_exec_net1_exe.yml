@@ -1,0 +1,22 @@
+title: Suspicious Execution of net1.exe
+id: 637bdd8b-1db9-43ed-a508-05df7348e8fe
+status: experimental
+description: |
+  Detects suspicious execution of net1.exe which may be used for Living off the Land attacks.
+author: Jules
+date: 2026/02/04
+logsource:
+  product: windows
+  category: process_creation
+
+detection:
+  selection:
+    Image|endswith: '\net1.exe'
+  condition: selection
+fields:
+  - CommandLine
+falsepositives:
+  - Legitimate administrative activity
+level: medium
+tags:
+  - attack.execution

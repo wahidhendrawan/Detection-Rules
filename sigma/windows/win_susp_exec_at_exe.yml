@@ -1,0 +1,22 @@
+title: Suspicious Execution of at.exe
+id: f9a33c35-730a-4936-9c53-f956541c32cf
+status: experimental
+description: |
+  Detects suspicious execution of at.exe which may be used for Living off the Land attacks.
+author: Jules
+date: 2026/02/04
+logsource:
+  product: windows
+  category: process_creation
+
+detection:
+  selection:
+    Image|endswith: '\at.exe'
+  condition: selection
+fields:
+  - CommandLine
+falsepositives:
+  - Legitimate administrative activity
+level: medium
+tags:
+  - attack.execution

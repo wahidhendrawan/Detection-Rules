@@ -1,0 +1,6 @@
+# Linux Passwd Modification
+# MITRE ATT&CK: T1003.008
+# Severity: High
+# Description: Detects modification of /etc/passwd.
+
+index=linux file_path=/etc/passwd action=modified

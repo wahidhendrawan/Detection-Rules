@@ -1,0 +1,22 @@
+title: Suspicious Cloud Action RunInstances
+id: ad31cf5e-e8a4-4513-bed3-43809b92e54a
+status: experimental
+description: |
+  Detects sensitive cloud action RunInstances.
+author: Jules
+date: 2026/02/04
+logsource:
+  product: aws
+  category: cloudtrail
+  service: cloudtrail
+detection:
+  selection:
+    EventName: RunInstances
+  condition: selection
+fields:
+  - UserIdentityArn
+falsepositives:
+  - Legitimate administrative activity
+level: high
+tags:
+  - attack.persistence

@@ -1,0 +1,22 @@
+title: Suspicious Execution of qwinsta.exe
+id: 0c727c08-dc5a-454f-9c71-043c5642a970
+status: experimental
+description: |
+  Detects suspicious execution of qwinsta.exe which may be used for Living off the Land attacks.
+author: Jules
+date: 2026/02/04
+logsource:
+  product: windows
+  category: process_creation
+
+detection:
+  selection:
+    Image|endswith: '\qwinsta.exe'
+  condition: selection
+fields:
+  - CommandLine
+falsepositives:
+  - Legitimate administrative activity
+level: medium
+tags:
+  - attack.execution

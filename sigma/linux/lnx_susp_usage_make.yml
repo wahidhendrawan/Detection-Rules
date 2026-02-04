@@ -1,0 +1,22 @@
+title: Suspicious Usage of make
+id: dd2b6839-0db6-4525-95ee-46383893e4a4
+status: experimental
+description: |
+  Detects suspicious usage of make in command line.
+author: Jules
+date: 2026/02/04
+logsource:
+  product: linux
+  category: process_creation
+
+detection:
+  selection:
+    CommandLine|contains: 'make'
+  condition: selection
+fields:
+  - CommandLine
+falsepositives:
+  - Legitimate administrative activity
+level: medium
+tags:
+  - attack.execution

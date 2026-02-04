@@ -1,0 +1,27 @@
+title: Security Event Log Cleared
+id: 59e95f4e-9a4c-4baf-a579-728ced8df044
+status: stable
+description: |
+  Detects when the Windows Security Event Log is cleared. This is often done by attackers
+  to cover their tracks after compromising a system.
+author: Jules
+date: 2025/05/22
+logsource:
+  product: windows
+  service: security
+detection:
+  selection:
+    EventID: 1102
+  condition: selection
+fields:
+  - User
+  - SubjectUserSid
+  - SubjectUserName
+  - SubjectDomainName
+  - SubjectLogonId
+falsepositives:
+  - Legitimate administrative maintenance or log rotation (rare manually).
+level: high
+tags:
+  - attack.t1070.001
+  - attack.defense_evasion

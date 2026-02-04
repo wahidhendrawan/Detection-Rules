@@ -1,0 +1,6 @@
+# Network Suspicious User Agent
+# MITRE ATT&CK: T1071.001
+# Severity: High
+# Description: Detects suspicious user agents.
+
+index=network http_user_agent IN ("*sqlmap*", "*nikto*")

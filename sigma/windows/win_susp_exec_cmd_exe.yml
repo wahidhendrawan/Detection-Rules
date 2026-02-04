@@ -1,0 +1,22 @@
+title: Suspicious Execution of cmd.exe
+id: 5b67b241-ff36-46f5-9469-e064591a11a9
+status: experimental
+description: |
+  Detects suspicious execution of cmd.exe which may be used for Living off the Land attacks.
+author: Jules
+date: 2026/02/04
+logsource:
+  product: windows
+  category: process_creation
+
+detection:
+  selection:
+    Image|endswith: '\cmd.exe'
+  condition: selection
+fields:
+  - CommandLine
+falsepositives:
+  - Legitimate administrative activity
+level: medium
+tags:
+  - attack.execution

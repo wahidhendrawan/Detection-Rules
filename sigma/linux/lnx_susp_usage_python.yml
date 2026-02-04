@@ -1,0 +1,22 @@
+title: Suspicious Usage of python
+id: 08d38825-fb79-4329-8bd5-d94ad943f07e
+status: experimental
+description: |
+  Detects suspicious usage of python in command line.
+author: Jules
+date: 2026/02/04
+logsource:
+  product: linux
+  category: process_creation
+
+detection:
+  selection:
+    CommandLine|contains: 'python'
+  condition: selection
+fields:
+  - CommandLine
+falsepositives:
+  - Legitimate administrative activity
+level: medium
+tags:
+  - attack.execution

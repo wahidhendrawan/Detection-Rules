@@ -1,0 +1,22 @@
+title: Suspicious Usage of insmod
+id: c0f8b2b8-ed70-4ad2-ac07-96464f60be83
+status: experimental
+description: |
+  Detects suspicious usage of insmod in command line.
+author: Jules
+date: 2026/02/04
+logsource:
+  product: linux
+  category: process_creation
+
+detection:
+  selection:
+    CommandLine|contains: 'insmod'
+  condition: selection
+fields:
+  - CommandLine
+falsepositives:
+  - Legitimate administrative activity
+level: medium
+tags:
+  - attack.execution

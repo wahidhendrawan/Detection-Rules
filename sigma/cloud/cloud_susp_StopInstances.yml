@@ -1,0 +1,22 @@
+title: Suspicious Cloud Action StopInstances
+id: 56954040-3618-4594-a300-d59c01eaf6f8
+status: experimental
+description: |
+  Detects sensitive cloud action StopInstances.
+author: Jules
+date: 2026/02/04
+logsource:
+  product: aws
+  category: cloudtrail
+  service: cloudtrail
+detection:
+  selection:
+    EventName: StopInstances
+  condition: selection
+fields:
+  - UserIdentityArn
+falsepositives:
+  - Legitimate administrative activity
+level: high
+tags:
+  - attack.persistence

@@ -1,0 +1,22 @@
+title: Suspicious Execution of hh.exe
+id: 7aa2dd82-beb1-4ee9-b402-04fafd92ec9c
+status: experimental
+description: |
+  Detects suspicious execution of hh.exe which may be used for Living off the Land attacks.
+author: Jules
+date: 2026/02/04
+logsource:
+  product: windows
+  category: process_creation
+
+detection:
+  selection:
+    Image|endswith: '\hh.exe'
+  condition: selection
+fields:
+  - CommandLine
+falsepositives:
+  - Legitimate administrative activity
+level: medium
+tags:
+  - attack.execution

@@ -1,0 +1,6 @@
+# Network SSH Brute Force
+# MITRE ATT&CK: T1110
+# Severity: High
+# Description: Detects potential SSH brute force.
+
+index=network dest_port=22 action=blocked | stats count by src_ip | where count > 10

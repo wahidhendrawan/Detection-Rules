@@ -1,0 +1,22 @@
+title: Suspicious Cloud Action CreateBucket
+id: 685d2d6a-29f1-4470-af41-69f3cf2282bf
+status: experimental
+description: |
+  Detects sensitive cloud action CreateBucket.
+author: Jules
+date: 2026/02/04
+logsource:
+  product: aws
+  category: cloudtrail
+  service: cloudtrail
+detection:
+  selection:
+    EventName: CreateBucket
+  condition: selection
+fields:
+  - UserIdentityArn
+falsepositives:
+  - Legitimate administrative activity
+level: high
+tags:
+  - attack.persistence

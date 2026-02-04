@@ -1,0 +1,6 @@
+# Suspicious Attrib Hidden
+# MITRE ATT&CK: T1564.001
+# Severity: High
+# Description: Detects hiding files with attrib.
+
+index=windows Image=*attrib.exe CommandLine=*+h*

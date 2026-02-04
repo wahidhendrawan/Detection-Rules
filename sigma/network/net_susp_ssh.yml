@@ -1,0 +1,22 @@
+title: Suspicious SSH Traffic
+id: 4418ead0-8645-44e1-99ee-0764c194e3b7
+status: experimental
+description: |
+  Detects potential abuse or anomalies in SSH traffic.
+author: Jules
+date: 2026/02/04
+logsource:
+  product: network
+  category: firewall
+
+detection:
+  selection:
+    Protocol: ssh
+  condition: selection
+fields:
+  - DestinationPort
+falsepositives:
+  - Legitimate administrative activity
+level: medium
+tags:
+  - attack.command_and_control

@@ -1,0 +1,9 @@
+<group name="attack">
+  <rule id="100006" level="7">
+    <decoded_as>firewall</decoded_as>
+    <description>Detects potential Nmap scanning activity (Firewall Denied).</description>
+    <mitre>
+      <id>T1046</id>
+    </mitre>
+  </rule>
+</group>

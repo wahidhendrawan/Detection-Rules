@@ -1,0 +1,22 @@
+title: Suspicious Usage of lsmod
+id: d28c7448-bcff-4aba-b755-e3f985b29358
+status: experimental
+description: |
+  Detects suspicious usage of lsmod in command line.
+author: Jules
+date: 2026/02/04
+logsource:
+  product: linux
+  category: process_creation
+
+detection:
+  selection:
+    CommandLine|contains: 'lsmod'
+  condition: selection
+fields:
+  - CommandLine
+falsepositives:
+  - Legitimate administrative activity
+level: medium
+tags:
+  - attack.execution

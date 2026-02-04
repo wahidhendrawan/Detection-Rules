@@ -1,0 +1,22 @@
+title: Suspicious Execution of mshta.exe
+id: cd8e8ea4-8128-4e93-8aac-4dcacfea2b5f
+status: experimental
+description: |
+  Detects suspicious execution of mshta.exe which may be used for Living off the Land attacks.
+author: Jules
+date: 2026/02/04
+logsource:
+  product: windows
+  category: process_creation
+
+detection:
+  selection:
+    Image|endswith: '\mshta.exe'
+  condition: selection
+fields:
+  - CommandLine
+falsepositives:
+  - Legitimate administrative activity
+level: medium
+tags:
+  - attack.execution

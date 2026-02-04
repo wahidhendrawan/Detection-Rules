@@ -1,0 +1,22 @@
+title: Suspicious Usage of visudo
+id: 047617f1-2a1d-4e54-806e-6c6538082029
+status: experimental
+description: |
+  Detects suspicious usage of visudo in command line.
+author: Jules
+date: 2026/02/04
+logsource:
+  product: linux
+  category: process_creation
+
+detection:
+  selection:
+    CommandLine|contains: 'visudo'
+  condition: selection
+fields:
+  - CommandLine
+falsepositives:
+  - Legitimate administrative activity
+level: medium
+tags:
+  - attack.execution

@@ -1,0 +1,22 @@
+title: Suspicious Usage of modprobe
+id: 0fddef29-f750-4626-95e3-44d28c958711
+status: experimental
+description: |
+  Detects suspicious usage of modprobe in command line.
+author: Jules
+date: 2026/02/04
+logsource:
+  product: linux
+  category: process_creation
+
+detection:
+  selection:
+    CommandLine|contains: 'modprobe'
+  condition: selection
+fields:
+  - CommandLine
+falsepositives:
+  - Legitimate administrative activity
+level: medium
+tags:
+  - attack.execution

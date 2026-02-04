@@ -1,0 +1,28 @@
+title: Nmap Scanning Pattern
+id: 378b48fd-2837-4d46-adba-95e09deda117
+status: experimental
+description: |
+  Detects network traffic or User-Agent strings associated with Nmap scanning
+  tools, specifically the Nmap Scripting Engine (NSE).
+author: Jules
+date: 2025/05/22
+logsource:
+  product: network
+  category: firewall
+detection:
+  selection:
+    UserAgent|contains:
+      - 'Nmap Scripting Engine'
+      - 'Nmap'
+  condition: selection
+fields:
+  - SourceIP
+  - DestinationIP
+  - DestinationPort
+  - UserAgent
+falsepositives:
+  - Legitimate network scanning by security teams.
+level: medium
+tags:
+  - attack.t1046
+  - attack.discovery

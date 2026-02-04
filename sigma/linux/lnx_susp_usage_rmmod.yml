@@ -1,0 +1,22 @@
+title: Suspicious Usage of rmmod
+id: 86b41013-c57f-4649-995c-44979ecf5612
+status: experimental
+description: |
+  Detects suspicious usage of rmmod in command line.
+author: Jules
+date: 2026/02/04
+logsource:
+  product: linux
+  category: process_creation
+
+detection:
+  selection:
+    CommandLine|contains: 'rmmod'
+  condition: selection
+fields:
+  - CommandLine
+falsepositives:
+  - Legitimate administrative activity
+level: medium
+tags:
+  - attack.execution

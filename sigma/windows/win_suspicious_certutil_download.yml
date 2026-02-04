@@ -1,0 +1,30 @@
+title: Suspicious Certutil Download
+id: 57643b0c-9828-4447-9753-29471553530c
+status: experimental
+description: |
+  Detects the use of certutil.exe to download files from remote URLs.
+  Certutil is often used by attackers to download tools (LotL).
+author: Jules
+date: 2025/05/22
+logsource:
+  product: windows
+  category: process_creation
+detection:
+  selection:
+    Image|endswith: '\certutil.exe'
+    CommandLine|contains|all:
+      - '-urlcache'
+      - '-split'
+      - '-f'
+  condition: selection
+fields:
+  - Image
+  - CommandLine
+  - User
+  - ComputerName
+falsepositives:
+  - Legitimate administrative scripts updating certificates (though usually don't use -urlcache -split -f for generic files).
+level: high
+tags:
+  - attack.t1105
+  - attack.ingress_tool_transfer

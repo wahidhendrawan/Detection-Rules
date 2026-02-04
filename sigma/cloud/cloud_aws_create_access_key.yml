@@ -1,0 +1,27 @@
+title: AWS IAM Access Key Created
+id: d204bcc0-3a77-4095-bb49-26d762ba21b4
+status: experimental
+description: |
+  Detects the creation of a new IAM access key in AWS.
+  Monitor for unexpected key creation events.
+author: Jules
+date: 2025/05/22
+logsource:
+  product: aws
+  service: cloudtrail
+detection:
+  selection:
+    eventName: 'CreateAccessKey'
+  condition: selection
+fields:
+  - eventTime
+  - eventSource
+  - eventName
+  - userIdentity.arn
+  - userAgent
+falsepositives:
+  - Legitimate IAM administration.
+level: medium
+tags:
+  - attack.t1098
+  - attack.persistence

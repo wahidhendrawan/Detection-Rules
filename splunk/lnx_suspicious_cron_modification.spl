@@ -1,0 +1,14 @@
+# Suspicious Cron File Modification
+# MITRE ATT&CK: T1053.003 (Scheduled Task/Job: Cron)
+# Severity: Medium
+# Description: Detects file creation or modification in system cron directories or files.
+
+index=linux OR index=os
+sourcetype IN ("linux_secure", "syslog")
+(
+  (TargetFilename="/etc/cron.d/*" OR TargetFilename="/etc/cron.daily/*" OR TargetFilename="/etc/cron.hourly/*" OR TargetFilename="/etc/cron.monthly/*" OR TargetFilename="/etc/cron.weekly/*" OR TargetFilename="/var/spool/cron/*")
+  OR
+  TargetFilename="/etc/crontab"
+)
+| stats count by _time, host, user, Image, TargetFilename
+| sort - _time

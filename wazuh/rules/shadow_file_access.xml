@@ -1,0 +1,10 @@
+<group name="attack">
+  <rule id="100003" level="12">
+    <decoded_as>auditd</decoded_as>
+    <field name="file">/etc/shadow</field>
+    <description>Detects access to /etc/shadow.</description>
+    <mitre>
+      <id>T1003.008</id>
+    </mitre>
+  </rule>
+</group>

@@ -1,0 +1,10 @@
+<group name="attack">
+  <rule id="100018" level="10">
+    <decoded_as>windows_system</decoded_as>
+    <field name="event_id">7045</field>
+    <description>Detects service creation.</description>
+    <mitre>
+      <id>T1543.003</id>
+    </mitre>
+  </rule>
+</group>

@@ -1,0 +1,10 @@
+<group name="attack,linux">
+  <rule id="100004" level="8">
+    <decoded_as>cron</decoded_as>
+    <field name="command">crontab -e</field>
+    <description>Detects modification of cron jobs.</description>
+    <mitre>
+      <id>T1053.003</id>
+    </mitre>
+  </rule>
+</group>

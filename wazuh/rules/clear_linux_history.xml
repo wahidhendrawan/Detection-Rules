@@ -1,0 +1,10 @@
+<group name="attack,linux">
+  <rule id="100005" level="10">
+    <decoded_as>bash</decoded_as>
+    <field name="command">history -c</field>
+    <description>Detects clearing of command history.</description>
+    <mitre>
+      <id>T1070.003</id>
+    </mitre>
+  </rule>
+</group>

@@ -1,0 +1,10 @@
+<group name="attack">
+  <rule id="100010" level="12">
+    <decoded_as>auditd</decoded_as>
+    <field name="command">insmod|modprobe</field>
+    <description>Detects kernel module loading.</description>
+    <mitre>
+      <id>T1547.006</id>
+    </mitre>
+  </rule>
+</group>

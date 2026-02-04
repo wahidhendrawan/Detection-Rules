@@ -1,0 +1,10 @@
+<group name="attack">
+  <rule id="100008" level="12">
+    <decoded_as>process_monitor</decoded_as>
+    <field name="command">nc -e</field>
+    <description>Detects netcat reverse shell arguments.</description>
+    <mitre>
+      <id>T1059.004</id>
+    </mitre>
+  </rule>
+</group>

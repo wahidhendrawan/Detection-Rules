@@ -1,0 +1,10 @@
+<group name="attack">
+  <rule id="100007" level="5">
+    <decoded_as>process_monitor</decoded_as>
+    <field name="command">curl|wget</field>
+    <description>Detects curl or wget usage.</description>
+    <mitre>
+      <id>T1105</id>
+    </mitre>
+  </rule>
+</group>

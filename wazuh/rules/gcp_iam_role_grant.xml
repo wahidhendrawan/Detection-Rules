@@ -1,0 +1,10 @@
+<group name="attack,cloud">
+  <rule id="100030" level="8">
+    <decoded_as>gcp_audit</decoded_as>
+    <field name="method_name">SetIamPolicy</field>
+    <description>Detects granting of IAM role.</description>
+    <mitre>
+      <id>T1098</id>
+    </mitre>
+  </rule>
+</group>

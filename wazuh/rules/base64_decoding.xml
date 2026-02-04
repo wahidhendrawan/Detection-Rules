@@ -1,0 +1,10 @@
+<group name="attack">
+  <rule id="100009" level="6">
+    <decoded_as>process_monitor</decoded_as>
+    <field name="command">base64 -d</field>
+    <description>Detects base64 decoding.</description>
+    <mitre>
+      <id>T1027</id>
+    </mitre>
+  </rule>
+</group>

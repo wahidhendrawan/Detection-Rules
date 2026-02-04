@@ -1,0 +1,30 @@
+title: Scheduled Task Creation
+id: 6f407b2b-cdb0-4b8d-b4eb-ba150622c18f
+status: experimental
+description: |
+  Detects the creation of scheduled tasks using the schtasks command line utility.
+  Persistence mechanism frequently used by malware.
+author: Jules
+date: 2025/05/22
+logsource:
+  product: windows
+  category: process_creation
+detection:
+  selection:
+    Image|endswith:
+      - '\schtasks.exe'
+    CommandLine|contains:
+      - '/create'
+  condition: selection
+fields:
+  - Image
+  - CommandLine
+  - User
+  - ParentImage
+falsepositives:
+  - Software installation and updates often create scheduled tasks.
+  - System administration scripts.
+level: medium
+tags:
+  - attack.t1053.005
+  - attack.persistence

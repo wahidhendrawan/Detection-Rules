@@ -1,0 +1,14 @@
+# Shadow Copies Deletion
+# MITRE ATT&CK: T1490 (Inhibit System Recovery)
+# Severity: Critical
+# Description: Detects attempts to delete volume shadow copies using vssadmin, wmic, or powershell.
+
+index=windows OR index=endpoint
+sourcetype IN ("XmlWinEventLog:Microsoft-Windows-Sysmon/Operational", "WinEventLog:Security", "XmlWinEventLog:Microsoft-Windows-PowerShell/Operational")
+(
+  (Image="*\\vssadmin.exe" AND CommandLine="*delete*" AND CommandLine="*shadows*") OR
+  (Image="*\\wmic.exe" AND CommandLine="*shadowcopy*" AND CommandLine="*delete*") OR
+  (CommandLine="*Win32_ShadowCopy*" AND CommandLine="*.Delete()*")
+)
+| stats values(CommandLine) as cmd by _time, host, user, Image, ParentImage, ParentCommandLine
+| sort - _time

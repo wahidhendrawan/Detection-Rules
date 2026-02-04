@@ -1,0 +1,11 @@
+# Suspicious Certutil Download
+# MITRE ATT&CK: T1105 (Ingress Tool Transfer)
+# Severity: High
+# Description: Detects the use of certutil.exe to download files from remote URLs.
+
+index=windows OR index=endpoint
+sourcetype IN ("XmlWinEventLog:Microsoft-Windows-Sysmon/Operational", "WinEventLog:Security", "XmlWinEventLog:Microsoft-Windows-PowerShell/Operational")
+Image="*\\certutil.exe"
+(CommandLine="*-urlcache*" AND CommandLine="*-split*" AND CommandLine="*-f*")
+| stats values(CommandLine) as cmd by _time, host, user, Image, ParentImage, ParentCommandLine
+| sort - _time

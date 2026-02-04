@@ -1,0 +1,10 @@
+<group name="attack">
+  <rule id="100019" level="8">
+    <decoded_as>windows_security</decoded_as>
+    <field name="event_id">4720</field>
+    <description>Detects user account creation.</description>
+    <mitre>
+      <id>T1136.001</id>
+    </mitre>
+  </rule>
+</group>

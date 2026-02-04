@@ -1,0 +1,10 @@
+<group name="attack,web">
+  <rule id="100027" level="6">
+    <decoded_as>nginx_error</decoded_as>
+    <field name="level">error</field>
+    <description>Detects Nginx error log entry.</description>
+    <mitre>
+      <id>T1190</id>
+    </mitre>
+  </rule>
+</group>

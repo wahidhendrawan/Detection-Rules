@@ -1,0 +1,10 @@
+<group name="attack,cloud">
+  <rule id="100029" level="10">
+    <decoded_as>aws_cloudtrail</decoded_as>
+    <field name="event_name">PutBucketAcl</field>
+    <description>Detects S3 bucket public access setting.</description>
+    <mitre>
+      <id>T1078</id>
+    </mitre>
+  </rule>
+</group>

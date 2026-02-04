@@ -1,0 +1,10 @@
+<group name="attack">
+  <rule id="100024" level="10">
+    <decoded_as>web_server</decoded_as>
+    <field name="url">../..</field>
+    <description>Detects directory traversal attempts.</description>
+    <mitre>
+      <id>T1190</id>
+    </mitre>
+  </rule>
+</group>

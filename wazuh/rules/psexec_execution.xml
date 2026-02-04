@@ -1,0 +1,10 @@
+<group name="attack,windows">
+  <rule id="100014" level="12">
+    <decoded_as>windows_system</decoded_as>
+    <field name="event_id">7045</field>
+    <description>Detects PsExec service execution.</description>
+    <mitre>
+      <id>T1569.002</id>
+    </mitre>
+  </rule>
+</group>

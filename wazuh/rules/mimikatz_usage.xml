@@ -1,0 +1,10 @@
+<group name="attack">
+  <rule id="100015" level="14">
+    <decoded_as>sysmon</decoded_as>
+    <field name="command_line">sekurlsa</field>
+    <description>Detects Mimikatz usage.</description>
+    <mitre>
+      <id>T1003.001</id>
+    </mitre>
+  </rule>
+</group>

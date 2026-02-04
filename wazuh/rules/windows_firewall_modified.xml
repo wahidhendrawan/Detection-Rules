@@ -1,0 +1,10 @@
+<group name="attack,windows">
+  <rule id="100012" level="10">
+    <decoded_as>windows_firewall</decoded_as>
+    <field name="event_id">2003</field>
+    <description>Detects modification of Windows Firewall.</description>
+    <mitre>
+      <id>T1562.004</id>
+    </mitre>
+  </rule>
+</group>

@@ -1,0 +1,33 @@
+title: RDP Tunneling via Plink
+id: 95a975ff-4a24-45a8-852b-b504213ce687
+status: experimental
+description: |
+  Detects the execution of Plink (PuTTY Link) with arguments suggesting port forwarding
+  or tunneling, often used to bypass firewalls or expose internal RDP.
+author: Jules
+date: 2025/05/22
+logsource:
+  product: windows
+  category: process_creation
+detection:
+  selection:
+    Image|endswith:
+      - '\plink.exe'
+    CommandLine|contains:
+      - '-R'
+      - '-L'
+      - '-D'
+    CommandLine|contains|all:
+      - '3389'
+  condition: selection
+fields:
+  - Image
+  - CommandLine
+  - User
+  - ParentImage
+falsepositives:
+  - Legitimate SSH tunneling by administrators.
+level: high
+tags:
+  - attack.t1021.001
+  - attack.command_and_control

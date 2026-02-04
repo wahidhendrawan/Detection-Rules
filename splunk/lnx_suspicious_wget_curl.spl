@@ -1,0 +1,6 @@
+# Linux Wget Curl
+# MITRE ATT&CK: T1105
+# Severity: High
+# Description: Detects wget or curl usage.
+
+index=linux (Image=*wget OR Image=*curl)

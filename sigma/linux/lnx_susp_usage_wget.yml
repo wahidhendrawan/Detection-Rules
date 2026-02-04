@@ -1,0 +1,22 @@
+title: Suspicious Usage of wget
+id: 09b6d30a-42f0-4c9a-9fb7-6c5791539365
+status: experimental
+description: |
+  Detects suspicious usage of wget in command line.
+author: Jules
+date: 2026/02/04
+logsource:
+  product: linux
+  category: process_creation
+
+detection:
+  selection:
+    CommandLine|contains: 'wget'
+  condition: selection
+fields:
+  - CommandLine
+falsepositives:
+  - Legitimate administrative activity
+level: medium
+tags:
+  - attack.execution

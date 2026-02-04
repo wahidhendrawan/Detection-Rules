@@ -1,0 +1,10 @@
+<group name="attack,cloud">
+  <rule id="100028" level="8">
+    <decoded_as>aws_cloudtrail</decoded_as>
+    <field name="event_name">CreateUser</field>
+    <description>Detects creation of IAM user.</description>
+    <mitre>
+      <id>T1098</id>
+    </mitre>
+  </rule>
+</group>

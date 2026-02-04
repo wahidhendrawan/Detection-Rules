@@ -1,0 +1,10 @@
+<group name="attack,linux">
+  <rule id="100002" level="10">
+    <decoded_as>sudo</decoded_as>
+    <field name="command">sudo</field>
+    <description>Detects suspicious sudo usage.</description>
+    <mitre>
+      <id>T1548.003</id>
+    </mitre>
+  </rule>
+</group>

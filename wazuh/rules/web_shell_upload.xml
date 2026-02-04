@@ -1,0 +1,10 @@
+<group name="attack,web">
+  <rule id="100023" level="14">
+    <decoded_as>web_server</decoded_as>
+    <field name="url">.php|.jsp|.asp</field>
+    <description>Detects upload of web shell files.</description>
+    <mitre>
+      <id>T1505.003</id>
+    </mitre>
+  </rule>
+</group>

@@ -1,0 +1,10 @@
+<group name="attack,web">
+  <rule id="100021" level="12">
+    <decoded_as>web_server</decoded_as>
+    <field name="url">UNION SELECT</field>
+    <description>Detects potential SQL injection patterns.</description>
+    <mitre>
+      <id>T1190</id>
+    </mitre>
+  </rule>
+</group>

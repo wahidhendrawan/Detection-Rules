@@ -1,0 +1,10 @@
+<group name="attack,web">
+  <rule id="100022" level="10">
+    <decoded_as>web_server</decoded_as>
+    <field name="url">&lt;script&gt;</field>
+    <description>Detects potential XSS patterns.</description>
+    <mitre>
+      <id>T1190</id>
+    </mitre>
+  </rule>
+</group>

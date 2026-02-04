@@ -1,0 +1,10 @@
+<group name="attack">
+  <rule id="100020" level="8">
+    <decoded_as>windows_security</decoded_as>
+    <field name="event_id">4737</field>
+    <description>Detects security group modification.</description>
+    <mitre>
+      <id>T1098</id>
+    </mitre>
+  </rule>
+</group>

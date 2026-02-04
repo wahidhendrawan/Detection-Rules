@@ -1,0 +1,22 @@
+title: Suspicious Usage of perl
+id: d6caa2fd-59f8-461a-9b1d-ed4c9bd3373d
+status: experimental
+description: |
+  Detects suspicious usage of perl in command line.
+author: Jules
+date: 2026/02/04
+logsource:
+  product: linux
+  category: process_creation
+
+detection:
+  selection:
+    CommandLine|contains: 'perl'
+  condition: selection
+fields:
+  - CommandLine
+falsepositives:
+  - Legitimate administrative activity
+level: medium
+tags:
+  - attack.execution

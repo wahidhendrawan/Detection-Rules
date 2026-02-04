@@ -1,0 +1,22 @@
+title: Suspicious Execution of fsutil.exe
+id: 118e210c-48be-4cf6-8362-8c88e5940fb9
+status: experimental
+description: |
+  Detects suspicious execution of fsutil.exe which may be used for Living off the Land attacks.
+author: Jules
+date: 2026/02/04
+logsource:
+  product: windows
+  category: process_creation
+
+detection:
+  selection:
+    Image|endswith: '\fsutil.exe'
+  condition: selection
+fields:
+  - CommandLine
+falsepositives:
+  - Legitimate administrative activity
+level: medium
+tags:
+  - attack.execution

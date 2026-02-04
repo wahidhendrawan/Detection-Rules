@@ -1,0 +1,22 @@
+title: Suspicious Cloud Action AuthorizeSecurityGroupIngress
+id: 29fb67f8-7cdd-4a71-ad80-ae85caddb47c
+status: experimental
+description: |
+  Detects sensitive cloud action AuthorizeSecurityGroupIngress.
+author: Jules
+date: 2026/02/04
+logsource:
+  product: aws
+  category: cloudtrail
+  service: cloudtrail
+detection:
+  selection:
+    EventName: AuthorizeSecurityGroupIngress
+  condition: selection
+fields:
+  - UserIdentityArn
+falsepositives:
+  - Legitimate administrative activity
+level: high
+tags:
+  - attack.persistence

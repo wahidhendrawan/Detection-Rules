@@ -1,0 +1,6 @@
+# Windows Taskkill Usage
+# MITRE ATT&CK: T1562.001
+# Severity: High
+# Description: Detects usage of taskkill.
+
+index=windows Image=*taskkill.exe

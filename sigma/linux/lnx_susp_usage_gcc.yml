@@ -1,0 +1,22 @@
+title: Suspicious Usage of gcc
+id: b33fc143-0645-470b-90a7-0c1124cec82c
+status: experimental
+description: |
+  Detects suspicious usage of gcc in command line.
+author: Jules
+date: 2026/02/04
+logsource:
+  product: linux
+  category: process_creation
+
+detection:
+  selection:
+    CommandLine|contains: 'gcc'
+  condition: selection
+fields:
+  - CommandLine
+falsepositives:
+  - Legitimate administrative activity
+level: medium
+tags:
+  - attack.execution

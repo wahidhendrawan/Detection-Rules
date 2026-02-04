@@ -1,0 +1,22 @@
+title: Suspicious SMTP Traffic
+id: a9394dd4-3338-4af2-ae2b-55102554ccf1
+status: experimental
+description: |
+  Detects potential abuse or anomalies in SMTP traffic.
+author: Jules
+date: 2026/02/04
+logsource:
+  product: network
+  category: firewall
+
+detection:
+  selection:
+    Protocol: smtp
+  condition: selection
+fields:
+  - DestinationPort
+falsepositives:
+  - Legitimate administrative activity
+level: medium
+tags:
+  - attack.command_and_control

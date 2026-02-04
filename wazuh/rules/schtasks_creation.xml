@@ -1,0 +1,10 @@
+<group name="attack">
+  <rule id="100017" level="8">
+    <decoded_as>windows_security</decoded_as>
+    <field name="event_id">4698</field>
+    <description>Detects scheduled task creation.</description>
+    <mitre>
+      <id>T1053.005</id>
+    </mitre>
+  </rule>
+</group>

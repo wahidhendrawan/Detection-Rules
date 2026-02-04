@@ -1,0 +1,6 @@
+# Suspicious Whoami Execution
+# MITRE ATT&CK: T1033
+# Severity: High
+# Description: Detects whoami execution.
+
+index=windows Image=*whoami.exe

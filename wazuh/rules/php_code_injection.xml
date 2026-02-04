@@ -1,0 +1,10 @@
+<group name="attack">
+  <rule id="100025" level="12">
+    <decoded_as>web_server</decoded_as>
+    <field name="url">php://input</field>
+    <description>Detects PHP code injection.</description>
+    <mitre>
+      <id>T1059</id>
+    </mitre>
+  </rule>
+</group>

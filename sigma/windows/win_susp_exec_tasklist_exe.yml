@@ -1,0 +1,22 @@
+title: Suspicious Execution of tasklist.exe
+id: b3c70b23-40d9-4400-b8c1-091f1d01d5cf
+status: experimental
+description: |
+  Detects suspicious execution of tasklist.exe which may be used for Living off the Land attacks.
+author: Jules
+date: 2026/02/04
+logsource:
+  product: windows
+  category: process_creation
+
+detection:
+  selection:
+    Image|endswith: '\tasklist.exe'
+  condition: selection
+fields:
+  - CommandLine
+falsepositives:
+  - Legitimate administrative activity
+level: medium
+tags:
+  - attack.execution

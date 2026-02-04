@@ -1,0 +1,22 @@
+title: Suspicious Usage of curl
+id: b0b3e516-a648-4e56-83e1-45fc70ce897b
+status: experimental
+description: |
+  Detects suspicious usage of curl in command line.
+author: Jules
+date: 2026/02/04
+logsource:
+  product: linux
+  category: process_creation
+
+detection:
+  selection:
+    CommandLine|contains: 'curl'
+  condition: selection
+fields:
+  - CommandLine
+falsepositives:
+  - Legitimate administrative activity
+level: medium
+tags:
+  - attack.execution

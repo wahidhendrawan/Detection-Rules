@@ -1,0 +1,22 @@
+title: Suspicious Cloud Action DeleteUser
+id: a63287a4-3a79-4c0a-a5fa-361a7c47bc34
+status: experimental
+description: |
+  Detects sensitive cloud action DeleteUser.
+author: Jules
+date: 2026/02/04
+logsource:
+  product: aws
+  category: cloudtrail
+  service: cloudtrail
+detection:
+  selection:
+    EventName: DeleteUser
+  condition: selection
+fields:
+  - UserIdentityArn
+falsepositives:
+  - Legitimate administrative activity
+level: high
+tags:
+  - attack.persistence

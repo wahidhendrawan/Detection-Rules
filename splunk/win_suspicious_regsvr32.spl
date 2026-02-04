@@ -1,0 +1,6 @@
+# Windows Regsvr32 Usage
+# MITRE ATT&CK: T1218.010
+# Severity: High
+# Description: Detects suspicious regsvr32 usage.
+
+index=windows Image=*regsvr32.exe CommandLine=*/i*

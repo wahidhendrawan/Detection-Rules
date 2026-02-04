@@ -1,0 +1,22 @@
+title: Suspicious Execution of quser.exe
+id: ff3beaeb-22fb-4008-8f63-2084e982576f
+status: experimental
+description: |
+  Detects suspicious execution of quser.exe which may be used for Living off the Land attacks.
+author: Jules
+date: 2026/02/04
+logsource:
+  product: windows
+  category: process_creation
+
+detection:
+  selection:
+    Image|endswith: '\quser.exe'
+  condition: selection
+fields:
+  - CommandLine
+falsepositives:
+  - Legitimate administrative activity
+level: medium
+tags:
+  - attack.execution

@@ -1,0 +1,6 @@
+# Suspicious Rundll32 Network
+# MITRE ATT&CK: T1218.011
+# Severity: High
+# Description: Detects rundll32 making network connections.
+
+index=windows Image=*rundll32.exe EventCode=3

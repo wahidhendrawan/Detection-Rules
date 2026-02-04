@@ -1,0 +1,10 @@
+<group name="attack,windows">
+  <rule id="100013" level="10">
+    <decoded_as>windows_security</decoded_as>
+    <field name="event_id">4625</field>
+    <description>Detects RDP brute force attempts.</description>
+    <mitre>
+      <id>T1110</id>
+    </mitre>
+  </rule>
+</group>

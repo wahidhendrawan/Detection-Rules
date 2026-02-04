@@ -1,0 +1,10 @@
+<group name="attack,windows">
+  <rule id="100016" level="8">
+    <decoded_as>powershell</decoded_as>
+    <field name="command_line">-EncodedCommand</field>
+    <description>Detects encoded PowerShell commands.</description>
+    <mitre>
+      <id>T1059.001</id>
+    </mitre>
+  </rule>
+</group>

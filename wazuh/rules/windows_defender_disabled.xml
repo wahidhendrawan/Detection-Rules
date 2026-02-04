@@ -1,0 +1,10 @@
+<group name="attack,windows">
+  <rule id="100011" level="12">
+    <decoded_as>windows_defender</decoded_as>
+    <field name="event_id">5001</field>
+    <description>Detects disabling Windows Defender.</description>
+    <mitre>
+      <id>T1562.001</id>
+    </mitre>
+  </rule>
+</group>

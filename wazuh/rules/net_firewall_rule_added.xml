@@ -1,0 +1,10 @@
+<group name="net">
+  <rule id="100111" level="7">
+    <decoded_as>syslog</decoded_as>
+    <match>A rule has been added to the Windows Defender Firewall exception list</match>
+    <description>New firewall rule added</description>
+    <mitre>
+      <id>T1000</id>
+    </mitre>
+  </rule>
+</group>

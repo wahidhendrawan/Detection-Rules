@@ -1,0 +1,10 @@
+<group name="net">
+  <rule id="100115" level="9">
+    <decoded_as>syslog</decoded_as>
+    <match>query type TXT</match>
+    <description>Possible DNS tunneling detected</description>
+    <mitre>
+      <id>T1000</id>
+    </mitre>
+  </rule>
+</group>

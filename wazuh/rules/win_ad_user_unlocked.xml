@@ -1,0 +1,10 @@
+<group name="win">
+  <rule id="100106" level="5">
+    <decoded_as>syslog</decoded_as>
+    <match>A user account was unlocked</match>
+    <description>User Account Unlocked</description>
+    <mitre>
+      <id>T1000</id>
+    </mitre>
+  </rule>
+</group>

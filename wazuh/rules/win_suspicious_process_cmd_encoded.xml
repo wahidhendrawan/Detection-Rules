@@ -1,0 +1,10 @@
+<group name="win">
+  <rule id="100110" level="8">
+    <decoded_as>syslog</decoded_as>
+    <match>cmd.exe /c echo</match>
+    <description>Suspicious encoded command execution</description>
+    <mitre>
+      <id>T1000</id>
+    </mitre>
+  </rule>
+</group>

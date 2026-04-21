@@ -1,0 +1,10 @@
+<group name="net">
+  <rule id="100114" level="5">
+    <decoded_as>syslog</decoded_as>
+    <match>dstport=3389</match>
+    <description>Outbound RDP connection detected</description>
+    <mitre>
+      <id>T1000</id>
+    </mitre>
+  </rule>
+</group>

@@ -1,0 +1,10 @@
+<group name="app">
+  <rule id="100172" level="8">
+    <decoded_as>syslog</decoded_as>
+    <match>mongodb service config_changed</match>
+    <description>Application mongodb config_changed</description>
+    <mitre>
+      <id>T1000</id>
+    </mitre>
+  </rule>
+</group>

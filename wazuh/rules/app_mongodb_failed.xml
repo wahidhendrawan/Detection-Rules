@@ -1,0 +1,10 @@
+<group name="app">
+  <rule id="100168" level="8">
+    <decoded_as>syslog</decoded_as>
+    <match>mongodb service failed</match>
+    <description>Application mongodb failed</description>
+    <mitre>
+      <id>T1000</id>
+    </mitre>
+  </rule>
+</group>

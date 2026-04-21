@@ -1,0 +1,10 @@
+<group name="win">
+  <rule id="100108" level="10">
+    <decoded_as>syslog</decoded_as>
+    <match>Software\\Microsoft\\Windows\\CurrentVersion\\Run</match>
+    <description>Registry persistence via Run key</description>
+    <mitre>
+      <id>T1000</id>
+    </mitre>
+  </rule>
+</group>

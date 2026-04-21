@@ -1,0 +1,10 @@
+<group name="win">
+  <rule id="100101" level="8">
+    <decoded_as>syslog</decoded_as>
+    <match>Member added to local group Administrators</match>
+    <description>User added to local Administrators group</description>
+    <mitre>
+      <id>T1000</id>
+    </mitre>
+  </rule>
+</group>

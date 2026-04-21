@@ -1,0 +1,10 @@
+<group name="net">
+  <rule id="100112" level="8">
+    <decoded_as>syslog</decoded_as>
+    <match>A rule has been deleted in the Windows Defender Firewall exception list</match>
+    <description>Firewall rule deleted</description>
+    <mitre>
+      <id>T1000</id>
+    </mitre>
+  </rule>
+</group>

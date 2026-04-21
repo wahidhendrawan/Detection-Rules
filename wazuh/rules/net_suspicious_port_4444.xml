@@ -1,0 +1,10 @@
+<group name="net">
+  <rule id="100113" level="10">
+    <decoded_as>syslog</decoded_as>
+    <match>dstport=4444</match>
+    <description>Suspicious outbound connection on port 4444</description>
+    <mitre>
+      <id>T1000</id>
+    </mitre>
+  </rule>
+</group>

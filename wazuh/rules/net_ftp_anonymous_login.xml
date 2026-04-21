@@ -1,0 +1,10 @@
+<group name="net">
+  <rule id="100118" level="6">
+    <decoded_as>syslog</decoded_as>
+    <match>Anonymous login successful</match>
+    <description>FTP Anonymous login successful</description>
+    <mitre>
+      <id>T1000</id>
+    </mitre>
+  </rule>
+</group>

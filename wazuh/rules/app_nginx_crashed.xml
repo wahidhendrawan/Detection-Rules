@@ -1,0 +1,10 @@
+<group name="app">
+  <rule id="100141" level="8">
+    <decoded_as>syslog</decoded_as>
+    <match>nginx service crashed</match>
+    <description>Application nginx crashed</description>
+    <mitre>
+      <id>T1000</id>
+    </mitre>
+  </rule>
+</group>

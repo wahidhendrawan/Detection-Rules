@@ -1,0 +1,10 @@
+<group name="app">
+  <rule id="100192" level="8">
+    <decoded_as>syslog</decoded_as>
+    <match>jenkins service unauthorized_access</match>
+    <description>Application jenkins unauthorized_access</description>
+    <mitre>
+      <id>T1000</id>
+    </mitre>
+  </rule>
+</group>

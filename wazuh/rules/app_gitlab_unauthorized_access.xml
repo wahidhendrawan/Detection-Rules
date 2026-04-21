@@ -1,0 +1,10 @@
+<group name="app">
+  <rule id="100199" level="8">
+    <decoded_as>syslog</decoded_as>
+    <match>gitlab service unauthorized_access</match>
+    <description>Application gitlab unauthorized_access</description>
+    <mitre>
+      <id>T1000</id>
+    </mitre>
+  </rule>
+</group>

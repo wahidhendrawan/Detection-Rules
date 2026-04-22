@@ -1,0 +1,9 @@
+{
+  "id": "4c7d3dc9-c996-4114-b120-bc5f45428079",
+  "name": "cb_process_creation_schtasks_exe",
+  "description": "Detects process_creation involving schtasks.exe",
+  "query": "process_name:schtasks.exe",
+  "severity": 5,
+  "enabled": true,
+  "category": "process_creation"
+}

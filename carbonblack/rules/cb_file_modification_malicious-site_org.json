@@ -1,0 +1,9 @@
+{
+  "id": "acd06d57-d71e-4539-bc5a-3504045ec20d",
+  "name": "cb_file_modification_malicious-site_org",
+  "description": "Detects file_modification involving malicious-site.org",
+  "query": "filemod_name:malicious-site.org",
+  "severity": 5,
+  "enabled": true,
+  "category": "file_modification"
+}

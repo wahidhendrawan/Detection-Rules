@@ -1,0 +1,9 @@
+{
+  "id": "606a8615-ae61-4ad0-a190-b14e250809fc",
+  "name": "cb_network_connection_at_exe",
+  "description": "Detects network_connection involving at.exe",
+  "query": "netconn_domain:at.exe",
+  "severity": 5,
+  "enabled": true,
+  "category": "network_connection"
+}

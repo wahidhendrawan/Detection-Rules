@@ -1,0 +1,9 @@
+{
+  "id": "bc9e6f7d-a0a7-4a6a-944c-54b266089535",
+  "name": "cb_process_creation_powershell_exe",
+  "description": "Detects process_creation involving powershell.exe",
+  "query": "process_name:powershell.exe",
+  "severity": 5,
+  "enabled": true,
+  "category": "process_creation"
+}

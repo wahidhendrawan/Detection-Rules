@@ -1,0 +1,9 @@
+{
+  "id": "78acf568-e6ad-46de-a1cd-9947ad3db46b",
+  "name": "cb_childproc_creation_bitsadmin_exe",
+  "description": "Detects childproc_creation involving bitsadmin.exe",
+  "query": "childproc_name:bitsadmin.exe",
+  "severity": 5,
+  "enabled": true,
+  "category": "childproc_creation"
+}

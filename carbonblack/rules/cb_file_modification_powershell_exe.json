@@ -1,0 +1,9 @@
+{
+  "id": "a975ca7a-4113-44c5-8def-de933fa82a17",
+  "name": "cb_file_modification_powershell_exe",
+  "description": "Detects file_modification involving powershell.exe",
+  "query": "filemod_name:powershell.exe",
+  "severity": 5,
+  "enabled": true,
+  "category": "file_modification"
+}

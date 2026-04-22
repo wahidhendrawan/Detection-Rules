@@ -1,0 +1,9 @@
+{
+  "id": "724dbee0-bed5-46cb-88ea-6e7973c491c8",
+  "name": "cb_childproc_creation_regsvr32_exe",
+  "description": "Detects childproc_creation involving regsvr32.exe",
+  "query": "childproc_name:regsvr32.exe",
+  "severity": 5,
+  "enabled": true,
+  "category": "childproc_creation"
+}

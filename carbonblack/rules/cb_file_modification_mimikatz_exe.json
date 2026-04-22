@@ -1,0 +1,9 @@
+{
+  "id": "a0036c62-6afe-4232-a6b1-0832f753e08b",
+  "name": "cb_file_modification_mimikatz_exe",
+  "description": "Detects file_modification involving mimikatz.exe",
+  "query": "filemod_name:mimikatz.exe",
+  "severity": 5,
+  "enabled": true,
+  "category": "file_modification"
+}

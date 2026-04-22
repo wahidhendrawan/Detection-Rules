@@ -1,0 +1,9 @@
+{
+  "id": "8fa0b1d6-3427-4cdd-8997-7e36bd802252",
+  "name": "cb_network_connection_rundll32_exe",
+  "description": "Detects network_connection involving rundll32.exe",
+  "query": "netconn_domain:rundll32.exe",
+  "severity": 5,
+  "enabled": true,
+  "category": "network_connection"
+}

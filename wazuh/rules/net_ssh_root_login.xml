@@ -1,0 +1,10 @@
+<group name="net">
+  <rule id="100116" level="10">
+    <decoded_as>syslog</decoded_as>
+    <match>Accepted password for root</match>
+    <description>SSH Root Login Successful</description>
+    <mitre>
+      <id>T1000</id>
+    </mitre>
+  </rule>
+</group>

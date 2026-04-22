@@ -1,0 +1,9 @@
+{
+  "id": "f30e538b-74c1-4328-b664-ca2feda89a1c",
+  "name": "cb_registry_modification_cmd_exe",
+  "description": "Detects registry_modification involving cmd.exe",
+  "query": "regmod_name:cmd.exe",
+  "severity": 5,
+  "enabled": true,
+  "category": "registry_modification"
+}

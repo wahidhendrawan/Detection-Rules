@@ -1,0 +1,9 @@
+{
+  "id": "cb902be6-e9c1-4959-8fa7-8376e2412720",
+  "name": "cb_registry_modification_procdump_exe",
+  "description": "Detects registry_modification involving procdump.exe",
+  "query": "regmod_name:procdump.exe",
+  "severity": 5,
+  "enabled": true,
+  "category": "registry_modification"
+}

@@ -1,0 +1,9 @@
+{
+  "id": "094b72f1-f2df-42e3-87de-7808b1207256",
+  "name": "cb_childproc_creation_cmd_exe",
+  "description": "Detects childproc_creation involving cmd.exe",
+  "query": "childproc_name:cmd.exe",
+  "severity": 5,
+  "enabled": true,
+  "category": "childproc_creation"
+}

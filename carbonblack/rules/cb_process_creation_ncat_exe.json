@@ -1,0 +1,9 @@
+{
+  "id": "09516d58-a0ae-416f-a99c-79058c836ffd",
+  "name": "cb_process_creation_ncat_exe",
+  "description": "Detects process_creation involving ncat.exe",
+  "query": "process_name:ncat.exe",
+  "severity": 5,
+  "enabled": true,
+  "category": "process_creation"
+}

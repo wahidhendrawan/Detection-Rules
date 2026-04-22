@@ -1,0 +1,10 @@
+<group name="lnx">
+  <rule id="100123" level="10">
+    <decoded_as>syslog</decoded_as>
+    <match>/etc/ssh/sshd_config</match>
+    <description>Modification of sshd_config</description>
+    <mitre>
+      <id>T1000</id>
+    </mitre>
+  </rule>
+</group>

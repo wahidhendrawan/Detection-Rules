@@ -1,0 +1,10 @@
+<group name="lnx">
+  <rule id="100130" level="3">
+    <decoded_as>syslog</decoded_as>
+    <match>yum install</match>
+    <description>Package installation via yum</description>
+    <mitre>
+      <id>T1000</id>
+    </mitre>
+  </rule>
+</group>

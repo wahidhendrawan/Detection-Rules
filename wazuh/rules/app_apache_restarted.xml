@@ -1,0 +1,10 @@
+<group name="app">
+  <rule id="100135" level="5">
+    <decoded_as>syslog</decoded_as>
+    <match>apache service restarted</match>
+    <description>Application apache restarted</description>
+    <mitre>
+      <id>T1000</id>
+    </mitre>
+  </rule>
+</group>

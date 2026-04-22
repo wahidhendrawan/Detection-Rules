@@ -1,0 +1,9 @@
+{
+  "id": "7999caa1-ef50-4ec3-96f0-6e0158d29c92",
+  "name": "cb_process_creation_bitsadmin_exe",
+  "description": "Detects process_creation involving bitsadmin.exe",
+  "query": "process_name:bitsadmin.exe",
+  "severity": 5,
+  "enabled": true,
+  "category": "process_creation"
+}

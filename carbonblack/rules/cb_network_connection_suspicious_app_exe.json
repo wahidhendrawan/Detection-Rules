@@ -1,0 +1,9 @@
+{
+  "id": "d36f7d87-a666-4be2-b545-380c12fa6819",
+  "name": "cb_network_connection_suspicious_app_exe",
+  "description": "Detects network_connection involving suspicious_app.exe",
+  "query": "netconn_domain:suspicious_app.exe",
+  "severity": 5,
+  "enabled": true,
+  "category": "network_connection"
+}

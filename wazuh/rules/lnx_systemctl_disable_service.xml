@@ -1,0 +1,10 @@
+<group name="lnx">
+  <rule id="100128" level="6">
+    <decoded_as>syslog</decoded_as>
+    <match>systemctl disable</match>
+    <description>Service disabled via systemctl</description>
+    <mitre>
+      <id>T1000</id>
+    </mitre>
+  </rule>
+</group>

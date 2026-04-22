@@ -1,0 +1,9 @@
+{
+  "id": "580970d9-8967-44bc-a753-b7501186aeb3",
+  "name": "cb_childproc_creation_at_exe",
+  "description": "Detects childproc_creation involving at.exe",
+  "query": "childproc_name:at.exe",
+  "severity": 5,
+  "enabled": true,
+  "category": "childproc_creation"
+}

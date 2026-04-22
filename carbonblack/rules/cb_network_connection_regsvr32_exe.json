@@ -1,0 +1,9 @@
+{
+  "id": "f50987ed-5481-472b-add6-fa82f9369e81",
+  "name": "cb_network_connection_regsvr32_exe",
+  "description": "Detects network_connection involving regsvr32.exe",
+  "query": "netconn_domain:regsvr32.exe",
+  "severity": 5,
+  "enabled": true,
+  "category": "network_connection"
+}

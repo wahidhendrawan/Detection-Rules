@@ -1,0 +1,9 @@
+{
+  "id": "1a05c05b-d4c2-4e61-ba97-acc777749762",
+  "name": "cb_childproc_creation_suspicious_app_exe",
+  "description": "Detects childproc_creation involving suspicious_app.exe",
+  "query": "childproc_name:suspicious_app.exe",
+  "severity": 5,
+  "enabled": true,
+  "category": "childproc_creation"
+}

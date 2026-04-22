@@ -1,0 +1,9 @@
+{
+  "id": "f36e8e3c-fac1-4319-88fc-07b410f5588b",
+  "name": "cb_childproc_creation_wscript_exe",
+  "description": "Detects childproc_creation involving wscript.exe",
+  "query": "childproc_name:wscript.exe",
+  "severity": 5,
+  "enabled": true,
+  "category": "childproc_creation"
+}

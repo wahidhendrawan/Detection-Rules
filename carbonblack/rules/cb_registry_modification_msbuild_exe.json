@@ -1,0 +1,9 @@
+{
+  "id": "b2d319ac-6b30-426a-8f67-2cf65a046fc8",
+  "name": "cb_registry_modification_msbuild_exe",
+  "description": "Detects registry_modification involving msbuild.exe",
+  "query": "regmod_name:msbuild.exe",
+  "severity": 5,
+  "enabled": true,
+  "category": "registry_modification"
+}

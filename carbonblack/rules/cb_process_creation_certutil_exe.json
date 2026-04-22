@@ -1,0 +1,9 @@
+{
+  "id": "f2e22add-8427-4705-8e11-943e525db115",
+  "name": "cb_process_creation_certutil_exe",
+  "description": "Detects process_creation involving certutil.exe",
+  "query": "process_name:certutil.exe",
+  "severity": 5,
+  "enabled": true,
+  "category": "process_creation"
+}

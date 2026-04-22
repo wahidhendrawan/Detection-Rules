@@ -1,0 +1,9 @@
+{
+  "id": "61aa44c8-089f-42d4-bd14-b2b4be3c1e7f",
+  "name": "cb_childproc_creation_ncat_exe",
+  "description": "Detects childproc_creation involving ncat.exe",
+  "query": "childproc_name:ncat.exe",
+  "severity": 5,
+  "enabled": true,
+  "category": "childproc_creation"
+}

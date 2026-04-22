@@ -1,0 +1,9 @@
+{
+  "id": "dabd1461-4563-43d7-8685-c12e2a6eb81e",
+  "name": "cb_childproc_creation_hacker_tool_py",
+  "description": "Detects childproc_creation involving hacker_tool.py",
+  "query": "childproc_name:hacker_tool.py",
+  "severity": 5,
+  "enabled": true,
+  "category": "childproc_creation"
+}

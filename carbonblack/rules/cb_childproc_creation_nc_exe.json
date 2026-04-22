@@ -1,0 +1,9 @@
+{
+  "id": "4e214dfc-5757-41ba-ba62-d253c23a0c51",
+  "name": "cb_childproc_creation_nc_exe",
+  "description": "Detects childproc_creation involving nc.exe",
+  "query": "childproc_name:nc.exe",
+  "severity": 5,
+  "enabled": true,
+  "category": "childproc_creation"
+}

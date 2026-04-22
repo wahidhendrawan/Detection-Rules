@@ -1,0 +1,9 @@
+{
+  "id": "7fba90f8-8897-4400-9780-db91c36762f4",
+  "name": "cb_network_connection_evil_com",
+  "description": "Detects network_connection involving evil.com",
+  "query": "netconn_domain:evil.com",
+  "severity": 5,
+  "enabled": true,
+  "category": "network_connection"
+}

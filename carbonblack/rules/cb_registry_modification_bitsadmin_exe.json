@@ -1,0 +1,9 @@
+{
+  "id": "7ba53c3f-4b29-4610-9842-4ac448f21a30",
+  "name": "cb_registry_modification_bitsadmin_exe",
+  "description": "Detects registry_modification involving bitsadmin.exe",
+  "query": "regmod_name:bitsadmin.exe",
+  "severity": 5,
+  "enabled": true,
+  "category": "registry_modification"
+}

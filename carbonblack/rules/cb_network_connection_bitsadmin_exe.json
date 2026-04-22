@@ -1,0 +1,9 @@
+{
+  "id": "7c19d34b-fa16-465c-a7b7-f932c7aa361f",
+  "name": "cb_network_connection_bitsadmin_exe",
+  "description": "Detects network_connection involving bitsadmin.exe",
+  "query": "netconn_domain:bitsadmin.exe",
+  "severity": 5,
+  "enabled": true,
+  "category": "network_connection"
+}

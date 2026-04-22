@@ -1,0 +1,3 @@
+// Title: Service Deleted
+// Description: Hunts for service deleted
+ServiceEvents | where EventID == 4697 and Action == 'deleted'

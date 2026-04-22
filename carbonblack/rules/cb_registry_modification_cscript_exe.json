@@ -1,0 +1,9 @@
+{
+  "id": "080049de-2801-49ed-a872-24ea88d99bd6",
+  "name": "cb_registry_modification_cscript_exe",
+  "description": "Detects registry_modification involving cscript.exe",
+  "query": "regmod_name:cscript.exe",
+  "severity": 5,
+  "enabled": true,
+  "category": "registry_modification"
+}

@@ -1,0 +1,3 @@
+// Title: File Create Bat
+// Description: Hunts for file create bat
+FileCreationEvents | where FileName endswith '.bat'

@@ -1,0 +1,9 @@
+{
+  "id": "0ce0b290-ba09-49bf-901f-0c1291839a09",
+  "name": "cb_file_modification_at_exe",
+  "description": "Detects file_modification involving at.exe",
+  "query": "filemod_name:at.exe",
+  "severity": 5,
+  "enabled": true,
+  "category": "file_modification"
+}

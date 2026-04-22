@@ -1,0 +1,9 @@
+{
+  "id": "c6a254d9-5474-4013-855a-de1e266f1789",
+  "name": "cb_registry_modification_rundll32_exe",
+  "description": "Detects registry_modification involving rundll32.exe",
+  "query": "regmod_name:rundll32.exe",
+  "severity": 5,
+  "enabled": true,
+  "category": "registry_modification"
+}

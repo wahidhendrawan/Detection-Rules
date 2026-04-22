@@ -1,0 +1,10 @@
+<group name="lnx">
+  <rule id="100124" level="7">
+    <decoded_as>syslog</decoded_as>
+    <match>crontab -e</match>
+    <description>User crontab created</description>
+    <mitre>
+      <id>T1000</id>
+    </mitre>
+  </rule>
+</group>

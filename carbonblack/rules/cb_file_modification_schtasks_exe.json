@@ -1,0 +1,9 @@
+{
+  "id": "fa2bc181-0884-4cb0-9f47-2b7317769b21",
+  "name": "cb_file_modification_schtasks_exe",
+  "description": "Detects file_modification involving schtasks.exe",
+  "query": "filemod_name:schtasks.exe",
+  "severity": 5,
+  "enabled": true,
+  "category": "file_modification"
+}

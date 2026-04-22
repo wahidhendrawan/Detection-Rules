@@ -1,0 +1,10 @@
+<group name="win">
+  <rule id="100107" level="12">
+    <decoded_as>syslog</decoded_as>
+    <match>lsass.exe</match>
+    <description>Suspicious access to LSASS process</description>
+    <mitre>
+      <id>T1000</id>
+    </mitre>
+  </rule>
+</group>

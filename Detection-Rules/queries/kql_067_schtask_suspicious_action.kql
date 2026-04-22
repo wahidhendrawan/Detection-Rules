@@ -1,0 +1,3 @@
+// Title: Schtask Suspicious Action
+// Description: Hunts for schtask suspicious action
+ScheduledTaskEvents | where Action contains 'powershell' or Action contains 'cmd'

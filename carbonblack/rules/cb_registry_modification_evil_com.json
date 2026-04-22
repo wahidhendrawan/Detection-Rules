@@ -1,0 +1,9 @@
+{
+  "id": "fd60a824-784f-450c-af02-a6212f4bfef4",
+  "name": "cb_registry_modification_evil_com",
+  "description": "Detects registry_modification involving evil.com",
+  "query": "regmod_name:evil.com",
+  "severity": 5,
+  "enabled": true,
+  "category": "registry_modification"
+}

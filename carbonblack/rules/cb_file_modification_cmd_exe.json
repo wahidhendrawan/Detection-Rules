@@ -1,0 +1,9 @@
+{
+  "id": "1d7f9d4f-e61c-4eab-98aa-72ec37b96b6b",
+  "name": "cb_file_modification_cmd_exe",
+  "description": "Detects file_modification involving cmd.exe",
+  "query": "filemod_name:cmd.exe",
+  "severity": 5,
+  "enabled": true,
+  "category": "file_modification"
+}

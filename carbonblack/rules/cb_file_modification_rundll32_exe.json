@@ -1,0 +1,9 @@
+{
+  "id": "431e5f2b-7016-45bf-96a0-f4e6a8a8a44f",
+  "name": "cb_file_modification_rundll32_exe",
+  "description": "Detects file_modification involving rundll32.exe",
+  "query": "filemod_name:rundll32.exe",
+  "severity": 5,
+  "enabled": true,
+  "category": "file_modification"
+}

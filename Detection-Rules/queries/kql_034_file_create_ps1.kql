@@ -1,0 +1,3 @@
+// Title: File Create Ps1
+// Description: Hunts for file create ps1
+FileCreationEvents | where FileName endswith '.ps1'

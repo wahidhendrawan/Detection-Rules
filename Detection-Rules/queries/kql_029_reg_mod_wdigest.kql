@@ -1,0 +1,3 @@
+// Title: Reg Mod Wdigest
+// Description: Hunts for reg mod wdigest
+RegistryEvents | where RegistryKey contains 'WDigest' and RegistryValueName == 'UseLogonCredential'

@@ -1,0 +1,9 @@
+{
+  "id": "85926105-6b36-47d0-a26c-4d5d15ae23a6",
+  "name": "cb_registry_modification_suspicious_app_exe",
+  "description": "Detects registry_modification involving suspicious_app.exe",
+  "query": "regmod_name:suspicious_app.exe",
+  "severity": 5,
+  "enabled": true,
+  "category": "registry_modification"
+}

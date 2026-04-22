@@ -1,0 +1,9 @@
+{
+  "id": "5cfdd7ea-67e0-4b3c-827f-678feaf414c3",
+  "name": "cb_childproc_creation_schtasks_exe",
+  "description": "Detects childproc_creation involving schtasks.exe",
+  "query": "childproc_name:schtasks.exe",
+  "severity": 5,
+  "enabled": true,
+  "category": "childproc_creation"
+}

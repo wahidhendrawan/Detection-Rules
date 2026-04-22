@@ -1,0 +1,3 @@
+// Title: Net Conn Http Malicious
+// Description: Hunts for net conn http malicious
+NetworkConnectionEvents | where DestinationUrl contains '.xyz'

@@ -1,0 +1,3 @@
+// Title: Acct Mgr User Removed From Group
+// Description: Hunts for acct mgr user removed from group
+AccountManagementEvents | where EventID == 4729 or EventID == 4733 or EventID == 4757

@@ -1,0 +1,3 @@
+// Title: File Create Scr
+// Description: Hunts for file create scr
+FileCreationEvents | where FileName endswith '.scr'

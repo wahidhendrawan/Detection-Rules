@@ -1,0 +1,3 @@
+// Title: Reg Mod Firewall
+// Description: Hunts for reg mod firewall
+RegistryEvents | where RegistryKey contains 'FirewallRules'

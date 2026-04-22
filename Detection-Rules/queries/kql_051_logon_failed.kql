@@ -1,0 +1,3 @@
+// Title: Logon Failed
+// Description: Hunts for logon failed
+LogonEvents | where EventID == 4625

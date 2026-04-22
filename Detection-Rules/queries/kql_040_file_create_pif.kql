@@ -1,0 +1,3 @@
+// Title: File Create Pif
+// Description: Hunts for file create pif
+FileCreationEvents | where FileName endswith '.pif'

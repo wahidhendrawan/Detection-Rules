@@ -1,0 +1,3 @@
+// Title: Schtask Suspicious Name
+// Description: Hunts for schtask suspicious name
+ScheduledTaskEvents | where TaskName contains 'updater' or TaskName contains 'spooler'

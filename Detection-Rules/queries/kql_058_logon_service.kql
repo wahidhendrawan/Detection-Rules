@@ -1,0 +1,3 @@
+// Title: Logon Service
+// Description: Hunts for logon service
+LogonEvents | where EventID == 4624 and LogonType == 5

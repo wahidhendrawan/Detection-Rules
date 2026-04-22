@@ -1,0 +1,3 @@
+// Title: Net Conn Smb
+// Description: Hunts for net conn smb
+NetworkConnectionEvents | where DestinationPort == 445

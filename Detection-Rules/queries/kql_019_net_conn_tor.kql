@@ -1,0 +1,3 @@
+// Title: Net Conn Tor
+// Description: Hunts for net conn tor
+NetworkConnectionEvents | where DestinationIp in ('tor_node_ip_list')

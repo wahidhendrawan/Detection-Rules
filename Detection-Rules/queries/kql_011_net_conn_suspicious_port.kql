@@ -1,0 +1,3 @@
+// Title: Net Conn Suspicious Port
+// Description: Hunts for net conn suspicious port
+NetworkConnectionEvents | where DestinationPort in (4444, 31337, 1337)

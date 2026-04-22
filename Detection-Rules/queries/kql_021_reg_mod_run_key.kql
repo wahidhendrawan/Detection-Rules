@@ -1,0 +1,3 @@
+// Title: Reg Mod Run Key
+// Description: Hunts for reg mod run key
+RegistryEvents | where RegistryKey contains 'CurrentVersion\\Run'

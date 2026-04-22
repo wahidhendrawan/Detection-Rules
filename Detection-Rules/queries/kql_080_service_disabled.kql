@@ -1,0 +1,3 @@
+// Title: Service Disabled
+// Description: Hunts for service disabled
+ServiceEvents | where EventID == 7040 and StartType == 'disabled'

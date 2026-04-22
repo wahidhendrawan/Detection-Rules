@@ -1,0 +1,9 @@
+{
+  "id": "4a41d22b-bbd5-4a7a-b281-636ae29db257",
+  "name": "cb_childproc_creation_procdump_exe",
+  "description": "Detects childproc_creation involving procdump.exe",
+  "query": "childproc_name:procdump.exe",
+  "severity": 5,
+  "enabled": true,
+  "category": "childproc_creation"
+}

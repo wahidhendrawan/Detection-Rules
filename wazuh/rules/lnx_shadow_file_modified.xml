@@ -1,0 +1,10 @@
+<group name="lnx">
+  <rule id="100122" level="12">
+    <decoded_as>syslog</decoded_as>
+    <match>open("/etc/shadow", O_WRONLY|O_TRUNC)</match>
+    <description>Modification of /etc/shadow file</description>
+    <mitre>
+      <id>T1000</id>
+    </mitre>
+  </rule>
+</group>

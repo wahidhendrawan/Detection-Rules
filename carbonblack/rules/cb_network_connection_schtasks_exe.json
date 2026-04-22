@@ -1,0 +1,9 @@
+{
+  "id": "2384abe5-331a-4d07-bf67-3c5e341ed40b",
+  "name": "cb_network_connection_schtasks_exe",
+  "description": "Detects network_connection involving schtasks.exe",
+  "query": "netconn_domain:schtasks.exe",
+  "severity": 5,
+  "enabled": true,
+  "category": "network_connection"
+}

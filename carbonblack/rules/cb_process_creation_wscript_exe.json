@@ -1,0 +1,9 @@
+{
+  "id": "26a1c400-a447-4f4b-9294-e50080959994",
+  "name": "cb_process_creation_wscript_exe",
+  "description": "Detects process_creation involving wscript.exe",
+  "query": "process_name:wscript.exe",
+  "severity": 5,
+  "enabled": true,
+  "category": "process_creation"
+}

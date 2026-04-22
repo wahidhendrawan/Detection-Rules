@@ -1,0 +1,10 @@
+<group name="app">
+  <rule id="100157" level="8">
+    <decoded_as>syslog</decoded_as>
+    <match>postgres service unauthorized_access</match>
+    <description>Application postgres unauthorized_access</description>
+    <mitre>
+      <id>T1000</id>
+    </mitre>
+  </rule>
+</group>

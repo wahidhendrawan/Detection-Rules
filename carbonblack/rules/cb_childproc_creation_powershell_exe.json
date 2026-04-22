@@ -1,0 +1,9 @@
+{
+  "id": "e3b6c1ca-9864-4239-acb2-df30f925454a",
+  "name": "cb_childproc_creation_powershell_exe",
+  "description": "Detects childproc_creation involving powershell.exe",
+  "query": "childproc_name:powershell.exe",
+  "severity": 5,
+  "enabled": true,
+  "category": "childproc_creation"
+}

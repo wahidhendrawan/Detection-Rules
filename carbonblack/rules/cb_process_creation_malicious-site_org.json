@@ -1,0 +1,9 @@
+{
+  "id": "64b0e963-6c88-432d-ab1c-08fd44a1f4f3",
+  "name": "cb_process_creation_malicious-site_org",
+  "description": "Detects process_creation involving malicious-site.org",
+  "query": "process_name:malicious-site.org",
+  "severity": 5,
+  "enabled": true,
+  "category": "process_creation"
+}

@@ -1,0 +1,9 @@
+{
+  "id": "e4f18b04-f0b6-49b1-af08-898a76aee72e",
+  "name": "cb_network_connection_certutil_exe",
+  "description": "Detects network_connection involving certutil.exe",
+  "query": "netconn_domain:certutil.exe",
+  "severity": 5,
+  "enabled": true,
+  "category": "network_connection"
+}

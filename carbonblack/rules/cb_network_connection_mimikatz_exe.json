@@ -1,0 +1,9 @@
+{
+  "id": "30152627-dac0-4b4d-95d6-644d386d5c8c",
+  "name": "cb_network_connection_mimikatz_exe",
+  "description": "Detects network_connection involving mimikatz.exe",
+  "query": "netconn_domain:mimikatz.exe",
+  "severity": 5,
+  "enabled": true,
+  "category": "network_connection"
+}

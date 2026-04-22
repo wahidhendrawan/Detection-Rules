@@ -1,0 +1,10 @@
+<group name="app">
+  <rule id="100194" level="5">
+    <decoded_as>syslog</decoded_as>
+    <match>gitlab service started</match>
+    <description>Application gitlab started</description>
+    <mitre>
+      <id>T1000</id>
+    </mitre>
+  </rule>
+</group>

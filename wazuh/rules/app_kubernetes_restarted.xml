@@ -1,0 +1,10 @@
+<group name="app">
+  <rule id="100184" level="5">
+    <decoded_as>syslog</decoded_as>
+    <match>kubernetes service restarted</match>
+    <description>Application kubernetes restarted</description>
+    <mitre>
+      <id>T1000</id>
+    </mitre>
+  </rule>
+</group>

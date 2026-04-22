@@ -1,0 +1,9 @@
+{
+  "id": "8d7169e3-c3c3-48a9-b218-32da1965861c",
+  "name": "cb_network_connection_msbuild_exe",
+  "description": "Detects network_connection involving msbuild.exe",
+  "query": "netconn_domain:msbuild.exe",
+  "severity": 5,
+  "enabled": true,
+  "category": "network_connection"
+}

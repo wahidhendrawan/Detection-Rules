@@ -1,0 +1,9 @@
+{
+  "id": "f30ed525-c96d-4f29-b54c-3611a8c4aac5",
+  "name": "cb_network_connection_malicious-site_org",
+  "description": "Detects network_connection involving malicious-site.org",
+  "query": "netconn_domain:malicious-site.org",
+  "severity": 5,
+  "enabled": true,
+  "category": "network_connection"
+}

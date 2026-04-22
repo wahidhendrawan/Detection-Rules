@@ -1,0 +1,9 @@
+{
+  "id": "fb1e1ce9-daac-4d85-8d09-45932fee3119",
+  "name": "cb_network_connection_cmd_exe",
+  "description": "Detects network_connection involving cmd.exe",
+  "query": "netconn_domain:cmd.exe",
+  "severity": 5,
+  "enabled": true,
+  "category": "network_connection"
+}

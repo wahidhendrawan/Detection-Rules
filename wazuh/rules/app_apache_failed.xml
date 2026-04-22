@@ -1,0 +1,10 @@
+<group name="app">
+  <rule id="100133" level="8">
+    <decoded_as>syslog</decoded_as>
+    <match>apache service failed</match>
+    <description>Application apache failed</description>
+    <mitre>
+      <id>T1000</id>
+    </mitre>
+  </rule>
+</group>

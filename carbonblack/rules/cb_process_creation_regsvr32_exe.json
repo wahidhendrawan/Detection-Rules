@@ -1,0 +1,9 @@
+{
+  "id": "c73cd60c-80eb-436c-a332-f5821bc982f2",
+  "name": "cb_process_creation_regsvr32_exe",
+  "description": "Detects process_creation involving regsvr32.exe",
+  "query": "process_name:regsvr32.exe",
+  "severity": 5,
+  "enabled": true,
+  "category": "process_creation"
+}

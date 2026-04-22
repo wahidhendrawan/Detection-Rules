@@ -1,0 +1,9 @@
+{
+  "id": "25c97146-e5cc-4e05-93aa-aae7d431f526",
+  "name": "cb_registry_modification_certutil_exe",
+  "description": "Detects registry_modification involving certutil.exe",
+  "query": "regmod_name:certutil.exe",
+  "severity": 5,
+  "enabled": true,
+  "category": "registry_modification"
+}

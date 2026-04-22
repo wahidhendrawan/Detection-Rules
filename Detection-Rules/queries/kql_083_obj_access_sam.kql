@@ -1,0 +1,3 @@
+// Title: Obj Access Sam
+// Description: Hunts for obj access sam
+ObjectAccessEvents | where ObjectName contains 'SAM'

@@ -1,0 +1,3 @@
+// Title: Schtask Network Trigger
+// Description: Hunts for schtask network trigger
+ScheduledTaskEvents | where Trigger contains 'Network'

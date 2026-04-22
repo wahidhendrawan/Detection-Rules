@@ -1,0 +1,3 @@
+// Title: Reg Mod Uac
+// Description: Hunts for reg mod uac
+RegistryEvents | where RegistryKey contains 'System\\Policies' and RegistryValueName == 'EnableLUA'

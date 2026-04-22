@@ -1,0 +1,3 @@
+// Title: Acct Mgr Group Created
+// Description: Hunts for acct mgr group created
+AccountManagementEvents | where EventID == 4727 or EventID == 4731 or EventID == 4754

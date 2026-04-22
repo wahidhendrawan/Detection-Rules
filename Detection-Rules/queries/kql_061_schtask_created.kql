@@ -1,0 +1,3 @@
+// Title: Schtask Created
+// Description: Hunts for schtask created
+ScheduledTaskEvents | where EventID == 4698

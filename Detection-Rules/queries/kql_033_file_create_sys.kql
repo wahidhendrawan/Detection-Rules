@@ -1,0 +1,3 @@
+// Title: File Create Sys
+// Description: Hunts for file create sys
+FileCreationEvents | where FolderPath contains 'System32\\drivers' and FileName endswith '.sys'

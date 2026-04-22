@@ -1,0 +1,3 @@
+// Title: Misc Cloud Fw Changed
+// Description: Hunts for misc cloud fw changed
+CloudEvents | where ActionType == 'ChangeFirewallRule'

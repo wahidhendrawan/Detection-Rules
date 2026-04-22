@@ -1,0 +1,3 @@
+// Title: Misc Cloud Api Key Created
+// Description: Hunts for misc cloud api key created
+CloudEvents | where ActionType == 'CreateApiKey'

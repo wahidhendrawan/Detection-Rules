@@ -1,0 +1,3 @@
+// Title: Obj Access Event Log
+// Description: Hunts for obj access event log
+ObjectAccessEvents | where ObjectName contains 'Security.evtx'

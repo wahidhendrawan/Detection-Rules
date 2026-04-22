@@ -1,0 +1,3 @@
+// Title: Schtask Hidden
+// Description: Hunts for schtask hidden
+ScheduledTaskEvents | where Hidden == true

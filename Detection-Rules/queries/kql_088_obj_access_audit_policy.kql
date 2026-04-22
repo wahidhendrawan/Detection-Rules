@@ -1,0 +1,3 @@
+// Title: Obj Access Audit Policy
+// Description: Hunts for obj access audit policy
+ObjectAccessEvents | where ObjectName contains 'audit.csv'

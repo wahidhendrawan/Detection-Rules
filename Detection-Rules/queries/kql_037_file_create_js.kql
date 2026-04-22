@@ -1,0 +1,3 @@
+// Title: File Create Js
+// Description: Hunts for file create js
+FileCreationEvents | where FileName endswith '.js'

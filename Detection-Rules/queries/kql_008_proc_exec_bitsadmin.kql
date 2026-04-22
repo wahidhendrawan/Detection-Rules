@@ -1,0 +1,3 @@
+// Title: Proc Exec Bitsadmin
+// Description: Hunts for proc exec bitsadmin
+ProcessExecutionEvents | where ProcessName == 'bitsadmin.exe'

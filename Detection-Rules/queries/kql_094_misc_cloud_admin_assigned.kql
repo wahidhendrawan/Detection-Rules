@@ -1,0 +1,3 @@
+// Title: Misc Cloud Admin Assigned
+// Description: Hunts for misc cloud admin assigned
+CloudEvents | where ActionType == 'AssignAdminRole'

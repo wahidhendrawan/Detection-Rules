@@ -1,0 +1,9 @@
+{
+  "id": "883cb067-723f-46d2-8cbe-c8225a7a0c66",
+  "name": "cb_process_creation_nc_exe",
+  "description": "Detects process_creation involving nc.exe",
+  "query": "process_name:nc.exe",
+  "severity": 5,
+  "enabled": true,
+  "category": "process_creation"
+}

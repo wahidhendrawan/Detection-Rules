@@ -1,0 +1,3 @@
+// Title: Net Conn Ssh
+// Description: Hunts for net conn ssh
+NetworkConnectionEvents | where DestinationPort == 22

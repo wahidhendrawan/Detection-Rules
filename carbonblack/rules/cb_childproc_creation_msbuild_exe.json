@@ -1,0 +1,9 @@
+{
+  "id": "88719531-7384-44ad-b379-8d638ae0dbec",
+  "name": "cb_childproc_creation_msbuild_exe",
+  "description": "Detects childproc_creation involving msbuild.exe",
+  "query": "childproc_name:msbuild.exe",
+  "severity": 5,
+  "enabled": true,
+  "category": "childproc_creation"
+}

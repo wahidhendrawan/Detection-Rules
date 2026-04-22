@@ -1,0 +1,3 @@
+// Title: Net Conn Ftp
+// Description: Hunts for net conn ftp
+NetworkConnectionEvents | where DestinationPort == 21

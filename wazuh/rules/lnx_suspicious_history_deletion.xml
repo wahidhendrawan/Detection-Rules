@@ -1,0 +1,10 @@
+<group name="lnx">
+  <rule id="100127" level="10">
+    <decoded_as>syslog</decoded_as>
+    <match>rm ~/.bash_history</match>
+    <description>History file deletion detected</description>
+    <mitre>
+      <id>T1000</id>
+    </mitre>
+  </rule>
+</group>

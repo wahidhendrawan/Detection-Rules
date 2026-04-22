@@ -1,0 +1,9 @@
+{
+  "id": "00e187bb-02c7-49a4-b4ac-fff6d655c30b",
+  "name": "cb_registry_modification_powershell_exe",
+  "description": "Detects registry_modification involving powershell.exe",
+  "query": "regmod_name:powershell.exe",
+  "severity": 5,
+  "enabled": true,
+  "category": "registry_modification"
+}

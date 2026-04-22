@@ -1,0 +1,9 @@
+{
+  "id": "3519549a-55e0-456e-8f37-d01f111d2af5",
+  "name": "cb_network_connection_procdump_exe",
+  "description": "Detects network_connection involving procdump.exe",
+  "query": "netconn_domain:procdump.exe",
+  "severity": 5,
+  "enabled": true,
+  "category": "network_connection"
+}

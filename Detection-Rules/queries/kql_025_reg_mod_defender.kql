@@ -1,0 +1,3 @@
+// Title: Reg Mod Defender
+// Description: Hunts for reg mod defender
+RegistryEvents | where RegistryKey contains 'Windows Defender' and RegistryValueName == 'DisableAntiSpyware'

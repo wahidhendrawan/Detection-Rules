@@ -1,0 +1,10 @@
+<group name="lnx">
+  <rule id="100126" level="7">
+    <decoded_as>syslog</decoded_as>
+    <match>FAILED su for root by</match>
+    <description>Failed su to root</description>
+    <mitre>
+      <id>T1000</id>
+    </mitre>
+  </rule>
+</group>

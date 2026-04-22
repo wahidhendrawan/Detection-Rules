@@ -1,0 +1,10 @@
+<group name="app">
+  <rule id="100174" level="5">
+    <decoded_as>syslog</decoded_as>
+    <match>docker service stopped</match>
+    <description>Application docker stopped</description>
+    <mitre>
+      <id>T1000</id>
+    </mitre>
+  </rule>
+</group>

@@ -1,0 +1,3 @@
+// Title: File Create Dll Temp
+// Description: Hunts for file create dll temp
+FileCreationEvents | where FolderPath contains 'AppData\\Local\\Temp' and FileName endswith '.dll'

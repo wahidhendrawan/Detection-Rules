@@ -1,0 +1,3 @@
+// Title: Service Suspicious Path
+// Description: Hunts for service suspicious path
+ServiceEvents | where ImagePath contains 'AppData' or ImagePath contains 'Temp'

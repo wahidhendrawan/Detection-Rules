@@ -1,0 +1,3 @@
+// Title: Proc Exec At
+// Description: Hunts for proc exec at
+ProcessExecutionEvents | where ProcessName == 'at.exe'

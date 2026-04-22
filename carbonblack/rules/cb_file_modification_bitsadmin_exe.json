@@ -1,0 +1,9 @@
+{
+  "id": "6880dbb8-c6f1-407b-a996-cb77753f97e1",
+  "name": "cb_file_modification_bitsadmin_exe",
+  "description": "Detects file_modification involving bitsadmin.exe",
+  "query": "filemod_name:bitsadmin.exe",
+  "severity": 5,
+  "enabled": true,
+  "category": "file_modification"
+}

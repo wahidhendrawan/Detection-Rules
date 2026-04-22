@@ -1,0 +1,9 @@
+{
+  "id": "e26e7051-e0aa-4ffc-b345-a4193c4f6336",
+  "name": "cb_process_creation_evil_com",
+  "description": "Detects process_creation involving evil.com",
+  "query": "process_name:evil.com",
+  "severity": 5,
+  "enabled": true,
+  "category": "process_creation"
+}

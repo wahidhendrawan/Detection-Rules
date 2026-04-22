@@ -1,0 +1,3 @@
+// Title: Reg Mod Rdp
+// Description: Hunts for reg mod rdp
+RegistryEvents | where RegistryKey contains 'Terminal Server' and RegistryValueName == 'fDenyTSConnections'

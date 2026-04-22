@@ -1,0 +1,3 @@
+// Title: Misc Cloud Mfa Disabled
+// Description: Hunts for misc cloud mfa disabled
+CloudEvents | where ActionType == 'DisableMfa'

@@ -1,0 +1,9 @@
+{
+  "id": "539a8d11-c8dc-47fc-acd6-73fa7941ef52",
+  "name": "cb_file_modification_cscript_exe",
+  "description": "Detects file_modification involving cscript.exe",
+  "query": "filemod_name:cscript.exe",
+  "severity": 5,
+  "enabled": true,
+  "category": "file_modification"
+}

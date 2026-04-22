@@ -1,0 +1,10 @@
+<group name="lnx">
+  <rule id="100129" level="3">
+    <decoded_as>syslog</decoded_as>
+    <match>apt-get install</match>
+    <description>Package installation via apt-get</description>
+    <mitre>
+      <id>T1000</id>
+    </mitre>
+  </rule>
+</group>

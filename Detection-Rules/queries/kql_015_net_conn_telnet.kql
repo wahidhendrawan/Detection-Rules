@@ -1,0 +1,3 @@
+// Title: Net Conn Telnet
+// Description: Hunts for net conn telnet
+NetworkConnectionEvents | where DestinationPort == 23

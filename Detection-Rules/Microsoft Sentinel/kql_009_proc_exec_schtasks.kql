@@ -1,3 +1,0 @@
-// Title: Proc Exec Schtasks
-// Description: Hunts for proc exec schtasks
-ProcessExecutionEvents | where ProcessName == 'schtasks.exe'

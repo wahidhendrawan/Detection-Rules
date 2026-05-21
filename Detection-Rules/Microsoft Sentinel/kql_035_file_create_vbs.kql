@@ -1,3 +1,0 @@
-// Title: File Create Vbs
-// Description: Hunts for file create vbs
-FileCreationEvents | where FileName endswith '.vbs'

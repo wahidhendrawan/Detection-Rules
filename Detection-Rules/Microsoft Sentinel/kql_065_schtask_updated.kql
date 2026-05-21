@@ -1,3 +1,0 @@
-// Title: Schtask Updated
-// Description: Hunts for schtask updated
-ScheduledTaskEvents | where EventID == 4702

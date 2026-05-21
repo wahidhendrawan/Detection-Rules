@@ -1,3 +1,0 @@
-// Title: Service Stopped
-// Description: Hunts for service stopped
-ServiceEvents | where EventID == 7036 and State == 'stopped'

@@ -1,3 +1,0 @@
-// Title: Misc Cloud Storage Public
-// Description: Hunts for misc cloud storage public
-CloudEvents | where ActionType == 'MakeStoragePublic'

@@ -1,3 +1,0 @@
-// Title: Obj Access File
-// Description: Hunts for obj access file
-ObjectAccessEvents | where ObjectType == 'File'

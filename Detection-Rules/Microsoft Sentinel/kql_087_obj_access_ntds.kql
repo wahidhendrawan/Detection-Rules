@@ -1,3 +1,0 @@
-// Title: Obj Access Ntds
-// Description: Hunts for obj access ntds
-ObjectAccessEvents | where ObjectName contains 'ntds.dit'

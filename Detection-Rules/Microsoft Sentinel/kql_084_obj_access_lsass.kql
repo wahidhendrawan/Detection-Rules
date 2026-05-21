@@ -1,3 +1,0 @@
-// Title: Obj Access Lsass
-// Description: Hunts for obj access lsass
-ObjectAccessEvents | where ObjectName contains 'lsass.exe'

@@ -1,3 +1,0 @@
-// Title: Logon Explicit
-// Description: Hunts for logon explicit
-LogonEvents | where EventID == 4648

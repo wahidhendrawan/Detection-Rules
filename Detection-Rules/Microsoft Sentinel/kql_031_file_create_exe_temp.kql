@@ -1,3 +1,0 @@
-// Title: File Create Exe Temp
-// Description: Hunts for file create exe temp
-FileCreationEvents | where FolderPath contains 'AppData\\Local\\Temp' and FileName endswith '.exe'

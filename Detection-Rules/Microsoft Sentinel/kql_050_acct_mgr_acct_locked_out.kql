@@ -1,3 +1,0 @@
-// Title: Acct Mgr Acct Locked Out
-// Description: Hunts for acct mgr acct locked out
-AccountManagementEvents | where EventID == 4740

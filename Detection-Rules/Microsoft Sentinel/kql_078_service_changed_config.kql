@@ -1,3 +1,0 @@
-// Title: Service Changed Config
-// Description: Hunts for service changed config
-ServiceEvents | where EventID == 7040

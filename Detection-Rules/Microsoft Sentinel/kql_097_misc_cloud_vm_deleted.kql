@@ -1,3 +1,0 @@
-// Title: Misc Cloud Vm Deleted
-// Description: Hunts for misc cloud vm deleted
-CloudEvents | where ActionType == 'DeleteVM'

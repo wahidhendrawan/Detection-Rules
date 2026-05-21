@@ -1,3 +1,0 @@
-// Title: Service Installed
-// Description: Hunts for service installed
-ServiceEvents | where EventID == 4697 or EventID == 7045

@@ -1,3 +1,0 @@
-// Title: Proc Exec Cscript
-// Description: Hunts for proc exec cscript
-ProcessExecutionEvents | where ProcessName == 'cscript.exe'

@@ -1,3 +1,0 @@
-// Title: Obj Access Backup
-// Description: Hunts for obj access backup
-ObjectAccessEvents | where ObjectName contains 'WindowsImageBackup'

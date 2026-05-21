@@ -1,3 +1,0 @@
-// Title: Proc Exec Wscript
-// Description: Hunts for proc exec wscript
-ProcessExecutionEvents | where ProcessName == 'wscript.exe'

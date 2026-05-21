@@ -1,3 +1,0 @@
-// Title: File Create Wsf
-// Description: Hunts for file create wsf
-FileCreationEvents | where FileName endswith '.wsf'

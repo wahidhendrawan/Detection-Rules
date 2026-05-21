@@ -1,3 +1,0 @@
-// Title: Misc Cloud Failed Login
-// Description: Hunts for misc cloud failed login
-CloudEvents | where ActionType == 'FailedLogin'

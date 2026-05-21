@@ -1,3 +1,0 @@
-// Title: Service Started
-// Description: Hunts for service started
-ServiceEvents | where EventID == 7036 and State == 'running'

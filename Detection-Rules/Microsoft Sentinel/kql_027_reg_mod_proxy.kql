@@ -1,3 +1,0 @@
-// Title: Reg Mod Proxy
-// Description: Hunts for reg mod proxy
-RegistryEvents | where RegistryKey contains 'Internet Settings' and RegistryValueName == 'ProxyEnable'

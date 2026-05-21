@@ -1,3 +1,0 @@
-// Title: Proc Exec Certutil
-// Description: Hunts for proc exec certutil
-ProcessExecutionEvents | where ProcessName == 'certutil.exe'

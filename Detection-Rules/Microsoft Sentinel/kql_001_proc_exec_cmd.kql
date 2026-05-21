@@ -1,3 +1,0 @@
-// Title: Proc Exec Cmd
-// Description: Hunts for proc exec cmd
-ProcessExecutionEvents | where ProcessName == 'cmd.exe'

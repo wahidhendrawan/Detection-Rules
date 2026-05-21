@@ -1,3 +1,0 @@
-// Title: Misc Cloud Suspicious Api
-// Description: Hunts for misc cloud suspicious api
-CloudEvents | where ActionType in ('ListUsers', 'GetPolicies') and UserAgent contains 'curl'

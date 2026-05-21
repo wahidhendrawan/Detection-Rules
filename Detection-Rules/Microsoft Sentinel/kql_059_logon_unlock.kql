@@ -1,3 +1,0 @@
-// Title: Logon Unlock
-// Description: Hunts for logon unlock
-LogonEvents | where EventID == 4624 and LogonType == 7

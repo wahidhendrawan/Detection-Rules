@@ -1,3 +1,0 @@
-// Title: Service Suspicious Name
-// Description: Hunts for service suspicious name
-ServiceEvents | where ServiceName contains 'PSEXESVC' or ServiceName contains 'WCE'

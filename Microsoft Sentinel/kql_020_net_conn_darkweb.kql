@@ -1,0 +1,3 @@
+// Title: Net Conn Darkweb
+// Description: Hunts for net conn darkweb
+NetworkConnectionEvents | where DestinationUrl contains '.onion'

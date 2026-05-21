@@ -1,0 +1,3 @@
+// Title: Logon Rdp
+// Description: Hunts for logon rdp
+LogonEvents | where EventID == 4624 and LogonType == 10

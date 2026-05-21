@@ -1,0 +1,3 @@
+// Title: Logon Network
+// Description: Hunts for logon network
+LogonEvents | where EventID == 4624 and LogonType == 3

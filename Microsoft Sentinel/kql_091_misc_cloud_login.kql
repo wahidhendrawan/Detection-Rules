@@ -1,0 +1,3 @@
+// Title: Misc Cloud Login
+// Description: Hunts for misc cloud login
+CloudEvents | where ActionType == 'UserLoggedIn'

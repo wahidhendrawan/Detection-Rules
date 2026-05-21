@@ -1,0 +1,3 @@
+// Title: Schtask System Context
+// Description: Hunts for schtask system context
+ScheduledTaskEvents | where Context == 'SYSTEM'

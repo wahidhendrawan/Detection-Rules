@@ -1,0 +1,3 @@
+// Title: Obj Access Shadow Copy
+// Description: Hunts for obj access shadow copy
+ObjectAccessEvents | where ObjectName contains 'Device\\HarddiskVolumeShadowCopy'

@@ -3,7 +3,7 @@ id: e25a1a97-cfc5-42ca-a075-86b929ce9dd0
 status: experimental
 description: |
   Detects suspicious execution of regsvcs.exe which may be used for Living off the Land attacks.
-author: Jules
+author: Wahid Hendrawan
 date: 2026/02/04
 logsource:
   product: windows

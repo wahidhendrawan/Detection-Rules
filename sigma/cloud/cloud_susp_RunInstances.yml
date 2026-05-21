@@ -3,7 +3,7 @@ id: ad31cf5e-e8a4-4513-bed3-43809b92e54a
 status: experimental
 description: |
   Detects sensitive cloud action RunInstances.
-author: Jules
+author: Wahid Hendrawan
 date: 2026/02/04
 logsource:
   product: aws

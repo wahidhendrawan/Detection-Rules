@@ -3,7 +3,7 @@ id: 28441ee9-2262-4923-bc65-7cf28dbf5365
 status: experimental
 description: |
   Detects suspicious usage of g++ in command line.
-author: Jules
+author: Wahid Hendrawan
 date: 2026/02/04
 logsource:
   product: linux

@@ -3,7 +3,7 @@ id: efe7c083-6e2c-457f-9798-caddbfa0b315
 status: experimental
 description: |
   Detects suspicious execution of regsvr32.exe which may be used for Living off the Land attacks.
-author: Jules
+author: Wahid Hendrawan
 date: 2026/02/04
 logsource:
   product: windows

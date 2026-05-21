@@ -3,7 +3,7 @@ id: 34773975-a65e-436f-9d84-2b837ce150e4
 status: experimental
 description: |
   Detects suspicious execution of net.exe which may be used for Living off the Land attacks.
-author: Jules
+author: Wahid Hendrawan
 date: 2026/02/04
 logsource:
   product: windows

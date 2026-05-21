@@ -4,7 +4,7 @@ status: experimental
 description: |
   Detects the creation of scheduled tasks using the schtasks command line utility.
   Persistence mechanism frequently used by malware.
-author: Jules
+author: Wahid Hendrawan
 date: 2025/05/22
 logsource:
   product: windows

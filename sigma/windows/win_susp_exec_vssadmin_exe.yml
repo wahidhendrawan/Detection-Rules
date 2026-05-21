@@ -3,7 +3,7 @@ id: 498791c5-2665-40d9-bd87-8d6112729446
 status: experimental
 description: |
   Detects suspicious execution of vssadmin.exe which may be used for Living off the Land attacks.
-author: Jules
+author: Wahid Hendrawan
 date: 2026/02/04
 logsource:
   product: windows

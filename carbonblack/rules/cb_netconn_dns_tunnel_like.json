@@ -1,0 +1,6 @@
+{
+  "name": "cb_netconn_dns_tunnel_like",
+  "description": "Auto-added Carbon Black detection query",
+  "query": "event_type:netconn AND (domain:*.tk OR domain:*.ml OR domain:*.ga)",
+  "severity": "high"
+}

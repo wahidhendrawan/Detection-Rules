@@ -4,7 +4,7 @@ status: experimental
 description: |
   Detects the usage of base64 decoding in shell commands. This is often used to
   obfuscate malicious scripts or commands.
-author: Jules
+author: Wahid Hendrawan
 date: 2025/05/22
 logsource:
   product: linux

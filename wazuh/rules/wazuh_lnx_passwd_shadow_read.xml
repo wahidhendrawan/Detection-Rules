@@ -1,0 +1,10 @@
+<group name="custom,attack,">
+  <rule id="10087164" level="10">
+    <if_group>sysmon_event1,windows,linux,aws_cloudtrail</if_group>
+    <field name="data.command">(?i)cat /etc/(passwd|shadow)</field>
+    <description>Custom detection: wazuh_lnx_passwd_shadow_read</description>
+    <mitre>
+      <id>T1059</id>
+    </mitre>
+  </rule>
+</group>

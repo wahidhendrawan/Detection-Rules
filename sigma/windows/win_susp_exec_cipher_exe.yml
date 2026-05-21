@@ -3,7 +3,7 @@ id: f9ebf7ef-cc67-4aa4-bd33-eee1d690def2
 status: experimental
 description: |
   Detects suspicious execution of cipher.exe which may be used for Living off the Land attacks.
-author: Jules
+author: Wahid Hendrawan
 date: 2026/02/04
 logsource:
   product: windows

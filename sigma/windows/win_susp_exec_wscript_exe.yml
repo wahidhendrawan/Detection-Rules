@@ -3,7 +3,7 @@ id: 6aae1498-50e4-4224-aa34-62a3423bdd5c
 status: experimental
 description: |
   Detects suspicious execution of wscript.exe which may be used for Living off the Land attacks.
-author: Jules
+author: Wahid Hendrawan
 date: 2026/02/04
 logsource:
   product: windows

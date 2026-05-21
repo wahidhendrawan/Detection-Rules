@@ -4,7 +4,7 @@ status: experimental
 description: |
   Detects network traffic or User-Agent strings associated with Nmap scanning
   tools, specifically the Nmap Scripting Engine (NSE).
-author: Jules
+author: Wahid Hendrawan
 date: 2025/05/22
 logsource:
   product: network

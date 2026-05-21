@@ -4,7 +4,7 @@ status: experimental
 description: |
   Mendeteksi pemberian role IAM sensitif (owner/editor/admin) ke akun baru
   atau service account yang tidak biasa di GCP.
-author: Wahid (base template)
+author: Wahid Hendrawan
 date: 2025/11/27
 logsource:
   product: gcp

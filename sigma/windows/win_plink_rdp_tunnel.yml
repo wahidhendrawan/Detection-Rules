@@ -4,7 +4,7 @@ status: experimental
 description: |
   Detects the execution of Plink (PuTTY Link) with arguments suggesting port forwarding
   or tunneling, often used to bypass firewalls or expose internal RDP.
-author: Jules
+author: Wahid Hendrawan
 date: 2025/05/22
 logsource:
   product: windows

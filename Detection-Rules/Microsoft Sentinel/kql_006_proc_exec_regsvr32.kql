@@ -1,3 +1,0 @@
-// Title: Proc Exec Regsvr32
-// Description: Hunts for proc exec regsvr32
-ProcessExecutionEvents | where ProcessName == 'regsvr32.exe'

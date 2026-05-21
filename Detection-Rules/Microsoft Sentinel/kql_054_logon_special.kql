@@ -1,3 +1,0 @@
-// Title: Logon Special
-// Description: Hunts for logon special
-LogonEvents | where EventID == 4672

@@ -1,3 +1,0 @@
-// Title: Acct Mgr User Deleted
-// Description: Hunts for acct mgr user deleted
-AccountManagementEvents | where EventID == 4726

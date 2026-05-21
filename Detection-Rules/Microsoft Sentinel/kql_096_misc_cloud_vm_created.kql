@@ -1,3 +1,0 @@
-// Title: Misc Cloud Vm Created
-// Description: Hunts for misc cloud vm created
-CloudEvents | where ActionType == 'CreateVM'

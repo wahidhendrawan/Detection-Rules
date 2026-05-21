@@ -1,3 +1,0 @@
-// Title: Acct Mgr Pwd Policy Changed
-// Description: Hunts for acct mgr pwd policy changed
-AccountManagementEvents | where EventID == 4739

@@ -1,3 +1,0 @@
-// Title: Logon Cleartext
-// Description: Hunts for logon cleartext
-LogonEvents | where EventID == 4624 and LogonType == 8

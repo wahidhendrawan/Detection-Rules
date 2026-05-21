@@ -1,3 +1,0 @@
-// Title: Schtask Disabled
-// Description: Hunts for schtask disabled
-ScheduledTaskEvents | where EventID == 4701

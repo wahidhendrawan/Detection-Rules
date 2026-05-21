@@ -1,3 +1,0 @@
-// Title: Service Crashed
-// Description: Hunts for service crashed
-ServiceEvents | where EventID == 7034 or EventID == 7031

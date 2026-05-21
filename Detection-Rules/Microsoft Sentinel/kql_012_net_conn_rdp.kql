@@ -1,3 +1,0 @@
-// Title: Net Conn Rdp
-// Description: Hunts for net conn rdp
-NetworkConnectionEvents | where DestinationPort == 3389

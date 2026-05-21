@@ -1,3 +1,0 @@
-// Title: Reg Mod Lsa
-// Description: Hunts for reg mod lsa
-RegistryEvents | where RegistryKey contains 'Lsa' and RegistryValueName == 'RunAsPPL'

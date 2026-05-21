@@ -1,3 +1,0 @@
-// Title: Service Failed
-// Description: Hunts for service failed
-ServiceEvents | where EventID == 7000 or EventID == 7009

@@ -1,3 +1,0 @@
-// Title: Acct Mgr User Added To Group
-// Description: Hunts for acct mgr user added to group
-AccountManagementEvents | where EventID == 4728 or EventID == 4732 or EventID == 4756

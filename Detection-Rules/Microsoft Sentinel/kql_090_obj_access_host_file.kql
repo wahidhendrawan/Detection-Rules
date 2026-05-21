@@ -1,3 +1,0 @@
-// Title: Obj Access Host File
-// Description: Hunts for obj access host file
-ObjectAccessEvents | where ObjectName contains 'etc\\hosts'

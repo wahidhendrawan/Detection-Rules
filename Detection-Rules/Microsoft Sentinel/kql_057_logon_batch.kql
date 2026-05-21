@@ -1,3 +1,0 @@
-// Title: Logon Batch
-// Description: Hunts for logon batch
-LogonEvents | where EventID == 4624 and LogonType == 4

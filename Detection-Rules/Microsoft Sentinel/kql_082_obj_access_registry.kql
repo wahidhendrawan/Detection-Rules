@@ -1,3 +1,0 @@
-// Title: Obj Access Registry
-// Description: Hunts for obj access registry
-ObjectAccessEvents | where ObjectType == 'Key'

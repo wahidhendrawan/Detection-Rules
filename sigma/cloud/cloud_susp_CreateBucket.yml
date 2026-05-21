@@ -3,7 +3,7 @@ id: 685d2d6a-29f1-4470-af41-69f3cf2282bf
 status: experimental
 description: |
   Detects sensitive cloud action CreateBucket.
-author: Jules
+author: Wahid Hendrawan
 date: 2026/02/04
 logsource:
   product: aws

@@ -3,7 +3,7 @@ id: 7397fbad-2124-4e95-b05b-6039cf8cbe27
 status: experimental
 description: |
   Detects suspicious execution of wevtutil.exe which may be used for Living off the Land attacks.
-author: Jules
+author: Wahid Hendrawan
 date: 2026/02/04
 logsource:
   product: windows

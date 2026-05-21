@@ -3,7 +3,7 @@ id: 31bc2624-5f8f-49d7-8640-931f9f4191a3
 status: experimental
 description: |
   Detects suspicious execution of msbuild.exe which may be used for Living off the Land attacks.
-author: Jules
+author: Wahid Hendrawan
 date: 2026/02/04
 logsource:
   product: windows

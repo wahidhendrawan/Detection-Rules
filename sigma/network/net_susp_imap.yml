@@ -3,7 +3,7 @@ id: 55f0182a-5f6d-44a3-b4a0-75ee6d270003
 status: experimental
 description: |
   Detects potential abuse or anomalies in IMAP traffic.
-author: Jules
+author: Wahid Hendrawan
 date: 2026/02/04
 logsource:
   product: network

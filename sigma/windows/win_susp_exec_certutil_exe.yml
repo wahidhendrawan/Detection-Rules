@@ -3,7 +3,7 @@ id: 3705923d-4c09-49f4-aa72-8c2854e160e9
 status: experimental
 description: |
   Detects suspicious execution of certutil.exe which may be used for Living off the Land attacks.
-author: Jules
+author: Wahid Hendrawan
 date: 2026/02/04
 logsource:
   product: windows

@@ -3,7 +3,7 @@ id: 41bf5c05-e166-4dfe-84f9-018bd8a4ee2d
 status: experimental
 description: |
   Detects suspicious execution of notepad.exe which may be used for Living off the Land attacks.
-author: Jules
+author: Wahid Hendrawan
 date: 2026/02/04
 logsource:
   product: windows

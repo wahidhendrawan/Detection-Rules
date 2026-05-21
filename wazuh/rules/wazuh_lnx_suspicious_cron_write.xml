@@ -1,0 +1,10 @@
+<group name="custom,attack,">
+  <rule id="10064734" level="10">
+    <if_group>sysmon_event1,windows,linux,aws_cloudtrail</if_group>
+    <field name="data.command">(?i)echo .* /etc/cron</field>
+    <description>Custom detection: wazuh_lnx_suspicious_cron_write</description>
+    <mitre>
+      <id>T1059</id>
+    </mitre>
+  </rule>
+</group>

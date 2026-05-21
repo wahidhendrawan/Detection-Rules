@@ -1,0 +1,42 @@
+title: LSASS Dumping via ProcDump
+author: Jules
+date: 2026/05/21
+id: 2f4f0f85-4b4f-4cf2-b6c3-9ee858f4e4f1
+status: high
+description: |
+  Detects potential credential access attempts by using ProcDump to dump the LSASS process memory.
+logsource:
+  product: windows
+  category: process_creation
+detection:
+  selection_image:
+    Image|endswith:
+      - '\\procdump.exe'
+      - '\\procdump64.exe'
+  selection_lsass_cmd:
+    CommandLine|contains:
+      - ' lsass'
+      - ' -ma lsass'
+      - ' -mp lsass'
+      - ' -accepteula lsass'
+  selection_pid_cmd:
+    CommandLine|contains:
+      - ' -ma '
+      - ' -mp '
+  selection_lsass_target:
+    CommandLine|contains:
+      - 'lsass.exe'
+      - 'lsass'
+  condition: selection_image and (selection_lsass_cmd or (selection_pid_cmd and selection_lsass_target))
+fields:
+  - Image
+  - CommandLine
+  - ParentImage
+  - User
+falsepositives:
+  - Legitimate forensic memory acquisition by authorized security teams.
+  - Incident response activities using ProcDump for diagnostics.
+level: high
+tags:
+  - attack.t1003.001
+  - attack.credential_access

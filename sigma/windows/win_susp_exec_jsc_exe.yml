@@ -3,7 +3,7 @@ id: b17110aa-e67e-4bf8-ac21-c07bf21acb10
 status: experimental
 description: |
   Detects suspicious execution of jsc.exe which may be used for Living off the Land attacks.
-author: Jules
+author: Wahid Hendrawan
 date: 2026/02/04
 logsource:
   product: windows

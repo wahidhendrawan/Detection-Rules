@@ -3,7 +3,7 @@ id: eb599863-b0fc-46cf-8d64-394be71823d6
 status: experimental
 description: |
   Detects potential abuse or anomalies in FTP traffic.
-author: Jules
+author: Wahid Hendrawan
 date: 2026/02/04
 logsource:
   product: network

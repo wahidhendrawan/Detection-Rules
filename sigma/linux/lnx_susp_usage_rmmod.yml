@@ -3,7 +3,7 @@ id: 86b41013-c57f-4649-995c-44979ecf5612
 status: experimental
 description: |
   Detects suspicious usage of rmmod in command line.
-author: Jules
+author: Wahid Hendrawan
 date: 2026/02/04
 logsource:
   product: linux

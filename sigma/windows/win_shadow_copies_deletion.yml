@@ -4,7 +4,7 @@ status: experimental
 description: |
   Detects attempts to delete volume shadow copies using vssadmin, wmic, or powershell.
   This is a common precursor to ransomware encryption.
-author: Jules
+author: Wahid Hendrawan
 date: 2025/05/22
 logsource:
   product: windows

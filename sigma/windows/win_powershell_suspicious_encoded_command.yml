@@ -4,7 +4,7 @@ status: experimental
 description: |
   Mendeteksi penggunaan PowerShell dengan parameter -EncodedCommand
   yang sering digunakan untuk obfuscation dan eksekusi payload.
-author: Wahid (base template)
+author: Wahid Hendrawan
 date: 2025/11/27
 logsource:
   product: windows

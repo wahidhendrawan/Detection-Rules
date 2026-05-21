@@ -4,7 +4,7 @@ status: experimental
 description: |
   Detects suspicious PowerShell commands used to download content from the internet,
   often used by malware droppers (e.g., Net.WebClient, DownloadFile, Invoke-WebRequest).
-author: Jules
+author: Wahid Hendrawan
 date: 2025/05/22
 logsource:
   product: windows

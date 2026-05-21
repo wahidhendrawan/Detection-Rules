@@ -3,7 +3,7 @@ id: ff3325ab-06d0-4c81-92d8-ec117de54b67
 status: experimental
 description: |
   Detects suspicious usage of useradd in command line.
-author: Jules
+author: Wahid Hendrawan
 date: 2026/02/04
 logsource:
   product: linux

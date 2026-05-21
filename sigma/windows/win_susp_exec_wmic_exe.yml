@@ -3,7 +3,7 @@ id: ec00def5-491a-4c90-899b-125a68d977ff
 status: experimental
 description: |
   Detects suspicious execution of wmic.exe which may be used for Living off the Land attacks.
-author: Jules
+author: Wahid Hendrawan
 date: 2026/02/04
 logsource:
   product: windows

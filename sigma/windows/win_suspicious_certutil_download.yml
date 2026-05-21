@@ -4,7 +4,7 @@ status: experimental
 description: |
   Detects the use of certutil.exe to download files from remote URLs.
   Certutil is often used by attackers to download tools (LotL).
-author: Jules
+author: Wahid Hendrawan
 date: 2025/05/22
 logsource:
   product: windows

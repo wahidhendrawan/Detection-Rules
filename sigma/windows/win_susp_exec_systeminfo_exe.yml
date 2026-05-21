@@ -3,7 +3,7 @@ id: 72cee37f-e0b7-4919-9a2c-5882504ee66b
 status: experimental
 description: |
   Detects suspicious execution of systeminfo.exe which may be used for Living off the Land attacks.
-author: Jules
+author: Wahid Hendrawan
 date: 2026/02/04
 logsource:
   product: windows

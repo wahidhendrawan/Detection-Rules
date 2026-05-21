@@ -3,7 +3,7 @@ id: a2bf2fb1-2bf5-494e-9224-e90540c4b6ff
 status: experimental
 description: |
   Detects suspicious execution of regasm.exe which may be used for Living off the Land attacks.
-author: Jules
+author: Wahid Hendrawan
 date: 2026/02/04
 logsource:
   product: windows

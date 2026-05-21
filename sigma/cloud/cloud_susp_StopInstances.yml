@@ -3,7 +3,7 @@ id: 56954040-3618-4594-a300-d59c01eaf6f8
 status: experimental
 description: |
   Detects sensitive cloud action StopInstances.
-author: Jules
+author: Wahid Hendrawan
 date: 2026/02/04
 logsource:
   product: aws

@@ -5,7 +5,7 @@ description: |
   Detects suspicious execution of mshta.exe with arguments typically used for
   Living off the Land (LotL) attacks, such as executing scripts (vbscript/javascript)
   or downloading content from remote URLs.
-author: Jules
+author: Wahid Hendrawan
 date: 2025/05/22
 logsource:
   product: windows

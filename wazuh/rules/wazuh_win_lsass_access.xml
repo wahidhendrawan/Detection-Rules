@@ -1,0 +1,10 @@
+<group name="custom,attack,">
+  <rule id="10029886" level="10">
+    <if_group>sysmon_event1,windows,linux,aws_cloudtrail</if_group>
+    <field name="win.eventdata.targetImage">(?i)lsass.exe</field>
+    <description>Custom detection: wazuh_win_lsass_access</description>
+    <mitre>
+      <id>T1059</id>
+    </mitre>
+  </rule>
+</group>

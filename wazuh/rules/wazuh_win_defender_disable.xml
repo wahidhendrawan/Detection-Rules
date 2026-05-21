@@ -1,0 +1,10 @@
+<group name="custom,attack,">
+  <rule id="10060081" level="10">
+    <if_group>sysmon_event1,windows,linux,aws_cloudtrail</if_group>
+    <field name="win.eventdata.commandLine">(?i)Set-MpPreference.*DisableRealtimeMonitoring</field>
+    <description>Custom detection: wazuh_win_defender_disable</description>
+    <mitre>
+      <id>T1059</id>
+    </mitre>
+  </rule>
+</group>

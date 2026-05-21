@@ -3,7 +3,7 @@ id: 95ca4665-8cea-4c4c-861c-b64e3dd139e7
 status: experimental
 description: |
   Detects suspicious usage of usermod in command line.
-author: Jules
+author: Wahid Hendrawan
 date: 2026/02/04
 logsource:
   product: linux

@@ -4,7 +4,7 @@ status: experimental
 description: |
   Detects wget or curl usage downloading files directly to world-writable
   directories like /tmp or /dev/shm, often used by malware droppers.
-author: Jules
+author: Wahid Hendrawan
 date: 2025/05/22
 logsource:
   product: linux

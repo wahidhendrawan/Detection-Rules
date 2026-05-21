@@ -3,7 +3,7 @@ id: de054ed3-ee0a-4fb7-9581-7a2479527cd5
 status: experimental
 description: |
   Detects suspicious execution of ipconfig.exe which may be used for Living off the Land attacks.
-author: Jules
+author: Wahid Hendrawan
 date: 2026/02/04
 logsource:
   product: windows

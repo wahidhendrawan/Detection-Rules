@@ -3,7 +3,7 @@ id: a01f3359-dad0-49ca-a317-759097d3e6bb
 status: experimental
 description: |
   Detects suspicious execution of cmstp.exe which may be used for Living off the Land attacks.
-author: Jules
+author: Wahid Hendrawan
 date: 2026/02/04
 logsource:
   product: windows

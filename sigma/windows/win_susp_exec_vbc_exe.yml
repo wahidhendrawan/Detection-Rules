@@ -3,7 +3,7 @@ id: 503c30ff-1c9c-4819-aac5-ffe50b3571b1
 status: experimental
 description: |
   Detects suspicious execution of vbc.exe which may be used for Living off the Land attacks.
-author: Jules
+author: Wahid Hendrawan
 date: 2026/02/04
 logsource:
   product: windows

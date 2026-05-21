@@ -1,0 +1,6 @@
+{
+  "name": "cb_childproc_creation_rclone_exe",
+  "description": "Auto-added Carbon Black detection query",
+  "query": "process_name:rclone.exe AND event_type:childproc",
+  "severity": "high"
+}

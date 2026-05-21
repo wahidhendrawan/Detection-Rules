@@ -1,0 +1,10 @@
+<group name="custom,attack,">
+  <rule id="10076573" level="10">
+    <if_group>sysmon_event1,windows,linux,aws_cloudtrail</if_group>
+    <field name="aws.eventName">StopLogging|DeleteTrail</field>
+    <description>Custom detection: wazuh_cloud_aws_stop_logging</description>
+    <mitre>
+      <id>T1059</id>
+    </mitre>
+  </rule>
+</group>

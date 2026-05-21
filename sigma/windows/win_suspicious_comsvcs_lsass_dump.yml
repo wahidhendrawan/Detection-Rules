@@ -1,0 +1,35 @@
+title: Suspicious Comsvcs DLL MiniDump of LSASS
+author: Wahid Hendrawan
+date: 2026/05/21
+id: 64aa9de0-1d7e-40d1-a8f1-2cedba9f9040
+status: high
+description: |
+  Detects rundll32 execution of comsvcs.dll MiniDump functionality that targets
+  the LSASS process, a common credential dumping technique.
+logsource:
+  product: windows
+  category: process_creation
+detection:
+  selection_img:
+    Image|endswith: '\\rundll32.exe'
+  selection_cmd:
+    CommandLine|contains:
+      - 'comsvcs.dll, MiniDump'
+      - 'comsvcs.dll,MiniDump'
+      - 'comsvcs.dll MiniDump'
+  selection_lsass:
+    CommandLine|contains:
+      - ' lsass'
+      - 'lsass.exe'
+  condition: selection_img and selection_cmd and selection_lsass
+fields:
+  - Image
+  - CommandLine
+  - ParentImage
+  - User
+falsepositives:
+  - Legitimate memory dump collection by approved SOC/IR teams.
+level: high
+tags:
+  - attack.credential_access
+  - attack.t1003.001

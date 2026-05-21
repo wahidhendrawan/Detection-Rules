@@ -3,7 +3,7 @@ id: a9394dd4-3338-4af2-ae2b-55102554ccf1
 status: experimental
 description: |
   Detects potential abuse or anomalies in SMTP traffic.
-author: Jules
+author: Wahid Hendrawan
 date: 2026/02/04
 logsource:
   product: network

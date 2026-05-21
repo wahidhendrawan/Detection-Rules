@@ -3,7 +3,7 @@ id: 9dda860e-26f5-4e8e-b450-e1030894cb1f
 status: experimental
 description: |
   Detects suspicious execution of installutil.exe which may be used for Living off the Land attacks.
-author: Jules
+author: Wahid Hendrawan
 date: 2026/02/04
 logsource:
   product: windows

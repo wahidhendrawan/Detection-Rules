@@ -4,7 +4,7 @@ status: experimental
 description: |
   Detects the creation of a new IAM access key in AWS.
   Monitor for unexpected key creation events.
-author: Jules
+author: Wahid Hendrawan
 date: 2025/05/22
 logsource:
   product: aws

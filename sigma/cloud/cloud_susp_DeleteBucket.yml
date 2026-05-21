@@ -3,7 +3,7 @@ id: 68d129fa-140d-4700-9dd5-4cbbcb4e47b5
 status: experimental
 description: |
   Detects sensitive cloud action DeleteBucket.
-author: Jules
+author: Wahid Hendrawan
 date: 2026/02/04
 logsource:
   product: aws

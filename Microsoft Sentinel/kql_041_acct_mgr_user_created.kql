@@ -1,0 +1,3 @@
+// Title: Acct Mgr User Created
+// Description: Hunts for acct mgr user created
+AccountManagementEvents | where EventID == 4720

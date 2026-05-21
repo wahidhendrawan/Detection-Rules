@@ -1,0 +1,3 @@
+// Title: Proc Exec Powershell
+// Description: Hunts for proc exec powershell
+ProcessExecutionEvents | where ProcessName == 'powershell.exe'

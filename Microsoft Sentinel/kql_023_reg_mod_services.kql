@@ -1,0 +1,3 @@
+// Title: Reg Mod Services
+// Description: Hunts for reg mod services
+RegistryEvents | where RegistryKey contains 'CurrentControlSet\\Services'

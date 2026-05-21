@@ -1,0 +1,3 @@
+// Title: Reg Mod Runonce Key
+// Description: Hunts for reg mod runonce key
+RegistryEvents | where RegistryKey contains 'CurrentVersion\\RunOnce'

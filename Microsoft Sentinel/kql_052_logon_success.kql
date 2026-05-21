@@ -1,0 +1,3 @@
+// Title: Logon Success
+// Description: Hunts for logon success
+LogonEvents | where EventID == 4624

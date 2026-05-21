@@ -1,0 +1,3 @@
+// Title: Acct Mgr User Pwd Reset
+// Description: Hunts for acct mgr user pwd reset
+AccountManagementEvents | where EventID == 4724

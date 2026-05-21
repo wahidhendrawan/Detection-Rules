@@ -1,0 +1,28 @@
+title: AWS CloudTrail Trail Stopped or Deleted
+author: Wahid Hendrawan
+date: 2026/05/21
+id: 934ad051-f6bf-4f49-9287-499aef51c11a
+status: high
+description: |
+  Detects attempts to impair defenses in AWS by stopping logging on a CloudTrail trail
+  or deleting an existing trail.
+logsource:
+  product: aws
+  service: cloudtrail
+detection:
+  selection_stop:
+    eventName: StopLogging
+  selection_delete:
+    eventName: DeleteTrail
+  condition: selection_stop or selection_delete
+fields:
+  - userIdentity.arn
+  - sourceIPAddress
+  - awsRegion
+  - requestParameters.name
+falsepositives:
+  - Approved logging maintenance performed by cloud administrators.
+level: high
+tags:
+  - attack.defense_evasion
+  - attack.t1562.008

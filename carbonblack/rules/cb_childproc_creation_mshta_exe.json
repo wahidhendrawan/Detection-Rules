@@ -1,0 +1,6 @@
+{
+  "name": "cb_childproc_creation_mshta_exe",
+  "description": "Auto-added Carbon Black detection query",
+  "query": "process_name:mshta.exe AND event_type:childproc",
+  "severity": "high"
+}

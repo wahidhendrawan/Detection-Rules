@@ -1,0 +1,10 @@
+<group name="custom,attack,">
+  <rule id="10053170" level="10">
+    <if_group>sysmon_event1,windows,linux,aws_cloudtrail</if_group>
+    <field name="data.command">(?i)(curl|wget).*(\||;).*(sh|bash)</field>
+    <description>Custom detection: wazuh_lnx_curl_wget_to_shell</description>
+    <mitre>
+      <id>T1059</id>
+    </mitre>
+  </rule>
+</group>

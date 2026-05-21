@@ -3,7 +3,7 @@ id: 3c77cf4a-8810-4178-aff8-c967f2994b52
 status: experimental
 description: |
   Detects potential abuse or anomalies in DNS traffic.
-author: Jules
+author: Wahid Hendrawan
 date: 2026/02/04
 logsource:
   product: network

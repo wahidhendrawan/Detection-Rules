@@ -4,7 +4,7 @@ status: experimental
 description: |
   Detects the creation of a new user account using useradd or adduser.
   Adversaries may create accounts for persistence.
-author: Jules
+author: Wahid Hendrawan
 date: 2025/05/22
 logsource:
   product: linux

@@ -3,7 +3,7 @@ id: c1bc52c0-3889-4e36-993a-87943685b5cf
 status: experimental
 description: |
   Detects suspicious usage of groupadd in command line.
-author: Jules
+author: Wahid Hendrawan
 date: 2026/02/04
 logsource:
   product: linux

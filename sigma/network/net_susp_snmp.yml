@@ -3,7 +3,7 @@ id: dfbe56fa-5f52-46b8-9590-f4d04e570abc
 status: experimental
 description: |
   Detects potential abuse or anomalies in SNMP traffic.
-author: Jules
+author: Wahid Hendrawan
 date: 2026/02/04
 logsource:
   product: network

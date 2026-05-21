@@ -3,7 +3,7 @@ id: 554c5157-6dea-4268-9887-de92784a7917
 status: experimental
 description: |
   Detects suspicious execution of sc.exe which may be used for Living off the Land attacks.
-author: Jules
+author: Wahid Hendrawan
 date: 2026/02/04
 logsource:
   product: windows

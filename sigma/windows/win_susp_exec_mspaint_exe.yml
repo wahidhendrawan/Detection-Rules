@@ -3,7 +3,7 @@ id: 067cb4fe-bb2d-485a-a875-2e20a15e2446
 status: experimental
 description: |
   Detects suspicious execution of mspaint.exe which may be used for Living off the Land attacks.
-author: Jules
+author: Wahid Hendrawan
 date: 2026/02/04
 logsource:
   product: windows

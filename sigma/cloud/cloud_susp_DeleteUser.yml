@@ -3,7 +3,7 @@ id: a63287a4-3a79-4c0a-a5fa-361a7c47bc34
 status: experimental
 description: |
   Detects sensitive cloud action DeleteUser.
-author: Jules
+author: Wahid Hendrawan
 date: 2026/02/04
 logsource:
   product: aws

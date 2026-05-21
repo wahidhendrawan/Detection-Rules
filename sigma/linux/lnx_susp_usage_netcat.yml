@@ -3,7 +3,7 @@ id: 921c2ff5-a992-49fc-8974-2a809ac64997
 status: experimental
 description: |
   Detects suspicious usage of netcat in command line.
-author: Jules
+author: Wahid Hendrawan
 date: 2026/02/04
 logsource:
   product: linux

@@ -3,7 +3,7 @@ id: 09b6d30a-42f0-4c9a-9fb7-6c5791539365
 status: experimental
 description: |
   Detects suspicious usage of wget in command line.
-author: Jules
+author: Wahid Hendrawan
 date: 2026/02/04
 logsource:
   product: linux

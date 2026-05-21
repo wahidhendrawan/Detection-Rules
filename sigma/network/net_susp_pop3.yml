@@ -3,7 +3,7 @@ id: 643f885f-ca38-4899-98f8-f37e8344a455
 status: experimental
 description: |
   Detects potential abuse or anomalies in POP3 traffic.
-author: Jules
+author: Wahid Hendrawan
 date: 2026/02/04
 logsource:
   product: network

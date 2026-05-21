@@ -1,4 +1,4 @@
-# SIEM Detection Rules
+# Detection Rules
 
 Repository ini berisi kumpulan **detection rules** untuk berbagai platform SIEM
 (Sigma, Elastic / Kibana, Splunk, dan query generic). Struktur dibuat agar mudah

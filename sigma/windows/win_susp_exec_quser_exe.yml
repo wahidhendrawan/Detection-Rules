@@ -3,7 +3,7 @@ id: ff3beaeb-22fb-4008-8f63-2084e982576f
 status: experimental
 description: |
   Detects suspicious execution of quser.exe which may be used for Living off the Land attacks.
-author: Jules
+author: Wahid Hendrawan
 date: 2026/02/04
 logsource:
   product: windows

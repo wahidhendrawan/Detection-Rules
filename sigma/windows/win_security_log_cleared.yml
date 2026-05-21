@@ -4,7 +4,7 @@ status: stable
 description: |
   Detects when the Windows Security Event Log is cleared. This is often done by attackers
   to cover their tracks after compromising a system.
-author: Jules
+author: Wahid Hendrawan
 date: 2025/05/22
 logsource:
   product: windows

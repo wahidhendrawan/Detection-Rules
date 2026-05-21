@@ -3,7 +3,7 @@ id: 26c14386-6d04-415c-b1b4-64ed20751d2f
 status: experimental
 description: |
   Detects potential abuse or anomalies in HTTP traffic.
-author: Jules
+author: Wahid Hendrawan
 date: 2026/02/04
 logsource:
   product: network

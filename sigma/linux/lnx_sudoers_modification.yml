@@ -4,7 +4,7 @@ status: high
 description: |
   Detects changes to the /etc/sudoers file or files in /etc/sudoers.d/.
   This may indicate a privilege escalation attempt or persistence.
-author: Jules
+author: Wahid Hendrawan
 date: 2025/05/22
 logsource:
   product: linux

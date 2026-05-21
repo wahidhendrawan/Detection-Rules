@@ -3,7 +3,7 @@ id: 897d64cf-3583-4519-b392-3ba66783a804
 status: experimental
 description: |
   Detects suspicious execution of cscript.exe which may be used for Living off the Land attacks.
-author: Jules
+author: Wahid Hendrawan
 date: 2026/02/04
 logsource:
   product: windows

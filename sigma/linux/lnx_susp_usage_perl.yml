@@ -3,7 +3,7 @@ id: d6caa2fd-59f8-461a-9b1d-ed4c9bd3373d
 status: experimental
 description: |
   Detects suspicious usage of perl in command line.
-author: Jules
+author: Wahid Hendrawan
 date: 2026/02/04
 logsource:
   product: linux

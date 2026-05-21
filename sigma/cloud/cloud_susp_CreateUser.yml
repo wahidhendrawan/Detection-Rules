@@ -3,7 +3,7 @@ id: 9da46b40-6dc5-4948-a572-3f2c3e79140e
 status: experimental
 description: |
   Detects sensitive cloud action CreateUser.
-author: Jules
+author: Wahid Hendrawan
 date: 2026/02/04
 logsource:
   product: aws

@@ -4,7 +4,7 @@ status: experimental
 description: |
   Detects modification of the SSH authorized_keys file, which can be used
   for persistence.
-author: Jules
+author: Wahid Hendrawan
 date: 2025/05/22
 logsource:
   product: linux

@@ -3,7 +3,7 @@ id: fccb8fe8-b716-4d5c-84a9-3e994de8a5bf
 status: experimental
 description: |
   Detects suspicious execution of attrib.exe which may be used for Living off the Land attacks.
-author: Jules
+author: Wahid Hendrawan
 date: 2026/02/04
 logsource:
   product: windows

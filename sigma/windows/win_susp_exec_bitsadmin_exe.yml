@@ -3,7 +3,7 @@ id: 28c45c0b-1411-4962-af90-0b13f01ae9c5
 status: experimental
 description: |
   Detects suspicious execution of bitsadmin.exe which may be used for Living off the Land attacks.
-author: Jules
+author: Wahid Hendrawan
 date: 2026/02/04
 logsource:
   product: windows

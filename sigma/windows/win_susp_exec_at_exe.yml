@@ -3,7 +3,7 @@ id: f9a33c35-730a-4936-9c53-f956541c32cf
 status: experimental
 description: |
   Detects suspicious execution of at.exe which may be used for Living off the Land attacks.
-author: Jules
+author: Wahid Hendrawan
 date: 2026/02/04
 logsource:
   product: windows

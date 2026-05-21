@@ -3,7 +3,7 @@ id: dd2b6839-0db6-4525-95ee-46383893e4a4
 status: experimental
 description: |
   Detects suspicious usage of make in command line.
-author: Jules
+author: Wahid Hendrawan
 date: 2026/02/04
 logsource:
   product: linux

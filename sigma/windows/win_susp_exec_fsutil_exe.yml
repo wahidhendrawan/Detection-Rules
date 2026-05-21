@@ -3,7 +3,7 @@ id: 118e210c-48be-4cf6-8362-8c88e5940fb9
 status: experimental
 description: |
   Detects suspicious execution of fsutil.exe which may be used for Living off the Land attacks.
-author: Jules
+author: Wahid Hendrawan
 date: 2026/02/04
 logsource:
   product: windows

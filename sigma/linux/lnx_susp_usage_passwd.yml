@@ -3,7 +3,7 @@ id: 9eef5a91-9962-4775-870f-83d547a64c1e
 status: experimental
 description: |
   Detects suspicious usage of passwd in command line.
-author: Jules
+author: Wahid Hendrawan
 date: 2026/02/04
 logsource:
   product: linux

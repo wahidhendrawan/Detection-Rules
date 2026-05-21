@@ -3,7 +3,7 @@ id: 94348ec6-33c1-42b5-96a7-3d95a9ed78bb
 status: stable
 description: |
   Detects the addition of a user to the local Administrators group using net.exe.
-author: Jules
+author: Wahid Hendrawan
 date: 2025/05/22
 logsource:
   product: windows

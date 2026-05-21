@@ -3,7 +3,7 @@ id: 29fb67f8-7cdd-4a71-ad80-ae85caddb47c
 status: experimental
 description: |
   Detects sensitive cloud action AuthorizeSecurityGroupIngress.
-author: Jules
+author: Wahid Hendrawan
 date: 2026/02/04
 logsource:
   product: aws

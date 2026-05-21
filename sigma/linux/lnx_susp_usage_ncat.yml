@@ -3,7 +3,7 @@ id: 6bb385fe-7e46-454a-a771-cbdf8a88df27
 status: experimental
 description: |
   Detects suspicious usage of ncat in command line.
-author: Jules
+author: Wahid Hendrawan
 date: 2026/02/04
 logsource:
   product: linux

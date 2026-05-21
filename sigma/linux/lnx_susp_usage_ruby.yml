@@ -3,7 +3,7 @@ id: f192c064-705c-4c43-a9f9-25b8a243f968
 status: experimental
 description: |
   Detects suspicious usage of ruby in command line.
-author: Jules
+author: Wahid Hendrawan
 date: 2026/02/04
 logsource:
   product: linux

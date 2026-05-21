@@ -3,7 +3,7 @@ id: 0db30792-db2a-4ca9-8ac5-53b41a0df85d
 status: experimental
 description: |
   Detects suspicious usage of nc in command line.
-author: Jules
+author: Wahid Hendrawan
 date: 2026/02/04
 logsource:
   product: linux

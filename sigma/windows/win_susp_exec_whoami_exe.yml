@@ -3,7 +3,7 @@ id: 446cf05a-977f-44d1-b319-9f7a973599ea
 status: experimental
 description: |
   Detects suspicious execution of whoami.exe which may be used for Living off the Land attacks.
-author: Jules
+author: Wahid Hendrawan
 date: 2026/02/04
 logsource:
   product: windows

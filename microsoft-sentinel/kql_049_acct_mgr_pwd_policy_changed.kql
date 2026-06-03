@@ -1,3 +1,4 @@
 // Title: Acct Mgr Pwd Policy Changed
 // Description: Hunts for acct mgr pwd policy changed
+// MITRE ATT&CK: T1484
 AccountManagementEvents | where EventID == 4739

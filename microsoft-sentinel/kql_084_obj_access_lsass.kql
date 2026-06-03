@@ -1,3 +1,4 @@
 // Title: Obj Access Lsass
 // Description: Hunts for obj access lsass
+// MITRE ATT&CK: T1003.001
 ObjectAccessEvents | where ObjectName contains 'lsass.exe'

@@ -1,3 +1,4 @@
 // Title: Service Failed
 // Description: Hunts for service failed
+// MITRE ATT&CK: T1499
 ServiceEvents | where EventID == 7000 or EventID == 7009

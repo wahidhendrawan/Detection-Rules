@@ -1,3 +1,4 @@
 // Title: Obj Access Event Log
 // Description: Hunts for obj access event log
+// MITRE ATT&CK: T1070.001
 ObjectAccessEvents | where ObjectName contains 'Security.evtx'

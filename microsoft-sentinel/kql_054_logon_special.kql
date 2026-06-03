@@ -1,3 +1,4 @@
 // Title: Logon Special
 // Description: Hunts for logon special
+// MITRE ATT&CK: T1078
 LogonEvents | where EventID == 4672

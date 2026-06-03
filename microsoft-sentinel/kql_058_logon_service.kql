@@ -1,3 +1,4 @@
 // Title: Logon Service
 // Description: Hunts for logon service
+// MITRE ATT&CK: T1078
 LogonEvents | where EventID == 4624 and LogonType == 5

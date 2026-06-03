@@ -1,3 +1,4 @@
 // Title: Service Suspicious Name
 // Description: Hunts for service suspicious name
+// MITRE ATT&CK: T1543.003, T1036
 ServiceEvents | where ServiceName contains 'PSEXESVC' or ServiceName contains 'WCE'

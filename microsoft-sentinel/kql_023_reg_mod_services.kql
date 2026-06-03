@@ -1,3 +1,4 @@
 // Title: Reg Mod Services
 // Description: Hunts for reg mod services
+// MITRE ATT&CK: T1543.003
 RegistryEvents | where RegistryKey contains 'CurrentControlSet\\Services'

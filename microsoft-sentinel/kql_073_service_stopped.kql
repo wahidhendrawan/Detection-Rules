@@ -1,3 +1,4 @@
 // Title: Service Stopped
 // Description: Hunts for service stopped
+// MITRE ATT&CK: T1489
 ServiceEvents | where EventID == 7036 and State == 'stopped'

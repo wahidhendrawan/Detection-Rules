@@ -1,3 +1,4 @@
 // Title: File Create Vbs
 // Description: Hunts for file create vbs
+// MITRE ATT&CK: T1059.005
 FileCreationEvents | where FileName endswith '.vbs'

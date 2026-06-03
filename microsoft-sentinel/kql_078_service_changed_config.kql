@@ -1,3 +1,4 @@
 // Title: Service Changed Config
 // Description: Hunts for service changed config
+// MITRE ATT&CK: T1543.003
 ServiceEvents | where EventID == 7040

@@ -1,3 +1,4 @@
 // Title: Service Crashed
 // Description: Hunts for service crashed
+// MITRE ATT&CK: T1499
 ServiceEvents | where EventID == 7034 or EventID == 7031

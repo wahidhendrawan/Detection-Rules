@@ -1,3 +1,4 @@
 // Title: Logon Explicit
 // Description: Hunts for logon explicit
+// MITRE ATT&CK: T1078
 LogonEvents | where EventID == 4648

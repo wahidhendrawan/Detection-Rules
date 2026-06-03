@@ -1,4 +1,27 @@
-// Title: Proc Exec Certutil
-// Description: Hunts for proc exec certutil
+// Title: Certutil Used for Download or Decode
+// Description: Mendeteksi certutil.exe yang dipakai untuk download file
+//              atau decode base64 - LOLBin technique umum.
 // MITRE ATT&CK: T1140, T1105
-ProcessExecutionEvents | where ProcessName == 'certutil.exe'
+// Severity: high
+// FalsePositives:
+//   - Admin sysadmin yang sah download CRL/CTL.
+//   - PKI tooling internal yang menggunakan certutil.
+// References:
+//   - https://attack.mitre.org/techniques/T1105/
+//   - https://lolbas-project.github.io/lolbas/Binaries/Certutil/
+
+DeviceProcessEvents
+| where Timestamp > ago(24h)
+| where FileName =~ "certutil.exe"
+| where ProcessCommandLine has_any (
+    "-urlcache", "/urlcache",
+    "-decode",   "/decode",
+    "-encode",   "/encode",
+    "-split",    "/split",
+    "-f http",   "-f ftp"
+)
+// Exclude PKI infra tooling
+| where InitiatingProcessFileName !in~ ("CertSrv.exe", "MSPKIInstall.exe")
+| project Timestamp, DeviceName, AccountName, FileName, ProcessCommandLine,
+          InitiatingProcessFileName, InitiatingProcessCommandLine
+| order by Timestamp desc

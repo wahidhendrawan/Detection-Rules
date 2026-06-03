@@ -1,4 +1,27 @@
-// Title: Proc Exec Bitsadmin
-// Description: Hunts for proc exec bitsadmin
-// MITRE ATT&CK: T1197
-ProcessExecutionEvents | where ProcessName == 'bitsadmin.exe'
+// Title: Bitsadmin Suspicious Download/Transfer
+// Description: Mendeteksi bitsadmin.exe yang dipakai untuk download payload
+//              dari URL eksternal - LOLBin technique.
+// MITRE ATT&CK: T1197, T1105
+// Severity: high
+// FalsePositives:
+//   - Microsoft Update / Configuration Manager (SCCM) yang pakai BITS.
+//   - Software install yang mendownload komponen via BITS.
+// References:
+//   - https://attack.mitre.org/techniques/T1197/
+//   - https://lolbas-project.github.io/lolbas/Binaries/Bitsadmin/
+
+DeviceProcessEvents
+| where Timestamp > ago(24h)
+| where FileName =~ "bitsadmin.exe"
+| where ProcessCommandLine has_any (
+    "/transfer", "/addfile", "/download",
+    "/SetNotifyCmdLine", "/setnotifycmdline",
+    "/RawReturn", "/rawreturn"
+)
+// Exclude SCCM / Microsoft Update parent
+| where InitiatingProcessFileName !in~ (
+    "ccmexec.exe", "TiWorker.exe", "TrustedInstaller.exe", "wuauclt.exe"
+)
+| project Timestamp, DeviceName, AccountName, FileName, ProcessCommandLine,
+          InitiatingProcessFileName, InitiatingProcessCommandLine
+| order by Timestamp desc

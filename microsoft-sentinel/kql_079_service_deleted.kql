@@ -1,4 +1,7 @@
 // Title: Service Deleted
 // Description: Hunts for service deleted
 // MITRE ATT&CK: T1543.003
+// Severity: informational
+// FalsePositives:
+//   - Operasi service legit (Windows Update, software install).
 ServiceEvents | where EventID == 4697 and Action == 'deleted'

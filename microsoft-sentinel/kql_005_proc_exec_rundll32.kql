@@ -1,4 +1,35 @@
-// Title: Proc Exec Rundll32
-// Description: Hunts for proc exec rundll32
+// Title: Suspicious Rundll32 Execution
+// Description: Mendeteksi rundll32.exe yang dipanggil dari path mencurigakan
+//              atau dengan arg yang tidak normal (no DLL specified, javascript:,
+//              shell32.dll Control_RunDLL pattern dari attacker tooling).
 // MITRE ATT&CK: T1218.011
-ProcessExecutionEvents | where ProcessName == 'rundll32.exe'
+// Severity: medium
+// FalsePositives:
+//   - Microsoft signed components (printer driver, control panel).
+//   - Software vendor signed installer.
+// References:
+//   - https://attack.mitre.org/techniques/T1218/011/
+//   - https://lolbas-project.github.io/lolbas/Binaries/Rundll32/
+
+DeviceProcessEvents
+| where Timestamp > ago(24h)
+| where FileName =~ "rundll32.exe"
+| where (
+    // Called from suspicious path
+    InitiatingProcessFolderPath has_any (
+        @"\AppData\", @"\Temp\", @"\Public\", @"\ProgramData\Temp\"
+    )
+    // Or with JavaScript/VBScript inline
+    or ProcessCommandLine has_any ("javascript:", "vbscript:", "mshtml,RunHTMLApplication")
+    // Or DLL in suspicious path
+    or ProcessCommandLine has_any (
+        @"\AppData\Local\Temp\",
+        @"\Users\Public\",
+        @"\ProgramData\"
+    )
+    // Or rundll32 without any DLL (just rundll32.exe alone)
+    or ProcessCommandLine matches regex @"^[\""]?[a-zA-Z]:\\.*rundll32(\.exe)?[\""]?\s*$"
+)
+| project Timestamp, DeviceName, AccountName, FileName, ProcessCommandLine,
+          InitiatingProcessFileName, InitiatingProcessFolderPath
+| order by Timestamp desc

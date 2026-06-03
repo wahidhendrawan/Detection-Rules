@@ -1,4 +1,7 @@
 // Title: Schtask Deleted
 // Description: Hunts for schtask deleted
 // MITRE ATT&CK: T1053.005
+// Severity: informational
+// FalsePositives:
+//   - Scheduled task yang dibuat oleh installer software vendor.
 ScheduledTaskEvents | where EventID == 4699

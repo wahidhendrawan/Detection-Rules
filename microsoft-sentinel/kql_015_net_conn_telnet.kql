@@ -1,4 +1,7 @@
 // Title: Net Conn Telnet
 // Description: Hunts for net conn telnet
 // MITRE ATT&CK: T1021
+// Severity: informational
+// FalsePositives:
+//   - Koneksi keluar yang sah dari aplikasi enterprise (RMM, monitoring agent).
 NetworkConnectionEvents | where DestinationPort == 23

@@ -1,4 +1,7 @@
 // Title: Logon Explicit
 // Description: Hunts for logon explicit
 // MITRE ATT&CK: T1078
+// Severity: informational
+// FalsePositives:
+//   - Logon legit (terutama service account, scheduled task).
 LogonEvents | where EventID == 4648

@@ -1,4 +1,7 @@
 // Title: Misc Cloud Storage Public
 // Description: Hunts for misc cloud storage public
 // MITRE ATT&CK: T1530
+// Severity: low
+// FalsePositives:
+//   - Aktivitas cloud admin / automation legit (CI/CD, IaC).
 CloudEvents | where ActionType == 'MakeStoragePublic'

@@ -1,4 +1,7 @@
 // Title: Schtask Suspicious Name
 // Description: Hunts for schtask suspicious name
 // MITRE ATT&CK: T1053.005, T1036
+// Severity: informational
+// FalsePositives:
+//   - Scheduled task yang dibuat oleh installer software vendor.
 ScheduledTaskEvents | where TaskName contains 'updater' or TaskName contains 'spooler'

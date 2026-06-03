@@ -1,4 +1,7 @@
 // Title: Acct Mgr User Pwd Reset
 // Description: Hunts for acct mgr user pwd reset
 // MITRE ATT&CK: T1098
+// Severity: informational
+// FalsePositives:
+//   - Aktivitas account management oleh admin yang sah.
 AccountManagementEvents | where EventID == 4724

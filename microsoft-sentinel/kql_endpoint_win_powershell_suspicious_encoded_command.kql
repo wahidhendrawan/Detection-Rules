@@ -1,4 +1,5 @@
 // MITRE ATT&CK: T1059.001, T1027
+// Severity: low
 event.category: process and
 process.name: ("powershell.exe" or "pwsh.exe") and
 process.command_line: (*EncodedCommand* or *encodedcommand*)

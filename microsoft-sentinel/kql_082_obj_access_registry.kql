@@ -1,4 +1,7 @@
 // Title: Obj Access Registry
 // Description: Hunts for obj access registry
 // MITRE ATT&CK: T1012
+// Severity: informational
+// FalsePositives:
+//   - Tools backup/forensic yang sah mengakses resource tersebut.
 ObjectAccessEvents | where ObjectType == 'Key'

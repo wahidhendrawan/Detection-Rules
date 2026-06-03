@@ -1,4 +1,7 @@
 // Title: Obj Access File
 // Description: Hunts for obj access file
 // MITRE ATT&CK: T1005
+// Severity: informational
+// FalsePositives:
+//   - Tools backup/forensic yang sah mengakses resource tersebut.
 ObjectAccessEvents | where ObjectType == 'File'

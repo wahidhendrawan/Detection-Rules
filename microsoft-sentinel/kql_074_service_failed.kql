@@ -1,4 +1,7 @@
 // Title: Service Failed
 // Description: Hunts for service failed
 // MITRE ATT&CK: T1499
+// Severity: informational
+// FalsePositives:
+//   - Operasi service legit (Windows Update, software install).
 ServiceEvents | where EventID == 7000 or EventID == 7009

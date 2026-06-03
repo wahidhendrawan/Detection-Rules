@@ -1,4 +1,7 @@
 // Title: Service Suspicious Path
 // Description: Hunts for service suspicious path
 // MITRE ATT&CK: T1543.003, T1036
+// Severity: informational
+// FalsePositives:
+//   - Operasi service legit (Windows Update, software install).
 ServiceEvents | where ImagePath contains 'AppData' or ImagePath contains 'Temp'

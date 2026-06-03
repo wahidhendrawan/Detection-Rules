@@ -1,4 +1,7 @@
 // Title: Acct Mgr Group Created
 // Description: Hunts for acct mgr group created
 // MITRE ATT&CK: T1136
+// Severity: informational
+// FalsePositives:
+//   - Aktivitas account management oleh admin yang sah.
 AccountManagementEvents | where EventID == 4727 or EventID == 4731 or EventID == 4754

@@ -1,4 +1,7 @@
 // Title: Service Started
 // Description: Hunts for service started
 // MITRE ATT&CK: T1543.003
+// Severity: informational
+// FalsePositives:
+//   - Operasi service legit (Windows Update, software install).
 ServiceEvents | where EventID == 7036 and State == 'running'

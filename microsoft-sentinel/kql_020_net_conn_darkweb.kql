@@ -1,4 +1,7 @@
 // Title: Net Conn Darkweb
 // Description: Hunts for net conn darkweb
 // MITRE ATT&CK: T1071.001, T1090.003
+// Severity: low
+// FalsePositives:
+//   - Koneksi keluar yang sah dari aplikasi enterprise (RMM, monitoring agent).
 NetworkConnectionEvents | where DestinationUrl contains '.onion'

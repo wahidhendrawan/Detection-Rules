@@ -1,4 +1,7 @@
 // Title: Logon Cleartext
 // Description: Hunts for logon cleartext
 // MITRE ATT&CK: T1556
+// Severity: informational
+// FalsePositives:
+//   - Logon legit (terutama service account, scheduled task).
 LogonEvents | where EventID == 4624 and LogonType == 8

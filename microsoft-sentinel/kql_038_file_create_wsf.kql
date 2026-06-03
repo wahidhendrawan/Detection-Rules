@@ -1,4 +1,7 @@
 // Title: File Create Wsf
 // Description: Hunts for file create wsf
 // MITRE ATT&CK: T1059.005
+// Severity: informational
+// FalsePositives:
+//   - Software install/update yang sah membuat file di path tersebut.
 FileCreationEvents | where FileName endswith '.wsf'

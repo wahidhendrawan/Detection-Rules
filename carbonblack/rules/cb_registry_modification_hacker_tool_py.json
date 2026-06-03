@@ -2,6 +2,9 @@
   "id": "3acae29f-73af-4af1-a2cf-55de353481da",
   "name": "cb_registry_modification_hacker_tool_py",
   "description": "Detects registry_modification involving hacker_tool.py",
+  "mitre": [
+    "T1059.006"
+  ],
   "query": "regmod_name:hacker_tool.py",
   "severity": 5,
   "enabled": true,

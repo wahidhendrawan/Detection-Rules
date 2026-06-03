@@ -2,6 +2,9 @@
   "id": "c4fff123-dfd5-4530-9136-f8e39ec6f7c4",
   "name": "cb_process_creation_at_exe",
   "description": "Detects process_creation involving at.exe",
+  "mitre": [
+    "T1053.002"
+  ],
   "query": "process_name:at.exe",
   "severity": 5,
   "enabled": true,

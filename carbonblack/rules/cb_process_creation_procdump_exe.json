@@ -2,6 +2,9 @@
   "id": "a93b3249-272f-4537-90b4-a5333f7cf5f7",
   "name": "cb_process_creation_procdump_exe",
   "description": "Detects process_creation involving procdump.exe",
+  "mitre": [
+    "T1003.001"
+  ],
   "query": "process_name:procdump.exe",
   "severity": 5,
   "enabled": true,

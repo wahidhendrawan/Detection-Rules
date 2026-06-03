@@ -2,6 +2,10 @@
   "id": "7ab1fa9c-dbbb-4b5a-bc30-689a32e7db54",
   "name": "cb_file_modification_suspicious_app_exe",
   "description": "Detects file_modification involving suspicious_app.exe",
+  "mitre": [
+    "T1059",
+    "T1036"
+  ],
   "query": "filemod_name:suspicious_app.exe",
   "severity": 5,
   "enabled": true,

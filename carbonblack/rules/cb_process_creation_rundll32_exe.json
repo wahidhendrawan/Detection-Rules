@@ -2,6 +2,9 @@
   "id": "47866138-7be8-43fe-ba2e-3cab8dc516e4",
   "name": "cb_process_creation_rundll32_exe",
   "description": "Detects process_creation involving rundll32.exe",
+  "mitre": [
+    "T1218.011"
+  ],
   "query": "process_name:rundll32.exe",
   "severity": 5,
   "enabled": true,

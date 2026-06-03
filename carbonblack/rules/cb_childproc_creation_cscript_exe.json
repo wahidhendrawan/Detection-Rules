@@ -2,6 +2,9 @@
   "id": "5d172d2f-9c58-4a35-811b-9caaccd8bab2",
   "name": "cb_childproc_creation_cscript_exe",
   "description": "Detects childproc_creation involving cscript.exe",
+  "mitre": [
+    "T1059.005"
+  ],
   "query": "childproc_name:cscript.exe",
   "severity": 5,
   "enabled": true,

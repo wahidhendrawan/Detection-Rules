@@ -2,6 +2,9 @@
   "id": "39200e93-5d0a-49ee-95d1-aabdc143f6e8",
   "name": "cb_registry_modification_mimikatz_exe",
   "description": "Detects registry_modification involving mimikatz.exe",
+  "mitre": [
+    "T1003.001"
+  ],
   "query": "regmod_name:mimikatz.exe",
   "severity": 5,
   "enabled": true,

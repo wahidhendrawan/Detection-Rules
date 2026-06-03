@@ -2,6 +2,9 @@
   "id": "470658eb-48bd-4d18-828f-eff49481e426",
   "name": "cb_registry_modification_wscript_exe",
   "description": "Detects registry_modification involving wscript.exe",
+  "mitre": [
+    "T1059.005"
+  ],
   "query": "regmod_name:wscript.exe",
   "severity": 5,
   "enabled": true,

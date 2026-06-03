@@ -1,6 +1,9 @@
 {
   "name": "cb_childproc_creation_wmic_exe",
   "description": "Auto-added Carbon Black detection query",
+  "mitre": [
+    "T1047"
+  ],
   "query": "process_name:wmic.exe AND event_type:childproc",
   "severity": "high"
 }

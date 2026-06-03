@@ -1,6 +1,9 @@
 {
   "name": "cb_childproc_creation_psexec_exe",
   "description": "Auto-added Carbon Black detection query",
+  "mitre": [
+    "T1021.002"
+  ],
   "query": "process_name:psexec.exe AND event_type:childproc",
   "severity": "high"
 }

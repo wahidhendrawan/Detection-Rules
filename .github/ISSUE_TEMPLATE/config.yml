@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Security Vulnerability
+    url: https://github.com/wahidhendrawan/Detection-Rules/security/advisories/new
+    about: Laporkan vulnerability di tooling/CI repo (BUKAN false positive rule). Lihat SECURITY.md.
+  - name: Diskusi & Pertanyaan
+    url: https://github.com/wahidhendrawan/Detection-Rules/discussions
+    about: Tanya-jawab umum, sharing use case, ide rule baru.

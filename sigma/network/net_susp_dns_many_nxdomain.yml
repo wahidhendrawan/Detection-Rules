@@ -2,7 +2,7 @@ title: High Volume NXDOMAIN DNS Responses
 author: Wahid Hendrawan
 date: 2026/05/21
 id: 273c0578-7874-4fc1-81f0-cb934cd7d6ef
-status: medium
+status: experimental
 description: |
   Detects potential DNS tunneling or malware beaconing by identifying unusually high
   volumes of NXDOMAIN DNS responses from a single source host.

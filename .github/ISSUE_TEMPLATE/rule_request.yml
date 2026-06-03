@@ -1,0 +1,75 @@
+name: ✨ Rule Request
+description: Usulkan rule deteksi baru
+title: "[REQ] "
+labels: ["enhancement", "rule-request"]
+body:
+  - type: input
+    id: title
+    attributes:
+      label: Judul Rule (yang diusulkan)
+      placeholder: Detect Rclone Exfiltration to Cloud Storage
+    validations:
+      required: true
+
+  - type: dropdown
+    id: platform
+    attributes:
+      label: Platform Target
+      multiple: true
+      options:
+        - Sigma
+        - Elastic
+        - Splunk
+        - Microsoft Sentinel
+        - Wazuh
+        - Carbon Black
+    validations:
+      required: true
+
+  - type: dropdown
+    id: category
+    attributes:
+      label: Kategori
+      options:
+        - windows
+        - linux
+        - network
+        - cloud
+        - app
+    validations:
+      required: true
+
+  - type: textarea
+    id: behavior
+    attributes:
+      label: Threat / Behavior yang Dideteksi
+      placeholder: |
+        Penggunaan rclone untuk exfiltrasi data ke remote cloud storage
+        (Mega, Backblaze, S3, dll). Common pada ransomware double-extortion.
+    validations:
+      required: true
+
+  - type: input
+    id: mitre
+    attributes:
+      label: MITRE ATT&CK Technique
+      description: Format - TXXXX[.YYY]
+      placeholder: T1567.002 (Exfiltration to Cloud Storage)
+    validations:
+      required: true
+
+  - type: textarea
+    id: references
+    attributes:
+      label: Referensi
+      placeholder: |
+        - https://attack.mitre.org/techniques/T1567/002/
+        - https://www.thedfirreport.com/...
+        - https://blog.example.com/rclone-exfil
+
+  - type: textarea
+    id: draft
+    attributes:
+      label: Draft Logic (opsional)
+      description: Pseudo-code / draft awal jika ada
+      render: yaml

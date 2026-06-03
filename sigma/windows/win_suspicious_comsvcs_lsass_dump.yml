@@ -2,7 +2,7 @@ title: Suspicious Comsvcs DLL MiniDump of LSASS
 author: Wahid Hendrawan
 date: 2026/05/21
 id: 64aa9de0-1d7e-40d1-a8f1-2cedba9f9040
-status: high
+status: experimental
 description: |
   Detects rundll32 execution of comsvcs.dll MiniDump functionality that targets
   the LSASS process, a common credential dumping technique.

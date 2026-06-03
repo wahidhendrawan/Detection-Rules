@@ -1,0 +1,26 @@
+# CODEOWNERS for Detection-Rules
+# https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners
+
+# Default owner for everything
+*                       @wahidhendrawan
+
+# Per-platform ownership (sama untuk sekarang, mudah di-extend ketika ada co-maintainer)
+/sigma/                 @wahidhendrawan
+/elastic/               @wahidhendrawan
+/splunk/                @wahidhendrawan
+/microsoft-sentinel/    @wahidhendrawan
+/wazuh/                 @wahidhendrawan
+/carbonblack/           @wahidhendrawan
+
+# Tooling, CI, governance
+/.github/               @wahidhendrawan
+/scripts/               @wahidhendrawan
+/templates/             @wahidhendrawan
+
+# Dokumentasi inti
+/README.md              @wahidhendrawan
+/CONTRIBUTING.md        @wahidhendrawan
+/SECURITY.md            @wahidhendrawan
+/CODE_OF_CONDUCT.md     @wahidhendrawan
+/CHANGELOG.md           @wahidhendrawan
+/COVERAGE.md            @wahidhendrawan

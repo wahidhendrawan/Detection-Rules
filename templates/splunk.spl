@@ -1,0 +1,21 @@
+# Title: <Short descriptive title>
+# Description: <one-line description of what is detected>
+# Author: <Your Name>
+# Date: 2026-01-01
+# MITRE ATT&CK: TXXXX, TXXXX.YYY
+# Tactic: execution | persistence | defense_evasion | ...
+# Severity: high
+# References:
+#   - https://attack.mitre.org/techniques/TXXXX/
+#   - https://example.com/threat-report
+# False Positives:
+#   - Aktivitas administratif resmi yang menggunakan tool yang sama.
+
+index=windows OR index=endpoint
+sourcetype IN ("XmlWinEventLog:Microsoft-Windows-Sysmon/Operational", "WinEventLog:Security")
+Image="*\\example.exe"
+(CommandLine="*suspicious-flag*" OR CommandLine="*another-flag*")
+NOT (ParentImage="*\\trusted_parent.exe")
+| stats count, values(CommandLine) as cmd, values(User) as user by host, Image, ParentImage
+| where count > 0
+| sort - _time

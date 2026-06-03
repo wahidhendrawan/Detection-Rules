@@ -1,0 +1,119 @@
+name: Validate Rules
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  yamllint:
+    name: YAML lint (Sigma & configs)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install yamllint
+        run: pip install yamllint==1.35.1
+      - name: Run yamllint
+        run: yamllint -c .yamllint.yml sigma/ .github/
+
+  sigma-validate:
+    name: Sigma syntax check
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install sigma-cli
+        run: pip install sigma-cli==1.0.4
+      - name: Validate Sigma rules
+        run: sigma check sigma/
+
+  xmllint:
+    name: XML lint (Wazuh)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install libxml2-utils
+        run: sudo apt-get update && sudo apt-get install -y libxml2-utils
+      - name: Validate Wazuh XML
+        run: |
+          fail=0
+          while IFS= read -r -d '' f; do
+            xmllint --noout "$f" || { echo "::error file=$f::Invalid XML"; fail=1; }
+          done < <(find wazuh -type f -name '*.xml' -print0)
+          exit $fail
+
+  json-validate:
+    name: JSON validate (Carbon Black + Elastic NDJSON)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install jq
+        run: sudo apt-get update && sudo apt-get install -y jq
+      - name: Validate Carbon Black JSON
+        run: |
+          fail=0
+          while IFS= read -r -d '' f; do
+            jq empty "$f" || { echo "::error file=$f::Invalid JSON"; fail=1; }
+          done < <(find carbonblack -type f -name '*.json' -print0)
+          exit $fail
+      - name: Validate Elastic NDJSON (each line must be valid JSON)
+        run: |
+          fail=0
+          while IFS= read -r -d '' f; do
+            line_no=0
+            while IFS= read -r line; do
+              line_no=$((line_no+1))
+              [ -z "$line" ] && continue
+              echo "$line" | jq empty 2>/dev/null || {
+                echo "::error file=$f,line=$line_no::Invalid JSON line"; fail=1;
+              }
+            done < "$f"
+          done < <(find elastic -type f -name '*.ndjson' -print0)
+          exit $fail
+
+  kql-syntax:
+    name: KQL smoke check (Sentinel)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Smoke check KQL files non-empty & header present
+        run: |
+          fail=0
+          while IFS= read -r -d '' f; do
+            if [ ! -s "$f" ]; then
+              echo "::error file=$f::Empty KQL file"; fail=1
+            fi
+            head -1 "$f" | grep -qE '^//' || {
+              echo "::warning file=$f::Missing header comment (// Title / // Description)"
+            }
+          done < <(find microsoft-sentinel -type f -name '*.kql' -print0)
+          exit $fail
+
+  coverage:
+    name: MITRE coverage (informational)
+    runs-on: ubuntu-latest
+    needs: [yamllint, sigma-validate, xmllint, json-validate]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install deps
+        run: pip install pyyaml==6.0.2
+      - name: Generate coverage report
+        run: python3 scripts/generate_coverage.py
+      - name: Upload coverage artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: mitre-coverage
+          path: |
+            COVERAGE.md
+            coverage.json
+          if-no-files-found: warn

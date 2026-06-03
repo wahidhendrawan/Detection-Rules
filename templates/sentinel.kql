@@ -1,0 +1,22 @@
+// Title: <Short descriptive title>
+// Description: <one-line description of what is detected>
+// Author: <Your Name>
+// Date: 2026-01-01
+// MITRE ATT&CK: TXXXX, TXXXX.YYY
+// Tactic: Execution | Persistence | DefenseEvasion | ...
+// Severity: High
+// DataConnector: <e.g. SecurityEvent | DeviceProcessEvents | SigninLogs>
+// References:
+//   - https://attack.mitre.org/techniques/TXXXX/
+//   - https://example.com/threat-report
+// False Positives:
+//   - Aktivitas administratif resmi yang menggunakan tool yang sama.
+
+DeviceProcessEvents
+| where Timestamp > ago(24h)
+| where FileName =~ "example.exe"
+| where ProcessCommandLine has_any ("suspicious-flag", "another-flag")
+| where InitiatingProcessFileName !in~ ("trusted_parent.exe")
+| project Timestamp, DeviceName, AccountName, FileName, ProcessCommandLine,
+          InitiatingProcessFileName, InitiatingProcessCommandLine
+| order by Timestamp desc

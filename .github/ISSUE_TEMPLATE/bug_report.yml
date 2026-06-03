@@ -1,0 +1,87 @@
+name: 🐛 Bug Report
+description: Laporkan rule yang tidak fire / fire salah / metadata error
+title: "[BUG] "
+labels: ["bug", "triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Terima kasih sudah meluangkan waktu untuk melaporkan bug.
+        Pastikan Anda sudah cek issue lain yang mungkin sudah membahas masalah ini.
+
+  - type: input
+    id: rule_path
+    attributes:
+      label: Path Rule
+      description: Path lengkap file rule yang bermasalah
+      placeholder: sigma/windows/win_suspicious_certutil_download.yml
+    validations:
+      required: true
+
+  - type: dropdown
+    id: platform
+    attributes:
+      label: Platform SIEM/EDR
+      options:
+        - Sigma
+        - Elastic
+        - Splunk
+        - Microsoft Sentinel
+        - Wazuh
+        - Carbon Black
+        - Lainnya
+    validations:
+      required: true
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Deskripsi Bug
+      description: Apa yang terjadi vs yang diharapkan?
+      placeholder: |
+        Rule X tidak fire ketika Y terjadi.
+        Atau: Rule X memunculkan error parse di SIEM Z.
+    validations:
+      required: true
+
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: Steps to Reproduce
+      placeholder: |
+        1. Import rule ke SIEM
+        2. Generate event ...
+        3. Lihat hasil ...
+    validations:
+      required: true
+
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment
+      description: Versi SIEM/EDR, OS sumber log, dll.
+      placeholder: |
+        - SIEM: Splunk Enterprise 9.2
+        - OS log source: Windows Server 2022
+        - Sysmon version: 15.14
+    validations:
+      required: true
+
+  - type: textarea
+    id: logs
+    attributes:
+      label: Sample Event / Log
+      description: Sample event (sanitize PII!)
+      render: json
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: terms
+    attributes:
+      label: Konfirmasi
+      options:
+        - label: Saya sudah cek issue lain dan tidak ada duplikat
+          required: true
+        - label: Saya sudah sanitize PII di sample event
+          required: true

@@ -1,0 +1,33 @@
+name: Stale
+
+on:
+  schedule:
+    - cron: '0 1 * * *'
+  workflow_dispatch:
+
+permissions:
+  issues: write
+  pull-requests: write
+
+jobs:
+  stale:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/stale@v9
+        with:
+          days-before-issue-stale: 30
+          days-before-issue-close: 14
+          days-before-pr-stale: 14
+          days-before-pr-close: 7
+          stale-issue-label: stale
+          stale-pr-label: stale
+          exempt-issue-labels: 'pinned,security,keep-open'
+          exempt-pr-labels: 'pinned,security,keep-open'
+          stale-issue-message: |
+            Issue ini ditandai `stale` karena tidak ada aktivitas selama 30 hari.
+            Akan ditutup otomatis dalam 14 hari kalau tidak ada update.
+          stale-pr-message: |
+            PR ini ditandai `stale` karena tidak ada aktivitas selama 14 hari.
+            Akan ditutup otomatis dalam 7 hari. Comment apa pun akan reset timer.
+          close-issue-message: 'Closing as stale. Silakan reopen kapan saja.'
+          close-pr-message: 'Closing as stale. Silakan reopen kapan saja.'

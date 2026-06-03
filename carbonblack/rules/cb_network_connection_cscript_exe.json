@@ -2,6 +2,9 @@
   "id": "515b01f8-ec80-4c20-9590-ecbb8a580b1d",
   "name": "cb_network_connection_cscript_exe",
   "description": "Detects network_connection involving cscript.exe",
+  "mitre": [
+    "T1059.005"
+  ],
   "query": "netconn_domain:cscript.exe",
   "severity": 5,
   "enabled": true,

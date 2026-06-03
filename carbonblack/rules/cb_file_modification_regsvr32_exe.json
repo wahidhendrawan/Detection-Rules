@@ -2,6 +2,9 @@
   "id": "b22cc8be-d6c5-45a9-95b1-7220ca627996",
   "name": "cb_file_modification_regsvr32_exe",
   "description": "Detects file_modification involving regsvr32.exe",
+  "mitre": [
+    "T1218.010"
+  ],
   "query": "filemod_name:regsvr32.exe",
   "severity": 5,
   "enabled": true,

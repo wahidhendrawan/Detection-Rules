@@ -2,6 +2,9 @@
   "id": "490c530a-8863-4e85-b925-62d8a64fda05",
   "name": "cb_network_connection_nc_exe",
   "description": "Detects network_connection involving nc.exe",
+  "mitre": [
+    "T1095"
+  ],
   "query": "netconn_domain:nc.exe",
   "severity": 5,
   "enabled": true,

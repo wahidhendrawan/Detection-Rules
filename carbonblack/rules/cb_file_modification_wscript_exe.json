@@ -2,6 +2,9 @@
   "id": "9e9df88d-665d-4740-a420-b90210eaf1f9",
   "name": "cb_file_modification_wscript_exe",
   "description": "Detects file_modification involving wscript.exe",
+  "mitre": [
+    "T1059.005"
+  ],
   "query": "filemod_name:wscript.exe",
   "severity": 5,
   "enabled": true,

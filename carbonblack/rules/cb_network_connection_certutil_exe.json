@@ -2,6 +2,10 @@
   "id": "e4f18b04-f0b6-49b1-af08-898a76aee72e",
   "name": "cb_network_connection_certutil_exe",
   "description": "Detects network_connection involving certutil.exe",
+  "mitre": [
+    "T1140",
+    "T1105"
+  ],
   "query": "netconn_domain:certutil.exe",
   "severity": 5,
   "enabled": true,

@@ -2,6 +2,9 @@
   "id": "7dae7048-5f33-48f8-8100-33c3a7015a00",
   "name": "cb_file_modification_nc_exe",
   "description": "Detects file_modification involving nc.exe",
+  "mitre": [
+    "T1095"
+  ],
   "query": "filemod_name:nc.exe",
   "severity": 5,
   "enabled": true,

@@ -2,6 +2,9 @@
   "id": "e16ab1e8-b776-4a07-bd7c-84f758c04898",
   "name": "cb_registry_modification_at_exe",
   "description": "Detects registry_modification involving at.exe",
+  "mitre": [
+    "T1053.002"
+  ],
   "query": "regmod_name:at.exe",
   "severity": 5,
   "enabled": true,

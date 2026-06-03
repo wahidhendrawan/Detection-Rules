@@ -2,6 +2,9 @@
   "id": "0cc27c94-fd4d-4cfa-9f98-d329bb4e413e",
   "name": "cb_process_creation_msbuild_exe",
   "description": "Detects process_creation involving msbuild.exe",
+  "mitre": [
+    "T1127.001"
+  ],
   "query": "process_name:msbuild.exe",
   "severity": 5,
   "enabled": true,

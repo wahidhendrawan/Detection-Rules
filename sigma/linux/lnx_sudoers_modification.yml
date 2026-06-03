@@ -25,4 +25,4 @@ falsepositives:
 level: high
 tags:
   - attack.t1548.003
-  - attack.privilege_escalation
+  - attack.privilege-escalation

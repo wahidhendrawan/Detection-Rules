@@ -30,4 +30,4 @@ falsepositives:
 level: high
 tags:
   - attack.t1021.001
-  - attack.command_and_control
+  - attack.command-and-control

@@ -32,4 +32,4 @@ level: medium
 tags:
   - attack.t1053.003
   - attack.persistence
-  - attack.privilege_escalation
+  - attack.privilege-escalation

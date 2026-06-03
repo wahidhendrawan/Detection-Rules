@@ -28,4 +28,4 @@ level: high
 tags:
   - attack.t1098
   - attack.persistence
-  - attack.privilege_escalation
+  - attack.privilege-escalation

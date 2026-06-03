@@ -26,4 +26,4 @@ level: high
 tags:
   - attack.t1071
   - attack.t1071.004
-  - attack.command_and_control
+  - attack.command-and-control

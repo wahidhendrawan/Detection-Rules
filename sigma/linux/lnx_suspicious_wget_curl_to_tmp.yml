@@ -28,4 +28,3 @@ falsepositives:
 level: medium
 tags:
   - attack.t1105
-  - attack.ingress_tool_transfer

@@ -21,5 +21,5 @@ falsepositives:
   - Misconfigured applications or hosts repeatedly querying invalid domains.
 level: medium
 tags:
-  - attack.command_and_control
+  - attack.command-and-control
   - attack.t1071.004

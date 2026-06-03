@@ -29,4 +29,4 @@ level: medium
 tags:
   - attack.t1027
   - attack.t1059
-  - attack.defense_evasion
+  - attack.defense-evasion

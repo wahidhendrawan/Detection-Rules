@@ -31,5 +31,5 @@ falsepositives:
   - Legitimate memory dump collection by approved SOC/IR teams.
 level: high
 tags:
-  - attack.credential_access
+  - attack.credential-access
   - attack.t1003.001

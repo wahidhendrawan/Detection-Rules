@@ -1,0 +1,40 @@
+title: <Short descriptive title, max 80 chars>
+id: <generate uuid v4 here>
+status: experimental
+description: |
+  Penjelasan multi-baris tentang apa yang dideteksi rule ini dan
+  kenapa aktivitas tersebut mencurigakan.
+author: <Your Name>
+date: 2026/01/01
+modified: 2026/01/01
+references:
+  - https://attack.mitre.org/techniques/TXXXX/
+  - https://example.com/threat-report
+logsource:
+  product: windows                    # windows | linux | macos | network | aws | azure | gcp | m365 | okta
+  category: process_creation           # process_creation | network_connection | file_event | registry_event | ...
+  # service: sysmon                    # opsional
+detection:
+  selection:
+    Image|endswith:
+      - '\example.exe'
+    CommandLine|contains|all:
+      - 'suspicious-flag'
+      - 'another-flag'
+  filter_legit:
+    ParentImage|endswith: '\trusted_parent.exe'
+  condition: selection and not filter_legit
+fields:
+  - Image
+  - CommandLine
+  - User
+  - ParentImage
+  - ParentCommandLine
+falsepositives:
+  - Aktivitas administratif resmi yang menggunakan tool yang sama.
+  - Software vendor yang sah.
+level: high                            # informational | low | medium | high | critical
+tags:
+  - attack.tXXXX                       # technique
+  - attack.tXXXX.YYY                   # sub-technique (jika ada)
+  - attack.execution                   # tactic

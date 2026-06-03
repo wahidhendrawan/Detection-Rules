@@ -39,6 +39,14 @@ versioning mengikuti [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 - Folder placeholder kosong: `sigma/rules/`, `elastic/rules/`, `splunk/query/`.
 
+### Fixed
+
+- 7 rule Sigma yang memakai severity word (`high`/`medium`) sebagai
+  `status:` — diganti ke `status: experimental` (field `level:` yang
+  sudah ada tidak diubah).
+- 6 rule Sigma yang `id:`-nya tidak valid UUID — di-regenerate dengan
+  UUID v4.
+
 ### Known Issues
 
 - Banyak rule di `wazuh/rules/` memakai placeholder `T1000` (bukan teknik

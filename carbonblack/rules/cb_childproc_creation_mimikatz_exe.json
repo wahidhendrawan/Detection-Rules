@@ -2,6 +2,9 @@
   "id": "6e400210-4732-4313-bae6-ace47db9fb28",
   "name": "cb_childproc_creation_mimikatz_exe",
   "description": "Detects childproc_creation involving mimikatz.exe",
+  "mitre": [
+    "T1003.001"
+  ],
   "query": "childproc_name:mimikatz.exe",
   "severity": 5,
   "enabled": true,

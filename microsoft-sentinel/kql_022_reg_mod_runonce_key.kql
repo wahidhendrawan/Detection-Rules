@@ -1,3 +1,4 @@
 // Title: Reg Mod Runonce Key
 // Description: Hunts for reg mod runonce key
+// MITRE ATT&CK: T1547.001
 RegistryEvents | where RegistryKey contains 'CurrentVersion\\RunOnce'

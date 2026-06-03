@@ -4,7 +4,8 @@
     <match>systemctl disable</match>
     <description>Service disabled via systemctl</description>
     <mitre>
-      <id>T1000</id>
+      <id>T1489</id>
+      <id>T1562.001</id>
     </mitre>
   </rule>
 </group>

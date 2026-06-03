@@ -2,6 +2,9 @@
   "id": "df35ebbe-f82a-435a-8cc6-0a1e4eb6d30a",
   "name": "cb_registry_modification_ncat_exe",
   "description": "Detects registry_modification involving ncat.exe",
+  "mitre": [
+    "T1095"
+  ],
   "query": "regmod_name:ncat.exe",
   "severity": 5,
   "enabled": true,

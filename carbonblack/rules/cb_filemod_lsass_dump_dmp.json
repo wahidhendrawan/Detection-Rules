@@ -1,6 +1,9 @@
 {
   "name": "cb_filemod_lsass_dump_dmp",
   "description": "Auto-added Carbon Black detection query",
+  "mitre": [
+    "T1003.001"
+  ],
   "query": "event_type:filemod AND file_path:*\\lsass*.dmp",
   "severity": "high"
 }

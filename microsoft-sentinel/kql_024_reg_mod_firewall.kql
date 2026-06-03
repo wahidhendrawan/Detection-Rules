@@ -1,3 +1,4 @@
 // Title: Reg Mod Firewall
 // Description: Hunts for reg mod firewall
+// MITRE ATT&CK: T1562.004
 RegistryEvents | where RegistryKey contains 'FirewallRules'

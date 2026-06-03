@@ -1,3 +1,4 @@
 // Title: Logon Cleartext
 // Description: Hunts for logon cleartext
+// MITRE ATT&CK: T1556
 LogonEvents | where EventID == 4624 and LogonType == 8

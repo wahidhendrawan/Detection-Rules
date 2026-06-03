@@ -34,5 +34,5 @@ falsepositives:
 level: high
 tags:
   - attack.t1218.005
-  - attack.defense_evasion
+  - attack.defense-evasion
   - attack.execution

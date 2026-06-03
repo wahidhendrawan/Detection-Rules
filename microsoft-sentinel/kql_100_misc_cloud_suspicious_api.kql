@@ -1,3 +1,4 @@
 // Title: Misc Cloud Suspicious Api
 // Description: Hunts for misc cloud suspicious api
+// MITRE ATT&CK: T1078.004
 CloudEvents | where ActionType in ('ListUsers', 'GetPolicies') and UserAgent contains 'curl'

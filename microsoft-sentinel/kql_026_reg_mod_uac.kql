@@ -1,3 +1,4 @@
 // Title: Reg Mod Uac
 // Description: Hunts for reg mod uac
+// MITRE ATT&CK: T1548.002
 RegistryEvents | where RegistryKey contains 'System\\Policies' and RegistryValueName == 'EnableLUA'

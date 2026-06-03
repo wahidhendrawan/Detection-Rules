@@ -1,6 +1,9 @@
 {
   "name": "cb_childproc_creation_reg_exe",
   "description": "Auto-added Carbon Black detection query",
+  "mitre": [
+    "T1112"
+  ],
   "query": "process_name:reg.exe AND event_type:childproc",
   "severity": "high"
 }

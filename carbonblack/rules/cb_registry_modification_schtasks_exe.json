@@ -2,6 +2,9 @@
   "id": "d76c000b-94b8-496f-81b4-5b73f394cb4c",
   "name": "cb_registry_modification_schtasks_exe",
   "description": "Detects registry_modification involving schtasks.exe",
+  "mitre": [
+    "T1053.005"
+  ],
   "query": "regmod_name:schtasks.exe",
   "severity": 5,
   "enabled": true,

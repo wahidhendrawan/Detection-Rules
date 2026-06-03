@@ -4,7 +4,7 @@
     <match>apache service stopped</match>
     <description>Application apache stopped</description>
     <mitre>
-      <id>T1000</id>
+      <id>T1489</id>
     </mitre>
   </rule>
 </group>

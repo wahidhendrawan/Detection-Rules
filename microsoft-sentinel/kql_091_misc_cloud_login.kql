@@ -1,3 +1,4 @@
 // Title: Misc Cloud Login
 // Description: Hunts for misc cloud login
+// MITRE ATT&CK: T1078.004
 CloudEvents | where ActionType == 'UserLoggedIn'

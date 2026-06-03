@@ -4,7 +4,7 @@
     <match>A Group Policy Object was modified</match>
     <description>Group Policy Object Modified</description>
     <mitre>
-      <id>T1000</id>
+      <id>T1484.001</id>
     </mitre>
   </rule>
 </group>

@@ -2,6 +2,9 @@
   "id": "3519549a-55e0-456e-8f37-d01f111d2af5",
   "name": "cb_network_connection_procdump_exe",
   "description": "Detects network_connection involving procdump.exe",
+  "mitre": [
+    "T1003.001"
+  ],
   "query": "netconn_domain:procdump.exe",
   "severity": 5,
   "enabled": true,

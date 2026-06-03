@@ -1,3 +1,4 @@
 // Title: Proc Exec At
 // Description: Hunts for proc exec at
+// MITRE ATT&CK: T1053.002
 ProcessExecutionEvents | where ProcessName == 'at.exe'

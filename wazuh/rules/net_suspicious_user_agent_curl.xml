@@ -4,7 +4,8 @@
     <match>User-Agent: curl</match>
     <description>Suspicious User-Agent curl</description>
     <mitre>
-      <id>T1000</id>
+      <id>T1071.001</id>
+      <id>T1105</id>
     </mitre>
   </rule>
 </group>

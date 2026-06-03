@@ -1,3 +1,4 @@
 // Title: File Create Pif
 // Description: Hunts for file create pif
+// MITRE ATT&CK: T1036
 FileCreationEvents | where FileName endswith '.pif'

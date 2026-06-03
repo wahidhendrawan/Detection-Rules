@@ -1,6 +1,9 @@
 {
   "name": "cb_childproc_creation_7z_exe",
   "description": "Auto-added Carbon Black detection query",
+  "mitre": [
+    "T1560.001"
+  ],
   "query": "process_name:7z.exe AND event_type:childproc",
   "severity": "high"
 }

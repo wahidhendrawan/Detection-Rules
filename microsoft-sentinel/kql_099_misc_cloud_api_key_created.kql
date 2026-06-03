@@ -1,3 +1,4 @@
 // Title: Misc Cloud Api Key Created
 // Description: Hunts for misc cloud api key created
+// MITRE ATT&CK: T1098.001
 CloudEvents | where ActionType == 'CreateApiKey'

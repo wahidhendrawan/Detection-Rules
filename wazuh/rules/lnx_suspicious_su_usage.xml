@@ -4,7 +4,7 @@
     <match>Successful su for root by</match>
     <description>Successful su to root</description>
     <mitre>
-      <id>T1000</id>
+      <id>T1078.003</id>
     </mitre>
   </rule>
 </group>

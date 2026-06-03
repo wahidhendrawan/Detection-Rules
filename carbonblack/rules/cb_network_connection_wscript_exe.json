@@ -2,6 +2,9 @@
   "id": "90d78234-e32f-475a-8341-397b8030d5f1",
   "name": "cb_network_connection_wscript_exe",
   "description": "Detects network_connection involving wscript.exe",
+  "mitre": [
+    "T1059.005"
+  ],
   "query": "netconn_domain:wscript.exe",
   "severity": 5,
   "enabled": true,

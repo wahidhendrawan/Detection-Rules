@@ -1,3 +1,4 @@
 // Title: Proc Exec Cscript
 // Description: Hunts for proc exec cscript
+// MITRE ATT&CK: T1059.005
 ProcessExecutionEvents | where ProcessName == 'cscript.exe'

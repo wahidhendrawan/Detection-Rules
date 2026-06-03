@@ -1,3 +1,4 @@
 // Title: Misc Cloud Vm Deleted
 // Description: Hunts for misc cloud vm deleted
+// MITRE ATT&CK: T1578.003
 CloudEvents | where ActionType == 'DeleteVM'

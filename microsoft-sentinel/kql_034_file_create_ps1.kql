@@ -1,3 +1,4 @@
 // Title: File Create Ps1
 // Description: Hunts for file create ps1
+// MITRE ATT&CK: T1059.001
 FileCreationEvents | where FileName endswith '.ps1'

@@ -2,6 +2,9 @@
   "id": "6640696c-9f56-4319-b210-a8801af7c9e0",
   "name": "cb_process_creation_cscript_exe",
   "description": "Detects process_creation involving cscript.exe",
+  "mitre": [
+    "T1059.005"
+  ],
   "query": "process_name:cscript.exe",
   "severity": 5,
   "enabled": true,

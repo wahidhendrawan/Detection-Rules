@@ -2,6 +2,9 @@
   "id": "f8826729-1db9-48dc-bb80-0bbb2f87c1e8",
   "name": "cb_network_connection_powershell_exe",
   "description": "Detects network_connection involving powershell.exe",
+  "mitre": [
+    "T1059.001"
+  ],
   "query": "netconn_domain:powershell.exe",
   "severity": 5,
   "enabled": true,

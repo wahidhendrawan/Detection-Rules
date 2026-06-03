@@ -1,3 +1,4 @@
 // Title: Net Conn Ftp
 // Description: Hunts for net conn ftp
+// MITRE ATT&CK: T1071.002
 NetworkConnectionEvents | where DestinationPort == 21

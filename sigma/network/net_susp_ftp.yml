@@ -19,4 +19,4 @@ falsepositives:
   - Legitimate administrative activity
 level: medium
 tags:
-  - attack.command_and_control
+  - attack.command-and-control

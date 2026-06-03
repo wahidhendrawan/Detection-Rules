@@ -1,3 +1,4 @@
 // Title: Obj Access Host File
 // Description: Hunts for obj access host file
+// MITRE ATT&CK: T1565.001
 ObjectAccessEvents | where ObjectName contains 'etc\\hosts'

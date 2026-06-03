@@ -6,7 +6,7 @@
 ## Ringkasan
 
 - Total file rule         : **533**
-- Total teknik unik       : **77**
+- Total teknik unik       : **124**
 
 ### Per Platform
 
@@ -15,9 +15,9 @@
 | sigma | 105 | 21 |
 | elastic | 58 | 51 |
 | splunk | 18 | 18 |
-| microsoft-sentinel | 102 | 0 |
-| wazuh | 140 | 24 |
-| carbonblack | 110 | 0 |
+| microsoft-sentinel | 102 | 61 |
+| wazuh | 140 | 42 |
+| carbonblack | 110 | 30 |
 
 ## Coverage Matrix
 
@@ -25,70 +25,117 @@ Tanda ✅ = ada minimal satu rule pada platform tersebut yang memetakan teknik.
 
 | Technique | Sigma | Elastic | Splunk | Sentinel | Wazuh | CarbonBlack |
 |---|:---:|:---:|:---:|:---:|:---:|:---:|
-| `T1000` | · | · | · | · | ✅ | · |
-| `T1003.001` | ✅ | · | · | · | ✅ | · |
+| `T1003.001` | ✅ | · | · | ✅ | ✅ | ✅ |
+| `T1003.002` | · | · | · | ✅ | · | · |
+| `T1003.003` | · | · | · | ✅ | · | · |
 | `T1003.008` | · | · | ✅ | · | ✅ | · |
-| `T1012` | · | ✅ | · | · | · | · |
+| `T1005` | · | · | · | ✅ | · | · |
+| `T1012` | · | ✅ | · | ✅ | · | · |
 | `T1016` | · | ✅ | · | · | · | · |
-| `T1021.001` | ✅ | ✅ | · | · | · | · |
-| `T1027` | ✅ | · | · | · | ✅ | · |
+| `T1021` | · | · | · | ✅ | · | · |
+| `T1021.001` | ✅ | ✅ | · | ✅ | ✅ | · |
+| `T1021.002` | · | · | · | ✅ | · | ✅ |
+| `T1021.004` | · | · | · | ✅ | · | · |
+| `T1027` | ✅ | · | · | ✅ | ✅ | · |
 | `T1029` | · | ✅ | · | · | · | · |
 | `T1033` | · | · | ✅ | · | · | · |
-| `T1036` | · | ✅ | · | · | · | · |
+| `T1036` | · | ✅ | · | ✅ | · | ✅ |
 | `T1041` | · | ✅ | · | · | · | · |
 | `T1046` | ✅ | · | · | · | ✅ | · |
-| `T1047` | · | ✅ | · | · | · | · |
+| `T1047` | · | ✅ | · | · | · | ✅ |
 | `T1048` | · | ✅ | · | · | · | · |
+| `T1053.002` | · | · | · | ✅ | · | ✅ |
 | `T1053.003` | ✅ | · | ✅ | · | ✅ | · |
-| `T1053.005` | ✅ | · | · | · | ✅ | · |
+| `T1053.005` | ✅ | · | · | ✅ | ✅ | ✅ |
 | `T1055.012` | · | ✅ | · | · | · | · |
-| `T1059` | ✅ | ✅ | ✅ | · | ✅ | · |
-| `T1059.001` | ✅ | ✅ | ✅ | · | ✅ | · |
-| `T1059.003` | · | ✅ | · | · | · | · |
+| `T1059` | ✅ | ✅ | ✅ | · | ✅ | ✅ |
+| `T1059.001` | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+| `T1059.003` | · | ✅ | · | ✅ | ✅ | ✅ |
 | `T1059.004` | ✅ | ✅ | · | · | ✅ | · |
+| `T1059.005` | · | · | · | ✅ | · | ✅ |
+| `T1059.006` | · | · | · | · | · | ✅ |
+| `T1059.007` | · | · | · | ✅ | · | · |
 | `T1068` | ✅ | ✅ | ✅ | · | · | · |
 | `T1070` | · | ✅ | · | · | · | · |
-| `T1070.001` | ✅ | ✅ | · | · | · | · |
+| `T1070.001` | ✅ | ✅ | · | ✅ | · | · |
 | `T1070.003` | · | · | · | · | ✅ | · |
 | `T1071` | ✅ | ✅ | · | · | · | · |
-| `T1071.001` | · | · | ✅ | · | · | · |
-| `T1071.004` | ✅ | ✅ | ✅ | · | · | · |
-| `T1072` | · | ✅ | · | · | · | · |
-| `T1078` | · | · | · | · | ✅ | · |
+| `T1071.001` | · | · | ✅ | ✅ | ✅ | ✅ |
+| `T1071.002` | · | · | · | ✅ | · | · |
+| `T1071.004` | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+| `T1072` | · | ✅ | · | · | ✅ | · |
+| `T1078` | · | · | · | ✅ | ✅ | · |
+| `T1078.003` | · | · | · | · | ✅ | · |
+| `T1078.004` | · | · | · | ✅ | · | · |
 | `T1082` | · | ✅ | · | · | · | · |
-| `T1098` | ✅ | · | ✅ | · | ✅ | · |
-| `T1098.004` | ✅ | · | · | · | · | · |
-| `T1105` | ✅ | ✅ | ✅ | · | ✅ | · |
-| `T1110` | · | · | ✅ | · | ✅ | · |
-| `T1112` | · | ✅ | · | · | · | · |
-| `T1136.001` | ✅ | · | · | · | ✅ | · |
+| `T1087` | · | · | · | · | · | ✅ |
+| `T1090` | · | · | · | ✅ | · | · |
+| `T1090.003` | · | · | · | ✅ | · | · |
+| `T1095` | · | · | · | · | · | ✅ |
+| `T1098` | ✅ | · | ✅ | ✅ | ✅ | ✅ |
+| `T1098.001` | · | · | · | ✅ | · | · |
+| `T1098.003` | · | · | · | ✅ | · | · |
+| `T1098.004` | ✅ | · | · | · | ✅ | · |
+| `T1098.007` | · | · | · | ✅ | ✅ | · |
+| `T1105` | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+| `T1110` | · | · | ✅ | ✅ | ✅ | · |
+| `T1110.001` | · | · | · | · | ✅ | · |
+| `T1112` | · | ✅ | · | ✅ | · | ✅ |
+| `T1127.001` | · | · | · | · | · | ✅ |
+| `T1136` | · | · | · | ✅ | · | ✅ |
+| `T1136.001` | ✅ | · | · | ✅ | ✅ | · |
+| `T1136.002` | · | · | · | · | ✅ | · |
+| `T1140` | · | · | · | ✅ | · | ✅ |
 | `T1190` | · | ✅ | · | · | ✅ | · |
-| `T1197` | · | ✅ | · | · | · | · |
+| `T1197` | · | ✅ | · | ✅ | · | ✅ |
 | `T1205.002` | · | ✅ | · | · | · | · |
-| `T1218.005` | ✅ | · | ✅ | · | · | · |
-| `T1218.010` | · | · | ✅ | · | · | · |
-| `T1218.011` | · | · | ✅ | · | · | · |
+| `T1218` | · | · | · | ✅ | · | · |
+| `T1218.004` | · | · | · | · | · | ✅ |
+| `T1218.005` | ✅ | · | ✅ | · | · | ✅ |
+| `T1218.010` | · | · | ✅ | ✅ | · | ✅ |
+| `T1218.011` | · | · | ✅ | ✅ | · | ✅ |
 | `T1219` | · | ✅ | · | · | · | · |
+| `T1484` | · | · | · | ✅ | · | · |
+| `T1484.001` | · | · | · | · | ✅ | · |
 | `T1486` | · | ✅ | · | · | · | · |
-| `T1490` | ✅ | ✅ | ✅ | · | · | · |
+| `T1489` | · | · | · | ✅ | ✅ | · |
+| `T1490` | ✅ | ✅ | ✅ | ✅ | · | · |
 | `T1497` | · | ✅ | · | · | · | · |
 | `T1497.001` | · | ✅ | · | · | · | · |
 | `T1497.002` | · | ✅ | · | · | · | · |
 | `T1497.003` | · | ✅ | · | · | · | · |
+| `T1499` | · | · | · | ✅ | ✅ | · |
 | `T1505.003` | · | · | · | · | ✅ | · |
-| `T1543.003` | · | · | ✅ | · | ✅ | · |
+| `T1530` | · | · | · | ✅ | · | · |
+| `T1531` | · | · | · | ✅ | ✅ | · |
+| `T1543` | · | · | · | · | ✅ | · |
+| `T1543.003` | · | · | ✅ | ✅ | ✅ | · |
+| `T1547.001` | · | · | · | ✅ | ✅ | · |
+| `T1547.005` | · | · | · | ✅ | · | · |
 | `T1547.006` | · | · | · | · | ✅ | · |
-| `T1548.002` | · | ✅ | · | · | · | · |
+| `T1548.002` | · | ✅ | · | ✅ | · | · |
 | `T1548.003` | ✅ | · | · | · | ✅ | · |
 | `T1552.001` | · | ✅ | · | · | · | · |
-| `T1562.001` | · | ✅ | ✅ | · | ✅ | · |
-| `T1562.004` | · | · | · | · | ✅ | · |
+| `T1556` | · | · | · | ✅ | ✅ | · |
+| `T1556.006` | · | · | · | ✅ | · | · |
+| `T1560.001` | · | · | · | · | · | ✅ |
+| `T1562.001` | · | ✅ | ✅ | ✅ | ✅ | · |
+| `T1562.002` | · | · | · | ✅ | · | · |
+| `T1562.004` | · | · | · | ✅ | ✅ | · |
 | `T1562.008` | ✅ | · | · | · | · | · |
+| `T1564` | · | · | · | ✅ | · | · |
 | `T1564.001` | · | · | ✅ | · | · | · |
+| `T1565.001` | · | · | · | ✅ | · | · |
 | `T1567` | · | ✅ | · | · | · | · |
+| `T1567.002` | · | · | · | · | · | ✅ |
 | `T1569.002` | · | · | · | · | ✅ | · |
+| `T1571` | · | · | · | ✅ | ✅ | · |
+| `T1572` | · | · | · | ✅ | ✅ | ✅ |
 | `T1574` | · | ✅ | · | · | · | · |
 | `T1574.001` | · | ✅ | · | · | · | · |
+| `T1574.002` | · | · | · | ✅ | · | ✅ |
+| `T1578.002` | · | · | · | ✅ | · | · |
+| `T1578.003` | · | · | · | ✅ | · | · |
 | `T1586.001` | · | ✅ | · | · | · | · |
 | `T1586.002` | · | ✅ | · | · | · | · |
 | `T1586.003` | · | ✅ | · | · | · | · |
@@ -210,32 +257,151 @@ Tanda ✅ = ada minimal satu rule pada platform tersebut yang memetakan teknik.
 | `T1562.001` | `splunk/windows/win_suspicious_taskkill.spl` |
 | `T1564.001` | `splunk/windows/win_suspicious_attrib_hidden.spl` |
 
+### microsoft-sentinel
+
+| Technique | Rule files |
+|---|---|
+| `T1003.001` | `microsoft-sentinel/kql_029_reg_mod_wdigest.kql`, `microsoft-sentinel/kql_084_obj_access_lsass.kql` |
+| `T1003.002` | `microsoft-sentinel/kql_083_obj_access_sam.kql` |
+| `T1003.003` | `microsoft-sentinel/kql_087_obj_access_ntds.kql` |
+| `T1005` | `microsoft-sentinel/kql_081_obj_access_file.kql` |
+| `T1012` | `microsoft-sentinel/kql_082_obj_access_registry.kql` |
+| `T1021` | `microsoft-sentinel/kql_015_net_conn_telnet.kql`, `microsoft-sentinel/kql_056_logon_network.kql` |
+| `T1021.001` | `microsoft-sentinel/kql_012_net_conn_rdp.kql`, `microsoft-sentinel/kql_028_reg_mod_rdp.kql`, `microsoft-sentinel/kql_055_logon_rdp.kql` |
+| `T1021.002` | `microsoft-sentinel/kql_016_net_conn_smb.kql` |
+| `T1021.004` | `microsoft-sentinel/kql_013_net_conn_ssh.kql` |
+| `T1027` | `microsoft-sentinel/kql_endpoint_win_powershell_suspicious_encoded_command.kql` |
+| `T1036` | `microsoft-sentinel/kql_031_file_create_exe_temp.kql`, `microsoft-sentinel/kql_039_file_create_scr.kql`, `microsoft-sentinel/kql_040_file_create_pif.kql`, `microsoft-sentinel/kql_066_schtask_suspicious_name.kql`, `microsoft-sentinel/kql_076_service_suspicious_path.kql` ... |
+| `T1053.002` | `microsoft-sentinel/kql_010_proc_exec_at.kql` |
+| `T1053.005` | `microsoft-sentinel/kql_009_proc_exec_schtasks.kql`, `microsoft-sentinel/kql_061_schtask_created.kql`, `microsoft-sentinel/kql_062_schtask_deleted.kql`, `microsoft-sentinel/kql_063_schtask_enabled.kql`, `microsoft-sentinel/kql_064_schtask_disabled.kql` ... |
+| `T1059.001` | `microsoft-sentinel/kql_002_proc_exec_powershell.kql`, `microsoft-sentinel/kql_034_file_create_ps1.kql`, `microsoft-sentinel/kql_endpoint_win_powershell_suspicious_encoded_command.kql` |
+| `T1059.003` | `microsoft-sentinel/kql_001_proc_exec_cmd.kql`, `microsoft-sentinel/kql_036_file_create_bat.kql` |
+| `T1059.005` | `microsoft-sentinel/kql_003_proc_exec_wscript.kql`, `microsoft-sentinel/kql_004_proc_exec_cscript.kql`, `microsoft-sentinel/kql_035_file_create_vbs.kql`, `microsoft-sentinel/kql_038_file_create_wsf.kql` |
+| `T1059.007` | `microsoft-sentinel/kql_037_file_create_js.kql` |
+| `T1070.001` | `microsoft-sentinel/kql_089_obj_access_event_log.kql` |
+| `T1071.001` | `microsoft-sentinel/kql_018_net_conn_http_malicious.kql`, `microsoft-sentinel/kql_020_net_conn_darkweb.kql` |
+| `T1071.002` | `microsoft-sentinel/kql_014_net_conn_ftp.kql` |
+| `T1071.004` | `microsoft-sentinel/kql_017_net_conn_dns_tunnel.kql`, `microsoft-sentinel/kql_net_dns_suspicious_tunnel.kql` |
+| `T1078` | `microsoft-sentinel/kql_052_logon_success.kql`, `microsoft-sentinel/kql_053_logon_explicit.kql`, `microsoft-sentinel/kql_054_logon_special.kql`, `microsoft-sentinel/kql_057_logon_batch.kql`, `microsoft-sentinel/kql_058_logon_service.kql` ... |
+| `T1078.004` | `microsoft-sentinel/kql_091_misc_cloud_login.kql`, `microsoft-sentinel/kql_092_misc_cloud_failed_login.kql`, `microsoft-sentinel/kql_100_misc_cloud_suspicious_api.kql` |
+| `T1090` | `microsoft-sentinel/kql_027_reg_mod_proxy.kql` |
+| `T1090.003` | `microsoft-sentinel/kql_019_net_conn_tor.kql`, `microsoft-sentinel/kql_020_net_conn_darkweb.kql` |
+| `T1098` | `microsoft-sentinel/kql_042_acct_mgr_user_enabled.kql`, `microsoft-sentinel/kql_043_acct_mgr_user_pwd_reset.kql`, `microsoft-sentinel/kql_059_logon_unlock.kql` |
+| `T1098.001` | `microsoft-sentinel/kql_099_misc_cloud_api_key_created.kql` |
+| `T1098.003` | `microsoft-sentinel/kql_094_misc_cloud_admin_assigned.kql` |
+| `T1098.007` | `microsoft-sentinel/kql_045_acct_mgr_user_added_to_group.kql` |
+| `T1105` | `microsoft-sentinel/kql_007_proc_exec_certutil.kql`, `microsoft-sentinel/kql_031_file_create_exe_temp.kql` |
+| `T1110` | `microsoft-sentinel/kql_050_acct_mgr_acct_locked_out.kql`, `microsoft-sentinel/kql_051_logon_failed.kql`, `microsoft-sentinel/kql_092_misc_cloud_failed_login.kql` |
+| `T1112` | `microsoft-sentinel/kql_028_reg_mod_rdp.kql`, `microsoft-sentinel/kql_029_reg_mod_wdigest.kql` |
+| `T1136` | `microsoft-sentinel/kql_047_acct_mgr_group_created.kql` |
+| `T1136.001` | `microsoft-sentinel/kql_041_acct_mgr_user_created.kql` |
+| `T1140` | `microsoft-sentinel/kql_007_proc_exec_certutil.kql` |
+| `T1197` | `microsoft-sentinel/kql_008_proc_exec_bitsadmin.kql` |
+| `T1218` | `microsoft-sentinel/kql_039_file_create_scr.kql` |
+| `T1218.010` | `microsoft-sentinel/kql_006_proc_exec_regsvr32.kql` |
+| `T1218.011` | `microsoft-sentinel/kql_005_proc_exec_rundll32.kql` |
+| `T1484` | `microsoft-sentinel/kql_049_acct_mgr_pwd_policy_changed.kql` |
+| `T1489` | `microsoft-sentinel/kql_073_service_stopped.kql` |
+| `T1490` | `microsoft-sentinel/kql_085_obj_access_shadow_copy.kql`, `microsoft-sentinel/kql_086_obj_access_backup.kql` |
+| `T1499` | `microsoft-sentinel/kql_074_service_failed.kql`, `microsoft-sentinel/kql_075_service_crashed.kql` |
+| `T1530` | `microsoft-sentinel/kql_098_misc_cloud_storage_public.kql` |
+| `T1531` | `microsoft-sentinel/kql_044_acct_mgr_user_deleted.kql`, `microsoft-sentinel/kql_046_acct_mgr_user_removed_from_group.kql`, `microsoft-sentinel/kql_048_acct_mgr_group_deleted.kql` |
+| `T1543.003` | `microsoft-sentinel/kql_023_reg_mod_services.kql`, `microsoft-sentinel/kql_033_file_create_sys.kql`, `microsoft-sentinel/kql_071_service_installed.kql`, `microsoft-sentinel/kql_072_service_started.kql`, `microsoft-sentinel/kql_076_service_suspicious_path.kql` ... |
+| `T1547.001` | `microsoft-sentinel/kql_021_reg_mod_run_key.kql`, `microsoft-sentinel/kql_022_reg_mod_runonce_key.kql` |
+| `T1547.005` | `microsoft-sentinel/kql_030_reg_mod_lsa.kql` |
+| `T1548.002` | `microsoft-sentinel/kql_026_reg_mod_uac.kql` |
+| `T1556` | `microsoft-sentinel/kql_060_logon_cleartext.kql` |
+| `T1556.006` | `microsoft-sentinel/kql_093_misc_cloud_mfa_disabled.kql` |
+| `T1562.001` | `microsoft-sentinel/kql_025_reg_mod_defender.kql`, `microsoft-sentinel/kql_080_service_disabled.kql` |
+| `T1562.002` | `microsoft-sentinel/kql_088_obj_access_audit_policy.kql` |
+| `T1562.004` | `microsoft-sentinel/kql_024_reg_mod_firewall.kql`, `microsoft-sentinel/kql_095_misc_cloud_fw_changed.kql` |
+| `T1564` | `microsoft-sentinel/kql_068_schtask_hidden.kql` |
+| `T1565.001` | `microsoft-sentinel/kql_090_obj_access_host_file.kql` |
+| `T1571` | `microsoft-sentinel/kql_011_net_conn_suspicious_port.kql` |
+| `T1572` | `microsoft-sentinel/kql_017_net_conn_dns_tunnel.kql`, `microsoft-sentinel/kql_net_dns_suspicious_tunnel.kql` |
+| `T1574.002` | `microsoft-sentinel/kql_032_file_create_dll_temp.kql` |
+| `T1578.002` | `microsoft-sentinel/kql_096_misc_cloud_vm_created.kql` |
+| `T1578.003` | `microsoft-sentinel/kql_097_misc_cloud_vm_deleted.kql` |
+
 ### wazuh
 
 | Technique | Rule files |
 |---|---|
-| `T1000` | `wazuh/rules/app_apache_config_changed.xml`, `wazuh/rules/app_apache_crashed.xml`, `wazuh/rules/app_apache_failed.xml`, `wazuh/rules/app_apache_restarted.xml`, `wazuh/rules/app_apache_started.xml` ... |
-| `T1003.001` | `wazuh/rules/mimikatz_usage.xml` |
-| `T1003.008` | `wazuh/rules/shadow_file_access.xml` |
-| `T1027` | `wazuh/rules/base64_decoding.xml` |
+| `T1003.001` | `wazuh/rules/mimikatz_usage.xml`, `wazuh/rules/win_suspicious_process_lsass.xml` |
+| `T1003.008` | `wazuh/rules/lnx_passwd_file_modified.xml`, `wazuh/rules/lnx_shadow_file_modified.xml`, `wazuh/rules/shadow_file_access.xml` |
+| `T1021.001` | `wazuh/rules/net_suspicious_port_3389_outbound.xml` |
+| `T1027` | `wazuh/rules/base64_decoding.xml`, `wazuh/rules/win_suspicious_process_cmd_encoded.xml` |
 | `T1046` | `wazuh/rules/nmap_scan_detected.xml` |
-| `T1053.003` | `wazuh/rules/cron_job_modification.xml` |
+| `T1053.003` | `wazuh/rules/cron_job_modification.xml`, `wazuh/rules/lnx_crontab_creation.xml` |
 | `T1053.005` | `wazuh/rules/schtasks_creation.xml` |
 | `T1059` | `wazuh/rules/php_code_injection.xml`, `wazuh/rules/wazuh_auth_bruteforce_many_fail.xml`, `wazuh/rules/wazuh_cloud_aws_stop_logging.xml`, `wazuh/rules/wazuh_lnx_curl_wget_to_shell.xml`, `wazuh/rules/wazuh_lnx_passwd_shadow_read.xml` ... |
 | `T1059.001` | `wazuh/rules/powershell_encoded_command.xml` |
+| `T1059.003` | `wazuh/rules/win_suspicious_process_cmd_encoded.xml` |
 | `T1059.004` | `wazuh/rules/netcat_reverse_shell.xml` |
-| `T1070.003` | `wazuh/rules/clear_linux_history.xml` |
-| `T1078` | `wazuh/rules/aws_s3_bucket_public_access.xml` |
-| `T1098` | `wazuh/rules/aws_iam_user_created.xml`, `wazuh/rules/gcp_iam_role_grant.xml`, `wazuh/rules/group_modification.xml` |
-| `T1105` | `wazuh/rules/suspicious_curl_wget.xml` |
-| `T1110` | `wazuh/rules/rdp_brute_force.xml`, `wazuh/rules/ssh_brute_force.xml` |
+| `T1070.003` | `wazuh/rules/clear_linux_history.xml`, `wazuh/rules/lnx_suspicious_history_deletion.xml` |
+| `T1071.001` | `wazuh/rules/net_suspicious_user_agent_curl.xml`, `wazuh/rules/net_suspicious_user_agent_wget.xml` |
+| `T1071.004` | `wazuh/rules/net_dns_tunneling_suspicion.xml` |
+| `T1072` | `wazuh/rules/lnx_apt_get_install.xml`, `wazuh/rules/lnx_yum_install.xml` |
+| `T1078` | `wazuh/rules/app_apache_unauthorized_access.xml`, `wazuh/rules/app_docker_unauthorized_access.xml`, `wazuh/rules/app_gitlab_unauthorized_access.xml`, `wazuh/rules/app_jenkins_unauthorized_access.xml`, `wazuh/rules/app_kubernetes_unauthorized_access.xml` ... |
+| `T1078.003` | `wazuh/rules/lnx_suspicious_su_usage.xml`, `wazuh/rules/net_ssh_root_login.xml` |
+| `T1098` | `wazuh/rules/aws_iam_user_created.xml`, `wazuh/rules/gcp_iam_role_grant.xml`, `wazuh/rules/group_modification.xml`, `wazuh/rules/lnx_passwd_file_modified.xml`, `wazuh/rules/lnx_shadow_file_modified.xml` ... |
+| `T1098.004` | `wazuh/rules/lnx_sshd_config_modified.xml` |
+| `T1098.007` | `wazuh/rules/win_ad_user_added_to_admin_group.xml` |
+| `T1105` | `wazuh/rules/net_suspicious_user_agent_curl.xml`, `wazuh/rules/net_suspicious_user_agent_wget.xml`, `wazuh/rules/suspicious_curl_wget.xml` |
+| `T1110` | `wazuh/rules/lnx_failed_su_usage.xml`, `wazuh/rules/rdp_brute_force.xml`, `wazuh/rules/ssh_brute_force.xml` |
+| `T1110.001` | `wazuh/rules/net_ssh_failed_root_login.xml` |
 | `T1136.001` | `wazuh/rules/account_creation.xml` |
+| `T1136.002` | `wazuh/rules/win_ad_computer_account_created.xml` |
 | `T1190` | `wazuh/rules/apache_error_log_spike.xml`, `wazuh/rules/directory_traversal.xml`, `wazuh/rules/nginx_error_log_spike.xml`, `wazuh/rules/sql_injection_attempt.xml`, `wazuh/rules/xss_attempt.xml` |
+| `T1484.001` | `wazuh/rules/win_ad_group_policy_modified.xml` |
+| `T1489` | `wazuh/rules/app_apache_stopped.xml`, `wazuh/rules/app_docker_stopped.xml`, `wazuh/rules/app_gitlab_stopped.xml`, `wazuh/rules/app_jenkins_stopped.xml`, `wazuh/rules/app_kubernetes_stopped.xml` ... |
+| `T1499` | `wazuh/rules/app_apache_crashed.xml`, `wazuh/rules/app_apache_failed.xml`, `wazuh/rules/app_docker_crashed.xml`, `wazuh/rules/app_docker_failed.xml`, `wazuh/rules/app_gitlab_crashed.xml` ... |
 | `T1505.003` | `wazuh/rules/web_shell_upload.xml` |
+| `T1531` | `wazuh/rules/win_ad_user_deleted.xml` |
+| `T1543` | `wazuh/rules/app_apache_restarted.xml`, `wazuh/rules/app_apache_started.xml`, `wazuh/rules/app_docker_restarted.xml`, `wazuh/rules/app_docker_started.xml`, `wazuh/rules/app_gitlab_restarted.xml` ... |
 | `T1543.003` | `wazuh/rules/service_creation.xml` |
+| `T1547.001` | `wazuh/rules/win_registry_persistence_run.xml`, `wazuh/rules/win_registry_persistence_runonce.xml` |
 | `T1547.006` | `wazuh/rules/kernel_module_loading.xml` |
 | `T1548.003` | `wazuh/rules/sudo_abuse.xml` |
-| `T1562.001` | `wazuh/rules/windows_defender_disabled.xml` |
-| `T1562.004` | `wazuh/rules/windows_firewall_modified.xml` |
+| `T1556` | `wazuh/rules/lnx_sshd_config_modified.xml` |
+| `T1562.001` | `wazuh/rules/app_apache_config_changed.xml`, `wazuh/rules/app_docker_config_changed.xml`, `wazuh/rules/app_gitlab_config_changed.xml`, `wazuh/rules/app_jenkins_config_changed.xml`, `wazuh/rules/app_kubernetes_config_changed.xml` ... |
+| `T1562.004` | `wazuh/rules/net_firewall_rule_added.xml`, `wazuh/rules/net_firewall_rule_deleted.xml`, `wazuh/rules/windows_firewall_modified.xml` |
 | `T1569.002` | `wazuh/rules/psexec_execution.xml` |
+| `T1571` | `wazuh/rules/net_suspicious_port_4444.xml` |
+| `T1572` | `wazuh/rules/net_dns_tunneling_suspicion.xml` |
+
+### carbonblack
+
+| Technique | Rule files |
+|---|---|
+| `T1003.001` | `carbonblack/rules/cb_childproc_creation_mimikatz_exe.json`, `carbonblack/rules/cb_childproc_creation_procdump_exe.json`, `carbonblack/rules/cb_file_modification_mimikatz_exe.json`, `carbonblack/rules/cb_file_modification_procdump_exe.json`, `carbonblack/rules/cb_filemod_lsass_dump_dmp.json` ... |
+| `T1021.002` | `carbonblack/rules/cb_childproc_creation_psexec_exe.json` |
+| `T1036` | `carbonblack/rules/cb_childproc_creation_suspicious_app_exe.json`, `carbonblack/rules/cb_file_modification_suspicious_app_exe.json`, `carbonblack/rules/cb_network_connection_suspicious_app_exe.json`, `carbonblack/rules/cb_process_creation_suspicious_app_exe.json`, `carbonblack/rules/cb_registry_modification_suspicious_app_exe.json` |
+| `T1047` | `carbonblack/rules/cb_childproc_creation_wmic_exe.json` |
+| `T1053.002` | `carbonblack/rules/cb_childproc_creation_at_exe.json`, `carbonblack/rules/cb_file_modification_at_exe.json`, `carbonblack/rules/cb_network_connection_at_exe.json`, `carbonblack/rules/cb_process_creation_at_exe.json`, `carbonblack/rules/cb_registry_modification_at_exe.json` |
+| `T1053.005` | `carbonblack/rules/cb_childproc_creation_schtasks_exe.json`, `carbonblack/rules/cb_file_modification_schtasks_exe.json`, `carbonblack/rules/cb_network_connection_schtasks_exe.json`, `carbonblack/rules/cb_process_creation_schtasks_exe.json`, `carbonblack/rules/cb_registry_modification_schtasks_exe.json` |
+| `T1059` | `carbonblack/rules/cb_childproc_creation_suspicious_app_exe.json`, `carbonblack/rules/cb_file_modification_suspicious_app_exe.json`, `carbonblack/rules/cb_network_connection_suspicious_app_exe.json`, `carbonblack/rules/cb_process_creation_suspicious_app_exe.json`, `carbonblack/rules/cb_registry_modification_suspicious_app_exe.json` |
+| `T1059.001` | `carbonblack/rules/cb_childproc_creation_powershell_exe.json`, `carbonblack/rules/cb_file_modification_powershell_exe.json`, `carbonblack/rules/cb_network_connection_powershell_exe.json`, `carbonblack/rules/cb_process_creation_powershell_exe.json`, `carbonblack/rules/cb_registry_modification_powershell_exe.json` |
+| `T1059.003` | `carbonblack/rules/cb_childproc_creation_cmd_exe.json`, `carbonblack/rules/cb_file_modification_cmd_exe.json`, `carbonblack/rules/cb_network_connection_cmd_exe.json`, `carbonblack/rules/cb_process_creation_cmd_exe.json`, `carbonblack/rules/cb_registry_modification_cmd_exe.json` |
+| `T1059.005` | `carbonblack/rules/cb_childproc_creation_cscript_exe.json`, `carbonblack/rules/cb_childproc_creation_wscript_exe.json`, `carbonblack/rules/cb_file_modification_cscript_exe.json`, `carbonblack/rules/cb_file_modification_wscript_exe.json`, `carbonblack/rules/cb_network_connection_cscript_exe.json` ... |
+| `T1059.006` | `carbonblack/rules/cb_childproc_creation_hacker_tool_py.json`, `carbonblack/rules/cb_file_modification_hacker_tool_py.json`, `carbonblack/rules/cb_network_connection_hacker_tool_py.json`, `carbonblack/rules/cb_process_creation_hacker_tool_py.json`, `carbonblack/rules/cb_registry_modification_hacker_tool_py.json` |
+| `T1071.001` | `carbonblack/rules/cb_childproc_creation_evil_com.json`, `carbonblack/rules/cb_childproc_creation_malicious-site_org.json`, `carbonblack/rules/cb_file_modification_evil_com.json`, `carbonblack/rules/cb_file_modification_malicious-site_org.json`, `carbonblack/rules/cb_network_connection_evil_com.json` ... |
+| `T1071.004` | `carbonblack/rules/cb_netconn_dns_tunnel_like.json` |
+| `T1087` | `carbonblack/rules/cb_childproc_creation_net_exe.json` |
+| `T1095` | `carbonblack/rules/cb_childproc_creation_nc_exe.json`, `carbonblack/rules/cb_childproc_creation_ncat_exe.json`, `carbonblack/rules/cb_file_modification_nc_exe.json`, `carbonblack/rules/cb_file_modification_ncat_exe.json`, `carbonblack/rules/cb_network_connection_nc_exe.json` ... |
+| `T1098` | `carbonblack/rules/cb_childproc_creation_net_exe.json` |
+| `T1105` | `carbonblack/rules/cb_childproc_creation_certutil_exe.json`, `carbonblack/rules/cb_file_modification_certutil_exe.json`, `carbonblack/rules/cb_network_connection_certutil_exe.json`, `carbonblack/rules/cb_process_creation_certutil_exe.json`, `carbonblack/rules/cb_registry_modification_certutil_exe.json` |
+| `T1112` | `carbonblack/rules/cb_childproc_creation_reg_exe.json` |
+| `T1127.001` | `carbonblack/rules/cb_childproc_creation_msbuild_exe.json`, `carbonblack/rules/cb_file_modification_msbuild_exe.json`, `carbonblack/rules/cb_network_connection_msbuild_exe.json`, `carbonblack/rules/cb_process_creation_msbuild_exe.json`, `carbonblack/rules/cb_registry_modification_msbuild_exe.json` |
+| `T1136` | `carbonblack/rules/cb_childproc_creation_net_exe.json` |
+| `T1140` | `carbonblack/rules/cb_childproc_creation_certutil_exe.json`, `carbonblack/rules/cb_file_modification_certutil_exe.json`, `carbonblack/rules/cb_network_connection_certutil_exe.json`, `carbonblack/rules/cb_process_creation_certutil_exe.json`, `carbonblack/rules/cb_registry_modification_certutil_exe.json` |
+| `T1197` | `carbonblack/rules/cb_childproc_creation_bitsadmin_exe.json`, `carbonblack/rules/cb_file_modification_bitsadmin_exe.json`, `carbonblack/rules/cb_network_connection_bitsadmin_exe.json`, `carbonblack/rules/cb_process_creation_bitsadmin_exe.json`, `carbonblack/rules/cb_registry_modification_bitsadmin_exe.json` |
+| `T1218.004` | `carbonblack/rules/cb_childproc_creation_installutil_exe.json` |
+| `T1218.005` | `carbonblack/rules/cb_childproc_creation_mshta_exe.json` |
+| `T1218.010` | `carbonblack/rules/cb_childproc_creation_regsvr32_exe.json`, `carbonblack/rules/cb_file_modification_regsvr32_exe.json`, `carbonblack/rules/cb_network_connection_regsvr32_exe.json`, `carbonblack/rules/cb_process_creation_regsvr32_exe.json`, `carbonblack/rules/cb_registry_modification_regsvr32_exe.json` |
+| `T1218.011` | `carbonblack/rules/cb_childproc_creation_rundll32_exe.json`, `carbonblack/rules/cb_file_modification_rundll32_exe.json`, `carbonblack/rules/cb_network_connection_rundll32_exe.json`, `carbonblack/rules/cb_process_creation_rundll32_exe.json`, `carbonblack/rules/cb_registry_modification_rundll32_exe.json` |
+| `T1560.001` | `carbonblack/rules/cb_childproc_creation_7z_exe.json` |
+| `T1567.002` | `carbonblack/rules/cb_childproc_creation_rclone_exe.json` |
+| `T1572` | `carbonblack/rules/cb_netconn_dns_tunnel_like.json` |
+| `T1574.002` | `carbonblack/rules/cb_childproc_creation_malware_dll.json`, `carbonblack/rules/cb_file_modification_malware_dll.json`, `carbonblack/rules/cb_network_connection_malware_dll.json`, `carbonblack/rules/cb_process_creation_malware_dll.json`, `carbonblack/rules/cb_registry_modification_malware_dll.json` |
 

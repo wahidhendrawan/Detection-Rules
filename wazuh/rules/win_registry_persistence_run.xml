@@ -4,7 +4,7 @@
     <match>Software\\Microsoft\\Windows\\CurrentVersion\\Run</match>
     <description>Registry persistence via Run key</description>
     <mitre>
-      <id>T1000</id>
+      <id>T1547.001</id>
     </mitre>
   </rule>
 </group>

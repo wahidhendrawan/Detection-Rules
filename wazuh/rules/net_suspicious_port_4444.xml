@@ -4,7 +4,7 @@
     <match>dstport=4444</match>
     <description>Suspicious outbound connection on port 4444</description>
     <mitre>
-      <id>T1000</id>
+      <id>T1571</id>
     </mitre>
   </rule>
 </group>

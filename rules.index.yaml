@@ -1,0 +1,2640 @@
+summary:
+  total_techniques: 129
+  total_rules: 533
+  rules_per_platform:
+    sigma: 105
+    elastic: 58
+    splunk: 18
+    microsoft-sentinel: 102
+    wazuh: 140
+    carbonblack: 110
+  fully_covered: 4
+  single_platform_only: 75
+techniques:
+  T1003:
+    name: 'OS Credential Dumping'
+    tactic: credential-access
+    coverage_count: 1
+    detections:
+      sigma: []
+      elastic: []
+      splunk: []
+      microsoft-sentinel:
+        - 'microsoft-sentinel/kql_084_obj_access_lsass.kql'
+      wazuh: []
+      carbonblack: []
+    gaps:
+      - sigma
+      - elastic
+      - splunk
+      - wazuh
+      - carbonblack
+  T1003.001:
+    name: 'LSASS Memory'
+    tactic: credential-access
+    coverage_count: 4
+    detections:
+      sigma:
+        - 'sigma/windows/win_lsass_dump_via_procdump.yml'
+        - 'sigma/windows/win_mimikatz_command.yml'
+        - 'sigma/windows/win_suspicious_comsvcs_lsass_dump.yml'
+      elastic: []
+      splunk: []
+      microsoft-sentinel:
+        - 'microsoft-sentinel/kql_029_reg_mod_wdigest.kql'
+        - 'microsoft-sentinel/kql_084_obj_access_lsass.kql'
+      wazuh:
+        - 'wazuh/rules/mimikatz_usage.xml'
+        - 'wazuh/rules/win_suspicious_process_lsass.xml'
+      carbonblack:
+        - 'carbonblack/rules/cb_childproc_creation_mimikatz_exe.json'
+        - 'carbonblack/rules/cb_childproc_creation_procdump_exe.json'
+        - 'carbonblack/rules/cb_file_modification_mimikatz_exe.json'
+        - 'carbonblack/rules/cb_file_modification_procdump_exe.json'
+        - 'carbonblack/rules/cb_filemod_lsass_dump_dmp.json'
+        - 'carbonblack/rules/cb_network_connection_mimikatz_exe.json'
+        - 'carbonblack/rules/cb_network_connection_procdump_exe.json'
+        - 'carbonblack/rules/cb_process_creation_mimikatz_exe.json'
+        - 'carbonblack/rules/cb_process_creation_procdump_exe.json'
+        - 'carbonblack/rules/cb_registry_modification_mimikatz_exe.json'
+        - 'carbonblack/rules/cb_registry_modification_procdump_exe.json'
+    gaps:
+      - elastic
+      - splunk
+  T1003.002:
+    name: 'Security Account Manager'
+    tactic: credential-access
+    coverage_count: 1
+    detections:
+      sigma: []
+      elastic: []
+      splunk: []
+      microsoft-sentinel:
+        - 'microsoft-sentinel/kql_083_obj_access_sam.kql'
+      wazuh: []
+      carbonblack: []
+    gaps:
+      - sigma
+      - elastic
+      - splunk
+      - wazuh
+      - carbonblack
+  T1003.003:
+    name: 'NTDS'
+    tactic: credential-access
+    coverage_count: 1
+    detections:
+      sigma: []
+      elastic: []
+      splunk: []
+      microsoft-sentinel:
+        - 'microsoft-sentinel/kql_087_obj_access_ntds.kql'
+      wazuh: []
+      carbonblack: []
+    gaps:
+      - sigma
+      - elastic
+      - splunk
+      - wazuh
+      - carbonblack
+  T1003.008:
+    name: '/etc/passwd and /etc/shadow'
+    tactic: credential-access
+    coverage_count: 2
+    detections:
+      sigma: []
+      elastic: []
+      splunk:
+        - 'splunk/linux/lnx_suspicious_passwd_mod.spl'
+      microsoft-sentinel: []
+      wazuh:
+        - 'wazuh/rules/lnx_passwd_file_modified.xml'
+        - 'wazuh/rules/lnx_shadow_file_modified.xml'
+        - 'wazuh/rules/shadow_file_access.xml'
+      carbonblack: []
+    gaps:
+      - sigma
+      - elastic
+      - microsoft-sentinel
+      - carbonblack
+  T1005:
+    name: 'Data from Local System'
+    tactic: collection
+    coverage_count: 1
+    detections:
+      sigma: []
+      elastic: []
+      splunk: []
+      microsoft-sentinel:
+        - 'microsoft-sentinel/kql_081_obj_access_file.kql'
+      wazuh: []
+      carbonblack: []
+    gaps:
+      - sigma
+      - elastic
+      - splunk
+      - wazuh
+      - carbonblack
+  T1012:
+    name: 'Query Registry'
+    tactic: discovery
+    coverage_count: 2
+    detections:
+      sigma: []
+      elastic:
+        - 'elastic/endpoint/general/Registry Manipulation via WMI Stdregprov.ndjson'
+      splunk: []
+      microsoft-sentinel:
+        - 'microsoft-sentinel/kql_082_obj_access_registry.kql'
+      wazuh: []
+      carbonblack: []
+    gaps:
+      - sigma
+      - splunk
+      - wazuh
+      - carbonblack
+  T1016:
+    name: 'Unknown / Custom'
+    tactic: uncategorized
+    coverage_count: 1
+    detections:
+      sigma: []
+      elastic:
+        - 'elastic/endpoint/general/IOCs (ip) to detect Curly COMrades A New Threat Actor Targeting Geopolitical Hotbeds.ndjson'
+      splunk: []
+      microsoft-sentinel: []
+      wazuh: []
+      carbonblack: []
+    gaps:
+      - sigma
+      - splunk
+      - microsoft-sentinel
+      - wazuh
+      - carbonblack
+  T1021:
+    name: 'Remote Services'
+    tactic: lateral-movement
+    coverage_count: 1
+    detections:
+      sigma: []
+      elastic: []
+      splunk: []
+      microsoft-sentinel:
+        - 'microsoft-sentinel/kql_015_net_conn_telnet.kql'
+        - 'microsoft-sentinel/kql_055_logon_rdp.kql'
+        - 'microsoft-sentinel/kql_056_logon_network.kql'
+      wazuh: []
+      carbonblack: []
+    gaps:
+      - sigma
+      - elastic
+      - splunk
+      - wazuh
+      - carbonblack
+  T1021.001:
+    name: 'Remote Desktop Protocol'
+    tactic: lateral-movement
+    coverage_count: 4
+    detections:
+      sigma:
+        - 'sigma/windows/win_plink_rdp_tunnel.yml'
+      elastic:
+        - 'elastic/endpoint/network/net_suspicious_rdp.ndjson'
+      splunk: []
+      microsoft-sentinel:
+        - 'microsoft-sentinel/kql_012_net_conn_rdp.kql'
+        - 'microsoft-sentinel/kql_028_reg_mod_rdp.kql'
+        - 'microsoft-sentinel/kql_055_logon_rdp.kql'
+      wazuh:
+        - 'wazuh/rules/net_suspicious_port_3389_outbound.xml'
+      carbonblack: []
+    gaps:
+      - splunk
+      - carbonblack
+  T1021.002:
+    name: 'SMB/Windows Admin Shares'
+    tactic: lateral-movement
+    coverage_count: 2
+    detections:
+      sigma: []
+      elastic: []
+      splunk: []
+      microsoft-sentinel:
+        - 'microsoft-sentinel/kql_016_net_conn_smb.kql'
+      wazuh: []
+      carbonblack:
+        - 'carbonblack/rules/cb_childproc_creation_psexec_exe.json'
+    gaps:
+      - sigma
+      - elastic
+      - splunk
+      - wazuh
+  T1021.004:
+    name: 'SSH'
+    tactic: lateral-movement
+    coverage_count: 1
+    detections:
+      sigma: []
+      elastic: []
+      splunk: []
+      microsoft-sentinel:
+        - 'microsoft-sentinel/kql_013_net_conn_ssh.kql'
+      wazuh: []
+      carbonblack: []
+    gaps:
+      - sigma
+      - elastic
+      - splunk
+      - wazuh
+      - carbonblack
+  T1027:
+    name: 'Obfuscated Files or Information'
+    tactic: defense-evasion
+    coverage_count: 3
+    detections:
+      sigma:
+        - 'sigma/linux/lnx_base64_decoding.yml'
+      elastic: []
+      splunk: []
+      microsoft-sentinel:
+        - 'microsoft-sentinel/kql_endpoint_win_powershell_suspicious_encoded_command.kql'
+      wazuh:
+        - 'wazuh/rules/base64_decoding.xml'
+        - 'wazuh/rules/win_suspicious_process_cmd_encoded.xml'
+      carbonblack: []
+    gaps:
+      - elastic
+      - splunk
+      - carbonblack
+  T1029:
+    name: 'Unknown / Custom'
+    tactic: uncategorized
+    coverage_count: 1
+    detections:
+      sigma: []
+      elastic:
+        - 'elastic/endpoint/general/Scheduled Transfer.ndjson'
+        - 'elastic/endpoint/general/Time Based Evasion.ndjson'
+      splunk: []
+      microsoft-sentinel: []
+      wazuh: []
+      carbonblack: []
+    gaps:
+      - sigma
+      - splunk
+      - microsoft-sentinel
+      - wazuh
+      - carbonblack
+  T1033:
+    name: 'Unknown / Custom'
+    tactic: uncategorized
+    coverage_count: 1
+    detections:
+      sigma: []
+      elastic: []
+      splunk:
+        - 'splunk/windows/win_suspicious_whoami.spl'
+      microsoft-sentinel: []
+      wazuh: []
+      carbonblack: []
+    gaps:
+      - sigma
+      - elastic
+      - microsoft-sentinel
+      - wazuh
+      - carbonblack
+  T1036:
+    name: 'Masquerading'
+    tactic: defense-evasion
+    coverage_count: 3
+    detections:
+      sigma: []
+      elastic:
+        - 'elastic/endpoint/general/Defense-Evasion-Dll-Sideloading.ndjson'
+      splunk: []
+      microsoft-sentinel:
+        - 'microsoft-sentinel/kql_031_file_create_exe_temp.kql'
+        - 'microsoft-sentinel/kql_039_file_create_scr.kql'
+        - 'microsoft-sentinel/kql_040_file_create_pif.kql'
+        - 'microsoft-sentinel/kql_066_schtask_suspicious_name.kql'
+        - 'microsoft-sentinel/kql_076_service_suspicious_path.kql'
+        - 'microsoft-sentinel/kql_077_service_suspicious_name.kql'
+      wazuh: []
+      carbonblack:
+        - 'carbonblack/rules/cb_childproc_creation_suspicious_app_exe.json'
+        - 'carbonblack/rules/cb_file_modification_suspicious_app_exe.json'
+        - 'carbonblack/rules/cb_network_connection_suspicious_app_exe.json'
+        - 'carbonblack/rules/cb_process_creation_suspicious_app_exe.json'
+        - 'carbonblack/rules/cb_registry_modification_suspicious_app_exe.json'
+    gaps:
+      - sigma
+      - splunk
+      - wazuh
+  T1041:
+    name: 'Unknown / Custom'
+    tactic: uncategorized
+    coverage_count: 1
+    detections:
+      sigma: []
+      elastic:
+        - 'elastic/endpoint/general/IOCs (ip) to detect Curly COMrades A New Threat Actor Targeting Geopolitical Hotbeds.ndjson'
+      splunk: []
+      microsoft-sentinel: []
+      wazuh: []
+      carbonblack: []
+    gaps:
+      - sigma
+      - splunk
+      - microsoft-sentinel
+      - wazuh
+      - carbonblack
+  T1046:
+    name: 'Unknown / Custom'
+    tactic: uncategorized
+    coverage_count: 2
+    detections:
+      sigma:
+        - 'sigma/network/net_nmap_scan_pattern.yml'
+      elastic: []
+      splunk: []
+      microsoft-sentinel: []
+      wazuh:
+        - 'wazuh/rules/nmap_scan_detected.xml'
+      carbonblack: []
+    gaps:
+      - elastic
+      - splunk
+      - microsoft-sentinel
+      - carbonblack
+  T1047:
+    name: 'Windows Management Instrumentation'
+    tactic: execution
+    coverage_count: 2
+    detections:
+      sigma: []
+      elastic:
+        - 'elastic/endpoint/general/Registry Manipulation via WMI Stdregprov.ndjson'
+        - 'elastic/endpoint/windows/win_suspicious_wmic_process.ndjson'
+      splunk: []
+      microsoft-sentinel: []
+      wazuh: []
+      carbonblack:
+        - 'carbonblack/rules/cb_childproc_creation_wmic_exe.json'
+    gaps:
+      - sigma
+      - splunk
+      - microsoft-sentinel
+      - wazuh
+  T1048:
+    name: 'Unknown / Custom'
+    tactic: uncategorized
+    coverage_count: 1
+    detections:
+      sigma: []
+      elastic:
+        - 'elastic/endpoint/general/IOCs (ip) to detect Curly COMrades A New Threat Actor Targeting Geopolitical Hotbeds.ndjson'
+      splunk: []
+      microsoft-sentinel: []
+      wazuh: []
+      carbonblack: []
+    gaps:
+      - sigma
+      - splunk
+      - microsoft-sentinel
+      - wazuh
+      - carbonblack
+  T1053.002:
+    name: 'At'
+    tactic: persistence
+    coverage_count: 2
+    detections:
+      sigma: []
+      elastic: []
+      splunk: []
+      microsoft-sentinel:
+        - 'microsoft-sentinel/kql_010_proc_exec_at.kql'
+      wazuh: []
+      carbonblack:
+        - 'carbonblack/rules/cb_childproc_creation_at_exe.json'
+        - 'carbonblack/rules/cb_file_modification_at_exe.json'
+        - 'carbonblack/rules/cb_network_connection_at_exe.json'
+        - 'carbonblack/rules/cb_process_creation_at_exe.json'
+        - 'carbonblack/rules/cb_registry_modification_at_exe.json'
+    gaps:
+      - sigma
+      - elastic
+      - splunk
+      - wazuh
+  T1053.003:
+    name: 'Cron'
+    tactic: persistence
+    coverage_count: 3
+    detections:
+      sigma:
+        - 'sigma/linux/lnx_suspicious_cron_modification.yml'
+      elastic: []
+      splunk:
+        - 'splunk/linux/lnx_suspicious_cron_modification.spl'
+      microsoft-sentinel: []
+      wazuh:
+        - 'wazuh/rules/cron_job_modification.xml'
+        - 'wazuh/rules/lnx_crontab_creation.xml'
+      carbonblack: []
+    gaps:
+      - elastic
+      - microsoft-sentinel
+      - carbonblack
+  T1053.005:
+    name: 'Scheduled Task'
+    tactic: persistence
+    coverage_count: 4
+    detections:
+      sigma:
+        - 'sigma/windows/win_schtasks_create.yml'
+      elastic: []
+      splunk: []
+      microsoft-sentinel:
+        - 'microsoft-sentinel/kql_009_proc_exec_schtasks.kql'
+        - 'microsoft-sentinel/kql_061_schtask_created.kql'
+        - 'microsoft-sentinel/kql_062_schtask_deleted.kql'
+        - 'microsoft-sentinel/kql_063_schtask_enabled.kql'
+        - 'microsoft-sentinel/kql_064_schtask_disabled.kql'
+        - 'microsoft-sentinel/kql_065_schtask_updated.kql'
+        - 'microsoft-sentinel/kql_066_schtask_suspicious_name.kql'
+        - 'microsoft-sentinel/kql_067_schtask_suspicious_action.kql'
+        - 'microsoft-sentinel/kql_068_schtask_hidden.kql'
+        - 'microsoft-sentinel/kql_069_schtask_system_context.kql'
+        - 'microsoft-sentinel/kql_070_schtask_network_trigger.kql'
+      wazuh:
+        - 'wazuh/rules/schtasks_creation.xml'
+      carbonblack:
+        - 'carbonblack/rules/cb_childproc_creation_schtasks_exe.json'
+        - 'carbonblack/rules/cb_file_modification_schtasks_exe.json'
+        - 'carbonblack/rules/cb_network_connection_schtasks_exe.json'
+        - 'carbonblack/rules/cb_process_creation_schtasks_exe.json'
+        - 'carbonblack/rules/cb_registry_modification_schtasks_exe.json'
+    gaps:
+      - elastic
+      - splunk
+  T1055.012:
+    name: 'Unknown / Custom'
+    tactic: uncategorized
+    coverage_count: 1
+    detections:
+      sigma: []
+      elastic:
+        - 'elastic/endpoint/general/HackTool - HollowReaper Execution.ndjson'
+      splunk: []
+      microsoft-sentinel: []
+      wazuh: []
+      carbonblack: []
+    gaps:
+      - sigma
+      - splunk
+      - microsoft-sentinel
+      - wazuh
+      - carbonblack
+  T1059:
+    name: 'Command and Scripting Interpreter'
+    tactic: execution
+    coverage_count: 6
+    detections:
+      sigma:
+        - 'sigma/linux/lnx_base64_decoding.yml'
+        - 'sigma/windows/win_powershell_suspicious_encoded_command.yml'
+      elastic:
+        - 'elastic/endpoint/general/Defense Evasion – Encoded PowerShell Command.ndjson'
+        - 'elastic/endpoint/general/Potential Exploitation of CrushFTP RCE Vulnerability (CVE-2025-54309).ndjson'
+        - 'elastic/endpoint/general/endpoint_rules.ndjson'
+      splunk:
+        - 'splunk/windows/win_powershell_suspicious_encoded_command.spl'
+      microsoft-sentinel:
+        - 'microsoft-sentinel/kql_002_proc_exec_powershell.kql'
+      wazuh:
+        - 'wazuh/rules/php_code_injection.xml'
+        - 'wazuh/rules/wazuh_auth_bruteforce_many_fail.xml'
+        - 'wazuh/rules/wazuh_cloud_aws_stop_logging.xml'
+        - 'wazuh/rules/wazuh_lnx_curl_wget_to_shell.xml'
+        - 'wazuh/rules/wazuh_lnx_passwd_shadow_read.xml'
+        - 'wazuh/rules/wazuh_lnx_suspicious_cron_write.xml'
+        - 'wazuh/rules/wazuh_net_dns_tunnel_pattern.xml'
+        - 'wazuh/rules/wazuh_win_defender_disable.xml'
+        - 'wazuh/rules/wazuh_win_lsass_access.xml'
+        - 'wazuh/rules/wazuh_win_shadowcopy_delete.xml'
+        - 'wazuh/rules/wazuh_win_suspicious_powershell_encoded.xml'
+      carbonblack:
+        - 'carbonblack/rules/cb_childproc_creation_suspicious_app_exe.json'
+        - 'carbonblack/rules/cb_file_modification_suspicious_app_exe.json'
+        - 'carbonblack/rules/cb_network_connection_suspicious_app_exe.json'
+        - 'carbonblack/rules/cb_process_creation_suspicious_app_exe.json'
+        - 'carbonblack/rules/cb_registry_modification_suspicious_app_exe.json'
+    gaps: []
+  T1059.001:
+    name: 'PowerShell'
+    tactic: execution
+    coverage_count: 6
+    detections:
+      sigma:
+        - 'sigma/windows/win_powershell_suspicious_download.yml'
+        - 'sigma/windows/win_powershell_suspicious_encoded_command.yml'
+      elastic:
+        - 'elastic/endpoint/general/Defense Evasion – Encoded PowerShell Command.ndjson'
+        - 'elastic/endpoint/general/Potential Exploitation of CrushFTP RCE Vulnerability (CVE-2025-54309).ndjson'
+        - 'elastic/endpoint/general/endpoint_rules.ndjson'
+        - 'elastic/endpoint/windows/win_suspicious_powershell_download.ndjson'
+      splunk:
+        - 'splunk/windows/win_powershell_suspicious_encoded_command.spl'
+      microsoft-sentinel:
+        - 'microsoft-sentinel/kql_002_proc_exec_powershell.kql'
+        - 'microsoft-sentinel/kql_034_file_create_ps1.kql'
+        - 'microsoft-sentinel/kql_endpoint_win_powershell_suspicious_encoded_command.kql'
+      wazuh:
+        - 'wazuh/rules/powershell_encoded_command.xml'
+        - 'wazuh/rules/win_suspicious_process_cmd_encoded.xml'
+      carbonblack:
+        - 'carbonblack/rules/cb_childproc_creation_powershell_exe.json'
+        - 'carbonblack/rules/cb_file_modification_powershell_exe.json'
+        - 'carbonblack/rules/cb_network_connection_powershell_exe.json'
+        - 'carbonblack/rules/cb_process_creation_powershell_exe.json'
+        - 'carbonblack/rules/cb_registry_modification_powershell_exe.json'
+    gaps: []
+  T1059.003:
+    name: 'Windows Command Shell'
+    tactic: execution
+    coverage_count: 4
+    detections:
+      sigma: []
+      elastic:
+        - 'elastic/endpoint/general/Potential Exploitation of CrushFTP RCE Vulnerability (CVE-2025-54309).ndjson'
+        - 'elastic/endpoint/general/Potential SAP NetWeaver Webshell Creation.ndjson'
+        - 'elastic/endpoint/general/Suspicious Child Process of SAP NetWeaver - Linux.ndjson'
+      splunk: []
+      microsoft-sentinel:
+        - 'microsoft-sentinel/kql_001_proc_exec_cmd.kql'
+        - 'microsoft-sentinel/kql_036_file_create_bat.kql'
+      wazuh:
+        - 'wazuh/rules/win_suspicious_process_cmd_encoded.xml'
+      carbonblack:
+        - 'carbonblack/rules/cb_childproc_creation_cmd_exe.json'
+        - 'carbonblack/rules/cb_file_modification_cmd_exe.json'
+        - 'carbonblack/rules/cb_network_connection_cmd_exe.json'
+        - 'carbonblack/rules/cb_process_creation_cmd_exe.json'
+        - 'carbonblack/rules/cb_registry_modification_cmd_exe.json'
+    gaps:
+      - sigma
+      - splunk
+  T1059.004:
+    name: 'Unknown / Custom'
+    tactic: uncategorized
+    coverage_count: 3
+    detections:
+      sigma:
+        - 'sigma/linux/lnx_suspicious_curl_pipe_bash.yml'
+      elastic:
+        - 'elastic/endpoint/linux/lnx_suspicious_curl_wget.ndjson'
+        - 'elastic/endpoint/linux/lnx_suspicious_netcat.ndjson'
+        - 'elastic/endpoint/linux/lnx_suspicious_shell_meta.ndjson'
+      splunk: []
+      microsoft-sentinel: []
+      wazuh:
+        - 'wazuh/rules/netcat_reverse_shell.xml'
+      carbonblack: []
+    gaps:
+      - splunk
+      - microsoft-sentinel
+      - carbonblack
+  T1059.005:
+    name: 'Visual Basic'
+    tactic: execution
+    coverage_count: 2
+    detections:
+      sigma: []
+      elastic: []
+      splunk: []
+      microsoft-sentinel:
+        - 'microsoft-sentinel/kql_003_proc_exec_wscript.kql'
+        - 'microsoft-sentinel/kql_004_proc_exec_cscript.kql'
+        - 'microsoft-sentinel/kql_035_file_create_vbs.kql'
+        - 'microsoft-sentinel/kql_038_file_create_wsf.kql'
+      wazuh: []
+      carbonblack:
+        - 'carbonblack/rules/cb_childproc_creation_cscript_exe.json'
+        - 'carbonblack/rules/cb_childproc_creation_wscript_exe.json'
+        - 'carbonblack/rules/cb_file_modification_cscript_exe.json'
+        - 'carbonblack/rules/cb_file_modification_wscript_exe.json'
+        - 'carbonblack/rules/cb_network_connection_cscript_exe.json'
+        - 'carbonblack/rules/cb_network_connection_wscript_exe.json'
+        - 'carbonblack/rules/cb_process_creation_cscript_exe.json'
+        - 'carbonblack/rules/cb_process_creation_wscript_exe.json'
+        - 'carbonblack/rules/cb_registry_modification_cscript_exe.json'
+        - 'carbonblack/rules/cb_registry_modification_wscript_exe.json'
+    gaps:
+      - sigma
+      - elastic
+      - splunk
+      - wazuh
+  T1059.006:
+    name: 'Python'
+    tactic: execution
+    coverage_count: 1
+    detections:
+      sigma: []
+      elastic: []
+      splunk: []
+      microsoft-sentinel: []
+      wazuh: []
+      carbonblack:
+        - 'carbonblack/rules/cb_childproc_creation_hacker_tool_py.json'
+        - 'carbonblack/rules/cb_file_modification_hacker_tool_py.json'
+        - 'carbonblack/rules/cb_network_connection_hacker_tool_py.json'
+        - 'carbonblack/rules/cb_process_creation_hacker_tool_py.json'
+        - 'carbonblack/rules/cb_registry_modification_hacker_tool_py.json'
+    gaps:
+      - sigma
+      - elastic
+      - splunk
+      - microsoft-sentinel
+      - wazuh
+  T1059.007:
+    name: 'JavaScript'
+    tactic: execution
+    coverage_count: 1
+    detections:
+      sigma: []
+      elastic: []
+      splunk: []
+      microsoft-sentinel:
+        - 'microsoft-sentinel/kql_037_file_create_js.kql'
+      wazuh: []
+      carbonblack: []
+    gaps:
+      - sigma
+      - elastic
+      - splunk
+      - wazuh
+      - carbonblack
+  T1068:
+    name: 'Unknown / Custom'
+    tactic: uncategorized
+    coverage_count: 3
+    detections:
+      sigma:
+        - 'sigma/linux/lnx_suspicious_sudo_without_tty.yml'
+      elastic:
+        - 'elastic/endpoint/general/Potential Exploitation of CrushFTP RCE Vulnerability (CVE-2025-54309).ndjson'
+      splunk:
+        - 'splunk/linux/lnx_suspicious_sudo_without_tty.spl'
+      microsoft-sentinel: []
+      wazuh: []
+      carbonblack: []
+    gaps:
+      - microsoft-sentinel
+      - wazuh
+      - carbonblack
+  T1070:
+    name: 'Indicator Removal'
+    tactic: defense-evasion
+    coverage_count: 1
+    detections:
+      sigma: []
+      elastic:
+        - 'elastic/endpoint/general/Defense Evasion – Event Log Cleared Wevtutil.ndjson'
+        - 'elastic/endpoint/general/Defense-Evasion-Signed-Binary-Temp.ndjson'
+      splunk: []
+      microsoft-sentinel: []
+      wazuh: []
+      carbonblack: []
+    gaps:
+      - sigma
+      - splunk
+      - microsoft-sentinel
+      - wazuh
+      - carbonblack
+  T1070.001:
+    name: 'Clear Windows Event Logs'
+    tactic: defense-evasion
+    coverage_count: 3
+    detections:
+      sigma:
+        - 'sigma/windows/win_security_log_cleared.yml'
+      elastic:
+        - 'elastic/endpoint/general/Defense Evasion – Event Log Cleared Wevtutil.ndjson'
+      splunk: []
+      microsoft-sentinel:
+        - 'microsoft-sentinel/kql_089_obj_access_event_log.kql'
+      wazuh: []
+      carbonblack: []
+    gaps:
+      - splunk
+      - wazuh
+      - carbonblack
+  T1070.003:
+    name: 'Clear Command History'
+    tactic: defense-evasion
+    coverage_count: 1
+    detections:
+      sigma: []
+      elastic: []
+      splunk: []
+      microsoft-sentinel: []
+      wazuh:
+        - 'wazuh/rules/clear_linux_history.xml'
+        - 'wazuh/rules/lnx_suspicious_history_deletion.xml'
+      carbonblack: []
+    gaps:
+      - sigma
+      - elastic
+      - splunk
+      - microsoft-sentinel
+      - carbonblack
+  T1071:
+    name: 'Application Layer Protocol'
+    tactic: command-and-control
+    coverage_count: 2
+    detections:
+      sigma:
+        - 'sigma/network/net_dns_suspicious_tunnel.yml'
+      elastic:
+        - 'elastic/endpoint/general/IOCs (ip) to detect Curly COMrades A New Threat Actor Targeting Geopolitical Hotbeds.ndjson'
+        - 'elastic/network/network_rules.ndjson'
+      splunk: []
+      microsoft-sentinel: []
+      wazuh: []
+      carbonblack: []
+    gaps:
+      - splunk
+      - microsoft-sentinel
+      - wazuh
+      - carbonblack
+  T1071.001:
+    name: 'Web Protocols'
+    tactic: command-and-control
+    coverage_count: 4
+    detections:
+      sigma: []
+      elastic: []
+      splunk:
+        - 'splunk/network/net_suspicious_user_agent.spl'
+      microsoft-sentinel:
+        - 'microsoft-sentinel/kql_018_net_conn_http_malicious.kql'
+        - 'microsoft-sentinel/kql_020_net_conn_darkweb.kql'
+      wazuh:
+        - 'wazuh/rules/net_suspicious_user_agent_curl.xml'
+        - 'wazuh/rules/net_suspicious_user_agent_wget.xml'
+      carbonblack:
+        - 'carbonblack/rules/cb_childproc_creation_evil_com.json'
+        - 'carbonblack/rules/cb_childproc_creation_malicious-site_org.json'
+        - 'carbonblack/rules/cb_file_modification_evil_com.json'
+        - 'carbonblack/rules/cb_file_modification_malicious-site_org.json'
+        - 'carbonblack/rules/cb_network_connection_evil_com.json'
+        - 'carbonblack/rules/cb_network_connection_malicious-site_org.json'
+        - 'carbonblack/rules/cb_process_creation_evil_com.json'
+        - 'carbonblack/rules/cb_process_creation_malicious-site_org.json'
+        - 'carbonblack/rules/cb_registry_modification_evil_com.json'
+        - 'carbonblack/rules/cb_registry_modification_malicious-site_org.json'
+    gaps:
+      - sigma
+      - elastic
+  T1071.002:
+    name: 'File Transfer Protocols'
+    tactic: command-and-control
+    coverage_count: 1
+    detections:
+      sigma: []
+      elastic: []
+      splunk: []
+      microsoft-sentinel:
+        - 'microsoft-sentinel/kql_014_net_conn_ftp.kql'
+      wazuh: []
+      carbonblack: []
+    gaps:
+      - sigma
+      - elastic
+      - splunk
+      - wazuh
+      - carbonblack
+  T1071.004:
+    name: 'DNS'
+    tactic: command-and-control
+    coverage_count: 6
+    detections:
+      sigma:
+        - 'sigma/network/net_dns_suspicious_tunnel.yml'
+        - 'sigma/network/net_susp_dns_many_nxdomain.yml'
+      elastic:
+        - 'elastic/endpoint/network/net_dns_tunneling_entropy.ndjson'
+        - 'elastic/network/network_rules.ndjson'
+      splunk:
+        - 'splunk/network/net_dns_suspicious_tunnel.spl'
+      microsoft-sentinel:
+        - 'microsoft-sentinel/kql_017_net_conn_dns_tunnel.kql'
+        - 'microsoft-sentinel/kql_net_dns_suspicious_tunnel.kql'
+      wazuh:
+        - 'wazuh/rules/net_dns_tunneling_suspicion.xml'
+      carbonblack:
+        - 'carbonblack/rules/cb_netconn_dns_tunnel_like.json'
+    gaps: []
+  T1072:
+    name: 'Software Deployment Tools'
+    tactic: execution
+    coverage_count: 2
+    detections:
+      sigma: []
+      elastic:
+        - 'elastic/endpoint/general/Socket Filters.ndjson'
+      splunk: []
+      microsoft-sentinel: []
+      wazuh:
+        - 'wazuh/rules/lnx_apt_get_install.xml'
+        - 'wazuh/rules/lnx_yum_install.xml'
+      carbonblack: []
+    gaps:
+      - sigma
+      - splunk
+      - microsoft-sentinel
+      - carbonblack
+  T1078:
+    name: 'Valid Accounts'
+    tactic: defense-evasion
+    coverage_count: 2
+    detections:
+      sigma: []
+      elastic: []
+      splunk: []
+      microsoft-sentinel:
+        - 'microsoft-sentinel/kql_052_logon_success.kql'
+        - 'microsoft-sentinel/kql_053_logon_explicit.kql'
+        - 'microsoft-sentinel/kql_054_logon_special.kql'
+        - 'microsoft-sentinel/kql_055_logon_rdp.kql'
+        - 'microsoft-sentinel/kql_057_logon_batch.kql'
+        - 'microsoft-sentinel/kql_058_logon_service.kql'
+        - 'microsoft-sentinel/kql_069_schtask_system_context.kql'
+      wazuh:
+        - 'wazuh/rules/app_apache_unauthorized_access.xml'
+        - 'wazuh/rules/app_docker_unauthorized_access.xml'
+        - 'wazuh/rules/app_gitlab_unauthorized_access.xml'
+        - 'wazuh/rules/app_jenkins_unauthorized_access.xml'
+        - 'wazuh/rules/app_kubernetes_unauthorized_access.xml'
+        - 'wazuh/rules/app_mongodb_unauthorized_access.xml'
+        - 'wazuh/rules/app_mysql_unauthorized_access.xml'
+        - 'wazuh/rules/app_nginx_unauthorized_access.xml'
+        - 'wazuh/rules/app_postgres_unauthorized_access.xml'
+        - 'wazuh/rules/app_redis_unauthorized_access.xml'
+        - 'wazuh/rules/aws_s3_bucket_public_access.xml'
+        - 'wazuh/rules/lnx_failed_su_usage.xml'
+        - 'wazuh/rules/net_ftp_anonymous_login.xml'
+      carbonblack: []
+    gaps:
+      - sigma
+      - elastic
+      - splunk
+      - carbonblack
+  T1078.003:
+    name: 'Local Accounts'
+    tactic: defense-evasion
+    coverage_count: 1
+    detections:
+      sigma: []
+      elastic: []
+      splunk: []
+      microsoft-sentinel: []
+      wazuh:
+        - 'wazuh/rules/lnx_suspicious_su_usage.xml'
+        - 'wazuh/rules/net_ssh_root_login.xml'
+      carbonblack: []
+    gaps:
+      - sigma
+      - elastic
+      - splunk
+      - microsoft-sentinel
+      - carbonblack
+  T1078.004:
+    name: 'Cloud Accounts'
+    tactic: defense-evasion
+    coverage_count: 1
+    detections:
+      sigma: []
+      elastic: []
+      splunk: []
+      microsoft-sentinel:
+        - 'microsoft-sentinel/kql_091_misc_cloud_login.kql'
+        - 'microsoft-sentinel/kql_092_misc_cloud_failed_login.kql'
+        - 'microsoft-sentinel/kql_100_misc_cloud_suspicious_api.kql'
+      wazuh: []
+      carbonblack: []
+    gaps:
+      - sigma
+      - elastic
+      - splunk
+      - wazuh
+      - carbonblack
+  T1082:
+    name: 'Unknown / Custom'
+    tactic: uncategorized
+    coverage_count: 1
+    detections:
+      sigma: []
+      elastic:
+        - 'elastic/endpoint/general/System Information Discovery via Registry Queries.ndjson'
+      splunk: []
+      microsoft-sentinel: []
+      wazuh: []
+      carbonblack: []
+    gaps:
+      - sigma
+      - splunk
+      - microsoft-sentinel
+      - wazuh
+      - carbonblack
+  T1087:
+    name: 'Account Discovery'
+    tactic: discovery
+    coverage_count: 1
+    detections:
+      sigma: []
+      elastic: []
+      splunk: []
+      microsoft-sentinel: []
+      wazuh: []
+      carbonblack:
+        - 'carbonblack/rules/cb_childproc_creation_net_exe.json'
+    gaps:
+      - sigma
+      - elastic
+      - splunk
+      - microsoft-sentinel
+      - wazuh
+  T1090:
+    name: 'Proxy'
+    tactic: command-and-control
+    coverage_count: 1
+    detections:
+      sigma: []
+      elastic: []
+      splunk: []
+      microsoft-sentinel:
+        - 'microsoft-sentinel/kql_027_reg_mod_proxy.kql'
+      wazuh: []
+      carbonblack: []
+    gaps:
+      - sigma
+      - elastic
+      - splunk
+      - wazuh
+      - carbonblack
+  T1090.003:
+    name: 'Multi-hop Proxy'
+    tactic: command-and-control
+    coverage_count: 1
+    detections:
+      sigma: []
+      elastic: []
+      splunk: []
+      microsoft-sentinel:
+        - 'microsoft-sentinel/kql_019_net_conn_tor.kql'
+        - 'microsoft-sentinel/kql_020_net_conn_darkweb.kql'
+      wazuh: []
+      carbonblack: []
+    gaps:
+      - sigma
+      - elastic
+      - splunk
+      - wazuh
+      - carbonblack
+  T1095:
+    name: 'Non-Application Layer Protocol'
+    tactic: command-and-control
+    coverage_count: 1
+    detections:
+      sigma: []
+      elastic: []
+      splunk: []
+      microsoft-sentinel: []
+      wazuh: []
+      carbonblack:
+        - 'carbonblack/rules/cb_childproc_creation_nc_exe.json'
+        - 'carbonblack/rules/cb_childproc_creation_ncat_exe.json'
+        - 'carbonblack/rules/cb_file_modification_nc_exe.json'
+        - 'carbonblack/rules/cb_file_modification_ncat_exe.json'
+        - 'carbonblack/rules/cb_network_connection_nc_exe.json'
+        - 'carbonblack/rules/cb_network_connection_ncat_exe.json'
+        - 'carbonblack/rules/cb_process_creation_nc_exe.json'
+        - 'carbonblack/rules/cb_process_creation_ncat_exe.json'
+        - 'carbonblack/rules/cb_registry_modification_nc_exe.json'
+        - 'carbonblack/rules/cb_registry_modification_ncat_exe.json'
+    gaps:
+      - sigma
+      - elastic
+      - splunk
+      - microsoft-sentinel
+      - wazuh
+  T1098:
+    name: 'Account Manipulation'
+    tactic: persistence
+    coverage_count: 5
+    detections:
+      sigma:
+        - 'sigma/cloud/cloud_aws_create_access_key.yml'
+        - 'sigma/cloud/cloud_gcp_iam_suspicious_role_grant.yml'
+        - 'sigma/windows/win_local_admin_group_add.yml'
+      elastic: []
+      splunk:
+        - 'splunk/cloud/cloud_gcp_iam_suspicious_role_grant.spl'
+      microsoft-sentinel:
+        - 'microsoft-sentinel/kql_042_acct_mgr_user_enabled.kql'
+        - 'microsoft-sentinel/kql_043_acct_mgr_user_pwd_reset.kql'
+        - 'microsoft-sentinel/kql_059_logon_unlock.kql'
+      wazuh:
+        - 'wazuh/rules/aws_iam_user_created.xml'
+        - 'wazuh/rules/gcp_iam_role_grant.xml'
+        - 'wazuh/rules/group_modification.xml'
+        - 'wazuh/rules/lnx_passwd_file_modified.xml'
+        - 'wazuh/rules/lnx_shadow_file_modified.xml'
+        - 'wazuh/rules/win_ad_password_reset.xml'
+        - 'wazuh/rules/win_ad_user_unlocked.xml'
+      carbonblack:
+        - 'carbonblack/rules/cb_childproc_creation_net_exe.json'
+    gaps:
+      - elastic
+  T1098.001:
+    name: 'Additional Cloud Credentials'
+    tactic: persistence
+    coverage_count: 1
+    detections:
+      sigma: []
+      elastic: []
+      splunk: []
+      microsoft-sentinel:
+        - 'microsoft-sentinel/kql_099_misc_cloud_api_key_created.kql'
+      wazuh: []
+      carbonblack: []
+    gaps:
+      - sigma
+      - elastic
+      - splunk
+      - wazuh
+      - carbonblack
+  T1098.003:
+    name: 'Additional Cloud Roles'
+    tactic: persistence
+    coverage_count: 1
+    detections:
+      sigma: []
+      elastic: []
+      splunk: []
+      microsoft-sentinel:
+        - 'microsoft-sentinel/kql_094_misc_cloud_admin_assigned.kql'
+      wazuh: []
+      carbonblack: []
+    gaps:
+      - sigma
+      - elastic
+      - splunk
+      - wazuh
+      - carbonblack
+  T1098.004:
+    name: 'SSH Authorized Keys'
+    tactic: persistence
+    coverage_count: 2
+    detections:
+      sigma:
+        - 'sigma/linux/lnx_ssh_authorized_keys_modification.yml'
+      elastic: []
+      splunk: []
+      microsoft-sentinel: []
+      wazuh:
+        - 'wazuh/rules/lnx_sshd_config_modified.xml'
+      carbonblack: []
+    gaps:
+      - elastic
+      - splunk
+      - microsoft-sentinel
+      - carbonblack
+  T1098.007:
+    name: 'Additional Local or Domain Groups'
+    tactic: persistence
+    coverage_count: 2
+    detections:
+      sigma: []
+      elastic: []
+      splunk: []
+      microsoft-sentinel:
+        - 'microsoft-sentinel/kql_045_acct_mgr_user_added_to_group.kql'
+      wazuh:
+        - 'wazuh/rules/win_ad_user_added_to_admin_group.xml'
+      carbonblack: []
+    gaps:
+      - sigma
+      - elastic
+      - splunk
+      - carbonblack
+  T1105:
+    name: 'Ingress Tool Transfer'
+    tactic: command-and-control
+    coverage_count: 6
+    detections:
+      sigma:
+        - 'sigma/linux/lnx_suspicious_wget_curl_to_tmp.yml'
+        - 'sigma/windows/win_suspicious_certutil_download.yml'
+      elastic:
+        - 'elastic/endpoint/general/IOCs (ip) to detect Curly COMrades A New Threat Actor Targeting Geopolitical Hotbeds.ndjson'
+        - 'elastic/endpoint/general/Remote Access Tool - TacticalRMM Agent Registration to Potentially Attacker-Controlled Server.ndjson'
+        - 'elastic/endpoint/linux/lnx_suspicious_curl_wget.ndjson'
+        - 'elastic/endpoint/windows/win_suspicious_certutil_download.ndjson'
+        - 'elastic/endpoint/windows/win_suspicious_powershell_download.ndjson'
+      splunk:
+        - 'splunk/linux/lnx_suspicious_wget_curl.spl'
+        - 'splunk/windows/win_suspicious_certutil_download.spl'
+      microsoft-sentinel:
+        - 'microsoft-sentinel/kql_007_proc_exec_certutil.kql'
+        - 'microsoft-sentinel/kql_008_proc_exec_bitsadmin.kql'
+        - 'microsoft-sentinel/kql_031_file_create_exe_temp.kql'
+      wazuh:
+        - 'wazuh/rules/net_suspicious_user_agent_curl.xml'
+        - 'wazuh/rules/net_suspicious_user_agent_wget.xml'
+        - 'wazuh/rules/suspicious_curl_wget.xml'
+      carbonblack:
+        - 'carbonblack/rules/cb_childproc_creation_certutil_exe.json'
+        - 'carbonblack/rules/cb_file_modification_certutil_exe.json'
+        - 'carbonblack/rules/cb_network_connection_certutil_exe.json'
+        - 'carbonblack/rules/cb_process_creation_certutil_exe.json'
+        - 'carbonblack/rules/cb_registry_modification_certutil_exe.json'
+    gaps: []
+  T1110:
+    name: 'Brute Force'
+    tactic: credential-access
+    coverage_count: 3
+    detections:
+      sigma: []
+      elastic: []
+      splunk:
+        - 'splunk/network/net_suspicious_ssh_brute.spl'
+      microsoft-sentinel:
+        - 'microsoft-sentinel/kql_050_acct_mgr_acct_locked_out.kql'
+        - 'microsoft-sentinel/kql_051_logon_failed.kql'
+        - 'microsoft-sentinel/kql_092_misc_cloud_failed_login.kql'
+      wazuh:
+        - 'wazuh/rules/lnx_failed_su_usage.xml'
+        - 'wazuh/rules/rdp_brute_force.xml'
+        - 'wazuh/rules/ssh_brute_force.xml'
+      carbonblack: []
+    gaps:
+      - sigma
+      - elastic
+      - carbonblack
+  T1110.001:
+    name: 'Password Guessing'
+    tactic: credential-access
+    coverage_count: 2
+    detections:
+      sigma: []
+      elastic: []
+      splunk: []
+      microsoft-sentinel:
+        - 'microsoft-sentinel/kql_051_logon_failed.kql'
+      wazuh:
+        - 'wazuh/rules/net_ssh_failed_root_login.xml'
+      carbonblack: []
+    gaps:
+      - sigma
+      - elastic
+      - splunk
+      - carbonblack
+  T1112:
+    name: 'Modify Registry'
+    tactic: defense-evasion
+    coverage_count: 3
+    detections:
+      sigma: []
+      elastic:
+        - 'elastic/endpoint/general/Registry Manipulation via WMI Stdregprov.ndjson'
+      splunk: []
+      microsoft-sentinel:
+        - 'microsoft-sentinel/kql_028_reg_mod_rdp.kql'
+        - 'microsoft-sentinel/kql_029_reg_mod_wdigest.kql'
+      wazuh: []
+      carbonblack:
+        - 'carbonblack/rules/cb_childproc_creation_reg_exe.json'
+    gaps:
+      - sigma
+      - splunk
+      - wazuh
+  T1124:
+    name: 'Unknown / Custom'
+    tactic: uncategorized
+    coverage_count: 1
+    detections:
+      sigma: []
+      elastic:
+        - 'elastic/endpoint/general/System Information Discovery via Registry Queries.ndjson'
+      splunk: []
+      microsoft-sentinel: []
+      wazuh: []
+      carbonblack: []
+    gaps:
+      - sigma
+      - splunk
+      - microsoft-sentinel
+      - wazuh
+      - carbonblack
+  T1127.001:
+    name: 'MSBuild'
+    tactic: defense-evasion
+    coverage_count: 1
+    detections:
+      sigma: []
+      elastic: []
+      splunk: []
+      microsoft-sentinel: []
+      wazuh: []
+      carbonblack:
+        - 'carbonblack/rules/cb_childproc_creation_msbuild_exe.json'
+        - 'carbonblack/rules/cb_file_modification_msbuild_exe.json'
+        - 'carbonblack/rules/cb_network_connection_msbuild_exe.json'
+        - 'carbonblack/rules/cb_process_creation_msbuild_exe.json'
+        - 'carbonblack/rules/cb_registry_modification_msbuild_exe.json'
+    gaps:
+      - sigma
+      - elastic
+      - splunk
+      - microsoft-sentinel
+      - wazuh
+  T1136:
+    name: 'Create Account'
+    tactic: persistence
+    coverage_count: 2
+    detections:
+      sigma: []
+      elastic: []
+      splunk: []
+      microsoft-sentinel:
+        - 'microsoft-sentinel/kql_047_acct_mgr_group_created.kql'
+      wazuh: []
+      carbonblack:
+        - 'carbonblack/rules/cb_childproc_creation_net_exe.json'
+    gaps:
+      - sigma
+      - elastic
+      - splunk
+      - wazuh
+  T1136.001:
+    name: 'Local Account'
+    tactic: persistence
+    coverage_count: 3
+    detections:
+      sigma:
+        - 'sigma/linux/lnx_new_user_added.yml'
+      elastic: []
+      splunk: []
+      microsoft-sentinel:
+        - 'microsoft-sentinel/kql_041_acct_mgr_user_created.kql'
+      wazuh:
+        - 'wazuh/rules/account_creation.xml'
+      carbonblack: []
+    gaps:
+      - elastic
+      - splunk
+      - carbonblack
+  T1136.002:
+    name: 'Domain Account'
+    tactic: persistence
+    coverage_count: 1
+    detections:
+      sigma: []
+      elastic: []
+      splunk: []
+      microsoft-sentinel: []
+      wazuh:
+        - 'wazuh/rules/win_ad_computer_account_created.xml'
+      carbonblack: []
+    gaps:
+      - sigma
+      - elastic
+      - splunk
+      - microsoft-sentinel
+      - carbonblack
+  T1140:
+    name: 'Deobfuscate/Decode Files or Information'
+    tactic: defense-evasion
+    coverage_count: 2
+    detections:
+      sigma: []
+      elastic: []
+      splunk: []
+      microsoft-sentinel:
+        - 'microsoft-sentinel/kql_007_proc_exec_certutil.kql'
+      wazuh: []
+      carbonblack:
+        - 'carbonblack/rules/cb_childproc_creation_certutil_exe.json'
+        - 'carbonblack/rules/cb_file_modification_certutil_exe.json'
+        - 'carbonblack/rules/cb_network_connection_certutil_exe.json'
+        - 'carbonblack/rules/cb_process_creation_certutil_exe.json'
+        - 'carbonblack/rules/cb_registry_modification_certutil_exe.json'
+    gaps:
+      - sigma
+      - elastic
+      - splunk
+      - wazuh
+  T1190:
+    name: 'Unknown / Custom'
+    tactic: uncategorized
+    coverage_count: 2
+    detections:
+      sigma: []
+      elastic:
+        - 'elastic/endpoint/general/Potential Exploitation of CrushFTP RCE Vulnerability (CVE-2025-54309).ndjson'
+        - 'elastic/endpoint/general/Potential SAP NetWeaver Webshell Creation.ndjson'
+        - 'elastic/endpoint/general/Suspicious Child Process of SAP NetWeaver - Linux.ndjson'
+      splunk: []
+      microsoft-sentinel: []
+      wazuh:
+        - 'wazuh/rules/apache_error_log_spike.xml'
+        - 'wazuh/rules/directory_traversal.xml'
+        - 'wazuh/rules/nginx_error_log_spike.xml'
+        - 'wazuh/rules/sql_injection_attempt.xml'
+        - 'wazuh/rules/xss_attempt.xml'
+      carbonblack: []
+    gaps:
+      - sigma
+      - splunk
+      - microsoft-sentinel
+      - carbonblack
+  T1197:
+    name: 'BITS Jobs'
+    tactic: defense-evasion
+    coverage_count: 3
+    detections:
+      sigma: []
+      elastic:
+        - 'elastic/endpoint/windows/win_suspicious_bitsadmin.ndjson'
+      splunk: []
+      microsoft-sentinel:
+        - 'microsoft-sentinel/kql_008_proc_exec_bitsadmin.kql'
+      wazuh: []
+      carbonblack:
+        - 'carbonblack/rules/cb_childproc_creation_bitsadmin_exe.json'
+        - 'carbonblack/rules/cb_file_modification_bitsadmin_exe.json'
+        - 'carbonblack/rules/cb_network_connection_bitsadmin_exe.json'
+        - 'carbonblack/rules/cb_process_creation_bitsadmin_exe.json'
+        - 'carbonblack/rules/cb_registry_modification_bitsadmin_exe.json'
+    gaps:
+      - sigma
+      - splunk
+      - wazuh
+  T1205:
+    name: 'Unknown / Custom'
+    tactic: uncategorized
+    coverage_count: 1
+    detections:
+      sigma: []
+      elastic:
+        - 'elastic/endpoint/general/Port Knocking.ndjson'
+      splunk: []
+      microsoft-sentinel: []
+      wazuh: []
+      carbonblack: []
+    gaps:
+      - sigma
+      - splunk
+      - microsoft-sentinel
+      - wazuh
+      - carbonblack
+  T1205.002:
+    name: 'Unknown / Custom'
+    tactic: uncategorized
+    coverage_count: 1
+    detections:
+      sigma: []
+      elastic:
+        - 'elastic/endpoint/general/Port Knocking.ndjson'
+      splunk: []
+      microsoft-sentinel: []
+      wazuh: []
+      carbonblack: []
+    gaps:
+      - sigma
+      - splunk
+      - microsoft-sentinel
+      - wazuh
+      - carbonblack
+  T1218:
+    name: 'System Binary Proxy Execution'
+    tactic: defense-evasion
+    coverage_count: 1
+    detections:
+      sigma: []
+      elastic: []
+      splunk: []
+      microsoft-sentinel:
+        - 'microsoft-sentinel/kql_005_proc_exec_rundll32.kql'
+        - 'microsoft-sentinel/kql_006_proc_exec_regsvr32.kql'
+        - 'microsoft-sentinel/kql_039_file_create_scr.kql'
+      wazuh: []
+      carbonblack: []
+    gaps:
+      - sigma
+      - elastic
+      - splunk
+      - wazuh
+      - carbonblack
+  T1218.004:
+    name: 'InstallUtil'
+    tactic: defense-evasion
+    coverage_count: 1
+    detections:
+      sigma: []
+      elastic: []
+      splunk: []
+      microsoft-sentinel: []
+      wazuh: []
+      carbonblack:
+        - 'carbonblack/rules/cb_childproc_creation_installutil_exe.json'
+    gaps:
+      - sigma
+      - elastic
+      - splunk
+      - microsoft-sentinel
+      - wazuh
+  T1218.005:
+    name: 'Mshta'
+    tactic: defense-evasion
+    coverage_count: 3
+    detections:
+      sigma:
+        - 'sigma/windows/win_suspicious_mshta_execution.yml'
+      elastic: []
+      splunk:
+        - 'splunk/windows/win_suspicious_mshta_execution.spl'
+      microsoft-sentinel: []
+      wazuh: []
+      carbonblack:
+        - 'carbonblack/rules/cb_childproc_creation_mshta_exe.json'
+    gaps:
+      - elastic
+      - microsoft-sentinel
+      - wazuh
+  T1218.010:
+    name: 'Regsvr32'
+    tactic: defense-evasion
+    coverage_count: 3
+    detections:
+      sigma: []
+      elastic: []
+      splunk:
+        - 'splunk/windows/win_suspicious_regsvr32.spl'
+      microsoft-sentinel:
+        - 'microsoft-sentinel/kql_006_proc_exec_regsvr32.kql'
+      wazuh: []
+      carbonblack:
+        - 'carbonblack/rules/cb_childproc_creation_regsvr32_exe.json'
+        - 'carbonblack/rules/cb_file_modification_regsvr32_exe.json'
+        - 'carbonblack/rules/cb_network_connection_regsvr32_exe.json'
+        - 'carbonblack/rules/cb_process_creation_regsvr32_exe.json'
+        - 'carbonblack/rules/cb_registry_modification_regsvr32_exe.json'
+    gaps:
+      - sigma
+      - elastic
+      - wazuh
+  T1218.011:
+    name: 'Rundll32'
+    tactic: defense-evasion
+    coverage_count: 3
+    detections:
+      sigma: []
+      elastic: []
+      splunk:
+        - 'splunk/windows/win_suspicious_rundll32_net.spl'
+      microsoft-sentinel:
+        - 'microsoft-sentinel/kql_005_proc_exec_rundll32.kql'
+      wazuh: []
+      carbonblack:
+        - 'carbonblack/rules/cb_childproc_creation_rundll32_exe.json'
+        - 'carbonblack/rules/cb_file_modification_rundll32_exe.json'
+        - 'carbonblack/rules/cb_network_connection_rundll32_exe.json'
+        - 'carbonblack/rules/cb_process_creation_rundll32_exe.json'
+        - 'carbonblack/rules/cb_registry_modification_rundll32_exe.json'
+    gaps:
+      - sigma
+      - elastic
+      - wazuh
+  T1219:
+    name: 'Unknown / Custom'
+    tactic: uncategorized
+    coverage_count: 1
+    detections:
+      sigma: []
+      elastic:
+        - 'elastic/endpoint/general/Remote Access Tool - TacticalRMM Agent Registration to Potentially Attacker-Controlled Server.ndjson'
+        - 'elastic/endpoint/general/Suspicious Velociraptor Child Process.ndjson'
+      splunk: []
+      microsoft-sentinel: []
+      wazuh: []
+      carbonblack: []
+    gaps:
+      - sigma
+      - splunk
+      - microsoft-sentinel
+      - wazuh
+      - carbonblack
+  T1484:
+    name: 'Domain Policy Modification'
+    tactic: privilege-escalation
+    coverage_count: 1
+    detections:
+      sigma: []
+      elastic: []
+      splunk: []
+      microsoft-sentinel:
+        - 'microsoft-sentinel/kql_049_acct_mgr_pwd_policy_changed.kql'
+      wazuh: []
+      carbonblack: []
+    gaps:
+      - sigma
+      - elastic
+      - splunk
+      - wazuh
+      - carbonblack
+  T1484.001:
+    name: 'Group Policy Modification'
+    tactic: privilege-escalation
+    coverage_count: 1
+    detections:
+      sigma: []
+      elastic: []
+      splunk: []
+      microsoft-sentinel: []
+      wazuh:
+        - 'wazuh/rules/win_ad_group_policy_modified.xml'
+      carbonblack: []
+    gaps:
+      - sigma
+      - elastic
+      - splunk
+      - microsoft-sentinel
+      - carbonblack
+  T1486:
+    name: 'Unknown / Custom'
+    tactic: uncategorized
+    coverage_count: 1
+    detections:
+      sigma: []
+      elastic:
+        - 'elastic/endpoint/general/FunkLocker Ransomware File Creation.ndjson'
+      splunk: []
+      microsoft-sentinel: []
+      wazuh: []
+      carbonblack: []
+    gaps:
+      - sigma
+      - splunk
+      - microsoft-sentinel
+      - wazuh
+      - carbonblack
+  T1489:
+    name: 'Service Stop'
+    tactic: impact
+    coverage_count: 2
+    detections:
+      sigma: []
+      elastic: []
+      splunk: []
+      microsoft-sentinel:
+        - 'microsoft-sentinel/kql_073_service_stopped.kql'
+      wazuh:
+        - 'wazuh/rules/app_apache_stopped.xml'
+        - 'wazuh/rules/app_docker_stopped.xml'
+        - 'wazuh/rules/app_gitlab_stopped.xml'
+        - 'wazuh/rules/app_jenkins_stopped.xml'
+        - 'wazuh/rules/app_kubernetes_stopped.xml'
+        - 'wazuh/rules/app_mongodb_stopped.xml'
+        - 'wazuh/rules/app_mysql_stopped.xml'
+        - 'wazuh/rules/app_nginx_stopped.xml'
+        - 'wazuh/rules/app_postgres_stopped.xml'
+        - 'wazuh/rules/app_redis_stopped.xml'
+        - 'wazuh/rules/lnx_systemctl_disable_service.xml'
+      carbonblack: []
+    gaps:
+      - sigma
+      - elastic
+      - splunk
+      - carbonblack
+  T1490:
+    name: 'Inhibit System Recovery'
+    tactic: impact
+    coverage_count: 4
+    detections:
+      sigma:
+        - 'sigma/windows/win_shadow_copies_deletion.yml'
+      elastic:
+        - 'elastic/endpoint/general/Windows Recovery Environment Disabled Via Reagentc.ndjson'
+        - 'elastic/endpoint/windows/win_ransomware_shadow_copy.ndjson'
+      splunk:
+        - 'splunk/windows/win_shadow_copies_deletion.spl'
+      microsoft-sentinel:
+        - 'microsoft-sentinel/kql_085_obj_access_shadow_copy.kql'
+        - 'microsoft-sentinel/kql_086_obj_access_backup.kql'
+      wazuh: []
+      carbonblack: []
+    gaps:
+      - wazuh
+      - carbonblack
+  T1497:
+    name: 'Unknown / Custom'
+    tactic: uncategorized
+    coverage_count: 1
+    detections:
+      sigma: []
+      elastic:
+        - 'elastic/endpoint/general/Software Deployment Tools.ndjson'
+        - 'elastic/endpoint/general/System Checks.ndjson'
+        - 'elastic/endpoint/general/User Activity Based Checks.ndjson'
+        - 'elastic/endpoint/general/Virtualization Sandbox Evasion.ndjson'
+      splunk: []
+      microsoft-sentinel: []
+      wazuh: []
+      carbonblack: []
+    gaps:
+      - sigma
+      - splunk
+      - microsoft-sentinel
+      - wazuh
+      - carbonblack
+  T1497.001:
+    name: 'Unknown / Custom'
+    tactic: uncategorized
+    coverage_count: 1
+    detections:
+      sigma: []
+      elastic:
+        - 'elastic/endpoint/general/Virtualization Sandbox Evasion.ndjson'
+      splunk: []
+      microsoft-sentinel: []
+      wazuh: []
+      carbonblack: []
+    gaps:
+      - sigma
+      - splunk
+      - microsoft-sentinel
+      - wazuh
+      - carbonblack
+  T1497.002:
+    name: 'Unknown / Custom'
+    tactic: uncategorized
+    coverage_count: 1
+    detections:
+      sigma: []
+      elastic:
+        - 'elastic/endpoint/general/System Checks.ndjson'
+      splunk: []
+      microsoft-sentinel: []
+      wazuh: []
+      carbonblack: []
+    gaps:
+      - sigma
+      - splunk
+      - microsoft-sentinel
+      - wazuh
+      - carbonblack
+  T1497.003:
+    name: 'Unknown / Custom'
+    tactic: uncategorized
+    coverage_count: 1
+    detections:
+      sigma: []
+      elastic:
+        - 'elastic/endpoint/general/User Activity Based Checks.ndjson'
+      splunk: []
+      microsoft-sentinel: []
+      wazuh: []
+      carbonblack: []
+    gaps:
+      - sigma
+      - splunk
+      - microsoft-sentinel
+      - wazuh
+      - carbonblack
+  T1499:
+    name: 'Endpoint Denial of Service'
+    tactic: impact
+    coverage_count: 2
+    detections:
+      sigma: []
+      elastic: []
+      splunk: []
+      microsoft-sentinel:
+        - 'microsoft-sentinel/kql_074_service_failed.kql'
+        - 'microsoft-sentinel/kql_075_service_crashed.kql'
+      wazuh:
+        - 'wazuh/rules/app_apache_crashed.xml'
+        - 'wazuh/rules/app_apache_failed.xml'
+        - 'wazuh/rules/app_docker_crashed.xml'
+        - 'wazuh/rules/app_docker_failed.xml'
+        - 'wazuh/rules/app_gitlab_crashed.xml'
+        - 'wazuh/rules/app_gitlab_failed.xml'
+        - 'wazuh/rules/app_jenkins_crashed.xml'
+        - 'wazuh/rules/app_jenkins_failed.xml'
+        - 'wazuh/rules/app_kubernetes_crashed.xml'
+        - 'wazuh/rules/app_kubernetes_failed.xml'
+        - 'wazuh/rules/app_mongodb_crashed.xml'
+        - 'wazuh/rules/app_mongodb_failed.xml'
+        - 'wazuh/rules/app_mysql_crashed.xml'
+        - 'wazuh/rules/app_mysql_failed.xml'
+        - 'wazuh/rules/app_nginx_crashed.xml'
+        - 'wazuh/rules/app_nginx_failed.xml'
+        - 'wazuh/rules/app_postgres_crashed.xml'
+        - 'wazuh/rules/app_postgres_failed.xml'
+        - 'wazuh/rules/app_redis_crashed.xml'
+        - 'wazuh/rules/app_redis_failed.xml'
+      carbonblack: []
+    gaps:
+      - sigma
+      - elastic
+      - splunk
+      - carbonblack
+  T1505.003:
+    name: 'Unknown / Custom'
+    tactic: uncategorized
+    coverage_count: 1
+    detections:
+      sigma: []
+      elastic: []
+      splunk: []
+      microsoft-sentinel: []
+      wazuh:
+        - 'wazuh/rules/web_shell_upload.xml'
+      carbonblack: []
+    gaps:
+      - sigma
+      - elastic
+      - splunk
+      - microsoft-sentinel
+      - carbonblack
+  T1530:
+    name: 'Data from Cloud Storage'
+    tactic: collection
+    coverage_count: 1
+    detections:
+      sigma: []
+      elastic: []
+      splunk: []
+      microsoft-sentinel:
+        - 'microsoft-sentinel/kql_098_misc_cloud_storage_public.kql'
+      wazuh: []
+      carbonblack: []
+    gaps:
+      - sigma
+      - elastic
+      - splunk
+      - wazuh
+      - carbonblack
+  T1531:
+    name: 'Account Access Removal'
+    tactic: impact
+    coverage_count: 2
+    detections:
+      sigma: []
+      elastic: []
+      splunk: []
+      microsoft-sentinel:
+        - 'microsoft-sentinel/kql_044_acct_mgr_user_deleted.kql'
+        - 'microsoft-sentinel/kql_046_acct_mgr_user_removed_from_group.kql'
+        - 'microsoft-sentinel/kql_048_acct_mgr_group_deleted.kql'
+      wazuh:
+        - 'wazuh/rules/win_ad_user_deleted.xml'
+      carbonblack: []
+    gaps:
+      - sigma
+      - elastic
+      - splunk
+      - carbonblack
+  T1543:
+    name: 'Create or Modify System Process'
+    tactic: persistence
+    coverage_count: 2
+    detections:
+      sigma: []
+      elastic: []
+      splunk: []
+      microsoft-sentinel:
+        - 'microsoft-sentinel/kql_071_service_installed.kql'
+      wazuh:
+        - 'wazuh/rules/app_apache_restarted.xml'
+        - 'wazuh/rules/app_apache_started.xml'
+        - 'wazuh/rules/app_docker_restarted.xml'
+        - 'wazuh/rules/app_docker_started.xml'
+        - 'wazuh/rules/app_gitlab_restarted.xml'
+        - 'wazuh/rules/app_gitlab_started.xml'
+        - 'wazuh/rules/app_jenkins_restarted.xml'
+        - 'wazuh/rules/app_jenkins_started.xml'
+        - 'wazuh/rules/app_kubernetes_restarted.xml'
+        - 'wazuh/rules/app_kubernetes_started.xml'
+        - 'wazuh/rules/app_mongodb_restarted.xml'
+        - 'wazuh/rules/app_mongodb_started.xml'
+        - 'wazuh/rules/app_mysql_restarted.xml'
+        - 'wazuh/rules/app_mysql_started.xml'
+        - 'wazuh/rules/app_nginx_restarted.xml'
+        - 'wazuh/rules/app_nginx_started.xml'
+        - 'wazuh/rules/app_postgres_restarted.xml'
+        - 'wazuh/rules/app_postgres_started.xml'
+        - 'wazuh/rules/app_redis_restarted.xml'
+        - 'wazuh/rules/app_redis_started.xml'
+      carbonblack: []
+    gaps:
+      - sigma
+      - elastic
+      - splunk
+      - carbonblack
+  T1543.003:
+    name: 'Windows Service'
+    tactic: persistence
+    coverage_count: 3
+    detections:
+      sigma: []
+      elastic: []
+      splunk:
+        - 'splunk/windows/win_suspicious_sc_create.spl'
+      microsoft-sentinel:
+        - 'microsoft-sentinel/kql_023_reg_mod_services.kql'
+        - 'microsoft-sentinel/kql_033_file_create_sys.kql'
+        - 'microsoft-sentinel/kql_071_service_installed.kql'
+        - 'microsoft-sentinel/kql_072_service_started.kql'
+        - 'microsoft-sentinel/kql_076_service_suspicious_path.kql'
+        - 'microsoft-sentinel/kql_077_service_suspicious_name.kql'
+        - 'microsoft-sentinel/kql_078_service_changed_config.kql'
+        - 'microsoft-sentinel/kql_079_service_deleted.kql'
+        - 'microsoft-sentinel/kql_080_service_disabled.kql'
+      wazuh:
+        - 'wazuh/rules/service_creation.xml'
+      carbonblack: []
+    gaps:
+      - sigma
+      - elastic
+      - carbonblack
+  T1547:
+    name: 'Boot or Logon Autostart Execution'
+    tactic: persistence
+    coverage_count: 1
+    detections:
+      sigma: []
+      elastic: []
+      splunk: []
+      microsoft-sentinel:
+        - 'microsoft-sentinel/kql_021_reg_mod_run_key.kql'
+      wazuh: []
+      carbonblack: []
+    gaps:
+      - sigma
+      - elastic
+      - splunk
+      - wazuh
+      - carbonblack
+  T1547.001:
+    name: 'Registry Run Keys / Startup Folder'
+    tactic: persistence
+    coverage_count: 2
+    detections:
+      sigma: []
+      elastic: []
+      splunk: []
+      microsoft-sentinel:
+        - 'microsoft-sentinel/kql_021_reg_mod_run_key.kql'
+        - 'microsoft-sentinel/kql_022_reg_mod_runonce_key.kql'
+      wazuh:
+        - 'wazuh/rules/win_registry_persistence_run.xml'
+        - 'wazuh/rules/win_registry_persistence_runonce.xml'
+      carbonblack: []
+    gaps:
+      - sigma
+      - elastic
+      - splunk
+      - carbonblack
+  T1547.005:
+    name: 'Security Support Provider'
+    tactic: persistence
+    coverage_count: 1
+    detections:
+      sigma: []
+      elastic: []
+      splunk: []
+      microsoft-sentinel:
+        - 'microsoft-sentinel/kql_030_reg_mod_lsa.kql'
+      wazuh: []
+      carbonblack: []
+    gaps:
+      - sigma
+      - elastic
+      - splunk
+      - wazuh
+      - carbonblack
+  T1547.006:
+    name: 'Unknown / Custom'
+    tactic: uncategorized
+    coverage_count: 1
+    detections:
+      sigma: []
+      elastic: []
+      splunk: []
+      microsoft-sentinel: []
+      wazuh:
+        - 'wazuh/rules/kernel_module_loading.xml'
+      carbonblack: []
+    gaps:
+      - sigma
+      - elastic
+      - splunk
+      - microsoft-sentinel
+      - carbonblack
+  T1548.002:
+    name: 'Bypass User Account Control'
+    tactic: privilege-escalation
+    coverage_count: 2
+    detections:
+      sigma: []
+      elastic:
+        - 'elastic/endpoint/windows/win_uac_bypass_fodhelper.ndjson'
+      splunk: []
+      microsoft-sentinel:
+        - 'microsoft-sentinel/kql_026_reg_mod_uac.kql'
+      wazuh: []
+      carbonblack: []
+    gaps:
+      - sigma
+      - splunk
+      - wazuh
+      - carbonblack
+  T1548.003:
+    name: 'Sudo and Sudo Caching'
+    tactic: privilege-escalation
+    coverage_count: 2
+    detections:
+      sigma:
+        - 'sigma/linux/lnx_sudoers_modification.yml'
+      elastic: []
+      splunk: []
+      microsoft-sentinel: []
+      wazuh:
+        - 'wazuh/rules/sudo_abuse.xml'
+      carbonblack: []
+    gaps:
+      - elastic
+      - splunk
+      - microsoft-sentinel
+      - carbonblack
+  T1552.001:
+    name: 'Unknown / Custom'
+    tactic: uncategorized
+    coverage_count: 1
+    detections:
+      sigma: []
+      elastic:
+        - 'elastic/endpoint/general/Potential PowerShell Console History Access Attempt via History File.ndjson'
+      splunk: []
+      microsoft-sentinel: []
+      wazuh: []
+      carbonblack: []
+    gaps:
+      - sigma
+      - splunk
+      - microsoft-sentinel
+      - wazuh
+      - carbonblack
+  T1556:
+    name: 'Modify Authentication Process'
+    tactic: credential-access
+    coverage_count: 2
+    detections:
+      sigma: []
+      elastic: []
+      splunk: []
+      microsoft-sentinel:
+        - 'microsoft-sentinel/kql_060_logon_cleartext.kql'
+      wazuh:
+        - 'wazuh/rules/lnx_sshd_config_modified.xml'
+      carbonblack: []
+    gaps:
+      - sigma
+      - elastic
+      - splunk
+      - carbonblack
+  T1556.006:
+    name: 'Multi-Factor Authentication'
+    tactic: credential-access
+    coverage_count: 1
+    detections:
+      sigma: []
+      elastic: []
+      splunk: []
+      microsoft-sentinel:
+        - 'microsoft-sentinel/kql_093_misc_cloud_mfa_disabled.kql'
+      wazuh: []
+      carbonblack: []
+    gaps:
+      - sigma
+      - elastic
+      - splunk
+      - wazuh
+      - carbonblack
+  T1560.001:
+    name: 'Archive via Utility'
+    tactic: collection
+    coverage_count: 1
+    detections:
+      sigma: []
+      elastic: []
+      splunk: []
+      microsoft-sentinel: []
+      wazuh: []
+      carbonblack:
+        - 'carbonblack/rules/cb_childproc_creation_7z_exe.json'
+    gaps:
+      - sigma
+      - elastic
+      - splunk
+      - microsoft-sentinel
+      - wazuh
+  T1562.001:
+    name: 'Disable or Modify Tools'
+    tactic: defense-evasion
+    coverage_count: 4
+    detections:
+      sigma: []
+      elastic:
+        - 'elastic/endpoint/windows/win_reg_disable_defender.ndjson'
+      splunk:
+        - 'splunk/windows/win_suspicious_taskkill.spl'
+      microsoft-sentinel:
+        - 'microsoft-sentinel/kql_025_reg_mod_defender.kql'
+        - 'microsoft-sentinel/kql_080_service_disabled.kql'
+      wazuh:
+        - 'wazuh/rules/app_apache_config_changed.xml'
+        - 'wazuh/rules/app_docker_config_changed.xml'
+        - 'wazuh/rules/app_gitlab_config_changed.xml'
+        - 'wazuh/rules/app_jenkins_config_changed.xml'
+        - 'wazuh/rules/app_kubernetes_config_changed.xml'
+        - 'wazuh/rules/app_mongodb_config_changed.xml'
+        - 'wazuh/rules/app_mysql_config_changed.xml'
+        - 'wazuh/rules/app_nginx_config_changed.xml'
+        - 'wazuh/rules/app_postgres_config_changed.xml'
+        - 'wazuh/rules/app_redis_config_changed.xml'
+        - 'wazuh/rules/lnx_systemctl_disable_service.xml'
+        - 'wazuh/rules/windows_defender_disabled.xml'
+      carbonblack: []
+    gaps:
+      - sigma
+      - carbonblack
+  T1562.002:
+    name: 'Disable Windows Event Logging'
+    tactic: defense-evasion
+    coverage_count: 1
+    detections:
+      sigma: []
+      elastic: []
+      splunk: []
+      microsoft-sentinel:
+        - 'microsoft-sentinel/kql_088_obj_access_audit_policy.kql'
+      wazuh: []
+      carbonblack: []
+    gaps:
+      - sigma
+      - elastic
+      - splunk
+      - wazuh
+      - carbonblack
+  T1562.004:
+    name: 'Disable or Modify System Firewall'
+    tactic: defense-evasion
+    coverage_count: 2
+    detections:
+      sigma: []
+      elastic: []
+      splunk: []
+      microsoft-sentinel:
+        - 'microsoft-sentinel/kql_024_reg_mod_firewall.kql'
+        - 'microsoft-sentinel/kql_095_misc_cloud_fw_changed.kql'
+      wazuh:
+        - 'wazuh/rules/net_firewall_rule_added.xml'
+        - 'wazuh/rules/net_firewall_rule_deleted.xml'
+        - 'wazuh/rules/windows_firewall_modified.xml'
+      carbonblack: []
+    gaps:
+      - sigma
+      - elastic
+      - splunk
+      - carbonblack
+  T1562.008:
+    name: 'Unknown / Custom'
+    tactic: uncategorized
+    coverage_count: 1
+    detections:
+      sigma:
+        - 'sigma/cloud/cloud_aws_suspicious_disable_cloudtrail.yml'
+      elastic: []
+      splunk: []
+      microsoft-sentinel: []
+      wazuh: []
+      carbonblack: []
+    gaps:
+      - elastic
+      - splunk
+      - microsoft-sentinel
+      - wazuh
+      - carbonblack
+  T1564:
+    name: 'Hide Artifacts'
+    tactic: defense-evasion
+    coverage_count: 1
+    detections:
+      sigma: []
+      elastic: []
+      splunk: []
+      microsoft-sentinel:
+        - 'microsoft-sentinel/kql_068_schtask_hidden.kql'
+      wazuh: []
+      carbonblack: []
+    gaps:
+      - sigma
+      - elastic
+      - splunk
+      - wazuh
+      - carbonblack
+  T1564.001:
+    name: 'Unknown / Custom'
+    tactic: uncategorized
+    coverage_count: 1
+    detections:
+      sigma: []
+      elastic: []
+      splunk:
+        - 'splunk/windows/win_suspicious_attrib_hidden.spl'
+      microsoft-sentinel: []
+      wazuh: []
+      carbonblack: []
+    gaps:
+      - sigma
+      - elastic
+      - microsoft-sentinel
+      - wazuh
+      - carbonblack
+  T1565.001:
+    name: 'Stored Data Manipulation'
+    tactic: impact
+    coverage_count: 1
+    detections:
+      sigma: []
+      elastic: []
+      splunk: []
+      microsoft-sentinel:
+        - 'microsoft-sentinel/kql_090_obj_access_host_file.kql'
+      wazuh: []
+      carbonblack: []
+    gaps:
+      - sigma
+      - elastic
+      - splunk
+      - wazuh
+      - carbonblack
+  T1567:
+    name: 'Exfiltration Over Web Service'
+    tactic: exfiltration
+    coverage_count: 1
+    detections:
+      sigma: []
+      elastic:
+        - 'elastic/endpoint/general/IOCs (ip) to detect Curly COMrades A New Threat Actor Targeting Geopolitical Hotbeds.ndjson'
+      splunk: []
+      microsoft-sentinel: []
+      wazuh: []
+      carbonblack: []
+    gaps:
+      - sigma
+      - splunk
+      - microsoft-sentinel
+      - wazuh
+      - carbonblack
+  T1567.002:
+    name: 'Exfiltration to Cloud Storage'
+    tactic: exfiltration
+    coverage_count: 1
+    detections:
+      sigma: []
+      elastic: []
+      splunk: []
+      microsoft-sentinel: []
+      wazuh: []
+      carbonblack:
+        - 'carbonblack/rules/cb_childproc_creation_rclone_exe.json'
+    gaps:
+      - sigma
+      - elastic
+      - splunk
+      - microsoft-sentinel
+      - wazuh
+  T1569.002:
+    name: 'Unknown / Custom'
+    tactic: uncategorized
+    coverage_count: 1
+    detections:
+      sigma: []
+      elastic: []
+      splunk: []
+      microsoft-sentinel: []
+      wazuh:
+        - 'wazuh/rules/psexec_execution.xml'
+      carbonblack: []
+    gaps:
+      - sigma
+      - elastic
+      - splunk
+      - microsoft-sentinel
+      - carbonblack
+  T1571:
+    name: 'Non-Standard Port'
+    tactic: command-and-control
+    coverage_count: 2
+    detections:
+      sigma: []
+      elastic: []
+      splunk: []
+      microsoft-sentinel:
+        - 'microsoft-sentinel/kql_011_net_conn_suspicious_port.kql'
+      wazuh:
+        - 'wazuh/rules/net_suspicious_port_4444.xml'
+      carbonblack: []
+    gaps:
+      - sigma
+      - elastic
+      - splunk
+      - carbonblack
+  T1572:
+    name: 'Protocol Tunneling'
+    tactic: command-and-control
+    coverage_count: 3
+    detections:
+      sigma: []
+      elastic: []
+      splunk: []
+      microsoft-sentinel:
+        - 'microsoft-sentinel/kql_017_net_conn_dns_tunnel.kql'
+        - 'microsoft-sentinel/kql_net_dns_suspicious_tunnel.kql'
+      wazuh:
+        - 'wazuh/rules/net_dns_tunneling_suspicion.xml'
+      carbonblack:
+        - 'carbonblack/rules/cb_netconn_dns_tunnel_like.json'
+    gaps:
+      - sigma
+      - elastic
+      - splunk
+  T1574:
+    name: 'Hijack Execution Flow'
+    tactic: persistence
+    coverage_count: 1
+    detections:
+      sigma: []
+      elastic:
+        - 'elastic/endpoint/general/Possible DLL Hijacking of cnmpaui.dll.ndjson'
+        - 'elastic/endpoint/general/Possible DLL Hijacking of sentinelagentcore.dll.ndjson'
+        - 'elastic/endpoint/general/Possible DLL Hijacking of tsmsisrv.dll.ndjson'
+        - 'elastic/endpoint/general/Possible DLL Hijacking of tsvipsrv.dll.ndjson'
+      splunk: []
+      microsoft-sentinel: []
+      wazuh: []
+      carbonblack: []
+    gaps:
+      - sigma
+      - splunk
+      - microsoft-sentinel
+      - wazuh
+      - carbonblack
+  T1574.001:
+    name: 'Unknown / Custom'
+    tactic: uncategorized
+    coverage_count: 1
+    detections:
+      sigma: []
+      elastic:
+        - 'elastic/endpoint/general/Possible DLL Hijacking of cnmpaui.dll.ndjson'
+        - 'elastic/endpoint/general/Possible DLL Hijacking of sentinelagentcore.dll.ndjson'
+        - 'elastic/endpoint/general/Possible DLL Hijacking of tsmsisrv.dll.ndjson'
+        - 'elastic/endpoint/general/Possible DLL Hijacking of tsvipsrv.dll.ndjson'
+      splunk: []
+      microsoft-sentinel: []
+      wazuh: []
+      carbonblack: []
+    gaps:
+      - sigma
+      - splunk
+      - microsoft-sentinel
+      - wazuh
+      - carbonblack
+  T1574.002:
+    name: 'DLL Side-Loading'
+    tactic: persistence
+    coverage_count: 2
+    detections:
+      sigma: []
+      elastic: []
+      splunk: []
+      microsoft-sentinel:
+        - 'microsoft-sentinel/kql_032_file_create_dll_temp.kql'
+      wazuh: []
+      carbonblack:
+        - 'carbonblack/rules/cb_childproc_creation_malware_dll.json'
+        - 'carbonblack/rules/cb_file_modification_malware_dll.json'
+        - 'carbonblack/rules/cb_network_connection_malware_dll.json'
+        - 'carbonblack/rules/cb_process_creation_malware_dll.json'
+        - 'carbonblack/rules/cb_registry_modification_malware_dll.json'
+    gaps:
+      - sigma
+      - elastic
+      - splunk
+      - wazuh
+  T1578.002:
+    name: 'Create Cloud Instance'
+    tactic: defense-evasion
+    coverage_count: 1
+    detections:
+      sigma: []
+      elastic: []
+      splunk: []
+      microsoft-sentinel:
+        - 'microsoft-sentinel/kql_096_misc_cloud_vm_created.kql'
+      wazuh: []
+      carbonblack: []
+    gaps:
+      - sigma
+      - elastic
+      - splunk
+      - wazuh
+      - carbonblack
+  T1578.003:
+    name: 'Delete Cloud Instance'
+    tactic: defense-evasion
+    coverage_count: 1
+    detections:
+      sigma: []
+      elastic: []
+      splunk: []
+      microsoft-sentinel:
+        - 'microsoft-sentinel/kql_097_misc_cloud_vm_deleted.kql'
+      wazuh: []
+      carbonblack: []
+    gaps:
+      - sigma
+      - elastic
+      - splunk
+      - wazuh
+      - carbonblack
+  T1586:
+    name: 'Unknown / Custom'
+    tactic: uncategorized
+    coverage_count: 1
+    detections:
+      sigma: []
+      elastic:
+        - 'elastic/endpoint/general/Compromise Accounts (General).ndjson'
+        - 'elastic/endpoint/general/Email Accounts.ndjson'
+        - 'elastic/endpoint/general/Social Media Accounts.ndjson'
+      splunk: []
+      microsoft-sentinel: []
+      wazuh: []
+      carbonblack: []
+    gaps:
+      - sigma
+      - splunk
+      - microsoft-sentinel
+      - wazuh
+      - carbonblack
+  T1586.001:
+    name: 'Unknown / Custom'
+    tactic: uncategorized
+    coverage_count: 1
+    detections:
+      sigma: []
+      elastic:
+        - 'elastic/endpoint/general/Compromise Accounts (General).ndjson'
+      splunk: []
+      microsoft-sentinel: []
+      wazuh: []
+      carbonblack: []
+    gaps:
+      - sigma
+      - splunk
+      - microsoft-sentinel
+      - wazuh
+      - carbonblack
+  T1586.002:
+    name: 'Unknown / Custom'
+    tactic: uncategorized
+    coverage_count: 1
+    detections:
+      sigma: []
+      elastic:
+        - 'elastic/endpoint/general/Social Media Accounts.ndjson'
+      splunk: []
+      microsoft-sentinel: []
+      wazuh: []
+      carbonblack: []
+    gaps:
+      - sigma
+      - splunk
+      - microsoft-sentinel
+      - wazuh
+      - carbonblack
+  T1586.003:
+    name: 'Unknown / Custom'
+    tactic: uncategorized
+    coverage_count: 1
+    detections:
+      sigma: []
+      elastic:
+        - 'elastic/endpoint/general/Email Accounts.ndjson'
+      splunk: []
+      microsoft-sentinel: []
+      wazuh: []
+      carbonblack: []
+    gaps:
+      - sigma
+      - splunk
+      - microsoft-sentinel
+      - wazuh
+      - carbonblack
+  T1589:
+    name: 'Unknown / Custom'
+    tactic: uncategorized
+    coverage_count: 1
+    detections:
+      sigma: []
+      elastic:
+        - 'elastic/endpoint/general/Gather Victim Host Information.ndjson'
+      splunk: []
+      microsoft-sentinel: []
+      wazuh: []
+      carbonblack: []
+    gaps:
+      - sigma
+      - splunk
+      - microsoft-sentinel
+      - wazuh
+      - carbonblack
+  T1590:
+    name: 'Unknown / Custom'
+    tactic: uncategorized
+    coverage_count: 1
+    detections:
+      sigma: []
+      elastic:
+        - 'elastic/endpoint/general/Gather Victim Identity Information.ndjson'
+      splunk: []
+      microsoft-sentinel: []
+      wazuh: []
+      carbonblack: []
+    gaps:
+      - sigma
+      - splunk
+      - microsoft-sentinel
+      - wazuh
+      - carbonblack
+  T1591:
+    name: 'Unknown / Custom'
+    tactic: uncategorized
+    coverage_count: 1
+    detections:
+      sigma: []
+      elastic:
+        - 'elastic/endpoint/general/Gather Victim Network Information.ndjson'
+      splunk: []
+      microsoft-sentinel: []
+      wazuh: []
+      carbonblack: []
+    gaps:
+      - sigma
+      - splunk
+      - microsoft-sentinel
+      - wazuh
+      - carbonblack
+  T1592:
+    name: 'Unknown / Custom'
+    tactic: uncategorized
+    coverage_count: 1
+    detections:
+      sigma: []
+      elastic:
+        - 'elastic/endpoint/general/Defense Evasion – Disable Antivirus or Security Services.ndjson'
+      splunk: []
+      microsoft-sentinel: []
+      wazuh: []
+      carbonblack: []
+    gaps:
+      - sigma
+      - splunk
+      - microsoft-sentinel
+      - wazuh
+      - carbonblack
+  T1593:
+    name: 'Unknown / Custom'
+    tactic: uncategorized
+    coverage_count: 1
+    detections:
+      sigma: []
+      elastic:
+        - 'elastic/endpoint/general/Search Open Technical Databases.ndjson'
+      splunk: []
+      microsoft-sentinel: []
+      wazuh: []
+      carbonblack: []
+    gaps:
+      - sigma
+      - splunk
+      - microsoft-sentinel
+      - wazuh
+      - carbonblack
+  T1594:
+    name: 'Unknown / Custom'
+    tactic: uncategorized
+    coverage_count: 1
+    detections:
+      sigma: []
+      elastic:
+        - 'elastic/endpoint/general/Search Open Websites Domains.ndjson'
+      splunk: []
+      microsoft-sentinel: []
+      wazuh: []
+      carbonblack: []
+    gaps:
+      - sigma
+      - splunk
+      - microsoft-sentinel
+      - wazuh
+      - carbonblack
+  T1596:
+    name: 'Unknown / Custom'
+    tactic: uncategorized
+    coverage_count: 1
+    detections:
+      sigma: []
+      elastic:
+        - 'elastic/endpoint/general/Search Closed Sources.ndjson'
+      splunk: []
+      microsoft-sentinel: []
+      wazuh: []
+      carbonblack: []
+    gaps:
+      - sigma
+      - splunk
+      - microsoft-sentinel
+      - wazuh
+      - carbonblack
+  T1597:
+    name: 'Unknown / Custom'
+    tactic: uncategorized
+    coverage_count: 1
+    detections:
+      sigma: []
+      elastic:
+        - 'elastic/endpoint/general/Phishing for Information.ndjson'
+      splunk: []
+      microsoft-sentinel: []
+      wazuh: []
+      carbonblack: []
+    gaps:
+      - sigma
+      - splunk
+      - microsoft-sentinel
+      - wazuh
+      - carbonblack
+  T1598:
+    name: 'Unknown / Custom'
+    tactic: uncategorized
+    coverage_count: 1
+    detections:
+      sigma: []
+      elastic:
+        - 'elastic/endpoint/general/Gather Victim Org Information.ndjson'
+      splunk: []
+      microsoft-sentinel: []
+      wazuh: []
+      carbonblack: []
+    gaps:
+      - sigma
+      - splunk
+      - microsoft-sentinel
+      - wazuh
+      - carbonblack
+  T1650:
+    name: 'Unknown / Custom'
+    tactic: uncategorized
+    coverage_count: 1
+    detections:
+      sigma: []
+      elastic:
+        - 'elastic/endpoint/general/Search Victim-Owned Websites.ndjson'
+      splunk: []
+      microsoft-sentinel: []
+      wazuh: []
+      carbonblack: []
+    gaps:
+      - sigma
+      - splunk
+      - microsoft-sentinel
+      - wazuh
+      - carbonblack

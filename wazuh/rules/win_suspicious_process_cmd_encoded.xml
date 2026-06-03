@@ -4,7 +4,8 @@
     <match>cmd.exe /c echo</match>
     <description>Suspicious encoded command execution</description>
     <mitre>
-      <id>T1000</id>
+      <id>T1059.003</id>
+      <id>T1027</id>
     </mitre>
   </rule>
 </group>

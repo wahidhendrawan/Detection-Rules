@@ -4,7 +4,7 @@
     <match>kubernetes service stopped</match>
     <description>Application kubernetes stopped</description>
     <mitre>
-      <id>T1000</id>
+      <id>T1489</id>
     </mitre>
   </rule>
 </group>

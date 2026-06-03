@@ -4,7 +4,7 @@
     <match>nginx service stopped</match>
     <description>Application nginx stopped</description>
     <mitre>
-      <id>T1000</id>
+      <id>T1489</id>
     </mitre>
   </rule>
 </group>

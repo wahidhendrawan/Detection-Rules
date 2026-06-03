@@ -4,7 +4,7 @@
     <match>kubernetes service crashed</match>
     <description>Application kubernetes crashed</description>
     <mitre>
-      <id>T1000</id>
+      <id>T1499</id>
     </mitre>
   </rule>
 </group>

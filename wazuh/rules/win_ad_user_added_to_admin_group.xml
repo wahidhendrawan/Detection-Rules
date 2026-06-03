@@ -4,7 +4,7 @@
     <match>Member added to local group Administrators</match>
     <description>User added to local Administrators group</description>
     <mitre>
-      <id>T1000</id>
+      <id>T1098.007</id>
     </mitre>
   </rule>
 </group>

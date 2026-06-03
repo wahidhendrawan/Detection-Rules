@@ -1,0 +1,58 @@
+# Changelog
+
+Semua perubahan signifikan pada repo ini akan didokumentasikan di sini.
+
+Format mengikuti [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
+versioning mengikuti [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+
+---
+
+## [Unreleased]
+
+### Added
+
+- Struktur governance lengkap: `CONTRIBUTING.md`, `SECURITY.md`,
+  `CODE_OF_CONDUCT.md`, issue templates (bug report, false positive,
+  rule request), PR template, `CODEOWNERS`.
+- GitHub Actions workflow `validate.yml`: yamllint, sigma-cli, xmllint,
+  jq (JSON & NDJSON), KQL smoke check, MITRE coverage artifact upload.
+- GitHub Actions workflow `stale.yml`: auto-cleanup issue/PR yang stale.
+- Skrip `scripts/generate_coverage.py` untuk generate `COVERAGE.md` dan
+  `coverage.json` (ATT&CK Navigator-compatible).
+- File `COVERAGE.md` (auto-generated) dengan matrix lintas platform.
+- Pre-commit config (`.pre-commit-config.yaml`) untuk validasi lokal.
+- Folder `templates/` berisi boilerplate per platform.
+- README.md ditulis ulang lengkap dengan badges, tabel statistik,
+  quick-start per platform, dan roadmap.
+- `.yamllint.yml` config (relax line-length=200, ignore non-Sigma folders).
+
+### Changed
+
+- **BREAKING**: rename folder `Microsoft Sentinel/` → `microsoft-sentinel/`
+  (hilangkan spasi). Semua 102 file `.kql` ikut dipindah dengan `git mv`
+  sehingga history tetap utuh.
+- **BREAKING**: restruktur `splunk/` dari flat list → `splunk/{windows,linux,network,cloud}/`.
+- **BREAKING**: restruktur `elastic/endpoint/` dari flat list →
+  `elastic/endpoint/{windows,linux,network,general}/`.
+
+### Removed
+
+- Folder placeholder kosong: `sigma/rules/`, `elastic/rules/`, `splunk/query/`.
+
+### Known Issues
+
+- Banyak rule di `wazuh/rules/` memakai placeholder `T1000` (bukan teknik
+  MITRE valid; teknik dimulai dari `T1001`). Akan dibersihkan di rilis
+  selanjutnya.
+- Rule di `microsoft-sentinel/` dan `carbonblack/rules/` belum semuanya
+  punya tag MITRE eksplisit. Coverage = 0 untuk dua platform tersebut
+  pada generator saat ini.
+
+---
+
+## [1.0.0] - TBA
+
+Rilis awal — kumpulan rule lintas platform dari sebelumnya.
+
+[Unreleased]: https://github.com/wahidhendrawan/Detection-Rules/compare/v1.0.0...HEAD
+[1.0.0]: https://github.com/wahidhendrawan/Detection-Rules/releases/tag/v1.0.0

@@ -4,7 +4,7 @@
     <match>kubernetes service started</match>
     <description>Application kubernetes started</description>
     <mitre>
-      <id>T1000</id>
+      <id>T1543</id>
     </mitre>
   </rule>
 </group>

@@ -4,7 +4,7 @@
     <match>A user account was unlocked</match>
     <description>User Account Unlocked</description>
     <mitre>
-      <id>T1000</id>
+      <id>T1098</id>
     </mitre>
   </rule>
 </group>

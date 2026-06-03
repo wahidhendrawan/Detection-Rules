@@ -4,7 +4,7 @@
     <match>gitlab service started</match>
     <description>Application gitlab started</description>
     <mitre>
-      <id>T1000</id>
+      <id>T1543</id>
     </mitre>
   </rule>
 </group>

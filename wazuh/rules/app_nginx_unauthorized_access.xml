@@ -4,7 +4,7 @@
     <match>nginx service unauthorized_access</match>
     <description>Application nginx unauthorized_access</description>
     <mitre>
-      <id>T1000</id>
+      <id>T1078</id>
     </mitre>
   </rule>
 </group>

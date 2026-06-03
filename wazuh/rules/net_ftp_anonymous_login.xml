@@ -4,7 +4,7 @@
     <match>Anonymous login successful</match>
     <description>FTP Anonymous login successful</description>
     <mitre>
-      <id>T1000</id>
+      <id>T1078</id>
     </mitre>
   </rule>
 </group>

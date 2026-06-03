@@ -4,7 +4,7 @@
     <match>postgres service restarted</match>
     <description>Application postgres restarted</description>
     <mitre>
-      <id>T1000</id>
+      <id>T1543</id>
     </mitre>
   </rule>
 </group>

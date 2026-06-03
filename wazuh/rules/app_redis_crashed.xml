@@ -4,7 +4,7 @@
     <match>redis service crashed</match>
     <description>Application redis crashed</description>
     <mitre>
-      <id>T1000</id>
+      <id>T1499</id>
     </mitre>
   </rule>
 </group>

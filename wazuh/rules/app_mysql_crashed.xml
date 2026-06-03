@@ -4,7 +4,7 @@
     <match>mysql service crashed</match>
     <description>Application mysql crashed</description>
     <mitre>
-      <id>T1000</id>
+      <id>T1499</id>
     </mitre>
   </rule>
 </group>

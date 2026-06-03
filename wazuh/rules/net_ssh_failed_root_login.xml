@@ -4,7 +4,7 @@
     <match>Failed password for root</match>
     <description>SSH Root Login Failed</description>
     <mitre>
-      <id>T1000</id>
+      <id>T1110.001</id>
     </mitre>
   </rule>
 </group>

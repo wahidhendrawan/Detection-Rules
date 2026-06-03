@@ -4,7 +4,7 @@
     <match>gitlab service failed</match>
     <description>Application gitlab failed</description>
     <mitre>
-      <id>T1000</id>
+      <id>T1499</id>
     </mitre>
   </rule>
 </group>

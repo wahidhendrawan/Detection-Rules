@@ -1,0 +1,48 @@
+---
+# https://pre-commit.com
+# Install: pip install pre-commit && pre-commit install
+# Run all: pre-commit run --all-files
+
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v5.0.0
+    hooks:
+      - id: trailing-whitespace
+      - id: end-of-file-fixer
+      - id: check-merge-conflict
+      - id: check-added-large-files
+        args: ['--maxkb=2000']
+      - id: check-case-conflict
+      - id: mixed-line-ending
+        args: ['--fix=lf']
+      - id: check-yaml
+        files: ^sigma/.*\.ya?ml$
+      - id: check-json
+        files: ^carbonblack/.*\.json$
+      - id: check-xml
+        files: ^wazuh/.*\.xml$
+
+  - repo: https://github.com/adrienverge/yamllint
+    rev: v1.35.1
+    hooks:
+      - id: yamllint
+        args: ['-c', '.yamllint.yml']
+        files: ^(sigma|\.github)/.*\.ya?ml$
+
+  - repo: local
+    hooks:
+      - id: ndjson-validate
+        name: NDJSON validate (Elastic)
+        entry: bash -c 'fail=0; for f in "$@"; do while IFS= read -r line; do [ -z "$line" ] && continue; echo "$line" | python3 -c "import sys,json; json.loads(sys.stdin.read())" || { echo "Invalid JSON line in $f"; fail=1; }; done < "$f"; done; exit $fail'
+        language: system
+        files: ^elastic/.*\.ndjson$
+
+      - id: sigma-check
+        name: Sigma syntax check
+        entry: sigma check
+        language: system
+        pass_filenames: false
+        files: ^sigma/
+        require_serial: true
+        # NOTE: requires `pip install sigma-cli`
+        stages: [manual]

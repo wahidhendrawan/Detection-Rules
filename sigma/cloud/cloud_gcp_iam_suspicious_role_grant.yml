@@ -1,5 +1,5 @@
 title: GCP IAM Suspicious Role Grant (Owner / Admin)
-id: 5d47c8fb-7e8a-4f52-9f0e-gcp-iam-priv-grant
+id: 41b65b6a-1333-45c8-a48c-0d0e120bde5c
 status: experimental
 description: |
   Mendeteksi pemberian role IAM sensitif (owner/editor/admin) ke akun baru

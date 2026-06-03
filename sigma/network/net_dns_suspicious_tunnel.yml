@@ -1,5 +1,5 @@
 title: Suspicious DNS Tunnel-Like Queries
-id: 3a74f3e1-4ef3-44f0-bd5a-net-dns-tunnel
+id: b5f700fd-c352-4cd0-9ebb-5e035714bb41
 status: experimental
 description: |
   Mendeteksi pola query DNS yang mirip tunneling (label sangat panjang,

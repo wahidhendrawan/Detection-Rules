@@ -1,0 +1,60 @@
+name: 🚨 False Positive
+description: Rule fire pada aktivitas yang sebenarnya benign
+title: "[FP] "
+labels: ["false-positive", "triage"]
+body:
+  - type: input
+    id: rule_path
+    attributes:
+      label: Path Rule
+      placeholder: sigma/windows/win_suspicious_powershell.yml
+    validations:
+      required: true
+
+  - type: textarea
+    id: fp_context
+    attributes:
+      label: Konteks False Positive
+      description: Aktivitas legit apa yang memicu rule ini?
+      placeholder: |
+        Rule fire setiap kali admin menjalankan script Get-WindowsUpdate.ps1
+        di scheduled task dengan EncodedCommand.
+    validations:
+      required: true
+
+  - type: textarea
+    id: sample_event
+    attributes:
+      label: Sample Event
+      description: Sample event yang menyebabkan FP (sanitize PII!)
+      render: json
+    validations:
+      required: true
+
+  - type: textarea
+    id: suggested_fix
+    attributes:
+      label: Saran Perbaikan
+      description: Whitelist / filter yang Anda usulkan
+      placeholder: |
+        Tambah filter:
+          ParentImage|endswith: '\TaskScheduler.exe'
+          User: 'NT AUTHORITY\SYSTEM'
+
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment
+      placeholder: |
+        - SIEM: Elastic 8.13
+        - OS: Windows 11 Enterprise 23H2
+
+  - type: checkboxes
+    id: terms
+    attributes:
+      label: Konfirmasi
+      options:
+        - label: Sample event sudah disanitize dari PII
+          required: true
+        - label: Saya sudah cek issue lain dan tidak ada duplikat
+          required: true

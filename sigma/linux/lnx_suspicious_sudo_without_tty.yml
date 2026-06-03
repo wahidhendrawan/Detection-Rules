@@ -1,5 +1,5 @@
 title: Linux Suspicious Sudo Without TTY
-id: 9e5ef6c9-1283-42b8-8e3c-ln-sudo-notty
+id: 04e2d5cc-212a-4857-b52e-694a6f51006d
 status: experimental
 description: |
   Mendeteksi eksekusi sudo tanpa TTY yang sering digunakan oleh malware

@@ -1,69 +1,244 @@
 # Detection Rules
 
-Repository ini berisi kumpulan **detection rules** untuk berbagai platform SIEM
-(Sigma, Elastic / Kibana, Splunk, dan query generic). Struktur dibuat agar mudah
-di-maintain dan di-extend.
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![GitHub last commit](https://img.shields.io/github/last-commit/wahidhendrawan/Detection-Rules)](https://github.com/wahidhendrawan/Detection-Rules/commits/main)
+[![GitHub stars](https://img.shields.io/github/stars/wahidhendrawan/Detection-Rules?style=social)](https://github.com/wahidhendrawan/Detection-Rules/stargazers)
+[![Validate Rules](https://github.com/wahidhendrawan/Detection-Rules/actions/workflows/validate.yml/badge.svg)](https://github.com/wahidhendrawan/Detection-Rules/actions/workflows/validate.yml)
+[![MITRE ATT&CK](https://img.shields.io/badge/MITRE%20ATT%26CK-mapped-red)](COVERAGE.md)
+[![Rules](https://img.shields.io/badge/rules-533-blue)](#statistik-rule)
+
+> Kumpulan **detection rules** dan **hunting queries** lintas platform (Sigma,
+> Elastic, Splunk, Microsoft Sentinel, Wazuh, dan Carbon Black) dengan mapping
+> MITRE ATT&CK. Repository ini dimaksudkan sebagai *starter pack* untuk
+> *blue team* dan *detection engineer*.
+
+---
+
+## Daftar Isi
+
+- [Statistik Rule](#statistik-rule)
+- [Struktur Repository](#struktur-repository)
+- [Format & Konvensi Penamaan](#format--konvensi-penamaan)
+- [Quick Start per Platform](#quick-start-per-platform)
+- [MITRE ATT&CK Coverage](#mitre-attck-coverage)
+- [Kontribusi](#kontribusi)
+- [Roadmap](#roadmap)
+- [Lisensi](#lisensi)
+
+---
+
+## Statistik Rule
+
+| Platform | Format | Total | Detail |
+|---|---|---:|---|
+| **Sigma** | `.yml` | 105 | windows: 51 · linux: 28 · network: 13 · cloud: 13 |
+| **Elastic** | `.ndjson` | 58 | endpoint/general: 45 · endpoint/windows: 7 · endpoint/linux: 3 · endpoint/network: 2 · network: 1 |
+| **Splunk** | `.spl` | 18 | windows: 10 · linux: 4 · network: 3 · cloud: 1 |
+| **Microsoft Sentinel** | `.kql` | 102 | hunting + analytics |
+| **Wazuh** | `.xml` | 140 | rules `attack` group |
+| **Carbon Black** | `.json` | 110 | EDR queries |
+| **TOTAL** | — | **533** | — |
+
+Lihat [`COVERAGE.md`](COVERAGE.md) untuk pemetaan ke MITRE ATT&CK.
+
+---
 
 ## Struktur Repository
 
 ```text
-siem-detection-rules/
+Detection-Rules/
 ├─ README.md
 ├─ LICENSE
-├─ .gitignore
+├─ CONTRIBUTING.md
+├─ SECURITY.md
+├─ CODE_OF_CONDUCT.md
+├─ CHANGELOG.md
+├─ COVERAGE.md
+├─ .github/
+│  ├─ workflows/        # CI: validasi sigma, yaml, xml, json
+│  ├─ ISSUE_TEMPLATE/
+│  ├─ PULL_REQUEST_TEMPLATE.md
+│  └─ CODEOWNERS
+├─ scripts/             # tooling (mis. generator MITRE coverage)
+├─ templates/           # boilerplate per platform
 ├─ sigma/
-│  ├─ windows/
-│  ├─ linux/
-│  ├─ network/
-│  └─ cloud/
+│  ├─ windows/          # 51 rule
+│  ├─ linux/            # 28 rule
+│  ├─ network/          # 13 rule
+│  └─ cloud/            # 13 rule
 ├─ elastic/
 │  ├─ endpoint/
-│  └─ network/
+│  │  ├─ windows/       # 7 rule
+│  │  ├─ linux/         # 3 rule
+│  │  ├─ network/       # 2 rule
+│  │  └─ general/       # 45 rule (multi-platform / threat-specific)
+│  └─ network/          # 1 rule
 ├─ splunk/
-└─ queries/
+│  ├─ windows/          # 10 rule
+│  ├─ linux/            # 4 rule
+│  ├─ network/          # 3 rule
+│  └─ cloud/            # 1 rule
+├─ microsoft-sentinel/  # 102 KQL hunting queries
+├─ wazuh/
+│  └─ rules/            # 140 XML rule (group "attack")
+└─ carbonblack/
+   └─ rules/            # 110 JSON EDR query
 ```
 
-## Format Rule
+---
 
-- **Sigma**: file `.yml` mengikuti spesifikasi Sigma (title, id, logsource, detection, fields, tags).
-- **Elastic**: file `.ndjson` berisi export KQL/EQL detection rules (1 rule per baris).
-- **Splunk**: file `.spl` berisi SPL search beserta komentar `#`.
-- **Queries**: file `.kql`, `.eql`, atau `.sql` untuk keperluan lain (hunting / ad-hoc).
+## Format & Konvensi Penamaan
 
-## Naming Convention
+### Format file per platform
 
-- Gunakan prefix platform & kategori:
-  - `win_`, `lnx_`, `net_`, `cloud_`
-- Gunakan kata-kata pendek dan jelas, contoh:
-  - `win_powershell_suspicious_encoded_command.yml`
-  - `net_dns_suspicious_tunnel.yml`
+| Platform | Ekstensi | Catatan |
+|---|---|---|
+| Sigma | `.yml` | Spec [Sigma](https://github.com/SigmaHQ/sigma-specification). Field wajib: `title`, `id`, `status`, `description`, `author`, `date`, `logsource`, `detection`, `level`, `tags` |
+| Elastic | `.ndjson` | Hasil ekspor dari Kibana → Stack Management → Saved Objects (`type`: `query`/`esql`/`detection-rule`/`threshold`) |
+| Splunk | `.spl` | Search SPL plain-text dengan komentar `#` di header (Title, MITRE, Severity) |
+| Sentinel | `.kql` | KQL query plain-text dengan komentar `//` di header |
+| Wazuh | `.xml` | Rule XML dalam `<group name="attack">` dengan tag `<mitre>` |
+| Carbon Black | `.json` | Object dengan field `name`, `description`, `query`, `severity` |
 
-## MITRE ATT&CK Tagging
+### Naming convention
 
-Setiap rule dianjurkan menambahkan tag:
-- `attack.tXXXX` (mis: `attack.t1059`)
-- `attack.txxxx.mXXXX` untuk sub-technique (mis: `attack.t1059.001`)
-- `attack.execution`, `attack.discovery`, dll.
+Gunakan prefix per kategori OS/domain:
 
-## Cara Pakai Cepat
+- `win_*`  → Windows
+- `lnx_*`  → Linux
+- `net_*`  → Network
+- `cloud_*` → Cloud (AWS/GCP/Azure/M365)
+- `app_*`  → Application (Wazuh)
+- `kql_NNN_*` → Sentinel (numbered)
 
-1. **Sigma**
-   - Konversi ke backend (Elastic/Splunk/QRadar, dll) menggunakan `sigma-cli`:
-     ```bash
-     sigma convert -t es-qs -o out/ elastic/sigma/windows/win_powershell_suspicious_encoded_command.yml
-     ```
+Contoh:
 
-2. **Elastic**
-   - Import file `.ndjson` via:
-     - *Stack Management* → *Saved Objects* → *Import*
+- `win_powershell_suspicious_encoded_command.yml`
+- `lnx_suspicious_sudo_without_tty.spl`
+- `net_dns_suspicious_tunnel.yml`
 
-3. **Splunk**
-   - Copy query `.spl` ke *Correlation Search* atau *Scheduled Search*.
+---
+
+## Quick Start per Platform
+
+### Sigma
+
+Konversi ke backend SIEM apa pun via `sigma-cli`:
+
+```bash
+pip install sigma-cli pysigma-backend-elasticsearch pysigma-backend-splunk
+sigma convert -t es-qs -o out/elastic/  sigma/windows/
+sigma convert -t splunk -o out/splunk/  sigma/windows/
+```
+
+### Elastic
+
+Import file `.ndjson` via Kibana:
+
+`Stack Management` → `Saved Objects` → `Import` → pilih file dari `elastic/endpoint/<os>/`
+
+Atau via API:
+
+```bash
+curl -k -u elastic:$PASS \
+  -H 'kbn-xsrf: true' \
+  -F file=@elastic/endpoint/windows/win_suspicious_certutil_download.ndjson \
+  https://kibana:5601/api/saved_objects/_import
+```
+
+### Splunk
+
+Buat *Correlation Search* / *Scheduled Search*, lalu paste isi file `.spl`.
+Header `# MITRE ATT&CK:` dan `# Severity:` berfungsi sebagai dokumentasi inline.
+
+### Microsoft Sentinel
+
+1. Buka **Sentinel** → **Hunting** → **+ New Query**
+2. Paste isi file `.kql`
+3. Tambah tactics/techniques sesuai komentar `// MITRE` (jika ada)
+4. Save sebagai *Hunting Query* atau promote ke *Analytics Rule*
+
+### Wazuh
+
+Salin file ke `/var/ossec/etc/rules/` di manager:
+
+```bash
+sudo cp wazuh/rules/*.xml /var/ossec/etc/rules/
+sudo systemctl restart wazuh-manager
+```
+
+Pastikan `id` rule tidak bentrok dengan rule existing (rentang custom: `100000-119999`).
+
+### Carbon Black
+
+Import via API atau Console → *Watchlists* → *Add Query*:
+
+```bash
+jq '.query' carbonblack/rules/cb_childproc_creation_7z_exe.json
+```
+
+Atau bulk via API `POST /api/watchlists/{watchlist_id}/queries`.
+
+---
+
+## MITRE ATT&CK Coverage
+
+Setiap rule **wajib** ditag dengan teknik MITRE ATT&CK:
+
+```yaml
+tags:
+  - attack.t1059          # Command and Scripting Interpreter
+  - attack.t1059.001      # Sub-technique: PowerShell
+  - attack.execution      # Tactic
+```
+
+Generate coverage matrix:
+
+```bash
+python3 scripts/generate_coverage.py
+```
+
+Outputnya: `COVERAGE.md` (tabel) + `coverage.json` (Navigator-compatible).
+
+---
 
 ## Kontribusi
 
-1. Tambah / ubah rule di folder sesuai platform.
-2. Pastikan:
-   - Ada `title`, `description`, `status`, `author`, `date`, `references` (jika ada).
-   - Ada mapping MITRE ATT&CK di `tags`.
-3. Lakukan PR ke branch utama.
+Lihat [`CONTRIBUTING.md`](CONTRIBUTING.md) untuk panduan lengkap. Ringkas:
+
+1. Fork repo, buat branch fitur (`git checkout -b add/win-suspicious-foo`).
+2. Tambah rule di folder yang sesuai (lihat [Struktur Repository](#struktur-repository)).
+3. Pastikan rule punya: title, description, author, date, MITRE tag, references.
+4. Jalankan validator lokal:
+   ```bash
+   pre-commit run --all-files       # YAML/XML/JSON lint
+   sigma check sigma/                # Sigma syntax
+   ```
+5. Buka Pull Request ke `main`. CI akan menjalankan validator otomatis.
+
+Boilerplate per platform tersedia di [`templates/`](templates/).
+
+---
+
+## Roadmap
+
+- [ ] Tambah workflow auto-translate Sigma → semua backend (Elastic/Splunk/QRadar) via release artifact.
+- [ ] Generate ATT&CK Navigator JSON ke GitHub Pages.
+- [ ] Coverage badge dinamis (per tactic).
+- [ ] Atomic Red Team mapping untuk verifikasi rule.
+- [ ] Rule severity normalization (cross-platform).
+
+---
+
+## Lisensi
+
+[MIT](LICENSE) © Wahid Hendrawan
+
+---
+
+## Disclaimer
+
+Rule di repo ini disediakan **AS-IS** untuk keperluan riset, edukasi, dan
+*detection engineering*. Setiap rule **harus diuji** di lingkungan staging
+sebelum diaktifkan di produksi. False positive di environment Anda mungkin
+berbeda; sesuaikan threshold / whitelist sesuai kebutuhan.

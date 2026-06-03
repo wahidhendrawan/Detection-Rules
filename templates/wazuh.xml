@@ -1,0 +1,24 @@
+<!--
+  Title: <Short descriptive title>
+  Description: <one-line description>
+  Author: <Your Name>
+  Date: 2026-01-01
+  MITRE ATT&CK: TXXXX
+  Tactic: execution
+  Severity: 8 (high)
+  References:
+    - https://attack.mitre.org/techniques/TXXXX/
+  Notes:
+    - Wazuh custom rule ID range: 100000-119999 (cek konflik dulu!)
+    - Field references mengikuti decoder yang dipakai
+-->
+<group name="attack">
+  <rule id="100100" level="8">
+    <decoded_as>windows_security</decoded_as>
+    <field name="event_id">4720</field>
+    <description>Detects user account creation event 4720.</description>
+    <mitre>
+      <id>T1136.001</id>
+    </mitre>
+  </rule>
+</group>

@@ -1,11 +1,22 @@
-<group name="lnx">
-  <rule id="100122" level="12">
+<!--
+  Severity: critical (shadow file akses = strong indicator credential dumping)
+  FalsePositives:
+    - User management: useradd/usermod/passwd/chpasswd (binary signed).
+    - PAM-managed password change.
+  Notes:
+    - <match> sebelumnya hanya satu pattern syscall.
+    - Hardened: regex untuk multiple patterns (open syscall, audit log,
+      cat/cp/sudo akses langsung).
+-->
+<group name="attack,lnx,credential_access">
+  <rule id="100122" level="13">
     <decoded_as>syslog</decoded_as>
-    <match>open("/etc/shadow", O_WRONLY|O_TRUNC)</match>
-    <description>Modification of /etc/shadow file</description>
+    <regex type="pcre2">(?:open(?:at)?\s*\(\s*[^,]*"\/etc\/shadow"[^)]*(?:O_RDONLY|O_WRONLY|O_RDWR|O_TRUNC|O_APPEND)|/etc/shadow.*?(?:read|write|modify|truncated|copied)|sudo\s+(?:cat|cp|less|more|tail|head|vi|vim|nano|sed)\s+/etc/shadow)</regex>
+    <description>/etc/shadow accessed or modified (potential credential dumping)</description>
     <mitre>
-      <id>T1098</id>
       <id>T1003.008</id>
+      <id>T1098</id>
     </mitre>
+    <options>no_full_log</options>
   </rule>
 </group>

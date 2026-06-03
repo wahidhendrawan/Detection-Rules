@@ -1,10 +1,25 @@
-<group name="win">
+<!--
+  Severity: high
+  FalsePositives:
+    - Antivirus / EDR vendor (Defender, CrowdStrike, SentinelOne) yang inspect LSASS.
+    - Microsoft Error Reporting (wermgr.exe).
+    - Authorized IR investigation (verify with ticket).
+  Notes:
+    - Membutuhkan Sysmon (event_id 10 = ProcessAccess) atau Windows Security
+      Event Log dengan audit object access enabled untuk LSASS.
+    - <match> diperketat: harus ada lsass.exe DAN granted access yang
+      memungkinkan memory dump (0x1010 / 0x1410 / 0x143A / 0x1FFFFF).
+-->
+<group name="attack,win,credential_access">
   <rule id="100107" level="12">
-    <decoded_as>syslog</decoded_as>
-    <match>lsass.exe</match>
-    <description>Suspicious access to LSASS process</description>
+    <decoded_as>windows_eventchannel</decoded_as>
+    <field name="event_id">10</field>
+    <field name="targetImage">lsass\.exe$</field>
+    <regex type="pcre2">GrantedAccess.*0x(1010|1410|143a|1fffff|1f0fff)</regex>
+    <description>Suspicious LSASS access (possible credential dumping via Mimikatz/ProcDump)</description>
     <mitre>
       <id>T1003.001</id>
     </mitre>
+    <options>no_full_log</options>
   </rule>
 </group>

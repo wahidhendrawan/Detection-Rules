@@ -1,6 +1,7 @@
 # Detection Rules
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![GitHub Pages](https://img.shields.io/badge/landing%20page-live-brightgreen)](https://wahidhendrawan.github.io/Detection-Rules/)
 [![GitHub last commit](https://img.shields.io/github/last-commit/wahidhendrawan/Detection-Rules)](https://github.com/wahidhendrawan/Detection-Rules/commits/main)
 [![GitHub stars](https://img.shields.io/github/stars/wahidhendrawan/Detection-Rules?style=social)](https://github.com/wahidhendrawan/Detection-Rules/stargazers)
 [![Validate Rules](https://github.com/wahidhendrawan/Detection-Rules/actions/workflows/validate.yml/badge.svg)](https://github.com/wahidhendrawan/Detection-Rules/actions/workflows/validate.yml)
@@ -12,6 +13,9 @@
 > Elastic, Splunk, Microsoft Sentinel, Wazuh, dan Carbon Black) dengan mapping
 > MITRE ATT&CK. Repository ini dimaksudkan sebagai *starter pack* untuk
 > *blue team* dan *detection engineer*.
+
+🌐 **Landing page interaktif:** https://wahidhendrawan.github.io/Detection-Rules/  
+📦 **Latest release (auto-translated):** https://github.com/wahidhendrawan/Detection-Rules/releases/latest
 
 ---
 

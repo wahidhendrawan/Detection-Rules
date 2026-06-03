@@ -4,7 +4,7 @@
     <match>mongodb service config_changed</match>
     <description>Application mongodb config_changed</description>
     <mitre>
-      <id>T1000</id>
+      <id>T1562.001</id>
     </mitre>
   </rule>
 </group>

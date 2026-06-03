@@ -1,3 +1,4 @@
 // Title: Reg Mod Run Key
 // Description: Hunts for reg mod run key
+// MITRE ATT&CK: T1547.001
 RegistryEvents | where RegistryKey contains 'CurrentVersion\\Run'

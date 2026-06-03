@@ -1,3 +1,4 @@
 // Title: Misc Cloud Vm Created
 // Description: Hunts for misc cloud vm created
+// MITRE ATT&CK: T1578.002
 CloudEvents | where ActionType == 'CreateVM'

@@ -29,4 +29,4 @@ falsepositives:
 level: critical
 tags:
   - attack.t1003.001
-  - attack.credential_access
+  - attack.credential-access

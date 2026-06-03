@@ -1,3 +1,4 @@
 // Title: Net Conn Ssh
 // Description: Hunts for net conn ssh
+// MITRE ATT&CK: T1021.004
 NetworkConnectionEvents | where DestinationPort == 22

@@ -1,3 +1,4 @@
 // Title: Acct Mgr User Pwd Reset
 // Description: Hunts for acct mgr user pwd reset
+// MITRE ATT&CK: T1098
 AccountManagementEvents | where EventID == 4724

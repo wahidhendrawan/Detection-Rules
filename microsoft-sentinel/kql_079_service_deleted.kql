@@ -1,3 +1,4 @@
 // Title: Service Deleted
 // Description: Hunts for service deleted
+// MITRE ATT&CK: T1543.003
 ServiceEvents | where EventID == 4697 and Action == 'deleted'

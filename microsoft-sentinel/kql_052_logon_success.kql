@@ -1,3 +1,4 @@
 // Title: Logon Success
 // Description: Hunts for logon success
+// MITRE ATT&CK: T1078
 LogonEvents | where EventID == 4624

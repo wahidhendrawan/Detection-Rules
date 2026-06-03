@@ -1,3 +1,4 @@
 // Title: File Create Scr
 // Description: Hunts for file create scr
+// MITRE ATT&CK: T1218, T1036
 FileCreationEvents | where FileName endswith '.scr'

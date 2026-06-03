@@ -1,3 +1,4 @@
 // Title: Reg Mod Wdigest
 // Description: Hunts for reg mod wdigest
+// MITRE ATT&CK: T1003.001, T1112
 RegistryEvents | where RegistryKey contains 'WDigest' and RegistryValueName == 'UseLogonCredential'

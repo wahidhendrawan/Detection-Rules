@@ -4,7 +4,7 @@
     <match>A user account was deleted</match>
     <description>Active Directory User Deleted</description>
     <mitre>
-      <id>T1000</id>
+      <id>T1531</id>
     </mitre>
   </rule>
 </group>

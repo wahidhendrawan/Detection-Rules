@@ -1,3 +1,4 @@
 // Title: Obj Access Sam
 // Description: Hunts for obj access sam
+// MITRE ATT&CK: T1003.002
 ObjectAccessEvents | where ObjectName contains 'SAM'

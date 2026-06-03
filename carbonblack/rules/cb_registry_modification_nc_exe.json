@@ -2,6 +2,9 @@
   "id": "3f0e5a5d-3a2e-4ff5-a693-d2fae6d4dca4",
   "name": "cb_registry_modification_nc_exe",
   "description": "Detects registry_modification involving nc.exe",
+  "mitre": [
+    "T1095"
+  ],
   "query": "regmod_name:nc.exe",
   "severity": 5,
   "enabled": true,

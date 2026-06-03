@@ -4,7 +4,7 @@
     <match>docker service config_changed</match>
     <description>Application docker config_changed</description>
     <mitre>
-      <id>T1000</id>
+      <id>T1562.001</id>
     </mitre>
   </rule>
 </group>

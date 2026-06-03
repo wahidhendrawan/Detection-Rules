@@ -28,5 +28,5 @@ falsepositives:
 level: high
 tags:
   - attack.t1098
-  - attack.privilege_escalation
+  - attack.privilege-escalation
   - attack.persistence

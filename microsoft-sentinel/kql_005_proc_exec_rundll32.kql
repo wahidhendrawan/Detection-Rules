@@ -1,3 +1,4 @@
 // Title: Proc Exec Rundll32
 // Description: Hunts for proc exec rundll32
+// MITRE ATT&CK: T1218.011
 ProcessExecutionEvents | where ProcessName == 'rundll32.exe'

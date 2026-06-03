@@ -1,6 +1,11 @@
 {
   "name": "cb_childproc_creation_net_exe",
   "description": "Auto-added Carbon Black detection query",
+  "mitre": [
+    "T1087",
+    "T1136",
+    "T1098"
+  ],
   "query": "process_name:net.exe AND event_type:childproc",
   "severity": "high"
 }

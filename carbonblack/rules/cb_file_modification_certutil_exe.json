@@ -2,6 +2,10 @@
   "id": "4c6a5b27-5d10-43c2-9910-1184e0c5b15d",
   "name": "cb_file_modification_certutil_exe",
   "description": "Detects file_modification involving certutil.exe",
+  "mitre": [
+    "T1140",
+    "T1105"
+  ],
   "query": "filemod_name:certutil.exe",
   "severity": 5,
   "enabled": true,

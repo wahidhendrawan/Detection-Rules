@@ -1,3 +1,4 @@
 // Title: Logon Batch
 // Description: Hunts for logon batch
+// MITRE ATT&CK: T1078
 LogonEvents | where EventID == 4624 and LogonType == 4

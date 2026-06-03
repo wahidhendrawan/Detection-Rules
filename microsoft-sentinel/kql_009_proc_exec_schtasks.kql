@@ -1,3 +1,4 @@
 // Title: Proc Exec Schtasks
 // Description: Hunts for proc exec schtasks
+// MITRE ATT&CK: T1053.005
 ProcessExecutionEvents | where ProcessName == 'schtasks.exe'

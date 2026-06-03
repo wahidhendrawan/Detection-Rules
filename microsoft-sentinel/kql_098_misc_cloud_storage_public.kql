@@ -1,3 +1,4 @@
 // Title: Misc Cloud Storage Public
 // Description: Hunts for misc cloud storage public
+// MITRE ATT&CK: T1530
 CloudEvents | where ActionType == 'MakeStoragePublic'

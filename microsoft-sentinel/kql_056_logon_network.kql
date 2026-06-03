@@ -1,3 +1,4 @@
 // Title: Logon Network
 // Description: Hunts for logon network
+// MITRE ATT&CK: T1021
 LogonEvents | where EventID == 4624 and LogonType == 3

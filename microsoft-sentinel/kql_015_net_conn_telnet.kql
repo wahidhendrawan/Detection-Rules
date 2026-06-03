@@ -1,3 +1,4 @@
 // Title: Net Conn Telnet
 // Description: Hunts for net conn telnet
+// MITRE ATT&CK: T1021
 NetworkConnectionEvents | where DestinationPort == 23

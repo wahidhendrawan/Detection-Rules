@@ -1,3 +1,4 @@
 // Title: Acct Mgr User Enabled
 // Description: Hunts for acct mgr user enabled
+// MITRE ATT&CK: T1098
 AccountManagementEvents | where EventID == 4722

@@ -2,6 +2,9 @@
   "id": "225550ae-51af-4393-9910-4b9bf9485ca6",
   "name": "cb_network_connection_ncat_exe",
   "description": "Detects network_connection involving ncat.exe",
+  "mitre": [
+    "T1095"
+  ],
   "query": "netconn_domain:ncat.exe",
   "severity": 5,
   "enabled": true,

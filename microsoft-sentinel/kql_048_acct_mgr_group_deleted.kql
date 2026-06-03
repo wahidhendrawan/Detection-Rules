@@ -1,3 +1,4 @@
 // Title: Acct Mgr Group Deleted
 // Description: Hunts for acct mgr group deleted
+// MITRE ATT&CK: T1531
 AccountManagementEvents | where EventID == 4730 or EventID == 4734 or EventID == 4758

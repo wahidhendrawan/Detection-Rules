@@ -1,6 +1,9 @@
 {
   "name": "cb_childproc_creation_installutil_exe",
   "description": "Auto-added Carbon Black detection query",
+  "mitre": [
+    "T1218.004"
+  ],
   "query": "process_name:installutil.exe AND event_type:childproc",
   "severity": "high"
 }

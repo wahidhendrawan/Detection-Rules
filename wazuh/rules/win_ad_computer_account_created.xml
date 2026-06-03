@@ -4,7 +4,7 @@
     <match>A computer account was created</match>
     <description>Computer Account Created</description>
     <mitre>
-      <id>T1000</id>
+      <id>T1136.002</id>
     </mitre>
   </rule>
 </group>

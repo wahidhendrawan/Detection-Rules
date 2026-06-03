@@ -1,3 +1,4 @@
 // Title: Logon Failed
 // Description: Hunts for logon failed
+// MITRE ATT&CK: T1110
 LogonEvents | where EventID == 4625

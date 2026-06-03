@@ -1,3 +1,4 @@
 // Title: Acct Mgr User Created
 // Description: Hunts for acct mgr user created
+// MITRE ATT&CK: T1136.001
 AccountManagementEvents | where EventID == 4720

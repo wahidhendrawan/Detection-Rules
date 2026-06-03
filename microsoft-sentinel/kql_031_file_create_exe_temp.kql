@@ -1,3 +1,4 @@
 // Title: File Create Exe Temp
 // Description: Hunts for file create exe temp
+// MITRE ATT&CK: T1105, T1036
 FileCreationEvents | where FolderPath contains 'AppData\\Local\\Temp' and FileName endswith '.exe'

@@ -4,7 +4,8 @@
     <match>open("/etc/passwd", O_WRONLY|O_TRUNC)</match>
     <description>Modification of /etc/passwd file</description>
     <mitre>
-      <id>T1000</id>
+      <id>T1098</id>
+      <id>T1003.008</id>
     </mitre>
   </rule>
 </group>

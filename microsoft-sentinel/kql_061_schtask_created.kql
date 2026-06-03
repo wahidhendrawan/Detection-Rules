@@ -1,3 +1,4 @@
 // Title: Schtask Created
 // Description: Hunts for schtask created
+// MITRE ATT&CK: T1053.005
 ScheduledTaskEvents | where EventID == 4698

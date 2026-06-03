@@ -1,3 +1,4 @@
 // Title: Net Conn Suspicious Port
 // Description: Hunts for net conn suspicious port
+// MITRE ATT&CK: T1571
 NetworkConnectionEvents | where DestinationPort in (4444, 31337, 1337)

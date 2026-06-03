@@ -4,7 +4,8 @@
     <match>query type TXT</match>
     <description>Possible DNS tunneling detected</description>
     <mitre>
-      <id>T1000</id>
+      <id>T1071.004</id>
+      <id>T1572</id>
     </mitre>
   </rule>
 </group>

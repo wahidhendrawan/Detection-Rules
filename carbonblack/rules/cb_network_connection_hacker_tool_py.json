@@ -2,6 +2,9 @@
   "id": "034b4451-4677-4bdb-8bd0-4f9d5e572aa2",
   "name": "cb_network_connection_hacker_tool_py",
   "description": "Detects network_connection involving hacker_tool.py",
+  "mitre": [
+    "T1059.006"
+  ],
   "query": "netconn_domain:hacker_tool.py",
   "severity": 5,
   "enabled": true,

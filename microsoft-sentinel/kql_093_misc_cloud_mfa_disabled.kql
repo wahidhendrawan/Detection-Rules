@@ -1,3 +1,4 @@
 // Title: Misc Cloud Mfa Disabled
 // Description: Hunts for misc cloud mfa disabled
+// MITRE ATT&CK: T1556.006
 CloudEvents | where ActionType == 'DisableMfa'

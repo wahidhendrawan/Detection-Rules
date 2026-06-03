@@ -1,3 +1,4 @@
 // Title: Net Conn Smb
 // Description: Hunts for net conn smb
+// MITRE ATT&CK: T1021.002
 NetworkConnectionEvents | where DestinationPort == 445

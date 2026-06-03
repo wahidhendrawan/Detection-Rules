@@ -11,6 +11,37 @@ versioning mengikuti [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- Skrip `scripts/fix_wazuh_t1000.py` — replace placeholder `T1000`
+  dengan teknik MITRE valid (100 rule Wazuh).
+- Skrip `scripts/fix_sentinel_mitre.py` — backfill header
+  `// MITRE ATT&CK: TXXXX` ke 102 KQL file Sentinel.
+- Skrip `scripts/fix_carbonblack_mitre.py` — backfill field `mitre`
+  ke 110 JSON Carbon Black.
+
+### Fixed
+
+- **Wazuh** — 100 rule yang memakai placeholder `T1000` (bukan teknik
+  MITRE valid; teknik dimulai dari `T1001`). Setiap rule sekarang
+  dipetakan ke teknik yang sesuai berdasarkan filename/description
+  (mis. `app_*_stopped` → `T1489`, `net_dns_tunneling` → `T1071.004`
+  + `T1572`, `win_suspicious_process_lsass` → `T1003.001`).
+- **Sigma** — 27 rule yang memakai underscore di tactic tag
+  (`attack.defense_evasion`) diganti ke hyphen (`attack.defense-evasion`)
+  sesuai Sigma specification. Tag `attack.ingress_tool_transfer`
+  (yang sebenarnya teknik T1105, bukan tactic) diganti ke `attack.t1105`.
+- **Microsoft Sentinel** — 102 KQL file yang sebelumnya tidak punya tag
+  MITRE eksplisit di header sekarang ada. Coverage Sentinel naik dari
+  0 → 61 teknik.
+- **Carbon Black** — 110 JSON yang sebelumnya tidak punya field `mitre`
+  sekarang ada. Coverage Carbon Black naik dari 0 → 30 teknik.
+
+### Changed
+
+- `COVERAGE.md` & `coverage.json` di-regenerate. Teknik unik lintas
+  platform: **77 → 124** (+61%).
+
+### Added
+
 - Struktur governance lengkap: `CONTRIBUTING.md`, `SECURITY.md`,
   `CODE_OF_CONDUCT.md`, issue templates (bug report, false positive,
   rule request), PR template, `CODEOWNERS`.

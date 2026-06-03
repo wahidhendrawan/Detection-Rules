@@ -1,3 +1,4 @@
 // Title: Logon Unlock
 // Description: Hunts for logon unlock
+// MITRE ATT&CK: T1098
 LogonEvents | where EventID == 4624 and LogonType == 7

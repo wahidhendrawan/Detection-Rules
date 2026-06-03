@@ -23,4 +23,4 @@ falsepositives:
 level: medium
 tags:
   - attack.t1068
-  - attack.privilege_escalation
+  - attack.privilege-escalation

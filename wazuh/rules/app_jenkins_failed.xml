@@ -4,7 +4,7 @@
     <match>jenkins service failed</match>
     <description>Application jenkins failed</description>
     <mitre>
-      <id>T1000</id>
+      <id>T1499</id>
     </mitre>
   </rule>
 </group>

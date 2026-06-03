@@ -2,6 +2,9 @@
   "id": "5dd73b07-9371-4023-927a-3cfc4a6afc39",
   "name": "cb_file_modification_hacker_tool_py",
   "description": "Detects file_modification involving hacker_tool.py",
+  "mitre": [
+    "T1059.006"
+  ],
   "query": "filemod_name:hacker_tool.py",
   "severity": 5,
   "enabled": true,

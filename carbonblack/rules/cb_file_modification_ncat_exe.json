@@ -2,6 +2,9 @@
   "id": "aa3817f3-5231-4ea5-b7b6-16c28c7be743",
   "name": "cb_file_modification_ncat_exe",
   "description": "Detects file_modification involving ncat.exe",
+  "mitre": [
+    "T1095"
+  ],
   "query": "filemod_name:ncat.exe",
   "severity": 5,
   "enabled": true,

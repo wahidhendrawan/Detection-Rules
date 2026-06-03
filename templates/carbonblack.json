@@ -1,0 +1,13 @@
+{
+  "name": "cb_<short_descriptive_name>",
+  "description": "<one-line description of what is detected>",
+  "author": "<Your Name>",
+  "date": "2026-01-01",
+  "mitre": ["TXXXX", "TXXXX.YYY"],
+  "tactic": "execution",
+  "severity": "high",
+  "references": [
+    "https://attack.mitre.org/techniques/TXXXX/"
+  ],
+  "query": "process_name:example.exe AND event_type:childproc AND childproc_name:cmd.exe"
+}

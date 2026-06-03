@@ -6,6 +6,7 @@
 [![Validate Rules](https://github.com/wahidhendrawan/Detection-Rules/actions/workflows/validate.yml/badge.svg)](https://github.com/wahidhendrawan/Detection-Rules/actions/workflows/validate.yml)
 [![MITRE ATT&CK](https://img.shields.io/badge/MITRE%20ATT%26CK-mapped-red)](COVERAGE.md)
 [![Rules](https://img.shields.io/badge/rules-533-blue)](#statistik-rule)
+[![ATT&CK Techniques](https://img.shields.io/badge/ATT%26CK%20techniques-124-orange)](COVERAGE.md)
 
 > Kumpulan **detection rules** dan **hunting queries** lintas platform (Sigma,
 > Elastic, Splunk, Microsoft Sentinel, Wazuh, dan Carbon Black) dengan mapping

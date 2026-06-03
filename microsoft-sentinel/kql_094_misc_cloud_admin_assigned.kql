@@ -1,3 +1,4 @@
 // Title: Misc Cloud Admin Assigned
 // Description: Hunts for misc cloud admin assigned
+// MITRE ATT&CK: T1098.003
 CloudEvents | where ActionType == 'AssignAdminRole'

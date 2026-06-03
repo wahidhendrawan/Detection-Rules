@@ -1,3 +1,4 @@
 // Title: Service Installed
 // Description: Hunts for service installed
+// MITRE ATT&CK: T1543.003
 ServiceEvents | where EventID == 4697 or EventID == 7045

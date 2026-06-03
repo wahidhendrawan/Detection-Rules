@@ -1,3 +1,4 @@
 // Title: Service Disabled
 // Description: Hunts for service disabled
+// MITRE ATT&CK: T1543.003, T1562.001
 ServiceEvents | where EventID == 7040 and StartType == 'disabled'

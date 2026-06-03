@@ -1,3 +1,4 @@
 // Title: Schtask Disabled
 // Description: Hunts for schtask disabled
+// MITRE ATT&CK: T1053.005
 ScheduledTaskEvents | where EventID == 4701

@@ -1,3 +1,4 @@
 // Title: File Create Js
 // Description: Hunts for file create js
+// MITRE ATT&CK: T1059.007
 FileCreationEvents | where FileName endswith '.js'

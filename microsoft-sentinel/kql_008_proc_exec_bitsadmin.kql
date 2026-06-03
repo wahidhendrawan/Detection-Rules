@@ -1,3 +1,4 @@
 // Title: Proc Exec Bitsadmin
 // Description: Hunts for proc exec bitsadmin
+// MITRE ATT&CK: T1197
 ProcessExecutionEvents | where ProcessName == 'bitsadmin.exe'

@@ -1,3 +1,4 @@
 // Title: File Create Dll Temp
 // Description: Hunts for file create dll temp
+// MITRE ATT&CK: T1574.002
 FileCreationEvents | where FolderPath contains 'AppData\\Local\\Temp' and FileName endswith '.dll'

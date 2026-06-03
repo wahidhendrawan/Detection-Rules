@@ -1,3 +1,4 @@
 // Title: Reg Mod Defender
 // Description: Hunts for reg mod defender
+// MITRE ATT&CK: T1562.001
 RegistryEvents | where RegistryKey contains 'Windows Defender' and RegistryValueName == 'DisableAntiSpyware'

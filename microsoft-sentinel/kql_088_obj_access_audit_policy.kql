@@ -1,3 +1,4 @@
 // Title: Obj Access Audit Policy
 // Description: Hunts for obj access audit policy
+// MITRE ATT&CK: T1562.002
 ObjectAccessEvents | where ObjectName contains 'audit.csv'

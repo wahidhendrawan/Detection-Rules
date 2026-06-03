@@ -1,3 +1,4 @@
 // Title: Obj Access File
 // Description: Hunts for obj access file
+// MITRE ATT&CK: T1005
 ObjectAccessEvents | where ObjectType == 'File'

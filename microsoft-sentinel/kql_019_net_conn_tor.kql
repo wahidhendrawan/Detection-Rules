@@ -1,3 +1,4 @@
 // Title: Net Conn Tor
 // Description: Hunts for net conn tor
+// MITRE ATT&CK: T1090.003
 NetworkConnectionEvents | where DestinationIp in ('tor_node_ip_list')

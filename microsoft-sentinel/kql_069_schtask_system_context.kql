@@ -1,3 +1,4 @@
 // Title: Schtask System Context
 // Description: Hunts for schtask system context
+// MITRE ATT&CK: T1053.005, T1078
 ScheduledTaskEvents | where Context == 'SYSTEM'

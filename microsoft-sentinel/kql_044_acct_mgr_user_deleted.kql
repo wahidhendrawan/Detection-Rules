@@ -1,3 +1,4 @@
 // Title: Acct Mgr User Deleted
 // Description: Hunts for acct mgr user deleted
+// MITRE ATT&CK: T1531
 AccountManagementEvents | where EventID == 4726

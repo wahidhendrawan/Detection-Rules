@@ -1,3 +1,4 @@
 // Title: Schtask Suspicious Action
 // Description: Hunts for schtask suspicious action
+// MITRE ATT&CK: T1053.005
 ScheduledTaskEvents | where Action contains 'powershell' or Action contains 'cmd'

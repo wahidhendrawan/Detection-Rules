@@ -1,3 +1,4 @@
 // Title: Schtask Network Trigger
 // Description: Hunts for schtask network trigger
+// MITRE ATT&CK: T1053.005
 ScheduledTaskEvents | where Trigger contains 'Network'

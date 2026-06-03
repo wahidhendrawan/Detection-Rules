@@ -1,3 +1,4 @@
 // Title: Net Conn Dns Tunnel
 // Description: Hunts for net conn dns tunnel
+// MITRE ATT&CK: T1071.004, T1572
 NetworkConnectionEvents | where DestinationPort == 53 and Protocol == 'UDP' and BytesSent > 10000

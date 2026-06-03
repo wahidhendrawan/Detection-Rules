@@ -1,3 +1,4 @@
 // Title: Obj Access Registry
 // Description: Hunts for obj access registry
+// MITRE ATT&CK: T1012
 ObjectAccessEvents | where ObjectType == 'Key'

@@ -1,5 +1,5 @@
 title: Suspicious Mshta Execution
-id: e32a4e23-78b4-4321-9e2c-mshta-suspicious
+id: dc96b444-531b-4872-aaea-3335c4cb5288
 status: experimental
 description: |
   Detects suspicious execution of mshta.exe with arguments typically used for

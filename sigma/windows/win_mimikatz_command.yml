@@ -1,6 +1,6 @@
 title: Mimikatz Command Execution
 id: 8a6572fc-548c-4c33-92f8-e6d795227808
-status: high
+status: experimental
 description: |
   Detects command line arguments commonly associated with Mimikatz, a tool used for
   credential dumping.

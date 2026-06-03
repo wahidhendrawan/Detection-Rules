@@ -2,7 +2,7 @@ title: Suspicious Curl or Wget Piped to Shell
 author: Wahid Hendrawan
 date: 2026/05/21
 id: 7fdb2f8b-3f8f-40ad-a9bc-5d69792ecf0c
-status: high
+status: experimental
 description: |
   Detects potential one-liner download-and-execute behavior on Linux where curl or wget output
   is piped directly into a shell interpreter.

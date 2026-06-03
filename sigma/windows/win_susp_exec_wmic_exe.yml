@@ -16,7 +16,8 @@ detection:
 fields:
   - CommandLine
 falsepositives:
-  - Legitimate administrative activity
+  - System management tools (SCCM, monitoring) yang pakai WMI/WMIC.
+  - Admin script untuk inventory.
 level: medium
 tags:
   - attack.execution

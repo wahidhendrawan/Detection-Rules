@@ -16,7 +16,7 @@ detection:
 fields:
   - CommandLine
 falsepositives:
-  - Legitimate administrative activity
+  - Internal VBScript tooling (jarang di environment modern).
 level: medium
 tags:
   - attack.execution

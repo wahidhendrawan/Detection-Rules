@@ -1,0 +1,164 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: 'Version tag (e.g. v1.1.0)'
+        required: true
+        default: 'v0.0.0-dev'
+
+permissions:
+  contents: write
+
+jobs:
+  translate-and-release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install sigma-cli + backends
+        run: |
+          pip install \
+            sigma-cli==1.0.4 \
+            pysigma-backend-elasticsearch==1.1.6 \
+            pysigma-backend-splunk==1.1.5 \
+            pysigma-backend-qradar-aql==0.4.1 \
+            pysigma-backend-microsoft365defender==1.0.7 \
+            pysigma-backend-crowdstrike==0.2.5 \
+            pyyaml==6.0.2
+
+      - name: Generate coverage + index
+        run: |
+          python3 scripts/generate_coverage.py
+          python3 scripts/generate_index.py
+
+      - name: Translate Sigma to all backends
+        run: |
+          mkdir -p dist/sigma-converted
+
+          echo "::group::Elastic Lucene"
+          sigma convert -t lucene -f json -o dist/sigma-converted/elastic.json sigma/ || echo "elastic conversion partial"
+          echo "::endgroup::"
+
+          echo "::group::Elastic ECS query (KQL)"
+          sigma convert -t lucene -f kibana_ndjson -o dist/sigma-converted/elastic.ndjson sigma/ || echo "elastic kql partial"
+          echo "::endgroup::"
+
+          echo "::group::Splunk SPL"
+          sigma convert -t splunk -f default -o dist/sigma-converted/splunk.spl sigma/ || echo "splunk partial"
+          echo "::endgroup::"
+
+          echo "::group::QRadar AQL"
+          sigma convert -t qradar -o dist/sigma-converted/qradar.aql sigma/ || echo "qradar partial"
+          echo "::endgroup::"
+
+          echo "::group::Microsoft 365 Defender KQL"
+          sigma convert -t microsoft365defender -o dist/sigma-converted/m365defender.kql sigma/ || echo "m365 partial"
+          echo "::endgroup::"
+
+          echo "::group::CrowdStrike"
+          sigma convert -t crowdstrike -o dist/sigma-converted/crowdstrike.json sigma/ || echo "crowdstrike partial"
+          echo "::endgroup::"
+
+      - name: Bundle release artifacts
+        run: |
+          TAG="${{ github.ref_name }}"
+          [ -z "$TAG" ] && TAG="${{ github.event.inputs.tag }}"
+          BUNDLE_DIR="dist/detection-rules-${TAG}"
+          mkdir -p "$BUNDLE_DIR"
+
+          # Native rules per platform
+          cp -r sigma                "$BUNDLE_DIR/"
+          cp -r elastic              "$BUNDLE_DIR/"
+          cp -r splunk               "$BUNDLE_DIR/"
+          cp -r microsoft-sentinel   "$BUNDLE_DIR/"
+          cp -r wazuh                "$BUNDLE_DIR/"
+          cp -r carbonblack          "$BUNDLE_DIR/"
+
+          # Metadata
+          cp README.md CHANGELOG.md LICENSE COVERAGE.md \
+             rules.index.json rules.index.yaml coverage.json \
+             "$BUNDLE_DIR/" 2>/dev/null || true
+
+          # Auto-translated artifacts
+          cp -r dist/sigma-converted "$BUNDLE_DIR/sigma-converted"
+
+          # Quick reference
+          cat > "$BUNDLE_DIR/RELEASE_NOTES.md" <<EOF
+          # Detection Rules ${TAG}
+
+          ## Contents
+
+          - \`sigma/\`              : Sigma rules (.yml) — generic
+          - \`elastic/\`            : Elastic .ndjson saved objects
+          - \`splunk/\`             : Splunk SPL searches
+          - \`microsoft-sentinel/\` : KQL hunting/analytics queries
+          - \`wazuh/\`              : Wazuh XML rules (group "attack")
+          - \`carbonblack/\`        : Carbon Black JSON queries
+          - \`sigma-converted/\`    : Auto-translated Sigma → other backends
+
+          ## Quick start
+
+          \`\`\`bash
+          # Elastic
+          curl -k -u elastic:\$PASS -H 'kbn-xsrf: true' \\
+            -F file=@elastic/endpoint/windows/<rule>.ndjson \\
+            https://kibana:5601/api/saved_objects/_import
+
+          # Wazuh
+          sudo cp wazuh/rules/*.xml /var/ossec/etc/rules/
+          sudo systemctl restart wazuh-manager
+
+          # Splunk
+          # Paste isi .spl ke Correlation Search atau Scheduled Search
+
+          # Sentinel
+          # Paste isi .kql ke Hunting → New Query
+          \`\`\`
+
+          See \`README.md\` and \`docs/quality.md\` for full guidance.
+
+          ## Auto-translated artifacts
+
+          Generated dari \`sigma/\` via \`sigma-cli\` di GitHub Actions.
+          Verifikasi di staging sebelum deploy ke produksi.
+
+          ## Coverage
+
+          Lihat \`COVERAGE.md\` atau \`coverage.json\` (ATT&CK Navigator).
+          EOF
+
+          cd dist
+          zip -r "detection-rules-${TAG}.zip" "$(basename "$BUNDLE_DIR")"
+          tar -czf "detection-rules-${TAG}.tar.gz" "$(basename "$BUNDLE_DIR")"
+          ls -la
+
+      - name: Generate checksums
+        working-directory: dist
+        run: |
+          sha256sum *.zip *.tar.gz > checksums.txt
+          cat checksums.txt
+
+      - name: Create / update GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ github.ref_name || github.event.inputs.tag }}
+          name: Detection Rules ${{ github.ref_name || github.event.inputs.tag }}
+          generate_release_notes: true
+          files: |
+            dist/*.zip
+            dist/*.tar.gz
+            dist/checksums.txt
+            dist/sigma-converted/*
+            coverage.json
+            rules.index.json
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

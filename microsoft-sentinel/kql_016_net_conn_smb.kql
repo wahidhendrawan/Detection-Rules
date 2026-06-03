@@ -1,4 +1,7 @@
 // Title: Net Conn Smb
 // Description: Hunts for net conn smb
 // MITRE ATT&CK: T1021.002
+// Severity: informational
+// FalsePositives:
+//   - Koneksi keluar yang sah dari aplikasi enterprise (RMM, monitoring agent).
 NetworkConnectionEvents | where DestinationPort == 445

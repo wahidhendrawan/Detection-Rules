@@ -1,4 +1,7 @@
 // Title: Acct Mgr Acct Locked Out
 // Description: Hunts for acct mgr acct locked out
 // MITRE ATT&CK: T1110
+// Severity: informational
+// FalsePositives:
+//   - Aktivitas account management oleh admin yang sah.
 AccountManagementEvents | where EventID == 4740

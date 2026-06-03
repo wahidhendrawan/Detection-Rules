@@ -1,4 +1,28 @@
-// Title: Logon Failed
-// Description: Hunts for logon failed
-// MITRE ATT&CK: T1110
-LogonEvents | where EventID == 4625
+// Title: Failed Logon Brute Force (Threshold-Based)
+// Description: Mendeteksi pola failed logon banyak ke account/host yang sama
+//              dalam window pendek - indikator brute force atau password
+//              spraying. Threshold default: >= 10 failed logon dalam 5 menit.
+// MITRE ATT&CK: T1110, T1110.001
+// Severity: medium
+// FalsePositives:
+//   - User salah ketik password berulang kali.
+//   - Service account dengan password expired tapi belum di-update di config.
+//   - Vulnerability scanner yang authenticated scan.
+// References:
+//   - https://attack.mitre.org/techniques/T1110/
+
+let lookback = 5m;
+let threshold = 10;
+SecurityEvent
+| where TimeGenerated > ago(1h)
+| where EventID == 4625                       // Failed logon
+| where AccountType == "User"
+// Bin per 5 menit, group by source + target
+| summarize
+    FailCount = count(),
+    AccountsTargeted = dcount(TargetAccount),
+    SampleAccounts = make_set(TargetAccount, 10),
+    SampleStatus = make_set(SubStatus, 5)
+    by bin(TimeGenerated, lookback), Computer, IpAddress
+| where FailCount >= threshold
+| order by FailCount desc, TimeGenerated desc

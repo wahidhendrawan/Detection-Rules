@@ -1,4 +1,7 @@
 // Title: File Create Js
 // Description: Hunts for file create js
 // MITRE ATT&CK: T1059.007
+// Severity: informational
+// FalsePositives:
+//   - Software install/update yang sah membuat file di path tersebut.
 FileCreationEvents | where FileName endswith '.js'

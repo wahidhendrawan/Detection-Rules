@@ -1,4 +1,7 @@
 // Title: Misc Cloud Suspicious Api
 // Description: Hunts for misc cloud suspicious api
 // MITRE ATT&CK: T1078.004
+// Severity: informational
+// FalsePositives:
+//   - Aktivitas cloud admin / automation legit (CI/CD, IaC).
 CloudEvents | where ActionType in ('ListUsers', 'GetPolicies') and UserAgent contains 'curl'

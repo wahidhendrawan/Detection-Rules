@@ -1,3 +1,4 @@
 // MITRE ATT&CK: T1071.004, T1572
+// Severity: low
 dns.question.name_length >= 80 and
 not dns.question.name: (*.microsoft.com or *.windowsupdate.com)

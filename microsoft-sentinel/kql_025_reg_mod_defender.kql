@@ -1,4 +1,7 @@
 // Title: Reg Mod Defender
 // Description: Hunts for reg mod defender
 // MITRE ATT&CK: T1562.001
+// Severity: low
+// FalsePositives:
+//   - Software install/update yang sah memodifikasi registry.
 RegistryEvents | where RegistryKey contains 'Windows Defender' and RegistryValueName == 'DisableAntiSpyware'

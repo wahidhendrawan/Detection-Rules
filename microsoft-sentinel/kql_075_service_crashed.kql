@@ -1,4 +1,7 @@
 // Title: Service Crashed
 // Description: Hunts for service crashed
 // MITRE ATT&CK: T1499
+// Severity: informational
+// FalsePositives:
+//   - Operasi service legit (Windows Update, software install).
 ServiceEvents | where EventID == 7034 or EventID == 7031

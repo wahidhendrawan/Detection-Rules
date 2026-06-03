@@ -1,4 +1,7 @@
 // Title: Schtask System Context
 // Description: Hunts for schtask system context
 // MITRE ATT&CK: T1053.005, T1078
+// Severity: low
+// FalsePositives:
+//   - Scheduled task yang dibuat oleh installer software vendor.
 ScheduledTaskEvents | where Context == 'SYSTEM'

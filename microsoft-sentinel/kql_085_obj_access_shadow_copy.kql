@@ -1,4 +1,7 @@
 // Title: Obj Access Shadow Copy
 // Description: Hunts for obj access shadow copy
 // MITRE ATT&CK: T1490
+// Severity: low
+// FalsePositives:
+//   - Tools backup/forensic yang sah mengakses resource tersebut.
 ObjectAccessEvents | where ObjectName contains 'Device\\HarddiskVolumeShadowCopy'

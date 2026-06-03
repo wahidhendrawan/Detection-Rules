@@ -2,7 +2,7 @@ title: AWS CloudTrail Trail Stopped or Deleted
 author: Wahid Hendrawan
 date: 2026/05/21
 id: 934ad051-f6bf-4f49-9287-499aef51c11a
-status: high
+status: experimental
 description: |
   Detects attempts to impair defenses in AWS by stopping logging on a CloudTrail trail
   or deleting an existing trail.

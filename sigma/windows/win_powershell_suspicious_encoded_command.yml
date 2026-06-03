@@ -1,5 +1,5 @@
 title: Suspicious PowerShell EncodedCommand
-id: 6a4fe4af-4e3c-4b6f-9f2c-ps-encoded-command
+id: 62408344-0c4d-4dfa-b82d-5b2ee3a4590c
 status: experimental
 description: |
   Mendeteksi penggunaan PowerShell dengan parameter -EncodedCommand

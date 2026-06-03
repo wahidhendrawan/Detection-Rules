@@ -16,7 +16,8 @@ detection:
 fields:
   - CommandLine
 falsepositives:
-  - Legitimate administrative activity
+  - Microsoft installer (msiexec) yang meregister DLL legit.
+  - Software vendor installer signed.
 level: medium
 tags:
   - attack.execution

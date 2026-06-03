@@ -16,7 +16,8 @@ detection:
 fields:
   - CommandLine
 falsepositives:
-  - Legitimate administrative activity
+  - Software install legit yang membuat scheduled task.
+  - Microsoft Update scheduled task creation.
 level: medium
 tags:
   - attack.execution

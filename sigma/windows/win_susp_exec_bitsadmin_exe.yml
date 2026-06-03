@@ -16,7 +16,8 @@ detection:
 fields:
   - CommandLine
 falsepositives:
-  - Legitimate administrative activity
+  - Microsoft Update / SCCM yang menggunakan BITS untuk delivery.
+  - Software install yang download komponen via BITS.
 level: medium
 tags:
   - attack.execution

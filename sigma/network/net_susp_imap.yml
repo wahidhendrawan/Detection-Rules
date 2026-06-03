@@ -16,7 +16,8 @@ detection:
 fields:
   - DestinationPort
 falsepositives:
-  - Legitimate administrative activity
+  - Aktivitas administratif rutin yang sah dengan signature trusted.
+  - Software install / update legit (verifikasi via parent process & signer).
 level: medium
 tags:
   - attack.command-and-control

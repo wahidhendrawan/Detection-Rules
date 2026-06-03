@@ -16,7 +16,8 @@ detection:
 fields:
   - DestinationPort
 falsepositives:
-  - Legitimate administrative activity
+  - Aplikasi enterprise yang melakukan DNS lookup.
+  - DNS verification (SPF, DKIM) yang sah.
 level: medium
 tags:
   - attack.command-and-control

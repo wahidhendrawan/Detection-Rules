@@ -16,7 +16,8 @@ detection:
 fields:
   - CommandLine
 falsepositives:
-  - Legitimate administrative activity
+  - Admin yang menjalankan 'net user' / 'net group' untuk audit.
+  - Login script yang map network drive.
 level: medium
 tags:
   - attack.execution

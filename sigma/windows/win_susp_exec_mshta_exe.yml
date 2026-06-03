@@ -16,7 +16,7 @@ detection:
 fields:
   - CommandLine
 falsepositives:
-  - Legitimate administrative activity
+  - Internal HTA tooling (sangat jarang di environment modern).
 level: medium
 tags:
   - attack.execution

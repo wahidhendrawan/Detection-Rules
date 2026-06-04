@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Detection Coverage Navigator</title>
+<style>
+body { font-family: system-ui, sans-serif; margin: 0; padding: 1rem; }
+#search { width: 100%; max-width: 500px; padding: 0.5rem; margin-bottom: 1rem; font-size: 1rem; }
+#rules-list { list-style: none; padding: 0; max-height: 300px; overflow-y: auto; }
+#rules-list li { padding: 0.3rem 0; border-bottom: 1px solid #eee; }
+iframe { width: 100%; height: 500px; border: 1px solid #ccc; margin-bottom: 1rem; }
+nav { margin-bottom: 1rem; }
+</style>
+</head>
+<body>
+<nav><a href="index.html">&larr; Back to Home</a></nav>
+<h1>ATT&CK Coverage Navigator</h1>
+<iframe src="https://mitre-attack.github.io/attack-navigator/#layerURL=navigator-layers/coverage-overall.json" title="ATT&CK Navigator"></iframe>
+<h2>Rule Search</h2>
+<input type="text" id="search" placeholder="Search rules by name or technique...">
+<ul id="rules-list"></ul>
+<script>
+let rules = [];
+fetch('rules.index.json').then(r => r.json()).then(data => {
+  rules = data;
+  render(rules);
+}).catch(() => {
+  document.getElementById('rules-list').innerHTML = '<li>Could not load rules index.</li>';
+});
+function render(list) {
+  document.getElementById('rules-list').innerHTML = list.slice(0, 100)
+    .map(r => `<li><strong>${r.title || r.name || r.id}</strong> — ${r.technique || ''}</li>`).join('');
+}
+document.getElementById('search').addEventListener('input', function() {
+  const q = this.value.toLowerCase();
+  render(rules.filter(r => 
+    (r.title || r.name || r.id || '').toLowerCase().includes(q) ||
+    (r.technique || '').toLowerCase().includes(q)
+  ));
+});
+</script>
+</body>
+</html>

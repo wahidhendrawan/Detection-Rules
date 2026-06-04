@@ -1,5 +1,5 @@
 <group name="custom,attack,">
-  <rule id="10071444" level="10">
+  <rule id="100202" level="10">
     <if_group>sysmon_event1,windows,linux,aws_cloudtrail</if_group>
     <field name="message">Failed password for</field>
     <description>Custom detection: wazuh_auth_bruteforce_many_fail</description>

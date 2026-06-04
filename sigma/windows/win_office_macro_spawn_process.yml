@@ -37,6 +37,11 @@ falsepositives:
   - Legitimate Office add-ins that spawn helper processes
   - Corporate macros calling cmd for file operations (whitelist by CommandLine)
 level: high
+custom:
+  effectiveness: 0.88
+  fp_rate: 0.12
+  last_tuned: 2026/06/01
+  alert_volume: medium
 tags:
   - attack.t1566.001
   - attack.initial-access

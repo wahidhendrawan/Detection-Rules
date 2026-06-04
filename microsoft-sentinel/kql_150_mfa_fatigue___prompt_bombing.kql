@@ -1,0 +1,12 @@
+// Title: MFA Fatigue / Prompt Bombing
+// MITRE ATT&CK: T1621
+// Severity: medium
+// Tactic: credential-access
+// Author: Wahid Hendrawan
+
+DeviceProcessEvents
+| where Timestamp > ago(24h)
+| where OperationName has 'UserLoginFailed' and ResultDescription has 'MFA'
+| project Timestamp, DeviceName, AccountName, FileName, ProcessCommandLine,
+          InitiatingProcessFileName
+| order by Timestamp desc

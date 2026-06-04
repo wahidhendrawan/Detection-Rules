@@ -1,0 +1,10 @@
+<group name="attack,defense_evasion">
+  <rule id="100257" level="8">
+    <decoded_as>syslog</decoded_as>
+    <regex type="pcre2">ModifyInstanceAttribute|UpdateInstance|SetMetadata</regex>
+    <description>Modify Cloud Compute Infrastructure (T1578)</description>
+    <mitre>
+      <id>T1578</id>
+    </mitre>
+  </rule>
+</group>

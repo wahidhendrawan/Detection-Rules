@@ -1,0 +1,30 @@
+title: Search Open Websites/Domains
+id: 3bc35c9d-d310-4939-b71e-d5c0515648cd
+status: experimental
+description: |
+  Detects indicators of Search Open Websites/Domains (T1593).
+author: Wahid Hendrawan
+date: 2026/06/04
+references:
+  - https://attack.mitre.org/techniques/T1593/
+logsource:
+  product: aws
+  category: dns_query
+detection:
+  selection:
+    dns_query|contains:
+      - 'urlscan.io'
+      - 'web.archive.org'
+      - 'archive.org'
+  condition: selection
+fields:
+  - Image
+  - CommandLine
+  - User
+falsepositives:
+  - Legitimate administrative activity.
+  - Authorized security testing.
+level: medium
+tags:
+  - attack.t1593
+  - attack.reconnaissance

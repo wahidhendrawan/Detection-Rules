@@ -1,0 +1,12 @@
+// Title: Disable or Modify Cloud Logs
+// MITRE ATT&CK: T1562.008
+// Severity: medium
+// Tactic: defense-evasion
+// Author: Wahid Hendrawan
+
+DeviceProcessEvents
+| where Timestamp > ago(24h)
+| where OperationName has_any ('StopLogging','DeleteTrail','UpdateTrail')
+| project Timestamp, DeviceName, AccountName, FileName, ProcessCommandLine,
+          InitiatingProcessFileName
+| order by Timestamp desc

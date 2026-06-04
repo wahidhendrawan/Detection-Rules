@@ -1,0 +1,30 @@
+title: Search Closed Sources
+id: b3751af7-aa7f-45f4-8ef0-a13b7984bbb2
+status: experimental
+description: |
+  Detects indicators of Search Closed Sources (T1597).
+author: Wahid Hendrawan
+date: 2026/06/04
+references:
+  - https://attack.mitre.org/techniques/T1597/
+logsource:
+  product: aws
+  category: dns_query
+detection:
+  selection:
+    dns_query|contains:
+      - 'dehashed'
+      - 'intelx.io'
+      - 'spycloud'
+  condition: selection
+fields:
+  - Image
+  - CommandLine
+  - User
+falsepositives:
+  - Legitimate administrative activity.
+  - Authorized security testing.
+level: medium
+tags:
+  - attack.t1597
+  - attack.reconnaissance

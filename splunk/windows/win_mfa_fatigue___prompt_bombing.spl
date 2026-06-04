@@ -1,0 +1,13 @@
+# Title: MFA Fatigue / Prompt Bombing
+# MITRE ATT&CK: T1621
+# Tactic: credential-access
+# Severity: medium
+# Author: Wahid Hendrawan
+# Date: 2026-06-04
+
+index=windows OR index=endpoint
+sourcetype IN ("XmlWinEventLog:Microsoft-Windows-Sysmon/Operational", "WinEventLog:Security")
+MFA AND (deny OR timeout) AND count > 5
+| stats count, values(CommandLine) as cmd, values(User) as user by _time, host, Image
+| where count > 0
+| sort - _time

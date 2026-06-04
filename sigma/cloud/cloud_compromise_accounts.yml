@@ -1,0 +1,31 @@
+title: Compromise Accounts
+id: 90569cb8-9cef-4f0f-971c-3f26281951c5
+status: experimental
+description: |
+  Detects indicators of Compromise Accounts (T1586).
+author: Wahid Hendrawan
+date: 2026/06/04
+references:
+  - https://attack.mitre.org/techniques/T1586/
+logsource:
+  product: aws
+  category: file_access
+detection:
+  selection:
+    eventSource: 'iam'
+    eventName:
+      - 'ConsoleLogin'
+      - 'AssumeRole'
+    sourceIPAddress|contains: 'tor'
+  condition: selection
+fields:
+  - Image
+  - CommandLine
+  - User
+falsepositives:
+  - Legitimate administrative activity.
+  - Authorized security testing.
+level: medium
+tags:
+  - attack.t1586
+  - attack.resource-development

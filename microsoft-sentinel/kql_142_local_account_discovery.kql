@@ -1,0 +1,12 @@
+// Title: Local Account Discovery
+// MITRE ATT&CK: T1087.001
+// Severity: medium
+// Tactic: discovery
+// Author: Wahid Hendrawan
+
+DeviceProcessEvents
+| where Timestamp > ago(24h)
+| where ProcessCommandLine has 'net user' and ProcessCommandLine !has '/add'
+| project Timestamp, DeviceName, AccountName, FileName, ProcessCommandLine,
+          InitiatingProcessFileName
+| order by Timestamp desc

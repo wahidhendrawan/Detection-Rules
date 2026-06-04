@@ -1,0 +1,10 @@
+<group name="attack,execution">
+  <rule id="100256" level="8">
+    <decoded_as>syslog</decoded_as>
+    <regex type="pcre2">sc.*(start|create)|PsExec</regex>
+    <description>System Services Execution (T1569)</description>
+    <mitre>
+      <id>T1569</id>
+    </mitre>
+  </rule>
+</group>

@@ -1,0 +1,30 @@
+title: Search Victim-Owned Websites
+id: a5f876a3-fb0a-4645-a007-bcec5529fba6
+status: experimental
+description: |
+  Detects indicators of Search Victim-Owned Websites (T1594).
+author: Wahid Hendrawan
+date: 2026/06/04
+references:
+  - https://attack.mitre.org/techniques/T1594/
+logsource:
+  product: aws
+  category: dns_query
+detection:
+  selection:
+    dns_query|contains:
+      - 'builtwith'
+      - 'wappalyzer'
+      - 'netcraft'
+  condition: selection
+fields:
+  - Image
+  - CommandLine
+  - User
+falsepositives:
+  - Legitimate administrative activity.
+  - Authorized security testing.
+level: medium
+tags:
+  - attack.t1594
+  - attack.reconnaissance

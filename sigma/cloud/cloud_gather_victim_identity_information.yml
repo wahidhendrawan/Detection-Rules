@@ -1,0 +1,30 @@
+title: Gather Victim Identity Information
+id: c6d0594a-4adb-4de1-ad91-b287c06229a5
+status: experimental
+description: |
+  Detects indicators of Gather Victim Identity Information (T1589).
+author: Wahid Hendrawan
+date: 2026/06/04
+references:
+  - https://attack.mitre.org/techniques/T1589/
+logsource:
+  product: aws
+  category: dns_query
+detection:
+  selection:
+    dns_query|contains:
+      - 'linkedin'
+      - 'hunter.io'
+      - 'phonebook'
+  condition: selection
+fields:
+  - Image
+  - CommandLine
+  - User
+falsepositives:
+  - Legitimate administrative activity.
+  - Authorized security testing.
+level: medium
+tags:
+  - attack.t1589
+  - attack.reconnaissance

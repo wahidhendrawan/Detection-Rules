@@ -1,0 +1,30 @@
+title: MFA Fatigue / Prompt Bombing
+id: 495ce29a-3242-49c2-991e-6125102b2bf9
+status: experimental
+description: |
+  Detects indicators of MFA Fatigue / Prompt Bombing (T1621).
+author: Wahid Hendrawan
+date: 2026/06/04
+references:
+  - https://attack.mitre.org/techniques/T1621/
+logsource:
+  product: windows
+  category: process_creation
+detection:
+  selection:
+    CommandLine|contains:
+      - 'MFA'
+      - 'push notification'
+      - 'Entra.*challenge'
+  condition: selection
+fields:
+  - Image
+  - CommandLine
+  - User
+falsepositives:
+  - Legitimate administrative activity.
+  - Authorized security testing.
+level: medium
+tags:
+  - attack.t1621
+  - attack.credential-access

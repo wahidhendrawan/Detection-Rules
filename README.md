@@ -41,16 +41,16 @@
 
 | Platform | Format | Total | Detail |
 |---|---|---:|---|
-| **Sigma** | `.yml` | 204 | windows: 120 · linux: 36 · network: 22 · cloud: 23 · correlations: 3 |
+| **Sigma** | `.yml` | 227 | windows: 127 · linux: 36 · network: 22 · cloud: 39 · correlations: 3 |
 | **Elastic** | `.ndjson` | 58 | endpoint/general: 45 · endpoint/windows: 7 · endpoint/linux: 3 · endpoint/network: 2 · network: 1 |
-| **Splunk** | `.spl` | 57 | windows: 49 · linux: 4 · network: 3 · cloud: 1 |
-| **Microsoft Sentinel** | `.kql` | 141 | hunting + analytics |
-| **Wazuh** | `.xml` | 178 | rules attack group |
+| **Splunk** | `.spl` | 66 | windows: 58 · linux: 4 · network: 3 · cloud: 1 |
+| **Microsoft Sentinel** | `.kql` | 150 | hunting + analytics |
+| **Wazuh** | `.xml` | 187 | rules attack group |
 | **Carbon Black** | `.json` | 142 | EDR queries (generated from `tools.yml`) |
 | **CrowdStrike Falcon** | `.fql` | 2 | Falcon Query Language |
 | **SentinelOne** | `.s1ql` | 2 | Deep Visibility queries |
 | **Falco** | `.yaml` | 2 | K8s/container runtime rules |
-| **TOTAL** | — | **786** | — |
+| **TOTAL** | — | **836** | — |
 
 Lihat [`COVERAGE.md`](COVERAGE.md) untuk pemetaan ke MITRE ATT&CK.
 

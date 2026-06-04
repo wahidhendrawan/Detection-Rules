@@ -1,0 +1,32 @@
+title: Acquire Access
+id: ca5bd135-19ce-4826-820d-2ca483e0482d
+status: experimental
+description: |
+  Detects indicators of Acquire Access (T1650).
+author: Wahid Hendrawan
+date: 2026/06/04
+references:
+  - https://attack.mitre.org/techniques/T1650/
+logsource:
+  product: aws
+  category: file_access
+detection:
+  selection:
+    eventName|contains:
+      - 'CreateAccessKey'
+      - 'GenerateCredential'
+    userAgent|contains:
+      - 'Python'
+      - 'Boto'
+  condition: selection
+fields:
+  - Image
+  - CommandLine
+  - User
+falsepositives:
+  - Legitimate administrative activity.
+  - Authorized security testing.
+level: medium
+tags:
+  - attack.t1650
+  - attack.resource-development

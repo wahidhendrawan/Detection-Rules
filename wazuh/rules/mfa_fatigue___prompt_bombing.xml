@@ -1,0 +1,10 @@
+<group name="attack,credential_access">
+  <rule id="100258" level="8">
+    <decoded_as>syslog</decoded_as>
+    <regex type="pcre2">MFA.*(deny|timeout|challenge)</regex>
+    <description>MFA Fatigue / Prompt Bombing (T1621)</description>
+    <mitre>
+      <id>T1621</id>
+    </mitre>
+  </rule>
+</group>

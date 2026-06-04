@@ -1,0 +1,12 @@
+// Title: Spearphishing Attachment
+// MITRE ATT&CK: T1566.001
+// Severity: medium
+// Tactic: initial-access
+// Author: Wahid Hendrawan
+
+DeviceProcessEvents
+| where Timestamp > ago(24h)
+| where InitiatingProcessFileName in~ ('OUTLOOK.EXE','WINWORD.EXE','EXCEL.EXE') and FileName in~ ('cmd.exe','powershell.exe','wscript.exe')
+| project Timestamp, DeviceName, AccountName, FileName, ProcessCommandLine,
+          InitiatingProcessFileName
+| order by Timestamp desc

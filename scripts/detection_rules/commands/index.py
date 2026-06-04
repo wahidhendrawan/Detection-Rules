@@ -164,6 +164,11 @@ TECHNIQUE_INFO: dict[str, tuple[str, str]] = {
     "T1597":     ("Search Closed Sources", "reconnaissance"),
     "T1598":     ("Phishing for Information", "reconnaissance"),
     "T1621":     ("Multi-Factor Authentication Request Generation", "credential-access"),
+    "T1087.001": ("Local Account Discovery", "discovery"),
+    "T1087.002": ("Domain Account Discovery", "discovery"),
+    "T1565":     ("Data Manipulation", "impact"),
+    "T1569":     ("System Services", "execution"),
+    "T1578":     ("Modify Cloud Compute Infrastructure", "defense-evasion"),
     "T1650":     ("Acquire Access", "resource-development"),
     "T1611":     ("Escape to Host", "privilege-escalation"),
 }

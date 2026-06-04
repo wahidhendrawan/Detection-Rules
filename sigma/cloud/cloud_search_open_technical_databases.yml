@@ -1,0 +1,30 @@
+title: Search Open Technical Databases
+id: b0c1c77e-7f03-46a8-b869-9215bc89acdd
+status: experimental
+description: |
+  Detects indicators of Search Open Technical Databases (T1596).
+author: Wahid Hendrawan
+date: 2026/06/04
+references:
+  - https://attack.mitre.org/techniques/T1596/
+logsource:
+  product: aws
+  category: dns_query
+detection:
+  selection:
+    dns_query|contains:
+      - 'crt.sh'
+      - 'dnsdumpster'
+      - 'securitytrails'
+  condition: selection
+fields:
+  - Image
+  - CommandLine
+  - User
+falsepositives:
+  - Legitimate administrative activity.
+  - Authorized security testing.
+level: medium
+tags:
+  - attack.t1596
+  - attack.reconnaissance

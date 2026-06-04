@@ -1,0 +1,30 @@
+title: Gather Victim Org Information
+id: eb13af21-1ef6-478c-b597-d5f636473780
+status: experimental
+description: |
+  Detects indicators of Gather Victim Org Information (T1591).
+author: Wahid Hendrawan
+date: 2026/06/04
+references:
+  - https://attack.mitre.org/techniques/T1591/
+logsource:
+  product: aws
+  category: dns_query
+detection:
+  selection:
+    dns_query|contains:
+      - 'crunchbase'
+      - 'bloomberg'
+      - 'sec.gov'
+  condition: selection
+fields:
+  - Image
+  - CommandLine
+  - User
+falsepositives:
+  - Legitimate administrative activity.
+  - Authorized security testing.
+level: medium
+tags:
+  - attack.t1591
+  - attack.reconnaissance

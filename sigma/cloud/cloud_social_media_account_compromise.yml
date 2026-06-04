@@ -1,0 +1,31 @@
+title: Social Media Account Compromise
+id: 0aeed084-1afa-4707-89b4-b0dc64645c01
+status: experimental
+description: |
+  Detects indicators of Social Media Account Compromise (T1586.001).
+author: Wahid Hendrawan
+date: 2026/06/04
+references:
+  - https://attack.mitre.org/techniques/T1586/001/
+logsource:
+  product: aws
+  category: file_access
+detection:
+  selection:
+    eventName: 'SuspiciousLogin'
+    userAgent|contains:
+      - 'Python'
+      - 'curl'
+      - 'wget'
+  condition: selection
+fields:
+  - Image
+  - CommandLine
+  - User
+falsepositives:
+  - Legitimate administrative activity.
+  - Authorized security testing.
+level: medium
+tags:
+  - attack.t1586.001
+  - attack.resource-development

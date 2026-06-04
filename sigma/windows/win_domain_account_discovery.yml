@@ -1,0 +1,31 @@
+title: Domain Account Discovery
+id: 515c6859-9211-4e08-8f00-318efceabe03
+status: experimental
+description: |
+  Detects indicators of Domain Account Discovery (T1087.002).
+author: Wahid Hendrawan
+date: 2026/06/04
+references:
+  - https://attack.mitre.org/techniques/T1087/002/
+logsource:
+  product: windows
+  category: process_creation
+detection:
+  selection:
+    Image|endswith:
+      - '\\net.exe'
+    CommandLine|contains|all:
+      - 'user'
+      - '/domain'
+  condition: selection
+fields:
+  - Image
+  - CommandLine
+  - User
+falsepositives:
+  - Legitimate administrative activity.
+  - Authorized security testing.
+level: medium
+tags:
+  - attack.t1087.002
+  - attack.discovery

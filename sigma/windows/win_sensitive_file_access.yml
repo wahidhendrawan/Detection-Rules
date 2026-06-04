@@ -1,0 +1,42 @@
+title: Access to Sensitive Local Files
+id: a1b2c3d4-dddd-4aaa-bddd-000000000013
+status: experimental
+description: |
+  Detects processes accessing sensitive local files (browser creds,
+  KeePass, SSH keys, cloud configs) which may indicate data collection.
+author: Wahid Hendrawan
+date: 2026/06/04
+references:
+  - https://attack.mitre.org/techniques/T1005/
+logsource:
+  product: windows
+  category: file_access
+detection:
+  selection:
+    TargetFilename|contains:
+      - '\Login Data'
+      - '\Cookies'
+      - '\Web Data'
+      - '.kdbx'
+      - 'id_rsa'
+      - 'id_ed25519'
+      - '.aws\credentials'
+      - '.azure\accessTokens.json'
+      - 'gcloud\credentials.db'
+  filter_browser:
+    Image|endswith:
+      - '\chrome.exe'
+      - '\msedge.exe'
+      - '\firefox.exe'
+  condition: selection and not filter_browser
+fields:
+  - Image
+  - TargetFilename
+  - User
+falsepositives:
+  - Password manager software yang sah.
+  - Cloud CLI tools yang akses credentials mereka sendiri.
+level: high
+tags:
+  - attack.t1005
+  - attack.collection

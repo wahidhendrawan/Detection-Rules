@@ -1,9 +1,10 @@
-title: SSH Connection to Multiple Internal Hosts
+title: SSH Connection to Internal Host (Lateral Movement Indicator)
 id: 4a6c1d93-e5b2-4f8a-c7d1-3b9e2f8a6c54
 status: experimental
 description: |
-  Detects SSH connections to multiple internal hosts from the same
-  source within a short time frame - potential lateral movement.
+  Detects successful SSH connections which, when seen from the same
+  source to multiple internal hosts in rapid succession, may indicate
+  lateral movement. Tune threshold per environment.
 author: Wahid Hendrawan
 date: 2026/06/04
 references:
@@ -13,13 +14,12 @@ logsource:
   service: sshd
 detection:
   selection:
-    EventType: 'Accepted'
-  condition: selection | count(DestinationHostname) by SourceAddress > 3
-  timeframe: 10m
+    status: 'Accepted'
+  condition: selection
 fields:
-  - SourceAddress
-  - DestinationHostname
-  - User
+  - src_ip
+  - dst_ip
+  - user
 falsepositives:
   - Admin yang sah SSH ke banyak server untuk maintenance.
   - Ansible/Salt/Puppet yang push config ke banyak host.

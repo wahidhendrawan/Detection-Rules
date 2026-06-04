@@ -1,0 +1,35 @@
+title: Suspicious MSBuild Execution (LOLBin)
+id: a1b2c3d4-3333-4aaa-b333-000000000003
+status: experimental
+description: |
+  Detects MSBuild.exe executing project files from suspicious paths
+  or without Visual Studio as parent - LOLBin for code execution.
+author: Wahid Hendrawan
+date: 2026/06/04
+references:
+  - https://attack.mitre.org/techniques/T1127/001/
+  - https://lolbas-project.github.io/lolbas/Binaries/Msbuild/
+logsource:
+  product: windows
+  category: process_creation
+detection:
+  selection:
+    Image|endswith: '\MSBuild.exe'
+  filter_legit:
+    ParentImage|endswith:
+      - '\devenv.exe'
+      - '\dotnet.exe'
+      - '\nuget.exe'
+  condition: selection and not filter_legit
+fields:
+  - Image
+  - CommandLine
+  - ParentImage
+  - User
+falsepositives:
+  - CI/CD build agents yang menjalankan MSBuild dari command line.
+  - Developer yang build dari terminal (bukan Visual Studio).
+level: medium
+tags:
+  - attack.t1127.001
+  - attack.defense-evasion

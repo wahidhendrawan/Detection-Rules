@@ -1,0 +1,32 @@
+title: NTDS.dit Access or Copy Attempt
+id: a1b2c3d4-2222-4aaa-b222-000000000002
+status: experimental
+description: |
+  Detects attempts to copy or access NTDS.dit (Active Directory database)
+  via ntdsutil, vssadmin shadow copy, or direct file copy.
+author: Wahid Hendrawan
+date: 2026/06/04
+references:
+  - https://attack.mitre.org/techniques/T1003/003/
+logsource:
+  product: windows
+  category: process_creation
+detection:
+  selection_ntdsutil:
+    Image|endswith: '\ntdsutil.exe'
+    CommandLine|contains: 'ifm'
+  selection_copy:
+    CommandLine|contains:
+      - 'ntds.dit'
+      - '\Windows\NTDS\'
+  condition: 1 of selection_*
+fields:
+  - Image
+  - CommandLine
+  - User
+falsepositives:
+  - Legitimate AD backup procedures (DC backup via ntdsutil).
+level: critical
+tags:
+  - attack.t1003.003
+  - attack.credential-access

@@ -1,0 +1,33 @@
+title: SAM Registry Hive Dump via reg.exe
+id: a1b2c3d4-1111-4aaa-b111-000000000001
+status: experimental
+description: |
+  Detects reg.exe saving SAM/SYSTEM/SECURITY hives - common method
+  for offline credential extraction.
+author: Wahid Hendrawan
+date: 2026/06/04
+references:
+  - https://attack.mitre.org/techniques/T1003/002/
+logsource:
+  product: windows
+  category: process_creation
+detection:
+  selection:
+    Image|endswith: '\reg.exe'
+    CommandLine|contains|all:
+      - 'save'
+    CommandLine|contains:
+      - 'hklm\sam'
+      - 'hklm\system'
+      - 'hklm\security'
+  condition: selection
+fields:
+  - CommandLine
+  - User
+  - ParentImage
+falsepositives:
+  - Authorized backup of registry hives (sangat jarang dilakukan manual).
+level: critical
+tags:
+  - attack.t1003.002
+  - attack.credential-access

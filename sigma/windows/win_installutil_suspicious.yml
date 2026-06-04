@@ -1,0 +1,33 @@
+title: Suspicious InstallUtil Execution (LOLBin)
+id: a1b2c3d4-4444-4aaa-b444-000000000004
+status: experimental
+description: |
+  Detects InstallUtil.exe loading assemblies from non-standard paths
+  which may indicate LOLBin abuse for code execution.
+author: Wahid Hendrawan
+date: 2026/06/04
+references:
+  - https://attack.mitre.org/techniques/T1218/004/
+  - https://lolbas-project.github.io/lolbas/Binaries/Installutil/
+logsource:
+  product: windows
+  category: process_creation
+detection:
+  selection:
+    Image|endswith: '\InstallUtil.exe'
+    CommandLine|contains:
+      - '\Temp\'
+      - '\AppData\'
+      - '\Users\Public\'
+      - '\Downloads\'
+  condition: selection
+fields:
+  - CommandLine
+  - ParentImage
+  - User
+falsepositives:
+  - .NET developer yang install custom service dari temp (jarang).
+level: high
+tags:
+  - attack.t1218.004
+  - attack.defense-evasion

@@ -1,0 +1,43 @@
+title: Suspicious Python Execution
+id: a1b2c3d4-9999-4aaa-b999-000000000009
+status: experimental
+description: |
+  Detects Python interpreter execution with suspicious flags or from
+  unexpected locations - may indicate malicious script execution.
+author: Wahid Hendrawan
+date: 2026/06/04
+references:
+  - https://attack.mitre.org/techniques/T1059/006/
+logsource:
+  product: windows
+  category: process_creation
+detection:
+  selection:
+    Image|endswith:
+      - '\python.exe'
+      - '\python3.exe'
+      - '\pythonw.exe'
+  filter_suspicious:
+    CommandLine|contains:
+      - '-c "import'
+      - "-c 'import"
+      - 'exec(base64'
+      - 'exec(compile'
+      - '__import__'
+      - 'socket'
+      - 'subprocess'
+      - 'urllib'
+      - 'requests.get'
+  condition: selection and filter_suspicious
+fields:
+  - Image
+  - CommandLine
+  - ParentImage
+  - User
+falsepositives:
+  - Developer menjalankan script Python yang sah.
+  - CI/CD agent yang execute Python task.
+level: medium
+tags:
+  - attack.t1059.006
+  - attack.execution

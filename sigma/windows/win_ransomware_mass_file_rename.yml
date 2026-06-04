@@ -2,8 +2,9 @@ title: Potential Ransomware Mass File Rename
 id: 7e9d4b82-a1c5-4f6e-b3d7-2c8a9f1e5d46
 status: experimental
 description: |
-  Detects mass file rename operations with suspicious extensions
-  commonly associated with ransomware encryption.
+  Detects file rename operations with suspicious extensions commonly
+  associated with ransomware encryption. High volume of these events
+  in a short time window strongly indicates ransomware activity.
 author: Wahid Hendrawan
 date: 2026/06/04
 references:
@@ -26,8 +27,7 @@ detection:
       - '.zepto'
       - '.dharma'
       - '.phobos'
-  condition: selection | count() by Computer > 50
-  timeframe: 5m
+  condition: selection
 fields:
   - TargetFilename
   - Image

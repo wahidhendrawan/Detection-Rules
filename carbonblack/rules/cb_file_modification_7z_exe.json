@@ -1,0 +1,12 @@
+{
+  "id": "2c482047-6c9f-5586-a517-407e22177276",
+  "name": "cb_file_modification_7z_exe",
+  "description": "Detects file modification involving 7z.exe (archive for staging)",
+  "mitre": [
+    "T1560.001"
+  ],
+  "query": "filemod_name:7z.exe",
+  "severity": 4,
+  "enabled": true,
+  "category": "file_modification"
+}

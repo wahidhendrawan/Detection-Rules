@@ -1,7 +1,7 @@
 {
-  "id": "580970d9-8967-44bc-a753-b7501186aeb3",
+  "id": "debd058f-0ae6-5729-9d04-cf73ff235f04",
   "name": "cb_childproc_creation_at_exe",
-  "description": "Detects childproc_creation involving at.exe",
+  "description": "Detects childproc creation involving at.exe (legacy task scheduler)",
   "mitre": [
     "T1053.002"
   ],

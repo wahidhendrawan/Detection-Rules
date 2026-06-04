@@ -1,12 +1,12 @@
 {
-  "id": "e26e7051-e0aa-4ffc-b345-a4193c4f6336",
+  "id": "207342c3-059a-56d2-85b7-4a508eb2bd22",
   "name": "cb_process_creation_evil_com",
-  "description": "Detects process_creation involving evil.com",
+  "description": "Detects process creation involving evil.com (known malicious domain)",
   "mitre": [
     "T1071.001"
   ],
   "query": "process_name:evil.com",
-  "severity": 5,
+  "severity": 7,
   "enabled": true,
   "category": "process_creation"
 }

@@ -1,7 +1,7 @@
 {
-  "id": "3f703a66-4a13-4c93-94b5-162581ad764e",
+  "id": "7a2e680a-38f8-58d9-a53c-2ead32210326",
   "name": "cb_childproc_creation_rundll32_exe",
-  "description": "Detects childproc_creation involving rundll32.exe",
+  "description": "Detects childproc creation involving rundll32.exe (signed binary proxy execution)",
   "mitre": [
     "T1218.011"
   ],

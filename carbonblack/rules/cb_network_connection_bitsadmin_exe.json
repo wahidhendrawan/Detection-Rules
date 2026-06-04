@@ -1,7 +1,7 @@
 {
-  "id": "7c19d34b-fa16-465c-a7b7-f932c7aa361f",
+  "id": "016f65c4-ef7a-5359-a518-bb40122ee031",
   "name": "cb_network_connection_bitsadmin_exe",
-  "description": "Detects network_connection involving bitsadmin.exe",
+  "description": "Detects network connection involving bitsadmin.exe (BITS abuse for persistence/download)",
   "mitre": [
     "T1197"
   ],

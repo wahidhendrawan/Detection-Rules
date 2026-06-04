@@ -1,12 +1,12 @@
 {
-  "id": "2cc1e0c4-8c00-4b57-a3ba-c5c089447b93",
+  "id": "caa3f9fd-a467-54ba-a166-96a58b413284",
   "name": "cb_childproc_creation_evil_com",
-  "description": "Detects childproc_creation involving evil.com",
+  "description": "Detects childproc creation involving evil.com (known malicious domain)",
   "mitre": [
     "T1071.001"
   ],
   "query": "childproc_name:evil.com",
-  "severity": 5,
+  "severity": 7,
   "enabled": true,
   "category": "childproc_creation"
 }

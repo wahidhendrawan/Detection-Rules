@@ -1,0 +1,45 @@
+title: Browser Navigating to Newly Registered Domain
+id: 9d4e7f23-8a1b-4c56-b3d9-e2f6a8c1d5b7
+status: experimental
+description: |
+  Detects proxy/DNS log events where a user navigates to a domain registered
+  within the last 30 days. Newly registered domains are commonly used in
+  spearphishing link campaigns to bypass reputation filters.
+author: Wahid Hendrawan
+date: 2026/06/04
+references:
+  - https://attack.mitre.org/techniques/T1566/002/
+  - https://www.mandiant.com/m-trends
+logsource:
+  category: proxy
+detection:
+  selection:
+    c-uri-extension:
+      - 'html'
+      - 'htm'
+      - 'php'
+      - 'aspx'
+    r-dns|endswith:
+      - '.top'
+      - '.xyz'
+      - '.click'
+      - '.link'
+      - '.info'
+      - '.online'
+      - '.site'
+      - '.icu'
+      - '.buzz'
+  filter_legitimate:
+    r-dns|endswith:
+      - '.google.com'
+      - '.microsoft.com'
+      - '.amazonaws.com'
+  condition: selection and not filter_legitimate
+falsepositives:
+  - Legitimate new business websites using cheap TLDs
+  - Marketing campaign landing pages
+  - Developer testing on new domains
+level: medium
+tags:
+  - attack.t1566.002
+  - attack.initial-access

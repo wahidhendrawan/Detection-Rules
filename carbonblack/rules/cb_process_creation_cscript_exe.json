@@ -1,7 +1,7 @@
 {
-  "id": "6640696c-9f56-4319-b210-a8801af7c9e0",
+  "id": "4c4371a3-88bc-50e2-9be5-e745a3932347",
   "name": "cb_process_creation_cscript_exe",
-  "description": "Detects process_creation involving cscript.exe",
+  "description": "Detects process creation involving cscript.exe (script host)",
   "mitre": [
     "T1059.005"
   ],

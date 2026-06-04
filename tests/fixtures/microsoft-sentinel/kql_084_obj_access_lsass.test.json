@@ -1,0 +1,56 @@
+{
+  "rule": "microsoft-sentinel/kql_084_obj_access_lsass.kql",
+  "description": "LSASS access for credential dumping (T1003.001) - critical",
+  "match_condition": {
+    "TargetProcess": { "endswith": "lsass.exe" },
+    "DesiredAccess": { "in": ["0x1010", "0x1410", "0x143A", "0x1FFFFF", "0x1F0FFF", "0x1f0fff", "0x1fffff"] },
+    "InitiatingProcessFileName": { "regex": "^(?!MsSense\\.exe$|MsMpEng\\.exe$|csagent\\.exe$|SentinelAgent\\.exe$|wermgr\\.exe$|WerFault\\.exe$|svchost\\.exe$)" }
+  },
+  "test_cases": [
+    {
+      "name": "matches mimikatz-like LSASS access",
+      "expected": "match",
+      "event": {
+        "TargetProcess": "C:\\Windows\\System32\\lsass.exe",
+        "DesiredAccess": "0x1010",
+        "InitiatingProcessFileName": "mimikatz.exe"
+      }
+    },
+    {
+      "name": "matches procdump targeting LSASS",
+      "expected": "match",
+      "event": {
+        "TargetProcess": "C:\\Windows\\System32\\lsass.exe",
+        "DesiredAccess": "0x1FFFFF",
+        "InitiatingProcessFileName": "procdump64.exe"
+      }
+    },
+    {
+      "name": "does not match - Defender AV (whitelisted)",
+      "expected": "no_match",
+      "event": {
+        "TargetProcess": "C:\\Windows\\System32\\lsass.exe",
+        "DesiredAccess": "0x1010",
+        "InitiatingProcessFileName": "MsMpEng.exe"
+      }
+    },
+    {
+      "name": "does not match - target is not LSASS",
+      "expected": "no_match",
+      "event": {
+        "TargetProcess": "C:\\Windows\\System32\\svchost.exe",
+        "DesiredAccess": "0x1010",
+        "InitiatingProcessFileName": "unknown.exe"
+      }
+    },
+    {
+      "name": "does not match - low permission access",
+      "expected": "no_match",
+      "event": {
+        "TargetProcess": "C:\\Windows\\System32\\lsass.exe",
+        "DesiredAccess": "0x0400",
+        "InitiatingProcessFileName": "explorer.exe"
+      }
+    }
+  ]
+}

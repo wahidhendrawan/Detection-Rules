@@ -1,0 +1,12 @@
+{
+  "id": "189d2923-89e3-597d-b34e-a45832d1e012",
+  "name": "cb_file_modification_rclone_exe",
+  "description": "Detects file modification involving rclone.exe (cloud exfiltration tool)",
+  "mitre": [
+    "T1567.002"
+  ],
+  "query": "filemod_name:rclone.exe",
+  "severity": 7,
+  "enabled": true,
+  "category": "file_modification"
+}

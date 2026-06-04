@@ -1,7 +1,7 @@
 {
-  "id": "e16ab1e8-b776-4a07-bd7c-84f758c04898",
+  "id": "8869779a-c1f4-597c-8c0c-827b4fdfa3b9",
   "name": "cb_registry_modification_at_exe",
-  "description": "Detects registry_modification involving at.exe",
+  "description": "Detects registry modification involving at.exe (legacy task scheduler)",
   "mitre": [
     "T1053.002"
   ],

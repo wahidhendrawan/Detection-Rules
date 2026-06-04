@@ -1,7 +1,7 @@
 {
-  "id": "8f3edf3e-0c16-4bed-9a53-dc24550ad472",
+  "id": "3c69a4c7-a13f-56f3-abb0-8b143f5e2afe",
   "name": "cb_file_modification_msbuild_exe",
-  "description": "Detects file_modification involving msbuild.exe",
+  "description": "Detects file modification involving msbuild.exe (trusted dev tool abuse)",
   "mitre": [
     "T1127.001"
   ],

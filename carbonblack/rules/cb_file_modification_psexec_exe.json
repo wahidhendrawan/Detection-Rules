@@ -1,0 +1,12 @@
+{
+  "id": "ddd7c06d-2a74-50bb-b0b8-a695f252f2b1",
+  "name": "cb_file_modification_psexec_exe",
+  "description": "Detects file modification involving psexec.exe (remote execution tool)",
+  "mitre": [
+    "T1021.002"
+  ],
+  "query": "filemod_name:psexec.exe",
+  "severity": 6,
+  "enabled": true,
+  "category": "file_modification"
+}

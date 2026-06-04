@@ -1,7 +1,7 @@
 {
-  "id": "470658eb-48bd-4d18-828f-eff49481e426",
+  "id": "1ba3a156-6282-5504-b340-71d0e401faf1",
   "name": "cb_registry_modification_wscript_exe",
-  "description": "Detects registry_modification involving wscript.exe",
+  "description": "Detects registry modification involving wscript.exe (script host)",
   "mitre": [
     "T1059.005"
   ],

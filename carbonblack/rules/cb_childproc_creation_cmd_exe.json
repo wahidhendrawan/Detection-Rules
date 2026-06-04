@@ -1,12 +1,12 @@
 {
-  "id": "094b72f1-f2df-42e3-87de-7808b1207256",
+  "id": "78a47f66-e831-53bb-ae9c-2b3b2eed9cd0",
   "name": "cb_childproc_creation_cmd_exe",
-  "description": "Detects childproc_creation involving cmd.exe",
+  "description": "Detects childproc creation involving cmd.exe (command shell)",
   "mitre": [
     "T1059.003"
   ],
   "query": "childproc_name:cmd.exe",
-  "severity": 5,
+  "severity": 4,
   "enabled": true,
   "category": "childproc_creation"
 }

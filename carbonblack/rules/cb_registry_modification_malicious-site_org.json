@@ -1,12 +1,12 @@
 {
-  "id": "d852d9d8-39dc-43e1-85ec-4618478e3282",
+  "id": "58249c15-3358-5d77-9aff-c8be3fed2795",
   "name": "cb_registry_modification_malicious-site_org",
-  "description": "Detects registry_modification involving malicious-site.org",
+  "description": "Detects registry modification involving malicious-site.org (known malicious domain)",
   "mitre": [
     "T1071.001"
   ],
   "query": "regmod_name:malicious-site.org",
-  "severity": 5,
+  "severity": 7,
   "enabled": true,
   "category": "registry_modification"
 }

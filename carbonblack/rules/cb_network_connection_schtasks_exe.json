@@ -1,7 +1,7 @@
 {
-  "id": "2384abe5-331a-4d07-bf67-3c5e341ed40b",
+  "id": "86fa8468-b2a7-5f5a-a47f-6ce4e7f5a037",
   "name": "cb_network_connection_schtasks_exe",
-  "description": "Detects network_connection involving schtasks.exe",
+  "description": "Detects network connection involving schtasks.exe (scheduled task abuse)",
   "mitre": [
     "T1053.005"
   ],

@@ -1,0 +1,22 @@
+title: GitHub Organization External Member Added
+id: 9d1e3f5a-6b2c-4a8d-c7e0-4f3b1a9c2d8e
+status: experimental
+description: Detects when a new member is added to a GitHub organization, which may indicate unauthorized access provisioning.
+author: Wahid Hendrawan
+date: 2026/06/04
+references:
+    - https://docs.github.com/en/organizations/managing-membership-in-your-organization
+logsource:
+    product: github
+    service: audit
+detection:
+    selection:
+        action: org.add_member
+    condition: selection
+falsepositives:
+    - Legitimate onboarding of new team members
+    - Automated provisioning via SCIM or identity providers
+level: medium
+tags:
+    - attack.persistence
+    - attack.t1136.003

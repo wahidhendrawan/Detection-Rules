@@ -1,7 +1,7 @@
 {
-  "id": "e3b6c1ca-9864-4239-acb2-df30f925454a",
+  "id": "e162a7c2-13fc-59b8-877b-5406035d3ad9",
   "name": "cb_childproc_creation_powershell_exe",
-  "description": "Detects childproc_creation involving powershell.exe",
+  "description": "Detects childproc creation involving powershell.exe (scripting interpreter)",
   "mitre": [
     "T1059.001"
   ],

@@ -1,0 +1,41 @@
+title: Container Escape via Host Filesystem Access
+id: 8f2e6d34-7b5c-4a19-c1d8-b3f7e9a4c6d2
+status: experimental
+description: |
+  Detects processes inside containers attempting to access host filesystem
+  paths (/proc/1/root, /host, hostPath mounts) or using nsenter/chroot to
+  escape container boundaries. This is a primary indicator of T1611.
+author: Wahid Hendrawan
+date: 2026/06/04
+references:
+  - https://attack.mitre.org/techniques/T1611/
+  - https://blog.trailofbits.com/2019/07/19/understanding-docker-container-escapes/
+logsource:
+  product: linux
+  category: process_creation
+detection:
+  selection_host_access:
+    CommandLine|contains:
+      - '/proc/1/root'
+      - '/host/'
+      - 'mount -t proc'
+      - 'nsenter -t 1'
+      - 'nsenter --target 1'
+      - 'chroot /host'
+  selection_privileged_syscall:
+    Image|endswith:
+      - '/nsenter'
+      - '/chroot'
+    CommandLine|contains:
+      - '--mount'
+      - '--pid'
+      - '--net'
+  condition: selection_host_access or selection_privileged_syscall
+falsepositives:
+  - Container orchestration tools performing legitimate maintenance (kubelet)
+  - Authorized debugging sessions using nsenter
+  - Init containers with hostPath volumes (verify pod security policy)
+level: critical
+tags:
+  - attack.t1611
+  - attack.privilege-escalation

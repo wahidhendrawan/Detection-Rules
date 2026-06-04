@@ -1,12 +1,12 @@
 {
-  "id": "883cb067-723f-46d2-8cbe-c8225a7a0c66",
+  "id": "c1ecea0b-b5ee-5721-929d-07a373e981f0",
   "name": "cb_process_creation_nc_exe",
-  "description": "Detects process_creation involving nc.exe",
+  "description": "Detects process creation involving nc.exe (netcat reverse shell)",
   "mitre": [
     "T1095"
   ],
   "query": "process_name:nc.exe",
-  "severity": 5,
+  "severity": 7,
   "enabled": true,
   "category": "process_creation"
 }

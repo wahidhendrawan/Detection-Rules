@@ -1,12 +1,12 @@
 {
-  "id": "034b4451-4677-4bdb-8bd0-4f9d5e572aa2",
+  "id": "f33336ae-752a-52b6-b6da-471a4fd436cc",
   "name": "cb_network_connection_hacker_tool_py",
-  "description": "Detects network_connection involving hacker_tool.py",
+  "description": "Detects network connection involving hacker_tool.py (Python-based hacking tool)",
   "mitre": [
     "T1059.006"
   ],
   "query": "netconn_domain:hacker_tool.py",
-  "severity": 5,
+  "severity": 7,
   "enabled": true,
   "category": "network_connection"
 }

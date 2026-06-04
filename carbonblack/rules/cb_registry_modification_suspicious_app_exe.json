@@ -1,7 +1,7 @@
 {
-  "id": "85926105-6b36-47d0-a26c-4d5d15ae23a6",
+  "id": "3b6b0772-0714-5114-a7f1-1f477bccc28e",
   "name": "cb_registry_modification_suspicious_app_exe",
-  "description": "Detects registry_modification involving suspicious_app.exe",
+  "description": "Detects registry modification involving suspicious_app.exe (generic suspicious application)",
   "mitre": [
     "T1059",
     "T1036"

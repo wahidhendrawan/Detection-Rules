@@ -1,0 +1,12 @@
+{
+  "id": "1d6cf2a0-deb6-576f-9a65-92a394974b98",
+  "name": "cb_process_creation_rclone_exe",
+  "description": "Detects process creation involving rclone.exe (cloud exfiltration tool)",
+  "mitre": [
+    "T1567.002"
+  ],
+  "query": "process_name:rclone.exe",
+  "severity": 7,
+  "enabled": true,
+  "category": "process_creation"
+}

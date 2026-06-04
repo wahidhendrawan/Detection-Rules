@@ -1,12 +1,12 @@
 {
-  "id": "acd06d57-d71e-4539-bc5a-3504045ec20d",
+  "id": "b9315e46-9205-5bd8-ba31-022c19dd1a0e",
   "name": "cb_file_modification_malicious-site_org",
-  "description": "Detects file_modification involving malicious-site.org",
+  "description": "Detects file modification involving malicious-site.org (known malicious domain)",
   "mitre": [
     "T1071.001"
   ],
   "query": "filemod_name:malicious-site.org",
-  "severity": 5,
+  "severity": 7,
   "enabled": true,
   "category": "file_modification"
 }

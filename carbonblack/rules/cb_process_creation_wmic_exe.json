@@ -1,0 +1,12 @@
+{
+  "id": "6c8ddcb1-ebc8-5bfb-b41f-d04624900b8f",
+  "name": "cb_process_creation_wmic_exe",
+  "description": "Detects process creation involving wmic.exe (WMI command-line)",
+  "mitre": [
+    "T1047"
+  ],
+  "query": "process_name:wmic.exe",
+  "severity": 5,
+  "enabled": true,
+  "category": "process_creation"
+}

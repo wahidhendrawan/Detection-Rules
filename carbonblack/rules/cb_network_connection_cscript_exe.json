@@ -1,7 +1,7 @@
 {
-  "id": "515b01f8-ec80-4c20-9590-ecbb8a580b1d",
+  "id": "3ab004cf-08e8-52af-9995-e3e5f54e7b26",
   "name": "cb_network_connection_cscript_exe",
-  "description": "Detects network_connection involving cscript.exe",
+  "description": "Detects network connection involving cscript.exe (script host)",
   "mitre": [
     "T1059.005"
   ],

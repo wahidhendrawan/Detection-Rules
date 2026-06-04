@@ -1,7 +1,7 @@
 {
-  "id": "f8826729-1db9-48dc-bb80-0bbb2f87c1e8",
+  "id": "8bc3465d-5361-5521-9491-0cfb2e705c3f",
   "name": "cb_network_connection_powershell_exe",
-  "description": "Detects network_connection involving powershell.exe",
+  "description": "Detects network connection involving powershell.exe (scripting interpreter)",
   "mitre": [
     "T1059.001"
   ],

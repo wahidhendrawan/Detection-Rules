@@ -1,12 +1,12 @@
 {
-  "id": "cb902be6-e9c1-4959-8fa7-8376e2412720",
+  "id": "e27326ec-a8af-5d1c-8a99-76f794e43d89",
   "name": "cb_registry_modification_procdump_exe",
-  "description": "Detects registry_modification involving procdump.exe",
+  "description": "Detects registry modification involving procdump.exe (process memory dump tool)",
   "mitre": [
     "T1003.001"
   ],
   "query": "regmod_name:procdump.exe",
-  "severity": 5,
+  "severity": 7,
   "enabled": true,
   "category": "registry_modification"
 }

@@ -1,7 +1,7 @@
 {
-  "id": "0cc27c94-fd4d-4cfa-9f98-d329bb4e413e",
+  "id": "d70a23c3-b8bc-57ed-bd2b-bd5bcc6932d1",
   "name": "cb_process_creation_msbuild_exe",
-  "description": "Detects process_creation involving msbuild.exe",
+  "description": "Detects process creation involving msbuild.exe (trusted dev tool abuse)",
   "mitre": [
     "T1127.001"
   ],

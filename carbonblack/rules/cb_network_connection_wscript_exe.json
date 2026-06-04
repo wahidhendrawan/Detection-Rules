@@ -1,7 +1,7 @@
 {
-  "id": "90d78234-e32f-475a-8341-397b8030d5f1",
+  "id": "b9f44af9-1fa9-5dad-acbb-d60de055e970",
   "name": "cb_network_connection_wscript_exe",
-  "description": "Detects network_connection involving wscript.exe",
+  "description": "Detects network connection involving wscript.exe (script host)",
   "mitre": [
     "T1059.005"
   ],

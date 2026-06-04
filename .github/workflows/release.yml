@@ -26,14 +26,18 @@ jobs:
 
       - name: Install sigma-cli + backends
         run: |
+          pip install --upgrade pip
+          # Pin sigma-cli core; let backends auto-resolve compatible latest
           pip install \
-            sigma-cli==1.0.4 \
-            pysigma-backend-elasticsearch==1.1.6 \
-            pysigma-backend-splunk==1.1.5 \
-            pysigma-backend-qradar-aql==0.4.1 \
-            pysigma-backend-microsoft365defender==1.0.7 \
-            pysigma-backend-crowdstrike==0.2.5 \
-            pyyaml==6.0.2
+            "sigma-cli>=1.0.4,<2.0" \
+            "pysigma-backend-elasticsearch>=1.1,<3.0" \
+            "pysigma-backend-splunk>=1.1,<3.0" \
+            "pysigma-backend-qradar-aql>=0.3,<1.0" \
+            "pysigma-backend-kusto>=1.0,<2.0" \
+            "pysigma-backend-crowdstrike>=2.0,<4.0" \
+            "pyyaml==6.0.2"
+          sigma --version
+          sigma list targets || true
 
       - name: Generate coverage + index
         run: |
@@ -45,27 +49,31 @@ jobs:
           mkdir -p dist/sigma-converted
 
           echo "::group::Elastic Lucene"
-          sigma convert -t lucene -f json -o dist/sigma-converted/elastic.json sigma/ || echo "elastic conversion partial"
+          sigma convert -t lucene -f json -o dist/sigma-converted/elastic.json sigma/ 2>&1 | tail -5 || echo "elastic Lucene partial/failed"
           echo "::endgroup::"
 
-          echo "::group::Elastic ECS query (KQL)"
-          sigma convert -t lucene -f kibana_ndjson -o dist/sigma-converted/elastic.ndjson sigma/ || echo "elastic kql partial"
+          echo "::group::Elastic ECS NDJSON (Kibana importable)"
+          sigma convert -t lucene -f kibana_ndjson -o dist/sigma-converted/elastic.ndjson sigma/ 2>&1 | tail -5 || echo "elastic NDJSON partial/failed"
           echo "::endgroup::"
 
           echo "::group::Splunk SPL"
-          sigma convert -t splunk -f default -o dist/sigma-converted/splunk.spl sigma/ || echo "splunk partial"
+          sigma convert -t splunk -f default -o dist/sigma-converted/splunk.spl sigma/ 2>&1 | tail -5 || echo "splunk partial/failed"
           echo "::endgroup::"
 
           echo "::group::QRadar AQL"
-          sigma convert -t qradar -o dist/sigma-converted/qradar.aql sigma/ || echo "qradar partial"
+          sigma convert -t qradar -o dist/sigma-converted/qradar.aql sigma/ 2>&1 | tail -5 || echo "qradar partial/failed"
           echo "::endgroup::"
 
-          echo "::group::Microsoft 365 Defender KQL"
-          sigma convert -t microsoft365defender -o dist/sigma-converted/m365defender.kql sigma/ || echo "m365 partial"
+          echo "::group::Kusto (M365 Defender + Sentinel)"
+          sigma convert -t kusto -o dist/sigma-converted/kusto.kql sigma/ 2>&1 | tail -5 || echo "kusto partial/failed"
           echo "::endgroup::"
 
-          echo "::group::CrowdStrike"
-          sigma convert -t crowdstrike -o dist/sigma-converted/crowdstrike.json sigma/ || echo "crowdstrike partial"
+          echo "::group::CrowdStrike Falcon"
+          sigma convert -t crowdstrike_splunk -o dist/sigma-converted/crowdstrike.spl sigma/ 2>&1 | tail -5 || echo "crowdstrike partial/failed"
+          echo "::endgroup::"
+
+          echo "::group::Conversion summary"
+          ls -la dist/sigma-converted/
           echo "::endgroup::"
 
       - name: Bundle release artifacts

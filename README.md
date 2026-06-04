@@ -41,16 +41,16 @@
 
 | Platform | Format | Total | Detail |
 |---|---|---:|---|
-| **Sigma** | `.yml` | 118 | windows: 53 · linux: 29 · network: 15 · cloud: 18 · correlations: 3 |
+| **Sigma** | `.yml` | 119 | windows: 54 · linux: 29 · network: 15 · cloud: 18 · correlations: 3 |
 | **Elastic** | `.ndjson` | 58 | endpoint/general: 45 · endpoint/windows: 7 · endpoint/linux: 3 · endpoint/network: 2 · network: 1 |
-| **Splunk** | `.spl` | 18 | windows: 10 · linux: 4 · network: 3 · cloud: 1 |
-| **Microsoft Sentinel** | `.kql` | 102 | hunting + analytics |
+| **Splunk** | `.spl` | 19 | windows: 11 · linux: 4 · network: 3 · cloud: 1 |
+| **Microsoft Sentinel** | `.kql` | 103 | hunting + analytics |
 | **Wazuh** | `.xml` | 140 | rules `attack` group |
 | **Carbon Black** | `.json` | 142 | EDR queries (generated from `tools.yml`) |
-| **SentinelOne** | `.s1ql` | 2 | Deep Visibility queries |
 | **CrowdStrike Falcon** | `.fql` | 2 | Falcon Query Language |
+| **SentinelOne** | `.s1ql` | 2 | Deep Visibility queries |
 | **Falco** | `.yaml` | 2 | K8s/container runtime rules |
-| **TOTAL** | — | **584** | — |
+| **TOTAL** | — | **587** | — |
 
 Lihat [`COVERAGE.md`](COVERAGE.md) untuk pemetaan ke MITRE ATT&CK.
 
@@ -75,7 +75,7 @@ Detection-Rules/
 ├─ scripts/             # tooling (mis. generator MITRE coverage)
 ├─ templates/           # boilerplate per platform
 ├─ sigma/
-│  ├─ windows/          # 53 rule
+│  ├─ windows/          # 54 rule
 │  ├─ linux/            # 29 rule
 │  ├─ network/          # 15 rule
 │  ├─ cloud/            # 18 rule
@@ -88,7 +88,7 @@ Detection-Rules/
 │  │  └─ general/       # 45 rule (multi-platform / threat-specific)
 │  └─ network/          # 1 rule
 ├─ splunk/
-│  ├─ windows/          # 10 rule
+│  ├─ windows/          # 11 rule
 │  ├─ linux/            # 4 rule
 │  ├─ network/          # 3 rule
 │  └─ cloud/            # 1 rule

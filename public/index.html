@@ -1,519 +1,337 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Detection Rules — Cross-Platform SIEM/EDR Detection Library</title>
-<meta name="description" content="Open-source detection rule library lintas platform (Sigma, Elastic, Splunk, Microsoft Sentinel, Wazuh, Carbon Black) dengan mapping MITRE ATT&CK." />
-<meta property="og:title" content="Detection Rules" />
-<meta property="og:description" content="Cross-platform detection rules with MITRE ATT&CK mapping" />
-<meta property="og:type" content="website" />
-<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ctext y='28' font-size='28'%3E%F0%9F%9B%A1%EF%B8%8F%3C/text%3E%3C/svg%3E" />
+<meta name="description" content="Open-source detection rule library covering 9 platforms (Sigma, Elastic, Splunk, Sentinel, Wazuh, Carbon Black, CrowdStrike, SentinelOne, Falco) with 587+ rules mapped to 144 MITRE ATT&CK techniques.">
+<meta property="og:title" content="Detection Rules — 587+ rules across 9 platforms">
+<meta property="og:description" content="Cross-platform SIEM/EDR detection library with MITRE ATT&CK mapping. Download, import, detect.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://wahidhendrawan.github.io/Detection-Rules/">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🛡️</text></svg>">
 <style>
-  :root {
-    --bg: #0d1117;
-    --bg-card: #161b22;
-    --bg-hover: #1f262e;
-    --border: #30363d;
-    --text: #e6edf3;
-    --text-muted: #8b949e;
-    --accent: #f78166;
-    --accent-2: #58a6ff;
-    --green: #3fb950;
-    --yellow: #d29922;
-    --red: #f85149;
-    --critical: #b62324;
-  }
-  * { box-sizing: border-box; }
-  body {
-    margin: 0;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    background: var(--bg);
-    color: var(--text);
-    line-height: 1.5;
-  }
-  a { color: var(--accent-2); text-decoration: none; }
-  a:hover { text-decoration: underline; }
-  header {
-    background: linear-gradient(135deg, #161b22 0%, #0d1117 100%);
-    border-bottom: 1px solid var(--border);
-    padding: 60px 24px 40px;
-    text-align: center;
-  }
-  header h1 {
-    font-size: 2.5rem;
-    margin: 0 0 8px;
-    background: linear-gradient(90deg, var(--accent), var(--accent-2));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-  }
-  header p { color: var(--text-muted); font-size: 1.1rem; margin: 8px 0; }
-  header .actions { margin-top: 20px; display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
-  .btn {
-    display: inline-block;
-    background: var(--bg-card);
-    color: var(--text);
-    border: 1px solid var(--border);
-    padding: 10px 20px;
-    border-radius: 6px;
-    font-weight: 500;
-    cursor: pointer;
-    transition: all 0.15s;
-  }
-  .btn:hover { background: var(--bg-hover); border-color: var(--text-muted); text-decoration: none; }
-  .btn.primary { background: var(--accent); color: #fff; border-color: var(--accent); }
-  .btn.primary:hover { filter: brightness(1.15); }
-  main { max-width: 1200px; margin: 0 auto; padding: 32px 24px; }
-  section { margin-bottom: 48px; }
-  h2 { font-size: 1.6rem; border-bottom: 1px solid var(--border); padding-bottom: 8px; margin-top: 0; }
-  .stats {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-    gap: 16px;
-    margin-bottom: 24px;
-  }
-  .stat {
-    background: var(--bg-card);
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    padding: 20px;
-    text-align: center;
-  }
-  .stat .value {
-    font-size: 2.2rem;
-    font-weight: 700;
-    color: var(--accent);
-    line-height: 1.1;
-  }
-  .stat .label {
-    font-size: 0.85rem;
-    color: var(--text-muted);
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    margin-top: 4px;
-  }
-  .platforms {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 16px;
-  }
-  .platform {
-    background: var(--bg-card);
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    padding: 16px;
-    transition: all 0.15s;
-  }
-  .platform:hover { border-color: var(--accent); transform: translateY(-2px); }
-  .platform .name {
-    font-weight: 600;
-    color: var(--accent-2);
-    margin-bottom: 4px;
-  }
-  .platform .count { font-size: 1.4rem; font-weight: 700; }
-  .platform .desc { font-size: 0.85rem; color: var(--text-muted); margin-top: 4px; }
-  .filter-bar {
-    display: flex;
-    gap: 12px;
-    margin-bottom: 16px;
-    flex-wrap: wrap;
-    align-items: center;
-  }
-  .filter-bar input, .filter-bar select {
-    background: var(--bg-card);
-    color: var(--text);
-    border: 1px solid var(--border);
-    padding: 8px 12px;
-    border-radius: 6px;
-    font-size: 0.95rem;
-  }
-  .filter-bar input { flex: 1 1 240px; }
-  .filter-bar input:focus, .filter-bar select:focus { outline: 2px solid var(--accent); }
-  table {
-    width: 100%;
-    border-collapse: collapse;
-    background: var(--bg-card);
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    overflow: hidden;
-    font-size: 0.92rem;
-  }
-  thead { background: #1f262e; }
-  th, td {
-    padding: 10px 14px;
-    text-align: left;
-    border-bottom: 1px solid var(--border);
-  }
-  th { font-weight: 600; color: var(--text-muted); text-transform: uppercase; font-size: 0.78rem; letter-spacing: 0.05em; }
-  tr:hover td { background: var(--bg-hover); }
-  td.tech-id { font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace; color: var(--accent); font-weight: 600; }
-  td.center { text-align: center; }
-  .check { color: var(--green); font-weight: 700; }
-  .cross { color: var(--text-muted); opacity: 0.4; }
-  .badge {
-    display: inline-block;
-    background: rgba(88,166,255,0.15);
-    color: var(--accent-2);
-    padding: 2px 8px;
-    border-radius: 12px;
-    font-size: 0.75rem;
-    font-weight: 600;
-    text-transform: lowercase;
-  }
-  .badge.coverage-1 { background: rgba(248,81,73,0.15); color: var(--red); }
-  .badge.coverage-2,
-  .badge.coverage-3 { background: rgba(210,153,34,0.15); color: var(--yellow); }
-  .badge.coverage-6,
-  .badge.coverage-7 { background: rgba(63,185,80,0.15); color: var(--green); }
-  .badge.coverage-9 { background: rgba(63,185,80,0.3); color: var(--green); }
-  footer {
-    text-align: center;
-    padding: 32px 24px;
-    color: var(--text-muted);
-    border-top: 1px solid var(--border);
-    margin-top: 48px;
-    font-size: 0.9rem;
-  }
-  .loader { color: var(--text-muted); font-style: italic; padding: 24px; text-align: center; }
-  .navigator-frame {
-    background: var(--bg-card);
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    padding: 16px;
-    text-align: center;
-  }
-  .navigator-frame iframe {
-    width: 100%;
-    height: 600px;
-    border: 0;
-    border-radius: 6px;
-  }
-  .tactic-cell {
-    text-transform: capitalize;
-    color: var(--text-muted);
-  }
-  @media (max-width: 720px) {
-    header h1 { font-size: 1.8rem; }
-    th, td { padding: 8px; font-size: 0.8rem; }
-  }
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#0a0e17;--bg-card:#111827;--bg-card-hover:#1a2332;
+  --border:#1e293b;--border-hover:#334155;
+  --text:#f1f5f9;--text-muted:#94a3b8;--text-dim:#64748b;
+  --accent:#6366f1;--accent-glow:#818cf8;
+  --green:#22c55e;--yellow:#eab308;--orange:#f97316;--red:#ef4444;--cyan:#06b6d4;
+  --gradient:linear-gradient(135deg,#6366f1 0%,#06b6d4 50%,#22c55e 100%);
+}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',sans-serif;background:var(--bg);color:var(--text);line-height:1.6;overflow-x:hidden}
+a{color:var(--cyan);text-decoration:none;transition:color .2s}
+a:hover{color:var(--accent-glow)}
+
+/* Hero */
+.hero{position:relative;padding:100px 24px 80px;text-align:center;overflow:hidden}
+.hero::before{content:'';position:absolute;top:-50%;left:-50%;width:200%;height:200%;background:radial-gradient(ellipse at 50% 20%,rgba(99,102,241,.08) 0%,transparent 60%);pointer-events:none}
+.hero::after{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:radial-gradient(circle at 30% 80%,rgba(6,182,212,.05) 0%,transparent 50%);pointer-events:none}
+.hero h1{font-size:clamp(2.5rem,6vw,4rem);font-weight:800;letter-spacing:-.03em;background:var(--gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:16px;position:relative}
+.hero .subtitle{font-size:1.2rem;color:var(--text-muted);max-width:600px;margin:0 auto 12px}
+.hero .platforms-line{font-size:.9rem;color:var(--text-dim);margin-bottom:32px}
+.hero .actions{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;position:relative}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:12px 24px;border-radius:8px;font-weight:600;font-size:.95rem;border:1px solid var(--border);background:var(--bg-card);color:var(--text);transition:all .2s;cursor:pointer}
+.btn:hover{border-color:var(--accent);transform:translateY(-2px);box-shadow:0 8px 24px rgba(99,102,241,.15);color:var(--text)}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:#fff}
+.btn.primary:hover{background:var(--accent-glow);box-shadow:0 8px 32px rgba(99,102,241,.3)}
+
+/* Stats ring */
+.stats-section{padding:0 24px 80px}
+.stats-grid{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:20px}
+.stat-card{background:var(--bg-card);border:1px solid var(--border);border-radius:12px;padding:28px 20px;text-align:center;transition:all .3s;position:relative;overflow:hidden}
+.stat-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--gradient);opacity:0;transition:opacity .3s}
+.stat-card:hover{border-color:var(--border-hover);transform:translateY(-4px);box-shadow:0 12px 40px rgba(0,0,0,.3)}
+.stat-card:hover::before{opacity:1}
+.stat-card .value{font-size:2.8rem;font-weight:800;background:var(--gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1.1}
+.stat-card .label{font-size:.8rem;color:var(--text-dim);text-transform:uppercase;letter-spacing:.1em;margin-top:8px}
+
+/* Section styles */
+section{max-width:1200px;margin:0 auto;padding:0 24px 80px}
+.section-header{text-align:center;margin-bottom:40px}
+.section-header h2{font-size:2rem;font-weight:700;margin-bottom:8px}
+.section-header p{color:var(--text-muted);max-width:600px;margin:0 auto}
+.badge-pill{display:inline-block;background:rgba(99,102,241,.1);color:var(--accent-glow);padding:4px 12px;border-radius:20px;font-size:.75rem;font-weight:600;margin-bottom:12px;text-transform:uppercase;letter-spacing:.05em}
+
+/* Platform grid */
+.platform-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:16px}
+.platform-card{background:var(--bg-card);border:1px solid var(--border);border-radius:12px;padding:20px;transition:all .3s;cursor:default}
+.platform-card:hover{border-color:var(--cyan);transform:translateY(-3px);box-shadow:0 8px 30px rgba(6,182,212,.1)}
+.platform-card .icon{font-size:1.8rem;margin-bottom:8px}
+.platform-card .name{font-weight:700;font-size:1.05rem;margin-bottom:4px}
+.platform-card .count{font-size:1.6rem;font-weight:800;color:var(--cyan)}
+.platform-card .ext{font-size:.8rem;color:var(--text-dim);margin-top:4px}
+
+/* Coverage section */
+.coverage-wrapper{background:var(--bg-card);border:1px solid var(--border);border-radius:12px;padding:24px;overflow:hidden}
+.filter-bar{display:flex;gap:12px;margin-bottom:20px;flex-wrap:wrap;align-items:center}
+.filter-bar input,.filter-bar select{background:var(--bg);color:var(--text);border:1px solid var(--border);padding:10px 14px;border-radius:8px;font-size:.9rem;transition:border .2s}
+.filter-bar input{flex:1 1 260px}
+.filter-bar input:focus,.filter-bar select:focus{outline:none;border-color:var(--accent)}
+.coverage-count{font-size:.85rem;color:var(--text-dim);margin-bottom:12px}
+table{width:100%;border-collapse:collapse;font-size:.85rem}
+thead{position:sticky;top:0;z-index:2}
+th{background:var(--bg);color:var(--text-dim);font-size:.72rem;text-transform:uppercase;letter-spacing:.08em;padding:12px 10px;text-align:left;border-bottom:1px solid var(--border)}
+td{padding:10px;border-bottom:1px solid rgba(30,41,59,.5)}
+tr:hover td{background:rgba(99,102,241,.03)}
+.tech-id{font-family:'JetBrains Mono',ui-monospace,monospace;color:var(--accent-glow);font-weight:600;font-size:.82rem}
+.center{text-align:center}
+.dot-yes{color:var(--green);font-size:1.1rem}
+.dot-no{color:var(--border);font-size:.9rem}
+.cov-badge{display:inline-block;padding:2px 8px;border-radius:10px;font-size:.7rem;font-weight:700}
+.cov-1,.cov-2{background:rgba(239,68,68,.15);color:var(--red)}
+.cov-3,.cov-4{background:rgba(234,179,8,.15);color:var(--yellow)}
+.cov-5,.cov-6{background:rgba(6,182,212,.15);color:var(--cyan)}
+.cov-7,.cov-8,.cov-9{background:rgba(34,197,94,.15);color:var(--green)}
+.tactic-tag{font-size:.75rem;color:var(--text-dim);text-transform:capitalize}
+.table-scroll{max-height:600px;overflow-y:auto;border-radius:8px}
+
+/* Navigator */
+.navigator-section{background:var(--bg-card);border:1px solid var(--border);border-radius:12px;padding:40px;text-align:center}
+.navigator-section h3{font-size:1.4rem;margin-bottom:12px}
+.navigator-section p{color:var(--text-muted);margin-bottom:24px}
+.navigator-actions{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+
+/* Resources */
+.resources-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px}
+.resource-card{display:block;background:var(--bg-card);border:1px solid var(--border);border-radius:12px;padding:20px;transition:all .3s}
+.resource-card:hover{border-color:var(--accent);transform:translateY(-2px);box-shadow:0 8px 24px rgba(99,102,241,.1)}
+.resource-card .title{font-weight:700;margin-bottom:4px;color:var(--text)}
+.resource-card .desc{font-size:.85rem;color:var(--text-muted)}
+
+/* Footer */
+footer{text-align:center;padding:48px 24px;border-top:1px solid var(--border);color:var(--text-dim);font-size:.85rem}
+footer a{color:var(--text-muted)}
+
+/* Animations */
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+.animate{animation:fadeUp .6s ease forwards;opacity:0}
+.delay-1{animation-delay:.1s}.delay-2{animation-delay:.2s}.delay-3{animation-delay:.3s}
+
+@media(max-width:768px){
+  .hero{padding:60px 16px 50px}
+  .stats-grid{grid-template-columns:repeat(2,1fr)}
+  .stat-card .value{font-size:2rem}
+  th,td{padding:8px 6px;font-size:.75rem}
+}
 </style>
 </head>
 <body>
 
-<header>
-  <h1>🛡️ Detection Rules</h1>
-  <p>Cross-platform SIEM/EDR detection library dengan MITRE ATT&amp;CK mapping</p>
-  <p style="color: var(--text-muted); font-size: 0.95rem;">
-    Sigma · Elastic · Splunk · Microsoft Sentinel · Wazuh · Carbon Black · CrowdStrike · SentinelOne · Falco
+<header class="hero">
+  <div class="badge-pill animate">Open Source Detection Library</div>
+  <h1 class="animate delay-1">Detection Rules</h1>
+  <p class="subtitle animate delay-2">
+    Cross-platform SIEM & EDR detection rules mapped to MITRE ATT&CK.
+    Download. Import. Detect.
   </p>
-  <div class="actions">
-    <a class="btn primary" href="https://github.com/wahidhendrawan/Detection-Rules">
-      ⭐ GitHub Repo
-    </a>
-    <a class="btn" href="https://github.com/wahidhendrawan/Detection-Rules/releases/latest">
-      📦 Latest Release
-    </a>
-    <a class="btn" href="#navigator">
-      🗺️ ATT&amp;CK Navigator
-    </a>
+  <p class="platforms-line animate delay-2">
+    Sigma · Elastic · Splunk · Sentinel · Wazuh · Carbon Black · CrowdStrike · SentinelOne · Falco
+  </p>
+  <div class="actions animate delay-3">
+    <a class="btn primary" href="https://github.com/wahidhendrawan/Detection-Rules">⭐ GitHub</a>
+    <a class="btn" href="https://github.com/wahidhendrawan/Detection-Rules/releases/latest">📦 Download</a>
+    <a class="btn" href="#coverage">🎯 Coverage</a>
+    <a class="btn" href="#navigator">🗺️ Navigator</a>
   </div>
 </header>
 
-<main>
-
-<section>
-  <h2>📊 Statistik</h2>
-  <div class="stats" id="stats">
-    <div class="loader">Loading stats…</div>
-  </div>
+<section class="stats-section">
+  <div class="stats-grid" id="stats"></div>
 </section>
 
 <section>
-  <h2>📦 Per Platform</h2>
-  <div class="platforms" id="platforms">
-    <div class="loader">Loading…</div>
+  <div class="section-header">
+    <div class="badge-pill">Platforms</div>
+    <h2>9 Platforms Supported</h2>
+    <p>Setiap rule di-maintain per platform native. Download Sigma, atau ambil versi pre-converted untuk SIEM Anda.</p>
   </div>
+  <div class="platform-grid" id="platforms"></div>
 </section>
 
-<section>
-  <h2>🎯 Coverage Matrix</h2>
-  <p style="color: var(--text-muted);">
-    Daftar teknik MITRE ATT&amp;CK yang punya minimal satu rule di repo ini.
-    Cari, filter berdasarkan tactic, dan klik link untuk detail.
-  </p>
-  <div class="filter-bar">
-    <input id="search" type="text" placeholder="Cari teknik (T1059, PowerShell, ...)" />
-    <select id="tactic-filter">
-      <option value="">Semua tactic</option>
-    </select>
-    <select id="coverage-filter">
-      <option value="">Semua coverage</option>
-      <option value="1">Single platform (gap!)</option>
-      <option value="2-5">Partial</option>
-      <option value="6">Full coverage</option>
-    </select>
+<section id="coverage">
+  <div class="section-header">
+    <div class="badge-pill">MITRE ATT&CK</div>
+    <h2>Coverage Matrix</h2>
+    <p>Teknik MITRE ATT&CK yang ter-cover. Search, filter, dan identifikasi gap.</p>
   </div>
-  <div style="overflow-x: auto;">
-    <table id="coverage-table">
-      <thead>
-        <tr>
-          <th>Technique</th>
-          <th>Name</th>
-          <th>Tactic</th>
-          <th class="center">Sigma</th>
-          <th class="center">Elastic</th>
-          <th class="center">Splunk</th>
-          <th class="center">Sentinel</th>
-          <th class="center">Wazuh</th>
-          <th class="center">CB</th>
-          <th class="center">Falcon</th>
-          <th class="center">S1</th>
-          <th class="center">Falco</th>
-          <th class="center">Coverage</th>
-        </tr>
-      </thead>
-      <tbody id="coverage-body">
-        <tr><td colspan="13" class="loader">Loading rules.index.json…</td></tr>
-      </tbody>
-    </table>
+  <div class="coverage-wrapper">
+    <div class="filter-bar">
+      <input id="search" type="text" placeholder="🔍  Search technique ID or name...">
+      <select id="tactic-filter"><option value="">All tactics</option></select>
+      <select id="cov-filter">
+        <option value="">All coverage</option>
+        <option value="low">⚠️ Low (1-2 platforms)</option>
+        <option value="mid">🔶 Partial (3-5)</option>
+        <option value="high">✅ High (6+)</option>
+      </select>
+    </div>
+    <div class="coverage-count" id="cov-count"></div>
+    <div class="table-scroll">
+      <table>
+        <thead>
+          <tr>
+            <th>ID</th><th>Technique</th><th>Tactic</th>
+            <th class="center">Σ</th><th class="center">ELK</th><th class="center">SPL</th>
+            <th class="center">KQL</th><th class="center">WZH</th><th class="center">CB</th>
+            <th class="center">FLC</th><th class="center">S1</th><th class="center">FAL</th>
+            <th class="center">Cov</th>
+          </tr>
+        </thead>
+        <tbody id="tbody"></tbody>
+      </table>
+    </div>
   </div>
 </section>
 
 <section id="navigator">
-  <h2>🗺️ ATT&amp;CK Navigator</h2>
-  <p style="color: var(--text-muted);">
-    Klik tombol di bawah untuk melihat heatmap interaktif di MITRE ATT&amp;CK Navigator.
-    Layer di-generate otomatis tiap merge ke <code>main</code>.
-  </p>
-  <div class="navigator-frame">
-    <p>
-      <a class="btn primary"
-         id="navigator-link"
-         target="_blank"
-         href="#">
-        🚀 Open in ATT&amp;CK Navigator
-      </a>
-      <a class="btn"
-         id="layer-download"
-         href="coverage.json"
-         download>
-        💾 Download layer (coverage.json)
-      </a>
-    </p>
-    <p style="color: var(--text-muted); font-size: 0.85rem; margin-top: 12px;">
-      Atau import manual ke
-      <a href="https://mitre-attack.github.io/attack-navigator/" target="_blank">attack-navigator</a>
-      → Open Existing Layer → Upload from Local
-    </p>
+  <div class="navigator-section">
+    <div class="badge-pill">Heatmap</div>
+    <h3>ATT&CK Navigator</h3>
+    <p>Visualisasi interaktif coverage di MITRE ATT&CK Navigator. Layer di-generate otomatis setiap deploy.</p>
+    <div class="navigator-actions">
+      <a class="btn primary" id="nav-link" target="_blank" href="#">🚀 Open Navigator</a>
+      <a class="btn" href="coverage.json" download>💾 Download Layer JSON</a>
+      <a class="btn" href="rules.index.json" download>📋 Download Manifest</a>
+    </div>
   </div>
 </section>
 
 <section>
-  <h2>📚 Resource</h2>
-  <div class="platforms">
-    <a class="platform" href="https://github.com/wahidhendrawan/Detection-Rules/blob/main/README.md">
-      <div class="name">📖 README</div>
-      <div class="desc">Dokumentasi utama, struktur repo, quick-start tiap platform.</div>
+  <div class="section-header">
+    <div class="badge-pill">Resources</div>
+    <h2>Documentation & Tools</h2>
+  </div>
+  <div class="resources-grid">
+    <a class="resource-card" href="https://github.com/wahidhendrawan/Detection-Rules/blob/main/README.md">
+      <div class="title">📖 README</div>
+      <div class="desc">Quick-start per platform, naming convention, MITRE tagging guide.</div>
     </a>
-    <a class="platform" href="https://github.com/wahidhendrawan/Detection-Rules/blob/main/CONTRIBUTING.md">
-      <div class="name">🤝 Contributing Guide</div>
-      <div class="desc">Standar metadata, naming convention, MITRE tagging.</div>
+    <a class="resource-card" href="https://github.com/wahidhendrawan/Detection-Rules/blob/main/CONTRIBUTING.md">
+      <div class="title">🤝 Contributing</div>
+      <div class="desc">Standards, PR template, CI checklist, validation commands.</div>
     </a>
-    <a class="platform" href="https://github.com/wahidhendrawan/Detection-Rules/blob/main/docs/quality.md">
-      <div class="name">⚖️ Quality Classification</div>
-      <div class="desc">Sistem klasifikasi fidelitas (informational → critical).</div>
+    <a class="resource-card" href="https://github.com/wahidhendrawan/Detection-Rules/blob/main/docs/quality.md">
+      <div class="title">⚖️ Quality Framework</div>
+      <div class="desc">Rule fidelity classification: informational → critical.</div>
     </a>
-    <a class="platform" href="COVERAGE.md">
-      <div class="name">📊 Coverage Report (MD)</div>
-      <div class="desc">Markdown auto-generated tabel coverage lengkap.</div>
+    <a class="resource-card" href="https://github.com/wahidhendrawan/Detection-Rules/blob/main/docs/atomic-red-team.md">
+      <div class="title">🧪 Atomic Testing</div>
+      <div class="desc">Atomic Red Team mapping for rule verification.</div>
     </a>
-    <a class="platform" href="rules.index.json">
-      <div class="name">🗂️ rules.index.json</div>
-      <div class="desc">Cross-platform rule manifest (machine-readable).</div>
+    <a class="resource-card" href="https://github.com/wahidhendrawan/Detection-Rules/blob/main/CHANGELOG.md">
+      <div class="title">📝 Changelog</div>
+      <div class="desc">Version history, breaking changes, migration notes.</div>
     </a>
-    <a class="platform" href="coverage.json">
-      <div class="name">🌐 ATT&amp;CK Layer JSON</div>
-      <div class="desc">Navigator-compatible layer file.</div>
+    <a class="resource-card" href="https://github.com/wahidhendrawan/Detection-Rules/releases/latest">
+      <div class="title">📦 Latest Release</div>
+      <div class="desc">Pre-built ZIP with auto-translated Sigma → all backends.</div>
     </a>
   </div>
 </section>
 
-</main>
-
 <footer>
-  <p>
-    <strong>Detection Rules</strong> · MIT License · 
-    <a href="https://github.com/wahidhendrawan/Detection-Rules">GitHub</a> · 
-    Auto-deployed dari <code>main</code>
-  </p>
-  <p style="font-size: 0.8rem; opacity: 0.7;">
-    Last updated: <span id="last-updated">checking…</span>
-  </p>
+  <p><strong>Detection Rules</strong> · MIT License · Made by <a href="https://github.com/wahidhendrawan">@wahidhendrawan</a></p>
+  <p style="margin-top:8px;font-size:.8rem">Auto-deployed from <code>main</code> via GitHub Actions</p>
 </footer>
 
 <script>
-const PLATFORM_LABELS = {
-  "sigma": "Sigma",
-  "elastic": "Elastic",
-  "splunk": "Splunk",
-  "microsoft-sentinel": "Sentinel",
-  "wazuh": "Wazuh",
-  "carbonblack": "CB",
-  "falcon": "CrowdStrike",
-  "sentinelone": "SentinelOne",
-  "falco": "Falco"
-};
-const PLATFORM_DESC = {
-  "sigma": "Generic .yml — convert ke any backend",
-  "elastic": ".ndjson — Kibana saved object",
-  "splunk": ".spl — SPL search query",
-  "microsoft-sentinel": ".kql — Sentinel hunting/analytics",
-  "wazuh": ".xml — Wazuh manager rule",
-  "carbonblack": ".json — VMware Carbon Black query",
-  "falcon": ".fql — CrowdStrike Falcon Query Language",
-  "sentinelone": ".s1ql — SentinelOne Deep Visibility query",
-  "falco": ".yaml — Falco cloud-native runtime rules"
-};
+const PLAT = [
+  {key:"sigma",icon:"📐",name:"Sigma",ext:".yml — Generic, any backend"},
+  {key:"elastic",icon:"🔍",name:"Elastic Security",ext:".ndjson — Kibana importable"},
+  {key:"splunk",icon:"⚡",name:"Splunk",ext:".spl — SPL correlation search"},
+  {key:"microsoft-sentinel",icon:"☁️",name:"Microsoft Sentinel",ext:".kql — Hunting & analytics"},
+  {key:"wazuh",icon:"🐝",name:"Wazuh",ext:".xml — Manager rules"},
+  {key:"carbonblack",icon:"🖥️",name:"Carbon Black",ext:".json — EDR watchlist query"},
+  {key:"falcon",icon:"🦅",name:"CrowdStrike Falcon",ext:".fql — Falcon Query Language"},
+  {key:"sentinelone",icon:"🤖",name:"SentinelOne",ext:".s1ql — Deep Visibility query"},
+  {key:"falco",icon:"🐦",name:"Falco",ext:".yaml — Cloud-native runtime rules"},
+];
 
-async function loadJSON(path) {
-  const r = await fetch(path);
-  if (!r.ok) throw new Error(path + " " + r.status);
-  return r.json();
-}
+async function init(){
+  const [stats,idx] = await Promise.all([
+    fetch("stats.json").then(r=>r.json()),
+    fetch("rules.index.json").then(r=>r.json())
+  ]);
 
-function el(tag, props = {}, ...children) {
-  const e = document.createElement(tag);
-  Object.entries(props).forEach(([k, v]) => {
-    if (k === "class") e.className = v;
-    else if (k === "html") e.innerHTML = v;
-    else e.setAttribute(k, v);
-  });
-  children.flat().forEach(c => {
-    if (c == null) return;
-    e.appendChild(typeof c === "string" ? document.createTextNode(c) : c);
-  });
-  return e;
-}
+  // Fix "full coverage" to mean >= 6 platforms (realistic threshold)
+  const highCov = Object.values(idx.techniques).filter(t=>t.coverage_count>=6).length;
+  const multiPlat = Object.values(idx.techniques).filter(t=>t.coverage_count>=3).length;
 
-function renderStats(stats) {
-  const c = document.getElementById("stats");
-  c.innerHTML = "";
-  const items = [
-    ["Rules", stats.total_rules],
-    ["MITRE Techniques", stats.total_techniques],
-    ["Full coverage", stats.fully_covered + " / " + stats.total_techniques],
-    ["Single-platform gaps", stats.single_platform_only],
-    ["Platforms", Object.keys(stats.rules_per_platform).length],
+  // Stats
+  const sc = document.getElementById("stats");
+  const statItems = [
+    {v:stats.total_rules,l:"Detection Rules"},
+    {v:stats.total_techniques,l:"MITRE Techniques"},
+    {v:Object.keys(stats.rules_per_platform).length,l:"Platforms"},
+    {v:highCov,l:"High Coverage (6+)"},
+    {v:multiPlat,l:"Multi-Platform (3+)"},
   ];
-  items.forEach(([label, value]) => {
-    c.appendChild(el("div", {class: "stat"},
-      el("div", {class: "value"}, String(value)),
-      el("div", {class: "label"}, label)
-    ));
-  });
-}
+  sc.innerHTML = statItems.map((s,i)=>`
+    <div class="stat-card animate delay-${i%3+1}">
+      <div class="value">${s.v}</div>
+      <div class="label">${s.l}</div>
+    </div>`).join("");
 
-function renderPlatforms(stats) {
-  const c = document.getElementById("platforms");
-  c.innerHTML = "";
-  Object.entries(stats.rules_per_platform).forEach(([p, count]) => {
-    c.appendChild(el("div", {class: "platform"},
-      el("div", {class: "name"}, PLATFORM_LABELS[p] || p),
-      el("div", {class: "count"}, count + " rules"),
-      el("div", {class: "desc"}, PLATFORM_DESC[p] || "")
-    ));
-  });
-}
+  // Platforms
+  const pc = document.getElementById("platforms");
+  pc.innerHTML = PLAT.map(p=>{
+    const count = stats.rules_per_platform[p.key]||0;
+    return `<div class="platform-card">
+      <div class="icon">${p.icon}</div>
+      <div class="name">${p.name}</div>
+      <div class="count">${count} rules</div>
+      <div class="ext">${p.ext}</div>
+    </div>`;
+  }).join("");
 
-function renderCoverage(idx) {
-  const tbody = document.getElementById("coverage-body");
-  tbody.innerHTML = "";
-  const search = document.getElementById("search").value.toLowerCase();
-  const tacticFilter = document.getElementById("tactic-filter").value;
-  const covFilter = document.getElementById("coverage-filter").value;
+  // Coverage table
+  const techs = Object.entries(idx.techniques).sort(([a],[b])=>a.localeCompare(b,undefined,{numeric:true}));
+  const tactics = [...new Set(techs.map(([,v])=>v.tactic))].sort();
+  const tf = document.getElementById("tactic-filter");
+  tactics.forEach(t=>tf.appendChild(Object.assign(document.createElement("option"),{value:t,textContent:t.replace(/-/g," ")})));
 
-  const techniques = Object.entries(idx.techniques);
-  techniques.sort(([a], [b]) => a.localeCompare(b, undefined, {numeric: true}));
-
-  let visible = 0;
-  for (const [tid, info] of techniques) {
-    if (search) {
-      const hay = (tid + " " + info.name + " " + info.tactic).toLowerCase();
-      if (!hay.includes(search)) continue;
-    }
-    if (tacticFilter && info.tactic !== tacticFilter) continue;
-    if (covFilter) {
+  function render(){
+    const q = document.getElementById("search").value.toLowerCase();
+    const tac = tf.value;
+    const cov = document.getElementById("cov-filter").value;
+    const tbody = document.getElementById("tbody");
+    let html = "", shown = 0;
+    for(const [id,info] of techs){
+      if(q && !(id+" "+info.name+" "+info.tactic).toLowerCase().includes(q)) continue;
+      if(tac && info.tactic!==tac) continue;
       const cc = info.coverage_count;
-      if (covFilter === "1" && cc !== 1) continue;
-      if (covFilter === "2-5" && (cc < 2 || cc > 5)) continue;
-      if (covFilter === "6" && cc !== 6) continue;
+      if(cov==="low"&&cc>2) continue;
+      if(cov==="mid"&&(cc<3||cc>5)) continue;
+      if(cov==="high"&&cc<6) continue;
+      const dots = PLAT.map(p=>{
+        const has = info.detections[p.key]&&info.detections[p.key].length>0;
+        return `<td class="center">${has?'<span class="dot-yes">●</span>':'<span class="dot-no">○</span>'}</td>`;
+      }).join("");
+      const covClass = cc<=2?"cov-"+cc:cc<=5?"cov-"+cc:"cov-"+Math.min(cc,9);
+      html+=`<tr>
+        <td class="tech-id">${id}</td>
+        <td>${info.name}</td>
+        <td class="tactic-tag">${info.tactic.replace(/-/g," ")}</td>
+        ${dots}
+        <td class="center"><span class="cov-badge ${covClass}">${cc}/9</span></td>
+      </tr>`;
+      shown++;
     }
-
-    const row = el("tr");
-    row.appendChild(el("td", {class: "tech-id"}, tid));
-    row.appendChild(el("td", {}, info.name));
-    row.appendChild(el("td", {class: "tactic-cell"}, info.tactic.replace(/-/g, " ")));
-    Object.keys(PLATFORM_LABELS).forEach(p => {
-      const has = info.detections[p] && info.detections[p].length > 0;
-      const cell = el("td", {class: "center"});
-      cell.innerHTML = has ? `<span class="check" title="${info.detections[p].length} rule">✓</span>` : '<span class="cross">·</span>';
-      row.appendChild(cell);
-    });
-    const covCell = el("td", {class: "center"});
-    covCell.innerHTML = `<span class="badge coverage-${info.coverage_count}">${info.coverage_count}/9</span>`;
-    row.appendChild(covCell);
-    tbody.appendChild(row);
-    visible++;
+    tbody.innerHTML = html||'<tr><td colspan="13" style="text-align:center;color:var(--text-dim);padding:24px">No matching techniques</td></tr>';
+    document.getElementById("cov-count").textContent = `Showing ${shown} of ${techs.length} techniques`;
   }
+  render();
+  document.getElementById("search").addEventListener("input",render);
+  tf.addEventListener("change",render);
+  document.getElementById("cov-filter").addEventListener("change",render);
 
-  if (visible === 0) {
-    tbody.appendChild(el("tr",
-      {},
-      el("td", {colspan: "10", class: "loader"}, "Tidak ada teknik yang cocok dengan filter.")
-    ));
-  }
+  // Navigator link
+  const base = location.href.replace(/\/[^/]*$/,"/");
+  document.getElementById("nav-link").href = "https://mitre-attack.github.io/attack-navigator/#layerURL="+encodeURIComponent(base+"coverage.json");
 }
-
-function populateTactics(idx) {
-  const tactics = new Set(Object.values(idx.techniques).map(t => t.tactic));
-  const sel = document.getElementById("tactic-filter");
-  [...tactics].sort().forEach(t => {
-    sel.appendChild(el("option", {value: t}, t.replace(/-/g, " ")));
-  });
-}
-
-(async () => {
-  try {
-    const [stats, idx] = await Promise.all([
-      loadJSON("stats.json"),
-      loadJSON("rules.index.json"),
-    ]);
-
-    renderStats(stats);
-    renderPlatforms(stats);
-    populateTactics(idx);
-    renderCoverage(idx);
-
-    document.getElementById("search").addEventListener("input", () => renderCoverage(idx));
-    document.getElementById("tactic-filter").addEventListener("change", () => renderCoverage(idx));
-    document.getElementById("coverage-filter").addEventListener("change", () => renderCoverage(idx));
-
-    // Navigator URL
-    const baseUrl = location.origin + location.pathname.replace(/\/[^\/]*$/, "/");
-    const layerUrl = baseUrl + "coverage.json";
-    document.getElementById("navigator-link").href =
-      "https://mitre-attack.github.io/attack-navigator/#layerURL=" + encodeURIComponent(layerUrl);
-
-    document.getElementById("last-updated").textContent =
-      new Date().toLocaleDateString("id-ID", {year: "numeric", month: "long", day: "numeric"});
-  } catch (e) {
-    console.error(e);
-    document.getElementById("stats").innerHTML =
-      `<div class="loader" style="color: var(--red);">Error loading data: ${e.message}</div>`;
-  }
-})();
+init().catch(e=>console.error(e));
 </script>
-
 </body>
 </html>

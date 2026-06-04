@@ -35,7 +35,7 @@ jobs:
             "pysigma-backend-qradar-aql>=0.3,<1.0" \
             "pysigma-backend-kusto>=1.0,<2.0" \
             "pysigma-backend-crowdstrike>=2.0,<4.0" \
-            "pyyaml==6.0.2"
+            "pyyaml>=6.0.3"
           sigma --version
           sigma list targets || true
 

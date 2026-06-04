@@ -1,0 +1,34 @@
+name: Sigma Spec Check
+on:
+  schedule:
+    - cron: '0 9 * * 1'  # Weekly on Monday at 09:00 UTC
+  workflow_dispatch:
+permissions:
+  contents: read
+  issues: write
+jobs:
+  sigma-check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install sigma-cli
+        run: pip install sigma-cli
+      - name: Run sigma check
+        id: check
+        run: |
+          sigma check rules/ > sigma-check-output.txt 2>&1 || echo "issues_found=true" >> "$GITHUB_OUTPUT"
+          cat sigma-check-output.txt
+      - name: Create issue if problems found
+        if: steps.check.outputs.issues_found == 'true'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            const output = fs.readFileSync('sigma-check-output.txt', 'utf8');
+            await github.rest.issues.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              title: `Sigma spec check found issues - ${new Date().toISOString().slice(0,10)}`,
+              body: `## Sigma Spec Check Results\n\n\`\`\`\n${output}\n\`\`\``,
+              labels: ['automation', 'sigma']
+            });

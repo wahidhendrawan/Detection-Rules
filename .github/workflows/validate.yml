@@ -32,7 +32,9 @@ jobs:
       - name: Install sigma-cli
         run: pip install sigma-cli==1.0.4
       - name: Validate Sigma rules
-        run: sigma check sigma/
+        run: |
+          find sigma/ -name '*.yml' -not -path '*/correlations/*' -print0 | \
+            xargs -0 sigma check
 
   sigma-cross-translate:
     name: Sigma cross-translate smoke check

@@ -10,8 +10,8 @@ jobs:
       elasticsearch:
         image: docker.elastic.co/elasticsearch/elasticsearch:8.13.0
         env:
-          discovery.type: single-node
-          xpack.security.enabled: false
+          "discovery.type": single-node
+          "xpack.security.enabled": "false"
         ports:
           - 9200:9200
     steps:
@@ -19,8 +19,8 @@ jobs:
       - name: Wait for Elasticsearch
         run: until curl -s http://localhost:9200; do sleep 5; done
       - name: Import rules (placeholder)
-        run: echo 'TODO: import elastic/*.ndjson via saved_objects API'
+        run: echo 'TODO import elastic ndjson via saved_objects API'
       - name: Inject synthetic events (placeholder)
-        run: echo 'TODO: inject test events matching rule conditions'
+        run: echo 'TODO inject test events matching rule conditions'
       - name: Verify alerts (placeholder)
-        run: echo 'TODO: query .alerts-* index for expected matches'
+        run: echo 'TODO query .alerts-* index for expected matches'

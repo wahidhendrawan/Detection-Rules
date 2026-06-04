@@ -1,12 +1,12 @@
 {
-  "name": "Detection-Rules Coverage",
+  "name": "Detection-Rules \u2014 Overall Coverage",
   "versions": {
     "layer": "4.5",
     "navigator": "5.0",
     "attack": "16"
   },
   "domain": "enterprise-attack",
-  "description": "MITRE ATT&CK coverage auto-generated from wahidhendrawan/Detection-Rules",
+  "description": "MITRE ATT&CK techniques covered across all platforms.",
   "filters": {
     "platforms": [
       "Linux",
@@ -784,7 +784,6 @@
   "gradient": {
     "colors": [
       "#ffe6e6",
-      "#ff6666",
       "#990000"
     ],
     "minValue": 1,

@@ -42,6 +42,9 @@ def deploy_elastic(base_dir: Path) -> bool:
 def deploy_splunk(base_dir: Path) -> bool:
     url = os.environ["SPLUNK_URL"]
     token = os.environ["SPLUNK_TOKEN"]
+    # Allow disabling TLS verification for lab/dev with self-signed certs.
+    # Production should use proper certs and omit SPLUNK_VERIFY_TLS=false.
+    ssl_verify = os.environ.get("SPLUNK_VERIFY_TLS", "true").lower() != "false"
     rules_dir = base_dir / "splunk"
     files = list(rules_dir.rglob("*.spl"))
     if not files:
@@ -67,7 +70,7 @@ def deploy_splunk(base_dir: Path) -> bool:
                 "alert_comparator": "greater than",
                 "alert_threshold": "0",
             },
-            verify=False,  # nosec B501 - Splunk lab/dev instances commonly use self-signed certs
+            verify=ssl_verify,
         )
         if resp.status_code in (200, 201, 409):
             if resp.status_code == 409:
@@ -76,7 +79,7 @@ def deploy_splunk(base_dir: Path) -> bool:
                     f"{url}/servicesNS/admin/search/saved/searches/{rule_name}",
                     headers={"Authorization": f"Bearer {token}"},
                     data={"search": search_content},
-                    verify=False,  # nosec B501 - same as above, self-signed cert in lab/dev
+                    verify=ssl_verify,
                 )
             print(f"  ✓ Success ({resp.status_code})")
         else:

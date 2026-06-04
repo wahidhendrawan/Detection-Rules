@@ -22,10 +22,11 @@ detection:
       - ' localgroup'
       - ' accounts'
   filter_add:
+  selection_commandline_contains_2:
     CommandLine|contains:
       - '/add'
       - '/delete'
-  condition: selection and not filter_add
+  condition: selection and not filter_add and selection_commandline_contains_2
 fields:
   - CommandLine
   - User

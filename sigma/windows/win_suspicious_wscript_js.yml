@@ -20,13 +20,14 @@ detection:
       - '.js'
       - '.jse'
   filter_path:
+  selection_commandline_contains_2:
     CommandLine|contains:
       - '\AppData\Local\Temp\'
       - '\AppData\Roaming\'
       - '\Downloads\'
       - '\Users\Public\'
       - '\Temp\'
-  condition: selection and filter_path
+  condition: selection and filter_path and selection_commandline_contains_2
 fields:
   - Image
   - CommandLine

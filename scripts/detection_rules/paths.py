@@ -39,3 +39,11 @@ def iter_rules(platform: str | None = None) -> dict[str, list[Path]]:
     for name, (base, pattern) in items:
         out[name] = sorted(base.glob(pattern))
     return out
+
+FALCON_DIR       = ROOT / "falcon"
+SENTINELONE_DIR  = ROOT / "sentinelone"
+FALCO_DIR        = ROOT / "falco"
+
+PLATFORM_GLOBS["falcon"]       = (FALCON_DIR,      "**/*.fql")
+PLATFORM_GLOBS["sentinelone"]  = (SENTINELONE_DIR, "**/*.s1ql")
+PLATFORM_GLOBS["falco"]        = (FALCO_DIR,       "**/*.yaml")

@@ -41,13 +41,16 @@
 
 | Platform | Format | Total | Detail |
 |---|---|---:|---|
-| **Sigma** | `.yml` | 105 | windows: 51 · linux: 28 · network: 13 · cloud: 13 |
+| **Sigma** | `.yml` | 118 | windows: 53 · linux: 29 · network: 15 · cloud: 18 · correlations: 3 |
 | **Elastic** | `.ndjson` | 58 | endpoint/general: 45 · endpoint/windows: 7 · endpoint/linux: 3 · endpoint/network: 2 · network: 1 |
 | **Splunk** | `.spl` | 18 | windows: 10 · linux: 4 · network: 3 · cloud: 1 |
 | **Microsoft Sentinel** | `.kql` | 102 | hunting + analytics |
 | **Wazuh** | `.xml` | 140 | rules `attack` group |
-| **Carbon Black** | `.json` | 110 | EDR queries |
-| **TOTAL** | — | **533** | — |
+| **Carbon Black** | `.json` | 142 | EDR queries (generated from `tools.yml`) |
+| **SentinelOne** | `.s1ql` | 2 | Deep Visibility queries |
+| **CrowdStrike Falcon** | `.fql` | 2 | Falcon Query Language |
+| **Falco** | `.yaml` | 2 | K8s/container runtime rules |
+| **TOTAL** | — | **584** | — |
 
 Lihat [`COVERAGE.md`](COVERAGE.md) untuk pemetaan ke MITRE ATT&CK.
 
@@ -72,10 +75,11 @@ Detection-Rules/
 ├─ scripts/             # tooling (mis. generator MITRE coverage)
 ├─ templates/           # boilerplate per platform
 ├─ sigma/
-│  ├─ windows/          # 51 rule
-│  ├─ linux/            # 28 rule
-│  ├─ network/          # 13 rule
-│  └─ cloud/            # 13 rule
+│  ├─ windows/          # 53 rule
+│  ├─ linux/            # 29 rule
+│  ├─ network/          # 15 rule
+│  ├─ cloud/            # 18 rule
+│  └─ correlations/     # 3 aggregation rule
 ├─ elastic/
 │  ├─ endpoint/
 │  │  ├─ windows/       # 7 rule
@@ -91,8 +95,13 @@ Detection-Rules/
 ├─ microsoft-sentinel/  # 102 KQL hunting queries
 ├─ wazuh/
 │  └─ rules/            # 140 XML rule (group "attack")
-└─ carbonblack/
-   └─ rules/            # 110 JSON EDR query
+├─ carbonblack/
+│  ├─ rules/            # 142 JSON EDR query (generated)
+│  └─ tools.yml         # codegen matrix definition
+├─ sentinelone/         # 2 S1QL Deep Visibility queries
+├─ falcon/              # 2 CrowdStrike FQL queries
+├─ falco/               # 2 K8s/container runtime rules
+└─ verification/        # Atomic Red Team test pipeline
 ```
 
 ---
@@ -232,11 +241,18 @@ Boilerplate per platform tersedia di [`templates/`](templates/).
 
 ## Roadmap
 
-- [ ] Tambah workflow auto-translate Sigma → semua backend (Elastic/Splunk/QRadar) via release artifact.
-- [ ] Generate ATT&CK Navigator JSON ke GitHub Pages.
-- [ ] Coverage badge dinamis (per tactic).
-- [ ] Atomic Red Team mapping untuk verifikasi rule.
-- [ ] Rule severity normalization (cross-platform).
+- [x] Tambah workflow auto-translate Sigma → semua backend (Elastic/Splunk/Kusto/CrowdStrike) via release artifact.
+- [x] Generate ATT&CK Navigator JSON ke GitHub Pages.
+- [x] Coverage badge dinamis (per tactic).
+- [x] Atomic Red Team mapping untuk verifikasi rule.
+- [x] Rule severity normalization (cross-platform) — `detection_rules lint-severity`.
+- [x] EDR vendor expansion (SentinelOne, CrowdStrike Falcon, Falco).
+- [x] Cloud/SaaS rules (AWS, Azure, GCP, Okta, GitHub).
+- [ ] Sigma correlation rules end-to-end (pending pySigma correlation support).
+- [ ] CI integration test dengan Elastic docker (end-to-end alert verification).
+- [ ] Deploy workflow ke production SIEM (Elastic/Splunk/Sentinel).
+- [ ] Rule effectiveness scoring dari real SOC feedback.
+- [ ] Community monthly rule sprint program.
 
 ---
 

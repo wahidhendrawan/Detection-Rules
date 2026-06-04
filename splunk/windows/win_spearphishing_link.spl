@@ -1,0 +1,13 @@
+# Title: Spearphishing Link
+# MITRE ATT&CK: T1566.002
+# Tactic: initial-access
+# Severity: medium
+# Author: Wahid Hendrawan
+# Date: 2026-06-04
+
+index=windows OR index=endpoint
+sourcetype IN ("XmlWinEventLog:Microsoft-Windows-Sysmon/Operational", "WinEventLog:Security")
+ParentImage IN (*chrome.exe*, *msedge.exe*, *firefox.exe*) (Image=*cmd.exe* OR Image=*powershell.exe*)
+| stats count, values(CommandLine) as cmd, values(User) as user by _time, host, Image
+| where count > 0
+| sort - _time

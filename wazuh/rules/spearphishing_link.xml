@@ -1,0 +1,10 @@
+<group name="attack,initial_access">
+  <rule id="100255" level="8">
+    <decoded_as>syslog</decoded_as>
+    <regex type="pcre2">chrome.*cmd|msedge.*powershell|firefox.*mshta</regex>
+    <description>Spearphishing Link (T1566.002)</description>
+    <mitre>
+      <id>T1566.002</id>
+    </mitre>
+  </rule>
+</group>

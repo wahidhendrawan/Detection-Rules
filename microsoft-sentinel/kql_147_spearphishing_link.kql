@@ -1,0 +1,12 @@
+// Title: Spearphishing Link
+// MITRE ATT&CK: T1566.002
+// Severity: medium
+// Tactic: initial-access
+// Author: Wahid Hendrawan
+
+DeviceProcessEvents
+| where Timestamp > ago(24h)
+| where InitiatingProcessFileName in~ ('chrome.exe','msedge.exe','firefox.exe') and FileName in~ ('cmd.exe','powershell.exe','mshta.exe')
+| project Timestamp, DeviceName, AccountName, FileName, ProcessCommandLine,
+          InitiatingProcessFileName
+| order by Timestamp desc

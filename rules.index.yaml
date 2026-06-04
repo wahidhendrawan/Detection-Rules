@@ -1,18 +1,18 @@
 summary:
   total_techniques: 152
-  total_rules: 786
+  total_rules: 836
   rules_per_platform:
-    sigma: 204
+    sigma: 227
     elastic: 58
-    splunk: 57
-    microsoft-sentinel: 141
-    wazuh: 178
+    splunk: 66
+    microsoft-sentinel: 150
+    wazuh: 187
     carbonblack: 142
     falcon: 2
     sentinelone: 2
     falco: 2
   fully_covered: 0
-  single_platform_only: 23
+  single_platform_only: 0
 techniques:
   T1003:
     name: 'OS Credential Dumping'
@@ -1380,6 +1380,8 @@ techniques:
     detections:
       sigma:
         - 'sigma/windows/win_account_discovery_net.yml'
+        - 'sigma/windows/win_domain_account_discovery.yml'
+        - 'sigma/windows/win_local_account_discovery.yml'
       elastic: []
       splunk:
         - 'splunk/windows/win_account_discovery.spl'
@@ -1402,49 +1404,51 @@ techniques:
       - sentinelone
       - falco
   T1087.001:
-    name: 'Unknown / Custom'
-    tactic: uncategorized
-    coverage_count: 1
+    name: 'Local Account Discovery'
+    tactic: discovery
+    coverage_count: 4
     detections:
       sigma:
         - 'sigma/windows/win_account_discovery_net.yml'
+        - 'sigma/windows/win_local_account_discovery.yml'
       elastic: []
-      splunk: []
-      microsoft-sentinel: []
-      wazuh: []
+      splunk:
+        - 'splunk/windows/win_local_account_discovery.spl'
+      microsoft-sentinel:
+        - 'microsoft-sentinel/kql_142_local_account_discovery.kql'
+      wazuh:
+        - 'wazuh/rules/local_account_discovery.xml'
       carbonblack: []
       falcon: []
       sentinelone: []
       falco: []
     gaps:
       - elastic
-      - splunk
-      - microsoft-sentinel
-      - wazuh
       - carbonblack
       - falcon
       - sentinelone
       - falco
   T1087.002:
-    name: 'Unknown / Custom'
-    tactic: uncategorized
-    coverage_count: 1
+    name: 'Domain Account Discovery'
+    tactic: discovery
+    coverage_count: 4
     detections:
       sigma:
         - 'sigma/windows/win_account_discovery_net.yml'
+        - 'sigma/windows/win_domain_account_discovery.yml'
       elastic: []
-      splunk: []
-      microsoft-sentinel: []
-      wazuh: []
+      splunk:
+        - 'splunk/windows/win_domain_account_discovery.spl'
+      microsoft-sentinel:
+        - 'microsoft-sentinel/kql_143_domain_account_discovery.kql'
+      wazuh:
+        - 'wazuh/rules/domain_account_discovery.xml'
       carbonblack: []
       falcon: []
       sentinelone: []
       falco: []
     gaps:
       - elastic
-      - splunk
-      - microsoft-sentinel
-      - wazuh
       - carbonblack
       - falcon
       - sentinelone
@@ -3085,6 +3089,7 @@ techniques:
     coverage_count: 5
     detections:
       sigma:
+        - 'sigma/cloud/cloud_disable_or_modify_cloud_logs.yml'
         - 'sigma/windows/win_disable_event_logging.yml'
         - 'sigma/windows/win_firewall_rule_disabled_or_modified.yml'
         - 'sigma/windows/win_security_tool_disabled_or_killed.yml'
@@ -3195,23 +3200,24 @@ techniques:
   T1562.008:
     name: 'Disable or Modify Cloud Logs'
     tactic: defense-evasion
-    coverage_count: 1
+    coverage_count: 4
     detections:
       sigma:
         - 'sigma/cloud/cloud_aws_suspicious_disable_cloudtrail.yml'
+        - 'sigma/cloud/cloud_disable_or_modify_cloud_logs.yml'
       elastic: []
-      splunk: []
-      microsoft-sentinel: []
-      wazuh: []
+      splunk:
+        - 'splunk/windows/win_disable_or_modify_cloud_logs.spl'
+      microsoft-sentinel:
+        - 'microsoft-sentinel/kql_144_disable_or_modify_cloud_logs.kql'
+      wazuh:
+        - 'wazuh/rules/disable_or_modify_cloud_logs.xml'
       carbonblack: []
       falcon: []
       sentinelone: []
       falco: []
     gaps:
       - elastic
-      - splunk
-      - microsoft-sentinel
-      - wazuh
       - carbonblack
       - falcon
       - sentinelone
@@ -3265,25 +3271,26 @@ techniques:
       - sentinelone
       - falco
   T1565:
-    name: 'Unknown / Custom'
-    tactic: uncategorized
-    coverage_count: 1
+    name: 'Data Manipulation'
+    tactic: impact
+    coverage_count: 4
     detections:
       sigma:
+        - 'sigma/windows/win_data_manipulation.yml'
         - 'sigma/windows/win_hosts_file_modification.yml'
       elastic: []
-      splunk: []
-      microsoft-sentinel: []
-      wazuh: []
+      splunk:
+        - 'splunk/windows/win_data_manipulation.spl'
+      microsoft-sentinel:
+        - 'microsoft-sentinel/kql_145_data_manipulation.kql'
+      wazuh:
+        - 'wazuh/rules/data_manipulation.xml'
       carbonblack: []
       falcon: []
       sentinelone: []
       falco: []
     gaps:
       - elastic
-      - splunk
-      - microsoft-sentinel
-      - wazuh
       - carbonblack
       - falcon
       - sentinelone
@@ -3320,6 +3327,8 @@ techniques:
       sigma:
         - 'sigma/network/net_proxy_newly_registered_domain.yml'
         - 'sigma/windows/win_office_macro_spawn_process.yml'
+        - 'sigma/windows/win_spearphishing_attachment.yml'
+        - 'sigma/windows/win_spearphishing_link.yml'
       elastic:
         - 'elastic/endpoint/general/IOCs (ip) to detect UNC3944 Targets SaaS Applications.ndjson'
       splunk: []
@@ -3340,23 +3349,24 @@ techniques:
   T1566.001:
     name: 'Spearphishing Attachment'
     tactic: initial-access
-    coverage_count: 1
+    coverage_count: 4
     detections:
       sigma:
         - 'sigma/windows/win_office_macro_spawn_process.yml'
+        - 'sigma/windows/win_spearphishing_attachment.yml'
       elastic: []
-      splunk: []
-      microsoft-sentinel: []
-      wazuh: []
+      splunk:
+        - 'splunk/windows/win_spearphishing_attachment.spl'
+      microsoft-sentinel:
+        - 'microsoft-sentinel/kql_146_spearphishing_attachment.kql'
+      wazuh:
+        - 'wazuh/rules/spearphishing_attachment.xml'
       carbonblack: []
       falcon: []
       sentinelone: []
       falco: []
     gaps:
       - elastic
-      - splunk
-      - microsoft-sentinel
-      - wazuh
       - carbonblack
       - falcon
       - sentinelone
@@ -3364,23 +3374,24 @@ techniques:
   T1566.002:
     name: 'Spearphishing Link'
     tactic: initial-access
-    coverage_count: 1
+    coverage_count: 4
     detections:
       sigma:
         - 'sigma/network/net_proxy_newly_registered_domain.yml'
+        - 'sigma/windows/win_spearphishing_link.yml'
       elastic: []
-      splunk: []
-      microsoft-sentinel: []
-      wazuh: []
+      splunk:
+        - 'splunk/windows/win_spearphishing_link.spl'
+      microsoft-sentinel:
+        - 'microsoft-sentinel/kql_147_spearphishing_link.kql'
+      wazuh:
+        - 'wazuh/rules/spearphishing_link.xml'
       carbonblack: []
       falcon: []
       sentinelone: []
       falco: []
     gaps:
       - elastic
-      - splunk
-      - microsoft-sentinel
-      - wazuh
       - carbonblack
       - falcon
       - sentinelone
@@ -3438,25 +3449,26 @@ techniques:
       - sentinelone
       - falco
   T1569:
-    name: 'Unknown / Custom'
-    tactic: uncategorized
-    coverage_count: 1
+    name: 'System Services'
+    tactic: execution
+    coverage_count: 4
     detections:
       sigma:
         - 'sigma/windows/win_service_execution_suspicious.yml'
+        - 'sigma/windows/win_system_services_execution.yml'
       elastic: []
-      splunk: []
-      microsoft-sentinel: []
-      wazuh: []
+      splunk:
+        - 'splunk/windows/win_system_services_execution.spl'
+      microsoft-sentinel:
+        - 'microsoft-sentinel/kql_148_system_services_execution.kql'
+      wazuh:
+        - 'wazuh/rules/system_services_execution.xml'
       carbonblack: []
       falcon: []
       sentinelone: []
       falco: []
     gaps:
       - elastic
-      - splunk
-      - microsoft-sentinel
-      - wazuh
       - carbonblack
       - falcon
       - sentinelone
@@ -3620,24 +3632,25 @@ techniques:
   T1578:
     name: 'Modify Cloud Compute Infrastructure'
     tactic: defense-evasion
-    coverage_count: 1
+    coverage_count: 4
     detections:
       sigma:
         - 'sigma/cloud/cloud_cloud_instance_created.yml'
         - 'sigma/cloud/cloud_cloud_instance_deleted.yml'
+        - 'sigma/cloud/cloud_modify_cloud_compute_infrastructure.yml'
       elastic: []
-      splunk: []
-      microsoft-sentinel: []
-      wazuh: []
+      splunk:
+        - 'splunk/windows/win_modify_cloud_compute_infrastructure.spl'
+      microsoft-sentinel:
+        - 'microsoft-sentinel/kql_149_modify_cloud_compute_infrastructure.kql'
+      wazuh:
+        - 'wazuh/rules/modify_cloud_compute_infrastructure.xml'
       carbonblack: []
       falcon: []
       sentinelone: []
       falco: []
     gaps:
       - elastic
-      - splunk
-      - microsoft-sentinel
-      - wazuh
       - carbonblack
       - falcon
       - sentinelone
@@ -3693,9 +3706,13 @@ techniques:
   T1586:
     name: 'Compromise Accounts'
     tactic: resource-development
-    coverage_count: 1
+    coverage_count: 2
     detections:
-      sigma: []
+      sigma:
+        - 'sigma/cloud/cloud_cloud_account_compromise.yml'
+        - 'sigma/cloud/cloud_compromise_accounts.yml'
+        - 'sigma/cloud/cloud_email_account_compromise.yml'
+        - 'sigma/cloud/cloud_social_media_account_compromise.yml'
       elastic:
         - 'elastic/endpoint/general/Compromise Accounts (General).ndjson'
         - 'elastic/endpoint/general/Email Accounts.ndjson'
@@ -3708,7 +3725,6 @@ techniques:
       sentinelone: []
       falco: []
     gaps:
-      - sigma
       - splunk
       - microsoft-sentinel
       - wazuh
@@ -3719,9 +3735,10 @@ techniques:
   T1586.001:
     name: 'Social Media Accounts'
     tactic: resource-development
-    coverage_count: 1
+    coverage_count: 2
     detections:
-      sigma: []
+      sigma:
+        - 'sigma/cloud/cloud_social_media_account_compromise.yml'
       elastic:
         - 'elastic/endpoint/general/Compromise Accounts (General).ndjson'
       splunk: []
@@ -3732,7 +3749,6 @@ techniques:
       sentinelone: []
       falco: []
     gaps:
-      - sigma
       - splunk
       - microsoft-sentinel
       - wazuh
@@ -3743,9 +3759,10 @@ techniques:
   T1586.002:
     name: 'Email Accounts'
     tactic: resource-development
-    coverage_count: 1
+    coverage_count: 2
     detections:
-      sigma: []
+      sigma:
+        - 'sigma/cloud/cloud_email_account_compromise.yml'
       elastic:
         - 'elastic/endpoint/general/Social Media Accounts.ndjson'
       splunk: []
@@ -3756,7 +3773,6 @@ techniques:
       sentinelone: []
       falco: []
     gaps:
-      - sigma
       - splunk
       - microsoft-sentinel
       - wazuh
@@ -3767,9 +3783,10 @@ techniques:
   T1586.003:
     name: 'Cloud Accounts'
     tactic: resource-development
-    coverage_count: 1
+    coverage_count: 2
     detections:
-      sigma: []
+      sigma:
+        - 'sigma/cloud/cloud_cloud_account_compromise.yml'
       elastic:
         - 'elastic/endpoint/general/Email Accounts.ndjson'
       splunk: []
@@ -3780,7 +3797,6 @@ techniques:
       sentinelone: []
       falco: []
     gaps:
-      - sigma
       - splunk
       - microsoft-sentinel
       - wazuh
@@ -3791,9 +3807,10 @@ techniques:
   T1589:
     name: 'Gather Victim Identity Information'
     tactic: reconnaissance
-    coverage_count: 1
+    coverage_count: 2
     detections:
-      sigma: []
+      sigma:
+        - 'sigma/cloud/cloud_gather_victim_identity_information.yml'
       elastic:
         - 'elastic/endpoint/general/Gather Victim Host Information.ndjson'
       splunk: []
@@ -3804,7 +3821,6 @@ techniques:
       sentinelone: []
       falco: []
     gaps:
-      - sigma
       - splunk
       - microsoft-sentinel
       - wazuh
@@ -3815,9 +3831,10 @@ techniques:
   T1590:
     name: 'Gather Victim Network Information'
     tactic: reconnaissance
-    coverage_count: 1
+    coverage_count: 2
     detections:
-      sigma: []
+      sigma:
+        - 'sigma/cloud/cloud_gather_victim_network_information.yml'
       elastic:
         - 'elastic/endpoint/general/Gather Victim Identity Information.ndjson'
       splunk: []
@@ -3828,7 +3845,6 @@ techniques:
       sentinelone: []
       falco: []
     gaps:
-      - sigma
       - splunk
       - microsoft-sentinel
       - wazuh
@@ -3839,9 +3855,10 @@ techniques:
   T1591:
     name: 'Gather Victim Org Information'
     tactic: reconnaissance
-    coverage_count: 1
+    coverage_count: 2
     detections:
-      sigma: []
+      sigma:
+        - 'sigma/cloud/cloud_gather_victim_org_information.yml'
       elastic:
         - 'elastic/endpoint/general/Gather Victim Network Information.ndjson'
       splunk: []
@@ -3852,7 +3869,6 @@ techniques:
       sentinelone: []
       falco: []
     gaps:
-      - sigma
       - splunk
       - microsoft-sentinel
       - wazuh
@@ -3863,9 +3879,10 @@ techniques:
   T1592:
     name: 'Gather Victim Host Information'
     tactic: reconnaissance
-    coverage_count: 1
+    coverage_count: 2
     detections:
-      sigma: []
+      sigma:
+        - 'sigma/cloud/cloud_gather_victim_host_information.yml'
       elastic:
         - 'elastic/endpoint/general/Defense Evasion – Disable Antivirus or Security Services.ndjson'
       splunk: []
@@ -3876,7 +3893,6 @@ techniques:
       sentinelone: []
       falco: []
     gaps:
-      - sigma
       - splunk
       - microsoft-sentinel
       - wazuh
@@ -3887,9 +3903,10 @@ techniques:
   T1593:
     name: 'Search Open Websites/Domains'
     tactic: reconnaissance
-    coverage_count: 1
+    coverage_count: 2
     detections:
-      sigma: []
+      sigma:
+        - 'sigma/cloud/cloud_search_open_websites_domains.yml'
       elastic:
         - 'elastic/endpoint/general/Search Open Technical Databases.ndjson'
       splunk: []
@@ -3900,7 +3917,6 @@ techniques:
       sentinelone: []
       falco: []
     gaps:
-      - sigma
       - splunk
       - microsoft-sentinel
       - wazuh
@@ -3911,9 +3927,10 @@ techniques:
   T1594:
     name: 'Search Victim-Owned Websites'
     tactic: reconnaissance
-    coverage_count: 1
+    coverage_count: 2
     detections:
-      sigma: []
+      sigma:
+        - 'sigma/cloud/cloud_search_victim_owned_websites.yml'
       elastic:
         - 'elastic/endpoint/general/Search Open Websites Domains.ndjson'
       splunk: []
@@ -3924,7 +3941,6 @@ techniques:
       sentinelone: []
       falco: []
     gaps:
-      - sigma
       - splunk
       - microsoft-sentinel
       - wazuh
@@ -3935,9 +3951,10 @@ techniques:
   T1596:
     name: 'Search Open Technical Databases'
     tactic: reconnaissance
-    coverage_count: 1
+    coverage_count: 2
     detections:
-      sigma: []
+      sigma:
+        - 'sigma/cloud/cloud_search_open_technical_databases.yml'
       elastic:
         - 'elastic/endpoint/general/Search Closed Sources.ndjson'
       splunk: []
@@ -3948,7 +3965,6 @@ techniques:
       sentinelone: []
       falco: []
     gaps:
-      - sigma
       - splunk
       - microsoft-sentinel
       - wazuh
@@ -3959,9 +3975,10 @@ techniques:
   T1597:
     name: 'Search Closed Sources'
     tactic: reconnaissance
-    coverage_count: 1
+    coverage_count: 2
     detections:
-      sigma: []
+      sigma:
+        - 'sigma/cloud/cloud_search_closed_sources.yml'
       elastic:
         - 'elastic/endpoint/general/Phishing for Information.ndjson'
       splunk: []
@@ -3972,7 +3989,6 @@ techniques:
       sentinelone: []
       falco: []
     gaps:
-      - sigma
       - splunk
       - microsoft-sentinel
       - wazuh
@@ -3983,9 +3999,10 @@ techniques:
   T1598:
     name: 'Phishing for Information'
     tactic: reconnaissance
-    coverage_count: 1
+    coverage_count: 2
     detections:
-      sigma: []
+      sigma:
+        - 'sigma/cloud/cloud_phishing_for_information.yml'
       elastic:
         - 'elastic/endpoint/general/Gather Victim Org Information.ndjson'
       splunk: []
@@ -3996,7 +4013,6 @@ techniques:
       sentinelone: []
       falco: []
     gaps:
-      - sigma
       - splunk
       - microsoft-sentinel
       - wazuh
@@ -4031,24 +4047,25 @@ techniques:
   T1621:
     name: 'Multi-Factor Authentication Request Generation'
     tactic: credential-access
-    coverage_count: 1
+    coverage_count: 4
     detections:
       sigma:
         - 'sigma/cloud/cloud_okta_mfa_fatigue.yml'
         - 'sigma/correlations/mfa_fatigue_correlation.yml'
+        - 'sigma/windows/win_mfa_fatigue___prompt_bombing.yml'
       elastic: []
-      splunk: []
-      microsoft-sentinel: []
-      wazuh: []
+      splunk:
+        - 'splunk/windows/win_mfa_fatigue___prompt_bombing.spl'
+      microsoft-sentinel:
+        - 'microsoft-sentinel/kql_150_mfa_fatigue___prompt_bombing.kql'
+      wazuh:
+        - 'wazuh/rules/mfa_fatigue___prompt_bombing.xml'
       carbonblack: []
       falcon: []
       sentinelone: []
       falco: []
     gaps:
       - elastic
-      - splunk
-      - microsoft-sentinel
-      - wazuh
       - carbonblack
       - falcon
       - sentinelone
@@ -4056,9 +4073,10 @@ techniques:
   T1650:
     name: 'Acquire Access'
     tactic: resource-development
-    coverage_count: 1
+    coverage_count: 2
     detections:
-      sigma: []
+      sigma:
+        - 'sigma/cloud/cloud_acquire_access.yml'
       elastic:
         - 'elastic/endpoint/general/Search Victim-Owned Websites.ndjson'
       splunk: []
@@ -4069,7 +4087,6 @@ techniques:
       sentinelone: []
       falco: []
     gaps:
-      - sigma
       - splunk
       - microsoft-sentinel
       - wazuh

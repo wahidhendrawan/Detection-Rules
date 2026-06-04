@@ -1,0 +1,12 @@
+// Title: Data Manipulation
+// MITRE ATT&CK: T1565
+// Severity: medium
+// Tactic: impact
+// Author: Wahid Hendrawan
+
+DeviceProcessEvents
+| where Timestamp > ago(24h)
+| where ProcessCommandLine has_any ('cipher /w','sdelete','shred')
+| project Timestamp, DeviceName, AccountName, FileName, ProcessCommandLine,
+          InitiatingProcessFileName
+| order by Timestamp desc

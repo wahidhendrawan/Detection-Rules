@@ -1,0 +1,30 @@
+title: Modify Cloud Compute Infrastructure
+id: 7f3c204f-ebdb-4cfb-83e3-68cc918b376d
+status: experimental
+description: |
+  Detects indicators of Modify Cloud Compute Infrastructure (T1578).
+author: Wahid Hendrawan
+date: 2026/06/04
+references:
+  - https://attack.mitre.org/techniques/T1578/
+logsource:
+  product: aws
+  category: file_access
+detection:
+  selection:
+    eventName:
+      - 'ModifyInstanceAttribute'
+      - 'UpdateInstance'
+      - 'SetMetadata'
+  condition: selection
+fields:
+  - Image
+  - CommandLine
+  - User
+falsepositives:
+  - Legitimate administrative activity.
+  - Authorized security testing.
+level: medium
+tags:
+  - attack.t1578
+  - attack.defense-evasion

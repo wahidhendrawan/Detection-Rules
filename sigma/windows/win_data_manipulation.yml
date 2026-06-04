@@ -1,0 +1,31 @@
+title: Data Manipulation
+id: 703cbd17-adc5-44b7-836f-3b37d56288e0
+status: experimental
+description: |
+  Detects indicators of Data Manipulation (T1565).
+author: Wahid Hendrawan
+date: 2026/06/04
+references:
+  - https://attack.mitre.org/techniques/T1565/
+logsource:
+  product: windows
+  category: process_creation
+detection:
+  selection:
+    CommandLine|contains:
+      - 'cipher /w'
+      - 'sdelete'
+      - 'shred'
+      - 'wipe'
+  condition: selection
+fields:
+  - Image
+  - CommandLine
+  - User
+falsepositives:
+  - Legitimate administrative activity.
+  - Authorized security testing.
+level: medium
+tags:
+  - attack.t1565
+  - attack.impact

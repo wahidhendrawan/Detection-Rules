@@ -1,0 +1,30 @@
+title: Gather Victim Host Information
+id: 6027dac8-a454-4d49-9e86-4980a01ba158
+status: experimental
+description: |
+  Detects indicators of Gather Victim Host Information (T1592).
+author: Wahid Hendrawan
+date: 2026/06/04
+references:
+  - https://attack.mitre.org/techniques/T1592/
+logsource:
+  product: aws
+  category: dns_query
+detection:
+  selection:
+    dns_query|contains:
+      - 'shodan'
+      - 'zoomeye'
+      - 'fofa.info'
+  condition: selection
+fields:
+  - Image
+  - CommandLine
+  - User
+falsepositives:
+  - Legitimate administrative activity.
+  - Authorized security testing.
+level: medium
+tags:
+  - attack.t1592
+  - attack.reconnaissance

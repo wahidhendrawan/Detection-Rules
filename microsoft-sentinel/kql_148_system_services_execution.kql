@@ -1,0 +1,12 @@
+// Title: System Services Execution
+// MITRE ATT&CK: T1569
+// Severity: medium
+// Tactic: execution
+// Author: Wahid Hendrawan
+
+DeviceProcessEvents
+| where Timestamp > ago(24h)
+| where FileName in~ ('sc.exe','PsExec.exe') and ProcessCommandLine has_any ('start','create')
+| project Timestamp, DeviceName, AccountName, FileName, ProcessCommandLine,
+          InitiatingProcessFileName
+| order by Timestamp desc

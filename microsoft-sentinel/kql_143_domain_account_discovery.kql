@@ -1,0 +1,12 @@
+// Title: Domain Account Discovery
+// MITRE ATT&CK: T1087.002
+// Severity: medium
+// Tactic: discovery
+// Author: Wahid Hendrawan
+
+DeviceProcessEvents
+| where Timestamp > ago(24h)
+| where ProcessCommandLine has_all ('net user','/domain') and ProcessCommandLine !has '/add'
+| project Timestamp, DeviceName, AccountName, FileName, ProcessCommandLine,
+          InitiatingProcessFileName
+| order by Timestamp desc

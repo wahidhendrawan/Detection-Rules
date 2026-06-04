@@ -1,0 +1,13 @@
+# Title: Data Manipulation
+# MITRE ATT&CK: T1565
+# Tactic: impact
+# Severity: medium
+# Author: Wahid Hendrawan
+# Date: 2026-06-04
+
+index=windows OR index=endpoint
+sourcetype IN ("XmlWinEventLog:Microsoft-Windows-Sysmon/Operational", "WinEventLog:Security")
+cipher /w OR sdelete OR shred
+| stats count, values(CommandLine) as cmd, values(User) as user by _time, host, Image
+| where count > 0
+| sort - _time

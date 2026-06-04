@@ -1,0 +1,10 @@
+<group name="attack,initial_access">
+  <rule id="100254" level="8">
+    <decoded_as>syslog</decoded_as>
+    <regex type="pcre2">OUTLOOK.*cmd|WINWORD.*powershell</regex>
+    <description>Spearphishing Attachment (T1566.001)</description>
+    <mitre>
+      <id>T1566.001</id>
+    </mitre>
+  </rule>
+</group>

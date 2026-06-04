@@ -1,0 +1,30 @@
+title: Disable or Modify Cloud Logs
+id: 1d22e09f-40d9-488e-9eb4-263db0095541
+status: experimental
+description: |
+  Detects indicators of Disable or Modify Cloud Logs (T1562.008).
+author: Wahid Hendrawan
+date: 2026/06/04
+references:
+  - https://attack.mitre.org/techniques/T1562/008/
+logsource:
+  product: aws
+  category: file_access
+detection:
+  selection:
+    CommandLine|contains:
+      - 'StopLogging'
+      - 'DeleteTrail'
+      - 'PutEventSelectors'
+  condition: selection
+fields:
+  - Image
+  - CommandLine
+  - User
+falsepositives:
+  - Legitimate administrative activity.
+  - Authorized security testing.
+level: medium
+tags:
+  - attack.t1562.008
+  - attack.defense-evasion

@@ -1,0 +1,13 @@
+# Title: Local Account Discovery
+# MITRE ATT&CK: T1087.001
+# Tactic: discovery
+# Severity: medium
+# Author: Wahid Hendrawan
+# Date: 2026-06-04
+
+index=windows OR index=endpoint
+sourcetype IN ("XmlWinEventLog:Microsoft-Windows-Sysmon/Operational", "WinEventLog:Security")
+net.exe AND user AND NOT /add
+| stats count, values(CommandLine) as cmd, values(User) as user by _time, host, Image
+| where count > 0
+| sort - _time

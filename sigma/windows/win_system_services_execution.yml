@@ -1,0 +1,32 @@
+title: System Services Execution
+id: 4febb377-8040-4a38-bbca-4928bbc938c9
+status: experimental
+description: |
+  Detects indicators of System Services Execution (T1569).
+author: Wahid Hendrawan
+date: 2026/06/04
+references:
+  - https://attack.mitre.org/techniques/T1569/
+logsource:
+  product: windows
+  category: process_creation
+detection:
+  selection:
+    Image|endswith:
+      - '\\sc.exe'
+      - '\\PsExec.exe'
+    CommandLine|contains:
+      - 'start'
+      - 'create'
+  condition: selection
+fields:
+  - Image
+  - CommandLine
+  - User
+falsepositives:
+  - Legitimate administrative activity.
+  - Authorized security testing.
+level: medium
+tags:
+  - attack.t1569
+  - attack.execution

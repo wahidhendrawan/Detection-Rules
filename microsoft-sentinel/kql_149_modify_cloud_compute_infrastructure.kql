@@ -1,0 +1,12 @@
+// Title: Modify Cloud Compute Infrastructure
+// MITRE ATT&CK: T1578
+// Severity: medium
+// Tactic: defense-evasion
+// Author: Wahid Hendrawan
+
+DeviceProcessEvents
+| where Timestamp > ago(24h)
+| where OperationName has_any ('ModifyInstanceAttribute','UpdateInstance','SetMetadata')
+| project Timestamp, DeviceName, AccountName, FileName, ProcessCommandLine,
+          InitiatingProcessFileName
+| order by Timestamp desc

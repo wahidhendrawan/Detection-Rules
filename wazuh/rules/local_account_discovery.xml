@@ -1,0 +1,10 @@
+<group name="attack,discovery">
+  <rule id="100250" level="8">
+    <decoded_as>syslog</decoded_as>
+    <regex type="pcre2">net.*user</regex>
+    <description>Local Account Discovery (T1087.001)</description>
+    <mitre>
+      <id>T1087.001</id>
+    </mitre>
+  </rule>
+</group>

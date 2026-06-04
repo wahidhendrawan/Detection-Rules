@@ -1,0 +1,10 @@
+<group name="attack,defense_evasion">
+  <rule id="100252" level="8">
+    <decoded_as>syslog</decoded_as>
+    <regex type="pcre2">StopLogging|DeleteTrail</regex>
+    <description>Disable or Modify Cloud Logs (T1562.008)</description>
+    <mitre>
+      <id>T1562.008</id>
+    </mitre>
+  </rule>
+</group>

@@ -1,0 +1,30 @@
+title: Gather Victim Network Information
+id: a2dca91f-0034-40c5-9711-67fa0864b4d2
+status: experimental
+description: |
+  Detects indicators of Gather Victim Network Information (T1590).
+author: Wahid Hendrawan
+date: 2026/06/04
+references:
+  - https://attack.mitre.org/techniques/T1590/
+logsource:
+  product: aws
+  category: dns_query
+detection:
+  selection:
+    dns_query|contains:
+      - 'shodan.io'
+      - 'censys.io'
+      - 'whois'
+  condition: selection
+fields:
+  - Image
+  - CommandLine
+  - User
+falsepositives:
+  - Legitimate administrative activity.
+  - Authorized security testing.
+level: medium
+tags:
+  - attack.t1590
+  - attack.reconnaissance

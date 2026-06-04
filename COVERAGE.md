@@ -5,18 +5,18 @@
 
 ## Ringkasan
 
-- Total file rule         : **786**
-- Total teknik unik       : **151**
+- Total file rule         : **836**
+- Total teknik unik       : **152**
 
 ### Per Platform
 
 | Platform | Rule | Teknik unik |
 |---|---:|---:|
-| sigma | 204 | 138 |
+| sigma | 227 | 152 |
 | elastic | 58 | 55 |
-| splunk | 57 | 59 |
-| microsoft-sentinel | 141 | 104 |
-| wazuh | 178 | 80 |
+| splunk | 66 | 68 |
+| microsoft-sentinel | 150 | 113 |
+| wazuh | 187 | 89 |
 | carbonblack | 142 | 30 |
 
 ## Coverage Matrix
@@ -75,8 +75,8 @@ Tanda ✅ = ada minimal satu rule pada platform tersebut yang memetakan teknik.
 | `T1078.004` | ✅ | ✅ | · | ✅ | · | · |
 | `T1082` | ✅ | ✅ | ✅ | ✅ | ✅ | · |
 | `T1087` | ✅ | · | ✅ | ✅ | ✅ | ✅ |
-| `T1087.001` | ✅ | · | · | · | · | · |
-| `T1087.002` | ✅ | · | · | · | · | · |
+| `T1087.001` | ✅ | · | ✅ | ✅ | ✅ | · |
+| `T1087.002` | ✅ | · | ✅ | ✅ | ✅ | · |
 | `T1090` | ✅ | · | · | ✅ | · | · |
 | `T1090.003` | ✅ | · | · | ✅ | · | · |
 | `T1095` | ✅ | · | ✅ | ✅ | ✅ | ✅ |
@@ -141,41 +141,42 @@ Tanda ✅ = ada minimal satu rule pada platform tersebut yang memetakan teknik.
 | `T1562.001` | ✅ | ✅ | ✅ | ✅ | ✅ | · |
 | `T1562.002` | ✅ | · | · | ✅ | · | · |
 | `T1562.004` | ✅ | · | · | ✅ | ✅ | · |
-| `T1562.008` | ✅ | · | · | · | · | · |
+| `T1562.008` | ✅ | · | ✅ | ✅ | ✅ | · |
 | `T1564` | ✅ | · | · | ✅ | · | · |
 | `T1564.001` | ✅ | · | ✅ | · | · | · |
-| `T1565` | ✅ | · | · | · | · | · |
+| `T1565` | ✅ | · | ✅ | ✅ | ✅ | · |
 | `T1565.001` | ✅ | · | · | ✅ | · | · |
 | `T1566` | ✅ | ✅ | · | · | · | · |
-| `T1566.001` | ✅ | · | · | · | · | · |
-| `T1566.002` | ✅ | · | · | · | · | · |
+| `T1566.001` | ✅ | · | ✅ | ✅ | ✅ | · |
+| `T1566.002` | ✅ | · | ✅ | ✅ | ✅ | · |
 | `T1567` | ✅ | ✅ | · | · | · | · |
 | `T1567.002` | ✅ | · | · | · | · | ✅ |
-| `T1569` | ✅ | · | · | · | · | · |
+| `T1569` | ✅ | · | ✅ | ✅ | ✅ | · |
 | `T1569.002` | ✅ | · | · | · | ✅ | · |
 | `T1571` | ✅ | · | · | ✅ | ✅ | · |
 | `T1572` | ✅ | · | · | ✅ | ✅ | ✅ |
 | `T1574` | ✅ | ✅ | · | · | · | · |
 | `T1574.001` | ✅ | ✅ | · | · | · | · |
 | `T1574.002` | ✅ | · | · | ✅ | · | ✅ |
-| `T1578` | ✅ | · | · | · | · | · |
+| `T1578` | ✅ | · | ✅ | ✅ | ✅ | · |
 | `T1578.002` | ✅ | · | · | ✅ | · | · |
 | `T1578.003` | ✅ | · | · | ✅ | · | · |
-| `T1586.001` | · | ✅ | · | · | · | · |
-| `T1586.002` | · | ✅ | · | · | · | · |
-| `T1586.003` | · | ✅ | · | · | · | · |
-| `T1589` | · | ✅ | · | · | · | · |
-| `T1590` | · | ✅ | · | · | · | · |
-| `T1591` | · | ✅ | · | · | · | · |
-| `T1592` | · | ✅ | · | · | · | · |
-| `T1593` | · | ✅ | · | · | · | · |
-| `T1594` | · | ✅ | · | · | · | · |
-| `T1596` | · | ✅ | · | · | · | · |
-| `T1597` | · | ✅ | · | · | · | · |
-| `T1598` | · | ✅ | · | · | · | · |
+| `T1586` | ✅ | · | · | · | · | · |
+| `T1586.001` | ✅ | ✅ | · | · | · | · |
+| `T1586.002` | ✅ | ✅ | · | · | · | · |
+| `T1586.003` | ✅ | ✅ | · | · | · | · |
+| `T1589` | ✅ | ✅ | · | · | · | · |
+| `T1590` | ✅ | ✅ | · | · | · | · |
+| `T1591` | ✅ | ✅ | · | · | · | · |
+| `T1592` | ✅ | ✅ | · | · | · | · |
+| `T1593` | ✅ | ✅ | · | · | · | · |
+| `T1594` | ✅ | ✅ | · | · | · | · |
+| `T1596` | ✅ | ✅ | · | · | · | · |
+| `T1597` | ✅ | ✅ | · | · | · | · |
+| `T1598` | ✅ | ✅ | · | · | · | · |
 | `T1611` | ✅ | · | · | · | · | · |
-| `T1621` | ✅ | · | · | · | · | · |
-| `T1650` | · | ✅ | · | · | · | · |
+| `T1621` | ✅ | · | ✅ | ✅ | ✅ | · |
+| `T1650` | ✅ | ✅ | · | · | · | · |
 
 ## Detail per Platform
 
@@ -232,9 +233,9 @@ Tanda ✅ = ada minimal satu rule pada platform tersebut yang memetakan teknik.
 | `T1078.003` | `sigma/windows/win_local_account_authentication.yml` |
 | `T1078.004` | `sigma/cloud/cloud_aws_console_login_without_mfa.yml`, `sigma/cloud/cloud_azure_impossible_travel.yml` |
 | `T1082` | `sigma/windows/win_system_info_discovery.yml` |
-| `T1087` | `sigma/windows/win_account_discovery_net.yml` |
-| `T1087.001` | `sigma/windows/win_account_discovery_net.yml` |
-| `T1087.002` | `sigma/windows/win_account_discovery_net.yml` |
+| `T1087` | `sigma/windows/win_account_discovery_net.yml`, `sigma/windows/win_domain_account_discovery.yml`, `sigma/windows/win_local_account_discovery.yml` |
+| `T1087.001` | `sigma/windows/win_account_discovery_net.yml`, `sigma/windows/win_local_account_discovery.yml` |
+| `T1087.002` | `sigma/windows/win_account_discovery_net.yml`, `sigma/windows/win_domain_account_discovery.yml` |
 | `T1090` | `sigma/windows/win_multi_hop_proxy_via_ssh_tunnel.yml`, `sigma/windows/win_proxy_tool_execution.yml` |
 | `T1090.003` | `sigma/windows/win_multi_hop_proxy_via_ssh_tunnel.yml` |
 | `T1095` | `sigma/network/win_non_application_layer_protocol_communication.yml` |
@@ -295,32 +296,46 @@ Tanda ✅ = ada minimal satu rule pada platform tersebut yang memetakan teknik.
 | `T1556.006` | `sigma/cloud/win_mfa_configuration_disabled_or_modified.yml` |
 | `T1560` | `sigma/windows/win_archive_sensitive_data.yml` |
 | `T1560.001` | `sigma/windows/win_archive_sensitive_data.yml` |
-| `T1562` | `sigma/windows/win_disable_event_logging.yml`, `sigma/windows/win_firewall_rule_disabled_or_modified.yml`, `sigma/windows/win_security_tool_disabled_or_killed.yml` |
+| `T1562` | `sigma/cloud/cloud_disable_or_modify_cloud_logs.yml`, `sigma/windows/win_disable_event_logging.yml`, `sigma/windows/win_firewall_rule_disabled_or_modified.yml`, `sigma/windows/win_security_tool_disabled_or_killed.yml` |
 | `T1562.001` | `sigma/windows/win_security_tool_disabled_or_killed.yml` |
 | `T1562.002` | `sigma/windows/win_disable_event_logging.yml` |
 | `T1562.004` | `sigma/windows/win_firewall_rule_disabled_or_modified.yml` |
-| `T1562.008` | `sigma/cloud/cloud_aws_suspicious_disable_cloudtrail.yml` |
+| `T1562.008` | `sigma/cloud/cloud_aws_suspicious_disable_cloudtrail.yml`, `sigma/cloud/cloud_disable_or_modify_cloud_logs.yml` |
 | `T1564` | `sigma/windows/win_hidden_file_or_directory_creation.yml` |
 | `T1564.001` | `sigma/windows/win_hidden_file_or_directory_creation.yml` |
-| `T1565` | `sigma/windows/win_hosts_file_modification.yml` |
+| `T1565` | `sigma/windows/win_data_manipulation.yml`, `sigma/windows/win_hosts_file_modification.yml` |
 | `T1565.001` | `sigma/windows/win_hosts_file_modification.yml` |
-| `T1566` | `sigma/network/net_proxy_newly_registered_domain.yml`, `sigma/windows/win_office_macro_spawn_process.yml` |
-| `T1566.001` | `sigma/windows/win_office_macro_spawn_process.yml` |
-| `T1566.002` | `sigma/network/net_proxy_newly_registered_domain.yml` |
+| `T1566` | `sigma/network/net_proxy_newly_registered_domain.yml`, `sigma/windows/win_office_macro_spawn_process.yml`, `sigma/windows/win_spearphishing_attachment.yml`, `sigma/windows/win_spearphishing_link.yml` |
+| `T1566.001` | `sigma/windows/win_office_macro_spawn_process.yml`, `sigma/windows/win_spearphishing_attachment.yml` |
+| `T1566.002` | `sigma/network/net_proxy_newly_registered_domain.yml`, `sigma/windows/win_spearphishing_link.yml` |
 | `T1567` | `sigma/windows/win_exfil_cloud_storage_tool.yml` |
 | `T1567.002` | `sigma/windows/win_exfil_cloud_storage_tool.yml` |
-| `T1569` | `sigma/windows/win_service_execution_suspicious.yml` |
+| `T1569` | `sigma/windows/win_service_execution_suspicious.yml`, `sigma/windows/win_system_services_execution.yml` |
 | `T1569.002` | `sigma/windows/win_service_execution_suspicious.yml` |
 | `T1571` | `sigma/network/win_connection_to_non_standard_port.yml` |
 | `T1572` | `sigma/network/win_protocol_tunneling_via_ssh_or_chisel.yml` |
 | `T1574` | `sigma/windows/win_dll_search_order_hijack.yml`, `sigma/windows/win_dll_side_loading_from_suspicious_directory.yml` |
 | `T1574.001` | `sigma/windows/win_dll_search_order_hijack.yml` |
 | `T1574.002` | `sigma/windows/win_dll_side_loading_from_suspicious_directory.yml` |
-| `T1578` | `sigma/cloud/cloud_cloud_instance_created.yml`, `sigma/cloud/cloud_cloud_instance_deleted.yml` |
+| `T1578` | `sigma/cloud/cloud_cloud_instance_created.yml`, `sigma/cloud/cloud_cloud_instance_deleted.yml`, `sigma/cloud/cloud_modify_cloud_compute_infrastructure.yml` |
 | `T1578.002` | `sigma/cloud/cloud_cloud_instance_created.yml` |
 | `T1578.003` | `sigma/cloud/cloud_cloud_instance_deleted.yml` |
+| `T1586` | `sigma/cloud/cloud_cloud_account_compromise.yml`, `sigma/cloud/cloud_compromise_accounts.yml`, `sigma/cloud/cloud_email_account_compromise.yml`, `sigma/cloud/cloud_social_media_account_compromise.yml` |
+| `T1586.001` | `sigma/cloud/cloud_social_media_account_compromise.yml` |
+| `T1586.002` | `sigma/cloud/cloud_email_account_compromise.yml` |
+| `T1586.003` | `sigma/cloud/cloud_cloud_account_compromise.yml` |
+| `T1589` | `sigma/cloud/cloud_gather_victim_identity_information.yml` |
+| `T1590` | `sigma/cloud/cloud_gather_victim_network_information.yml` |
+| `T1591` | `sigma/cloud/cloud_gather_victim_org_information.yml` |
+| `T1592` | `sigma/cloud/cloud_gather_victim_host_information.yml` |
+| `T1593` | `sigma/cloud/cloud_search_open_websites_domains.yml` |
+| `T1594` | `sigma/cloud/cloud_search_victim_owned_websites.yml` |
+| `T1596` | `sigma/cloud/cloud_search_open_technical_databases.yml` |
+| `T1597` | `sigma/cloud/cloud_search_closed_sources.yml` |
+| `T1598` | `sigma/cloud/cloud_phishing_for_information.yml` |
 | `T1611` | `sigma/linux/lnx_container_escape_host_access.yml` |
-| `T1621` | `sigma/cloud/cloud_okta_mfa_fatigue.yml`, `sigma/correlations/mfa_fatigue_correlation.yml` |
+| `T1621` | `sigma/cloud/cloud_okta_mfa_fatigue.yml`, `sigma/correlations/mfa_fatigue_correlation.yml`, `sigma/windows/win_mfa_fatigue___prompt_bombing.yml` |
+| `T1650` | `sigma/cloud/cloud_acquire_access.yml` |
 
 ### elastic
 
@@ -410,6 +425,8 @@ Tanda ✅ = ada minimal satu rule pada platform tersebut yang memetakan teknik.
 | `T1071.004` | `splunk/network/net_dns_suspicious_tunnel.spl` |
 | `T1082` | `splunk/windows/win_system_information_discovery.spl` |
 | `T1087` | `splunk/windows/win_account_discovery.spl` |
+| `T1087.001` | `splunk/windows/win_local_account_discovery.spl` |
+| `T1087.002` | `splunk/windows/win_domain_account_discovery.spl` |
 | `T1095` | `splunk/windows/win_non_application_layer_protocol.spl` |
 | `T1098` | `splunk/cloud/cloud_gcp_iam_suspicious_role_grant.spl` |
 | `T1105` | `splunk/linux/lnx_suspicious_wget_curl.spl`, `splunk/windows/win_suspicious_certutil_download.spl` |
@@ -444,7 +461,14 @@ Tanda ✅ = ada minimal satu rule pada platform tersebut yang memetakan teknik.
 | `T1560.001` | `splunk/windows/win_archive_via_utility.spl` |
 | `T1562` | `splunk/windows/win_impair_defenses.spl` |
 | `T1562.001` | `splunk/windows/win_suspicious_taskkill.spl` |
+| `T1562.008` | `splunk/windows/win_disable_or_modify_cloud_logs.spl` |
 | `T1564.001` | `splunk/windows/win_suspicious_attrib_hidden.spl` |
+| `T1565` | `splunk/windows/win_data_manipulation.spl` |
+| `T1566.001` | `splunk/windows/win_spearphishing_attachment.spl` |
+| `T1566.002` | `splunk/windows/win_spearphishing_link.spl` |
+| `T1569` | `splunk/windows/win_system_services_execution.spl` |
+| `T1578` | `splunk/windows/win_modify_cloud_compute_infrastructure.spl` |
+| `T1621` | `splunk/windows/win_mfa_fatigue___prompt_bombing.spl` |
 
 ### microsoft-sentinel
 
@@ -491,6 +515,8 @@ Tanda ✅ = ada minimal satu rule pada platform tersebut yang memetakan teknik.
 | `T1078.004` | `microsoft-sentinel/kql_091_misc_cloud_login.kql`, `microsoft-sentinel/kql_092_misc_cloud_failed_login.kql`, `microsoft-sentinel/kql_100_misc_cloud_suspicious_api.kql` |
 | `T1082` | `microsoft-sentinel/kql_118_system_information_discovery.kql` |
 | `T1087` | `microsoft-sentinel/kql_119_account_discovery.kql` |
+| `T1087.001` | `microsoft-sentinel/kql_142_local_account_discovery.kql` |
+| `T1087.002` | `microsoft-sentinel/kql_143_domain_account_discovery.kql` |
 | `T1090` | `microsoft-sentinel/kql_027_reg_mod_proxy.kql` |
 | `T1090.003` | `microsoft-sentinel/kql_019_net_conn_tor.kql`, `microsoft-sentinel/kql_020_net_conn_darkweb.kql` |
 | `T1095` | `microsoft-sentinel/kql_120_non_application_layer_protocol.kql` |
@@ -547,13 +573,20 @@ Tanda ✅ = ada minimal satu rule pada platform tersebut yang memetakan teknik.
 | `T1562.001` | `microsoft-sentinel/kql_025_reg_mod_defender.kql`, `microsoft-sentinel/kql_080_service_disabled.kql` |
 | `T1562.002` | `microsoft-sentinel/kql_088_obj_access_audit_policy.kql` |
 | `T1562.004` | `microsoft-sentinel/kql_024_reg_mod_firewall.kql`, `microsoft-sentinel/kql_095_misc_cloud_fw_changed.kql` |
+| `T1562.008` | `microsoft-sentinel/kql_144_disable_or_modify_cloud_logs.kql` |
 | `T1564` | `microsoft-sentinel/kql_068_schtask_hidden.kql` |
+| `T1565` | `microsoft-sentinel/kql_145_data_manipulation.kql` |
 | `T1565.001` | `microsoft-sentinel/kql_090_obj_access_host_file.kql` |
+| `T1566.001` | `microsoft-sentinel/kql_146_spearphishing_attachment.kql` |
+| `T1566.002` | `microsoft-sentinel/kql_147_spearphishing_link.kql` |
+| `T1569` | `microsoft-sentinel/kql_148_system_services_execution.kql` |
 | `T1571` | `microsoft-sentinel/kql_011_net_conn_suspicious_port.kql` |
 | `T1572` | `microsoft-sentinel/kql_017_net_conn_dns_tunnel.kql`, `microsoft-sentinel/kql_net_dns_suspicious_tunnel.kql` |
 | `T1574.002` | `microsoft-sentinel/kql_032_file_create_dll_temp.kql` |
+| `T1578` | `microsoft-sentinel/kql_149_modify_cloud_compute_infrastructure.kql` |
 | `T1578.002` | `microsoft-sentinel/kql_096_misc_cloud_vm_created.kql` |
 | `T1578.003` | `microsoft-sentinel/kql_097_misc_cloud_vm_deleted.kql` |
+| `T1621` | `microsoft-sentinel/kql_150_mfa_fatigue___prompt_bombing.kql` |
 
 ### wazuh
 
@@ -592,6 +625,8 @@ Tanda ✅ = ada minimal satu rule pada platform tersebut yang memetakan teknik.
 | `T1078.003` | `wazuh/rules/lnx_suspicious_su_usage.xml`, `wazuh/rules/net_ssh_root_login.xml` |
 | `T1082` | `wazuh/rules/system_information_discovery.xml` |
 | `T1087` | `wazuh/rules/account_discovery.xml` |
+| `T1087.001` | `wazuh/rules/local_account_discovery.xml` |
+| `T1087.002` | `wazuh/rules/domain_account_discovery.xml` |
 | `T1095` | `wazuh/rules/non_application_layer_protocol.xml` |
 | `T1098` | `wazuh/rules/aws_iam_user_created.xml`, `wazuh/rules/gcp_iam_role_grant.xml`, `wazuh/rules/group_modification.xml`, `wazuh/rules/lnx_passwd_file_modified.xml`, `wazuh/rules/lnx_shadow_file_modified.xml` ... |
 | `T1098.004` | `wazuh/rules/lnx_sshd_config_modified.xml` |
@@ -636,9 +671,16 @@ Tanda ✅ = ada minimal satu rule pada platform tersebut yang memetakan teknik.
 | `T1562` | `wazuh/rules/impair_defenses.xml` |
 | `T1562.001` | `wazuh/rules/app_apache_config_changed.xml`, `wazuh/rules/app_docker_config_changed.xml`, `wazuh/rules/app_gitlab_config_changed.xml`, `wazuh/rules/app_jenkins_config_changed.xml`, `wazuh/rules/app_kubernetes_config_changed.xml` ... |
 | `T1562.004` | `wazuh/rules/net_firewall_rule_added.xml`, `wazuh/rules/net_firewall_rule_deleted.xml`, `wazuh/rules/windows_firewall_modified.xml` |
+| `T1562.008` | `wazuh/rules/disable_or_modify_cloud_logs.xml` |
+| `T1565` | `wazuh/rules/data_manipulation.xml` |
+| `T1566.001` | `wazuh/rules/spearphishing_attachment.xml` |
+| `T1566.002` | `wazuh/rules/spearphishing_link.xml` |
+| `T1569` | `wazuh/rules/system_services_execution.xml` |
 | `T1569.002` | `wazuh/rules/psexec_execution.xml` |
 | `T1571` | `wazuh/rules/net_suspicious_port_4444.xml` |
 | `T1572` | `wazuh/rules/net_dns_tunneling_suspicion.xml` |
+| `T1578` | `wazuh/rules/modify_cloud_compute_infrastructure.xml` |
+| `T1621` | `wazuh/rules/mfa_fatigue___prompt_bombing.xml` |
 
 ### carbonblack
 

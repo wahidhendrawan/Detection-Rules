@@ -1,0 +1,32 @@
+title: Cloud Account Compromise
+id: 222d1e65-4a47-46be-8af0-cf84ed0d941d
+status: experimental
+description: |
+  Detects indicators of Cloud Account Compromise (T1586.003).
+author: Wahid Hendrawan
+date: 2026/06/04
+references:
+  - https://attack.mitre.org/techniques/T1586/003/
+logsource:
+  product: aws
+  category: file_access
+detection:
+  selection:
+    eventName:
+      - 'ConsoleLogin'
+    errorCode: 'Success'
+    sourceIPAddress|contains:
+      - 'tor'
+      - 'vpn'
+  condition: selection
+fields:
+  - Image
+  - CommandLine
+  - User
+falsepositives:
+  - Legitimate administrative activity.
+  - Authorized security testing.
+level: medium
+tags:
+  - attack.t1586.003
+  - attack.resource-development

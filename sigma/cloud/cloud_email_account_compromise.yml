@@ -1,0 +1,30 @@
+title: Email Account Compromise
+id: 69d9bc00-e970-42c0-ab5c-f35e2ac2737f
+status: experimental
+description: |
+  Detects indicators of Email Account Compromise (T1586.002).
+author: Wahid Hendrawan
+date: 2026/06/04
+references:
+  - https://attack.mitre.org/techniques/T1586/002/
+logsource:
+  product: aws
+  category: file_access
+detection:
+  selection:
+    eventName|contains:
+      - 'MailboxLogin'
+      - 'InboxRule'
+    sourceIPAddress|contains: 'suspicious'
+  condition: selection
+fields:
+  - Image
+  - CommandLine
+  - User
+falsepositives:
+  - Legitimate administrative activity.
+  - Authorized security testing.
+level: medium
+tags:
+  - attack.t1586.002
+  - attack.resource-development

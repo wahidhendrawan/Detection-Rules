@@ -1,0 +1,31 @@
+title: Phishing for Information
+id: dba3049d-2b89-4997-b0f6-8a6e37c0ab97
+status: experimental
+description: |
+  Detects indicators of Phishing for Information (T1598).
+author: Wahid Hendrawan
+date: 2026/06/04
+references:
+  - https://attack.mitre.org/techniques/T1598/
+logsource:
+  product: aws
+  category: file_access
+detection:
+  selection:
+    eventName: 'EmailReceived'
+    subject|contains:
+      - 'verify'
+      - 'confirm'
+      - 'update your'
+  condition: selection
+fields:
+  - Image
+  - CommandLine
+  - User
+falsepositives:
+  - Legitimate administrative activity.
+  - Authorized security testing.
+level: medium
+tags:
+  - attack.t1598
+  - attack.reconnaissance

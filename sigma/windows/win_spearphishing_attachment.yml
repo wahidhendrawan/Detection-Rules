@@ -1,0 +1,34 @@
+title: Spearphishing Attachment
+id: d39955c3-eeee-44ba-b855-a8dbc9d95b58
+status: experimental
+description: |
+  Detects indicators of Spearphishing Attachment (T1566.001).
+author: Wahid Hendrawan
+date: 2026/06/04
+references:
+  - https://attack.mitre.org/techniques/T1566/001/
+logsource:
+  product: windows
+  category: process_creation
+detection:
+  selection:
+    ParentImage|endswith:
+      - '\\OUTLOOK.EXE'
+      - '\\WINWORD.EXE'
+      - '\\EXCEL.EXE'
+    Image|endswith:
+      - '\\cmd.exe'
+      - '\\powershell.exe'
+      - '\\wscript.exe'
+  condition: selection
+fields:
+  - Image
+  - CommandLine
+  - User
+falsepositives:
+  - Legitimate administrative activity.
+  - Authorized security testing.
+level: medium
+tags:
+  - attack.t1566.001
+  - attack.initial-access

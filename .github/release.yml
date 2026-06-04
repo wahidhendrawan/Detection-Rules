@@ -1,0 +1,62 @@
+# Release Notes Template
+
+# This file controls auto-generated release notes (used by GitHub's
+# "Generate release notes" feature). It groups PRs by label.
+#
+# Reference: https://docs.github.com/en/repositories/releasing-projects-on-github/automatically-generated-release-notes
+
+changelog:
+  exclude:
+    labels:
+      - ignore-for-release
+      - duplicate
+      - invalid
+      - wontfix
+    authors:
+      - dependabot
+  categories:
+    - title: 🚨 Breaking Changes
+      labels:
+        - breaking-change
+
+    - title: ✨ New Detection Rules
+      labels:
+        - rule:new
+        - new-rule
+        - sigma
+        - elastic
+        - splunk
+        - sentinel
+        - wazuh
+        - carbonblack
+
+    - title: 🔧 Rule Improvements
+      labels:
+        - rule:fix
+        - rule:improve
+        - false-positive
+
+    - title: 🛡️ Coverage / MITRE ATT&CK
+      labels:
+        - mitre-attack
+        - coverage
+
+    - title: 🤖 Tooling & CI
+      labels:
+        - ci
+        - tooling
+        - scripts
+        - workflow
+
+    - title: 📚 Documentation
+      labels:
+        - documentation
+        - docs
+
+    - title: 🔒 Security
+      labels:
+        - security
+
+    - title: 🧹 Other Changes
+      labels:
+        - "*"

@@ -40,10 +40,16 @@ jobs:
           sigma list targets || true
           pip show sigma-cli | grep Version || true
 
-      - name: Generate coverage + index
+      - name: Generate coverage + index + metrics + gap + cti + atomic + navigator + badges
         run: |
-          python3 scripts/generate_coverage.py
-          python3 scripts/generate_index.py
+          PYTHONPATH=scripts python3 -m detection_rules coverage
+          PYTHONPATH=scripts python3 -m detection_rules index
+          PYTHONPATH=scripts python3 -m detection_rules metrics
+          PYTHONPATH=scripts python3 -m detection_rules gap
+          PYTHONPATH=scripts python3 -m detection_rules cti
+          PYTHONPATH=scripts python3 -m detection_rules atomic
+          PYTHONPATH=scripts python3 -m detection_rules navigator
+          PYTHONPATH=scripts python3 -m detection_rules badges
 
       - name: Translate Sigma to all backends
         run: |

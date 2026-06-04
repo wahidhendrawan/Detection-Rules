@@ -1,0 +1,16 @@
+title: Lateral Movement - Multiple Hosts Accessed by Same User
+id: c3d4e5f6-a7b8-4c9d-0e1f-2a3b4c5d6e7f
+status: experimental
+type: correlation
+rule: remote_host_login
+group-by:
+  - UserName
+timespan: 15m
+condition:
+  gte: 3
+author: Wahid Hendrawan
+date: 2026/06/04
+level: high
+tags:
+  - attack.lateral-movement
+  - attack.t1021

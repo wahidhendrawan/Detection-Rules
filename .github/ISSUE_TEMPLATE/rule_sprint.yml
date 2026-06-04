@@ -1,0 +1,40 @@
+name: Monthly Rule Sprint
+description: Participate in this month's detection rule sprint
+title: "[Sprint] "
+labels: [community:sprint, good-first-rule]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## Monthly Rule Sprint
+        Welcome! Pick a technique from the list below and submit a rule.
+  - type: dropdown
+    id: platform
+    attributes:
+      label: Target Platform
+      options:
+        - Sigma
+        - Elastic
+        - Splunk
+        - Microsoft Sentinel
+        - Wazuh
+        - Carbon Black
+        - SentinelOne
+        - Falcon
+        - Falco
+    validations:
+      required: true
+  - type: input
+    id: technique
+    attributes:
+      label: MITRE ATT&CK Technique
+      placeholder: T1059.001
+    validations:
+      required: true
+  - type: textarea
+    id: description
+    attributes:
+      label: Rule Description
+      placeholder: Describe what your rule detects
+    validations:
+      required: true

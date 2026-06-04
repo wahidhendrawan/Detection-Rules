@@ -33,6 +33,11 @@ fields:
 falsepositives:
   - Legitimate backup software or administration tasks (rarely use wmic/vssadmin manually).
 level: critical
+custom:
+  effectiveness: 0.95
+  fp_rate: 0.05
+  last_tuned: 2026/04/20
+  alert_volume: low
 tags:
   - attack.t1490
   - attack.impact

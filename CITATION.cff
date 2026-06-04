@@ -1,0 +1,45 @@
+cff-version: 1.2.0
+title: "Detection-Rules: Cross-Platform Detection Rules Library"
+message: >-
+  If you use this dataset in academic or industry research, please cite it
+  using the metadata below.
+type: software
+authors:
+  - given-names: Wahid
+    family-names: Hendrawan
+    email: wahidhendrawan@users.noreply.github.com
+    affiliation: Independent Detection Engineer
+abstract: >-
+  Detection-Rules is a cross-platform library of detection rules and hunting
+  queries — Sigma, Elastic, Splunk, Microsoft Sentinel, Wazuh, and Carbon
+  Black — mapped to the MITRE ATT&CK framework. The repository is intended
+  as a starter pack for blue teams and detection engineers, with auto-
+  generated coverage reports, threat-actor mapping, and Atomic Red Team
+  verification references.
+keywords:
+  - detection-engineering
+  - mitre-attack
+  - sigma
+  - splunk
+  - elastic-security
+  - microsoft-sentinel
+  - wazuh
+  - carbon-black
+  - blue-team
+  - threat-hunting
+  - siem
+license: MIT
+repository-code: "https://github.com/wahidhendrawan/Detection-Rules"
+url: "https://wahidhendrawan.github.io/Detection-Rules/"
+identifiers:
+  - type: url
+    value: "https://github.com/wahidhendrawan/Detection-Rules"
+    description: Source repository
+preferred-citation:
+  type: software
+  title: "Detection-Rules: Cross-Platform Detection Rules Library"
+  authors:
+    - given-names: Wahid
+      family-names: Hendrawan
+  year: 2026
+  url: "https://github.com/wahidhendrawan/Detection-Rules"

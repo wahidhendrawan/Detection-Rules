@@ -1,0 +1,30 @@
+title: Cloud Instance Created
+id: 3ad5562f-dfd6-4708-8a27-19fa3da7da61
+status: experimental
+description: |
+  Detects indicators of Cloud Instance Created (T1578.002).
+author: Wahid Hendrawan
+date: 2026/06/04
+references:
+  - https://attack.mitre.org/techniques/T1578/002/
+logsource:
+  product: aws
+  category: process_creation
+detection:
+  selection:
+    eventName:
+      - 'RunInstances'
+      - 'StartInstances'
+    sourceIPAddress|contains: '.'
+  condition: selection
+fields:
+  - Image
+  - CommandLine
+  - User
+falsepositives:
+  - IaC tools creating instances.
+  - Auto-scaling events.
+level: low
+tags:
+  - attack.t1578.002
+  - attack.defense-evasion

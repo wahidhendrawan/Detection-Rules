@@ -5,14 +5,14 @@
 
 ## Ringkasan
 
-- Total file rule         : **612**
-- Total teknik unik       : **143**
+- Total file rule         : **672**
+- Total teknik unik       : **151**
 
 ### Per Platform
 
 | Platform | Rule | Teknik unik |
 |---|---:|---:|
-| sigma | 144 | 72 |
+| sigma | 204 | 138 |
 | elastic | 58 | 55 |
 | splunk | 19 | 19 |
 | microsoft-sentinel | 103 | 66 |
@@ -29,34 +29,35 @@ Tanda ✅ = ada minimal satu rule pada platform tersebut yang memetakan teknik.
 | `T1003.001` | ✅ | · | · | ✅ | ✅ | ✅ |
 | `T1003.002` | ✅ | · | · | ✅ | · | · |
 | `T1003.003` | ✅ | · | · | ✅ | · | · |
-| `T1003.008` | · | · | ✅ | · | ✅ | · |
+| `T1003.008` | ✅ | · | ✅ | · | ✅ | · |
 | `T1005` | ✅ | · | · | ✅ | · | · |
-| `T1012` | · | ✅ | · | ✅ | · | · |
-| `T1016` | · | ✅ | · | · | · | · |
+| `T1012` | ✅ | ✅ | · | ✅ | · | · |
+| `T1016` | ✅ | ✅ | · | · | · | · |
 | `T1021` | ✅ | · | · | ✅ | · | · |
 | `T1021.001` | ✅ | ✅ | · | ✅ | ✅ | · |
-| `T1021.002` | · | · | · | ✅ | · | ✅ |
+| `T1021.002` | ✅ | · | · | ✅ | · | ✅ |
 | `T1021.004` | ✅ | · | · | ✅ | · | · |
 | `T1027` | ✅ | · | · | ✅ | ✅ | · |
-| `T1029` | · | ✅ | · | · | · | · |
-| `T1033` | · | · | ✅ | · | · | · |
-| `T1036` | · | ✅ | · | ✅ | · | ✅ |
-| `T1041` | · | ✅ | · | · | · | · |
+| `T1029` | ✅ | ✅ | · | · | · | · |
+| `T1033` | ✅ | · | ✅ | · | · | · |
+| `T1036` | ✅ | ✅ | · | ✅ | · | ✅ |
+| `T1041` | ✅ | ✅ | · | · | · | · |
 | `T1046` | ✅ | · | · | · | ✅ | · |
 | `T1047` | ✅ | ✅ | · | · | · | ✅ |
-| `T1048` | · | ✅ | · | · | · | · |
-| `T1053.002` | · | · | · | ✅ | · | ✅ |
+| `T1048` | ✅ | ✅ | · | · | · | · |
+| `T1053` | ✅ | · | · | · | · | · |
+| `T1053.002` | ✅ | · | · | ✅ | · | ✅ |
 | `T1053.003` | ✅ | · | ✅ | · | ✅ | · |
 | `T1053.005` | ✅ | · | · | ✅ | ✅ | ✅ |
 | `T1055` | ✅ | · | · | · | · | · |
-| `T1055.012` | · | ✅ | · | · | · | · |
+| `T1055.012` | ✅ | ✅ | · | · | · | · |
 | `T1056` | ✅ | · | · | · | · | · |
 | `T1056.001` | ✅ | · | · | · | · | · |
 | `T1059` | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
 | `T1059.001` | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
-| `T1059.003` | · | ✅ | · | ✅ | ✅ | ✅ |
+| `T1059.003` | ✅ | ✅ | · | ✅ | ✅ | ✅ |
 | `T1059.004` | ✅ | ✅ | · | · | ✅ | · |
-| `T1059.005` | · | · | · | ✅ | · | ✅ |
+| `T1059.005` | ✅ | · | · | ✅ | · | ✅ |
 | `T1059.006` | ✅ | · | · | · | · | ✅ |
 | `T1059.007` | ✅ | · | · | ✅ | · | · |
 | `T1068` | ✅ | ✅ | ✅ | · | · | · |
@@ -65,29 +66,30 @@ Tanda ✅ = ada minimal satu rule pada platform tersebut yang memetakan teknik.
 | `T1070.003` | ✅ | · | · | · | ✅ | · |
 | `T1070.006` | ✅ | ✅ | · | · | · | · |
 | `T1071` | ✅ | ✅ | · | · | · | · |
-| `T1071.001` | · | · | ✅ | ✅ | ✅ | ✅ |
-| `T1071.002` | · | · | · | ✅ | · | · |
+| `T1071.001` | ✅ | · | ✅ | ✅ | ✅ | ✅ |
+| `T1071.002` | ✅ | · | · | ✅ | · | · |
 | `T1071.004` | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
-| `T1072` | · | ✅ | · | · | ✅ | · |
-| `T1078` | · | · | · | ✅ | ✅ | · |
-| `T1078.003` | · | · | · | · | ✅ | · |
+| `T1072` | ✅ | ✅ | · | · | ✅ | · |
+| `T1078` | ✅ | · | · | ✅ | ✅ | · |
+| `T1078.003` | ✅ | · | · | · | ✅ | · |
 | `T1078.004` | ✅ | ✅ | · | ✅ | · | · |
 | `T1082` | ✅ | ✅ | · | · | · | · |
 | `T1087` | ✅ | · | · | · | · | ✅ |
 | `T1087.001` | ✅ | · | · | · | · | · |
 | `T1087.002` | ✅ | · | · | · | · | · |
-| `T1090` | · | · | · | ✅ | · | · |
-| `T1090.003` | · | · | · | ✅ | · | · |
-| `T1095` | · | · | · | · | · | ✅ |
+| `T1090` | ✅ | · | · | ✅ | · | · |
+| `T1090.003` | ✅ | · | · | ✅ | · | · |
+| `T1095` | ✅ | · | · | · | · | ✅ |
 | `T1098` | ✅ | · | ✅ | ✅ | ✅ | ✅ |
 | `T1098.001` | ✅ | · | · | ✅ | · | · |
-| `T1098.003` | · | · | · | ✅ | · | · |
+| `T1098.003` | ✅ | · | · | ✅ | · | · |
 | `T1098.004` | ✅ | · | · | · | ✅ | · |
-| `T1098.007` | · | · | · | ✅ | ✅ | · |
+| `T1098.007` | ✅ | · | · | ✅ | ✅ | · |
 | `T1105` | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
-| `T1110` | · | · | ✅ | ✅ | ✅ | · |
+| `T1110` | ✅ | · | ✅ | ✅ | ✅ | · |
 | `T1110.001` | ✅ | · | ✅ | ✅ | ✅ | · |
-| `T1112` | · | ✅ | · | ✅ | · | ✅ |
+| `T1112` | ✅ | ✅ | · | ✅ | · | ✅ |
+| `T1124` | ✅ | · | · | · | · | · |
 | `T1127` | ✅ | · | · | · | · | · |
 | `T1127.001` | ✅ | · | · | · | · | ✅ |
 | `T1133` | ✅ | · | · | · | · | · |
@@ -95,50 +97,55 @@ Tanda ✅ = ada minimal satu rule pada platform tersebut yang memetakan teknik.
 | `T1136.001` | ✅ | · | · | ✅ | ✅ | · |
 | `T1136.002` | ✅ | · | · | · | ✅ | · |
 | `T1136.003` | ✅ | · | · | · | · | · |
-| `T1140` | · | · | · | ✅ | · | ✅ |
-| `T1190` | · | ✅ | · | · | ✅ | · |
-| `T1197` | · | ✅ | · | ✅ | · | ✅ |
-| `T1205.002` | · | ✅ | · | · | · | · |
+| `T1140` | ✅ | · | · | ✅ | · | ✅ |
+| `T1190` | ✅ | ✅ | · | · | ✅ | · |
+| `T1197` | ✅ | ✅ | · | ✅ | · | ✅ |
+| `T1205` | ✅ | · | · | · | · | · |
+| `T1205.002` | ✅ | ✅ | · | · | · | · |
 | `T1218` | ✅ | · | · | ✅ | · | · |
 | `T1218.004` | ✅ | · | · | · | · | ✅ |
 | `T1218.005` | ✅ | · | ✅ | · | · | ✅ |
-| `T1218.010` | · | · | ✅ | ✅ | · | ✅ |
-| `T1218.011` | · | · | ✅ | ✅ | · | ✅ |
+| `T1218.010` | ✅ | · | ✅ | ✅ | · | ✅ |
+| `T1218.011` | ✅ | · | ✅ | ✅ | · | ✅ |
 | `T1219` | ✅ | ✅ | · | · | · | · |
 | `T1484` | ✅ | · | · | ✅ | · | · |
 | `T1484.001` | ✅ | · | · | · | ✅ | · |
 | `T1486` | ✅ | ✅ | · | · | · | · |
-| `T1489` | · | · | · | ✅ | ✅ | · |
+| `T1489` | ✅ | · | · | ✅ | ✅ | · |
 | `T1490` | ✅ | ✅ | ✅ | ✅ | · | · |
-| `T1497` | · | ✅ | · | · | · | · |
-| `T1497.001` | · | ✅ | · | · | · | · |
-| `T1497.002` | · | ✅ | · | · | · | · |
-| `T1497.003` | · | ✅ | · | · | · | · |
-| `T1499` | · | · | · | ✅ | ✅ | · |
-| `T1505.003` | · | ✅ | · | · | ✅ | · |
-| `T1530` | · | · | · | ✅ | · | · |
-| `T1531` | · | · | · | ✅ | ✅ | · |
-| `T1543` | · | · | · | ✅ | ✅ | · |
-| `T1543.003` | · | · | ✅ | ✅ | ✅ | · |
+| `T1497` | ✅ | ✅ | · | · | · | · |
+| `T1497.001` | ✅ | ✅ | · | · | · | · |
+| `T1497.002` | ✅ | ✅ | · | · | · | · |
+| `T1497.003` | ✅ | ✅ | · | · | · | · |
+| `T1499` | ✅ | · | · | ✅ | ✅ | · |
+| `T1505` | ✅ | · | · | · | · | · |
+| `T1505.003` | ✅ | ✅ | · | · | ✅ | · |
+| `T1530` | ✅ | · | · | ✅ | · | · |
+| `T1531` | ✅ | · | · | ✅ | ✅ | · |
+| `T1543` | ✅ | · | · | ✅ | ✅ | · |
+| `T1543.003` | ✅ | · | ✅ | ✅ | ✅ | · |
 | `T1547` | ✅ | · | · | ✅ | · | · |
-| `T1547.001` | · | · | · | ✅ | ✅ | · |
-| `T1547.005` | · | · | · | ✅ | · | · |
+| `T1547.001` | ✅ | · | · | ✅ | ✅ | · |
+| `T1547.005` | ✅ | · | · | ✅ | · | · |
 | `T1547.006` | ✅ | · | · | · | ✅ | · |
-| `T1548.002` | · | ✅ | · | ✅ | · | · |
+| `T1548` | ✅ | · | · | · | · | · |
+| `T1548.002` | ✅ | ✅ | · | ✅ | · | · |
 | `T1548.003` | ✅ | · | · | · | ✅ | · |
-| `T1552.001` | · | ✅ | · | · | · | · |
-| `T1556` | · | · | · | ✅ | ✅ | · |
-| `T1556.006` | · | · | · | ✅ | · | · |
+| `T1552` | ✅ | · | · | · | · | · |
+| `T1552.001` | ✅ | ✅ | · | · | · | · |
+| `T1556` | ✅ | · | · | ✅ | ✅ | · |
+| `T1556.006` | ✅ | · | · | ✅ | · | · |
 | `T1560` | ✅ | · | · | · | · | · |
 | `T1560.001` | ✅ | · | · | · | · | ✅ |
 | `T1562` | ✅ | · | · | · | · | · |
-| `T1562.001` | · | ✅ | ✅ | ✅ | ✅ | · |
+| `T1562.001` | ✅ | ✅ | ✅ | ✅ | ✅ | · |
 | `T1562.002` | ✅ | · | · | ✅ | · | · |
-| `T1562.004` | · | · | · | ✅ | ✅ | · |
+| `T1562.004` | ✅ | · | · | ✅ | ✅ | · |
 | `T1562.008` | ✅ | · | · | · | · | · |
-| `T1564` | · | · | · | ✅ | · | · |
-| `T1564.001` | · | · | ✅ | · | · | · |
-| `T1565.001` | · | · | · | ✅ | · | · |
+| `T1564` | ✅ | · | · | ✅ | · | · |
+| `T1564.001` | ✅ | · | ✅ | · | · | · |
+| `T1565` | ✅ | · | · | · | · | · |
+| `T1565.001` | ✅ | · | · | ✅ | · | · |
 | `T1566` | ✅ | ✅ | · | · | · | · |
 | `T1566.001` | ✅ | · | · | · | · | · |
 | `T1566.002` | ✅ | · | · | · | · | · |
@@ -146,13 +153,14 @@ Tanda ✅ = ada minimal satu rule pada platform tersebut yang memetakan teknik.
 | `T1567.002` | ✅ | · | · | · | · | ✅ |
 | `T1569` | ✅ | · | · | · | · | · |
 | `T1569.002` | ✅ | · | · | · | ✅ | · |
-| `T1571` | · | · | · | ✅ | ✅ | · |
-| `T1572` | · | · | · | ✅ | ✅ | ✅ |
+| `T1571` | ✅ | · | · | ✅ | ✅ | · |
+| `T1572` | ✅ | · | · | ✅ | ✅ | ✅ |
 | `T1574` | ✅ | ✅ | · | · | · | · |
 | `T1574.001` | ✅ | ✅ | · | · | · | · |
-| `T1574.002` | · | · | · | ✅ | · | ✅ |
-| `T1578.002` | · | · | · | ✅ | · | · |
-| `T1578.003` | · | · | · | ✅ | · | · |
+| `T1574.002` | ✅ | · | · | ✅ | · | ✅ |
+| `T1578` | ✅ | · | · | · | · | · |
+| `T1578.002` | ✅ | · | · | ✅ | · | · |
+| `T1578.003` | ✅ | · | · | ✅ | · | · |
 | `T1586.001` | · | ✅ | · | · | · | · |
 | `T1586.002` | · | ✅ | · | · | · | · |
 | `T1586.003` | · | ✅ | · | · | · | · |
@@ -175,25 +183,39 @@ Tanda ✅ = ada minimal satu rule pada platform tersebut yang memetakan teknik.
 
 | Technique | Rule files |
 |---|---|
-| `T1003` | `sigma/windows/win_credential_dump_indicators.yml`, `sigma/windows/win_ntds_dit_access.yml`, `sigma/windows/win_sam_registry_dump.yml` |
+| `T1003` | `sigma/linux/lnx_access_to__etc_shadow_or__etc_passwd_for_credential_har.yml`, `sigma/windows/win_credential_dump_indicators.yml`, `sigma/windows/win_ntds_dit_access.yml`, `sigma/windows/win_sam_registry_dump.yml` |
 | `T1003.001` | `sigma/windows/win_credential_dump_indicators.yml`, `sigma/windows/win_lsass_dump_via_procdump.yml`, `sigma/windows/win_mimikatz_command.yml`, `sigma/windows/win_suspicious_comsvcs_lsass_dump.yml` |
 | `T1003.002` | `sigma/windows/win_sam_registry_dump.yml` |
 | `T1003.003` | `sigma/windows/win_ntds_dit_access.yml` |
+| `T1003.008` | `sigma/linux/lnx_access_to__etc_shadow_or__etc_passwd_for_credential_har.yml` |
 | `T1005` | `sigma/windows/win_sensitive_file_access.yml` |
-| `T1021` | `sigma/correlations/lateral_movement_spray.yml`, `sigma/linux/lnx_ssh_lateral_movement.yml` |
+| `T1012` | `sigma/windows/win_query_registry_for_system_information.yml` |
+| `T1016` | `sigma/windows/win_system_network_configuration_discovery.yml` |
+| `T1021` | `sigma/correlations/lateral_movement_spray.yml`, `sigma/linux/lnx_ssh_lateral_movement.yml`, `sigma/windows/win_smb_windows_admin_share_access.yml` |
 | `T1021.001` | `sigma/windows/win_plink_rdp_tunnel.yml` |
+| `T1021.002` | `sigma/windows/win_smb_windows_admin_share_access.yml` |
 | `T1021.004` | `sigma/linux/lnx_ssh_lateral_movement.yml` |
 | `T1027` | `sigma/linux/lnx_base64_decoding.yml` |
+| `T1029` | `sigma/windows/win_scheduled_data_transfer_to_external.yml` |
+| `T1033` | `sigma/windows/win_system_owner_user_discovery.yml` |
+| `T1036` | `sigma/windows/win_masquerading___executable_in_suspicious_path.yml` |
+| `T1041` | `sigma/windows/win_data_exfiltration_over_c2_channel_indicators.yml` |
 | `T1046` | `sigma/network/net_nmap_scan_pattern.yml` |
 | `T1047` | `sigma/windows/win_wmi_process_creation.yml` |
+| `T1048` | `sigma/network/win_exfiltration_over_alternative_protocol.yml` |
+| `T1053` | `sigma/windows/win_at_job_creation.yml` |
+| `T1053.002` | `sigma/windows/win_at_job_creation.yml` |
 | `T1053.003` | `sigma/linux/lnx_suspicious_cron_modification.yml` |
 | `T1053.005` | `sigma/windows/win_schtasks_create.yml` |
-| `T1055` | `sigma/windows/win_process_injection_createremotethread.yml` |
+| `T1055` | `sigma/windows/win_process_hollowing_indicators.yml`, `sigma/windows/win_process_injection_createremotethread.yml` |
+| `T1055.012` | `sigma/windows/win_process_hollowing_indicators.yml` |
 | `T1056` | `sigma/windows/win_keylogger_setwindowshookex.yml` |
 | `T1056.001` | `sigma/windows/win_keylogger_setwindowshookex.yml` |
-| `T1059` | `sigma/linux/lnx_base64_decoding.yml`, `sigma/windows/win_powershell_suspicious_encoded_command.yml`, `sigma/windows/win_suspicious_python_execution.yml`, `sigma/windows/win_suspicious_wscript_js.yml` |
+| `T1059` | `sigma/linux/lnx_base64_decoding.yml`, `sigma/windows/win_powershell_suspicious_encoded_command.yml`, `sigma/windows/win_suspicious_cmd_execution_with_chained_commands.yml`, `sigma/windows/win_suspicious_python_execution.yml`, `sigma/windows/win_suspicious_vbscript_execution.yml` ... |
 | `T1059.001` | `sigma/windows/win_powershell_suspicious_download.yml`, `sigma/windows/win_powershell_suspicious_encoded_command.yml` |
+| `T1059.003` | `sigma/windows/win_suspicious_cmd_execution_with_chained_commands.yml` |
 | `T1059.004` | `sigma/linux/lnx_suspicious_curl_pipe_bash.yml` |
+| `T1059.005` | `sigma/windows/win_suspicious_vbscript_execution.yml` |
 | `T1059.006` | `sigma/windows/win_suspicious_python_execution.yml` |
 | `T1059.007` | `sigma/windows/win_suspicious_wscript_js.yml` |
 | `T1068` | `sigma/linux/lnx_suspicious_sudo_without_tty.yml` |
@@ -201,18 +223,31 @@ Tanda ✅ = ada minimal satu rule pada platform tersebut yang memetakan teknik.
 | `T1070.001` | `sigma/windows/win_security_log_cleared.yml` |
 | `T1070.003` | `sigma/linux/lnx_clear_command_history.yml` |
 | `T1070.006` | `sigma/windows/win_timestomp_file_time_modification.yml` |
-| `T1071` | `sigma/network/net_dns_suspicious_tunnel.yml` |
+| `T1071` | `sigma/network/net_dns_suspicious_tunnel.yml`, `sigma/network/win_ftp_connection_from_non_ftp_client.yml`, `sigma/network/win_suspicious_web_protocol_communication.yml` |
+| `T1071.001` | `sigma/network/win_suspicious_web_protocol_communication.yml` |
+| `T1071.002` | `sigma/network/win_ftp_connection_from_non_ftp_client.yml` |
 | `T1071.004` | `sigma/network/net_dns_suspicious_tunnel.yml`, `sigma/network/net_susp_dns_many_nxdomain.yml` |
+| `T1072` | `sigma/windows/win_software_deployment_tool_execution.yml` |
+| `T1078` | `sigma/windows/win_local_account_authentication.yml`, `sigma/windows/win_valid_account_login_at_unusual_time.yml` |
+| `T1078.003` | `sigma/windows/win_local_account_authentication.yml` |
 | `T1078.004` | `sigma/cloud/cloud_aws_console_login_without_mfa.yml`, `sigma/cloud/cloud_azure_impossible_travel.yml` |
 | `T1082` | `sigma/windows/win_system_info_discovery.yml` |
 | `T1087` | `sigma/windows/win_account_discovery_net.yml` |
 | `T1087.001` | `sigma/windows/win_account_discovery_net.yml` |
 | `T1087.002` | `sigma/windows/win_account_discovery_net.yml` |
-| `T1098` | `sigma/cloud/cloud_aws_create_access_key.yml`, `sigma/cloud/cloud_gcp_iam_suspicious_role_grant.yml`, `sigma/windows/win_local_admin_group_add.yml` |
+| `T1090` | `sigma/windows/win_multi_hop_proxy_via_ssh_tunnel.yml`, `sigma/windows/win_proxy_tool_execution.yml` |
+| `T1090.003` | `sigma/windows/win_multi_hop_proxy_via_ssh_tunnel.yml` |
+| `T1095` | `sigma/network/win_non_application_layer_protocol_communication.yml` |
+| `T1098` | `sigma/cloud/cloud_aws_create_access_key.yml`, `sigma/cloud/cloud_cloud_admin_role_assigned.yml`, `sigma/cloud/cloud_gcp_iam_suspicious_role_grant.yml`, `sigma/windows/win_local_admin_group_add.yml`, `sigma/windows/win_user_added_to_privileged_group.yml` |
 | `T1098.001` | `sigma/cloud/cloud_gcp_service_account_key_created.yml` |
+| `T1098.003` | `sigma/cloud/cloud_cloud_admin_role_assigned.yml` |
 | `T1098.004` | `sigma/linux/lnx_ssh_authorized_keys_modification.yml` |
+| `T1098.007` | `sigma/windows/win_user_added_to_privileged_group.yml` |
 | `T1105` | `sigma/linux/lnx_suspicious_wget_curl_to_tmp.yml`, `sigma/windows/win_suspicious_certutil_download.yml` |
+| `T1110` | `sigma/windows/win_multiple_failed_login_attempts.yml` |
 | `T1110.001` | `sigma/correlations/brute_force_then_success.yml`, `sigma/windows/win_brute_force_failed_login.yml` |
+| `T1112` | `sigma/windows/win_suspicious_registry_modification.yml` |
+| `T1124` | `sigma/windows/win_system_time_discovery.yml` |
 | `T1127` | `sigma/windows/win_msbuild_suspicious_execution.yml` |
 | `T1127.001` | `sigma/windows/win_msbuild_suspicious_execution.yml` |
 | `T1133` | `sigma/network/net_external_remote_services_anomalous.yml` |
@@ -220,22 +255,55 @@ Tanda ✅ = ada minimal satu rule pada platform tersebut yang memetakan teknik.
 | `T1136.001` | `sigma/linux/lnx_new_user_added.yml` |
 | `T1136.002` | `sigma/windows/win_domain_account_creation.yml` |
 | `T1136.003` | `sigma/cloud/cloud_github_org_member_added_external.yml` |
-| `T1218` | `sigma/windows/win_installutil_suspicious.yml` |
+| `T1140` | `sigma/windows/win_file_decode_deobfuscation_via_certutil_or_powershell.yml` |
+| `T1190` | `sigma/linux/lnx_web_application_exploit_indicators_in_logs.yml` |
+| `T1197` | `sigma/windows/win_bits_job_creation_for_download.yml` |
+| `T1205` | `sigma/linux/lnx_socket_filter___bpf_program_load.yml`, `sigma/network/lnx_traffic_signaling___port_knocking.yml` |
+| `T1205.002` | `sigma/linux/lnx_socket_filter___bpf_program_load.yml` |
+| `T1218` | `sigma/windows/win_installutil_suspicious.yml`, `sigma/windows/win_regsvr32_suspicious_network_or_script_load.yml`, `sigma/windows/win_rundll32_suspicious_execution_pattern.yml` |
 | `T1218.004` | `sigma/windows/win_installutil_suspicious.yml` |
 | `T1218.005` | `sigma/windows/win_suspicious_mshta_execution.yml` |
+| `T1218.010` | `sigma/windows/win_regsvr32_suspicious_network_or_script_load.yml` |
+| `T1218.011` | `sigma/windows/win_rundll32_suspicious_execution_pattern.yml` |
 | `T1219` | `sigma/windows/win_remote_access_tool_execution.yml` |
 | `T1484` | `sigma/windows/win_group_policy_modification.yml` |
 | `T1484.001` | `sigma/windows/win_group_policy_modification.yml` |
 | `T1486` | `sigma/windows/win_ransomware_mass_file_rename.yml` |
+| `T1489` | `sigma/windows/win_service_stop___critical_services.yml` |
 | `T1490` | `sigma/windows/win_shadow_copies_deletion.yml` |
-| `T1547` | `sigma/linux/lnx_suspicious_kernel_module_load.yml` |
+| `T1497` | `sigma/windows/win_sandbox_evasion_check.yml`, `sigma/windows/win_sandbox_evasion_system_checks.yml`, `sigma/windows/win_sandbox_evasion_time_based.yml`, `sigma/windows/win_sandbox_evasion_user_activity.yml` |
+| `T1497.001` | `sigma/windows/win_sandbox_evasion_system_checks.yml` |
+| `T1497.002` | `sigma/windows/win_sandbox_evasion_user_activity.yml` |
+| `T1497.003` | `sigma/windows/win_sandbox_evasion_time_based.yml` |
+| `T1499` | `sigma/windows/win_denial_of_service_indicators.yml` |
+| `T1505` | `sigma/windows/win_web_shell_file_creation.yml` |
+| `T1505.003` | `sigma/windows/win_web_shell_file_creation.yml` |
+| `T1530` | `sigma/cloud/win_access_to_cloud_storage_buckets_via_cli.yml` |
+| `T1531` | `sigma/windows/win_account_deletion_or_disable.yml` |
+| `T1543` | `sigma/windows/win_new_system_service_created.yml`, `sigma/windows/win_windows_service_with_suspicious_binary_path.yml` |
+| `T1543.003` | `sigma/windows/win_windows_service_with_suspicious_binary_path.yml` |
+| `T1547` | `sigma/linux/lnx_suspicious_kernel_module_load.yml`, `sigma/windows/win_registry_run_key_modification_via_command_line.yml`, `sigma/windows/win_security_support_provider_dll_registration.yml` |
+| `T1547.001` | `sigma/windows/win_registry_run_key_modification_via_command_line.yml` |
+| `T1547.005` | `sigma/windows/win_security_support_provider_dll_registration.yml` |
 | `T1547.006` | `sigma/linux/lnx_suspicious_kernel_module_load.yml` |
+| `T1548` | `sigma/windows/win_uac_bypass_via_fodhelper_or_eventviewer.yml` |
+| `T1548.002` | `sigma/windows/win_uac_bypass_via_fodhelper_or_eventviewer.yml` |
 | `T1548.003` | `sigma/linux/lnx_sudoers_modification.yml` |
+| `T1552` | `sigma/windows/win_credentials_in_files___config_file_access.yml`, `sigma/windows/win_search_for_credentials_in_files.yml` |
+| `T1552.001` | `sigma/windows/win_credentials_in_files___config_file_access.yml` |
+| `T1556` | `sigma/cloud/win_mfa_configuration_disabled_or_modified.yml`, `sigma/linux/lnx_authentication_process_modification.yml` |
+| `T1556.006` | `sigma/cloud/win_mfa_configuration_disabled_or_modified.yml` |
 | `T1560` | `sigma/windows/win_archive_sensitive_data.yml` |
 | `T1560.001` | `sigma/windows/win_archive_sensitive_data.yml` |
-| `T1562` | `sigma/windows/win_disable_event_logging.yml` |
+| `T1562` | `sigma/windows/win_disable_event_logging.yml`, `sigma/windows/win_firewall_rule_disabled_or_modified.yml`, `sigma/windows/win_security_tool_disabled_or_killed.yml` |
+| `T1562.001` | `sigma/windows/win_security_tool_disabled_or_killed.yml` |
 | `T1562.002` | `sigma/windows/win_disable_event_logging.yml` |
+| `T1562.004` | `sigma/windows/win_firewall_rule_disabled_or_modified.yml` |
 | `T1562.008` | `sigma/cloud/cloud_aws_suspicious_disable_cloudtrail.yml` |
+| `T1564` | `sigma/windows/win_hidden_file_or_directory_creation.yml` |
+| `T1564.001` | `sigma/windows/win_hidden_file_or_directory_creation.yml` |
+| `T1565` | `sigma/windows/win_hosts_file_modification.yml` |
+| `T1565.001` | `sigma/windows/win_hosts_file_modification.yml` |
 | `T1566` | `sigma/network/net_proxy_newly_registered_domain.yml`, `sigma/windows/win_office_macro_spawn_process.yml` |
 | `T1566.001` | `sigma/windows/win_office_macro_spawn_process.yml` |
 | `T1566.002` | `sigma/network/net_proxy_newly_registered_domain.yml` |
@@ -243,8 +311,14 @@ Tanda ✅ = ada minimal satu rule pada platform tersebut yang memetakan teknik.
 | `T1567.002` | `sigma/windows/win_exfil_cloud_storage_tool.yml` |
 | `T1569` | `sigma/windows/win_service_execution_suspicious.yml` |
 | `T1569.002` | `sigma/windows/win_service_execution_suspicious.yml` |
-| `T1574` | `sigma/windows/win_dll_search_order_hijack.yml` |
+| `T1571` | `sigma/network/win_connection_to_non_standard_port.yml` |
+| `T1572` | `sigma/network/win_protocol_tunneling_via_ssh_or_chisel.yml` |
+| `T1574` | `sigma/windows/win_dll_search_order_hijack.yml`, `sigma/windows/win_dll_side_loading_from_suspicious_directory.yml` |
 | `T1574.001` | `sigma/windows/win_dll_search_order_hijack.yml` |
+| `T1574.002` | `sigma/windows/win_dll_side_loading_from_suspicious_directory.yml` |
+| `T1578` | `sigma/cloud/cloud_cloud_instance_created.yml`, `sigma/cloud/cloud_cloud_instance_deleted.yml` |
+| `T1578.002` | `sigma/cloud/cloud_cloud_instance_created.yml` |
+| `T1578.003` | `sigma/cloud/cloud_cloud_instance_deleted.yml` |
 | `T1611` | `sigma/linux/lnx_container_escape_host_access.yml` |
 | `T1621` | `sigma/cloud/cloud_okta_mfa_fatigue.yml`, `sigma/correlations/mfa_fatigue_correlation.yml` |
 

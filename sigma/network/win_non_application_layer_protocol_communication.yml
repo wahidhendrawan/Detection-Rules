@@ -1,0 +1,29 @@
+title: Non-Application Layer Protocol Communication
+id: 7f9ad3ff-9528-456d-9c6c-47cd47ae0d03
+status: experimental
+description: |
+  Detects indicators of Non-Application Layer Protocol Communication (T1095).
+author: Wahid Hendrawan
+date: 2026/06/04
+references:
+  - https://attack.mitre.org/techniques/T1095/
+logsource:
+  product: windows
+  category: network_connection
+detection:
+  selection:
+    Protocol: 'ICMP'
+    Image|endswith:
+      - '\\powershell.exe'
+      - '\\cmd.exe'
+  condition: selection
+fields:
+  - Image
+  - CommandLine
+  - User
+falsepositives:
+  - Network diagnostic scripts using ping.
+level: medium
+tags:
+  - attack.t1095
+  - attack.command-and-control

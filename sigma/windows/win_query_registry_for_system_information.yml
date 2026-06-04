@@ -1,0 +1,31 @@
+title: Query Registry for System Information
+id: e322e428-e582-4c93-a01c-8f4548ad03bb
+status: experimental
+description: |
+  Detects indicators of Query Registry for System Information (T1012).
+author: Wahid Hendrawan
+date: 2026/06/04
+references:
+  - https://attack.mitre.org/techniques/T1012/
+logsource:
+  product: windows
+  category: process_creation
+detection:
+  selection:
+    Image|endswith: '\\reg.exe'
+    CommandLine|contains:
+      - 'query'
+      - 'HKLM\\SOFTWARE'
+      - 'HKLM\\SYSTEM'
+  condition: selection
+fields:
+  - Image
+  - CommandLine
+  - User
+falsepositives:
+  - Admin scripts querying registry.
+  - Software inventory tools.
+level: low
+tags:
+  - attack.t1012
+  - attack.discovery

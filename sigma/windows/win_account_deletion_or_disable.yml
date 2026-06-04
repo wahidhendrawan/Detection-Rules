@@ -1,0 +1,31 @@
+title: Account Deletion or Disable
+id: 66b236d9-3554-4912-84c6-b196397bcbf8
+status: experimental
+description: |
+  Detects indicators of Account Deletion or Disable (T1531).
+author: Wahid Hendrawan
+date: 2026/06/04
+references:
+  - https://attack.mitre.org/techniques/T1531/
+logsource:
+  product: windows
+  category: process_creation
+detection:
+  selection:
+    CommandLine|contains:
+      - 'net user /delete'
+      - 'net user /active:no'
+      - 'Disable-ADAccount'
+      - 'Remove-ADUser'
+  condition: selection
+fields:
+  - Image
+  - CommandLine
+  - User
+falsepositives:
+  - HR offboarding automation.
+  - Admin cleanup.
+level: high
+tags:
+  - attack.t1531
+  - attack.impact

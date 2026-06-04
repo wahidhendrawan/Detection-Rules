@@ -1,0 +1,32 @@
+title: Proxy Tool Execution
+id: 0c2beacb-a81e-4ad1-9e72-d5d2ec2c271f
+status: experimental
+description: |
+  Detects indicators of Proxy Tool Execution (T1090).
+author: Wahid Hendrawan
+date: 2026/06/04
+references:
+  - https://attack.mitre.org/techniques/T1090/
+logsource:
+  product: windows
+  category: process_creation
+detection:
+  selection:
+    Image|endswith:
+      - '\\plink.exe'
+      - '\\chisel.exe'
+      - '\\nps.exe'
+      - '\\frpc.exe'
+      - '\\ngrok.exe'
+      - '\\iox.exe'
+  condition: selection
+fields:
+  - Image
+  - CommandLine
+  - User
+falsepositives:
+  - Authorized VPN/tunnel tools by IT (should be from Program Files).
+level: high
+tags:
+  - attack.t1090
+  - attack.command-and-control

@@ -1,0 +1,29 @@
+title: Cloud Instance Deleted
+id: 892aa086-8777-47cc-b53a-3eac4113b3a3
+status: experimental
+description: |
+  Detects indicators of Cloud Instance Deleted (T1578.003).
+author: Wahid Hendrawan
+date: 2026/06/04
+references:
+  - https://attack.mitre.org/techniques/T1578/003/
+logsource:
+  product: aws
+  category: process_creation
+detection:
+  selection:
+    eventName:
+      - 'TerminateInstances'
+      - 'StopInstances'
+  condition: selection
+fields:
+  - Image
+  - CommandLine
+  - User
+falsepositives:
+  - Auto-scaling scale-in.
+  - IaC teardown.
+level: low
+tags:
+  - attack.t1578.003
+  - attack.defense-evasion

@@ -1,0 +1,32 @@
+title: Local Account Authentication
+id: dc8f368d-c32a-4bb7-b27d-e2adce966f2a
+status: experimental
+description: |
+  Detects indicators of Local Account Authentication (T1078.003).
+author: Wahid Hendrawan
+date: 2026/06/04
+references:
+  - https://attack.mitre.org/techniques/T1078/003/
+logsource:
+  product: windows
+  category: process_creation
+detection:
+  selection:
+    EventID: 4624
+    LogonType: 10
+    AuthenticationPackage: 'Negotiate'
+  filter_domain:
+    TargetDomainName|contains:
+      - '.'
+  condition: selection and not filter_domain
+fields:
+  - Image
+  - CommandLine
+  - User
+falsepositives:
+  - Admin using local account for RDP.
+  - Break-glass scenarios.
+level: low
+tags:
+  - attack.t1078.003
+  - attack.defense-evasion

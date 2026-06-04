@@ -1,0 +1,33 @@
+title: System Owner/User Discovery
+id: 29fb4c37-41d0-48ab-87cb-89a16729d864
+status: experimental
+description: |
+  Detects indicators of System Owner/User Discovery (T1033).
+author: Wahid Hendrawan
+date: 2026/06/04
+references:
+  - https://attack.mitre.org/techniques/T1033/
+logsource:
+  product: windows
+  category: process_creation
+detection:
+  selection:
+    Image|endswith:
+      - '\\whoami.exe'
+      - '\\query.exe'
+    CommandLine|contains:
+      - 'whoami'
+      - 'query user'
+      - 'quser'
+  condition: selection
+fields:
+  - Image
+  - CommandLine
+  - User
+falsepositives:
+  - Login scripts.
+  - Admin troubleshooting.
+level: low
+tags:
+  - attack.t1033
+  - attack.discovery

@@ -1,0 +1,30 @@
+title: Authentication Process Modification
+id: 790c0cce-4d1e-4b42-8df5-96e19ea9daea
+status: experimental
+description: |
+  Detects indicators of Authentication Process Modification (T1556).
+author: Wahid Hendrawan
+date: 2026/06/04
+references:
+  - https://attack.mitre.org/techniques/T1556/
+logsource:
+  product: linux
+  category: file_event
+detection:
+  selection:
+    TargetFilename|contains:
+      - '/etc/pam.d/'
+      - '/etc/pam.conf'
+      - '/lib/security/'
+  condition: selection
+fields:
+  - Image
+  - CommandLine
+  - User
+falsepositives:
+  - PAM configuration management.
+  - System updates modifying PAM.
+level: high
+tags:
+  - attack.t1556
+  - attack.credential-access

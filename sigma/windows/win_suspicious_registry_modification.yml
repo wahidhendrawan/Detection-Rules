@@ -1,0 +1,36 @@
+title: Suspicious Registry Modification
+id: 471df39e-15c6-458a-9878-78cf22448758
+status: experimental
+description: |
+  Detects indicators of Suspicious Registry Modification (T1112).
+author: Wahid Hendrawan
+date: 2026/06/04
+references:
+  - https://attack.mitre.org/techniques/T1112/
+logsource:
+  product: windows
+  category: registry_event
+detection:
+  selection:
+    EventType: 'SetValue'
+    TargetObject|contains:
+      - '\\CurrentVersion\\Run'
+      - '\\Services\\'
+      - '\\Policies\\Explorer'
+      - '\\Image File Execution'
+  filter_installer:
+    Image|endswith:
+      - '\\msiexec.exe'
+      - '\\TrustedInstaller.exe'
+  condition: selection and not filter_installer
+fields:
+  - Image
+  - CommandLine
+  - User
+falsepositives:
+  - Software install modifying registry.
+  - Group Policy updates.
+level: medium
+tags:
+  - attack.t1112
+  - attack.defense-evasion

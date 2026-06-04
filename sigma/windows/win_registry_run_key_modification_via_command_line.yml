@@ -1,0 +1,30 @@
+title: Registry Run Key Modification via Command Line
+id: 67eb7b14-4d01-41f0-8891-b9b7af1a8651
+status: experimental
+description: |
+  Detects indicators of Registry Run Key Modification via Command Line (T1547.001).
+author: Wahid Hendrawan
+date: 2026/06/04
+references:
+  - https://attack.mitre.org/techniques/T1547/001/
+logsource:
+  product: windows
+  category: process_creation
+detection:
+  selection:
+    Image|endswith: '\\reg.exe'
+    CommandLine|contains|all:
+      - 'add'
+      - 'CurrentVersion\\Run'
+  condition: selection
+fields:
+  - Image
+  - CommandLine
+  - User
+falsepositives:
+  - Software installers adding startup entries.
+  - Admin scripts.
+level: medium
+tags:
+  - attack.t1547.001
+  - attack.persistence

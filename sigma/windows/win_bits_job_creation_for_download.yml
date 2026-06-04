@@ -1,0 +1,31 @@
+title: BITS Job Creation for Download
+id: 1c6393e7-2e0d-4d16-a0af-7255465a3719
+status: experimental
+description: |
+  Detects indicators of BITS Job Creation for Download (T1197).
+author: Wahid Hendrawan
+date: 2026/06/04
+references:
+  - https://attack.mitre.org/techniques/T1197/
+logsource:
+  product: windows
+  category: process_creation
+detection:
+  selection:
+    Image|endswith: '\\bitsadmin.exe'
+    CommandLine|contains:
+      - '/transfer'
+      - '/addfile'
+      - 'http'
+  condition: selection
+fields:
+  - Image
+  - CommandLine
+  - User
+falsepositives:
+  - SCCM/WSUS using BITS.
+  - Legitimate software updaters.
+level: medium
+tags:
+  - attack.t1197
+  - attack.defense-evasion

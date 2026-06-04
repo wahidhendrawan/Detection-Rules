@@ -1,0 +1,32 @@
+title: Valid Account Login at Unusual Time
+id: 5582523d-3bd6-4120-b70c-7f070b0aa8d3
+status: experimental
+description: |
+  Detects indicators of Valid Account Login at Unusual Time (T1078).
+author: Wahid Hendrawan
+date: 2026/06/04
+references:
+  - https://attack.mitre.org/techniques/T1078/
+logsource:
+  product: windows
+  category: process_creation
+detection:
+  selection:
+    EventID: 4624
+    LogonType:
+      - 2
+      - 10
+  filter_service:
+    TargetUserName|endswith: '$'
+  condition: selection and not filter_service
+fields:
+  - Image
+  - CommandLine
+  - User
+falsepositives:
+  - Normal user logins.
+  - Scheduled maintenance.
+level: informational
+tags:
+  - attack.t1078
+  - attack.defense-evasion

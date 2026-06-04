@@ -1,0 +1,31 @@
+title: Hosts File Modification
+id: f051343b-fe07-416d-bcc6-ebb4c5f379dc
+status: experimental
+description: |
+  Detects indicators of Hosts File Modification (T1565.001).
+author: Wahid Hendrawan
+date: 2026/06/04
+references:
+  - https://attack.mitre.org/techniques/T1565/001/
+logsource:
+  product: windows
+  category: file_event
+detection:
+  selection:
+    TargetFilename|contains: '\\drivers\\etc\\hosts'
+  filter_system:
+    Image|endswith:
+      - '\\svchost.exe'
+      - '\\TrustedInstaller.exe'
+  condition: selection and not filter_system
+fields:
+  - Image
+  - CommandLine
+  - User
+falsepositives:
+  - Developer adding local DNS entries.
+  - VPN software.
+level: medium
+tags:
+  - attack.t1565.001
+  - attack.impact

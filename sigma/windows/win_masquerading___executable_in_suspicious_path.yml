@@ -1,0 +1,35 @@
+title: Masquerading - Executable in Suspicious Path
+id: 056544c8-40f9-41c0-8050-5fea90ad16e6
+status: experimental
+description: |
+  Detects indicators of Masquerading - Executable in Suspicious Path (T1036).
+author: Wahid Hendrawan
+date: 2026/06/04
+references:
+  - https://attack.mitre.org/techniques/T1036/
+logsource:
+  product: windows
+  category: process_creation
+detection:
+  selection:
+    Image|contains:
+      - '\\Users\\Public\\'
+      - '\\AppData\\Local\\Temp\\'
+      - '\\Windows\\Temp\\'
+    Image|endswith:
+      - 'svchost.exe'
+      - 'csrss.exe'
+      - 'lsass.exe'
+      - 'services.exe'
+      - 'explorer.exe'
+  condition: selection
+fields:
+  - Image
+  - CommandLine
+  - User
+falsepositives:
+  - Extremely rare - legitimate system binaries never run from these paths.
+level: high
+tags:
+  - attack.t1036
+  - attack.defense-evasion

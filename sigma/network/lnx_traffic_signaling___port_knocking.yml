@@ -1,0 +1,31 @@
+title: Traffic Signaling - Port Knocking
+id: a747981f-550d-4d81-8470-f18947f5564c
+status: experimental
+description: |
+  Detects indicators of Traffic Signaling - Port Knocking (T1205).
+author: Wahid Hendrawan
+date: 2026/06/04
+references:
+  - https://attack.mitre.org/techniques/T1205/
+logsource:
+  product: linux
+  category: network_connection
+detection:
+  selection:
+    DestinationPort:
+      - 1337
+      - 31337
+      - 12345
+      - 65535
+  condition: selection
+fields:
+  - Image
+  - CommandLine
+  - User
+falsepositives:
+  - Network scanning.
+  - Custom applications on non-standard ports.
+level: low
+tags:
+  - attack.t1205
+  - attack.command-and-control

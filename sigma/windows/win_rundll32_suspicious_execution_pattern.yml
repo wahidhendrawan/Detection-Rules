@@ -1,0 +1,32 @@
+title: Rundll32 Suspicious Execution Pattern
+id: cc1f179f-9485-4602-b45e-6ad40f7a9d61
+status: experimental
+description: |
+  Detects indicators of Rundll32 Suspicious Execution Pattern (T1218.011).
+author: Wahid Hendrawan
+date: 2026/06/04
+references:
+  - https://attack.mitre.org/techniques/T1218/011/
+logsource:
+  product: windows
+  category: process_creation
+detection:
+  selection:
+    Image|endswith: '\\rundll32.exe'
+    CommandLine|contains:
+      - 'javascript:'
+      - 'vbscript:'
+      - ',#1'
+      - '\\Temp\\'
+      - '\\AppData\\'
+  condition: selection
+fields:
+  - Image
+  - CommandLine
+  - User
+falsepositives:
+  - Extremely rare legitimate use.
+level: high
+tags:
+  - attack.t1218.011
+  - attack.defense-evasion

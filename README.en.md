@@ -241,12 +241,12 @@ Per-platform boilerplate is available under [`templates/`](templates/).
 
 ## Roadmap
 
-- [x] Auto-translate Sigma → all backends (Elastic / Splunk / Kusto / CrowdStrike) on release.
-- [x] ATT&CK Navigator JSON published per release.
-- [ ] Coverage badge per tactic.
-- [ ] Atomic Red Team mapping for end-to-end rule verification.
-- [ ] Cross-platform rule severity normalization.
-- [ ] CTI-driven tagging (link rules to threat actors / campaigns).
+- ✅ Auto-translate Sigma → all backends (Elastic / Splunk / Kusto / CrowdStrike) on release.
+- ✅ ATT&CK Navigator JSON published per release.
+- ⬜ Coverage badge per tactic.
+- ⬜ Atomic Red Team mapping for end-to-end rule verification.
+- ⬜ Cross-platform rule severity normalization.
+- ⬜ CTI-driven tagging (link rules to threat actors / campaigns).
 
 ---
 

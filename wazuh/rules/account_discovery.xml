@@ -1,0 +1,10 @@
+<group name="attack,discovery">
+  <rule id="100227" level="8">
+    <decoded_as>syslog</decoded_as>
+    <regex type="pcre2">ProcessCommandLine has_any ('net user','net group','net localgroup')</regex>
+    <description>Account Discovery (T1087)</description>
+    <mitre>
+      <id>T1087</id>
+    </mitre>
+  </rule>
+</group>

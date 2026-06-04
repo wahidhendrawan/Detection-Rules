@@ -1,0 +1,16 @@
+// Title: InstallUtil
+// Description: Detects indicators of InstallUtil (T1218.004)
+// MITRE ATT&CK: T1218.004
+// Severity: medium
+// Tactic: defense-evasion
+// Author: Wahid Hendrawan
+// Date: 2026-06-04
+// References:
+//   - https://attack.mitre.org/techniques/T1218/004/
+
+DeviceProcessEvents
+| where Timestamp > ago(24h)
+| where ProcessName='InstallUtil.exe' AND (CommandLine='*Temp*' OR CommandLine='*AppData*')
+| project Timestamp, DeviceName, AccountName, FileName, ProcessCommandLine,
+          InitiatingProcessFileName, InitiatingProcessCommandLine
+| order by Timestamp desc

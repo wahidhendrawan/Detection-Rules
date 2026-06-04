@@ -1,0 +1,16 @@
+// Title: Process Injection
+// Description: Detects indicators of Process Injection (T1055)
+// MITRE ATT&CK: T1055
+// Severity: medium
+// Tactic: privilege-escalation
+// Author: Wahid Hendrawan
+// Date: 2026-06-04
+// References:
+//   - https://attack.mitre.org/techniques/T1055/
+
+DeviceProcessEvents
+| where Timestamp > ago(24h)
+| where ActionType == 'CreateRemoteThread'
+| project Timestamp, DeviceName, AccountName, FileName, ProcessCommandLine,
+          InitiatingProcessFileName, InitiatingProcessCommandLine
+| order by Timestamp desc

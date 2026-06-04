@@ -1,0 +1,16 @@
+// Title: MSBuild
+// Description: Detects indicators of MSBuild (T1127.001)
+// MITRE ATT&CK: T1127.001
+// Severity: medium
+// Tactic: defense-evasion
+// Author: Wahid Hendrawan
+// Date: 2026-06-04
+// References:
+//   - https://attack.mitre.org/techniques/T1127/001/
+
+DeviceProcessEvents
+| where Timestamp > ago(24h)
+| where ProcessName='MSBuild.exe' NOT ParentImage='*devenv.exe*'
+| project Timestamp, DeviceName, AccountName, FileName, ProcessCommandLine,
+          InitiatingProcessFileName, InitiatingProcessCommandLine
+| order by Timestamp desc

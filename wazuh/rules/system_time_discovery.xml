@@ -1,0 +1,10 @@
+<group name="attack,discovery">
+  <rule id="100229" level="8">
+    <decoded_as>syslog</decoded_as>
+    <regex type="pcre2">FileName in~ ('w32tm.exe') or ProcessCommandLine has 'net time'</regex>
+    <description>System Time Discovery (T1124)</description>
+    <mitre>
+      <id>T1124</id>
+    </mitre>
+  </rule>
+</group>

@@ -1,0 +1,10 @@
+<group name="attack,defense_evasion">
+  <rule id="100240" level="8">
+    <decoded_as>syslog</decoded_as>
+    <regex type="pcre2">ProcessCommandLine has_any ('Win32_ComputerSystem','Win32_BIOS','HARDWARE\\DESCRIPTION')</regex>
+    <description>System Checks (T1497.001)</description>
+    <mitre>
+      <id>T1497.001</id>
+    </mitre>
+  </rule>
+</group>

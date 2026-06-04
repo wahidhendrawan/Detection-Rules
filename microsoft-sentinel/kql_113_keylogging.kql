@@ -1,0 +1,16 @@
+// Title: Keylogging
+// Description: Detects indicators of Keylogging (T1056.001)
+// MITRE ATT&CK: T1056.001
+// Severity: medium
+// Tactic: collection
+// Author: Wahid Hendrawan
+// Date: 2026-06-04
+// References:
+//   - https://attack.mitre.org/techniques/T1056/001/
+
+DeviceProcessEvents
+| where Timestamp > ago(24h)
+| where ProcessCommandLine has_any ('GetAsyncKeyState','keylog','keyboard')
+| project Timestamp, DeviceName, AccountName, FileName, ProcessCommandLine,
+          InitiatingProcessFileName, InitiatingProcessCommandLine
+| order by Timestamp desc

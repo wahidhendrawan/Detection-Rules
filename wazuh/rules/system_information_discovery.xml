@@ -1,0 +1,10 @@
+<group name="attack,discovery">
+  <rule id="100226" level="8">
+    <decoded_as>syslog</decoded_as>
+    <regex type="pcre2">FileName in~ ('systeminfo.exe','hostname.exe')</regex>
+    <description>System Information Discovery (T1082)</description>
+    <mitre>
+      <id>T1082</id>
+    </mitre>
+  </rule>
+</group>

@@ -1,0 +1,15 @@
+# Title: Input Capture
+# MITRE ATT&CK: T1056
+# Tactic: collection
+# Severity: medium
+# Author: Wahid Hendrawan
+# Date: 2026-06-04
+# References:
+#   - https://attack.mitre.org/techniques/T1056/
+
+index=windows OR index=endpoint
+sourcetype IN ("XmlWinEventLog:Microsoft-Windows-Sysmon/Operational", "WinEventLog:Security")
+keylogger indicators
+| stats count, values(CommandLine) as cmd, values(User) as user by _time, host, Image, ParentImage
+| where count > 0
+| sort - _time

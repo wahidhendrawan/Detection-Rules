@@ -1,0 +1,10 @@
+<group name="attack,defense_evasion">
+  <rule id="100242" level="8">
+    <decoded_as>syslog</decoded_as>
+    <regex type="pcre2">ProcessCommandLine has_any ('Start-Sleep','timeout /t','GetTickCount64')</regex>
+    <description>Time Based Evasion (T1497.003)</description>
+    <mitre>
+      <id>T1497.003</id>
+    </mitre>
+  </rule>
+</group>

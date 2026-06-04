@@ -1,0 +1,10 @@
+<group name="attack,collection">
+  <rule id="100247" level="8">
+    <decoded_as>syslog</decoded_as>
+    <regex type="pcre2">FileName in~ ('7z.exe','rar.exe','WinRAR.exe') and ProcessCommandLine has_any ('Documents','Desktop','.pst','.kdbx')</regex>
+    <description>Archive Collected Data (T1560)</description>
+    <mitre>
+      <id>T1560</id>
+    </mitre>
+  </rule>
+</group>

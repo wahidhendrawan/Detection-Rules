@@ -1,0 +1,16 @@
+// Title: Trusted Developer Utilities Proxy Execution
+// Description: Detects indicators of Trusted Developer Utilities Proxy Execution (T1127)
+// MITRE ATT&CK: T1127
+// Severity: medium
+// Tactic: defense-evasion
+// Author: Wahid Hendrawan
+// Date: 2026-06-04
+// References:
+//   - https://attack.mitre.org/techniques/T1127/
+
+DeviceProcessEvents
+| where Timestamp > ago(24h)
+| where ProcessName IN ('MSBuild.exe','InstallUtil.exe','RegAsm.exe')
+| project Timestamp, DeviceName, AccountName, FileName, ProcessCommandLine,
+          InitiatingProcessFileName, InitiatingProcessCommandLine
+| order by Timestamp desc

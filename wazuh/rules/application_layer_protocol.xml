@@ -1,0 +1,10 @@
+<group name="attack,command_and_control">
+  <rule id="100225" level="8">
+    <decoded_as>syslog</decoded_as>
+    <regex type="pcre2">rundll32.*outbound</regex>
+    <description>Application Layer Protocol (T1071)</description>
+    <mitre>
+      <id>T1071</id>
+    </mitre>
+  </rule>
+</group>

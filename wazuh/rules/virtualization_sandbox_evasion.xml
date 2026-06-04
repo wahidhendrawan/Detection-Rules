@@ -1,0 +1,10 @@
+<group name="attack,defense_evasion">
+  <rule id="100239" level="8">
+    <decoded_as>syslog</decoded_as>
+    <regex type="pcre2">ProcessCommandLine has_any ('Win32_ComputerSystem','VirtualBox','VMware','QEMU')</regex>
+    <description>Virtualization/Sandbox Evasion (T1497)</description>
+    <mitre>
+      <id>T1497</id>
+    </mitre>
+  </rule>
+</group>

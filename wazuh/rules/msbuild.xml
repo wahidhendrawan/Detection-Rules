@@ -1,0 +1,10 @@
+<group name="attack,defense_evasion">
+  <rule id="100231" level="8">
+    <decoded_as>syslog</decoded_as>
+    <regex type="pcre2">FileName =~ 'MSBuild.exe' and InitiatingProcessFileName !in~ ('devenv.exe','dotnet.exe')</regex>
+    <description>MSBuild (T1127.001)</description>
+    <mitre>
+      <id>T1127.001</id>
+    </mitre>
+  </rule>
+</group>

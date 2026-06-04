@@ -1,0 +1,10 @@
+<group name="attack,exfiltration">
+  <rule id="100216" level="8">
+    <decoded_as>syslog</decoded_as>
+    <regex type="pcre2">powershell.*outbound</regex>
+    <description>Exfiltration Over Alternative Protocol (T1048)</description>
+    <mitre>
+      <id>T1048</id>
+    </mitre>
+  </rule>
+</group>

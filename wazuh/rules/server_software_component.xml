@@ -1,0 +1,10 @@
+<group name="attack,persistence">
+  <rule id="100243" level="8">
+    <decoded_as>syslog</decoded_as>
+    <regex type="pcre2">InitiatingProcessFileName in~ ('w3wp.exe','httpd.exe','nginx.exe') and FileName in~ ('cmd.exe','powershell.exe')</regex>
+    <description>Server Software Component (T1505)</description>
+    <mitre>
+      <id>T1505</id>
+    </mitre>
+  </rule>
+</group>

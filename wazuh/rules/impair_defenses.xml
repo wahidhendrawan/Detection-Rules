@@ -1,0 +1,10 @@
+<group name="attack,defense_evasion">
+  <rule id="100249" level="8">
+    <decoded_as>syslog</decoded_as>
+    <regex type="pcre2">ProcessCommandLine has_any ('DisableRealtimeMonitoring','sc stop WinDefend','taskkill /F /IM MsMpEng')</regex>
+    <description>Impair Defenses (T1562)</description>
+    <mitre>
+      <id>T1562</id>
+    </mitre>
+  </rule>
+</group>

@@ -1,0 +1,10 @@
+<group name="attack,discovery">
+  <rule id="100212" level="8">
+    <decoded_as>syslog</decoded_as>
+    <regex type="pcre2">ipconfig</regex>
+    <description>System Network Configuration Discovery (T1016)</description>
+    <mitre>
+      <id>T1016</id>
+    </mitre>
+  </rule>
+</group>

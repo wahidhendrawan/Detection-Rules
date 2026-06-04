@@ -1,0 +1,16 @@
+// Title: System Network Configuration Discovery
+// Description: Detects indicators of System Network Configuration Discovery (T1016)
+// MITRE ATT&CK: T1016
+// Severity: medium
+// Tactic: discovery
+// Author: Wahid Hendrawan
+// Date: 2026-06-04
+// References:
+//   - https://attack.mitre.org/techniques/T1016/
+
+DeviceProcessEvents
+| where Timestamp > ago(24h)
+| where ProcessName IN ('ipconfig.exe','route.exe','netsh.exe','arp.exe')
+| project Timestamp, DeviceName, AccountName, FileName, ProcessCommandLine,
+          InitiatingProcessFileName, InitiatingProcessCommandLine
+| order by Timestamp desc

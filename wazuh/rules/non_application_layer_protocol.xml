@@ -1,0 +1,10 @@
+<group name="attack,command_and_control">
+  <rule id="100228" level="8">
+    <decoded_as>syslog</decoded_as>
+    <regex type="pcre2">ICMP.*powershell</regex>
+    <description>Non-Application Layer Protocol (T1095)</description>
+    <mitre>
+      <id>T1095</id>
+    </mitre>
+  </rule>
+</group>

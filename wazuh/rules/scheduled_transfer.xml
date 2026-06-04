@@ -1,0 +1,10 @@
+<group name="attack,exfiltration">
+  <rule id="100213" level="8">
+    <decoded_as>syslog</decoded_as>
+    <regex type="pcre2">schtasks.*ftp</regex>
+    <description>Scheduled Transfer (T1029)</description>
+    <mitre>
+      <id>T1029</id>
+    </mitre>
+  </rule>
+</group>

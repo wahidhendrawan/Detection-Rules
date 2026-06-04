@@ -1,0 +1,16 @@
+// Title: Timestomp
+// Description: Detects indicators of Timestomp (T1070.006)
+// MITRE ATT&CK: T1070.006
+// Severity: medium
+// Tactic: defense-evasion
+// Author: Wahid Hendrawan
+// Date: 2026-06-04
+// References:
+//   - https://attack.mitre.org/techniques/T1070/006/
+
+DeviceProcessEvents
+| where Timestamp > ago(24h)
+| where ProcessCommandLine has_any ('CreationTime','LastWriteTime','SetCreationTime','timestomp')
+| project Timestamp, DeviceName, AccountName, FileName, ProcessCommandLine,
+          InitiatingProcessFileName, InitiatingProcessCommandLine
+| order by Timestamp desc

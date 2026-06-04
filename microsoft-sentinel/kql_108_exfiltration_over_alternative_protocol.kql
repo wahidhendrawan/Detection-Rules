@@ -1,0 +1,16 @@
+// Title: Exfiltration Over Alternative Protocol
+// Description: Detects indicators of Exfiltration Over Alternative Protocol (T1048)
+// MITRE ATT&CK: T1048
+// Severity: medium
+// Tactic: exfiltration
+// Author: Wahid Hendrawan
+// Date: 2026-06-04
+// References:
+//   - https://attack.mitre.org/techniques/T1048/
+
+DeviceProcessEvents
+| where Timestamp > ago(24h)
+| where FileName in~ ('powershell.exe','cmd.exe') and RemotePort in (53,8443)
+| project Timestamp, DeviceName, AccountName, FileName, ProcessCommandLine,
+          InitiatingProcessFileName, InitiatingProcessCommandLine
+| order by Timestamp desc

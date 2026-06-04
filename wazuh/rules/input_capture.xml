@@ -1,0 +1,10 @@
+<group name="attack,collection">
+  <rule id="100220" level="8">
+    <decoded_as>syslog</decoded_as>
+    <regex type="pcre2">GetAsyncKeyState</regex>
+    <description>Input Capture (T1056)</description>
+    <mitre>
+      <id>T1056</id>
+    </mitre>
+  </rule>
+</group>

@@ -1,0 +1,10 @@
+<group name="attack,execution">
+  <rule id="100222" level="8">
+    <decoded_as>syslog</decoded_as>
+    <regex type="pcre2">python.*exec</regex>
+    <description>Python (T1059.006)</description>
+    <mitre>
+      <id>T1059.006</id>
+    </mitre>
+  </rule>
+</group>

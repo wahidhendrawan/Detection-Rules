@@ -1,0 +1,16 @@
+// Title: Virtualization/Sandbox Evasion
+// Description: Detects indicators of Virtualization/Sandbox Evasion (T1497)
+// MITRE ATT&CK: T1497
+// Severity: medium
+// Tactic: defense-evasion
+// Author: Wahid Hendrawan
+// Date: 2026-06-04
+// References:
+//   - https://attack.mitre.org/techniques/T1497/
+
+DeviceProcessEvents
+| where Timestamp > ago(24h)
+| where HARDWARE\DESCRIPTION\System\BIOS OR VirtualBox OR VMware
+| project Timestamp, DeviceName, AccountName, FileName, ProcessCommandLine,
+          InitiatingProcessFileName, InitiatingProcessCommandLine
+| order by Timestamp desc

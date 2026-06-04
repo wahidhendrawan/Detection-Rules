@@ -1,18 +1,18 @@
 summary:
   total_techniques: 152
-  total_rules: 672
+  total_rules: 786
   rules_per_platform:
     sigma: 204
     elastic: 58
-    splunk: 19
-    microsoft-sentinel: 103
-    wazuh: 140
+    splunk: 57
+    microsoft-sentinel: 141
+    wazuh: 178
     carbonblack: 142
     falcon: 2
     sentinelone: 2
     falco: 2
   fully_covered: 0
-  single_platform_only: 30
+  single_platform_only: 23
 techniques:
   T1003:
     name: 'OS Credential Dumping'
@@ -205,23 +205,23 @@ techniques:
   T1016:
     name: 'System Network Configuration Discovery'
     tactic: discovery
-    coverage_count: 2
+    coverage_count: 5
     detections:
       sigma:
         - 'sigma/windows/win_system_network_configuration_discovery.yml'
       elastic:
         - 'elastic/endpoint/general/IOCs (ip) to detect Curly COMrades A New Threat Actor Targeting Geopolitical Hotbeds.ndjson'
-      splunk: []
-      microsoft-sentinel: []
-      wazuh: []
+      splunk:
+        - 'splunk/windows/win_system_network_configuration_discovery.spl'
+      microsoft-sentinel:
+        - 'microsoft-sentinel/kql_104_system_network_configuration_discovery.kql'
+      wazuh:
+        - 'wazuh/rules/system_network_configuration_discovery.xml'
       carbonblack: []
       falcon: []
       sentinelone: []
       falco: []
     gaps:
-      - splunk
-      - microsoft-sentinel
-      - wazuh
       - carbonblack
       - falcon
       - sentinelone
@@ -360,24 +360,24 @@ techniques:
   T1029:
     name: 'Scheduled Transfer'
     tactic: exfiltration
-    coverage_count: 2
+    coverage_count: 5
     detections:
       sigma:
         - 'sigma/windows/win_scheduled_data_transfer_to_external.yml'
       elastic:
         - 'elastic/endpoint/general/Scheduled Transfer.ndjson'
         - 'elastic/endpoint/general/Time Based Evasion.ndjson'
-      splunk: []
-      microsoft-sentinel: []
-      wazuh: []
+      splunk:
+        - 'splunk/windows/win_scheduled_transfer.spl'
+      microsoft-sentinel:
+        - 'microsoft-sentinel/kql_105_scheduled_transfer.kql'
+      wazuh:
+        - 'wazuh/rules/scheduled_transfer.xml'
       carbonblack: []
       falcon: []
       sentinelone: []
       falco: []
     gaps:
-      - splunk
-      - microsoft-sentinel
-      - wazuh
       - carbonblack
       - falcon
       - sentinelone
@@ -442,23 +442,23 @@ techniques:
   T1041:
     name: 'Exfiltration Over C2 Channel'
     tactic: exfiltration
-    coverage_count: 2
+    coverage_count: 5
     detections:
       sigma:
         - 'sigma/windows/win_data_exfiltration_over_c2_channel_indicators.yml'
       elastic:
         - 'elastic/endpoint/general/IOCs (ip) to detect Curly COMrades A New Threat Actor Targeting Geopolitical Hotbeds.ndjson'
-      splunk: []
-      microsoft-sentinel: []
-      wazuh: []
+      splunk:
+        - 'splunk/windows/win_exfiltration_over_c2_channel.spl'
+      microsoft-sentinel:
+        - 'microsoft-sentinel/kql_106_exfiltration_over_c2_channel.kql'
+      wazuh:
+        - 'wazuh/rules/exfiltration_over_c2_channel.xml'
       carbonblack: []
       falcon: []
       sentinelone: []
       falco: []
     gaps:
-      - splunk
-      - microsoft-sentinel
-      - wazuh
       - carbonblack
       - falcon
       - sentinelone
@@ -490,16 +490,19 @@ techniques:
   T1047:
     name: 'Windows Management Instrumentation'
     tactic: execution
-    coverage_count: 3
+    coverage_count: 6
     detections:
       sigma:
         - 'sigma/windows/win_wmi_process_creation.yml'
       elastic:
         - 'elastic/endpoint/general/Registry Manipulation via WMI Stdregprov.ndjson'
         - 'elastic/endpoint/windows/win_suspicious_wmic_process.ndjson'
-      splunk: []
-      microsoft-sentinel: []
-      wazuh: []
+      splunk:
+        - 'splunk/windows/win_windows_management_instrumentation.spl'
+      microsoft-sentinel:
+        - 'microsoft-sentinel/kql_107_windows_management_instrumentation.kql'
+      wazuh:
+        - 'wazuh/rules/windows_management_instrumentation.xml'
       carbonblack:
         - 'carbonblack/rules/cb_childproc_creation_wmic_exe.json'
         - 'carbonblack/rules/cb_file_modification_wmic_exe.json'
@@ -510,16 +513,13 @@ techniques:
       sentinelone: []
       falco: []
     gaps:
-      - splunk
-      - microsoft-sentinel
-      - wazuh
       - falcon
       - sentinelone
       - falco
   T1048:
     name: 'Exfiltration Over Alternative Protocol'
     tactic: exfiltration
-    coverage_count: 2
+    coverage_count: 5
     detections:
       sigma:
         - 'sigma/network/win_exfiltration_over_alternative_protocol.yml'
@@ -527,17 +527,17 @@ techniques:
         - 'elastic/endpoint/general/IOCs (ip) to detect Curly COMrades A New Threat Actor Targeting Geopolitical Hotbeds.ndjson'
         - 'elastic/endpoint/network/net_dns_tunneling_entropy.ndjson'
         - 'elastic/network/network_rules.ndjson'
-      splunk: []
-      microsoft-sentinel: []
-      wazuh: []
+      splunk:
+        - 'splunk/windows/win_exfiltration_over_alternative_protocol.spl'
+      microsoft-sentinel:
+        - 'microsoft-sentinel/kql_108_exfiltration_over_alternative_protocol.kql'
+      wazuh:
+        - 'wazuh/rules/exfiltration_over_alternative_protocol.xml'
       carbonblack: []
       falcon: []
       sentinelone: []
       falco: []
     gaps:
-      - splunk
-      - microsoft-sentinel
-      - wazuh
       - carbonblack
       - falcon
       - sentinelone
@@ -545,23 +545,23 @@ techniques:
   T1053:
     name: 'Scheduled Task/Job'
     tactic: persistence
-    coverage_count: 1
+    coverage_count: 4
     detections:
       sigma:
         - 'sigma/windows/win_at_job_creation.yml'
       elastic: []
-      splunk: []
-      microsoft-sentinel: []
-      wazuh: []
+      splunk:
+        - 'splunk/windows/win_scheduled_task_job.spl'
+      microsoft-sentinel:
+        - 'microsoft-sentinel/kql_109_scheduled_task_job.kql'
+      wazuh:
+        - 'wazuh/rules/scheduled_task_job.xml'
       carbonblack: []
       falcon: []
       sentinelone: []
       falco: []
     gaps:
       - elastic
-      - splunk
-      - microsoft-sentinel
-      - wazuh
       - carbonblack
       - falcon
       - sentinelone
@@ -660,24 +660,26 @@ techniques:
   T1055:
     name: 'Process Injection'
     tactic: privilege-escalation
-    coverage_count: 2
+    coverage_count: 5
     detections:
       sigma:
         - 'sigma/windows/win_process_hollowing_indicators.yml'
         - 'sigma/windows/win_process_injection_createremotethread.yml'
       elastic:
         - 'elastic/endpoint/general/HackTool - HollowReaper Execution.ndjson'
-      splunk: []
-      microsoft-sentinel: []
-      wazuh: []
+      splunk:
+        - 'splunk/windows/win_process_hollowing.spl'
+        - 'splunk/windows/win_process_injection.spl'
+      microsoft-sentinel:
+        - 'microsoft-sentinel/kql_110_process_injection.kql'
+        - 'microsoft-sentinel/kql_111_process_hollowing.kql'
+      wazuh:
+        - 'wazuh/rules/process_injection.xml'
       carbonblack: []
       falcon: []
       sentinelone: []
       falco: []
     gaps:
-      - splunk
-      - microsoft-sentinel
-      - wazuh
       - carbonblack
       - falcon
       - sentinelone
@@ -685,23 +687,23 @@ techniques:
   T1055.012:
     name: 'Process Hollowing'
     tactic: defense-evasion
-    coverage_count: 2
+    coverage_count: 5
     detections:
       sigma:
         - 'sigma/windows/win_process_hollowing_indicators.yml'
       elastic:
         - 'elastic/endpoint/general/HackTool - HollowReaper Execution.ndjson'
-      splunk: []
-      microsoft-sentinel: []
-      wazuh: []
+      splunk:
+        - 'splunk/windows/win_process_hollowing.spl'
+      microsoft-sentinel:
+        - 'microsoft-sentinel/kql_111_process_hollowing.kql'
+      wazuh:
+        - 'wazuh/rules/process_hollowing.xml'
       carbonblack: []
       falcon: []
       sentinelone: []
       falco: []
     gaps:
-      - splunk
-      - microsoft-sentinel
-      - wazuh
       - carbonblack
       - falcon
       - sentinelone
@@ -709,23 +711,25 @@ techniques:
   T1056:
     name: 'Input Capture'
     tactic: collection
-    coverage_count: 1
+    coverage_count: 4
     detections:
       sigma:
         - 'sigma/windows/win_keylogger_setwindowshookex.yml'
       elastic: []
-      splunk: []
-      microsoft-sentinel: []
-      wazuh: []
+      splunk:
+        - 'splunk/windows/win_input_capture.spl'
+        - 'splunk/windows/win_keylogging.spl'
+      microsoft-sentinel:
+        - 'microsoft-sentinel/kql_112_input_capture.kql'
+        - 'microsoft-sentinel/kql_113_keylogging.kql'
+      wazuh:
+        - 'wazuh/rules/input_capture.xml'
       carbonblack: []
       falcon: []
       sentinelone: []
       falco: []
     gaps:
       - elastic
-      - splunk
-      - microsoft-sentinel
-      - wazuh
       - carbonblack
       - falcon
       - sentinelone
@@ -733,23 +737,23 @@ techniques:
   T1056.001:
     name: 'Keylogging'
     tactic: collection
-    coverage_count: 1
+    coverage_count: 4
     detections:
       sigma:
         - 'sigma/windows/win_keylogger_setwindowshookex.yml'
       elastic: []
-      splunk: []
-      microsoft-sentinel: []
-      wazuh: []
+      splunk:
+        - 'splunk/windows/win_keylogging.spl'
+      microsoft-sentinel:
+        - 'microsoft-sentinel/kql_113_keylogging.kql'
+      wazuh:
+        - 'wazuh/rules/keylogging.xml'
       carbonblack: []
       falcon: []
       sentinelone: []
       falco: []
     gaps:
       - elastic
-      - splunk
-      - microsoft-sentinel
-      - wazuh
       - carbonblack
       - falcon
       - sentinelone
@@ -777,8 +781,10 @@ techniques:
         - 'elastic/endpoint/windows/win_suspicious_powershell_download.ndjson'
       splunk:
         - 'splunk/windows/win_powershell_suspicious_encoded_command.spl'
+        - 'splunk/windows/win_python.spl'
       microsoft-sentinel:
         - 'microsoft-sentinel/kql_002_proc_exec_powershell.kql'
+        - 'microsoft-sentinel/kql_114_python.kql'
       wazuh:
         - 'wazuh/rules/php_code_injection.xml'
         - 'wazuh/rules/wazuh_auth_bruteforce_many_fail.xml'
@@ -935,14 +941,17 @@ techniques:
   T1059.006:
     name: 'Python'
     tactic: execution
-    coverage_count: 2
+    coverage_count: 5
     detections:
       sigma:
         - 'sigma/windows/win_suspicious_python_execution.yml'
       elastic: []
-      splunk: []
-      microsoft-sentinel: []
-      wazuh: []
+      splunk:
+        - 'splunk/windows/win_python.spl'
+      microsoft-sentinel:
+        - 'microsoft-sentinel/kql_114_python.kql'
+      wazuh:
+        - 'wazuh/rules/python.xml'
       carbonblack:
         - 'carbonblack/rules/cb_childproc_creation_hacker_tool_py.json'
         - 'carbonblack/rules/cb_file_modification_hacker_tool_py.json'
@@ -954,9 +963,6 @@ techniques:
       falco: []
     gaps:
       - elastic
-      - splunk
-      - microsoft-sentinel
-      - wazuh
       - falcon
       - sentinelone
       - falco
@@ -1011,7 +1017,7 @@ techniques:
   T1070:
     name: 'Indicator Removal'
     tactic: defense-evasion
-    coverage_count: 2
+    coverage_count: 5
     detections:
       sigma:
         - 'sigma/linux/lnx_clear_command_history.yml'
@@ -1020,17 +1026,19 @@ techniques:
         - 'elastic/endpoint/general/Defense Evasion – Event Log Cleared Wevtutil.ndjson'
         - 'elastic/endpoint/general/Defense-Evasion-Signed-Binary-Temp.ndjson'
         - 'elastic/endpoint/general/Defense-Evasion-Timestomp-Suspect.ndjson'
-      splunk: []
-      microsoft-sentinel: []
-      wazuh: []
+      splunk:
+        - 'splunk/windows/win_indicator_removal.spl'
+        - 'splunk/windows/win_timestomp.spl'
+      microsoft-sentinel:
+        - 'microsoft-sentinel/kql_115_indicator_removal.kql'
+        - 'microsoft-sentinel/kql_116_timestomp.kql'
+      wazuh:
+        - 'wazuh/rules/indicator_removal.xml'
       carbonblack: []
       falcon: []
       sentinelone: []
       falco: []
     gaps:
-      - splunk
-      - microsoft-sentinel
-      - wazuh
       - carbonblack
       - falcon
       - sentinelone
@@ -1087,23 +1095,23 @@ techniques:
   T1070.006:
     name: 'Timestomp'
     tactic: defense-evasion
-    coverage_count: 2
+    coverage_count: 5
     detections:
       sigma:
         - 'sigma/windows/win_timestomp_file_time_modification.yml'
       elastic:
         - 'elastic/endpoint/general/Defense-Evasion-Timestomp-Suspect.ndjson'
-      splunk: []
-      microsoft-sentinel: []
-      wazuh: []
+      splunk:
+        - 'splunk/windows/win_timestomp.spl'
+      microsoft-sentinel:
+        - 'microsoft-sentinel/kql_116_timestomp.kql'
+      wazuh:
+        - 'wazuh/rules/timestomp.xml'
       carbonblack: []
       falcon: []
       sentinelone: []
       falco: []
     gaps:
-      - splunk
-      - microsoft-sentinel
-      - wazuh
       - carbonblack
       - falcon
       - sentinelone
@@ -1111,7 +1119,7 @@ techniques:
   T1071:
     name: 'Application Layer Protocol'
     tactic: command-and-control
-    coverage_count: 2
+    coverage_count: 5
     detections:
       sigma:
         - 'sigma/network/net_dns_suspicious_tunnel.yml'
@@ -1120,17 +1128,17 @@ techniques:
       elastic:
         - 'elastic/endpoint/general/IOCs (ip) to detect Curly COMrades A New Threat Actor Targeting Geopolitical Hotbeds.ndjson'
         - 'elastic/network/network_rules.ndjson'
-      splunk: []
-      microsoft-sentinel: []
-      wazuh: []
+      splunk:
+        - 'splunk/windows/win_application_layer_protocol.spl'
+      microsoft-sentinel:
+        - 'microsoft-sentinel/kql_117_application_layer_protocol.kql'
+      wazuh:
+        - 'wazuh/rules/application_layer_protocol.xml'
       carbonblack: []
       falcon: []
       sentinelone: []
       falco: []
     gaps:
-      - splunk
-      - microsoft-sentinel
-      - wazuh
       - carbonblack
       - falcon
       - sentinelone
@@ -1344,23 +1352,23 @@ techniques:
   T1082:
     name: 'System Information Discovery'
     tactic: discovery
-    coverage_count: 2
+    coverage_count: 5
     detections:
       sigma:
         - 'sigma/windows/win_system_info_discovery.yml'
       elastic:
         - 'elastic/endpoint/general/System Information Discovery via Registry Queries.ndjson'
-      splunk: []
-      microsoft-sentinel: []
-      wazuh: []
+      splunk:
+        - 'splunk/windows/win_system_information_discovery.spl'
+      microsoft-sentinel:
+        - 'microsoft-sentinel/kql_118_system_information_discovery.kql'
+      wazuh:
+        - 'wazuh/rules/system_information_discovery.xml'
       carbonblack: []
       falcon: []
       sentinelone: []
       falco: []
     gaps:
-      - splunk
-      - microsoft-sentinel
-      - wazuh
       - carbonblack
       - falcon
       - sentinelone
@@ -1368,14 +1376,17 @@ techniques:
   T1087:
     name: 'Account Discovery'
     tactic: discovery
-    coverage_count: 2
+    coverage_count: 5
     detections:
       sigma:
         - 'sigma/windows/win_account_discovery_net.yml'
       elastic: []
-      splunk: []
-      microsoft-sentinel: []
-      wazuh: []
+      splunk:
+        - 'splunk/windows/win_account_discovery.spl'
+      microsoft-sentinel:
+        - 'microsoft-sentinel/kql_119_account_discovery.kql'
+      wazuh:
+        - 'wazuh/rules/account_discovery.xml'
       carbonblack:
         - 'carbonblack/rules/cb_childproc_creation_net_exe.json'
         - 'carbonblack/rules/cb_file_modification_net_exe.json'
@@ -1387,9 +1398,6 @@ techniques:
       falco: []
     gaps:
       - elastic
-      - splunk
-      - microsoft-sentinel
-      - wazuh
       - falcon
       - sentinelone
       - falco
@@ -1494,14 +1502,17 @@ techniques:
   T1095:
     name: 'Non-Application Layer Protocol'
     tactic: command-and-control
-    coverage_count: 2
+    coverage_count: 5
     detections:
       sigma:
         - 'sigma/network/win_non_application_layer_protocol_communication.yml'
       elastic: []
-      splunk: []
-      microsoft-sentinel: []
-      wazuh: []
+      splunk:
+        - 'splunk/windows/win_non_application_layer_protocol.spl'
+      microsoft-sentinel:
+        - 'microsoft-sentinel/kql_120_non_application_layer_protocol.kql'
+      wazuh:
+        - 'wazuh/rules/non_application_layer_protocol.xml'
       carbonblack:
         - 'carbonblack/rules/cb_childproc_creation_nc_exe.json'
         - 'carbonblack/rules/cb_childproc_creation_ncat_exe.json'
@@ -1518,9 +1529,6 @@ techniques:
       falco: []
     gaps:
       - elastic
-      - splunk
-      - microsoft-sentinel
-      - wazuh
       - falcon
       - sentinelone
       - falco
@@ -1784,23 +1792,23 @@ techniques:
   T1124:
     name: 'System Time Discovery'
     tactic: discovery
-    coverage_count: 2
+    coverage_count: 5
     detections:
       sigma:
         - 'sigma/windows/win_system_time_discovery.yml'
       elastic:
         - 'elastic/endpoint/general/System Information Discovery via Registry Queries.ndjson'
-      splunk: []
-      microsoft-sentinel: []
-      wazuh: []
+      splunk:
+        - 'splunk/windows/win_system_time_discovery.spl'
+      microsoft-sentinel:
+        - 'microsoft-sentinel/kql_121_system_time_discovery.kql'
+      wazuh:
+        - 'wazuh/rules/system_time_discovery.xml'
       carbonblack: []
       falcon: []
       sentinelone: []
       falco: []
     gaps:
-      - splunk
-      - microsoft-sentinel
-      - wazuh
       - carbonblack
       - falcon
       - sentinelone
@@ -1808,23 +1816,25 @@ techniques:
   T1127:
     name: 'Trusted Developer Utilities Proxy Execution'
     tactic: defense-evasion
-    coverage_count: 1
+    coverage_count: 4
     detections:
       sigma:
         - 'sigma/windows/win_msbuild_suspicious_execution.yml'
       elastic: []
-      splunk: []
-      microsoft-sentinel: []
-      wazuh: []
+      splunk:
+        - 'splunk/windows/win_msbuild.spl'
+        - 'splunk/windows/win_trusted_developer_utilities_proxy_execution.spl'
+      microsoft-sentinel:
+        - 'microsoft-sentinel/kql_122_trusted_developer_utilities_proxy_execut.kql'
+        - 'microsoft-sentinel/kql_123_msbuild.kql'
+      wazuh:
+        - 'wazuh/rules/trusted_developer_utilities_proxy_execution.xml'
       carbonblack: []
       falcon: []
       sentinelone: []
       falco: []
     gaps:
       - elastic
-      - splunk
-      - microsoft-sentinel
-      - wazuh
       - carbonblack
       - falcon
       - sentinelone
@@ -1832,14 +1842,17 @@ techniques:
   T1127.001:
     name: 'MSBuild'
     tactic: defense-evasion
-    coverage_count: 2
+    coverage_count: 5
     detections:
       sigma:
         - 'sigma/windows/win_msbuild_suspicious_execution.yml'
       elastic: []
-      splunk: []
-      microsoft-sentinel: []
-      wazuh: []
+      splunk:
+        - 'splunk/windows/win_msbuild.spl'
+      microsoft-sentinel:
+        - 'microsoft-sentinel/kql_123_msbuild.kql'
+      wazuh:
+        - 'wazuh/rules/msbuild.xml'
       carbonblack:
         - 'carbonblack/rules/cb_childproc_creation_msbuild_exe.json'
         - 'carbonblack/rules/cb_file_modification_msbuild_exe.json'
@@ -1851,32 +1864,29 @@ techniques:
       falco: []
     gaps:
       - elastic
-      - splunk
-      - microsoft-sentinel
-      - wazuh
       - falcon
       - sentinelone
       - falco
   T1133:
     name: 'External Remote Services'
     tactic: initial-access
-    coverage_count: 1
+    coverage_count: 4
     detections:
       sigma:
         - 'sigma/network/net_external_remote_services_anomalous.yml'
       elastic: []
-      splunk: []
-      microsoft-sentinel: []
-      wazuh: []
+      splunk:
+        - 'splunk/windows/win_external_remote_services.spl'
+      microsoft-sentinel:
+        - 'microsoft-sentinel/kql_124_external_remote_services.kql'
+      wazuh:
+        - 'wazuh/rules/external_remote_services.xml'
       carbonblack: []
       falcon: []
       sentinelone: []
       falco: []
     gaps:
       - elastic
-      - splunk
-      - microsoft-sentinel
-      - wazuh
       - carbonblack
       - falcon
       - sentinelone
@@ -1884,14 +1894,16 @@ techniques:
   T1136:
     name: 'Create Account'
     tactic: persistence
-    coverage_count: 3
+    coverage_count: 4
     detections:
       sigma:
         - 'sigma/windows/win_domain_account_creation.yml'
       elastic: []
-      splunk: []
+      splunk:
+        - 'splunk/windows/win_cloud_account.spl'
       microsoft-sentinel:
         - 'microsoft-sentinel/kql_047_acct_mgr_group_created.kql'
+        - 'microsoft-sentinel/kql_125_cloud_account.kql'
       wazuh: []
       carbonblack:
         - 'carbonblack/rules/cb_childproc_creation_net_exe.json'
@@ -1904,7 +1916,6 @@ techniques:
       falco: []
     gaps:
       - elastic
-      - splunk
       - wazuh
       - falcon
       - sentinelone
@@ -1960,23 +1971,23 @@ techniques:
   T1136.003:
     name: 'Cloud Account'
     tactic: persistence
-    coverage_count: 1
+    coverage_count: 4
     detections:
       sigma:
         - 'sigma/cloud/cloud_github_org_member_added_external.yml'
       elastic: []
-      splunk: []
-      microsoft-sentinel: []
-      wazuh: []
+      splunk:
+        - 'splunk/windows/win_cloud_account.spl'
+      microsoft-sentinel:
+        - 'microsoft-sentinel/kql_125_cloud_account.kql'
+      wazuh:
+        - 'wazuh/rules/cloud_account.xml'
       carbonblack: []
       falcon: []
       sentinelone: []
       falco: []
     gaps:
       - elastic
-      - splunk
-      - microsoft-sentinel
-      - wazuh
       - carbonblack
       - falcon
       - sentinelone
@@ -2070,24 +2081,26 @@ techniques:
   T1205:
     name: 'Traffic Signaling'
     tactic: command-and-control
-    coverage_count: 2
+    coverage_count: 5
     detections:
       sigma:
         - 'sigma/linux/lnx_socket_filter___bpf_program_load.yml'
         - 'sigma/network/lnx_traffic_signaling___port_knocking.yml'
       elastic:
         - 'elastic/endpoint/general/Port Knocking.ndjson'
-      splunk: []
-      microsoft-sentinel: []
-      wazuh: []
+      splunk:
+        - 'splunk/windows/win_socket_filters.spl'
+        - 'splunk/windows/win_traffic_signaling.spl'
+      microsoft-sentinel:
+        - 'microsoft-sentinel/kql_126_traffic_signaling.kql'
+        - 'microsoft-sentinel/kql_127_socket_filters.kql'
+      wazuh:
+        - 'wazuh/rules/traffic_signaling.xml'
       carbonblack: []
       falcon: []
       sentinelone: []
       falco: []
     gaps:
-      - splunk
-      - microsoft-sentinel
-      - wazuh
       - carbonblack
       - falcon
       - sentinelone
@@ -2095,23 +2108,23 @@ techniques:
   T1205.002:
     name: 'Socket Filters'
     tactic: defense-evasion
-    coverage_count: 2
+    coverage_count: 5
     detections:
       sigma:
         - 'sigma/linux/lnx_socket_filter___bpf_program_load.yml'
       elastic:
         - 'elastic/endpoint/general/Port Knocking.ndjson'
-      splunk: []
-      microsoft-sentinel: []
-      wazuh: []
+      splunk:
+        - 'splunk/windows/win_socket_filters.spl'
+      microsoft-sentinel:
+        - 'microsoft-sentinel/kql_127_socket_filters.kql'
+      wazuh:
+        - 'wazuh/rules/socket_filters.xml'
       carbonblack: []
       falcon: []
       sentinelone: []
       falco: []
     gaps:
-      - splunk
-      - microsoft-sentinel
-      - wazuh
       - carbonblack
       - falcon
       - sentinelone
@@ -2119,18 +2132,20 @@ techniques:
   T1218:
     name: 'System Binary Proxy Execution'
     tactic: defense-evasion
-    coverage_count: 2
+    coverage_count: 3
     detections:
       sigma:
         - 'sigma/windows/win_installutil_suspicious.yml'
         - 'sigma/windows/win_regsvr32_suspicious_network_or_script_load.yml'
         - 'sigma/windows/win_rundll32_suspicious_execution_pattern.yml'
       elastic: []
-      splunk: []
+      splunk:
+        - 'splunk/windows/win_installutil.spl'
       microsoft-sentinel:
         - 'microsoft-sentinel/kql_005_proc_exec_rundll32.kql'
         - 'microsoft-sentinel/kql_006_proc_exec_regsvr32.kql'
         - 'microsoft-sentinel/kql_039_file_create_scr.kql'
+        - 'microsoft-sentinel/kql_128_installutil.kql'
       wazuh: []
       carbonblack: []
       falcon: []
@@ -2138,7 +2153,6 @@ techniques:
       falco: []
     gaps:
       - elastic
-      - splunk
       - wazuh
       - carbonblack
       - falcon
@@ -2147,14 +2161,17 @@ techniques:
   T1218.004:
     name: 'InstallUtil'
     tactic: defense-evasion
-    coverage_count: 2
+    coverage_count: 5
     detections:
       sigma:
         - 'sigma/windows/win_installutil_suspicious.yml'
       elastic: []
-      splunk: []
-      microsoft-sentinel: []
-      wazuh: []
+      splunk:
+        - 'splunk/windows/win_installutil.spl'
+      microsoft-sentinel:
+        - 'microsoft-sentinel/kql_128_installutil.kql'
+      wazuh:
+        - 'wazuh/rules/installutil.xml'
       carbonblack:
         - 'carbonblack/rules/cb_childproc_creation_installutil_exe.json'
         - 'carbonblack/rules/cb_file_modification_installutil_exe.json'
@@ -2166,9 +2183,6 @@ techniques:
       falco: []
     gaps:
       - elastic
-      - splunk
-      - microsoft-sentinel
-      - wazuh
       - falcon
       - sentinelone
       - falco
@@ -2259,24 +2273,24 @@ techniques:
   T1219:
     name: 'Remote Access Software'
     tactic: command-and-control
-    coverage_count: 2
+    coverage_count: 5
     detections:
       sigma:
         - 'sigma/windows/win_remote_access_tool_execution.yml'
       elastic:
         - 'elastic/endpoint/general/Remote Access Tool - TacticalRMM Agent Registration to Potentially Attacker-Controlled Server.ndjson'
         - 'elastic/endpoint/general/Suspicious Velociraptor Child Process.ndjson'
-      splunk: []
-      microsoft-sentinel: []
-      wazuh: []
+      splunk:
+        - 'splunk/windows/win_remote_access_software.spl'
+      microsoft-sentinel:
+        - 'microsoft-sentinel/kql_129_remote_access_software.kql'
+      wazuh:
+        - 'wazuh/rules/remote_access_software.xml'
       carbonblack: []
       falcon: []
       sentinelone: []
       falco: []
     gaps:
-      - splunk
-      - microsoft-sentinel
-      - wazuh
       - carbonblack
       - falcon
       - sentinelone
@@ -2332,23 +2346,23 @@ techniques:
   T1486:
     name: 'Data Encrypted for Impact'
     tactic: impact
-    coverage_count: 2
+    coverage_count: 5
     detections:
       sigma:
         - 'sigma/windows/win_ransomware_mass_file_rename.yml'
       elastic:
         - 'elastic/endpoint/general/FunkLocker Ransomware File Creation.ndjson'
-      splunk: []
-      microsoft-sentinel: []
-      wazuh: []
+      splunk:
+        - 'splunk/windows/win_data_encrypted_for_impact.spl'
+      microsoft-sentinel:
+        - 'microsoft-sentinel/kql_130_data_encrypted_for_impact.kql'
+      wazuh:
+        - 'wazuh/rules/data_encrypted_for_impact.xml'
       carbonblack: []
       falcon: []
       sentinelone: []
       falco: []
     gaps:
-      - splunk
-      - microsoft-sentinel
-      - wazuh
       - carbonblack
       - falcon
       - sentinelone
@@ -2416,7 +2430,7 @@ techniques:
   T1497:
     name: 'Virtualization/Sandbox Evasion'
     tactic: defense-evasion
-    coverage_count: 2
+    coverage_count: 5
     detections:
       sigma:
         - 'sigma/windows/win_sandbox_evasion_check.yml'
@@ -2428,17 +2442,23 @@ techniques:
         - 'elastic/endpoint/general/System Checks.ndjson'
         - 'elastic/endpoint/general/User Activity Based Checks.ndjson'
         - 'elastic/endpoint/general/Virtualization Sandbox Evasion.ndjson'
-      splunk: []
-      microsoft-sentinel: []
-      wazuh: []
+      splunk:
+        - 'splunk/windows/win_system_checks.spl'
+        - 'splunk/windows/win_time_based_evasion.spl'
+        - 'splunk/windows/win_user_activity_based_checks.spl'
+        - 'splunk/windows/win_virtualization_sandbox_evasion.spl'
+      microsoft-sentinel:
+        - 'microsoft-sentinel/kql_131_virtualization_sandbox_evasion.kql'
+        - 'microsoft-sentinel/kql_132_system_checks.kql'
+        - 'microsoft-sentinel/kql_133_user_activity_based_checks.kql'
+        - 'microsoft-sentinel/kql_134_time_based_evasion.kql'
+      wazuh:
+        - 'wazuh/rules/virtualization_sandbox_evasion.xml'
       carbonblack: []
       falcon: []
       sentinelone: []
       falco: []
     gaps:
-      - splunk
-      - microsoft-sentinel
-      - wazuh
       - carbonblack
       - falcon
       - sentinelone
@@ -2446,23 +2466,23 @@ techniques:
   T1497.001:
     name: 'System Checks'
     tactic: defense-evasion
-    coverage_count: 2
+    coverage_count: 5
     detections:
       sigma:
         - 'sigma/windows/win_sandbox_evasion_system_checks.yml'
       elastic:
         - 'elastic/endpoint/general/Virtualization Sandbox Evasion.ndjson'
-      splunk: []
-      microsoft-sentinel: []
-      wazuh: []
+      splunk:
+        - 'splunk/windows/win_system_checks.spl'
+      microsoft-sentinel:
+        - 'microsoft-sentinel/kql_132_system_checks.kql'
+      wazuh:
+        - 'wazuh/rules/system_checks.xml'
       carbonblack: []
       falcon: []
       sentinelone: []
       falco: []
     gaps:
-      - splunk
-      - microsoft-sentinel
-      - wazuh
       - carbonblack
       - falcon
       - sentinelone
@@ -2470,23 +2490,23 @@ techniques:
   T1497.002:
     name: 'User Activity Based Checks'
     tactic: defense-evasion
-    coverage_count: 2
+    coverage_count: 5
     detections:
       sigma:
         - 'sigma/windows/win_sandbox_evasion_user_activity.yml'
       elastic:
         - 'elastic/endpoint/general/System Checks.ndjson'
-      splunk: []
-      microsoft-sentinel: []
-      wazuh: []
+      splunk:
+        - 'splunk/windows/win_user_activity_based_checks.spl'
+      microsoft-sentinel:
+        - 'microsoft-sentinel/kql_133_user_activity_based_checks.kql'
+      wazuh:
+        - 'wazuh/rules/user_activity_based_checks.xml'
       carbonblack: []
       falcon: []
       sentinelone: []
       falco: []
     gaps:
-      - splunk
-      - microsoft-sentinel
-      - wazuh
       - carbonblack
       - falcon
       - sentinelone
@@ -2494,23 +2514,23 @@ techniques:
   T1497.003:
     name: 'Time Based Evasion'
     tactic: defense-evasion
-    coverage_count: 2
+    coverage_count: 5
     detections:
       sigma:
         - 'sigma/windows/win_sandbox_evasion_time_based.yml'
       elastic:
         - 'elastic/endpoint/general/User Activity Based Checks.ndjson'
-      splunk: []
-      microsoft-sentinel: []
-      wazuh: []
+      splunk:
+        - 'splunk/windows/win_time_based_evasion.spl'
+      microsoft-sentinel:
+        - 'microsoft-sentinel/kql_134_time_based_evasion.kql'
+      wazuh:
+        - 'wazuh/rules/time_based_evasion.xml'
       carbonblack: []
       falcon: []
       sentinelone: []
       falco: []
     gaps:
-      - splunk
-      - microsoft-sentinel
-      - wazuh
       - carbonblack
       - falcon
       - sentinelone
@@ -2562,23 +2582,23 @@ techniques:
   T1505:
     name: 'Server Software Component'
     tactic: persistence
-    coverage_count: 2
+    coverage_count: 5
     detections:
       sigma:
         - 'sigma/windows/win_web_shell_file_creation.yml'
       elastic:
         - 'elastic/endpoint/general/Potential SAP NetWeaver Webshell Creation.ndjson'
-      splunk: []
-      microsoft-sentinel: []
-      wazuh: []
+      splunk:
+        - 'splunk/windows/win_server_software_component.spl'
+      microsoft-sentinel:
+        - 'microsoft-sentinel/kql_135_server_software_component.kql'
+      wazuh:
+        - 'wazuh/rules/server_software_component.xml'
       carbonblack: []
       falcon: []
       sentinelone: []
       falco: []
     gaps:
-      - splunk
-      - microsoft-sentinel
-      - wazuh
       - carbonblack
       - falcon
       - sentinelone
@@ -2836,23 +2856,23 @@ techniques:
   T1548:
     name: 'Abuse Elevation Control Mechanism'
     tactic: privilege-escalation
-    coverage_count: 2
+    coverage_count: 5
     detections:
       sigma:
         - 'sigma/windows/win_uac_bypass_via_fodhelper_or_eventviewer.yml'
       elastic:
         - 'elastic/endpoint/windows/win_uac_bypass_fodhelper.ndjson'
-      splunk: []
-      microsoft-sentinel: []
-      wazuh: []
+      splunk:
+        - 'splunk/windows/win_abuse_elevation_control_mechanism.spl'
+      microsoft-sentinel:
+        - 'microsoft-sentinel/kql_136_abuse_elevation_control_mechanism.kql'
+      wazuh:
+        - 'wazuh/rules/abuse_elevation_control_mechanism.xml'
       carbonblack: []
       falcon: []
       sentinelone: []
       falco: []
     gaps:
-      - splunk
-      - microsoft-sentinel
-      - wazuh
       - carbonblack
       - falcon
       - sentinelone
@@ -2908,24 +2928,26 @@ techniques:
   T1552:
     name: 'Unsecured Credentials'
     tactic: credential-access
-    coverage_count: 2
+    coverage_count: 5
     detections:
       sigma:
         - 'sigma/windows/win_credentials_in_files___config_file_access.yml'
         - 'sigma/windows/win_search_for_credentials_in_files.yml'
       elastic:
         - 'elastic/endpoint/general/Potential PowerShell Console History Access Attempt via History File.ndjson'
-      splunk: []
-      microsoft-sentinel: []
-      wazuh: []
+      splunk:
+        - 'splunk/windows/win_credentials_in_files.spl'
+        - 'splunk/windows/win_unsecured_credentials.spl'
+      microsoft-sentinel:
+        - 'microsoft-sentinel/kql_137_unsecured_credentials.kql'
+        - 'microsoft-sentinel/kql_138_credentials_in_files.kql'
+      wazuh:
+        - 'wazuh/rules/unsecured_credentials.xml'
       carbonblack: []
       falcon: []
       sentinelone: []
       falco: []
     gaps:
-      - splunk
-      - microsoft-sentinel
-      - wazuh
       - carbonblack
       - falcon
       - sentinelone
@@ -2933,23 +2955,23 @@ techniques:
   T1552.001:
     name: 'Credentials In Files'
     tactic: credential-access
-    coverage_count: 2
+    coverage_count: 5
     detections:
       sigma:
         - 'sigma/windows/win_credentials_in_files___config_file_access.yml'
       elastic:
         - 'elastic/endpoint/general/Potential PowerShell Console History Access Attempt via History File.ndjson'
-      splunk: []
-      microsoft-sentinel: []
-      wazuh: []
+      splunk:
+        - 'splunk/windows/win_credentials_in_files.spl'
+      microsoft-sentinel:
+        - 'microsoft-sentinel/kql_138_credentials_in_files.kql'
+      wazuh:
+        - 'wazuh/rules/credentials_in_files.xml'
       carbonblack: []
       falcon: []
       sentinelone: []
       falco: []
     gaps:
-      - splunk
-      - microsoft-sentinel
-      - wazuh
       - carbonblack
       - falcon
       - sentinelone
@@ -3006,23 +3028,25 @@ techniques:
   T1560:
     name: 'Archive Collected Data'
     tactic: collection
-    coverage_count: 1
+    coverage_count: 4
     detections:
       sigma:
         - 'sigma/windows/win_archive_sensitive_data.yml'
       elastic: []
-      splunk: []
-      microsoft-sentinel: []
-      wazuh: []
+      splunk:
+        - 'splunk/windows/win_archive_collected_data.spl'
+        - 'splunk/windows/win_archive_via_utility.spl'
+      microsoft-sentinel:
+        - 'microsoft-sentinel/kql_139_archive_collected_data.kql'
+        - 'microsoft-sentinel/kql_140_archive_via_utility.kql'
+      wazuh:
+        - 'wazuh/rules/archive_collected_data.xml'
       carbonblack: []
       falcon: []
       sentinelone: []
       falco: []
     gaps:
       - elastic
-      - splunk
-      - microsoft-sentinel
-      - wazuh
       - carbonblack
       - falcon
       - sentinelone
@@ -3030,14 +3054,17 @@ techniques:
   T1560.001:
     name: 'Archive via Utility'
     tactic: collection
-    coverage_count: 2
+    coverage_count: 5
     detections:
       sigma:
         - 'sigma/windows/win_archive_sensitive_data.yml'
       elastic: []
-      splunk: []
-      microsoft-sentinel: []
-      wazuh: []
+      splunk:
+        - 'splunk/windows/win_archive_via_utility.spl'
+      microsoft-sentinel:
+        - 'microsoft-sentinel/kql_140_archive_via_utility.kql'
+      wazuh:
+        - 'wazuh/rules/archive_via_utility.xml'
       carbonblack:
         - 'carbonblack/rules/cb_childproc_creation_7z_exe.json'
         - 'carbonblack/rules/cb_file_modification_7z_exe.json'
@@ -3049,16 +3076,13 @@ techniques:
       falco: []
     gaps:
       - elastic
-      - splunk
-      - microsoft-sentinel
-      - wazuh
       - falcon
       - sentinelone
       - falco
   T1562:
     name: 'Impair Defenses'
     tactic: defense-evasion
-    coverage_count: 2
+    coverage_count: 5
     detections:
       sigma:
         - 'sigma/windows/win_disable_event_logging.yml'
@@ -3066,17 +3090,17 @@ techniques:
         - 'sigma/windows/win_security_tool_disabled_or_killed.yml'
       elastic:
         - 'elastic/endpoint/windows/win_reg_disable_defender.ndjson'
-      splunk: []
-      microsoft-sentinel: []
-      wazuh: []
+      splunk:
+        - 'splunk/windows/win_impair_defenses.spl'
+      microsoft-sentinel:
+        - 'microsoft-sentinel/kql_141_impair_defenses.kql'
+      wazuh:
+        - 'wazuh/rules/impair_defenses.xml'
       carbonblack: []
       falcon: []
       sentinelone: []
       falco: []
     gaps:
-      - splunk
-      - microsoft-sentinel
-      - wazuh
       - carbonblack
       - falcon
       - sentinelone

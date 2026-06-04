@@ -1,0 +1,16 @@
+// Title: Exfiltration Over C2 Channel
+// Description: Detects indicators of Exfiltration Over C2 Channel (T1041)
+// MITRE ATT&CK: T1041
+// Severity: medium
+// Tactic: exfiltration
+// Author: Wahid Hendrawan
+// Date: 2026-06-04
+// References:
+//   - https://attack.mitre.org/techniques/T1041/
+
+DeviceProcessEvents
+| where Timestamp > ago(24h)
+| where ProcessCommandLine has_any ('PostFile','data-binary','Invoke-WebRequest')
+| project Timestamp, DeviceName, AccountName, FileName, ProcessCommandLine,
+          InitiatingProcessFileName, InitiatingProcessCommandLine
+| order by Timestamp desc

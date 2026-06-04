@@ -1,0 +1,10 @@
+<group name="attack,impact">
+  <rule id="100238" level="8">
+    <decoded_as>syslog</decoded_as>
+    <regex type="pcre2">FileName has_any ('.encrypted','.locked','.crypted','.ransom')</regex>
+    <description>Data Encrypted for Impact (T1486)</description>
+    <mitre>
+      <id>T1486</id>
+    </mitre>
+  </rule>
+</group>

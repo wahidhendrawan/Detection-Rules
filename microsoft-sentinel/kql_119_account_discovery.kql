@@ -1,0 +1,16 @@
+// Title: Account Discovery
+// Description: Detects indicators of Account Discovery (T1087)
+// MITRE ATT&CK: T1087
+// Severity: medium
+// Tactic: discovery
+// Author: Wahid Hendrawan
+// Date: 2026-06-04
+// References:
+//   - https://attack.mitre.org/techniques/T1087/
+
+DeviceProcessEvents
+| where Timestamp > ago(24h)
+| where ProcessName IN ('net.exe','net1.exe') AND (CommandLine='*user*' OR CommandLine='*group*')
+| project Timestamp, DeviceName, AccountName, FileName, ProcessCommandLine,
+          InitiatingProcessFileName, InitiatingProcessCommandLine
+| order by Timestamp desc

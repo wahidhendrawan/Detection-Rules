@@ -1,0 +1,16 @@
+// Title: Archive via Utility
+// Description: Detects indicators of Archive via Utility (T1560.001)
+// MITRE ATT&CK: T1560.001
+// Severity: medium
+// Tactic: collection
+// Author: Wahid Hendrawan
+// Date: 2026-06-04
+// References:
+//   - https://attack.mitre.org/techniques/T1560/001/
+
+DeviceProcessEvents
+| where Timestamp > ago(24h)
+| where 7z/rar targeting HR/Finance/pst
+| project Timestamp, DeviceName, AccountName, FileName, ProcessCommandLine,
+          InitiatingProcessFileName, InitiatingProcessCommandLine
+| order by Timestamp desc

@@ -1,0 +1,16 @@
+// Title: Data Encrypted for Impact
+// Description: Detects indicators of Data Encrypted for Impact (T1486)
+// MITRE ATT&CK: T1486
+// Severity: medium
+// Tactic: impact
+// Author: Wahid Hendrawan
+// Date: 2026-06-04
+// References:
+//   - https://attack.mitre.org/techniques/T1486/
+
+DeviceProcessEvents
+| where Timestamp > ago(24h)
+| where file rename *.encrypted OR *.locked OR *.crypted
+| project Timestamp, DeviceName, AccountName, FileName, ProcessCommandLine,
+          InitiatingProcessFileName, InitiatingProcessCommandLine
+| order by Timestamp desc

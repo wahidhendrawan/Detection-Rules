@@ -1,0 +1,15 @@
+# Title: External Remote Services
+# MITRE ATT&CK: T1133
+# Tactic: initial-access
+# Severity: medium
+# Author: Wahid Hendrawan
+# Date: 2026-06-04
+# References:
+#   - https://attack.mitre.org/techniques/T1133/
+
+index=windows OR index=endpoint
+sourcetype IN ("XmlWinEventLog:Microsoft-Windows-Sysmon/Operational", "WinEventLog:Security")
+external remote service login
+| stats count, values(CommandLine) as cmd, values(User) as user by _time, host, Image, ParentImage
+| where count > 0
+| sort - _time

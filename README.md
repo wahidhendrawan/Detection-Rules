@@ -14,10 +14,10 @@
 
 > 🇮🇩 **Bahasa Indonesia** · [🇬🇧 English](README.en.md)
 
-> Kumpulan **detection rules** dan **hunting queries** lintas platform (Sigma,
-> Elastic, Splunk, Microsoft Sentinel, Wazuh, dan Carbon Black) dengan mapping
-> MITRE ATT&CK. Repository ini dimaksudkan sebagai *starter pack* untuk
-> *blue team* dan *detection engineer*.
+> Kumpulan **detection rules** dan **hunting queries** lintas 9 platform (Sigma,
+> Elastic, Splunk, Microsoft Sentinel, Wazuh, Carbon Black, CrowdStrike,
+> SentinelOne, dan Falco) dengan mapping MITRE ATT&CK. Repository ini
+> dimaksudkan sebagai *starter pack* untuk *blue team* dan *detection engineer*.
 
 🌐 **Landing page interaktif:** https://wahidhendrawan.github.io/Detection-Rules/  
 📦 **Latest release (auto-translated):** https://github.com/wahidhendrawan/Detection-Rules/releases/latest
@@ -75,10 +75,10 @@ Detection-Rules/
 ├─ scripts/             # tooling (mis. generator MITRE coverage)
 ├─ templates/           # boilerplate per platform
 ├─ sigma/
-│  ├─ windows/          # 120 rule
+│  ├─ windows/          # 127 rule
 │  ├─ linux/            # 36 rule
-│  ├─ network/          # 15 rule
-│  ├─ cloud/            # 18 rule
+│  ├─ network/          # 22 rule
+│  ├─ cloud/            # 39 rule
 │  └─ correlations/     # 3 aggregation rule
 ├─ elastic/
 │  ├─ endpoint/
@@ -88,13 +88,13 @@ Detection-Rules/
 │  │  └─ general/       # 45 rule (multi-platform / threat-specific)
 │  └─ network/          # 1 rule
 ├─ splunk/
-│  ├─ windows/          # 11 rule
+│  ├─ windows/          # 58 rule
 │  ├─ linux/            # 4 rule
 │  ├─ network/          # 3 rule
 │  └─ cloud/            # 1 rule
-├─ microsoft-sentinel/  # 102 KQL hunting queries
+├─ microsoft-sentinel/  # 150 KQL hunting queries
 ├─ wazuh/
-│  └─ rules/            # 140 XML rule (group "attack")
+│  └─ rules/            # 187 XML rule (group "attack")
 ├─ carbonblack/
 │  ├─ rules/            # 142 JSON EDR query (generated)
 │  └─ tools.yml         # codegen matrix definition

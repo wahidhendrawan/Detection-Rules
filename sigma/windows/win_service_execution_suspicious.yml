@@ -17,8 +17,7 @@ detection:
     CommandLine|contains:
       - 'create'
       - 'start'
-  filter_suspicious:
-  selection_commandline_contains_2:
+  selection_suspicious:
     CommandLine|contains:
       - '\Temp\'
       - '\AppData\'
@@ -26,7 +25,7 @@ detection:
       - 'cmd.exe /c'
       - 'powershell'
       - 'rundll32'
-  condition: selection and filter_suspicious and selection_commandline_contains_2
+  condition: selection and selection_suspicious
 fields:
   - CommandLine
   - User

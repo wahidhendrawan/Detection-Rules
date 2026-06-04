@@ -1,7 +1,7 @@
 {
-  "id": "4c7d3dc9-c996-4114-b120-bc5f45428079",
+  "id": "477ff274-7f76-58d6-892f-908470a33b41",
   "name": "cb_process_creation_schtasks_exe",
-  "description": "Detects process_creation involving schtasks.exe",
+  "description": "Detects process creation involving schtasks.exe (scheduled task abuse)",
   "mitre": [
     "T1053.005"
   ],

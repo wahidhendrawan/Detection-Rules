@@ -1,12 +1,12 @@
 {
-  "id": "1bda8329-7d27-4d85-a761-33faf8fd859f",
+  "id": "3f003649-a887-53da-98e6-788905ceb25a",
   "name": "cb_process_creation_hacker_tool_py",
-  "description": "Detects process_creation involving hacker_tool.py",
+  "description": "Detects process creation involving hacker_tool.py (Python-based hacking tool)",
   "mitre": [
     "T1059.006"
   ],
   "query": "process_name:hacker_tool.py",
-  "severity": 5,
+  "severity": 7,
   "enabled": true,
   "category": "process_creation"
 }

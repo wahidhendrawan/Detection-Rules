@@ -1,0 +1,9 @@
+// CrowdStrike Falcon Query Language (FQL)
+// Title: Certutil Used for File Download
+// MITRE ATT&CK: T1105 - Ingress Tool Transfer
+// Description: Detects certutil.exe abused to download files from remote URLs
+
+event_simpleName=ProcessRollup2
+| FileName=certutil.exe
+| CommandLine=*urlcache* AND CommandLine=*http*
+| table aid, TargetProcessId, ParentProcessId, CommandLine, UserName, timestamp

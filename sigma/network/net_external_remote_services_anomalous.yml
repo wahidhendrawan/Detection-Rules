@@ -1,0 +1,53 @@
+title: External Remote Services Login from Unusual Source
+id: 7a3d8f12-4e6b-4c91-a5d2-9f8e1b3c7d4a
+status: experimental
+description: |
+  Detects VPN or RDP logon events originating from IP addresses outside
+  the corporate range or from countries not typically seen. Indicates
+  potential unauthorized access via external remote services.
+author: Wahid Hendrawan
+date: 2026/06/04
+references:
+  - https://attack.mitre.org/techniques/T1133/
+  - https://www.mandiant.com/m-trends
+logsource:
+  product: windows
+  service: security
+detection:
+  selection:
+    EventID:
+      - 4624
+      - 4625
+    LogonType:
+      - 10  # RemoteInteractive (RDP)
+      - 3   # Network (VPN)
+  filter_internal:
+    IpAddress|startswith:
+      - '10.'
+      - '172.16.'
+      - '172.17.'
+      - '172.18.'
+      - '172.19.'
+      - '172.20.'
+      - '172.21.'
+      - '172.22.'
+      - '172.23.'
+      - '172.24.'
+      - '172.25.'
+      - '172.26.'
+      - '172.27.'
+      - '172.28.'
+      - '172.29.'
+      - '172.30.'
+      - '172.31.'
+      - '192.168.'
+      - '127.'
+  condition: selection and not filter_internal
+falsepositives:
+  - Legitimate remote workers connecting from home ISP
+  - Third-party vendors with authorized remote access
+  - VPN concentrator NAT presenting external IP
+level: medium
+tags:
+  - attack.t1133
+  - attack.initial-access

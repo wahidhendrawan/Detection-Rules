@@ -1,0 +1,30 @@
+{
+  "rule": "carbonblack/rules/cb_childproc_creation_mimikatz_exe.json",
+  "description": "Carbon Black: mimikatz child process (T1003.001) - high",
+  "match_condition": {
+    "childproc_name": { "equals": "mimikatz.exe" }
+  },
+  "test_cases": [
+    {
+      "name": "matches mimikatz child process",
+      "expected": "match",
+      "event": {
+        "childproc_name": "mimikatz.exe"
+      }
+    },
+    {
+      "name": "does not match legitimate process",
+      "expected": "no_match",
+      "event": {
+        "childproc_name": "notepad.exe"
+      }
+    },
+    {
+      "name": "does not match partial name",
+      "expected": "no_match",
+      "event": {
+        "childproc_name": "mimikatz_old.exe"
+      }
+    }
+  ]
+}

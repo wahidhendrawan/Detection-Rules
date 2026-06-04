@@ -1,12 +1,12 @@
 {
-  "id": "5dd73b07-9371-4023-927a-3cfc4a6afc39",
+  "id": "84adfabd-0652-5fca-b1a8-7cca20d6974c",
   "name": "cb_file_modification_hacker_tool_py",
-  "description": "Detects file_modification involving hacker_tool.py",
+  "description": "Detects file modification involving hacker_tool.py (Python-based hacking tool)",
   "mitre": [
     "T1059.006"
   ],
   "query": "filemod_name:hacker_tool.py",
-  "severity": 5,
+  "severity": 7,
   "enabled": true,
   "category": "file_modification"
 }

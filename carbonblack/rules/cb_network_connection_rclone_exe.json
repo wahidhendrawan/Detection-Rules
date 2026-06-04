@@ -1,0 +1,12 @@
+{
+  "id": "c07dce2a-7c5e-5994-bee0-ed0ac0f7ced2",
+  "name": "cb_network_connection_rclone_exe",
+  "description": "Detects network connection involving rclone.exe (cloud exfiltration tool)",
+  "mitre": [
+    "T1567.002"
+  ],
+  "query": "netconn_domain:rclone.exe",
+  "severity": 7,
+  "enabled": true,
+  "category": "network_connection"
+}

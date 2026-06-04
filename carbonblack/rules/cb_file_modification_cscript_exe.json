@@ -1,7 +1,7 @@
 {
-  "id": "539a8d11-c8dc-47fc-acd6-73fa7941ef52",
+  "id": "559f7cf6-5700-5e67-b4fd-5194f8e26737",
   "name": "cb_file_modification_cscript_exe",
-  "description": "Detects file_modification involving cscript.exe",
+  "description": "Detects file modification involving cscript.exe (script host)",
   "mitre": [
     "T1059.005"
   ],

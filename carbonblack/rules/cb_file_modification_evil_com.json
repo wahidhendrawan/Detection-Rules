@@ -1,12 +1,12 @@
 {
-  "id": "3ac53a32-6b9f-4999-be6d-b45982babdd8",
+  "id": "e5b5aab9-cc3d-5e96-9f15-30f71e715a3c",
   "name": "cb_file_modification_evil_com",
-  "description": "Detects file_modification involving evil.com",
+  "description": "Detects file modification involving evil.com (known malicious domain)",
   "mitre": [
     "T1071.001"
   ],
   "query": "filemod_name:evil.com",
-  "severity": 5,
+  "severity": 7,
   "enabled": true,
   "category": "file_modification"
 }

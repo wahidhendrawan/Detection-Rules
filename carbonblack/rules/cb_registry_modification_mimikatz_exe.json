@@ -1,12 +1,12 @@
 {
-  "id": "39200e93-5d0a-49ee-95d1-aabdc143f6e8",
+  "id": "cd12b0c4-ea26-50b8-9835-a2b14c575839",
   "name": "cb_registry_modification_mimikatz_exe",
-  "description": "Detects registry_modification involving mimikatz.exe",
+  "description": "Detects registry modification involving mimikatz.exe (credential dumping tool)",
   "mitre": [
     "T1003.001"
   ],
   "query": "regmod_name:mimikatz.exe",
-  "severity": 5,
+  "severity": 8,
   "enabled": true,
   "category": "registry_modification"
 }

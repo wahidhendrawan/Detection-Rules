@@ -1,0 +1,12 @@
+{
+  "id": "959c5065-acc6-578a-bb12-be68daeaccf4",
+  "name": "cb_registry_modification_wmic_exe",
+  "description": "Detects registry modification involving wmic.exe (WMI command-line)",
+  "mitre": [
+    "T1047"
+  ],
+  "query": "regmod_name:wmic.exe",
+  "severity": 5,
+  "enabled": true,
+  "category": "registry_modification"
+}

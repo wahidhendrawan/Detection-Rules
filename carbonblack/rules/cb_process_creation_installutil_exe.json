@@ -1,0 +1,12 @@
+{
+  "id": "c8ec4ef3-d465-590d-8963-1c0fe7725207",
+  "name": "cb_process_creation_installutil_exe",
+  "description": "Detects process creation involving installutil.exe (.NET install utility bypass)",
+  "mitre": [
+    "T1218.004"
+  ],
+  "query": "process_name:installutil.exe",
+  "severity": 5,
+  "enabled": true,
+  "category": "process_creation"
+}

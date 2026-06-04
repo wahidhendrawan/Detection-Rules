@@ -1,7 +1,7 @@
 {
-  "id": "c6a254d9-5474-4013-855a-de1e266f1789",
+  "id": "04c5dcee-ea50-5bbd-8827-4b4d4ed15e63",
   "name": "cb_registry_modification_rundll32_exe",
-  "description": "Detects registry_modification involving rundll32.exe",
+  "description": "Detects registry modification involving rundll32.exe (signed binary proxy execution)",
   "mitre": [
     "T1218.011"
   ],

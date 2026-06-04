@@ -1,0 +1,12 @@
+{
+  "id": "de32e3dd-efed-5854-9067-cfcd97d2e854",
+  "name": "cb_process_creation_mshta_exe",
+  "description": "Detects process creation involving mshta.exe (HTA execution proxy)",
+  "mitre": [
+    "T1218.005"
+  ],
+  "query": "process_name:mshta.exe",
+  "severity": 6,
+  "enabled": true,
+  "category": "process_creation"
+}

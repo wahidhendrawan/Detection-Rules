@@ -1,7 +1,7 @@
 {
-  "id": "88719531-7384-44ad-b379-8d638ae0dbec",
+  "id": "a9b4e274-1f2d-5e8a-af92-c263ce8d1874",
   "name": "cb_childproc_creation_msbuild_exe",
-  "description": "Detects childproc_creation involving msbuild.exe",
+  "description": "Detects childproc creation involving msbuild.exe (trusted dev tool abuse)",
   "mitre": [
     "T1127.001"
   ],

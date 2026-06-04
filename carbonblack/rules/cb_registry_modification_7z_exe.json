@@ -1,0 +1,12 @@
+{
+  "id": "2d3e6bdf-7156-5e38-afa7-aacb35cb8180",
+  "name": "cb_registry_modification_7z_exe",
+  "description": "Detects registry modification involving 7z.exe (archive for staging)",
+  "mitre": [
+    "T1560.001"
+  ],
+  "query": "regmod_name:7z.exe",
+  "severity": 4,
+  "enabled": true,
+  "category": "registry_modification"
+}

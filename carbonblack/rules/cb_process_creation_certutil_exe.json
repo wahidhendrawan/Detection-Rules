@@ -1,13 +1,13 @@
 {
-  "id": "f2e22add-8427-4705-8e11-943e525db115",
+  "id": "73048dee-48be-5ef4-8482-b63f1a452bfa",
   "name": "cb_process_creation_certutil_exe",
-  "description": "Detects process_creation involving certutil.exe",
+  "description": "Detects process creation involving certutil.exe (LoLBin file download/decode)",
   "mitre": [
     "T1140",
     "T1105"
   ],
   "query": "process_name:certutil.exe",
-  "severity": 5,
+  "severity": 6,
   "enabled": true,
   "category": "process_creation"
 }

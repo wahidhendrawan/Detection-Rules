@@ -1,0 +1,12 @@
+{
+  "id": "1d78fba6-4558-5b06-a4fa-8a88d14332ad",
+  "name": "cb_network_connection_wmic_exe",
+  "description": "Detects network connection involving wmic.exe (WMI command-line)",
+  "mitre": [
+    "T1047"
+  ],
+  "query": "netconn_domain:wmic.exe",
+  "severity": 5,
+  "enabled": true,
+  "category": "network_connection"
+}

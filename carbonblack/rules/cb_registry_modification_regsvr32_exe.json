@@ -1,7 +1,7 @@
 {
-  "id": "36b64ee6-fc51-4f1d-8293-b42e5e2b1c06",
+  "id": "cb5c073d-ddbf-5047-96cc-83393a213134",
   "name": "cb_registry_modification_regsvr32_exe",
-  "description": "Detects registry_modification involving regsvr32.exe",
+  "description": "Detects registry modification involving regsvr32.exe (COM object proxy execution)",
   "mitre": [
     "T1218.010"
   ],

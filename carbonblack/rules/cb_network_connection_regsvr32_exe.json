@@ -1,7 +1,7 @@
 {
-  "id": "f50987ed-5481-472b-add6-fa82f9369e81",
+  "id": "6173da9b-feef-5eed-96bf-04ce15053ef7",
   "name": "cb_network_connection_regsvr32_exe",
-  "description": "Detects network_connection involving regsvr32.exe",
+  "description": "Detects network connection involving regsvr32.exe (COM object proxy execution)",
   "mitre": [
     "T1218.010"
   ],

@@ -1,0 +1,12 @@
+{
+  "id": "0c5b5dfd-6aa3-5c70-96b6-9d1470075abf",
+  "name": "cb_network_connection_installutil_exe",
+  "description": "Detects network connection involving installutil.exe (.NET install utility bypass)",
+  "mitre": [
+    "T1218.004"
+  ],
+  "query": "netconn_domain:installutil.exe",
+  "severity": 5,
+  "enabled": true,
+  "category": "network_connection"
+}

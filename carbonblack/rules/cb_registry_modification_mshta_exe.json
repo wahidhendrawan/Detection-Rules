@@ -1,0 +1,12 @@
+{
+  "id": "b2c79f7f-18c3-5c8a-ad3b-2e37dd188d5e",
+  "name": "cb_registry_modification_mshta_exe",
+  "description": "Detects registry modification involving mshta.exe (HTA execution proxy)",
+  "mitre": [
+    "T1218.005"
+  ],
+  "query": "regmod_name:mshta.exe",
+  "severity": 6,
+  "enabled": true,
+  "category": "registry_modification"
+}

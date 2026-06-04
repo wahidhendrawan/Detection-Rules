@@ -1,12 +1,12 @@
 {
-  "id": "4a41d22b-bbd5-4a7a-b281-636ae29db257",
+  "id": "81b94e18-e190-5e94-9621-77990db8ed91",
   "name": "cb_childproc_creation_procdump_exe",
-  "description": "Detects childproc_creation involving procdump.exe",
+  "description": "Detects childproc creation involving procdump.exe (process memory dump tool)",
   "mitre": [
     "T1003.001"
   ],
   "query": "childproc_name:procdump.exe",
-  "severity": 5,
+  "severity": 7,
   "enabled": true,
   "category": "childproc_creation"
 }

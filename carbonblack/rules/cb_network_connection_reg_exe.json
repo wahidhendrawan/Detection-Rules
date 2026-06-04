@@ -1,0 +1,12 @@
+{
+  "id": "ba4a8977-e5d2-5796-b4b1-941f73b13706",
+  "name": "cb_network_connection_reg_exe",
+  "description": "Detects network connection involving reg.exe (registry manipulation)",
+  "mitre": [
+    "T1112"
+  ],
+  "query": "netconn_domain:reg.exe",
+  "severity": 4,
+  "enabled": true,
+  "category": "network_connection"
+}

@@ -1,12 +1,12 @@
 {
-  "id": "fd60a824-784f-450c-af02-a6212f4bfef4",
+  "id": "ebfc4370-a6fa-53c7-9405-bb3e6198a3f3",
   "name": "cb_registry_modification_evil_com",
-  "description": "Detects registry_modification involving evil.com",
+  "description": "Detects registry modification involving evil.com (known malicious domain)",
   "mitre": [
     "T1071.001"
   ],
   "query": "regmod_name:evil.com",
-  "severity": 5,
+  "severity": 7,
   "enabled": true,
   "category": "registry_modification"
 }

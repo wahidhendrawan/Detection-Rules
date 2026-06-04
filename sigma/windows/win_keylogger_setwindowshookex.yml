@@ -1,0 +1,40 @@
+title: Potential Keylogger Installation via SetWindowsHookEx
+id: 5c1a9e47-2d3f-4b86-a7c8-d9e4f6b2a1c3
+status: experimental
+description: |
+  Detects processes calling SetWindowsHookEx with WH_KEYBOARD_LL (13) or
+  WH_KEYBOARD (2) hook types, which is the primary API used by keyloggers
+  to capture keystrokes system-wide.
+author: Wahid Hendrawan
+date: 2026/06/04
+references:
+  - https://attack.mitre.org/techniques/T1056/001/
+  - https://docs.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-setwindowshookexw
+logsource:
+  product: windows
+  category: process_creation
+detection:
+  selection_api_call:
+    CommandLine|contains:
+      - 'SetWindowsHookEx'
+      - 'WH_KEYBOARD'
+      - 'keyboard hook'
+    Image|endswith:
+      - '\rundll32.exe'
+      - '\regsvr32.exe'
+  selection_sysmon_api:
+    EventID: 8  # CreateRemoteThread - often co-occurs with hook injection
+    TargetImage|endswith:
+      - '\csrss.exe'
+      - '\explorer.exe'
+  condition: selection_api_call or selection_sysmon_api
+falsepositives:
+  - Accessibility software (on-screen keyboards, assistive tech)
+  - Input method editors (IME) for non-Latin languages
+  - RDP session keyboard hooks (mstsc.exe internal)
+  - Security products monitoring keyboard input
+level: high
+tags:
+  - attack.t1056.001
+  - attack.credential-access
+  - attack.collection

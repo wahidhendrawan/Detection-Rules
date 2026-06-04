@@ -1,0 +1,12 @@
+{
+  "id": "e3fa3eb1-1841-5430-aacc-f5bc523063bd",
+  "name": "cb_file_modification_mshta_exe",
+  "description": "Detects file modification involving mshta.exe (HTA execution proxy)",
+  "mitre": [
+    "T1218.005"
+  ],
+  "query": "filemod_name:mshta.exe",
+  "severity": 6,
+  "enabled": true,
+  "category": "file_modification"
+}

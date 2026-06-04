@@ -1,0 +1,23 @@
+title: Okta MFA Push Notification Spam (MFA Fatigue)
+id: 4a6b2c8d-7e3f-4d1a-b9c5-0f2e8d6a3b1c
+status: experimental
+description: Detects multiple denied MFA push notifications in Okta, indicative of MFA fatigue/push spam attacks.
+author: Wahid Hendrawan
+date: 2026/06/04
+references:
+  - https://developer.okta.com/docs/reference/api/system-log/
+logsource:
+  product: okta
+  service: okta
+detection:
+  selection:
+    eventType: system.push.send_factor_verify_push
+    outcome.result: FAILURE
+  condition: selection
+falsepositives:
+  - Users accidentally denying push notifications multiple times
+  - Network connectivity issues causing repeated push attempts
+level: high
+tags:
+  - attack.credential-access
+  - attack.t1621

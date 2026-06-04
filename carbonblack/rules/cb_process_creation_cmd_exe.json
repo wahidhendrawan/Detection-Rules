@@ -1,12 +1,12 @@
 {
-  "id": "bca60bb2-53c5-496d-9358-b2d99727acc6",
+  "id": "ed160111-e7b5-5903-94b3-37688d7b2a84",
   "name": "cb_process_creation_cmd_exe",
-  "description": "Detects process_creation involving cmd.exe",
+  "description": "Detects process creation involving cmd.exe (command shell)",
   "mitre": [
     "T1059.003"
   ],
   "query": "process_name:cmd.exe",
-  "severity": 5,
+  "severity": 4,
   "enabled": true,
   "category": "process_creation"
 }

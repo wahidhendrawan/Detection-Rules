@@ -1,12 +1,12 @@
 {
-  "id": "f30ed525-c96d-4f29-b54c-3611a8c4aac5",
+  "id": "727aa723-364b-5687-8b24-2da35e7a93f1",
   "name": "cb_network_connection_malicious-site_org",
-  "description": "Detects network_connection involving malicious-site.org",
+  "description": "Detects network connection involving malicious-site.org (known malicious domain)",
   "mitre": [
     "T1071.001"
   ],
   "query": "netconn_domain:malicious-site.org",
-  "severity": 5,
+  "severity": 7,
   "enabled": true,
   "category": "network_connection"
 }

@@ -1,7 +1,7 @@
 {
-  "id": "724dbee0-bed5-46cb-88ea-6e7973c491c8",
+  "id": "98dfb5b5-784f-5cdf-8f7a-842e4a76fe3b",
   "name": "cb_childproc_creation_regsvr32_exe",
-  "description": "Detects childproc_creation involving regsvr32.exe",
+  "description": "Detects childproc creation involving regsvr32.exe (COM object proxy execution)",
   "mitre": [
     "T1218.010"
   ],

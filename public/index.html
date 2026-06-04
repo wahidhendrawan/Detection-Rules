@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Detection Rules — Cross-Platform SIEM/EDR Detection Library</title>
+<meta name="description" content="Open-source detection rule library lintas platform (Sigma, Elastic, Splunk, Microsoft Sentinel, Wazuh, Carbon Black) dengan mapping MITRE ATT&CK." />
+<meta property="og:title" content="Detection Rules" />
+<meta property="og:description" content="Cross-platform detection rules with MITRE ATT&CK mapping" />
+<meta property="og:type" content="website" />
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ctext y='28' font-size='28'%3E%F0%9F%9B%A1%EF%B8%8F%3C/text%3E%3C/svg%3E" />
+<style>
+  :root {
+    --bg: #0d1117;
+    --bg-card: #161b22;
+    --bg-hover: #1f262e;
+    --border: #30363d;
+    --text: #e6edf3;
+    --text-muted: #8b949e;
+    --accent: #f78166;
+    --accent-2: #58a6ff;
+    --green: #3fb950;
+    --yellow: #d29922;
+    --red: #f85149;
+    --critical: #b62324;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.5;
+  }
+  a { color: var(--accent-2); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  header {
+    background: linear-gradient(135deg, #161b22 0%, #0d1117 100%);
+    border-bottom: 1px solid var(--border);
+    padding: 60px 24px 40px;
+    text-align: center;
+  }
+  header h1 {
+    font-size: 2.5rem;
+    margin: 0 0 8px;
+    background: linear-gradient(90deg, var(--accent), var(--accent-2));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  header p { color: var(--text-muted); font-size: 1.1rem; margin: 8px 0; }
+  header .actions { margin-top: 20px; display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+  .btn {
+    display: inline-block;
+    background: var(--bg-card);
+    color: var(--text);
+    border: 1px solid var(--border);
+    padding: 10px 20px;
+    border-radius: 6px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+  .btn:hover { background: var(--bg-hover); border-color: var(--text-muted); text-decoration: none; }
+  .btn.primary { background: var(--accent); color: #fff; border-color: var(--accent); }
+  .btn.primary:hover { filter: brightness(1.15); }
+  main { max-width: 1200px; margin: 0 auto; padding: 32px 24px; }
+  section { margin-bottom: 48px; }
+  h2 { font-size: 1.6rem; border-bottom: 1px solid var(--border); padding-bottom: 8px; margin-top: 0; }
+  .stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+  .stat {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 20px;
+    text-align: center;
+  }
+  .stat .value {
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: var(--accent);
+    line-height: 1.1;
+  }
+  .stat .label {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-top: 4px;
+  }
+  .platforms {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 16px;
+  }
+  .platform {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 16px;
+    transition: all 0.15s;
+  }
+  .platform:hover { border-color: var(--accent); transform: translateY(-2px); }
+  .platform .name {
+    font-weight: 600;
+    color: var(--accent-2);
+    margin-bottom: 4px;
+  }
+  .platform .count { font-size: 1.4rem; font-weight: 700; }
+  .platform .desc { font-size: 0.85rem; color: var(--text-muted); margin-top: 4px; }
+  .filter-bar {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 16px;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+  .filter-bar input, .filter-bar select {
+    background: var(--bg-card);
+    color: var(--text);
+    border: 1px solid var(--border);
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-size: 0.95rem;
+  }
+  .filter-bar input { flex: 1 1 240px; }
+  .filter-bar input:focus, .filter-bar select:focus { outline: 2px solid var(--accent); }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+    font-size: 0.92rem;
+  }
+  thead { background: #1f262e; }
+  th, td {
+    padding: 10px 14px;
+    text-align: left;
+    border-bottom: 1px solid var(--border);
+  }
+  th { font-weight: 600; color: var(--text-muted); text-transform: uppercase; font-size: 0.78rem; letter-spacing: 0.05em; }
+  tr:hover td { background: var(--bg-hover); }
+  td.tech-id { font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace; color: var(--accent); font-weight: 600; }
+  td.center { text-align: center; }
+  .check { color: var(--green); font-weight: 700; }
+  .cross { color: var(--text-muted); opacity: 0.4; }
+  .badge {
+    display: inline-block;
+    background: rgba(88,166,255,0.15);
+    color: var(--accent-2);
+    padding: 2px 8px;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: lowercase;
+  }
+  .badge.coverage-1 { background: rgba(248,81,73,0.15); color: var(--red); }
+  .badge.coverage-2,
+  .badge.coverage-3 { background: rgba(210,153,34,0.15); color: var(--yellow); }
+  .badge.coverage-4,
+  .badge.coverage-5 { background: rgba(63,185,80,0.15); color: var(--green); }
+  .badge.coverage-6 { background: rgba(63,185,80,0.3); color: var(--green); }
+  footer {
+    text-align: center;
+    padding: 32px 24px;
+    color: var(--text-muted);
+    border-top: 1px solid var(--border);
+    margin-top: 48px;
+    font-size: 0.9rem;
+  }
+  .loader { color: var(--text-muted); font-style: italic; padding: 24px; text-align: center; }
+  .navigator-frame {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 16px;
+    text-align: center;
+  }
+  .navigator-frame iframe {
+    width: 100%;
+    height: 600px;
+    border: 0;
+    border-radius: 6px;
+  }
+  .tactic-cell {
+    text-transform: capitalize;
+    color: var(--text-muted);
+  }
+  @media (max-width: 720px) {
+    header h1 { font-size: 1.8rem; }
+    th, td { padding: 8px; font-size: 0.8rem; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>🛡️ Detection Rules</h1>
+  <p>Cross-platform SIEM/EDR detection library dengan MITRE ATT&amp;CK mapping</p>
+  <p style="color: var(--text-muted); font-size: 0.95rem;">
+    Sigma · Elastic · Splunk · Microsoft Sentinel · Wazuh · Carbon Black
+  </p>
+  <div class="actions">
+    <a class="btn primary" href="https://github.com/wahidhendrawan/Detection-Rules">
+      ⭐ GitHub Repo
+    </a>
+    <a class="btn" href="https://github.com/wahidhendrawan/Detection-Rules/releases/latest">
+      📦 Latest Release
+    </a>
+    <a class="btn" href="#navigator">
+      🗺️ ATT&amp;CK Navigator
+    </a>
+  </div>
+</header>
+
+<main>
+
+<section>
+  <h2>📊 Statistik</h2>
+  <div class="stats" id="stats">
+    <div class="loader">Loading stats…</div>
+  </div>
+</section>
+
+<section>
+  <h2>📦 Per Platform</h2>
+  <div class="platforms" id="platforms">
+    <div class="loader">Loading…</div>
+  </div>
+</section>
+
+<section>
+  <h2>🎯 Coverage Matrix</h2>
+  <p style="color: var(--text-muted);">
+    Daftar teknik MITRE ATT&amp;CK yang punya minimal satu rule di repo ini.
+    Cari, filter berdasarkan tactic, dan klik link untuk detail.
+  </p>
+  <div class="filter-bar">
+    <input id="search" type="text" placeholder="Cari teknik (T1059, PowerShell, ...)" />
+    <select id="tactic-filter">
+      <option value="">Semua tactic</option>
+    </select>
+    <select id="coverage-filter">
+      <option value="">Semua coverage</option>
+      <option value="1">Single platform (gap!)</option>
+      <option value="2-5">Partial</option>
+      <option value="6">Full coverage</option>
+    </select>
+  </div>
+  <div style="overflow-x: auto;">
+    <table id="coverage-table">
+      <thead>
+        <tr>
+          <th>Technique</th>
+          <th>Name</th>
+          <th>Tactic</th>
+          <th class="center">Sigma</th>
+          <th class="center">Elastic</th>
+          <th class="center">Splunk</th>
+          <th class="center">Sentinel</th>
+          <th class="center">Wazuh</th>
+          <th class="center">CB</th>
+          <th class="center">Coverage</th>
+        </tr>
+      </thead>
+      <tbody id="coverage-body">
+        <tr><td colspan="10" class="loader">Loading rules.index.json…</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section id="navigator">
+  <h2>🗺️ ATT&amp;CK Navigator</h2>
+  <p style="color: var(--text-muted);">
+    Klik tombol di bawah untuk melihat heatmap interaktif di MITRE ATT&amp;CK Navigator.
+    Layer di-generate otomatis tiap merge ke <code>main</code>.
+  </p>
+  <div class="navigator-frame">
+    <p>
+      <a class="btn primary"
+         id="navigator-link"
+         target="_blank"
+         href="#">
+        🚀 Open in ATT&amp;CK Navigator
+      </a>
+      <a class="btn"
+         id="layer-download"
+         href="coverage.json"
+         download>
+        💾 Download layer (coverage.json)
+      </a>
+    </p>
+    <p style="color: var(--text-muted); font-size: 0.85rem; margin-top: 12px;">
+      Atau import manual ke
+      <a href="https://mitre-attack.github.io/attack-navigator/" target="_blank">attack-navigator</a>
+      → Open Existing Layer → Upload from Local
+    </p>
+  </div>
+</section>
+
+<section>
+  <h2>📚 Resource</h2>
+  <div class="platforms">
+    <a class="platform" href="https://github.com/wahidhendrawan/Detection-Rules/blob/main/README.md">
+      <div class="name">📖 README</div>
+      <div class="desc">Dokumentasi utama, struktur repo, quick-start tiap platform.</div>
+    </a>
+    <a class="platform" href="https://github.com/wahidhendrawan/Detection-Rules/blob/main/CONTRIBUTING.md">
+      <div class="name">🤝 Contributing Guide</div>
+      <div class="desc">Standar metadata, naming convention, MITRE tagging.</div>
+    </a>
+    <a class="platform" href="https://github.com/wahidhendrawan/Detection-Rules/blob/main/docs/quality.md">
+      <div class="name">⚖️ Quality Classification</div>
+      <div class="desc">Sistem klasifikasi fidelitas (informational → critical).</div>
+    </a>
+    <a class="platform" href="COVERAGE.md">
+      <div class="name">📊 Coverage Report (MD)</div>
+      <div class="desc">Markdown auto-generated tabel coverage lengkap.</div>
+    </a>
+    <a class="platform" href="rules.index.json">
+      <div class="name">🗂️ rules.index.json</div>
+      <div class="desc">Cross-platform rule manifest (machine-readable).</div>
+    </a>
+    <a class="platform" href="coverage.json">
+      <div class="name">🌐 ATT&amp;CK Layer JSON</div>
+      <div class="desc">Navigator-compatible layer file.</div>
+    </a>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <p>
+    <strong>Detection Rules</strong> · MIT License · 
+    <a href="https://github.com/wahidhendrawan/Detection-Rules">GitHub</a> · 
+    Auto-deployed dari <code>main</code>
+  </p>
+  <p style="font-size: 0.8rem; opacity: 0.7;">
+    Last updated: <span id="last-updated">checking…</span>
+  </p>
+</footer>
+
+<script>
+const PLATFORM_LABELS = {
+  "sigma": "Sigma",
+  "elastic": "Elastic",
+  "splunk": "Splunk",
+  "microsoft-sentinel": "Sentinel",
+  "wazuh": "Wazuh",
+  "carbonblack": "CB"
+};
+const PLATFORM_DESC = {
+  "sigma": "Generic .yml — convert ke any backend",
+  "elastic": ".ndjson — Kibana saved object",
+  "splunk": ".spl — SPL search query",
+  "microsoft-sentinel": ".kql — Sentinel hunting/analytics",
+  "wazuh": ".xml — Wazuh manager rule",
+  "carbonblack": ".json — VMware Carbon Black query"
+};
+
+async function loadJSON(path) {
+  const r = await fetch(path);
+  if (!r.ok) throw new Error(path + " " + r.status);
+  return r.json();
+}
+
+function el(tag, props = {}, ...children) {
+  const e = document.createElement(tag);
+  Object.entries(props).forEach(([k, v]) => {
+    if (k === "class") e.className = v;
+    else if (k === "html") e.innerHTML = v;
+    else e.setAttribute(k, v);
+  });
+  children.flat().forEach(c => {
+    if (c == null) return;
+    e.appendChild(typeof c === "string" ? document.createTextNode(c) : c);
+  });
+  return e;
+}
+
+function renderStats(stats) {
+  const c = document.getElementById("stats");
+  c.innerHTML = "";
+  const items = [
+    ["Rules", stats.total_rules],
+    ["MITRE Techniques", stats.total_techniques],
+    ["Full coverage", stats.fully_covered + " / " + stats.total_techniques],
+    ["Single-platform gaps", stats.single_platform_only],
+    ["Platforms", Object.keys(stats.rules_per_platform).length],
+  ];
+  items.forEach(([label, value]) => {
+    c.appendChild(el("div", {class: "stat"},
+      el("div", {class: "value"}, String(value)),
+      el("div", {class: "label"}, label)
+    ));
+  });
+}
+
+function renderPlatforms(stats) {
+  const c = document.getElementById("platforms");
+  c.innerHTML = "";
+  Object.entries(stats.rules_per_platform).forEach(([p, count]) => {
+    c.appendChild(el("div", {class: "platform"},
+      el("div", {class: "name"}, PLATFORM_LABELS[p] || p),
+      el("div", {class: "count"}, count + " rules"),
+      el("div", {class: "desc"}, PLATFORM_DESC[p] || "")
+    ));
+  });
+}
+
+function renderCoverage(idx) {
+  const tbody = document.getElementById("coverage-body");
+  tbody.innerHTML = "";
+  const search = document.getElementById("search").value.toLowerCase();
+  const tacticFilter = document.getElementById("tactic-filter").value;
+  const covFilter = document.getElementById("coverage-filter").value;
+
+  const techniques = Object.entries(idx.techniques);
+  techniques.sort(([a], [b]) => a.localeCompare(b, undefined, {numeric: true}));
+
+  let visible = 0;
+  for (const [tid, info] of techniques) {
+    if (search) {
+      const hay = (tid + " " + info.name + " " + info.tactic).toLowerCase();
+      if (!hay.includes(search)) continue;
+    }
+    if (tacticFilter && info.tactic !== tacticFilter) continue;
+    if (covFilter) {
+      const cc = info.coverage_count;
+      if (covFilter === "1" && cc !== 1) continue;
+      if (covFilter === "2-5" && (cc < 2 || cc > 5)) continue;
+      if (covFilter === "6" && cc !== 6) continue;
+    }
+
+    const row = el("tr");
+    row.appendChild(el("td", {class: "tech-id"}, tid));
+    row.appendChild(el("td", {}, info.name));
+    row.appendChild(el("td", {class: "tactic-cell"}, info.tactic.replace(/-/g, " ")));
+    Object.keys(PLATFORM_LABELS).forEach(p => {
+      const has = info.detections[p] && info.detections[p].length > 0;
+      const cell = el("td", {class: "center"});
+      cell.innerHTML = has ? `<span class="check" title="${info.detections[p].length} rule">✓</span>` : '<span class="cross">·</span>';
+      row.appendChild(cell);
+    });
+    const covCell = el("td", {class: "center"});
+    covCell.innerHTML = `<span class="badge coverage-${info.coverage_count}">${info.coverage_count}/6</span>`;
+    row.appendChild(covCell);
+    tbody.appendChild(row);
+    visible++;
+  }
+
+  if (visible === 0) {
+    tbody.appendChild(el("tr",
+      {},
+      el("td", {colspan: "10", class: "loader"}, "Tidak ada teknik yang cocok dengan filter.")
+    ));
+  }
+}
+
+function populateTactics(idx) {
+  const tactics = new Set(Object.values(idx.techniques).map(t => t.tactic));
+  const sel = document.getElementById("tactic-filter");
+  [...tactics].sort().forEach(t => {
+    sel.appendChild(el("option", {value: t}, t.replace(/-/g, " ")));
+  });
+}
+
+(async () => {
+  try {
+    const [stats, idx] = await Promise.all([
+      loadJSON("stats.json"),
+      loadJSON("rules.index.json"),
+    ]);
+
+    renderStats(stats);
+    renderPlatforms(stats);
+    populateTactics(idx);
+    renderCoverage(idx);
+
+    document.getElementById("search").addEventListener("input", () => renderCoverage(idx));
+    document.getElementById("tactic-filter").addEventListener("change", () => renderCoverage(idx));
+    document.getElementById("coverage-filter").addEventListener("change", () => renderCoverage(idx));
+
+    // Navigator URL
+    const baseUrl = location.origin + location.pathname.replace(/\/[^\/]*$/, "/");
+    const layerUrl = baseUrl + "coverage.json";
+    document.getElementById("navigator-link").href =
+      "https://mitre-attack.github.io/attack-navigator/#layerURL=" + encodeURIComponent(layerUrl);
+
+    document.getElementById("last-updated").textContent =
+      new Date().toLocaleDateString("id-ID", {year: "numeric", month: "long", day: "numeric"});
+  } catch (e) {
+    console.error(e);
+    document.getElementById("stats").innerHTML =
+      `<div class="loader" style="color: var(--red);">Error loading data: ${e.message}</div>`;
+  }
+})();
+</script>
+
+</body>
+</html>

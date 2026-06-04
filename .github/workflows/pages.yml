@@ -1,0 +1,81 @@
+name: Deploy GitHub Pages
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'sigma/**'
+      - 'elastic/**'
+      - 'splunk/**'
+      - 'microsoft-sentinel/**'
+      - 'wazuh/**'
+      - 'carbonblack/**'
+      - 'scripts/**'
+      - 'docs/**'
+      - 'public/**'
+      - '.github/workflows/pages.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install deps
+        run: pip install pyyaml==6.0.2
+
+      - name: Generate coverage + index
+        run: |
+          python3 scripts/generate_coverage.py
+          python3 scripts/generate_index.py
+
+      - name: Assemble site
+        run: |
+          mkdir -p site
+          cp -r public/* site/
+          cp coverage.json site/
+          cp rules.index.json site/
+          cp COVERAGE.md site/
+          # Stats for the landing page
+          python3 - <<'PY'
+          import json, pathlib
+          idx = json.loads(pathlib.Path("rules.index.json").read_text())
+          cov = json.loads(pathlib.Path("coverage.json").read_text())
+          stats = {
+              "total_rules": idx["summary"]["total_rules"],
+              "total_techniques": idx["summary"]["total_techniques"],
+              "rules_per_platform": idx["summary"]["rules_per_platform"],
+              "fully_covered": idx["summary"]["fully_covered"],
+              "single_platform_only": idx["summary"]["single_platform_only"],
+              "navigator_version": cov["versions"],
+          }
+          pathlib.Path("site/stats.json").write_text(json.dumps(stats, indent=2))
+          PY
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

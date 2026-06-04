@@ -51,8 +51,9 @@ jobs:
       - name: Install Bandit
         run: pip install "bandit[toml]==1.8.0"
       - name: Run Bandit
-        # `-ll` warns on medium+, `-c .bandit` reads any project config.
-        run: bandit -r scripts/ -ll -ii --severity-level medium
+        # `--severity-level medium` filters out low-severity findings.
+        # `--confidence-level medium` filters out low-confidence findings.
+        run: bandit -r scripts/ --severity-level medium --confidence-level medium
 
   pip-audit:
     name: pip-audit (dependency vulnerabilities)

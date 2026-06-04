@@ -125,7 +125,7 @@ TECHNIQUE_INFO: dict[str, tuple[str, str]] = {
     "T1611":     ("Escape to Host", "privilege-escalation"),
 }
 
-PLATFORMS_ORDER = ["sigma", "elastic", "splunk", "microsoft-sentinel", "wazuh", "carbonblack"]
+PLATFORMS_ORDER = ["sigma", "elastic", "splunk", "microsoft-sentinel", "wazuh", "carbonblack", "falcon", "sentinelone", "falco"]
 
 
 def add_arguments(parser: ArgumentParser) -> None:

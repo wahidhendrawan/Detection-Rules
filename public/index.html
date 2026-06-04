@@ -164,9 +164,9 @@
   .badge.coverage-1 { background: rgba(248,81,73,0.15); color: var(--red); }
   .badge.coverage-2,
   .badge.coverage-3 { background: rgba(210,153,34,0.15); color: var(--yellow); }
-  .badge.coverage-4,
-  .badge.coverage-5 { background: rgba(63,185,80,0.15); color: var(--green); }
-  .badge.coverage-6 { background: rgba(63,185,80,0.3); color: var(--green); }
+  .badge.coverage-6,
+  .badge.coverage-7 { background: rgba(63,185,80,0.15); color: var(--green); }
+  .badge.coverage-9 { background: rgba(63,185,80,0.3); color: var(--green); }
   footer {
     text-align: center;
     padding: 32px 24px;
@@ -205,7 +205,7 @@
   <h1>🛡️ Detection Rules</h1>
   <p>Cross-platform SIEM/EDR detection library dengan MITRE ATT&amp;CK mapping</p>
   <p style="color: var(--text-muted); font-size: 0.95rem;">
-    Sigma · Elastic · Splunk · Microsoft Sentinel · Wazuh · Carbon Black
+    Sigma · Elastic · Splunk · Microsoft Sentinel · Wazuh · Carbon Black · CrowdStrike · SentinelOne · Falco
   </p>
   <div class="actions">
     <a class="btn primary" href="https://github.com/wahidhendrawan/Detection-Rules">
@@ -267,11 +267,14 @@
           <th class="center">Sentinel</th>
           <th class="center">Wazuh</th>
           <th class="center">CB</th>
+          <th class="center">Falcon</th>
+          <th class="center">S1</th>
+          <th class="center">Falco</th>
           <th class="center">Coverage</th>
         </tr>
       </thead>
       <tbody id="coverage-body">
-        <tr><td colspan="10" class="loader">Loading rules.index.json…</td></tr>
+        <tr><td colspan="13" class="loader">Loading rules.index.json…</td></tr>
       </tbody>
     </table>
   </div>
@@ -356,7 +359,10 @@ const PLATFORM_LABELS = {
   "splunk": "Splunk",
   "microsoft-sentinel": "Sentinel",
   "wazuh": "Wazuh",
-  "carbonblack": "CB"
+  "carbonblack": "CB",
+  "falcon": "CrowdStrike",
+  "sentinelone": "SentinelOne",
+  "falco": "Falco"
 };
 const PLATFORM_DESC = {
   "sigma": "Generic .yml — convert ke any backend",
@@ -364,7 +370,10 @@ const PLATFORM_DESC = {
   "splunk": ".spl — SPL search query",
   "microsoft-sentinel": ".kql — Sentinel hunting/analytics",
   "wazuh": ".xml — Wazuh manager rule",
-  "carbonblack": ".json — VMware Carbon Black query"
+  "carbonblack": ".json — VMware Carbon Black query",
+  "falcon": ".fql — CrowdStrike Falcon Query Language",
+  "sentinelone": ".s1ql — SentinelOne Deep Visibility query",
+  "falco": ".yaml — Falco cloud-native runtime rules"
 };
 
 async function loadJSON(path) {
@@ -452,7 +461,7 @@ function renderCoverage(idx) {
       row.appendChild(cell);
     });
     const covCell = el("td", {class: "center"});
-    covCell.innerHTML = `<span class="badge coverage-${info.coverage_count}">${info.coverage_count}/6</span>`;
+    covCell.innerHTML = `<span class="badge coverage-${info.coverage_count}">${info.coverage_count}/9</span>`;
     row.appendChild(covCell);
     tbody.appendChild(row);
     visible++;

@@ -1,0 +1,7 @@
+# Title: Brute Force Followed by Successful Login
+# MITRE ATT&CK: T1110.001
+# Severity: high
+# Type: correlation
+index=windows sourcetype="WinEventLog:Security" (EventCode=4625 OR EventCode=4624)
+| stats count(eval(EventCode=4625)) as failed, count(eval(EventCode=4624)) as success by Account_Name, ComputerName, span=10m
+| where failed >= 5 AND success >= 1

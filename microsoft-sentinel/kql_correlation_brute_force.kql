@@ -1,0 +1,8 @@
+// Title: Brute Force Followed by Successful Login
+// MITRE ATT&CK: T1110.001
+// Severity: high
+// Type: correlation (5+ failed logins then success within 10m)
+SecurityEvent
+| where EventID in (4625, 4624)
+| summarize FailedCount=countif(EventID == 4625), SuccessCount=countif(EventID == 4624) by TargetUserName, Computer, bin(TimeGenerated, 10m)
+| where FailedCount >= 5 and SuccessCount >= 1

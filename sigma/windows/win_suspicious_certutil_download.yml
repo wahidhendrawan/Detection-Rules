@@ -25,5 +25,10 @@ fields:
 falsepositives:
   - Legitimate administrative scripts updating certificates (though usually don't use -urlcache -split -f for generic files).
 level: high
+custom:
+  effectiveness: 0.74
+  fp_rate: 0.26
+  last_tuned: 2026/05/10
+  alert_volume: medium
 tags:
   - attack.t1105

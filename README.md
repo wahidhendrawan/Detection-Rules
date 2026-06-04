@@ -241,18 +241,18 @@ Boilerplate per platform tersedia di [`templates/`](templates/).
 
 ## Roadmap
 
-- [x] Tambah workflow auto-translate Sigma → semua backend (Elastic/Splunk/Kusto/CrowdStrike) via release artifact.
-- [x] Generate ATT&CK Navigator JSON ke GitHub Pages.
-- [x] Coverage badge dinamis (per tactic).
-- [x] Atomic Red Team mapping untuk verifikasi rule.
-- [x] Rule severity normalization (cross-platform) — `detection_rules lint-severity`.
-- [x] EDR vendor expansion (SentinelOne, CrowdStrike Falcon, Falco).
-- [x] Cloud/SaaS rules (AWS, Azure, GCP, Okta, GitHub).
-- [ ] Sigma correlation rules end-to-end (pending pySigma correlation support).
-- [ ] CI integration test dengan Elastic docker (end-to-end alert verification).
-- [ ] Deploy workflow ke production SIEM (Elastic/Splunk/Sentinel).
-- [ ] Rule effectiveness scoring dari real SOC feedback.
-- [ ] Community monthly rule sprint program.
+- ✅ Tambah workflow auto-translate Sigma → semua backend (Elastic/Splunk/Kusto/CrowdStrike) via release artifact.
+- ✅ Generate ATT&CK Navigator JSON ke GitHub Pages.
+- ✅ Coverage badge dinamis (per tactic).
+- ✅ Atomic Red Team mapping untuk verifikasi rule.
+- ✅ Rule severity normalization (cross-platform) — `detection_rules lint-severity`.
+- ✅ EDR vendor expansion (SentinelOne, CrowdStrike Falcon, Falco).
+- ✅ Cloud/SaaS rules (AWS, Azure, GCP, Okta, GitHub).
+- ⬜ Sigma correlation rules end-to-end (pending pySigma correlation support).
+- ⬜ CI integration test dengan Elastic docker (end-to-end alert verification).
+- ⬜ Deploy workflow ke production SIEM (Elastic/Splunk/Sentinel).
+- ⬜ Rule effectiveness scoring dari real SOC feedback.
+- ⬜ Community monthly rule sprint program.
 
 ---
 

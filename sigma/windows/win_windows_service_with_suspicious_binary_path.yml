@@ -13,14 +13,15 @@ logsource:
 detection:
   selection:
     Image|endswith: '\\sc.exe'
-    CommandLine|contains:
+    CommandLine|contains|all:
       - 'create'
+  selection_path:
     CommandLine|contains:
       - '\\Temp\\'
       - '\\AppData\\'
       - 'cmd.exe'
       - 'powershell'
-  condition: selection
+  condition: selection and selection_path
 fields:
   - Image
   - CommandLine

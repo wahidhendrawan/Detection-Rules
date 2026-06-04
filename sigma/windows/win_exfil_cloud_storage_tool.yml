@@ -1,0 +1,41 @@
+title: Data Exfiltration via Cloud Storage Tool
+id: a1b2c3d4-eeee-4aaa-beee-000000000014
+status: experimental
+description: |
+  Detects execution of cloud storage sync tools (rclone, megacmd,
+  azcopy) that may indicate data exfiltration to cloud storage.
+author: Wahid Hendrawan
+date: 2026/06/04
+references:
+  - https://attack.mitre.org/techniques/T1567/002/
+logsource:
+  product: windows
+  category: process_creation
+detection:
+  selection:
+    Image|endswith:
+      - '\rclone.exe'
+      - '\megacmd.exe'
+      - '\MEGAcmdServer.exe'
+      - '\azcopy.exe'
+      - '\gsutil.exe'
+      - '\aws.exe'
+    CommandLine|contains:
+      - 'copy'
+      - 'sync'
+      - 'move'
+      - 'upload'
+      - 'cp'
+  condition: selection
+fields:
+  - Image
+  - CommandLine
+  - User
+  - ParentImage
+falsepositives:
+  - Admin yang sah memindahkan data ke cloud backup.
+  - CI/CD pipeline yang upload artifacts.
+level: high
+tags:
+  - attack.t1567.002
+  - attack.exfiltration

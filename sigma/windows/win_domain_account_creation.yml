@@ -1,0 +1,41 @@
+title: Domain Account Creation via Command Line
+id: a1b2c3d4-ffff-4aaa-bfff-000000000015
+status: experimental
+description: |
+  Detects domain account creation via net.exe or dsadd which may
+  indicate attacker creating persistence accounts.
+author: Wahid Hendrawan
+date: 2026/06/04
+references:
+  - https://attack.mitre.org/techniques/T1136/002/
+logsource:
+  product: windows
+  category: process_creation
+detection:
+  selection_net:
+    Image|endswith:
+      - '\net.exe'
+      - '\net1.exe'
+    CommandLine|contains|all:
+      - 'user'
+      - '/add'
+      - '/domain'
+  selection_dsadd:
+    Image|endswith: '\dsadd.exe'
+    CommandLine|contains: 'user'
+  selection_powershell:
+    CommandLine|contains:
+      - 'New-ADUser'
+  condition: 1 of selection_*
+fields:
+  - Image
+  - CommandLine
+  - User
+  - ParentImage
+falsepositives:
+  - AD administrator yang membuat user baru (biasa via GUI/ADUC).
+  - Provisioning automation (seharusnya pakai service account dedicated).
+level: high
+tags:
+  - attack.t1136.002
+  - attack.persistence

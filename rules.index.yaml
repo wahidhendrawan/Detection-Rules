@@ -1,8 +1,8 @@
 summary:
-  total_techniques: 147
-  total_rules: 597
+  total_techniques: 149
+  total_rules: 612
   rules_per_platform:
-    sigma: 129
+    sigma: 144
     elastic: 58
     splunk: 19
     microsoft-sentinel: 103
@@ -12,7 +12,7 @@ summary:
     sentinelone: 2
     falco: 2
   fully_covered: 0
-  single_platform_only: 77
+  single_platform_only: 58
 techniques:
   T1003:
     name: 'OS Credential Dumping'
@@ -21,6 +21,8 @@ techniques:
     detections:
       sigma:
         - 'sigma/windows/win_credential_dump_indicators.yml'
+        - 'sigma/windows/win_ntds_dit_access.yml'
+        - 'sigma/windows/win_sam_registry_dump.yml'
       elastic: []
       splunk: []
       microsoft-sentinel:
@@ -80,9 +82,10 @@ techniques:
   T1003.002:
     name: 'Security Account Manager'
     tactic: credential-access
-    coverage_count: 1
+    coverage_count: 2
     detections:
-      sigma: []
+      sigma:
+        - 'sigma/windows/win_sam_registry_dump.yml'
       elastic: []
       splunk: []
       microsoft-sentinel:
@@ -93,7 +96,6 @@ techniques:
       sentinelone: []
       falco: []
     gaps:
-      - sigma
       - elastic
       - splunk
       - wazuh
@@ -104,9 +106,10 @@ techniques:
   T1003.003:
     name: 'NTDS'
     tactic: credential-access
-    coverage_count: 1
+    coverage_count: 2
     detections:
-      sigma: []
+      sigma:
+        - 'sigma/windows/win_ntds_dit_access.yml'
       elastic: []
       splunk: []
       microsoft-sentinel:
@@ -117,7 +120,6 @@ techniques:
       sentinelone: []
       falco: []
     gaps:
-      - sigma
       - elastic
       - splunk
       - wazuh
@@ -154,9 +156,10 @@ techniques:
   T1005:
     name: 'Data from Local System'
     tactic: collection
-    coverage_count: 1
+    coverage_count: 2
     detections:
-      sigma: []
+      sigma:
+        - 'sigma/windows/win_sensitive_file_access.yml'
       elastic: []
       splunk: []
       microsoft-sentinel:
@@ -167,7 +170,6 @@ techniques:
       sentinelone: []
       falco: []
     gaps:
-      - sigma
       - elastic
       - splunk
       - wazuh
@@ -733,6 +735,7 @@ techniques:
       sigma:
         - 'sigma/linux/lnx_base64_decoding.yml'
         - 'sigma/windows/win_powershell_suspicious_encoded_command.yml'
+        - 'sigma/windows/win_suspicious_python_execution.yml'
         - 'sigma/windows/win_suspicious_wscript_js.yml'
       elastic:
         - 'elastic/endpoint/general/Defense Evasion – Encoded PowerShell Command.ndjson'
@@ -903,9 +906,10 @@ techniques:
   T1059.006:
     name: 'Python'
     tactic: execution
-    coverage_count: 1
+    coverage_count: 2
     detections:
-      sigma: []
+      sigma:
+        - 'sigma/windows/win_suspicious_python_execution.yml'
       elastic: []
       splunk: []
       microsoft-sentinel: []
@@ -920,7 +924,6 @@ techniques:
       sentinelone: []
       falco: []
     gaps:
-      - sigma
       - elastic
       - splunk
       - microsoft-sentinel
@@ -983,6 +986,7 @@ techniques:
     detections:
       sigma:
         - 'sigma/linux/lnx_clear_command_history.yml'
+        - 'sigma/windows/win_timestomp_file_time_modification.yml'
       elastic:
         - 'elastic/endpoint/general/Defense Evasion – Event Log Cleared Wevtutil.ndjson'
         - 'elastic/endpoint/general/Defense-Evasion-Signed-Binary-Temp.ndjson'
@@ -1054,9 +1058,10 @@ techniques:
   T1070.006:
     name: 'Timestomp'
     tactic: defense-evasion
-    coverage_count: 1
+    coverage_count: 2
     detections:
-      sigma: []
+      sigma:
+        - 'sigma/windows/win_timestomp_file_time_modification.yml'
       elastic:
         - 'elastic/endpoint/general/Defense-Evasion-Timestomp-Suspect.ndjson'
       splunk: []
@@ -1067,7 +1072,6 @@ techniques:
       sentinelone: []
       falco: []
     gaps:
-      - sigma
       - splunk
       - microsoft-sentinel
       - wazuh
@@ -1766,12 +1770,37 @@ techniques:
       - falcon
       - sentinelone
       - falco
-  T1127.001:
-    name: 'MSBuild'
+  T1127:
+    name: 'Trusted Developer Utilities Proxy Execution'
     tactic: defense-evasion
     coverage_count: 1
     detections:
-      sigma: []
+      sigma:
+        - 'sigma/windows/win_msbuild_suspicious_execution.yml'
+      elastic: []
+      splunk: []
+      microsoft-sentinel: []
+      wazuh: []
+      carbonblack: []
+      falcon: []
+      sentinelone: []
+      falco: []
+    gaps:
+      - elastic
+      - splunk
+      - microsoft-sentinel
+      - wazuh
+      - carbonblack
+      - falcon
+      - sentinelone
+      - falco
+  T1127.001:
+    name: 'MSBuild'
+    tactic: defense-evasion
+    coverage_count: 2
+    detections:
+      sigma:
+        - 'sigma/windows/win_msbuild_suspicious_execution.yml'
       elastic: []
       splunk: []
       microsoft-sentinel: []
@@ -1786,7 +1815,6 @@ techniques:
       sentinelone: []
       falco: []
     gaps:
-      - sigma
       - elastic
       - splunk
       - microsoft-sentinel
@@ -1821,9 +1849,10 @@ techniques:
   T1136:
     name: 'Create Account'
     tactic: persistence
-    coverage_count: 2
+    coverage_count: 3
     detections:
-      sigma: []
+      sigma:
+        - 'sigma/windows/win_domain_account_creation.yml'
       elastic: []
       splunk: []
       microsoft-sentinel:
@@ -1839,7 +1868,6 @@ techniques:
       sentinelone: []
       falco: []
     gaps:
-      - sigma
       - elastic
       - splunk
       - wazuh
@@ -1873,9 +1901,10 @@ techniques:
   T1136.002:
     name: 'Domain Account'
     tactic: persistence
-    coverage_count: 1
+    coverage_count: 2
     detections:
-      sigma: []
+      sigma:
+        - 'sigma/windows/win_domain_account_creation.yml'
       elastic: []
       splunk: []
       microsoft-sentinel: []
@@ -1886,7 +1915,6 @@ techniques:
       sentinelone: []
       falco: []
     gaps:
-      - sigma
       - elastic
       - splunk
       - microsoft-sentinel
@@ -2055,9 +2083,10 @@ techniques:
   T1218:
     name: 'System Binary Proxy Execution'
     tactic: defense-evasion
-    coverage_count: 1
+    coverage_count: 2
     detections:
-      sigma: []
+      sigma:
+        - 'sigma/windows/win_installutil_suspicious.yml'
       elastic: []
       splunk: []
       microsoft-sentinel:
@@ -2070,7 +2099,6 @@ techniques:
       sentinelone: []
       falco: []
     gaps:
-      - sigma
       - elastic
       - splunk
       - wazuh
@@ -2081,9 +2109,10 @@ techniques:
   T1218.004:
     name: 'InstallUtil'
     tactic: defense-evasion
-    coverage_count: 1
+    coverage_count: 2
     detections:
-      sigma: []
+      sigma:
+        - 'sigma/windows/win_installutil_suspicious.yml'
       elastic: []
       splunk: []
       microsoft-sentinel: []
@@ -2098,7 +2127,6 @@ techniques:
       sentinelone: []
       falco: []
     gaps:
-      - sigma
       - elastic
       - splunk
       - microsoft-sentinel
@@ -2193,9 +2221,10 @@ techniques:
   T1219:
     name: 'Remote Access Software'
     tactic: command-and-control
-    coverage_count: 1
+    coverage_count: 2
     detections:
-      sigma: []
+      sigma:
+        - 'sigma/windows/win_remote_access_tool_execution.yml'
       elastic:
         - 'elastic/endpoint/general/Remote Access Tool - TacticalRMM Agent Registration to Potentially Attacker-Controlled Server.ndjson'
         - 'elastic/endpoint/general/Suspicious Velociraptor Child Process.ndjson'
@@ -2207,7 +2236,6 @@ techniques:
       sentinelone: []
       falco: []
     gaps:
-      - sigma
       - splunk
       - microsoft-sentinel
       - wazuh
@@ -2218,9 +2246,10 @@ techniques:
   T1484:
     name: 'Domain Policy Modification'
     tactic: privilege-escalation
-    coverage_count: 1
+    coverage_count: 2
     detections:
-      sigma: []
+      sigma:
+        - 'sigma/windows/win_group_policy_modification.yml'
       elastic: []
       splunk: []
       microsoft-sentinel:
@@ -2231,7 +2260,6 @@ techniques:
       sentinelone: []
       falco: []
     gaps:
-      - sigma
       - elastic
       - splunk
       - wazuh
@@ -2242,9 +2270,10 @@ techniques:
   T1484.001:
     name: 'Group Policy Modification'
     tactic: privilege-escalation
-    coverage_count: 1
+    coverage_count: 2
     detections:
-      sigma: []
+      sigma:
+        - 'sigma/windows/win_group_policy_modification.yml'
       elastic: []
       splunk: []
       microsoft-sentinel: []
@@ -2255,7 +2284,6 @@ techniques:
       sentinelone: []
       falco: []
     gaps:
-      - sigma
       - elastic
       - splunk
       - microsoft-sentinel
@@ -2666,9 +2694,10 @@ techniques:
   T1547:
     name: 'Boot or Logon Autostart Execution'
     tactic: persistence
-    coverage_count: 1
+    coverage_count: 2
     detections:
-      sigma: []
+      sigma:
+        - 'sigma/linux/lnx_suspicious_kernel_module_load.yml'
       elastic: []
       splunk: []
       microsoft-sentinel:
@@ -2679,7 +2708,6 @@ techniques:
       sentinelone: []
       falco: []
     gaps:
-      - sigma
       - elastic
       - splunk
       - wazuh
@@ -2740,9 +2768,10 @@ techniques:
   T1547.006:
     name: 'Kernel Modules and Extensions'
     tactic: persistence
-    coverage_count: 1
+    coverage_count: 2
     detections:
-      sigma: []
+      sigma:
+        - 'sigma/linux/lnx_suspicious_kernel_module_load.yml'
       elastic: []
       splunk: []
       microsoft-sentinel: []
@@ -2753,7 +2782,6 @@ techniques:
       sentinelone: []
       falco: []
     gaps:
-      - sigma
       - elastic
       - splunk
       - microsoft-sentinel
@@ -2929,12 +2957,37 @@ techniques:
       - falcon
       - sentinelone
       - falco
-  T1560.001:
-    name: 'Archive via Utility'
+  T1560:
+    name: 'Archive Collected Data'
     tactic: collection
     coverage_count: 1
     detections:
-      sigma: []
+      sigma:
+        - 'sigma/windows/win_archive_sensitive_data.yml'
+      elastic: []
+      splunk: []
+      microsoft-sentinel: []
+      wazuh: []
+      carbonblack: []
+      falcon: []
+      sentinelone: []
+      falco: []
+    gaps:
+      - elastic
+      - splunk
+      - microsoft-sentinel
+      - wazuh
+      - carbonblack
+      - falcon
+      - sentinelone
+      - falco
+  T1560.001:
+    name: 'Archive via Utility'
+    tactic: collection
+    coverage_count: 2
+    detections:
+      sigma:
+        - 'sigma/windows/win_archive_sensitive_data.yml'
       elastic: []
       splunk: []
       microsoft-sentinel: []
@@ -2949,7 +3002,6 @@ techniques:
       sentinelone: []
       falco: []
     gaps:
-      - sigma
       - elastic
       - splunk
       - microsoft-sentinel
@@ -2960,9 +3012,10 @@ techniques:
   T1562:
     name: 'Impair Defenses'
     tactic: defense-evasion
-    coverage_count: 1
+    coverage_count: 2
     detections:
-      sigma: []
+      sigma:
+        - 'sigma/windows/win_disable_event_logging.yml'
       elastic:
         - 'elastic/endpoint/windows/win_reg_disable_defender.ndjson'
       splunk: []
@@ -2973,7 +3026,6 @@ techniques:
       sentinelone: []
       falco: []
     gaps:
-      - sigma
       - splunk
       - microsoft-sentinel
       - wazuh
@@ -3020,9 +3072,10 @@ techniques:
   T1562.002:
     name: 'Disable Windows Event Logging'
     tactic: defense-evasion
-    coverage_count: 1
+    coverage_count: 2
     detections:
-      sigma: []
+      sigma:
+        - 'sigma/windows/win_disable_event_logging.yml'
       elastic: []
       splunk: []
       microsoft-sentinel:
@@ -3033,7 +3086,6 @@ techniques:
       sentinelone: []
       falco: []
     gaps:
-      - sigma
       - elastic
       - splunk
       - wazuh
@@ -3240,9 +3292,10 @@ techniques:
   T1567:
     name: 'Exfiltration Over Web Service'
     tactic: exfiltration
-    coverage_count: 1
+    coverage_count: 2
     detections:
-      sigma: []
+      sigma:
+        - 'sigma/windows/win_exfil_cloud_storage_tool.yml'
       elastic:
         - 'elastic/endpoint/general/IOCs (ip) to detect Curly COMrades A New Threat Actor Targeting Geopolitical Hotbeds.ndjson'
       splunk: []
@@ -3253,7 +3306,6 @@ techniques:
       sentinelone: []
       falco: []
     gaps:
-      - sigma
       - splunk
       - microsoft-sentinel
       - wazuh
@@ -3264,9 +3316,10 @@ techniques:
   T1567.002:
     name: 'Exfiltration to Cloud Storage'
     tactic: exfiltration
-    coverage_count: 1
+    coverage_count: 2
     detections:
-      sigma: []
+      sigma:
+        - 'sigma/windows/win_exfil_cloud_storage_tool.yml'
       elastic: []
       splunk: []
       microsoft-sentinel: []
@@ -3281,7 +3334,6 @@ techniques:
       sentinelone: []
       falco: []
     gaps:
-      - sigma
       - elastic
       - splunk
       - microsoft-sentinel
@@ -3389,9 +3441,10 @@ techniques:
   T1574:
     name: 'Hijack Execution Flow'
     tactic: persistence
-    coverage_count: 1
+    coverage_count: 2
     detections:
-      sigma: []
+      sigma:
+        - 'sigma/windows/win_dll_search_order_hijack.yml'
       elastic:
         - 'elastic/endpoint/general/Possible DLL Hijacking of cnmpaui.dll.ndjson'
         - 'elastic/endpoint/general/Possible DLL Hijacking of sentinelagentcore.dll.ndjson'
@@ -3405,7 +3458,6 @@ techniques:
       sentinelone: []
       falco: []
     gaps:
-      - sigma
       - splunk
       - microsoft-sentinel
       - wazuh
@@ -3416,9 +3468,10 @@ techniques:
   T1574.001:
     name: 'DLL Search Order Hijacking'
     tactic: persistence
-    coverage_count: 1
+    coverage_count: 2
     detections:
-      sigma: []
+      sigma:
+        - 'sigma/windows/win_dll_search_order_hijack.yml'
       elastic:
         - 'elastic/endpoint/general/Possible DLL Hijacking of cnmpaui.dll.ndjson'
         - 'elastic/endpoint/general/Possible DLL Hijacking of sentinelagentcore.dll.ndjson'
@@ -3432,7 +3485,6 @@ techniques:
       sentinelone: []
       falco: []
     gaps:
-      - sigma
       - splunk
       - microsoft-sentinel
       - wazuh

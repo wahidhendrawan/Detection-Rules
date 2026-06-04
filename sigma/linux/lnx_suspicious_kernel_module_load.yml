@@ -1,0 +1,36 @@
+title: Suspicious Kernel Module Load
+id: a1b2c3d4-bbbb-4aaa-bbbb-000000000011
+status: experimental
+description: |
+  Detects loading of kernel modules via insmod/modprobe from
+  non-standard paths - may indicate rootkit installation.
+author: Wahid Hendrawan
+date: 2026/06/04
+references:
+  - https://attack.mitre.org/techniques/T1547/006/
+logsource:
+  product: linux
+  category: process_creation
+detection:
+  selection:
+    Image|endswith:
+      - '/insmod'
+      - '/modprobe'
+  filter_suspicious:
+    CommandLine|contains:
+      - '/tmp/'
+      - '/dev/shm/'
+      - '/home/'
+      - '/var/tmp/'
+  condition: selection and filter_suspicious
+fields:
+  - Image
+  - CommandLine
+  - User
+  - ParentImage
+falsepositives:
+  - Kernel developer yang test module custom (sangat jarang di prod).
+level: critical
+tags:
+  - attack.t1547.006
+  - attack.persistence

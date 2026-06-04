@@ -1,0 +1,42 @@
+title: File Timestamp Modification (Timestomp)
+id: a1b2c3d4-aaaa-4aaa-baaa-000000000010
+status: experimental
+description: |
+  Detects tools known for timestomping or PowerShell commands that
+  modify file creation/modification timestamps.
+author: Wahid Hendrawan
+date: 2026/06/04
+references:
+  - https://attack.mitre.org/techniques/T1070/006/
+logsource:
+  product: windows
+  category: process_creation
+detection:
+  selection_tools:
+    Image|endswith:
+      - '\timestomp.exe'
+      - '\NirCmd.exe'
+    CommandLine|contains: 'setfiletime'
+  selection_powershell:
+    Image|endswith:
+      - '\powershell.exe'
+      - '\pwsh.exe'
+    CommandLine|contains:
+      - 'CreationTime'
+      - 'LastWriteTime'
+      - 'LastAccessTime'
+      - 'SetCreationTime'
+      - 'SetLastWriteTime'
+  condition: 1 of selection_*
+fields:
+  - Image
+  - CommandLine
+  - User
+  - ParentImage
+falsepositives:
+  - Build tools yang set file timestamps (make, cmake).
+  - Backup software yang restore original timestamps.
+level: high
+tags:
+  - attack.t1070.006
+  - attack.defense-evasion

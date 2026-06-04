@@ -38,14 +38,14 @@
     },
     {
       "techniqueID": "T1003.002",
-      "score": 1,
-      "comment": "Covered by: microsoft-sentinel",
+      "score": 2,
+      "comment": "Covered by: microsoft-sentinel, sigma",
       "enabled": true
     },
     {
       "techniqueID": "T1003.003",
-      "score": 1,
-      "comment": "Covered by: microsoft-sentinel",
+      "score": 2,
+      "comment": "Covered by: microsoft-sentinel, sigma",
       "enabled": true
     },
     {
@@ -56,8 +56,8 @@
     },
     {
       "techniqueID": "T1005",
-      "score": 1,
-      "comment": "Covered by: microsoft-sentinel",
+      "score": 2,
+      "comment": "Covered by: microsoft-sentinel, sigma",
       "enabled": true
     },
     {
@@ -218,8 +218,8 @@
     },
     {
       "techniqueID": "T1059.006",
-      "score": 1,
-      "comment": "Covered by: carbonblack",
+      "score": 2,
+      "comment": "Covered by: carbonblack, sigma",
       "enabled": true
     },
     {
@@ -254,8 +254,8 @@
     },
     {
       "techniqueID": "T1070.006",
-      "score": 1,
-      "comment": "Covered by: elastic",
+      "score": 2,
+      "comment": "Covered by: elastic, sigma",
       "enabled": true
     },
     {
@@ -403,9 +403,15 @@
       "enabled": true
     },
     {
-      "techniqueID": "T1127.001",
+      "techniqueID": "T1127",
       "score": 1,
-      "comment": "Covered by: carbonblack",
+      "comment": "Covered by: sigma",
+      "enabled": true
+    },
+    {
+      "techniqueID": "T1127.001",
+      "score": 2,
+      "comment": "Covered by: carbonblack, sigma",
       "enabled": true
     },
     {
@@ -416,8 +422,8 @@
     },
     {
       "techniqueID": "T1136",
-      "score": 2,
-      "comment": "Covered by: carbonblack, microsoft-sentinel",
+      "score": 3,
+      "comment": "Covered by: carbonblack, microsoft-sentinel, sigma",
       "enabled": true
     },
     {
@@ -428,8 +434,8 @@
     },
     {
       "techniqueID": "T1136.002",
-      "score": 1,
-      "comment": "Covered by: wazuh",
+      "score": 2,
+      "comment": "Covered by: sigma, wazuh",
       "enabled": true
     },
     {
@@ -464,14 +470,14 @@
     },
     {
       "techniqueID": "T1218",
-      "score": 1,
-      "comment": "Covered by: microsoft-sentinel",
+      "score": 2,
+      "comment": "Covered by: microsoft-sentinel, sigma",
       "enabled": true
     },
     {
       "techniqueID": "T1218.004",
-      "score": 1,
-      "comment": "Covered by: carbonblack",
+      "score": 2,
+      "comment": "Covered by: carbonblack, sigma",
       "enabled": true
     },
     {
@@ -494,20 +500,20 @@
     },
     {
       "techniqueID": "T1219",
-      "score": 1,
-      "comment": "Covered by: elastic",
+      "score": 2,
+      "comment": "Covered by: elastic, sigma",
       "enabled": true
     },
     {
       "techniqueID": "T1484",
-      "score": 1,
-      "comment": "Covered by: microsoft-sentinel",
+      "score": 2,
+      "comment": "Covered by: microsoft-sentinel, sigma",
       "enabled": true
     },
     {
       "techniqueID": "T1484.001",
-      "score": 1,
-      "comment": "Covered by: wazuh",
+      "score": 2,
+      "comment": "Covered by: sigma, wazuh",
       "enabled": true
     },
     {
@@ -590,8 +596,8 @@
     },
     {
       "techniqueID": "T1547",
-      "score": 1,
-      "comment": "Covered by: microsoft-sentinel",
+      "score": 2,
+      "comment": "Covered by: microsoft-sentinel, sigma",
       "enabled": true
     },
     {
@@ -608,8 +614,8 @@
     },
     {
       "techniqueID": "T1547.006",
-      "score": 1,
-      "comment": "Covered by: wazuh",
+      "score": 2,
+      "comment": "Covered by: sigma, wazuh",
       "enabled": true
     },
     {
@@ -643,9 +649,21 @@
       "enabled": true
     },
     {
-      "techniqueID": "T1560.001",
+      "techniqueID": "T1560",
       "score": 1,
-      "comment": "Covered by: carbonblack",
+      "comment": "Covered by: sigma",
+      "enabled": true
+    },
+    {
+      "techniqueID": "T1560.001",
+      "score": 2,
+      "comment": "Covered by: carbonblack, sigma",
+      "enabled": true
+    },
+    {
+      "techniqueID": "T1562",
+      "score": 1,
+      "comment": "Covered by: sigma",
       "enabled": true
     },
     {
@@ -656,8 +674,8 @@
     },
     {
       "techniqueID": "T1562.002",
-      "score": 1,
-      "comment": "Covered by: microsoft-sentinel",
+      "score": 2,
+      "comment": "Covered by: microsoft-sentinel, sigma",
       "enabled": true
     },
     {
@@ -710,14 +728,14 @@
     },
     {
       "techniqueID": "T1567",
-      "score": 1,
-      "comment": "Covered by: elastic",
+      "score": 2,
+      "comment": "Covered by: elastic, sigma",
       "enabled": true
     },
     {
       "techniqueID": "T1567.002",
-      "score": 1,
-      "comment": "Covered by: carbonblack",
+      "score": 2,
+      "comment": "Covered by: carbonblack, sigma",
       "enabled": true
     },
     {
@@ -746,14 +764,14 @@
     },
     {
       "techniqueID": "T1574",
-      "score": 1,
-      "comment": "Covered by: elastic",
+      "score": 2,
+      "comment": "Covered by: elastic, sigma",
       "enabled": true
     },
     {
       "techniqueID": "T1574.001",
-      "score": 1,
-      "comment": "Covered by: elastic",
+      "score": 2,
+      "comment": "Covered by: elastic, sigma",
       "enabled": true
     },
     {

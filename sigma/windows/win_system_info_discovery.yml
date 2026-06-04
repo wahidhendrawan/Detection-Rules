@@ -2,8 +2,8 @@ title: System Information Discovery Commands
 id: 2d7a5e81-c3b4-4f9e-d6a2-8b1c3f5e9a72
 status: experimental
 description: |
-  Detects execution of multiple system info discovery commands in
-  rapid succession - common recon pattern post-compromise.
+  Detects execution of system info discovery commands commonly used
+  for post-exploitation reconnaissance.
 author: Wahid Hendrawan
 date: 2026/06/04
 references:
@@ -16,13 +16,13 @@ detection:
     Image|endswith:
       - '\systeminfo.exe'
       - '\hostname.exe'
-      - '\whoami.exe'
     CommandLine|contains:
       - 'systeminfo'
       - 'hostname'
-      - 'whoami /all'
-  condition: selection | count() by Computer > 2
-  timeframe: 1m
+  selection_whoami:
+    Image|endswith: '\whoami.exe'
+    CommandLine|contains: '/all'
+  condition: selection or selection_whoami
 fields:
   - Image
   - CommandLine

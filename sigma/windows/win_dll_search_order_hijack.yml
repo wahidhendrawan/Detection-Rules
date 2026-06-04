@@ -1,0 +1,39 @@
+title: Potential DLL Search Order Hijacking
+id: a1b2c3d4-8888-4aaa-b888-000000000008
+status: experimental
+description: |
+  Detects DLL loads from writable directories that are earlier in
+  the search order than the legitimate DLL location.
+author: Wahid Hendrawan
+date: 2026/06/04
+references:
+  - https://attack.mitre.org/techniques/T1574/001/
+logsource:
+  product: windows
+  category: image_load
+detection:
+  selection:
+    ImageLoaded|contains:
+      - '\AppData\Local\Temp\'
+      - '\Users\Public\'
+      - '\ProgramData\Temp\'
+      - '\Windows\Temp\'
+    ImageLoaded|endswith:
+      - '.dll'
+  filter_legit:
+    ImageLoaded|contains:
+      - '\WindowsApps\'
+      - '\WinSxS\'
+  condition: selection and not filter_legit
+fields:
+  - Image
+  - ImageLoaded
+  - User
+falsepositives:
+  - Portable applications yang load DLL dari folder sendiri.
+  - Installer yang extract DLL ke temp sebelum install.
+level: medium
+tags:
+  - attack.t1574.001
+  - attack.persistence
+  - attack.privilege-escalation

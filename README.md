@@ -41,7 +41,7 @@
 
 | Platform | Format | Total | Detail |
 |---|---|---:|---|
-| **Sigma** | `.yml` | 119 | windows: 54 · linux: 29 · network: 15 · cloud: 18 · correlations: 3 |
+| **Sigma** | `.yml` | 144 | windows: 76 · linux: 32 · network: 15 · cloud: 18 · correlations: 3 |
 | **Elastic** | `.ndjson` | 58 | endpoint/general: 45 · endpoint/windows: 7 · endpoint/linux: 3 · endpoint/network: 2 · network: 1 |
 | **Splunk** | `.spl` | 19 | windows: 11 · linux: 4 · network: 3 · cloud: 1 |
 | **Microsoft Sentinel** | `.kql` | 103 | hunting + analytics |
@@ -50,7 +50,7 @@
 | **CrowdStrike Falcon** | `.fql` | 2 | Falcon Query Language |
 | **SentinelOne** | `.s1ql` | 2 | Deep Visibility queries |
 | **Falco** | `.yaml` | 2 | K8s/container runtime rules |
-| **TOTAL** | — | **587** | — |
+| **TOTAL** | — | **612** | — |
 
 Lihat [`COVERAGE.md`](COVERAGE.md) untuk pemetaan ke MITRE ATT&CK.
 
@@ -75,8 +75,8 @@ Detection-Rules/
 ├─ scripts/             # tooling (mis. generator MITRE coverage)
 ├─ templates/           # boilerplate per platform
 ├─ sigma/
-│  ├─ windows/          # 54 rule
-│  ├─ linux/            # 29 rule
+│  ├─ windows/          # 76 rule
+│  ├─ linux/            # 32 rule
 │  ├─ network/          # 15 rule
 │  ├─ cloud/            # 18 rule
 │  └─ correlations/     # 3 aggregation rule

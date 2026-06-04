@@ -1,0 +1,41 @@
+title: Remote Access Tool Execution
+id: a1b2c3d4-5555-4aaa-b555-000000000005
+status: experimental
+description: |
+  Detects execution of known remote access tools that are commonly
+  abused by threat actors for persistent access.
+author: Wahid Hendrawan
+date: 2026/06/04
+references:
+  - https://attack.mitre.org/techniques/T1219/
+logsource:
+  product: windows
+  category: process_creation
+detection:
+  selection:
+    Image|endswith:
+      - '\AnyDesk.exe'
+      - '\TeamViewer.exe'
+      - '\ScreenConnect.exe'
+      - '\ConnectWise.exe'
+      - '\RustDesk.exe'
+      - '\ngrok.exe'
+      - '\meshagent.exe'
+      - '\tacticalrmm.exe'
+  filter_installed:
+    Image|startswith:
+      - 'C:\Program Files\'
+      - 'C:\Program Files (x86)\'
+  condition: selection and not filter_installed
+fields:
+  - Image
+  - CommandLine
+  - ParentImage
+  - User
+falsepositives:
+  - IT support yang menggunakan remote tools dari path standar.
+  - User yang install remote tool sendiri (tune per policy).
+level: medium
+tags:
+  - attack.t1219
+  - attack.command-and-control

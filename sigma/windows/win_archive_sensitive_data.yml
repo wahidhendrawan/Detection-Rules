@@ -1,0 +1,44 @@
+title: Suspicious Archive of Sensitive Directories
+id: a1b2c3d4-6666-4aaa-b666-000000000006
+status: experimental
+description: |
+  Detects archiving tools targeting sensitive directories which may
+  indicate data staging for exfiltration.
+author: Wahid Hendrawan
+date: 2026/06/04
+references:
+  - https://attack.mitre.org/techniques/T1560/001/
+logsource:
+  product: windows
+  category: process_creation
+detection:
+  selection_tool:
+    Image|endswith:
+      - '\7z.exe'
+      - '\7za.exe'
+      - '\rar.exe'
+      - '\WinRAR.exe'
+      - '\zip.exe'
+  selection_target:
+    CommandLine|contains:
+      - '\Users\'
+      - '\Documents\'
+      - '\Desktop\'
+      - '\Finance\'
+      - '\HR\'
+      - '\Confidential\'
+      - '.pst'
+      - '.ost'
+      - '.kdbx'
+  condition: selection_tool and selection_target
+fields:
+  - Image
+  - CommandLine
+  - User
+falsepositives:
+  - User yang sah mengarsip data untuk backup.
+  - Automated backup tool yang pakai 7z.
+level: medium
+tags:
+  - attack.t1560.001
+  - attack.collection

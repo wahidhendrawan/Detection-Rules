@@ -190,8 +190,8 @@
       "coverage_count": 2
     },
     "T1016": {
-      "name": "Unknown / Custom",
-      "tactic": "uncategorized",
+      "name": "System Network Configuration Discovery",
+      "tactic": "discovery",
       "detections": {
         "sigma": [],
         "elastic": [
@@ -356,8 +356,8 @@
       "coverage_count": 1
     },
     "T1033": {
-      "name": "Unknown / Custom",
-      "tactic": "uncategorized",
+      "name": "System Owner/User Discovery",
+      "tactic": "discovery",
       "detections": {
         "sigma": [],
         "elastic": [],
@@ -433,8 +433,8 @@
       "coverage_count": 1
     },
     "T1046": {
-      "name": "Unknown / Custom",
-      "tactic": "uncategorized",
+      "name": "Network Service Discovery",
+      "tactic": "discovery",
       "detections": {
         "sigma": [
           "sigma/network/net_nmap_scan_pattern.yml"
@@ -727,8 +727,8 @@
       "coverage_count": 4
     },
     "T1059.004": {
-      "name": "Unknown / Custom",
-      "tactic": "uncategorized",
+      "name": "Unix Shell",
+      "tactic": "execution",
       "detections": {
         "sigma": [
           "sigma/linux/lnx_suspicious_curl_pipe_bash.yml"
@@ -1153,8 +1153,8 @@
       "coverage_count": 1
     },
     "T1082": {
-      "name": "Unknown / Custom",
-      "tactic": "uncategorized",
+      "name": "System Information Discovery",
+      "tactic": "discovery",
       "detections": {
         "sigma": [],
         "elastic": [
@@ -1659,8 +1659,8 @@
       "coverage_count": 2
     },
     "T1190": {
-      "name": "Unknown / Custom",
-      "tactic": "uncategorized",
+      "name": "Exploit Public-Facing Application",
+      "tactic": "initial-access",
       "detections": {
         "sigma": [],
         "elastic": [
@@ -1953,8 +1953,8 @@
       "coverage_count": 1
     },
     "T1486": {
-      "name": "Unknown / Custom",
-      "tactic": "uncategorized",
+      "name": "Data Encrypted for Impact",
+      "tactic": "impact",
       "detections": {
         "sigma": [],
         "elastic": [
@@ -2169,8 +2169,8 @@
       "coverage_count": 2
     },
     "T1505.003": {
-      "name": "Unknown / Custom",
-      "tactic": "uncategorized",
+      "name": "Web Shell",
+      "tactic": "persistence",
       "detections": {
         "sigma": [],
         "elastic": [],
@@ -2623,8 +2623,8 @@
       "coverage_count": 2
     },
     "T1562.008": {
-      "name": "Unknown / Custom",
-      "tactic": "uncategorized",
+      "name": "Disable or Modify Cloud Logs",
+      "tactic": "defense-evasion",
       "detections": {
         "sigma": [
           "sigma/cloud/cloud_aws_suspicious_disable_cloudtrail.yml"

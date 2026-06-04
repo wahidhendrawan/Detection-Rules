@@ -1,0 +1,20 @@
+# Development dependencies for the Detection-Rules toolchain.
+# Pinned versions are tracked by Dependabot (.github/dependabot.yml).
+
+# Core
+pyyaml==6.0.2
+
+# Testing
+pytest==9.0.3
+
+# Linting
+yamllint==1.35.1
+
+# Sigma + backends (used by release.yml and the sigma-cross-translate CI job)
+sigma-cli==3.0.1
+pysigma-backend-elasticsearch==1.1.13
+pysigma-backend-splunk==1.2.0
+pysigma-backend-kusto==1.0.5
+
+# Pre-commit (local development)
+pre-commit==4.3.0

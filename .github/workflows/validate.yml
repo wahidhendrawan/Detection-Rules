@@ -34,6 +34,42 @@ jobs:
       - name: Validate Sigma rules
         run: sigma check sigma/
 
+  sigma-cross-translate:
+    name: Sigma cross-translate smoke check
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install sigma-cli + backends
+        run: |
+          pip install --upgrade pip
+          pip install \
+            "sigma-cli>=3.0,<4.0" \
+            "pysigma-backend-elasticsearch>=1.1,<3.0" \
+            "pysigma-backend-splunk>=1.1,<3.0" \
+            "pysigma-backend-kusto>=1.0,<2.0"
+      - name: Translate to Lucene (smoke)
+        run: |
+          mkdir -p /tmp/sigma-out
+          # ecs_windows pipeline normalises Windows fields to ECS — most rules in this
+          # repo target Windows so this is the natural default for a smoke check.
+          sigma convert -t lucene -p ecs_windows -f default -o /tmp/sigma-out/elastic.lucene sigma/windows/ 2>&1 | tail -10 || true
+          test -s /tmp/sigma-out/elastic.lucene
+      - name: Translate to Splunk (smoke)
+        run: |
+          sigma convert -t splunk -p splunk_windows -f default -o /tmp/sigma-out/splunk.spl sigma/windows/ 2>&1 | tail -10 || true
+          test -s /tmp/sigma-out/splunk.spl
+      - name: Translate to Kusto (smoke, non-blocking)
+        # Kusto requires a table name per rule; some Sigma logsource categories
+        # are not mapped by the default microsoft_xdr pipeline. We run it for
+        # signal but do NOT fail the build on per-rule mapping gaps.
+        continue-on-error: true
+        run: |
+          sigma convert -t kusto -p microsoft_xdr -f default -o /tmp/sigma-out/kusto.kql sigma/windows/ 2>&1 | tail -10 || true
+          test -s /tmp/sigma-out/kusto.kql || echo "::warning::Kusto translation produced no output (table-name mapping gap)"
+
   xmllint:
     name: XML lint (Wazuh)
     runs-on: ubuntu-latest
@@ -48,6 +84,20 @@ jobs:
             xmllint --noout "$f" || { echo "::error file=$f::Invalid XML"; fail=1; }
           done < <(find wazuh -type f -name '*.xml' -print0)
           exit $fail
+      - name: Check Wazuh rule ID range (custom range 100000-119999)
+        # Treated as a warning: 10 pre-existing rules use 8-digit IDs.
+        # New rules SHOULD use the 100000-119999 range per CONTRIBUTING.md.
+        run: |
+          out_of_range=0
+          while IFS= read -r -d '' f; do
+            for rid in $(grep -oE 'rule id="[0-9]+"' "$f" | grep -oE '[0-9]+'); do
+              if [ "$rid" -lt 100000 ] || [ "$rid" -gt 119999 ]; then
+                echo "::warning file=$f::Rule id $rid out of recommended custom range 100000-119999"
+                out_of_range=$((out_of_range+1))
+              fi
+            done
+          done < <(find wazuh -type f -name '*.xml' -print0)
+          echo "Wazuh IDs outside custom range: $out_of_range (warning only)"
 
   json-validate:
     name: JSON validate (Carbon Black + Elastic NDJSON)
@@ -96,6 +146,37 @@ jobs:
           done < <(find microsoft-sentinel -type f -name '*.kql' -print0)
           exit $fail
 
+  splunk-syntax:
+    name: Splunk SPL smoke check
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify SPL files have header + a search statement
+        run: |
+          fail=0
+          while IFS= read -r -d '' f; do
+            head -1 "$f" | grep -qE '^#' || {
+              echo "::warning file=$f::Missing header comment"
+            }
+            grep -qE '^\s*(index=|search\b|tstats\b|\|\s*tstats|from\s)' "$f" || {
+              echo "::error file=$f::No SPL search statement found"; fail=1
+            }
+          done < <(find splunk -type f -name '*.spl' -print0)
+          exit $fail
+
+  rule-tests:
+    name: Rule unit tests (fixture-based)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install deps
+        run: pip install pytest==9.0.3 pyyaml==6.0.2
+      - name: Run pytest
+        run: PYTHONPATH=scripts pytest tests/ -v
+
   coverage:
     name: MITRE coverage (informational)
     runs-on: ubuntu-latest
@@ -107,13 +188,32 @@ jobs:
           python-version: '3.11'
       - name: Install deps
         run: pip install pyyaml==6.0.2
-      - name: Generate coverage report
-        run: python3 scripts/generate_coverage.py
-      - name: Upload coverage artifact
+      - name: Generate coverage + index + metrics + gap + cti + atomic
+        run: |
+          PYTHONPATH=scripts python3 -m detection_rules coverage
+          PYTHONPATH=scripts python3 -m detection_rules index
+          PYTHONPATH=scripts python3 -m detection_rules metrics
+          PYTHONPATH=scripts python3 -m detection_rules gap
+          PYTHONPATH=scripts python3 -m detection_rules cti
+          PYTHONPATH=scripts python3 -m detection_rules atomic
+          PYTHONPATH=scripts python3 -m detection_rules navigator
+          PYTHONPATH=scripts python3 -m detection_rules badges
+      - name: Upload coverage + reports
         uses: actions/upload-artifact@v4
         with:
           name: mitre-coverage
           path: |
             COVERAGE.md
             coverage.json
+            rules.index.json
+            rules.index.yaml
+            metrics.json
+            docs/metrics.md
+            docs/gap-analysis.md
+            docs/threat-actors.md
+            docs/threat-actors.json
+            docs/atomic-red-team.md
+            docs/atomic-red-team.json
+            navigator-layers/
+            public/badges/
           if-no-files-found: warn

@@ -6,8 +6,13 @@
 [![GitHub stars](https://img.shields.io/github/stars/wahidhendrawan/Detection-Rules?style=social)](https://github.com/wahidhendrawan/Detection-Rules/stargazers)
 [![Validate Rules](https://github.com/wahidhendrawan/Detection-Rules/actions/workflows/validate.yml/badge.svg)](https://github.com/wahidhendrawan/Detection-Rules/actions/workflows/validate.yml)
 [![MITRE ATT&CK](https://img.shields.io/badge/MITRE%20ATT%26CK-mapped-red)](COVERAGE.md)
-[![Rules](https://img.shields.io/badge/rules-533-blue)](#statistik-rule)
-[![ATT&CK Techniques](https://img.shields.io/badge/ATT%26CK%20techniques-124-orange)](COVERAGE.md)
+[![Rules](https://img.shields.io/endpoint?url=https://wahidhendrawan.github.io/Detection-Rules/badges/rules-total.json)](#statistik-rule)
+[![ATT&CK Techniques](https://img.shields.io/endpoint?url=https://wahidhendrawan.github.io/Detection-Rules/badges/techniques.json)](COVERAGE.md)
+[![Coverage](https://img.shields.io/endpoint?url=https://wahidhendrawan.github.io/Detection-Rules/badges/attack-coverage.json)](COVERAGE.md)
+[![Quality](https://img.shields.io/endpoint?url=https://wahidhendrawan.github.io/Detection-Rules/badges/quality-score.json)](docs/metrics.md)
+[![Last validated](https://img.shields.io/endpoint?url=https://wahidhendrawan.github.io/Detection-Rules/badges/last-validated.json)](.github/workflows/validate.yml)
+
+> 🇮🇩 **Bahasa Indonesia** · [🇬🇧 English](README.en.md)
 
 > Kumpulan **detection rules** dan **hunting queries** lintas platform (Sigma,
 > Elastic, Splunk, Microsoft Sentinel, Wazuh, dan Carbon Black) dengan mapping

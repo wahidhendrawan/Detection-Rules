@@ -1,0 +1,46 @@
+# GitGuardian configuration
+# https://docs.gitguardian.com/internal-repositories-monitoring/integrations/git-hooks/ggshield/configuration
+
+version: 2
+
+# This is a public detection-rules repository. Many rule titles, test
+# fixtures, and report payloads contain strings that look like secrets
+# (password reset, credential dumping, base64-encoded sample events,
+# etc.) but are NOT actual credentials.
+#
+# We allowlist:
+#   - tests/fixtures/    : synthetic event payloads (intentionally
+#                          contain base64-looking strings to exercise
+#                          PowerShell / DNS-tunnel detections).
+#   - docs/              : auto-generated reports referencing rule
+#                          names like "credential dumping" or
+#                          "password reset".
+#   - rules.index.json   : auto-generated cross-platform manifest.
+#   - rules.index.yaml   : same, YAML form.
+#   - COVERAGE.md        : auto-generated coverage report.
+#   - public/            : GitHub Pages assets including badge JSONs.
+#   - sigma/, splunk/, microsoft-sentinel/, wazuh/, carbonblack/, elastic/
+#                        : detection rule sources — many titles legitimately
+#                          mention "credential", "password", "key", etc.
+paths-ignore:
+  - "tests/fixtures/**"
+  - "docs/**"
+  - "rules.index.json"
+  - "rules.index.yaml"
+  - "COVERAGE.md"
+  - "coverage.json"
+  - "metrics.json"
+  - "public/**"
+  - "navigator-layers/**"
+  - "sigma/**"
+  - "splunk/**"
+  - "microsoft-sentinel/**"
+  - "wazuh/**"
+  - "carbonblack/**"
+  - "elastic/**"
+
+# Detector-level overrides: skip generic high-entropy detector for the
+# whole repo because rule queries and ATT&CK technique names trigger it.
+detectors-ignore:
+  - generic_high_entropy_secret
+  - generic_password

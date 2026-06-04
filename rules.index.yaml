@@ -154,8 +154,8 @@ techniques:
       - wazuh
       - carbonblack
   T1016:
-    name: 'Unknown / Custom'
-    tactic: uncategorized
+    name: 'System Network Configuration Discovery'
+    tactic: discovery
     coverage_count: 1
     detections:
       sigma: []
@@ -286,8 +286,8 @@ techniques:
       - wazuh
       - carbonblack
   T1033:
-    name: 'Unknown / Custom'
-    tactic: uncategorized
+    name: 'System Owner/User Discovery'
+    tactic: discovery
     coverage_count: 1
     detections:
       sigma: []
@@ -349,8 +349,8 @@ techniques:
       - wazuh
       - carbonblack
   T1046:
-    name: 'Unknown / Custom'
-    tactic: uncategorized
+    name: 'Network Service Discovery'
+    tactic: discovery
     coverage_count: 2
     detections:
       sigma:
@@ -584,8 +584,8 @@ techniques:
       - sigma
       - splunk
   T1059.004:
-    name: 'Unknown / Custom'
-    tactic: uncategorized
+    name: 'Unix Shell'
+    tactic: execution
     coverage_count: 3
     detections:
       sigma:
@@ -929,8 +929,8 @@ techniques:
       - wazuh
       - carbonblack
   T1082:
-    name: 'Unknown / Custom'
-    tactic: uncategorized
+    name: 'System Information Discovery'
+    tactic: discovery
     coverage_count: 1
     detections:
       sigma: []
@@ -1336,8 +1336,8 @@ techniques:
       - splunk
       - wazuh
   T1190:
-    name: 'Unknown / Custom'
-    tactic: uncategorized
+    name: 'Exploit Public-Facing Application'
+    tactic: initial-access
     coverage_count: 2
     detections:
       sigma: []
@@ -1573,8 +1573,8 @@ techniques:
       - microsoft-sentinel
       - carbonblack
   T1486:
-    name: 'Unknown / Custom'
-    tactic: uncategorized
+    name: 'Data Encrypted for Impact'
+    tactic: impact
     coverage_count: 1
     detections:
       sigma: []
@@ -1752,8 +1752,8 @@ techniques:
       - splunk
       - carbonblack
   T1505.003:
-    name: 'Unknown / Custom'
-    tactic: uncategorized
+    name: 'Web Shell'
+    tactic: persistence
     coverage_count: 1
     detections:
       sigma: []
@@ -2122,8 +2122,8 @@ techniques:
       - splunk
       - carbonblack
   T1562.008:
-    name: 'Unknown / Custom'
-    tactic: uncategorized
+    name: 'Disable or Modify Cloud Logs'
+    tactic: defense-evasion
     coverage_count: 1
     detections:
       sigma:

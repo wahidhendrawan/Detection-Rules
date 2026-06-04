@@ -1,0 +1,43 @@
+{
+  "rule": "sigma/cloud/cloud_aws_suspicious_disable_cloudtrail.yml",
+  "description": "AWS CloudTrail logging disabled (T1562.008 / T1562.001)",
+  "match_condition": {
+    "eventSource": "cloudtrail.amazonaws.com",
+    "eventName":   { "in": ["StopLogging", "DeleteTrail", "PutEventSelectors"] }
+  },
+  "test_cases": [
+    {
+      "name": "matches StopLogging",
+      "expected": "match",
+      "event": {
+        "eventSource": "cloudtrail.amazonaws.com",
+        "eventName": "StopLogging",
+        "userIdentity": { "type": "IAMUser" }
+      }
+    },
+    {
+      "name": "matches DeleteTrail",
+      "expected": "match",
+      "event": {
+        "eventSource": "cloudtrail.amazonaws.com",
+        "eventName": "DeleteTrail"
+      }
+    },
+    {
+      "name": "does not match unrelated cloudtrail event",
+      "expected": "no_match",
+      "event": {
+        "eventSource": "cloudtrail.amazonaws.com",
+        "eventName": "DescribeTrails"
+      }
+    },
+    {
+      "name": "does not match other service",
+      "expected": "no_match",
+      "event": {
+        "eventSource": "ec2.amazonaws.com",
+        "eventName": "StopLogging"
+      }
+    }
+  ]
+}

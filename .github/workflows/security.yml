@@ -1,0 +1,69 @@
+name: Security scan
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/**'
+      - 'tests/**'
+      - '.github/workflows/security.yml'
+  pull_request:
+    branches: [main]
+    paths:
+      - 'scripts/**'
+      - 'tests/**'
+      - '.github/workflows/security.yml'
+  schedule:
+    # Weekly run for drift detection
+    - cron: '17 6 * * 1'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  security-events: write
+
+jobs:
+  codeql:
+    name: CodeQL (Python)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Initialize CodeQL
+        uses: github/codeql-action/init@v3
+        with:
+          languages: python
+          queries: security-and-quality
+      - name: Auto-build
+        uses: github/codeql-action/autobuild@v3
+      - name: CodeQL analysis
+        uses: github/codeql-action/analyze@v3
+        with:
+          category: "/language:python"
+
+  bandit:
+    name: Bandit (Python static analysis)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install Bandit
+        run: pip install "bandit[toml]==1.8.0"
+      - name: Run Bandit
+        # `--severity-level medium` filters out low-severity findings.
+        # `--confidence-level medium` filters out low-confidence findings.
+        run: bandit -r scripts/ --severity-level medium --confidence-level medium
+
+  pip-audit:
+    name: pip-audit (dependency vulnerabilities)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install pip-audit
+        run: pip install pip-audit==2.8.0
+      - name: Audit pinned dependencies
+        run: pip-audit -r requirements-dev.txt --strict || true

@@ -1,0 +1,164 @@
+{
+  "name": "Detection-Rules \u2014 Sigma",
+  "versions": {
+    "layer": "4.5",
+    "navigator": "5.0",
+    "attack": "16"
+  },
+  "domain": "enterprise-attack",
+  "description": "Techniques detected by sigma rules in this repository.",
+  "filters": {
+    "platforms": [
+      "Linux",
+      "Windows",
+      "macOS",
+      "Network",
+      "Cloud"
+    ]
+  },
+  "sorting": 3,
+  "layout": {
+    "layout": "side",
+    "showName": true,
+    "showID": false
+  },
+  "hideDisabled": false,
+  "techniques": [
+    {
+      "techniqueID": "T1003.001",
+      "score": 1,
+      "color": "#1f77b4",
+      "enabled": true
+    },
+    {
+      "techniqueID": "T1021.001",
+      "score": 1,
+      "color": "#1f77b4",
+      "enabled": true
+    },
+    {
+      "techniqueID": "T1027",
+      "score": 1,
+      "color": "#1f77b4",
+      "enabled": true
+    },
+    {
+      "techniqueID": "T1046",
+      "score": 1,
+      "color": "#1f77b4",
+      "enabled": true
+    },
+    {
+      "techniqueID": "T1053.003",
+      "score": 1,
+      "color": "#1f77b4",
+      "enabled": true
+    },
+    {
+      "techniqueID": "T1053.005",
+      "score": 1,
+      "color": "#1f77b4",
+      "enabled": true
+    },
+    {
+      "techniqueID": "T1059",
+      "score": 1,
+      "color": "#1f77b4",
+      "enabled": true
+    },
+    {
+      "techniqueID": "T1059.001",
+      "score": 1,
+      "color": "#1f77b4",
+      "enabled": true
+    },
+    {
+      "techniqueID": "T1059.004",
+      "score": 1,
+      "color": "#1f77b4",
+      "enabled": true
+    },
+    {
+      "techniqueID": "T1068",
+      "score": 1,
+      "color": "#1f77b4",
+      "enabled": true
+    },
+    {
+      "techniqueID": "T1070.001",
+      "score": 1,
+      "color": "#1f77b4",
+      "enabled": true
+    },
+    {
+      "techniqueID": "T1071",
+      "score": 1,
+      "color": "#1f77b4",
+      "enabled": true
+    },
+    {
+      "techniqueID": "T1071.004",
+      "score": 1,
+      "color": "#1f77b4",
+      "enabled": true
+    },
+    {
+      "techniqueID": "T1098",
+      "score": 1,
+      "color": "#1f77b4",
+      "enabled": true
+    },
+    {
+      "techniqueID": "T1098.004",
+      "score": 1,
+      "color": "#1f77b4",
+      "enabled": true
+    },
+    {
+      "techniqueID": "T1105",
+      "score": 1,
+      "color": "#1f77b4",
+      "enabled": true
+    },
+    {
+      "techniqueID": "T1136.001",
+      "score": 1,
+      "color": "#1f77b4",
+      "enabled": true
+    },
+    {
+      "techniqueID": "T1218.005",
+      "score": 1,
+      "color": "#1f77b4",
+      "enabled": true
+    },
+    {
+      "techniqueID": "T1490",
+      "score": 1,
+      "color": "#1f77b4",
+      "enabled": true
+    },
+    {
+      "techniqueID": "T1548.003",
+      "score": 1,
+      "color": "#1f77b4",
+      "enabled": true
+    },
+    {
+      "techniqueID": "T1562.008",
+      "score": 1,
+      "color": "#1f77b4",
+      "enabled": true
+    }
+  ],
+  "gradient": {
+    "colors": [
+      "#ffe6e6",
+      "#990000"
+    ],
+    "minValue": 1,
+    "maxValue": 1
+  },
+  "showTacticRowBackground": false,
+  "selectTechniquesAcrossTactics": true
+}

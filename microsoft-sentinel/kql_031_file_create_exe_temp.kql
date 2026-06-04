@@ -1,4 +1,7 @@
 // Title: File Create Exe Temp
 // Description: Hunts for file create exe temp
 // MITRE ATT&CK: T1105, T1036
+// Severity: informational
+// FalsePositives:
+//   - Software install/update yang sah membuat file di path tersebut.
 FileCreationEvents | where FolderPath contains 'AppData\\Local\\Temp' and FileName endswith '.exe'

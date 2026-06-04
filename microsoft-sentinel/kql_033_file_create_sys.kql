@@ -1,4 +1,7 @@
 // Title: File Create Sys
 // Description: Hunts for file create sys
 // MITRE ATT&CK: T1543.003
+// Severity: informational
+// FalsePositives:
+//   - Software install/update yang sah membuat file di path tersebut.
 FileCreationEvents | where FolderPath contains 'System32\\drivers' and FileName endswith '.sys'

@@ -16,7 +16,8 @@ detection:
 fields:
   - CommandLine
 falsepositives:
-  - Legitimate administrative activity
+  - Admin sysadmin yang sah download CRL/CTL.
+  - PKI tooling internal (Windows ADCS).
 level: medium
 tags:
   - attack.execution

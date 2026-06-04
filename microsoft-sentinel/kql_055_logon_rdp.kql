@@ -1,4 +1,32 @@
-// Title: Logon Rdp
-// Description: Hunts for logon rdp
-// MITRE ATT&CK: T1021.001
-LogonEvents | where EventID == 4624 and LogonType == 10
+// Title: Suspicious RDP Logon (Lateral Movement Indicator)
+// Description: Mendeteksi RDP logon (LogonType 10) dari source non-management
+//              network atau ke multiple target dalam waktu singkat -
+//              indikator lateral movement.
+// MITRE ATT&CK: T1021.001, T1078
+// Severity: medium
+// FalsePositives:
+//   - Admin yang sah menggunakan RDP untuk maintenance.
+//   - Jump host / bastion yang melakukan RDP ke banyak server.
+//   - Tooling monitoring yang menggunakan RDP untuk health check.
+// References:
+//   - https://attack.mitre.org/techniques/T1021/001/
+
+let lookback = 30m;
+SecurityEvent
+| where TimeGenerated > ago(2h)
+| where EventID == 4624                       // Successful logon
+| where LogonType == 10                       // RemoteInteractive (RDP)
+| where AccountType == "User"
+| extend SourceIP = IpAddress
+// Aggregate per source untuk deteksi fan-out
+| summarize
+    TargetCount = dcount(Computer),
+    Targets = make_set(Computer, 20),
+    LogonCount = count(),
+    Accounts = make_set(TargetAccount, 10),
+    StartTime = min(TimeGenerated),
+    EndTime = max(TimeGenerated)
+    by bin(TimeGenerated, lookback), SourceIP
+// Trigger if same source RDPs to >= 3 different targets in 30 minutes
+| where TargetCount >= 3
+| order by TargetCount desc

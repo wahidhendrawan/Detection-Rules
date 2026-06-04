@@ -1,4 +1,7 @@
 // Title: Misc Cloud Mfa Disabled
 // Description: Hunts for misc cloud mfa disabled
 // MITRE ATT&CK: T1556.006
+// Severity: low
+// FalsePositives:
+//   - Aktivitas cloud admin / automation legit (CI/CD, IaC).
 CloudEvents | where ActionType == 'DisableMfa'

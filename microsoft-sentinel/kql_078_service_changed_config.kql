@@ -1,4 +1,7 @@
 // Title: Service Changed Config
 // Description: Hunts for service changed config
 // MITRE ATT&CK: T1543.003
+// Severity: informational
+// FalsePositives:
+//   - Operasi service legit (Windows Update, software install).
 ServiceEvents | where EventID == 7040

@@ -1,4 +1,33 @@
-// Title: Proc Exec Regsvr32
-// Description: Hunts for proc exec regsvr32
+// Title: Suspicious Regsvr32 Execution (Squiblydoo)
+// Description: Mendeteksi regsvr32.exe dengan pattern "Squiblydoo" -
+//              memanggil scrobj.dll untuk meload remote SCT/COM scriptlet
+//              sebagai bypass AppLocker.
 // MITRE ATT&CK: T1218.010
-ProcessExecutionEvents | where ProcessName == 'regsvr32.exe'
+// Severity: high
+// FalsePositives:
+//   - Microsoft signed installer yang sah meregister DLL.
+//   - Software vendor installer.
+// References:
+//   - https://attack.mitre.org/techniques/T1218/010/
+//   - https://lolbas-project.github.io/lolbas/Binaries/Regsvr32/
+
+DeviceProcessEvents
+| where Timestamp > ago(24h)
+| where FileName =~ "regsvr32.exe"
+| where (
+    // Squiblydoo classic: /i:URL scrobj.dll
+    ProcessCommandLine has_all ("/i:", "scrobj.dll")
+    // Or /i: with http(s)/ftp URL
+    or ProcessCommandLine matches regex @"\/i:.*(?i)(http|ftp)"
+    // Or running from suspicious path
+    or InitiatingProcessFolderPath has_any (
+        @"\AppData\", @"\Temp\", @"\Public\"
+    )
+)
+// Exclude Microsoft installer parent
+| where InitiatingProcessFileName !in~ (
+    "msiexec.exe", "TrustedInstaller.exe", "TiWorker.exe"
+)
+| project Timestamp, DeviceName, AccountName, FileName, ProcessCommandLine,
+          InitiatingProcessFileName, InitiatingProcessFolderPath
+| order by Timestamp desc

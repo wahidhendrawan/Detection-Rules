@@ -16,7 +16,8 @@ detection:
 fields:
   - CommandLine
 falsepositives:
-  - Legitimate administrative activity
+  - Microsoft signed components (printer driver, control panel applet).
+  - Software vendor installer signed.
 level: medium
 tags:
   - attack.execution

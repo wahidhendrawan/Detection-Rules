@@ -16,7 +16,9 @@ detection:
 fields:
   - DestinationPort
 falsepositives:
-  - Legitimate administrative activity
+  - User legit yang sukses authenticate.
+  - Service account dengan token rotation.
+  - Admin yang sah memodifikasi user.
 level: medium
 tags:
   - attack.command-and-control

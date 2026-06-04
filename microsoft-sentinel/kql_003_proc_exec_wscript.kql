@@ -1,4 +1,7 @@
 // Title: Proc Exec Wscript
 // Description: Hunts for proc exec wscript
 // MITRE ATT&CK: T1059.005
+// Severity: informational
+// FalsePositives:
+//   - Aktivitas administratif rutin yang menjalankan binary tersebut (admin script, scheduled task, software update).
 ProcessExecutionEvents | where ProcessName == 'wscript.exe'

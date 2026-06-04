@@ -1,4 +1,7 @@
 // Title: Obj Access Backup
 // Description: Hunts for obj access backup
 // MITRE ATT&CK: T1490
+// Severity: informational
+// FalsePositives:
+//   - Tools backup/forensic yang sah mengakses resource tersebut.
 ObjectAccessEvents | where ObjectName contains 'WindowsImageBackup'

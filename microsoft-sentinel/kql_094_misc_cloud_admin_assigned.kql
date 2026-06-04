@@ -1,4 +1,7 @@
 // Title: Misc Cloud Admin Assigned
 // Description: Hunts for misc cloud admin assigned
 // MITRE ATT&CK: T1098.003
+// Severity: low
+// FalsePositives:
+//   - Aktivitas cloud admin / automation legit (CI/CD, IaC).
 CloudEvents | where ActionType == 'AssignAdminRole'

@@ -1,4 +1,7 @@
 // Title: Misc Cloud Api Key Created
 // Description: Hunts for misc cloud api key created
 // MITRE ATT&CK: T1098.001
+// Severity: low
+// FalsePositives:
+//   - Aktivitas cloud admin / automation legit (CI/CD, IaC).
 CloudEvents | where ActionType == 'CreateApiKey'

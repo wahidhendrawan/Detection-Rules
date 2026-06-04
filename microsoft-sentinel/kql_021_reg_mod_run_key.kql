@@ -1,4 +1,40 @@
-// Title: Reg Mod Run Key
-// Description: Hunts for reg mod run key
+// Title: Registry Run Key Modification (Persistence)
+// Description: Mendeteksi modifikasi Run/RunOnce key di registry sebagai
+//              autostart persistence. Filter exclude installer Microsoft
+//              dan software vendor.
 // MITRE ATT&CK: T1547.001
-RegistryEvents | where RegistryKey contains 'CurrentVersion\\Run'
+// Severity: medium
+// FalsePositives:
+//   - Software install (Adobe, Chrome, Discord) menambah autostart.
+//   - Microsoft Update menambah RunOnce entry.
+//   - User-installed startup tools (Slack, Teams).
+// References:
+//   - https://attack.mitre.org/techniques/T1547/001/
+
+DeviceRegistryEvents
+| where Timestamp > ago(24h)
+| where ActionType in~ ("RegistryValueSet", "RegistryKeyCreated")
+| where RegistryKey has_any (
+    @"\Software\Microsoft\Windows\CurrentVersion\Run",
+    @"\Software\Microsoft\Windows\CurrentVersion\RunOnce",
+    @"\Software\Wow6432Node\Microsoft\Windows\CurrentVersion\Run",
+    @"\Software\Wow6432Node\Microsoft\Windows\CurrentVersion\RunOnce"
+)
+// Suspicious value pointing ke binary di path mencurigakan, atau
+// memanggil powershell/cmd/wscript dengan args
+| where (
+    RegistryValueData has_any (
+        @"\AppData\", @"\Temp\", @"\ProgramData\Temp\", @"\Public\",
+        "powershell", "cmd /c", "wscript", "cscript", "rundll32",
+        "regsvr32", "mshta"
+    )
+    or RegistryValueData matches regex @"(?i)(http|ftp)s?://"
+)
+// Exclude trusted installer
+| where InitiatingProcessFileName !in~ (
+    "msiexec.exe", "TrustedInstaller.exe", "TiWorker.exe",
+    "MicrosoftEdgeUpdate.exe", "OneDrive.exe", "GoogleUpdate.exe"
+)
+| project Timestamp, DeviceName, AccountName, RegistryKey, RegistryValueName,
+          RegistryValueData, InitiatingProcessFileName, InitiatingProcessCommandLine
+| order by Timestamp desc

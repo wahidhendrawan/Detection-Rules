@@ -1,4 +1,7 @@
 // Title: Net Conn Suspicious Port
 // Description: Hunts for net conn suspicious port
 // MITRE ATT&CK: T1571
+// Severity: low
+// FalsePositives:
+//   - Koneksi keluar yang sah dari aplikasi enterprise (RMM, monitoring agent).
 NetworkConnectionEvents | where DestinationPort in (4444, 31337, 1337)

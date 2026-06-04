@@ -1,4 +1,7 @@
 // Title: Schtask Updated
 // Description: Hunts for schtask updated
 // MITRE ATT&CK: T1053.005
+// Severity: informational
+// FalsePositives:
+//   - Scheduled task yang dibuat oleh installer software vendor.
 ScheduledTaskEvents | where EventID == 4702

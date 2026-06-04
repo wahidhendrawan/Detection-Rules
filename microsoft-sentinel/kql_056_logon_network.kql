@@ -1,4 +1,7 @@
 // Title: Logon Network
 // Description: Hunts for logon network
 // MITRE ATT&CK: T1021
+// Severity: informational
+// FalsePositives:
+//   - Logon legit (terutama service account, scheduled task).
 LogonEvents | where EventID == 4624 and LogonType == 3

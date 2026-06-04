@@ -1,4 +1,7 @@
 // Title: Reg Mod Services
 // Description: Hunts for reg mod services
 // MITRE ATT&CK: T1543.003
+// Severity: informational
+// FalsePositives:
+//   - Software install/update yang sah memodifikasi registry.
 RegistryEvents | where RegistryKey contains 'CurrentControlSet\\Services'

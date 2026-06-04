@@ -1,4 +1,7 @@
 // Title: Misc Cloud Vm Deleted
 // Description: Hunts for misc cloud vm deleted
 // MITRE ATT&CK: T1578.003
+// Severity: informational
+// FalsePositives:
+//   - Aktivitas cloud admin / automation legit (CI/CD, IaC).
 CloudEvents | where ActionType == 'DeleteVM'

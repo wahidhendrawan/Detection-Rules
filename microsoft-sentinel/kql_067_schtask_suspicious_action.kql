@@ -1,4 +1,7 @@
 // Title: Schtask Suspicious Action
 // Description: Hunts for schtask suspicious action
 // MITRE ATT&CK: T1053.005
+// Severity: informational
+// FalsePositives:
+//   - Scheduled task yang dibuat oleh installer software vendor.
 ScheduledTaskEvents | where Action contains 'powershell' or Action contains 'cmd'

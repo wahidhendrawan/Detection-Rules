@@ -1,4 +1,7 @@
 // Title: Schtask Network Trigger
 // Description: Hunts for schtask network trigger
 // MITRE ATT&CK: T1053.005
+// Severity: informational
+// FalsePositives:
+//   - Scheduled task yang dibuat oleh installer software vendor.
 ScheduledTaskEvents | where Trigger contains 'Network'

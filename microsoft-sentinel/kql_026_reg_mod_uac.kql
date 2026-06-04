@@ -1,4 +1,7 @@
 // Title: Reg Mod Uac
 // Description: Hunts for reg mod uac
 // MITRE ATT&CK: T1548.002
+// Severity: informational
+// FalsePositives:
+//   - Software install/update yang sah memodifikasi registry.
 RegistryEvents | where RegistryKey contains 'System\\Policies' and RegistryValueName == 'EnableLUA'

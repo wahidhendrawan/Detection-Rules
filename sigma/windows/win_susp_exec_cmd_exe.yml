@@ -16,7 +16,8 @@ detection:
 fields:
   - CommandLine
 falsepositives:
-  - Legitimate administrative activity
+  - Script administrasi rutin (batch script signed).
+  - Software installer yang spawn cmd untuk post-install task.
 level: medium
 tags:
   - attack.execution

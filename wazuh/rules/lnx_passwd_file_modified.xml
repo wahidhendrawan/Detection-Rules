@@ -1,11 +1,24 @@
-<group name="lnx">
-  <rule id="100121" level="12">
+<!--
+  Severity: high
+  FalsePositives:
+    - User management resmi: useradd, usermod, userdel, passwd, chpasswd.
+    - Configuration management tools (Ansible, Salt, Puppet) yang manage user.
+  Notes:
+    - <match> sebelumnya hanya 'open("/etc/passwd", O_WRONLY|O_TRUNC)'
+      yang spesifik ke decoder syslog osquery atau audit-log.
+    - Hardened: pakai <regex> yang fleksibel (write/truncate/append) +
+      hindari noise dari shadow-utils binary yang sah (whitelist via
+      <if_sid> pada decoder OS-specific - perlu disesuaikan dgn env).
+-->
+<group name="attack,lnx,credential_access,persistence">
+  <rule id="100121" level="11">
     <decoded_as>syslog</decoded_as>
-    <match>open("/etc/passwd", O_WRONLY|O_TRUNC)</match>
-    <description>Modification of /etc/passwd file</description>
+    <regex type="pcre2">(?:open(?:at)?\s*\(\s*[^,]*"\/etc\/passwd"[^)]*(?:O_WRONLY|O_RDWR|O_TRUNC|O_APPEND)|/etc/passwd.*?(?:write|modify|truncated)|sudo\s+(?:vi|vim|nano|emacs|sed)\s+/etc/passwd)</regex>
+    <description>/etc/passwd modified (potential account manipulation or credential dumping target)</description>
     <mitre>
       <id>T1098</id>
       <id>T1003.008</id>
     </mitre>
+    <options>no_full_log</options>
   </rule>
 </group>

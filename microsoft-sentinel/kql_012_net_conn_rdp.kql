@@ -1,4 +1,7 @@
 // Title: Net Conn Rdp
 // Description: Hunts for net conn rdp
 // MITRE ATT&CK: T1021.001
+// Severity: informational
+// FalsePositives:
+//   - Koneksi keluar yang sah dari aplikasi enterprise (RMM, monitoring agent).
 NetworkConnectionEvents | where DestinationPort == 3389

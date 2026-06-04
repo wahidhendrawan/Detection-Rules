@@ -1,4 +1,40 @@
-// Title: Proc Exec Powershell
-// Description: Hunts for proc exec powershell
+// Title: Suspicious PowerShell Execution
+// Description: Detects PowerShell execution dengan flag mencurigakan
+//              (EncodedCommand, hidden window, downloader cradle).
+//              Memerlukan investigasi manual untuk konfirmasi malicious.
 // MITRE ATT&CK: T1059.001
-ProcessExecutionEvents | where ProcessName == 'powershell.exe'
+// Severity: medium
+// FalsePositives:
+//   - Microsoft scheduled task (mis. Get-WindowsUpdate, MicrosoftEdgeUpdate).
+//   - RMM/MDM tools (Datto, NinjaOne, Intune) yang sering pakai EncodedCommand.
+//   - Vendor installer signed yang menjalankan PowerShell helper.
+// References:
+//   - https://attack.mitre.org/techniques/T1059/001/
+//   - https://www.microsoft.com/en-us/security/blog/2017/12/04/poshspy-backdoor-uses-encoded-powershell/
+
+DeviceProcessEvents
+| where Timestamp > ago(24h)
+| where FileName in~ ("powershell.exe", "pwsh.exe")
+// Suspicious flags or downloader cradles
+| where ProcessCommandLine has_any (
+    "EncodedCommand", "-enc ", "-ec ",
+    "-w hidden", "-WindowStyle Hidden",
+    "DownloadString", "DownloadFile",
+    "IEX(", "Invoke-Expression",
+    "FromBase64String",
+    "[System.Reflection.Assembly]::Load",
+    "-NoProfile -NonInteractive"
+)
+// Whitelist trusted parents (tune for your env)
+| where InitiatingProcessFileName !in~ (
+    "MicrosoftEdgeUpdate.exe",
+    "OneDrive.exe",
+    "Code.exe",
+    "TeamViewer_Service.exe"
+)
+// Exclude SYSTEM running well-known scheduled scripts
+| where not(AccountName == "system"
+            and ProcessCommandLine has_any ("Get-WindowsUpdate", "dsregcmd"))
+| project Timestamp, DeviceName, AccountName, FileName, ProcessCommandLine,
+          InitiatingProcessFileName, InitiatingProcessCommandLine, ReportId
+| order by Timestamp desc

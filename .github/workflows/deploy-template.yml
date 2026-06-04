@@ -1,0 +1,42 @@
+name: Deploy Rules to SIEM
+on:
+  workflow_call:
+    inputs:
+      target:
+        description: 'Target SIEM platform (elastic/splunk/sentinel)'
+        required: true
+        type: string
+  workflow_dispatch:
+    inputs:
+      target:
+        description: 'Target SIEM platform'
+        required: true
+        type: choice
+        options:
+          - elastic
+          - splunk
+          - sentinel
+
+# NOTE: Configure environment protection rules in repo settings
+# to require approval before deploying to production SIEMs.
+
+permissions:
+  contents: read
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    # environment: production  # Uncomment to enable environment protection rules
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Deploy to Elastic
+        if: inputs.target == 'elastic'
+        run: echo 'TODO: POST elastic/*.ndjson to Kibana saved_objects/_import API'
+
+      - name: Deploy to Splunk
+        if: inputs.target == 'splunk'
+        run: echo 'TODO: POST splunk/*.conf to Splunk REST API /servicesNS/nobody/search/saved/searches'
+
+      - name: Deploy to Sentinel
+        if: inputs.target == 'sentinel'
+        run: echo 'TODO: PUT sentinel/*.json to Azure Sentinel API /providers/Microsoft.SecurityInsights/alertRules'

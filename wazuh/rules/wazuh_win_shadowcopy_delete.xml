@@ -1,5 +1,5 @@
 <group name="custom,attack,">
-  <rule id="10047239" level="10">
+  <rule id="100210" level="10">
     <if_group>sysmon_event1,windows,linux,aws_cloudtrail</if_group>
     <field name="win.eventdata.commandLine">(?i)vssadmin\s+delete\s+shadows</field>
     <description>Custom detection: wazuh_win_shadowcopy_delete</description>

@@ -1,4 +1,7 @@
 // Title: Reg Mod Runonce Key
 // Description: Hunts for reg mod runonce key
 // MITRE ATT&CK: T1547.001
+// Severity: informational
+// FalsePositives:
+//   - Software install/update yang sah memodifikasi registry.
 RegistryEvents | where RegistryKey contains 'CurrentVersion\\RunOnce'

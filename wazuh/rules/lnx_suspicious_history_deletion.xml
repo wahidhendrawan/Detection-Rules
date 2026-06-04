@@ -1,10 +1,22 @@
-<group name="lnx">
-  <rule id="100127" level="10">
+<!--
+  Severity: high
+  FalsePositives:
+    - User yang memang membersihkan history (jarang).
+    - Otomatisasi shell yang mengelola history file (sangat tidak biasa).
+  Notes:
+    - <match> sebelumnya 'rm ~/.bash_history' tidak tertangkap pola
+      umum lain: truncate dengan '> file', cat /dev/null > file,
+      shred, history -c, unset HISTFILE.
+    - Hardened version pakai <regex> yang mencakup semua varian.
+-->
+<group name="attack,lnx,defense_evasion">
+  <rule id="100127" level="11">
     <decoded_as>syslog</decoded_as>
-    <match>rm ~/.bash_history</match>
-    <description>History file deletion detected</description>
+    <regex type="pcre2">(?:rm\s+(?:-[rf]+\s+)?(?:~/|/(?:home|root)/[^/\s]+/)?(?:\.bash_history|\.zsh_history|\.history)|>\s*(?:~/|/(?:home|root)/[^/\s]+/)?(?:\.bash_history|\.zsh_history|\.history)|cat\s+/dev/null\s*>\s*(?:~/|/[^\s]+/)?(?:\.bash_history|\.zsh_history)|shred\s+(?:-[a-z]+\s+)?(?:~/|/[^\s]+/)?(?:\.bash_history|\.zsh_history)|history\s+-c|unset\s+HISTFILE)</regex>
+    <description>Shell history tampering or deletion (rm, truncate, shred, history -c, unset HISTFILE)</description>
     <mitre>
       <id>T1070.003</id>
     </mitre>
+    <options>no_full_log</options>
   </rule>
 </group>

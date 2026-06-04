@@ -1,4 +1,7 @@
 // Title: Misc Cloud Vm Created
 // Description: Hunts for misc cloud vm created
 // MITRE ATT&CK: T1578.002
+// Severity: informational
+// FalsePositives:
+//   - Aktivitas cloud admin / automation legit (CI/CD, IaC).
 CloudEvents | where ActionType == 'CreateVM'

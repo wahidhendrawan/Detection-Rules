@@ -1,4 +1,7 @@
 // Title: Reg Mod Firewall
 // Description: Hunts for reg mod firewall
 // MITRE ATT&CK: T1562.004
+// Severity: informational
+// FalsePositives:
+//   - Software install/update yang sah memodifikasi registry.
 RegistryEvents | where RegistryKey contains 'FirewallRules'

@@ -1,4 +1,7 @@
 // Title: Proc Exec Schtasks
 // Description: Hunts for proc exec schtasks
 // MITRE ATT&CK: T1053.005
+// Severity: informational
+// FalsePositives:
+//   - Aktivitas administratif rutin yang menjalankan binary tersebut (admin script, scheduled task, software update).
 ProcessExecutionEvents | where ProcessName == 'schtasks.exe'

@@ -1,4 +1,7 @@
 // Title: Net Conn Ssh
 // Description: Hunts for net conn ssh
 // MITRE ATT&CK: T1021.004
+// Severity: informational
+// FalsePositives:
+//   - Koneksi keluar yang sah dari aplikasi enterprise (RMM, monitoring agent).
 NetworkConnectionEvents | where DestinationPort == 22

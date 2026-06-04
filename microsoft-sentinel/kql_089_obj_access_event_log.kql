@@ -1,4 +1,7 @@
 // Title: Obj Access Event Log
 // Description: Hunts for obj access event log
 // MITRE ATT&CK: T1070.001
+// Severity: low
+// FalsePositives:
+//   - Tools backup/forensic yang sah mengakses resource tersebut.
 ObjectAccessEvents | where ObjectName contains 'Security.evtx'

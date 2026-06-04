@@ -1,4 +1,7 @@
 // Title: Obj Access Ntds
 // Description: Hunts for obj access ntds
 // MITRE ATT&CK: T1003.003
+// Severity: low
+// FalsePositives:
+//   - Tools backup/forensic yang sah mengakses resource tersebut.
 ObjectAccessEvents | where ObjectName contains 'ntds.dit'

@@ -1,4 +1,7 @@
 // Title: Reg Mod Rdp
 // Description: Hunts for reg mod rdp
 // MITRE ATT&CK: T1021.001, T1112
+// Severity: informational
+// FalsePositives:
+//   - Software install/update yang sah memodifikasi registry.
 RegistryEvents | where RegistryKey contains 'Terminal Server' and RegistryValueName == 'fDenyTSConnections'

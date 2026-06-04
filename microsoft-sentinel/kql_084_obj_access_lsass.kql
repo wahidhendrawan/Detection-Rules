@@ -1,4 +1,44 @@
-// Title: Obj Access Lsass
-// Description: Hunts for obj access lsass
+// Title: LSASS Access for Credential Dumping
+// Description: Mendeteksi akses ke proses LSASS dengan permission yang
+//              memungkinkan memory dump - indikator strong credential
+//              dumping (Mimikatz, Pypykatz, ProcDump targeting LSASS).
 // MITRE ATT&CK: T1003.001
-ObjectAccessEvents | where ObjectName contains 'lsass.exe'
+// Severity: critical
+// FalsePositives:
+//   - EDR/AV vendor yang inspect LSASS (Defender, CrowdStrike, SentinelOne).
+//   - Microsoft signed tools (mis. Windows Error Reporting, dump tool resmi).
+//   - Authorized IR investigation (verify with ticket).
+// References:
+//   - https://attack.mitre.org/techniques/T1003/001/
+//   - https://github.com/gentilkiwi/mimikatz
+
+DeviceEvents
+| where Timestamp > ago(24h)
+| where ActionType == "OpenProcessApiCall"
+| extend ParsedFields = parse_json(AdditionalFields)
+| extend
+    TargetProcess = tostring(ParsedFields.TargetFileName),
+    DesiredAccess = tostring(ParsedFields.DesiredAccess)
+| where TargetProcess endswith "lsass.exe"
+// Permission yang memungkinkan memory dump:
+// 0x1010 = PROCESS_VM_READ | PROCESS_QUERY_LIMITED_INFORMATION
+// 0x1410 = +PROCESS_DUP_HANDLE
+// 0x1F0FFF = PROCESS_ALL_ACCESS
+| where DesiredAccess in (
+    "0x1010", "0x1410", "0x143A", "0x1FFFFF", "0x1F0FFF",
+    "0x1f0fff", "0x1fffff"
+)
+// Whitelist trusted callers (TUNE PER ENV)
+| where InitiatingProcessFileName !in~ (
+    "MsSense.exe",                  // Defender for Endpoint
+    "MsMpEng.exe",                  // Defender AV
+    "csagent.exe",                  // CrowdStrike
+    "SentinelAgent.exe",            // SentinelOne
+    "wermgr.exe",                   // Windows Error Reporting
+    "WerFault.exe",
+    "svchost.exe"                   // tune more carefully in real env
+)
+| project Timestamp, DeviceName, AccountName, TargetProcess, DesiredAccess,
+          InitiatingProcessFileName, InitiatingProcessFolderPath,
+          InitiatingProcessCommandLine
+| order by Timestamp desc

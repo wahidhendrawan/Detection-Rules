@@ -1,4 +1,7 @@
 // Title: Proc Exec Cmd
 // Description: Hunts for proc exec cmd
 // MITRE ATT&CK: T1059.003
+// Severity: informational
+// FalsePositives:
+//   - Aktivitas administratif rutin yang menjalankan binary tersebut (admin script, scheduled task, software update).
 ProcessExecutionEvents | where ProcessName == 'cmd.exe'

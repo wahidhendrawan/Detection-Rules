@@ -1,11 +1,23 @@
-<group name="win">
-  <rule id="100110" level="8">
-    <decoded_as>syslog</decoded_as>
-    <match>cmd.exe /c echo</match>
-    <description>Suspicious encoded command execution</description>
+<!--
+  Severity: high
+  FalsePositives:
+    - RMM / MDM tool yang pakai EncodedCommand untuk dispatch script.
+    - CI/CD agent yang inject base64-encoded config.
+  Notes:
+    - <regex> diperketat: harus mengandung salah satu indikator base64 encoding
+      (EncodedCommand / -enc / FromBase64String) - bukan sekadar 'cmd.exe /c echo'.
+-->
+<group name="attack,win,defense_evasion,execution">
+  <rule id="100110" level="10">
+    <decoded_as>windows_eventchannel</decoded_as>
+    <field name="event_id">^(1|4688)$</field>
+    <regex type="pcre2">(?i)(powershell|pwsh|cmd)\.exe.*(EncodedCommand|\s-enc\s|\s-ec\s|FromBase64String|::FromBase64String)</regex>
+    <description>Suspicious encoded command execution (powershell/cmd with base64 payload)</description>
     <mitre>
       <id>T1059.003</id>
+      <id>T1059.001</id>
       <id>T1027</id>
     </mitre>
+    <options>no_full_log</options>
   </rule>
 </group>

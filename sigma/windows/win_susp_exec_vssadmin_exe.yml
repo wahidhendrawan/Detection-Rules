@@ -16,7 +16,8 @@ detection:
 fields:
   - CommandLine
 falsepositives:
-  - Legitimate administrative activity
+  - Backup software (Veeam, Commvault, Acronis) yang manage shadow copy.
+  - Admin yang manual menjalankan vssadmin saat troubleshoot.
 level: medium
 tags:
   - attack.execution

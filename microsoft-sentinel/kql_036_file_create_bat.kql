@@ -1,4 +1,7 @@
 // Title: File Create Bat
 // Description: Hunts for file create bat
 // MITRE ATT&CK: T1059.003
+// Severity: informational
+// FalsePositives:
+//   - Software install/update yang sah membuat file di path tersebut.
 FileCreationEvents | where FileName endswith '.bat'

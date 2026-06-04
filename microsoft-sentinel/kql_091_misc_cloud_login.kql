@@ -1,4 +1,7 @@
 // Title: Misc Cloud Login
 // Description: Hunts for misc cloud login
 // MITRE ATT&CK: T1078.004
+// Severity: informational
+// FalsePositives:
+//   - Aktivitas cloud admin / automation legit (CI/CD, IaC).
 CloudEvents | where ActionType == 'UserLoggedIn'

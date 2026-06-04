@@ -1,4 +1,7 @@
 // Title: Reg Mod Lsa
 // Description: Hunts for reg mod lsa
 // MITRE ATT&CK: T1547.005
+// Severity: low
+// FalsePositives:
+//   - Software install/update yang sah memodifikasi registry.
 RegistryEvents | where RegistryKey contains 'Lsa' and RegistryValueName == 'RunAsPPL'

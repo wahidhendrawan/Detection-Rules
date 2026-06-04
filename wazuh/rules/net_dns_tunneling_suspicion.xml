@@ -1,11 +1,23 @@
-<group name="net">
+<!--
+  Severity: medium
+  FalsePositives:
+    - Legitimate SPF / DKIM / DMARC validator (mis. mail server lookups).
+    - Verification services (Google Site Verification, Microsoft 365 verification).
+    - HashiCorp / DNS-based service discovery.
+  Notes:
+    - <match> 'query type TXT' saja terlalu broad (akan fire setiap SPF lookup).
+    - Hardened version mensyaratkan: TXT query DAN salah satu indikator
+      tunneling (subdomain panjang > 50 char, base64-like, atau hex-like).
+-->
+<group name="attack,net,command_and_control,exfiltration">
   <rule id="100115" level="9">
     <decoded_as>syslog</decoded_as>
-    <match>query type TXT</match>
-    <description>Possible DNS tunneling detected</description>
+    <regex type="pcre2">query type TXT.*\s([a-zA-Z0-9+/=]{50,}\.|[a-fA-F0-9]{40,}\.)</regex>
+    <description>Possible DNS tunneling: TXT query with long base64/hex-like subdomain</description>
     <mitre>
       <id>T1071.004</id>
       <id>T1572</id>
     </mitre>
+    <options>no_full_log</options>
   </rule>
 </group>

@@ -16,7 +16,8 @@ detection:
 fields:
   - CommandLine
 falsepositives:
-  - Legitimate administrative activity
+  - Aktivitas administratif rutin yang menjalankan binary tersebut.
+  - Software install / update signed yang spawn proses tersebut.
 level: medium
 tags:
   - attack.execution

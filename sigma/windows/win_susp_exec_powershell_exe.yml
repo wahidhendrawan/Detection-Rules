@@ -16,7 +16,9 @@ detection:
 fields:
   - CommandLine
 falsepositives:
-  - Legitimate administrative activity
+  - Microsoft scheduled tasks (Get-WindowsUpdate, MicrosoftEdgeUpdate).
+  - RMM/MDM tools (Datto, NinjaOne, Intune) yang dispatch script.
+  - Vendor installer signed yang menjalankan PowerShell helper.
 level: medium
 tags:
   - attack.execution

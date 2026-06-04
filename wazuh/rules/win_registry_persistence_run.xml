@@ -1,10 +1,24 @@
-<group name="win">
-  <rule id="100108" level="10">
-    <decoded_as>syslog</decoded_as>
-    <match>Software\\Microsoft\\Windows\\CurrentVersion\\Run</match>
-    <description>Registry persistence via Run key</description>
+<!--
+  Severity: medium
+  FalsePositives:
+    - Software install legit (Adobe, Chrome, Discord) menambah autostart.
+    - Microsoft Update menambah RunOnce entry.
+  Notes:
+    - <match> sebelumnya 'Software\\...\\Run' fire untuk setiap *read* juga.
+    - Hardened version: butuh Sysmon event 13 (RegistryValueSet) atau
+      Windows Security 4657 (RegistryValueModified) DAN value-data
+      yang mengarah ke binary di path mencurigakan.
+-->
+<group name="attack,win,persistence">
+  <rule id="100108" level="9">
+    <decoded_as>windows_eventchannel</decoded_as>
+    <field name="event_id">^(13|4657)$</field>
+    <field name="targetObject" type="pcre2">(?i)Software\\(?:Wow6432Node\\)?Microsoft\\Windows\\CurrentVersion\\Run(Once)?\\</field>
+    <regex type="pcre2">(?i)(\\AppData\\|\\Temp\\|\\Public\\|\\ProgramData\\Temp\\|powershell|cmd\s/c|wscript|cscript|rundll32|regsvr32|mshta|https?://|ftp://)</regex>
+    <description>Registry Run/RunOnce key modified with suspicious value (autostart persistence)</description>
     <mitre>
       <id>T1547.001</id>
     </mitre>
+    <options>no_full_log</options>
   </rule>
 </group>

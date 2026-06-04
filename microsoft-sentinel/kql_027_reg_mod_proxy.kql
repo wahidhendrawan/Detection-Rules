@@ -1,4 +1,7 @@
 // Title: Reg Mod Proxy
 // Description: Hunts for reg mod proxy
 // MITRE ATT&CK: T1090
+// Severity: informational
+// FalsePositives:
+//   - Software install/update yang sah memodifikasi registry.
 RegistryEvents | where RegistryKey contains 'Internet Settings' and RegistryValueName == 'ProxyEnable'

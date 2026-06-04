@@ -1,7 +1,7 @@
 {
-  "id": "d36f7d87-a666-4be2-b545-380c12fa6819",
+  "id": "6f95c092-7313-559f-8f42-d06d34d4b315",
   "name": "cb_network_connection_suspicious_app_exe",
-  "description": "Detects network_connection involving suspicious_app.exe",
+  "description": "Detects network connection involving suspicious_app.exe (generic suspicious application)",
   "mitre": [
     "T1059",
     "T1036"

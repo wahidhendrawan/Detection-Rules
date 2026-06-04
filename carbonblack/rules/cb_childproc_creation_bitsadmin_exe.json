@@ -1,7 +1,7 @@
 {
-  "id": "78acf568-e6ad-46de-a1cd-9947ad3db46b",
+  "id": "20aa4e87-290a-5622-bf8f-fd404474fabd",
   "name": "cb_childproc_creation_bitsadmin_exe",
-  "description": "Detects childproc_creation involving bitsadmin.exe",
+  "description": "Detects childproc creation involving bitsadmin.exe (BITS abuse for persistence/download)",
   "mitre": [
     "T1197"
   ],

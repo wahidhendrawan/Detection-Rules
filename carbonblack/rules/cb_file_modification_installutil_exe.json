@@ -1,0 +1,12 @@
+{
+  "id": "dd22a6ae-b5c5-52a6-a7bb-b2146e9841ca",
+  "name": "cb_file_modification_installutil_exe",
+  "description": "Detects file modification involving installutil.exe (.NET install utility bypass)",
+  "mitre": [
+    "T1218.004"
+  ],
+  "query": "filemod_name:installutil.exe",
+  "severity": 5,
+  "enabled": true,
+  "category": "file_modification"
+}

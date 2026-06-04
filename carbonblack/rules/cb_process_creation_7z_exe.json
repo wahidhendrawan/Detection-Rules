@@ -1,0 +1,12 @@
+{
+  "id": "554e0734-8b81-584c-9971-4bd5dcdf0489",
+  "name": "cb_process_creation_7z_exe",
+  "description": "Detects process creation involving 7z.exe (archive for staging)",
+  "mitre": [
+    "T1560.001"
+  ],
+  "query": "process_name:7z.exe",
+  "severity": 4,
+  "enabled": true,
+  "category": "process_creation"
+}

@@ -1,12 +1,12 @@
 {
-  "id": "1d7f9d4f-e61c-4eab-98aa-72ec37b96b6b",
+  "id": "84d72c7d-b71c-5d21-b971-3f43e690ab79",
   "name": "cb_file_modification_cmd_exe",
-  "description": "Detects file_modification involving cmd.exe",
+  "description": "Detects file modification involving cmd.exe (command shell)",
   "mitre": [
     "T1059.003"
   ],
   "query": "filemod_name:cmd.exe",
-  "severity": 5,
+  "severity": 4,
   "enabled": true,
   "category": "file_modification"
 }

@@ -1,12 +1,12 @@
 {
-  "id": "3519549a-55e0-456e-8f37-d01f111d2af5",
+  "id": "67ae0ac6-b3b1-530f-9d31-2408c6e4a1c9",
   "name": "cb_network_connection_procdump_exe",
-  "description": "Detects network_connection involving procdump.exe",
+  "description": "Detects network connection involving procdump.exe (process memory dump tool)",
   "mitre": [
     "T1003.001"
   ],
   "query": "netconn_domain:procdump.exe",
-  "severity": 5,
+  "severity": 7,
   "enabled": true,
   "category": "network_connection"
 }

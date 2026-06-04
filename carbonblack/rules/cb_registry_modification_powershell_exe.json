@@ -1,7 +1,7 @@
 {
-  "id": "00e187bb-02c7-49a4-b4ac-fff6d655c30b",
+  "id": "c903b2eb-4c5b-56e5-b41b-4889e0afa0b4",
   "name": "cb_registry_modification_powershell_exe",
-  "description": "Detects registry_modification involving powershell.exe",
+  "description": "Detects registry modification involving powershell.exe (scripting interpreter)",
   "mitre": [
     "T1059.001"
   ],

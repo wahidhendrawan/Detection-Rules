@@ -1,0 +1,12 @@
+{
+  "id": "2738ef2f-2d6b-59a3-bd0b-41a2ef7abcff",
+  "name": "cb_network_connection_psexec_exe",
+  "description": "Detects network connection involving psexec.exe (remote execution tool)",
+  "mitre": [
+    "T1021.002"
+  ],
+  "query": "netconn_domain:psexec.exe",
+  "severity": 6,
+  "enabled": true,
+  "category": "network_connection"
+}

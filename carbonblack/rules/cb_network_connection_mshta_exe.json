@@ -1,0 +1,12 @@
+{
+  "id": "b0921dc2-5f67-5756-8c86-f36bf1a840c0",
+  "name": "cb_network_connection_mshta_exe",
+  "description": "Detects network connection involving mshta.exe (HTA execution proxy)",
+  "mitre": [
+    "T1218.005"
+  ],
+  "query": "netconn_domain:mshta.exe",
+  "severity": 6,
+  "enabled": true,
+  "category": "network_connection"
+}

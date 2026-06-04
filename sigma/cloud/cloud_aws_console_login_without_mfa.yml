@@ -1,0 +1,24 @@
+title: AWS Console Login Without MFA
+id: 8a3e4c2b-1f5d-4e7a-9b6c-3d8f2e1a0b5c
+status: experimental
+description: Detects AWS Management Console logins that were performed without multi-factor authentication.
+author: Wahid Hendrawan
+date: 2026/06/04
+references:
+  - https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-event-reference-user-identity.html
+logsource:
+  product: aws
+  service: cloudtrail
+detection:
+  selection:
+    eventName: ConsoleLogin
+    responseElements.ConsoleLogin: Success
+    additionalEventData.MFAUsed: 'No'
+  condition: selection
+falsepositives:
+  - Legitimate users in early stages of MFA enrollment
+  - Break-glass accounts intentionally configured without MFA
+level: high
+tags:
+  - attack.initial-access
+  - attack.t1078.004

@@ -1,12 +1,12 @@
 {
-  "id": "a0036c62-6afe-4232-a6b1-0832f753e08b",
+  "id": "119a843d-8e45-54fd-bc40-ca04e8c1e0e3",
   "name": "cb_file_modification_mimikatz_exe",
-  "description": "Detects file_modification involving mimikatz.exe",
+  "description": "Detects file modification involving mimikatz.exe (credential dumping tool)",
   "mitre": [
     "T1003.001"
   ],
   "query": "filemod_name:mimikatz.exe",
-  "severity": 5,
+  "severity": 8,
   "enabled": true,
   "category": "file_modification"
 }

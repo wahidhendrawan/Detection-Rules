@@ -1,0 +1,16 @@
+# Falco Rule: Shell Spawned in Container
+# MITRE ATT&CK: T1059.004 - Command and Scripting Interpreter: Unix Shell
+
+- rule: Shell Spawned in Container
+  desc: Detects an interactive shell being spawned inside a container
+  condition: >
+    spawned_process and container and
+    proc.name in (bash, sh, dash, ash, zsh)
+  output: >
+    Shell spawned in container
+    (user=%user.name shell=%proc.name container_id=%container.id image=%container.image.repository command=%proc.cmdline)
+  priority: WARNING
+  tags:
+    - container
+    - mitre_execution
+    - T1059.004

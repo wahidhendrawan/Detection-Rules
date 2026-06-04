@@ -19,6 +19,8 @@ from .commands import (
     fix,
     gap,
     index,
+    lint_severity,
+    new,
     metrics,
     navigator,
     test,
@@ -26,16 +28,18 @@ from .commands import (
 )
 
 COMMANDS = {
-    "coverage":  coverage,
-    "index":     index,
-    "fix":       fix,
-    "metrics":   metrics,
-    "navigator": navigator,
-    "gap":       gap,
-    "cti":       cti,
-    "atomic":    atomic,
-    "test":      test,
-    "badges":    badges,
+    "coverage":       coverage,
+    "index":          index,
+    "fix":            fix,
+    "lint-severity":  lint_severity,
+    "metrics":        metrics,
+    "navigator":      navigator,
+    "new":            new,
+    "gap":            gap,
+    "cti":            cti,
+    "atomic":         atomic,
+    "test":           test,
+    "badges":         badges,
 }
 
 

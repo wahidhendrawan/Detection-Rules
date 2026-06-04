@@ -1,7 +1,7 @@
 {
-  "id": "0ce0b290-ba09-49bf-901f-0c1291839a09",
+  "id": "21caac4d-2fb7-5a8d-8868-8780b9970087",
   "name": "cb_file_modification_at_exe",
-  "description": "Detects file_modification involving at.exe",
+  "description": "Detects file modification involving at.exe (legacy task scheduler)",
   "mitre": [
     "T1053.002"
   ],

@@ -1,7 +1,7 @@
 {
-  "id": "1a05c05b-d4c2-4e61-ba97-acc777749762",
+  "id": "1695c508-e6f4-56f7-8391-b265d770a531",
   "name": "cb_childproc_creation_suspicious_app_exe",
-  "description": "Detects childproc_creation involving suspicious_app.exe",
+  "description": "Detects childproc creation involving suspicious_app.exe (generic suspicious application)",
   "mitre": [
     "T1059",
     "T1036"

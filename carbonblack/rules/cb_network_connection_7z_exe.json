@@ -1,0 +1,12 @@
+{
+  "id": "e2692333-f78d-50ce-bfce-0f0eb8d4acd3",
+  "name": "cb_network_connection_7z_exe",
+  "description": "Detects network connection involving 7z.exe (archive for staging)",
+  "mitre": [
+    "T1560.001"
+  ],
+  "query": "netconn_domain:7z.exe",
+  "severity": 4,
+  "enabled": true,
+  "category": "network_connection"
+}

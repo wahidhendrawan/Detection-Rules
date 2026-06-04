@@ -1,0 +1,194 @@
+# Carbon Black rule generation matrix
+# Run: python -m detection_rules generate-cb
+
+event_types:
+  - process_creation
+  - childproc_creation
+  - file_modification
+  - network_connection
+  - registry_modification
+
+tools:
+  - name: mimikatz_exe
+    query_field: mimikatz.exe
+    mitre: [T1003.001]
+    severity: 8
+    description: "credential dumping tool"
+
+  - name: procdump_exe
+    query_field: procdump.exe
+    mitre: [T1003.001]
+    severity: 7
+    description: "process memory dump tool"
+
+  - name: psexec_exe
+    query_field: psexec.exe
+    mitre: [T1021.002]
+    severity: 6
+    description: "remote execution tool"
+
+  - name: powershell_exe
+    query_field: powershell.exe
+    mitre: [T1059.001]
+    severity: 5
+    description: "scripting interpreter"
+
+  - name: cmd_exe
+    query_field: cmd.exe
+    mitre: [T1059.003]
+    severity: 4
+    description: "command shell"
+
+  - name: certutil_exe
+    query_field: certutil.exe
+    mitre: [T1140, T1105]
+    severity: 6
+    description: "LoLBin file download/decode"
+
+  - name: bitsadmin_exe
+    query_field: bitsadmin.exe
+    mitre: [T1197]
+    severity: 5
+    description: "BITS abuse for persistence/download"
+
+  - name: rundll32_exe
+    query_field: rundll32.exe
+    mitre: [T1218.011]
+    severity: 5
+    description: "signed binary proxy execution"
+
+  - name: regsvr32_exe
+    query_field: regsvr32.exe
+    mitre: [T1218.010]
+    severity: 5
+    description: "COM object proxy execution"
+
+  - name: schtasks_exe
+    query_field: schtasks.exe
+    mitre: [T1053.005]
+    severity: 5
+    description: "scheduled task abuse"
+
+  - name: wmic_exe
+    query_field: wmic.exe
+    mitre: [T1047]
+    severity: 5
+    description: "WMI command-line"
+
+  - name: mshta_exe
+    query_field: mshta.exe
+    mitre: [T1218.005]
+    severity: 6
+    description: "HTA execution proxy"
+
+  - name: msbuild_exe
+    query_field: msbuild.exe
+    mitre: [T1127.001]
+    severity: 5
+    description: "trusted dev tool abuse"
+
+  - name: installutil_exe
+    query_field: installutil.exe
+    mitre: [T1218.004]
+    severity: 5
+    description: ".NET install utility bypass"
+
+  - name: at_exe
+    query_field: at.exe
+    mitre: [T1053.002]
+    severity: 5
+    description: "legacy task scheduler"
+
+  - name: nc_exe
+    query_field: nc.exe
+    mitre: [T1095]
+    severity: 7
+    description: "netcat reverse shell"
+
+  - name: ncat_exe
+    query_field: ncat.exe
+    mitre: [T1095]
+    severity: 7
+    description: "ncat reverse shell"
+
+  - name: rclone_exe
+    query_field: rclone.exe
+    mitre: [T1567.002]
+    severity: 7
+    description: "cloud exfiltration tool"
+
+  - name: 7z_exe
+    query_field: 7z.exe
+    mitre: [T1560.001]
+    severity: 4
+    description: "archive for staging"
+
+  - name: net_exe
+    query_field: net.exe
+    mitre: [T1087, T1136, T1098]
+    severity: 4
+    description: "account/group enumeration"
+
+  - name: reg_exe
+    query_field: reg.exe
+    mitre: [T1112]
+    severity: 4
+    description: "registry manipulation"
+
+  - name: cscript_exe
+    query_field: cscript.exe
+    mitre: [T1059.005]
+    severity: 5
+    description: "script host"
+
+  - name: wscript_exe
+    query_field: wscript.exe
+    mitre: [T1059.005]
+    severity: 5
+    description: "script host"
+
+  - name: hacker_tool_py
+    query_field: hacker_tool.py
+    mitre: [T1059.006]
+    severity: 7
+    description: "Python-based hacking tool"
+
+  - name: suspicious_app_exe
+    query_field: suspicious_app.exe
+    mitre: [T1059, T1036]
+    severity: 5
+    description: "generic suspicious application"
+
+  - name: malware_dll
+    query_field: malware.dll
+    mitre: [T1574.002]
+    severity: 8
+    description: "DLL sideloading"
+
+  - name: evil_com
+    query_field: evil.com
+    mitre: [T1071.001]
+    severity: 7
+    description: "known malicious domain"
+
+  - name: malicious-site_org
+    query_field: malicious-site.org
+    mitre: [T1071.001]
+    severity: 7
+    description: "known malicious domain"
+
+# Special rules (not generated from tool×event matrix)
+special:
+  - filename: cb_filemod_lsass_dump_dmp.json
+    name: cb_filemod_lsass_dump_dmp
+    description: "Detects LSASS memory dump file creation"
+    query: "filemod_name:lsass*.dmp"
+    mitre: [T1003.001]
+    severity: 9
+
+  - filename: cb_netconn_dns_tunnel_like.json
+    name: cb_netconn_dns_tunnel_like
+    description: "Detects DNS tunneling patterns in network connections"
+    query: "netconn_domain_length:[50 TO *]"
+    mitre: [T1071.004, T1572]
+    severity: 6

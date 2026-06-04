@@ -1,0 +1,12 @@
+{
+  "id": "168ad086-e506-5245-b6f5-742e3f11ebd4",
+  "name": "cb_process_creation_psexec_exe",
+  "description": "Detects process creation involving psexec.exe (remote execution tool)",
+  "mitre": [
+    "T1021.002"
+  ],
+  "query": "process_name:psexec.exe",
+  "severity": 6,
+  "enabled": true,
+  "category": "process_creation"
+}

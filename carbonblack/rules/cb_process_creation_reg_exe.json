@@ -1,0 +1,12 @@
+{
+  "id": "8a452058-3f1a-56dd-87b3-bdfd68c01fc0",
+  "name": "cb_process_creation_reg_exe",
+  "description": "Detects process creation involving reg.exe (registry manipulation)",
+  "mitre": [
+    "T1112"
+  ],
+  "query": "process_name:reg.exe",
+  "severity": 4,
+  "enabled": true,
+  "category": "process_creation"
+}

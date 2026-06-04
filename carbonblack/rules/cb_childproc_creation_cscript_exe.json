@@ -1,7 +1,7 @@
 {
-  "id": "5d172d2f-9c58-4a35-811b-9caaccd8bab2",
+  "id": "c49374db-e9ef-54a0-a62f-ec6304b8c7e9",
   "name": "cb_childproc_creation_cscript_exe",
-  "description": "Detects childproc_creation involving cscript.exe",
+  "description": "Detects childproc creation involving cscript.exe (script host)",
   "mitre": [
     "T1059.005"
   ],

@@ -1,13 +1,13 @@
 {
-  "id": "25c97146-e5cc-4e05-93aa-aae7d431f526",
+  "id": "2abcc54f-dbc3-50b3-b936-110740d26a49",
   "name": "cb_registry_modification_certutil_exe",
-  "description": "Detects registry_modification involving certutil.exe",
+  "description": "Detects registry modification involving certutil.exe (LoLBin file download/decode)",
   "mitre": [
     "T1140",
     "T1105"
   ],
   "query": "regmod_name:certutil.exe",
-  "severity": 5,
+  "severity": 6,
   "enabled": true,
   "category": "registry_modification"
 }

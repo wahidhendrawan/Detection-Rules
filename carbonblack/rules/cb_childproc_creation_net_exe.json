@@ -1,11 +1,14 @@
 {
+  "id": "0f41b0e9-bcf1-56c3-a90e-66de1324a9de",
   "name": "cb_childproc_creation_net_exe",
-  "description": "Auto-added Carbon Black detection query",
+  "description": "Detects childproc creation involving net.exe (account/group enumeration)",
   "mitre": [
     "T1087",
     "T1136",
     "T1098"
   ],
-  "query": "process_name:net.exe AND event_type:childproc",
-  "severity": "high"
+  "query": "childproc_name:net.exe",
+  "severity": 4,
+  "enabled": true,
+  "category": "childproc_creation"
 }

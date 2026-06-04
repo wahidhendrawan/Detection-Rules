@@ -1,0 +1,34 @@
+{
+  "rule": "elastic/endpoint/windows/win_ransomware_shadow_copy.ndjson",
+  "description": "Elastic: shadow copy deletion (T1490) - ransomware indicator",
+  "match_condition": {
+    "process.name": { "equals": "vssadmin.exe" },
+    "process.args": { "regex": "(?i)delete.*shadows|shadows.*delete" }
+  },
+  "test_cases": [
+    {
+      "name": "matches vssadmin delete shadows",
+      "expected": "match",
+      "event": {
+        "process.name": "vssadmin.exe",
+        "process.args": "delete shadows /all /quiet"
+      }
+    },
+    {
+      "name": "does not match vssadmin list",
+      "expected": "no_match",
+      "event": {
+        "process.name": "vssadmin.exe",
+        "process.args": "list shadows"
+      }
+    },
+    {
+      "name": "does not match other process",
+      "expected": "no_match",
+      "event": {
+        "process.name": "cmd.exe",
+        "process.args": "delete shadows"
+      }
+    }
+  ]
+}

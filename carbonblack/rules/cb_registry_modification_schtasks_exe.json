@@ -1,7 +1,7 @@
 {
-  "id": "d76c000b-94b8-496f-81b4-5b73f394cb4c",
+  "id": "31417ab5-d54b-58c6-88bf-0c73a9528111",
   "name": "cb_registry_modification_schtasks_exe",
-  "description": "Detects registry_modification involving schtasks.exe",
+  "description": "Detects registry modification involving schtasks.exe (scheduled task abuse)",
   "mitre": [
     "T1053.005"
   ],

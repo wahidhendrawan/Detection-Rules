@@ -1,7 +1,7 @@
 {
-  "id": "f36e8e3c-fac1-4319-88fc-07b410f5588b",
+  "id": "50b47481-cc72-5b7b-b116-4ad71d7d7d9e",
   "name": "cb_childproc_creation_wscript_exe",
-  "description": "Detects childproc_creation involving wscript.exe",
+  "description": "Detects childproc creation involving wscript.exe (script host)",
   "mitre": [
     "T1059.005"
   ],

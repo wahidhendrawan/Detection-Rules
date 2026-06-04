@@ -1,7 +1,7 @@
 {
-  "id": "7999caa1-ef50-4ec3-96f0-6e0158d29c92",
+  "id": "45095c52-5820-5451-95ac-8bbbaf45c536",
   "name": "cb_process_creation_bitsadmin_exe",
-  "description": "Detects process_creation involving bitsadmin.exe",
+  "description": "Detects process creation involving bitsadmin.exe (BITS abuse for persistence/download)",
   "mitre": [
     "T1197"
   ],

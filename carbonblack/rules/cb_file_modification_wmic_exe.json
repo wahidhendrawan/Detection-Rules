@@ -1,0 +1,12 @@
+{
+  "id": "c2f3a56b-0249-5a9d-94e5-1b2de95d488e",
+  "name": "cb_file_modification_wmic_exe",
+  "description": "Detects file modification involving wmic.exe (WMI command-line)",
+  "mitre": [
+    "T1047"
+  ],
+  "query": "filemod_name:wmic.exe",
+  "severity": 5,
+  "enabled": true,
+  "category": "file_modification"
+}

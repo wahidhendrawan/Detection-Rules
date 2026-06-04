@@ -1,9 +1,12 @@
 {
+  "id": "f2d099c8-d731-5781-ad19-421db6a62f66",
   "name": "cb_childproc_creation_installutil_exe",
-  "description": "Auto-added Carbon Black detection query",
+  "description": "Detects childproc creation involving installutil.exe (.NET install utility bypass)",
   "mitre": [
     "T1218.004"
   ],
-  "query": "process_name:installutil.exe AND event_type:childproc",
-  "severity": "high"
+  "query": "childproc_name:installutil.exe",
+  "severity": 5,
+  "enabled": true,
+  "category": "childproc_creation"
 }

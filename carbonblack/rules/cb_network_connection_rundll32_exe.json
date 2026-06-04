@@ -1,7 +1,7 @@
 {
-  "id": "8fa0b1d6-3427-4cdd-8997-7e36bd802252",
+  "id": "6093c004-1851-547a-a6c5-7e6e9d7084c9",
   "name": "cb_network_connection_rundll32_exe",
-  "description": "Detects network_connection involving rundll32.exe",
+  "description": "Detects network connection involving rundll32.exe (signed binary proxy execution)",
   "mitre": [
     "T1218.011"
   ],

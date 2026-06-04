@@ -1,7 +1,7 @@
 {
-  "id": "7ba53c3f-4b29-4610-9842-4ac448f21a30",
+  "id": "eb0fc4cf-0505-5c10-b453-0774f7e3e759",
   "name": "cb_registry_modification_bitsadmin_exe",
-  "description": "Detects registry_modification involving bitsadmin.exe",
+  "description": "Detects registry modification involving bitsadmin.exe (BITS abuse for persistence/download)",
   "mitre": [
     "T1197"
   ],

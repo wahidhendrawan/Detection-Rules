@@ -1,0 +1,14 @@
+{
+  "id": "0bdf0ce3-6201-5e08-ac58-c66ca252a8b1",
+  "name": "cb_registry_modification_net_exe",
+  "description": "Detects registry modification involving net.exe (account/group enumeration)",
+  "mitre": [
+    "T1087",
+    "T1136",
+    "T1098"
+  ],
+  "query": "regmod_name:net.exe",
+  "severity": 4,
+  "enabled": true,
+  "category": "registry_modification"
+}

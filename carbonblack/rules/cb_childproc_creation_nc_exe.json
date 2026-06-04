@@ -1,12 +1,12 @@
 {
-  "id": "4e214dfc-5757-41ba-ba62-d253c23a0c51",
+  "id": "b17d19dd-aa8d-5ad0-ac58-bff0d8c20bcb",
   "name": "cb_childproc_creation_nc_exe",
-  "description": "Detects childproc_creation involving nc.exe",
+  "description": "Detects childproc creation involving nc.exe (netcat reverse shell)",
   "mitre": [
     "T1095"
   ],
   "query": "childproc_name:nc.exe",
-  "severity": 5,
+  "severity": 7,
   "enabled": true,
   "category": "childproc_creation"
 }

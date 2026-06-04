@@ -1,7 +1,7 @@
 {
-  "id": "26a1c400-a447-4f4b-9294-e50080959994",
+  "id": "63c41c57-b084-5cc5-8b11-b8abedcb7292",
   "name": "cb_process_creation_wscript_exe",
-  "description": "Detects process_creation involving wscript.exe",
+  "description": "Detects process creation involving wscript.exe (script host)",
   "mitre": [
     "T1059.005"
   ],

@@ -1,12 +1,12 @@
 {
-  "id": "dabd1461-4563-43d7-8685-c12e2a6eb81e",
+  "id": "0f6fee9d-a87d-5a98-a0eb-6c8b1d125c2f",
   "name": "cb_childproc_creation_hacker_tool_py",
-  "description": "Detects childproc_creation involving hacker_tool.py",
+  "description": "Detects childproc creation involving hacker_tool.py (Python-based hacking tool)",
   "mitre": [
     "T1059.006"
   ],
   "query": "childproc_name:hacker_tool.py",
-  "severity": 5,
+  "severity": 7,
   "enabled": true,
   "category": "childproc_creation"
 }

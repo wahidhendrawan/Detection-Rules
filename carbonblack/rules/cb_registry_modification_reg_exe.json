@@ -1,0 +1,12 @@
+{
+  "id": "a3a11940-7b83-592d-9031-f97c28a96ee7",
+  "name": "cb_registry_modification_reg_exe",
+  "description": "Detects registry modification involving reg.exe (registry manipulation)",
+  "mitre": [
+    "T1112"
+  ],
+  "query": "regmod_name:reg.exe",
+  "severity": 4,
+  "enabled": true,
+  "category": "registry_modification"
+}

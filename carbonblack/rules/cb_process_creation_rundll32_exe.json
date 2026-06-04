@@ -1,7 +1,7 @@
 {
-  "id": "47866138-7be8-43fe-ba2e-3cab8dc516e4",
+  "id": "b1f2cf21-26f3-5bc5-a9af-b8c28cfd75fd",
   "name": "cb_process_creation_rundll32_exe",
-  "description": "Detects process_creation involving rundll32.exe",
+  "description": "Detects process creation involving rundll32.exe (signed binary proxy execution)",
   "mitre": [
     "T1218.011"
   ],

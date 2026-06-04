@@ -1,7 +1,7 @@
 {
-  "id": "5cfdd7ea-67e0-4b3c-827f-678feaf414c3",
+  "id": "a6a9576d-c720-512f-a9a8-8b4b49bbee6b",
   "name": "cb_childproc_creation_schtasks_exe",
-  "description": "Detects childproc_creation involving schtasks.exe",
+  "description": "Detects childproc creation involving schtasks.exe (scheduled task abuse)",
   "mitre": [
     "T1053.005"
   ],

@@ -1,7 +1,7 @@
 {
-  "id": "ab45565c-0898-4b1c-a4a2-3249c1b09736",
+  "id": "15b3fde3-d570-536a-9434-f1a9d7ec7938",
   "name": "cb_process_creation_suspicious_app_exe",
-  "description": "Detects process_creation involving suspicious_app.exe",
+  "description": "Detects process creation involving suspicious_app.exe (generic suspicious application)",
   "mitre": [
     "T1059",
     "T1036"

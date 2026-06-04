@@ -1,0 +1,12 @@
+{
+  "id": "96b45848-4856-590a-b277-91b66abde9b8",
+  "name": "cb_registry_modification_rclone_exe",
+  "description": "Detects registry modification involving rclone.exe (cloud exfiltration tool)",
+  "mitre": [
+    "T1567.002"
+  ],
+  "query": "regmod_name:rclone.exe",
+  "severity": 7,
+  "enabled": true,
+  "category": "registry_modification"
+}

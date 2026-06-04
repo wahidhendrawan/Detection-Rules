@@ -1,13 +1,13 @@
 {
-  "id": "e4f18b04-f0b6-49b1-af08-898a76aee72e",
+  "id": "7c9a8a01-cd2d-57ba-81b8-b75ed48e6f3d",
   "name": "cb_network_connection_certutil_exe",
-  "description": "Detects network_connection involving certutil.exe",
+  "description": "Detects network connection involving certutil.exe (LoLBin file download/decode)",
   "mitre": [
     "T1140",
     "T1105"
   ],
   "query": "netconn_domain:certutil.exe",
-  "severity": 5,
+  "severity": 6,
   "enabled": true,
   "category": "network_connection"
 }

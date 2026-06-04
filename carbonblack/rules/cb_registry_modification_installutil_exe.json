@@ -1,0 +1,12 @@
+{
+  "id": "ee4b66cb-d6cc-5490-ad03-3343e269612d",
+  "name": "cb_registry_modification_installutil_exe",
+  "description": "Detects registry modification involving installutil.exe (.NET install utility bypass)",
+  "mitre": [
+    "T1218.004"
+  ],
+  "query": "regmod_name:installutil.exe",
+  "severity": 5,
+  "enabled": true,
+  "category": "registry_modification"
+}

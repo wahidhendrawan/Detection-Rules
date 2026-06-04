@@ -1,7 +1,7 @@
 {
-  "id": "c4fff123-dfd5-4530-9136-f8e39ec6f7c4",
+  "id": "0bbda12d-1750-566b-bdd6-b985ce7905ff",
   "name": "cb_process_creation_at_exe",
-  "description": "Detects process_creation involving at.exe",
+  "description": "Detects process creation involving at.exe (legacy task scheduler)",
   "mitre": [
     "T1053.002"
   ],

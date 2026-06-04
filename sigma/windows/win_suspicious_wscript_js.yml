@@ -1,0 +1,40 @@
+title: Suspicious JavaScript Execution via WScript/CScript
+id: 9b8e2c71-d4a5-4f3e-a1b6-7c5d9e8f2a30
+status: experimental
+description: |
+  Detects WScript/CScript executing JavaScript files from suspicious
+  locations (Temp, AppData, Downloads).
+author: Wahid Hendrawan
+date: 2026/06/04
+references:
+  - https://attack.mitre.org/techniques/T1059/007/
+logsource:
+  product: windows
+  category: process_creation
+detection:
+  selection:
+    Image|endswith:
+      - '\wscript.exe'
+      - '\cscript.exe'
+    CommandLine|contains:
+      - '.js'
+      - '.jse'
+  filter_path:
+    CommandLine|contains:
+      - '\AppData\Local\Temp\'
+      - '\AppData\Roaming\'
+      - '\Downloads\'
+      - '\Users\Public\'
+      - '\Temp\'
+  condition: selection and filter_path
+fields:
+  - Image
+  - CommandLine
+  - ParentImage
+  - User
+falsepositives:
+  - Internal HTA/JS tooling (langka di environment modern).
+level: high
+tags:
+  - attack.t1059.007
+  - attack.execution

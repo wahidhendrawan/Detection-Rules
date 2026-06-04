@@ -1,0 +1,41 @@
+title: Account and Group Discovery via net.exe
+id: 1a5c3d72-b4e6-4f8a-c9d2-7e3b1f5a8c96
+status: experimental
+description: |
+  Detects net.exe commands for account/group enumeration which is
+  common post-exploitation reconnaissance.
+author: Wahid Hendrawan
+date: 2026/06/04
+references:
+  - https://attack.mitre.org/techniques/T1087/
+logsource:
+  product: windows
+  category: process_creation
+detection:
+  selection:
+    Image|endswith:
+      - '\net.exe'
+      - '\net1.exe'
+    CommandLine|contains:
+      - ' user'
+      - ' group'
+      - ' localgroup'
+      - ' accounts'
+  filter_add:
+    CommandLine|contains:
+      - '/add'
+      - '/delete'
+  condition: selection and not filter_add
+fields:
+  - CommandLine
+  - User
+  - ParentImage
+falsepositives:
+  - Admin yang menjalankan net user/group untuk audit.
+  - Login script yang enumerate groups.
+level: low
+tags:
+  - attack.t1087
+  - attack.t1087.001
+  - attack.t1087.002
+  - attack.discovery

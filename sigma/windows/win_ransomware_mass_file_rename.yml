@@ -1,0 +1,41 @@
+title: Potential Ransomware Mass File Rename
+id: 7e9d4b82-a1c5-4f6e-b3d7-2c8a9f1e5d46
+status: experimental
+description: |
+  Detects mass file rename operations with suspicious extensions
+  commonly associated with ransomware encryption.
+author: Wahid Hendrawan
+date: 2026/06/04
+references:
+  - https://attack.mitre.org/techniques/T1486/
+logsource:
+  product: windows
+  category: file_rename
+detection:
+  selection:
+    TargetFilename|endswith:
+      - '.encrypted'
+      - '.locked'
+      - '.crypted'
+      - '.crypt'
+      - '.enc'
+      - '.ransom'
+      - '.zzzzz'
+      - '.locky'
+      - '.cerber'
+      - '.zepto'
+      - '.dharma'
+      - '.phobos'
+  condition: selection | count() by Computer > 50
+  timeframe: 5m
+fields:
+  - TargetFilename
+  - Image
+  - User
+falsepositives:
+  - Encryption software yang sah (BitLocker, VeraCrypt) tidak rename file.
+  - Backup software yang compress + rename (sangat jarang match pattern ini).
+level: critical
+tags:
+  - attack.t1486
+  - attack.impact

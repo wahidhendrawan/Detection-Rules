@@ -1,0 +1,38 @@
+title: Suspicious CreateRemoteThread into System Process
+id: 3b7f4a91-c67e-4d3f-a8f2-1b4e5c9d0a21
+status: experimental
+description: |
+  Detects CreateRemoteThread calls into critical system processes
+  (lsass, csrss, winlogon) which may indicate process injection.
+author: Wahid Hendrawan
+date: 2026/06/04
+references:
+  - https://attack.mitre.org/techniques/T1055/
+logsource:
+  product: windows
+  category: create_remote_thread
+detection:
+  selection:
+    TargetImage|endswith:
+      - '\lsass.exe'
+      - '\csrss.exe'
+      - '\winlogon.exe'
+      - '\svchost.exe'
+  filter_legit:
+    SourceImage|endswith:
+      - '\csrss.exe'
+      - '\MsMpEng.exe'
+      - '\MsSense.exe'
+  condition: selection and not filter_legit
+fields:
+  - SourceImage
+  - TargetImage
+  - StartAddress
+falsepositives:
+  - EDR/AV vendor yang inject untuk monitoring.
+  - Debugger yang attach ke proses.
+level: high
+tags:
+  - attack.t1055
+  - attack.privilege-escalation
+  - attack.defense-evasion

@@ -1,0 +1,29 @@
+title: SSH Connection to Multiple Internal Hosts
+id: 4a6c1d93-e5b2-4f8a-c7d1-3b9e2f8a6c54
+status: experimental
+description: |
+  Detects SSH connections to multiple internal hosts from the same
+  source within a short time frame - potential lateral movement.
+author: Wahid Hendrawan
+date: 2026/06/04
+references:
+  - https://attack.mitre.org/techniques/T1021/004/
+logsource:
+  product: linux
+  service: sshd
+detection:
+  selection:
+    EventType: 'Accepted'
+  condition: selection | count(DestinationHostname) by SourceAddress > 3
+  timeframe: 10m
+fields:
+  - SourceAddress
+  - DestinationHostname
+  - User
+falsepositives:
+  - Admin yang sah SSH ke banyak server untuk maintenance.
+  - Ansible/Salt/Puppet yang push config ke banyak host.
+level: medium
+tags:
+  - attack.t1021.004
+  - attack.lateral-movement

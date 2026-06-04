@@ -1,8 +1,8 @@
 summary:
-  total_techniques: 144
-  total_rules: 587
+  total_techniques: 147
+  total_rules: 597
   rules_per_platform:
-    sigma: 119
+    sigma: 129
     elastic: 58
     splunk: 19
     microsoft-sentinel: 103
@@ -12,14 +12,15 @@ summary:
     sentinelone: 2
     falco: 2
   fully_covered: 0
-  single_platform_only: 84
+  single_platform_only: 77
 techniques:
   T1003:
     name: 'OS Credential Dumping'
     tactic: credential-access
-    coverage_count: 1
+    coverage_count: 2
     detections:
-      sigma: []
+      sigma:
+        - 'sigma/windows/win_credential_dump_indicators.yml'
       elastic: []
       splunk: []
       microsoft-sentinel:
@@ -30,7 +31,6 @@ techniques:
       sentinelone: []
       falco: []
     gaps:
-      - sigma
       - elastic
       - splunk
       - wazuh
@@ -44,6 +44,7 @@ techniques:
     coverage_count: 5
     detections:
       sigma:
+        - 'sigma/windows/win_credential_dump_indicators.yml'
         - 'sigma/windows/win_lsass_dump_via_procdump.yml'
         - 'sigma/windows/win_mimikatz_command.yml'
         - 'sigma/windows/win_suspicious_comsvcs_lsass_dump.yml'
@@ -229,6 +230,7 @@ techniques:
     detections:
       sigma:
         - 'sigma/correlations/lateral_movement_spray.yml'
+        - 'sigma/linux/lnx_ssh_lateral_movement.yml'
       elastic:
         - 'elastic/endpoint/network/net_suspicious_rdp.ndjson'
       splunk: []
@@ -305,9 +307,10 @@ techniques:
   T1021.004:
     name: 'SSH'
     tactic: lateral-movement
-    coverage_count: 1
+    coverage_count: 2
     detections:
-      sigma: []
+      sigma:
+        - 'sigma/linux/lnx_ssh_lateral_movement.yml'
       elastic: []
       splunk: []
       microsoft-sentinel:
@@ -318,7 +321,6 @@ techniques:
       sentinelone: []
       falco: []
     gaps:
-      - sigma
       - elastic
       - splunk
       - wazuh
@@ -484,9 +486,10 @@ techniques:
   T1047:
     name: 'Windows Management Instrumentation'
     tactic: execution
-    coverage_count: 2
+    coverage_count: 3
     detections:
-      sigma: []
+      sigma:
+        - 'sigma/windows/win_wmi_process_creation.yml'
       elastic:
         - 'elastic/endpoint/general/Registry Manipulation via WMI Stdregprov.ndjson'
         - 'elastic/endpoint/windows/win_suspicious_wmic_process.ndjson'
@@ -503,7 +506,6 @@ techniques:
       sentinelone: []
       falco: []
     gaps:
-      - sigma
       - splunk
       - microsoft-sentinel
       - wazuh
@@ -630,9 +632,10 @@ techniques:
   T1055:
     name: 'Process Injection'
     tactic: privilege-escalation
-    coverage_count: 1
+    coverage_count: 2
     detections:
-      sigma: []
+      sigma:
+        - 'sigma/windows/win_process_injection_createremotethread.yml'
       elastic:
         - 'elastic/endpoint/general/HackTool - HollowReaper Execution.ndjson'
       splunk: []
@@ -643,7 +646,6 @@ techniques:
       sentinelone: []
       falco: []
     gaps:
-      - sigma
       - splunk
       - microsoft-sentinel
       - wazuh
@@ -731,6 +733,7 @@ techniques:
       sigma:
         - 'sigma/linux/lnx_base64_decoding.yml'
         - 'sigma/windows/win_powershell_suspicious_encoded_command.yml'
+        - 'sigma/windows/win_suspicious_wscript_js.yml'
       elastic:
         - 'elastic/endpoint/general/Defense Evasion – Encoded PowerShell Command.ndjson'
         - 'elastic/endpoint/general/Potential Exploitation of CrushFTP RCE Vulnerability (CVE-2025-54309).ndjson'
@@ -928,9 +931,10 @@ techniques:
   T1059.007:
     name: 'JavaScript'
     tactic: execution
-    coverage_count: 1
+    coverage_count: 2
     detections:
-      sigma: []
+      sigma:
+        - 'sigma/windows/win_suspicious_wscript_js.yml'
       elastic: []
       splunk: []
       microsoft-sentinel:
@@ -941,7 +945,6 @@ techniques:
       sentinelone: []
       falco: []
     gaps:
-      - sigma
       - elastic
       - splunk
       - wazuh
@@ -976,9 +979,10 @@ techniques:
   T1070:
     name: 'Indicator Removal'
     tactic: defense-evasion
-    coverage_count: 1
+    coverage_count: 2
     detections:
-      sigma: []
+      sigma:
+        - 'sigma/linux/lnx_clear_command_history.yml'
       elastic:
         - 'elastic/endpoint/general/Defense Evasion – Event Log Cleared Wevtutil.ndjson'
         - 'elastic/endpoint/general/Defense-Evasion-Signed-Binary-Temp.ndjson'
@@ -991,7 +995,6 @@ techniques:
       sentinelone: []
       falco: []
     gaps:
-      - sigma
       - splunk
       - microsoft-sentinel
       - wazuh
@@ -1026,9 +1029,10 @@ techniques:
   T1070.003:
     name: 'Clear Command History'
     tactic: defense-evasion
-    coverage_count: 1
+    coverage_count: 2
     detections:
-      sigma: []
+      sigma:
+        - 'sigma/linux/lnx_clear_command_history.yml'
       elastic: []
       splunk: []
       microsoft-sentinel: []
@@ -1040,7 +1044,6 @@ techniques:
       sentinelone: []
       falco: []
     gaps:
-      - sigma
       - elastic
       - splunk
       - microsoft-sentinel
@@ -1305,9 +1308,10 @@ techniques:
   T1082:
     name: 'System Information Discovery'
     tactic: discovery
-    coverage_count: 1
+    coverage_count: 2
     detections:
-      sigma: []
+      sigma:
+        - 'sigma/windows/win_system_info_discovery.yml'
       elastic:
         - 'elastic/endpoint/general/System Information Discovery via Registry Queries.ndjson'
       splunk: []
@@ -1318,7 +1322,6 @@ techniques:
       sentinelone: []
       falco: []
     gaps:
-      - sigma
       - splunk
       - microsoft-sentinel
       - wazuh
@@ -1329,9 +1332,10 @@ techniques:
   T1087:
     name: 'Account Discovery'
     tactic: discovery
-    coverage_count: 1
+    coverage_count: 2
     detections:
-      sigma: []
+      sigma:
+        - 'sigma/windows/win_account_discovery_net.yml'
       elastic: []
       splunk: []
       microsoft-sentinel: []
@@ -1346,11 +1350,58 @@ techniques:
       sentinelone: []
       falco: []
     gaps:
-      - sigma
       - elastic
       - splunk
       - microsoft-sentinel
       - wazuh
+      - falcon
+      - sentinelone
+      - falco
+  T1087.001:
+    name: 'Unknown / Custom'
+    tactic: uncategorized
+    coverage_count: 1
+    detections:
+      sigma:
+        - 'sigma/windows/win_account_discovery_net.yml'
+      elastic: []
+      splunk: []
+      microsoft-sentinel: []
+      wazuh: []
+      carbonblack: []
+      falcon: []
+      sentinelone: []
+      falco: []
+    gaps:
+      - elastic
+      - splunk
+      - microsoft-sentinel
+      - wazuh
+      - carbonblack
+      - falcon
+      - sentinelone
+      - falco
+  T1087.002:
+    name: 'Unknown / Custom'
+    tactic: uncategorized
+    coverage_count: 1
+    detections:
+      sigma:
+        - 'sigma/windows/win_account_discovery_net.yml'
+      elastic: []
+      splunk: []
+      microsoft-sentinel: []
+      wazuh: []
+      carbonblack: []
+      falcon: []
+      sentinelone: []
+      falco: []
+    gaps:
+      - elastic
+      - splunk
+      - microsoft-sentinel
+      - wazuh
+      - carbonblack
       - falcon
       - sentinelone
       - falco
@@ -2215,9 +2266,10 @@ techniques:
   T1486:
     name: 'Data Encrypted for Impact'
     tactic: impact
-    coverage_count: 1
+    coverage_count: 2
     detections:
-      sigma: []
+      sigma:
+        - 'sigma/windows/win_ransomware_mass_file_rename.yml'
       elastic:
         - 'elastic/endpoint/general/FunkLocker Ransomware File Creation.ndjson'
       splunk: []
@@ -2228,7 +2280,6 @@ techniques:
       sentinelone: []
       falco: []
     gaps:
-      - sigma
       - splunk
       - microsoft-sentinel
       - wazuh
@@ -3238,12 +3289,37 @@ techniques:
       - falcon
       - sentinelone
       - falco
+  T1569:
+    name: 'Unknown / Custom'
+    tactic: uncategorized
+    coverage_count: 1
+    detections:
+      sigma:
+        - 'sigma/windows/win_service_execution_suspicious.yml'
+      elastic: []
+      splunk: []
+      microsoft-sentinel: []
+      wazuh: []
+      carbonblack: []
+      falcon: []
+      sentinelone: []
+      falco: []
+    gaps:
+      - elastic
+      - splunk
+      - microsoft-sentinel
+      - wazuh
+      - carbonblack
+      - falcon
+      - sentinelone
+      - falco
   T1569.002:
     name: 'Service Execution'
     tactic: execution
-    coverage_count: 1
+    coverage_count: 2
     detections:
-      sigma: []
+      sigma:
+        - 'sigma/windows/win_service_execution_suspicious.yml'
       elastic: []
       splunk: []
       microsoft-sentinel: []
@@ -3254,7 +3330,6 @@ techniques:
       sentinelone: []
       falco: []
     gaps:
-      - sigma
       - elastic
       - splunk
       - microsoft-sentinel

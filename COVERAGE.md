@@ -5,19 +5,19 @@
 
 ## Ringkasan
 
-- Total file rule         : **533**
-- Total teknik unik       : **126**
+- Total file rule         : **597**
+- Total teknik unik       : **140**
 
 ### Per Platform
 
 | Platform | Rule | Teknik unik |
 |---|---:|---:|
-| sigma | 105 | 21 |
-| elastic | 58 | 51 |
-| splunk | 18 | 18 |
-| microsoft-sentinel | 102 | 66 |
+| sigma | 129 | 48 |
+| elastic | 58 | 55 |
+| splunk | 19 | 19 |
+| microsoft-sentinel | 103 | 66 |
 | wazuh | 140 | 42 |
-| carbonblack | 110 | 30 |
+| carbonblack | 142 | 30 |
 
 ## Coverage Matrix
 
@@ -25,7 +25,7 @@ Tanda ✅ = ada minimal satu rule pada platform tersebut yang memetakan teknik.
 
 | Technique | Sigma | Elastic | Splunk | Sentinel | Wazuh | CarbonBlack |
 |---|:---:|:---:|:---:|:---:|:---:|:---:|
-| `T1003` | · | · | · | ✅ | · | · |
+| `T1003` | ✅ | · | · | ✅ | · | · |
 | `T1003.001` | ✅ | · | · | ✅ | ✅ | ✅ |
 | `T1003.002` | · | · | · | ✅ | · | · |
 | `T1003.003` | · | · | · | ✅ | · | · |
@@ -33,33 +33,37 @@ Tanda ✅ = ada minimal satu rule pada platform tersebut yang memetakan teknik.
 | `T1005` | · | · | · | ✅ | · | · |
 | `T1012` | · | ✅ | · | ✅ | · | · |
 | `T1016` | · | ✅ | · | · | · | · |
-| `T1021` | · | · | · | ✅ | · | · |
+| `T1021` | ✅ | · | · | ✅ | · | · |
 | `T1021.001` | ✅ | ✅ | · | ✅ | ✅ | · |
 | `T1021.002` | · | · | · | ✅ | · | ✅ |
-| `T1021.004` | · | · | · | ✅ | · | · |
+| `T1021.004` | ✅ | · | · | ✅ | · | · |
 | `T1027` | ✅ | · | · | ✅ | ✅ | · |
 | `T1029` | · | ✅ | · | · | · | · |
 | `T1033` | · | · | ✅ | · | · | · |
 | `T1036` | · | ✅ | · | ✅ | · | ✅ |
 | `T1041` | · | ✅ | · | · | · | · |
 | `T1046` | ✅ | · | · | · | ✅ | · |
-| `T1047` | · | ✅ | · | · | · | ✅ |
+| `T1047` | ✅ | ✅ | · | · | · | ✅ |
 | `T1048` | · | ✅ | · | · | · | · |
 | `T1053.002` | · | · | · | ✅ | · | ✅ |
 | `T1053.003` | ✅ | · | ✅ | · | ✅ | · |
 | `T1053.005` | ✅ | · | · | ✅ | ✅ | ✅ |
+| `T1055` | ✅ | · | · | · | · | · |
 | `T1055.012` | · | ✅ | · | · | · | · |
+| `T1056` | ✅ | · | · | · | · | · |
+| `T1056.001` | ✅ | · | · | · | · | · |
 | `T1059` | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
 | `T1059.001` | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
 | `T1059.003` | · | ✅ | · | ✅ | ✅ | ✅ |
 | `T1059.004` | ✅ | ✅ | · | · | ✅ | · |
 | `T1059.005` | · | · | · | ✅ | · | ✅ |
 | `T1059.006` | · | · | · | · | · | ✅ |
-| `T1059.007` | · | · | · | ✅ | · | · |
+| `T1059.007` | ✅ | · | · | ✅ | · | · |
 | `T1068` | ✅ | ✅ | ✅ | · | · | · |
-| `T1070` | · | ✅ | · | · | · | · |
+| `T1070` | ✅ | ✅ | · | · | · | · |
 | `T1070.001` | ✅ | ✅ | · | ✅ | · | · |
-| `T1070.003` | · | · | · | · | ✅ | · |
+| `T1070.003` | ✅ | · | · | · | ✅ | · |
+| `T1070.006` | · | ✅ | · | · | · | · |
 | `T1071` | ✅ | ✅ | · | · | · | · |
 | `T1071.001` | · | · | ✅ | ✅ | ✅ | ✅ |
 | `T1071.002` | · | · | · | ✅ | · | · |
@@ -67,25 +71,29 @@ Tanda ✅ = ada minimal satu rule pada platform tersebut yang memetakan teknik.
 | `T1072` | · | ✅ | · | · | ✅ | · |
 | `T1078` | · | · | · | ✅ | ✅ | · |
 | `T1078.003` | · | · | · | · | ✅ | · |
-| `T1078.004` | · | · | · | ✅ | · | · |
-| `T1082` | · | ✅ | · | · | · | · |
-| `T1087` | · | · | · | · | · | ✅ |
+| `T1078.004` | ✅ | ✅ | · | ✅ | · | · |
+| `T1082` | ✅ | ✅ | · | · | · | · |
+| `T1087` | ✅ | · | · | · | · | ✅ |
+| `T1087.001` | ✅ | · | · | · | · | · |
+| `T1087.002` | ✅ | · | · | · | · | · |
 | `T1090` | · | · | · | ✅ | · | · |
 | `T1090.003` | · | · | · | ✅ | · | · |
 | `T1095` | · | · | · | · | · | ✅ |
 | `T1098` | ✅ | · | ✅ | ✅ | ✅ | ✅ |
-| `T1098.001` | · | · | · | ✅ | · | · |
+| `T1098.001` | ✅ | · | · | ✅ | · | · |
 | `T1098.003` | · | · | · | ✅ | · | · |
 | `T1098.004` | ✅ | · | · | · | ✅ | · |
 | `T1098.007` | · | · | · | ✅ | ✅ | · |
 | `T1105` | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
 | `T1110` | · | · | ✅ | ✅ | ✅ | · |
-| `T1110.001` | · | · | · | ✅ | ✅ | · |
+| `T1110.001` | ✅ | · | ✅ | ✅ | ✅ | · |
 | `T1112` | · | ✅ | · | ✅ | · | ✅ |
 | `T1127.001` | · | · | · | · | · | ✅ |
+| `T1133` | ✅ | · | · | · | · | · |
 | `T1136` | · | · | · | ✅ | · | ✅ |
 | `T1136.001` | ✅ | · | · | ✅ | ✅ | · |
 | `T1136.002` | · | · | · | · | ✅ | · |
+| `T1136.003` | ✅ | · | · | · | · | · |
 | `T1140` | · | · | · | ✅ | · | ✅ |
 | `T1190` | · | ✅ | · | · | ✅ | · |
 | `T1197` | · | ✅ | · | ✅ | · | ✅ |
@@ -98,7 +106,7 @@ Tanda ✅ = ada minimal satu rule pada platform tersebut yang memetakan teknik.
 | `T1219` | · | ✅ | · | · | · | · |
 | `T1484` | · | · | · | ✅ | · | · |
 | `T1484.001` | · | · | · | · | ✅ | · |
-| `T1486` | · | ✅ | · | · | · | · |
+| `T1486` | ✅ | ✅ | · | · | · | · |
 | `T1489` | · | · | · | ✅ | ✅ | · |
 | `T1490` | ✅ | ✅ | ✅ | ✅ | · | · |
 | `T1497` | · | ✅ | · | · | · | · |
@@ -106,7 +114,7 @@ Tanda ✅ = ada minimal satu rule pada platform tersebut yang memetakan teknik.
 | `T1497.002` | · | ✅ | · | · | · | · |
 | `T1497.003` | · | ✅ | · | · | · | · |
 | `T1499` | · | · | · | ✅ | ✅ | · |
-| `T1505.003` | · | · | · | · | ✅ | · |
+| `T1505.003` | · | ✅ | · | · | ✅ | · |
 | `T1530` | · | · | · | ✅ | · | · |
 | `T1531` | · | · | · | ✅ | ✅ | · |
 | `T1543` | · | · | · | ✅ | ✅ | · |
@@ -128,9 +136,13 @@ Tanda ✅ = ada minimal satu rule pada platform tersebut yang memetakan teknik.
 | `T1564` | · | · | · | ✅ | · | · |
 | `T1564.001` | · | · | ✅ | · | · | · |
 | `T1565.001` | · | · | · | ✅ | · | · |
+| `T1566` | ✅ | ✅ | · | · | · | · |
+| `T1566.001` | ✅ | · | · | · | · | · |
+| `T1566.002` | ✅ | · | · | · | · | · |
 | `T1567` | · | ✅ | · | · | · | · |
 | `T1567.002` | · | · | · | · | · | ✅ |
-| `T1569.002` | · | · | · | · | ✅ | · |
+| `T1569` | ✅ | · | · | · | · | · |
+| `T1569.002` | ✅ | · | · | · | ✅ | · |
 | `T1571` | · | · | · | ✅ | ✅ | · |
 | `T1572` | · | · | · | ✅ | ✅ | ✅ |
 | `T1574` | · | ✅ | · | · | · | · |
@@ -150,6 +162,8 @@ Tanda ✅ = ada minimal satu rule pada platform tersebut yang memetakan teknik.
 | `T1596` | · | ✅ | · | · | · | · |
 | `T1597` | · | ✅ | · | · | · | · |
 | `T1598` | · | ✅ | · | · | · | · |
+| `T1611` | ✅ | · | · | · | · | · |
+| `T1621` | ✅ | · | · | · | · | · |
 | `T1650` | · | ✅ | · | · | · | · |
 
 ## Detail per Platform
@@ -158,27 +172,54 @@ Tanda ✅ = ada minimal satu rule pada platform tersebut yang memetakan teknik.
 
 | Technique | Rule files |
 |---|---|
-| `T1003.001` | `sigma/windows/win_lsass_dump_via_procdump.yml`, `sigma/windows/win_mimikatz_command.yml`, `sigma/windows/win_suspicious_comsvcs_lsass_dump.yml` |
+| `T1003` | `sigma/windows/win_credential_dump_indicators.yml` |
+| `T1003.001` | `sigma/windows/win_credential_dump_indicators.yml`, `sigma/windows/win_lsass_dump_via_procdump.yml`, `sigma/windows/win_mimikatz_command.yml`, `sigma/windows/win_suspicious_comsvcs_lsass_dump.yml` |
+| `T1021` | `sigma/correlations/lateral_movement_spray.yml`, `sigma/linux/lnx_ssh_lateral_movement.yml` |
 | `T1021.001` | `sigma/windows/win_plink_rdp_tunnel.yml` |
+| `T1021.004` | `sigma/linux/lnx_ssh_lateral_movement.yml` |
 | `T1027` | `sigma/linux/lnx_base64_decoding.yml` |
 | `T1046` | `sigma/network/net_nmap_scan_pattern.yml` |
+| `T1047` | `sigma/windows/win_wmi_process_creation.yml` |
 | `T1053.003` | `sigma/linux/lnx_suspicious_cron_modification.yml` |
 | `T1053.005` | `sigma/windows/win_schtasks_create.yml` |
-| `T1059` | `sigma/linux/lnx_base64_decoding.yml`, `sigma/windows/win_powershell_suspicious_encoded_command.yml` |
+| `T1055` | `sigma/windows/win_process_injection_createremotethread.yml` |
+| `T1056` | `sigma/windows/win_keylogger_setwindowshookex.yml` |
+| `T1056.001` | `sigma/windows/win_keylogger_setwindowshookex.yml` |
+| `T1059` | `sigma/linux/lnx_base64_decoding.yml`, `sigma/windows/win_powershell_suspicious_encoded_command.yml`, `sigma/windows/win_suspicious_wscript_js.yml` |
 | `T1059.001` | `sigma/windows/win_powershell_suspicious_download.yml`, `sigma/windows/win_powershell_suspicious_encoded_command.yml` |
 | `T1059.004` | `sigma/linux/lnx_suspicious_curl_pipe_bash.yml` |
+| `T1059.007` | `sigma/windows/win_suspicious_wscript_js.yml` |
 | `T1068` | `sigma/linux/lnx_suspicious_sudo_without_tty.yml` |
+| `T1070` | `sigma/linux/lnx_clear_command_history.yml` |
 | `T1070.001` | `sigma/windows/win_security_log_cleared.yml` |
+| `T1070.003` | `sigma/linux/lnx_clear_command_history.yml` |
 | `T1071` | `sigma/network/net_dns_suspicious_tunnel.yml` |
 | `T1071.004` | `sigma/network/net_dns_suspicious_tunnel.yml`, `sigma/network/net_susp_dns_many_nxdomain.yml` |
+| `T1078.004` | `sigma/cloud/cloud_aws_console_login_without_mfa.yml`, `sigma/cloud/cloud_azure_impossible_travel.yml` |
+| `T1082` | `sigma/windows/win_system_info_discovery.yml` |
+| `T1087` | `sigma/windows/win_account_discovery_net.yml` |
+| `T1087.001` | `sigma/windows/win_account_discovery_net.yml` |
+| `T1087.002` | `sigma/windows/win_account_discovery_net.yml` |
 | `T1098` | `sigma/cloud/cloud_aws_create_access_key.yml`, `sigma/cloud/cloud_gcp_iam_suspicious_role_grant.yml`, `sigma/windows/win_local_admin_group_add.yml` |
+| `T1098.001` | `sigma/cloud/cloud_gcp_service_account_key_created.yml` |
 | `T1098.004` | `sigma/linux/lnx_ssh_authorized_keys_modification.yml` |
 | `T1105` | `sigma/linux/lnx_suspicious_wget_curl_to_tmp.yml`, `sigma/windows/win_suspicious_certutil_download.yml` |
+| `T1110.001` | `sigma/correlations/brute_force_then_success.yml`, `sigma/windows/win_brute_force_failed_login.yml` |
+| `T1133` | `sigma/network/net_external_remote_services_anomalous.yml` |
 | `T1136.001` | `sigma/linux/lnx_new_user_added.yml` |
+| `T1136.003` | `sigma/cloud/cloud_github_org_member_added_external.yml` |
 | `T1218.005` | `sigma/windows/win_suspicious_mshta_execution.yml` |
+| `T1486` | `sigma/windows/win_ransomware_mass_file_rename.yml` |
 | `T1490` | `sigma/windows/win_shadow_copies_deletion.yml` |
 | `T1548.003` | `sigma/linux/lnx_sudoers_modification.yml` |
 | `T1562.008` | `sigma/cloud/cloud_aws_suspicious_disable_cloudtrail.yml` |
+| `T1566` | `sigma/network/net_proxy_newly_registered_domain.yml`, `sigma/windows/win_office_macro_spawn_process.yml` |
+| `T1566.001` | `sigma/windows/win_office_macro_spawn_process.yml` |
+| `T1566.002` | `sigma/network/net_proxy_newly_registered_domain.yml` |
+| `T1569` | `sigma/windows/win_service_execution_suspicious.yml` |
+| `T1569.002` | `sigma/windows/win_service_execution_suspicious.yml` |
+| `T1611` | `sigma/linux/lnx_container_escape_host_access.yml` |
+| `T1621` | `sigma/cloud/cloud_okta_mfa_fatigue.yml`, `sigma/correlations/mfa_fatigue_correlation.yml` |
 
 ### elastic
 
@@ -191,18 +232,20 @@ Tanda ✅ = ada minimal satu rule pada platform tersebut yang memetakan teknik.
 | `T1036` | `elastic/endpoint/general/Defense-Evasion-Dll-Sideloading.ndjson` |
 | `T1041` | `elastic/endpoint/general/IOCs (ip) to detect Curly COMrades A New Threat Actor Targeting Geopolitical Hotbeds.ndjson` |
 | `T1047` | `elastic/endpoint/general/Registry Manipulation via WMI Stdregprov.ndjson`, `elastic/endpoint/windows/win_suspicious_wmic_process.ndjson` |
-| `T1048` | `elastic/endpoint/general/IOCs (ip) to detect Curly COMrades A New Threat Actor Targeting Geopolitical Hotbeds.ndjson` |
+| `T1048` | `elastic/endpoint/general/IOCs (ip) to detect Curly COMrades A New Threat Actor Targeting Geopolitical Hotbeds.ndjson`, `elastic/endpoint/network/net_dns_tunneling_entropy.ndjson`, `elastic/network/network_rules.ndjson` |
 | `T1055.012` | `elastic/endpoint/general/HackTool - HollowReaper Execution.ndjson` |
-| `T1059` | `elastic/endpoint/general/Potential Exploitation of CrushFTP RCE Vulnerability (CVE-2025-54309).ndjson`, `elastic/endpoint/general/endpoint_rules.ndjson` |
+| `T1059` | `elastic/endpoint/general/Potential Exploitation of CrushFTP RCE Vulnerability (CVE-2025-54309).ndjson`, `elastic/endpoint/general/Suspicious Child Process of SAP NetWeaver - Linux.ndjson`, `elastic/endpoint/general/Suspicious Velociraptor Child Process.ndjson`, `elastic/endpoint/general/endpoint_rules.ndjson` |
 | `T1059.001` | `elastic/endpoint/general/Defense Evasion – Encoded PowerShell Command.ndjson`, `elastic/endpoint/general/Potential Exploitation of CrushFTP RCE Vulnerability (CVE-2025-54309).ndjson`, `elastic/endpoint/general/endpoint_rules.ndjson`, `elastic/endpoint/windows/win_suspicious_powershell_download.ndjson` |
 | `T1059.003` | `elastic/endpoint/general/Potential Exploitation of CrushFTP RCE Vulnerability (CVE-2025-54309).ndjson`, `elastic/endpoint/general/Potential SAP NetWeaver Webshell Creation.ndjson`, `elastic/endpoint/general/Suspicious Child Process of SAP NetWeaver - Linux.ndjson` |
 | `T1059.004` | `elastic/endpoint/linux/lnx_suspicious_curl_wget.ndjson`, `elastic/endpoint/linux/lnx_suspicious_netcat.ndjson`, `elastic/endpoint/linux/lnx_suspicious_shell_meta.ndjson` |
 | `T1068` | `elastic/endpoint/general/Potential Exploitation of CrushFTP RCE Vulnerability (CVE-2025-54309).ndjson` |
 | `T1070` | `elastic/endpoint/general/Defense-Evasion-Signed-Binary-Temp.ndjson` |
 | `T1070.001` | `elastic/endpoint/general/Defense Evasion – Event Log Cleared Wevtutil.ndjson` |
+| `T1070.006` | `elastic/endpoint/general/Defense-Evasion-Timestomp-Suspect.ndjson` |
 | `T1071` | `elastic/endpoint/general/IOCs (ip) to detect Curly COMrades A New Threat Actor Targeting Geopolitical Hotbeds.ndjson`, `elastic/network/network_rules.ndjson` |
 | `T1071.004` | `elastic/endpoint/network/net_dns_tunneling_entropy.ndjson`, `elastic/network/network_rules.ndjson` |
 | `T1072` | `elastic/endpoint/general/Socket Filters.ndjson` |
+| `T1078.004` | `elastic/endpoint/general/Cloud Accounts.ndjson` |
 | `T1082` | `elastic/endpoint/general/System Information Discovery via Registry Queries.ndjson` |
 | `T1105` | `elastic/endpoint/general/IOCs (ip) to detect Curly COMrades A New Threat Actor Targeting Geopolitical Hotbeds.ndjson`, `elastic/endpoint/general/Remote Access Tool - TacticalRMM Agent Registration to Potentially Attacker-Controlled Server.ndjson`, `elastic/endpoint/linux/lnx_suspicious_curl_wget.ndjson`, `elastic/endpoint/windows/win_suspicious_certutil_download.ndjson`, `elastic/endpoint/windows/win_suspicious_powershell_download.ndjson` |
 | `T1112` | `elastic/endpoint/general/Registry Manipulation via WMI Stdregprov.ndjson` |
@@ -216,9 +259,11 @@ Tanda ✅ = ada minimal satu rule pada platform tersebut yang memetakan teknik.
 | `T1497.001` | `elastic/endpoint/general/Virtualization Sandbox Evasion.ndjson` |
 | `T1497.002` | `elastic/endpoint/general/System Checks.ndjson` |
 | `T1497.003` | `elastic/endpoint/general/User Activity Based Checks.ndjson` |
+| `T1505.003` | `elastic/endpoint/general/Potential SAP NetWeaver Webshell Creation.ndjson` |
 | `T1548.002` | `elastic/endpoint/windows/win_uac_bypass_fodhelper.ndjson` |
 | `T1552.001` | `elastic/endpoint/general/Potential PowerShell Console History Access Attempt via History File.ndjson` |
 | `T1562.001` | `elastic/endpoint/windows/win_reg_disable_defender.ndjson` |
+| `T1566` | `elastic/endpoint/general/IOCs (ip) to detect UNC3944 Targets SaaS Applications.ndjson` |
 | `T1567` | `elastic/endpoint/general/IOCs (ip) to detect Curly COMrades A New Threat Actor Targeting Geopolitical Hotbeds.ndjson` |
 | `T1574` | `elastic/endpoint/general/Possible DLL Hijacking of cnmpaui.dll.ndjson`, `elastic/endpoint/general/Possible DLL Hijacking of sentinelagentcore.dll.ndjson`, `elastic/endpoint/general/Possible DLL Hijacking of tsmsisrv.dll.ndjson`, `elastic/endpoint/general/Possible DLL Hijacking of tsvipsrv.dll.ndjson` |
 | `T1574.001` | `elastic/endpoint/general/Possible DLL Hijacking of cnmpaui.dll.ndjson`, `elastic/endpoint/general/Possible DLL Hijacking of sentinelagentcore.dll.ndjson`, `elastic/endpoint/general/Possible DLL Hijacking of tsmsisrv.dll.ndjson`, `elastic/endpoint/general/Possible DLL Hijacking of tsvipsrv.dll.ndjson` |
@@ -251,6 +296,7 @@ Tanda ✅ = ada minimal satu rule pada platform tersebut yang memetakan teknik.
 | `T1098` | `splunk/cloud/cloud_gcp_iam_suspicious_role_grant.spl` |
 | `T1105` | `splunk/linux/lnx_suspicious_wget_curl.spl`, `splunk/windows/win_suspicious_certutil_download.spl` |
 | `T1110` | `splunk/network/net_suspicious_ssh_brute.spl` |
+| `T1110.001` | `splunk/windows/win_brute_force_correlation.spl` |
 | `T1218.005` | `splunk/windows/win_suspicious_mshta_execution.spl` |
 | `T1218.010` | `splunk/windows/win_suspicious_regsvr32.spl` |
 | `T1218.011` | `splunk/windows/win_suspicious_rundll32_net.spl` |
@@ -296,7 +342,7 @@ Tanda ✅ = ada minimal satu rule pada platform tersebut yang memetakan teknik.
 | `T1098.007` | `microsoft-sentinel/kql_045_acct_mgr_user_added_to_group.kql` |
 | `T1105` | `microsoft-sentinel/kql_007_proc_exec_certutil.kql`, `microsoft-sentinel/kql_008_proc_exec_bitsadmin.kql`, `microsoft-sentinel/kql_031_file_create_exe_temp.kql` |
 | `T1110` | `microsoft-sentinel/kql_050_acct_mgr_acct_locked_out.kql`, `microsoft-sentinel/kql_051_logon_failed.kql`, `microsoft-sentinel/kql_092_misc_cloud_failed_login.kql` |
-| `T1110.001` | `microsoft-sentinel/kql_051_logon_failed.kql` |
+| `T1110.001` | `microsoft-sentinel/kql_051_logon_failed.kql`, `microsoft-sentinel/kql_correlation_brute_force.kql` |
 | `T1112` | `microsoft-sentinel/kql_028_reg_mod_rdp.kql`, `microsoft-sentinel/kql_029_reg_mod_wdigest.kql` |
 | `T1136` | `microsoft-sentinel/kql_047_acct_mgr_group_created.kql` |
 | `T1136.001` | `microsoft-sentinel/kql_041_acct_mgr_user_created.kql` |
@@ -382,9 +428,9 @@ Tanda ✅ = ada minimal satu rule pada platform tersebut yang memetakan teknik.
 | Technique | Rule files |
 |---|---|
 | `T1003.001` | `carbonblack/rules/cb_childproc_creation_mimikatz_exe.json`, `carbonblack/rules/cb_childproc_creation_procdump_exe.json`, `carbonblack/rules/cb_file_modification_mimikatz_exe.json`, `carbonblack/rules/cb_file_modification_procdump_exe.json`, `carbonblack/rules/cb_filemod_lsass_dump_dmp.json` ... |
-| `T1021.002` | `carbonblack/rules/cb_childproc_creation_psexec_exe.json` |
+| `T1021.002` | `carbonblack/rules/cb_childproc_creation_psexec_exe.json`, `carbonblack/rules/cb_file_modification_psexec_exe.json`, `carbonblack/rules/cb_network_connection_psexec_exe.json`, `carbonblack/rules/cb_process_creation_psexec_exe.json`, `carbonblack/rules/cb_registry_modification_psexec_exe.json` |
 | `T1036` | `carbonblack/rules/cb_childproc_creation_suspicious_app_exe.json`, `carbonblack/rules/cb_file_modification_suspicious_app_exe.json`, `carbonblack/rules/cb_network_connection_suspicious_app_exe.json`, `carbonblack/rules/cb_process_creation_suspicious_app_exe.json`, `carbonblack/rules/cb_registry_modification_suspicious_app_exe.json` |
-| `T1047` | `carbonblack/rules/cb_childproc_creation_wmic_exe.json` |
+| `T1047` | `carbonblack/rules/cb_childproc_creation_wmic_exe.json`, `carbonblack/rules/cb_file_modification_wmic_exe.json`, `carbonblack/rules/cb_network_connection_wmic_exe.json`, `carbonblack/rules/cb_process_creation_wmic_exe.json`, `carbonblack/rules/cb_registry_modification_wmic_exe.json` |
 | `T1053.002` | `carbonblack/rules/cb_childproc_creation_at_exe.json`, `carbonblack/rules/cb_file_modification_at_exe.json`, `carbonblack/rules/cb_network_connection_at_exe.json`, `carbonblack/rules/cb_process_creation_at_exe.json`, `carbonblack/rules/cb_registry_modification_at_exe.json` |
 | `T1053.005` | `carbonblack/rules/cb_childproc_creation_schtasks_exe.json`, `carbonblack/rules/cb_file_modification_schtasks_exe.json`, `carbonblack/rules/cb_network_connection_schtasks_exe.json`, `carbonblack/rules/cb_process_creation_schtasks_exe.json`, `carbonblack/rules/cb_registry_modification_schtasks_exe.json` |
 | `T1059` | `carbonblack/rules/cb_childproc_creation_suspicious_app_exe.json`, `carbonblack/rules/cb_file_modification_suspicious_app_exe.json`, `carbonblack/rules/cb_network_connection_suspicious_app_exe.json`, `carbonblack/rules/cb_process_creation_suspicious_app_exe.json`, `carbonblack/rules/cb_registry_modification_suspicious_app_exe.json` |
@@ -394,21 +440,42 @@ Tanda ✅ = ada minimal satu rule pada platform tersebut yang memetakan teknik.
 | `T1059.006` | `carbonblack/rules/cb_childproc_creation_hacker_tool_py.json`, `carbonblack/rules/cb_file_modification_hacker_tool_py.json`, `carbonblack/rules/cb_network_connection_hacker_tool_py.json`, `carbonblack/rules/cb_process_creation_hacker_tool_py.json`, `carbonblack/rules/cb_registry_modification_hacker_tool_py.json` |
 | `T1071.001` | `carbonblack/rules/cb_childproc_creation_evil_com.json`, `carbonblack/rules/cb_childproc_creation_malicious-site_org.json`, `carbonblack/rules/cb_file_modification_evil_com.json`, `carbonblack/rules/cb_file_modification_malicious-site_org.json`, `carbonblack/rules/cb_network_connection_evil_com.json` ... |
 | `T1071.004` | `carbonblack/rules/cb_netconn_dns_tunnel_like.json` |
-| `T1087` | `carbonblack/rules/cb_childproc_creation_net_exe.json` |
+| `T1087` | `carbonblack/rules/cb_childproc_creation_net_exe.json`, `carbonblack/rules/cb_file_modification_net_exe.json`, `carbonblack/rules/cb_network_connection_net_exe.json`, `carbonblack/rules/cb_process_creation_net_exe.json`, `carbonblack/rules/cb_registry_modification_net_exe.json` |
 | `T1095` | `carbonblack/rules/cb_childproc_creation_nc_exe.json`, `carbonblack/rules/cb_childproc_creation_ncat_exe.json`, `carbonblack/rules/cb_file_modification_nc_exe.json`, `carbonblack/rules/cb_file_modification_ncat_exe.json`, `carbonblack/rules/cb_network_connection_nc_exe.json` ... |
-| `T1098` | `carbonblack/rules/cb_childproc_creation_net_exe.json` |
+| `T1098` | `carbonblack/rules/cb_childproc_creation_net_exe.json`, `carbonblack/rules/cb_file_modification_net_exe.json`, `carbonblack/rules/cb_network_connection_net_exe.json`, `carbonblack/rules/cb_process_creation_net_exe.json`, `carbonblack/rules/cb_registry_modification_net_exe.json` |
 | `T1105` | `carbonblack/rules/cb_childproc_creation_certutil_exe.json`, `carbonblack/rules/cb_file_modification_certutil_exe.json`, `carbonblack/rules/cb_network_connection_certutil_exe.json`, `carbonblack/rules/cb_process_creation_certutil_exe.json`, `carbonblack/rules/cb_registry_modification_certutil_exe.json` |
-| `T1112` | `carbonblack/rules/cb_childproc_creation_reg_exe.json` |
+| `T1112` | `carbonblack/rules/cb_childproc_creation_reg_exe.json`, `carbonblack/rules/cb_file_modification_reg_exe.json`, `carbonblack/rules/cb_network_connection_reg_exe.json`, `carbonblack/rules/cb_process_creation_reg_exe.json`, `carbonblack/rules/cb_registry_modification_reg_exe.json` |
 | `T1127.001` | `carbonblack/rules/cb_childproc_creation_msbuild_exe.json`, `carbonblack/rules/cb_file_modification_msbuild_exe.json`, `carbonblack/rules/cb_network_connection_msbuild_exe.json`, `carbonblack/rules/cb_process_creation_msbuild_exe.json`, `carbonblack/rules/cb_registry_modification_msbuild_exe.json` |
-| `T1136` | `carbonblack/rules/cb_childproc_creation_net_exe.json` |
+| `T1136` | `carbonblack/rules/cb_childproc_creation_net_exe.json`, `carbonblack/rules/cb_file_modification_net_exe.json`, `carbonblack/rules/cb_network_connection_net_exe.json`, `carbonblack/rules/cb_process_creation_net_exe.json`, `carbonblack/rules/cb_registry_modification_net_exe.json` |
 | `T1140` | `carbonblack/rules/cb_childproc_creation_certutil_exe.json`, `carbonblack/rules/cb_file_modification_certutil_exe.json`, `carbonblack/rules/cb_network_connection_certutil_exe.json`, `carbonblack/rules/cb_process_creation_certutil_exe.json`, `carbonblack/rules/cb_registry_modification_certutil_exe.json` |
 | `T1197` | `carbonblack/rules/cb_childproc_creation_bitsadmin_exe.json`, `carbonblack/rules/cb_file_modification_bitsadmin_exe.json`, `carbonblack/rules/cb_network_connection_bitsadmin_exe.json`, `carbonblack/rules/cb_process_creation_bitsadmin_exe.json`, `carbonblack/rules/cb_registry_modification_bitsadmin_exe.json` |
-| `T1218.004` | `carbonblack/rules/cb_childproc_creation_installutil_exe.json` |
-| `T1218.005` | `carbonblack/rules/cb_childproc_creation_mshta_exe.json` |
+| `T1218.004` | `carbonblack/rules/cb_childproc_creation_installutil_exe.json`, `carbonblack/rules/cb_file_modification_installutil_exe.json`, `carbonblack/rules/cb_network_connection_installutil_exe.json`, `carbonblack/rules/cb_process_creation_installutil_exe.json`, `carbonblack/rules/cb_registry_modification_installutil_exe.json` |
+| `T1218.005` | `carbonblack/rules/cb_childproc_creation_mshta_exe.json`, `carbonblack/rules/cb_file_modification_mshta_exe.json`, `carbonblack/rules/cb_network_connection_mshta_exe.json`, `carbonblack/rules/cb_process_creation_mshta_exe.json`, `carbonblack/rules/cb_registry_modification_mshta_exe.json` |
 | `T1218.010` | `carbonblack/rules/cb_childproc_creation_regsvr32_exe.json`, `carbonblack/rules/cb_file_modification_regsvr32_exe.json`, `carbonblack/rules/cb_network_connection_regsvr32_exe.json`, `carbonblack/rules/cb_process_creation_regsvr32_exe.json`, `carbonblack/rules/cb_registry_modification_regsvr32_exe.json` |
 | `T1218.011` | `carbonblack/rules/cb_childproc_creation_rundll32_exe.json`, `carbonblack/rules/cb_file_modification_rundll32_exe.json`, `carbonblack/rules/cb_network_connection_rundll32_exe.json`, `carbonblack/rules/cb_process_creation_rundll32_exe.json`, `carbonblack/rules/cb_registry_modification_rundll32_exe.json` |
-| `T1560.001` | `carbonblack/rules/cb_childproc_creation_7z_exe.json` |
-| `T1567.002` | `carbonblack/rules/cb_childproc_creation_rclone_exe.json` |
+| `T1560.001` | `carbonblack/rules/cb_childproc_creation_7z_exe.json`, `carbonblack/rules/cb_file_modification_7z_exe.json`, `carbonblack/rules/cb_network_connection_7z_exe.json`, `carbonblack/rules/cb_process_creation_7z_exe.json`, `carbonblack/rules/cb_registry_modification_7z_exe.json` |
+| `T1567.002` | `carbonblack/rules/cb_childproc_creation_rclone_exe.json`, `carbonblack/rules/cb_file_modification_rclone_exe.json`, `carbonblack/rules/cb_network_connection_rclone_exe.json`, `carbonblack/rules/cb_process_creation_rclone_exe.json`, `carbonblack/rules/cb_registry_modification_rclone_exe.json` |
 | `T1572` | `carbonblack/rules/cb_netconn_dns_tunnel_like.json` |
 | `T1574.002` | `carbonblack/rules/cb_childproc_creation_malware_dll.json`, `carbonblack/rules/cb_file_modification_malware_dll.json`, `carbonblack/rules/cb_network_connection_malware_dll.json`, `carbonblack/rules/cb_process_creation_malware_dll.json`, `carbonblack/rules/cb_registry_modification_malware_dll.json` |
+
+### falcon
+
+| Technique | Rule files |
+|---|---|
+| `T1059.001` | `falcon/win_suspicious_encoded_powershell.fql` |
+| `T1105` | `falcon/win_certutil_download.fql` |
+
+### sentinelone
+
+| Technique | Rule files |
+|---|---|
+| `T1003.001` | `sentinelone/win_suspicious_lsass_access.s1ql` |
+| `T1490` | `sentinelone/win_shadow_copy_deletion.s1ql` |
+
+### falco
+
+| Technique | Rule files |
+|---|---|
+| `T1059.004` | `falco/suspicious_shell_in_container.yaml` |
+| `T1611` | `falco/container_escape_mount_host.yaml` |
 

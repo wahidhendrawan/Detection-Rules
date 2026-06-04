@@ -1,0 +1,43 @@
+title: Shell History File Tampering
+id: 5d2a8f91-b1c4-4e7d-a3f6-9c8b2d4e1a73
+status: experimental
+description: |
+  Detects attempts to clear, delete, or truncate shell history files
+  (bash_history, zsh_history) or disable history recording.
+author: Wahid Hendrawan
+date: 2026/06/04
+references:
+  - https://attack.mitre.org/techniques/T1070/003/
+logsource:
+  product: linux
+  category: process_creation
+detection:
+  selection_rm:
+    Image|endswith: '/rm'
+    CommandLine|contains:
+      - '.bash_history'
+      - '.zsh_history'
+  selection_truncate:
+    CommandLine|contains:
+      - '> ~/.bash_history'
+      - '> ~/.zsh_history'
+      - 'cat /dev/null >'
+      - 'truncate -s 0'
+  selection_unset:
+    CommandLine|contains:
+      - 'unset HISTFILE'
+      - 'HISTSIZE=0'
+      - 'history -c'
+      - 'set +o history'
+  condition: 1 of selection_*
+fields:
+  - Image
+  - CommandLine
+  - User
+  - ParentImage
+falsepositives:
+  - User yang membersihkan history secara sah (jarang).
+level: high
+tags:
+  - attack.t1070.003
+  - attack.defense-evasion

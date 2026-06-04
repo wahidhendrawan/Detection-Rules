@@ -1,0 +1,37 @@
+title: System Information Discovery Commands
+id: 2d7a5e81-c3b4-4f9e-d6a2-8b1c3f5e9a72
+status: experimental
+description: |
+  Detects execution of multiple system info discovery commands in
+  rapid succession - common recon pattern post-compromise.
+author: Wahid Hendrawan
+date: 2026/06/04
+references:
+  - https://attack.mitre.org/techniques/T1082/
+logsource:
+  product: windows
+  category: process_creation
+detection:
+  selection:
+    Image|endswith:
+      - '\systeminfo.exe'
+      - '\hostname.exe'
+      - '\whoami.exe'
+    CommandLine|contains:
+      - 'systeminfo'
+      - 'hostname'
+      - 'whoami /all'
+  condition: selection | count() by Computer > 2
+  timeframe: 1m
+fields:
+  - Image
+  - CommandLine
+  - User
+  - ParentImage
+falsepositives:
+  - Admin yang menjalankan script inventory.
+  - Monitoring tools yang collect system info.
+level: low
+tags:
+  - attack.t1082
+  - attack.discovery

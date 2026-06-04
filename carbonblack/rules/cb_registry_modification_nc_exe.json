@@ -1,12 +1,12 @@
 {
-  "id": "3f0e5a5d-3a2e-4ff5-a693-d2fae6d4dca4",
+  "id": "5b0cb808-645f-5123-bf9f-b38a030b3720",
   "name": "cb_registry_modification_nc_exe",
-  "description": "Detects registry_modification involving nc.exe",
+  "description": "Detects registry modification involving nc.exe (netcat reverse shell)",
   "mitre": [
     "T1095"
   ],
   "query": "regmod_name:nc.exe",
-  "severity": 5,
+  "severity": 7,
   "enabled": true,
   "category": "registry_modification"
 }

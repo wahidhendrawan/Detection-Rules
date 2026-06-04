@@ -1,7 +1,7 @@
 {
-  "id": "a975ca7a-4113-44c5-8def-de933fa82a17",
+  "id": "db84f871-89a8-5b90-8826-2982472e6b74",
   "name": "cb_file_modification_powershell_exe",
-  "description": "Detects file_modification involving powershell.exe",
+  "description": "Detects file modification involving powershell.exe (scripting interpreter)",
   "mitre": [
     "T1059.001"
   ],

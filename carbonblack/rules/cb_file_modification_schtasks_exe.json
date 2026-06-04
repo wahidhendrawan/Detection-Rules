@@ -1,7 +1,7 @@
 {
-  "id": "fa2bc181-0884-4cb0-9f47-2b7317769b21",
+  "id": "8ace5857-ee5a-5d75-908b-0d0263760dc7",
   "name": "cb_file_modification_schtasks_exe",
-  "description": "Detects file_modification involving schtasks.exe",
+  "description": "Detects file modification involving schtasks.exe (scheduled task abuse)",
   "mitre": [
     "T1053.005"
   ],

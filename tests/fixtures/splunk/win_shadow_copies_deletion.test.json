@@ -1,0 +1,42 @@
+{
+  "rule": "splunk/windows/win_shadow_copies_deletion.spl",
+  "description": "Shadow copies deletion via vssadmin/wmic/PS (T1490) - critical",
+  "match_condition": {
+    "Image": { "regex": "(?i)(vssadmin|wmic)\\.exe$" },
+    "CommandLine": { "regex": "(?i)(delete.*shadow|shadowcopy.*delete|Win32_ShadowCopy.*Delete)" }
+  },
+  "test_cases": [
+    {
+      "name": "matches vssadmin delete shadows",
+      "expected": "match",
+      "event": {
+        "Image": "C:\\Windows\\System32\\vssadmin.exe",
+        "CommandLine": "vssadmin.exe delete shadows /all /quiet"
+      }
+    },
+    {
+      "name": "matches wmic shadowcopy delete",
+      "expected": "match",
+      "event": {
+        "Image": "C:\\Windows\\System32\\wbem\\wmic.exe",
+        "CommandLine": "wmic shadowcopy delete"
+      }
+    },
+    {
+      "name": "does not match vssadmin list",
+      "expected": "no_match",
+      "event": {
+        "Image": "C:\\Windows\\System32\\vssadmin.exe",
+        "CommandLine": "vssadmin.exe list shadows"
+      }
+    },
+    {
+      "name": "does not match unrelated process",
+      "expected": "no_match",
+      "event": {
+        "Image": "C:\\Windows\\System32\\notepad.exe",
+        "CommandLine": "notepad.exe C:\\temp\\file.txt"
+      }
+    }
+  ]
+}

@@ -1,10 +1,13 @@
 {
+  "id": "ba764f91-4967-5c06-8c32-b35b96adf85e",
   "name": "cb_netconn_dns_tunnel_like",
-  "description": "Auto-added Carbon Black detection query",
+  "description": "Detects DNS tunneling patterns in network connections",
   "mitre": [
     "T1071.004",
     "T1572"
   ],
-  "query": "event_type:netconn AND (domain:*.tk OR domain:*.ml OR domain:*.ga)",
-  "severity": "high"
+  "query": "netconn_domain_length:[50 TO *]",
+  "severity": 6,
+  "enabled": true,
+  "category": "special"
 }

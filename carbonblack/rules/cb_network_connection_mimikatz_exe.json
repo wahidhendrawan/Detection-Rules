@@ -1,12 +1,12 @@
 {
-  "id": "30152627-dac0-4b4d-95d6-644d386d5c8c",
+  "id": "39e2007a-3ef4-5f94-bebb-fa08b76de6cf",
   "name": "cb_network_connection_mimikatz_exe",
-  "description": "Detects network_connection involving mimikatz.exe",
+  "description": "Detects network connection involving mimikatz.exe (credential dumping tool)",
   "mitre": [
     "T1003.001"
   ],
   "query": "netconn_domain:mimikatz.exe",
-  "severity": 5,
+  "severity": 8,
   "enabled": true,
   "category": "network_connection"
 }

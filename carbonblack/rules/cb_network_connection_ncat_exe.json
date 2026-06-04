@@ -1,12 +1,12 @@
 {
-  "id": "225550ae-51af-4393-9910-4b9bf9485ca6",
+  "id": "c76f4485-62ab-50f5-b62a-3de0f62b2907",
   "name": "cb_network_connection_ncat_exe",
-  "description": "Detects network_connection involving ncat.exe",
+  "description": "Detects network connection involving ncat.exe (ncat reverse shell)",
   "mitre": [
     "T1095"
   ],
   "query": "netconn_domain:ncat.exe",
-  "severity": 5,
+  "severity": 7,
   "enabled": true,
   "category": "network_connection"
 }

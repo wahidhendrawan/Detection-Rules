@@ -1,0 +1,9 @@
+// CrowdStrike Falcon Query Language (FQL)
+// Title: Suspicious Encoded PowerShell Execution
+// MITRE ATT&CK: T1059.001 - Command and Scripting Interpreter: PowerShell
+// Description: Detects PowerShell invoked with encoded commands
+
+event_simpleName=ProcessRollup2
+| FileName=powershell.exe OR FileName=pwsh.exe
+| CommandLine=*-enc* OR CommandLine=*-EncodedCommand* OR CommandLine=*-e * 
+| table aid, TargetProcessId, ParentProcessId, CommandLine, UserName, timestamp

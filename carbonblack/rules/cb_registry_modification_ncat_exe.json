@@ -1,12 +1,12 @@
 {
-  "id": "df35ebbe-f82a-435a-8cc6-0a1e4eb6d30a",
+  "id": "02a30bf2-b34a-536e-bf82-a2d097a11c26",
   "name": "cb_registry_modification_ncat_exe",
-  "description": "Detects registry_modification involving ncat.exe",
+  "description": "Detects registry modification involving ncat.exe (ncat reverse shell)",
   "mitre": [
     "T1095"
   ],
   "query": "regmod_name:ncat.exe",
-  "severity": 5,
+  "severity": 7,
   "enabled": true,
   "category": "registry_modification"
 }

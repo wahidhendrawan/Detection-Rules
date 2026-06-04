@@ -1,0 +1,12 @@
+{
+  "id": "c7292344-ddac-5815-a3d4-8e88128880c3",
+  "name": "cb_registry_modification_psexec_exe",
+  "description": "Detects registry modification involving psexec.exe (remote execution tool)",
+  "mitre": [
+    "T1021.002"
+  ],
+  "query": "regmod_name:psexec.exe",
+  "severity": 6,
+  "enabled": true,
+  "category": "registry_modification"
+}

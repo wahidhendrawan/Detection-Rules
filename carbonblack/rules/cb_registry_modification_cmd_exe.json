@@ -1,12 +1,12 @@
 {
-  "id": "f30e538b-74c1-4328-b664-ca2feda89a1c",
+  "id": "dfc711e3-ee6d-5f87-adcf-b70daac1a4d2",
   "name": "cb_registry_modification_cmd_exe",
-  "description": "Detects registry_modification involving cmd.exe",
+  "description": "Detects registry modification involving cmd.exe (command shell)",
   "mitre": [
     "T1059.003"
   ],
   "query": "regmod_name:cmd.exe",
-  "severity": 5,
+  "severity": 4,
   "enabled": true,
   "category": "registry_modification"
 }

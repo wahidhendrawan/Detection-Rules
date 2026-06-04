@@ -1,0 +1,14 @@
+{
+  "id": "844432b4-c9cc-5320-a262-ecd2b0fa4a77",
+  "name": "cb_file_modification_net_exe",
+  "description": "Detects file modification involving net.exe (account/group enumeration)",
+  "mitre": [
+    "T1087",
+    "T1136",
+    "T1098"
+  ],
+  "query": "filemod_name:net.exe",
+  "severity": 4,
+  "enabled": true,
+  "category": "file_modification"
+}

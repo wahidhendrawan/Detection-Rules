@@ -1,7 +1,7 @@
 {
-  "id": "b2d319ac-6b30-426a-8f67-2cf65a046fc8",
+  "id": "4c1c00aa-6ecd-5718-a02d-08f3b56b33b9",
   "name": "cb_registry_modification_msbuild_exe",
-  "description": "Detects registry_modification involving msbuild.exe",
+  "description": "Detects registry modification involving msbuild.exe (trusted dev tool abuse)",
   "mitre": [
     "T1127.001"
   ],

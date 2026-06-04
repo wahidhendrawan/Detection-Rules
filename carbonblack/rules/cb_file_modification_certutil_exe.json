@@ -1,13 +1,13 @@
 {
-  "id": "4c6a5b27-5d10-43c2-9910-1184e0c5b15d",
+  "id": "3383f5ac-6ee0-56f3-9060-561469512395",
   "name": "cb_file_modification_certutil_exe",
-  "description": "Detects file_modification involving certutil.exe",
+  "description": "Detects file modification involving certutil.exe (LoLBin file download/decode)",
   "mitre": [
     "T1140",
     "T1105"
   ],
   "query": "filemod_name:certutil.exe",
-  "severity": 5,
+  "severity": 6,
   "enabled": true,
   "category": "file_modification"
 }

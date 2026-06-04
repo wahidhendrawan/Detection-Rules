@@ -1,12 +1,12 @@
 {
-  "id": "7dae7048-5f33-48f8-8100-33c3a7015a00",
+  "id": "37c5e2cf-ba5a-5ee0-b6e2-15ab7e14ced7",
   "name": "cb_file_modification_nc_exe",
-  "description": "Detects file_modification involving nc.exe",
+  "description": "Detects file modification involving nc.exe (netcat reverse shell)",
   "mitre": [
     "T1095"
   ],
   "query": "filemod_name:nc.exe",
-  "severity": 5,
+  "severity": 7,
   "enabled": true,
   "category": "file_modification"
 }

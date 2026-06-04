@@ -1,0 +1,9 @@
+// SentinelOne Deep Visibility Query
+// Title: Shadow Copy Deletion
+// MITRE ATT&CK: T1490 - Inhibit System Recovery
+// Description: Detects deletion of volume shadow copies, common in ransomware
+
+EventType = "Process Creation" AND
+(SrcProcCmdLine ContainsCIS "vssadmin delete shadows" OR
+ SrcProcCmdLine ContainsCIS "wmic shadowcopy delete" OR
+ SrcProcCmdLine ContainsCIS "bcdedit /set {default} recoveryenabled no")

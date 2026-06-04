@@ -1,12 +1,12 @@
 {
-  "id": "ab3198c5-53f1-4962-a288-3299d8c5e48c",
+  "id": "04bfdb7a-1dc7-5001-b46f-b92773d4e0d6",
   "name": "cb_process_creation_mimikatz_exe",
-  "description": "Detects process_creation involving mimikatz.exe",
+  "description": "Detects process creation involving mimikatz.exe (credential dumping tool)",
   "mitre": [
     "T1003.001"
   ],
   "query": "process_name:mimikatz.exe",
-  "severity": 5,
+  "severity": 8,
   "enabled": true,
   "category": "process_creation"
 }

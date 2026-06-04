@@ -1,7 +1,7 @@
 {
-  "id": "606a8615-ae61-4ad0-a190-b14e250809fc",
+  "id": "171c13ed-0433-5371-a1c3-13184c7ee9e9",
   "name": "cb_network_connection_at_exe",
-  "description": "Detects network_connection involving at.exe",
+  "description": "Detects network connection involving at.exe (legacy task scheduler)",
   "mitre": [
     "T1053.002"
   ],

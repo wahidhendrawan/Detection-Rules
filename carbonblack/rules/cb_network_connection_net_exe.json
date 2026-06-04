@@ -1,0 +1,14 @@
+{
+  "id": "61a3791e-4089-501c-886f-23ff5d6d336c",
+  "name": "cb_network_connection_net_exe",
+  "description": "Detects network connection involving net.exe (account/group enumeration)",
+  "mitre": [
+    "T1087",
+    "T1136",
+    "T1098"
+  ],
+  "query": "netconn_domain:net.exe",
+  "severity": 4,
+  "enabled": true,
+  "category": "network_connection"
+}

@@ -1,7 +1,7 @@
 {
-  "id": "9e9df88d-665d-4740-a420-b90210eaf1f9",
+  "id": "6c7da4a0-ef15-5829-ade6-89fff8eb9571",
   "name": "cb_file_modification_wscript_exe",
-  "description": "Detects file_modification involving wscript.exe",
+  "description": "Detects file modification involving wscript.exe (script host)",
   "mitre": [
     "T1059.005"
   ],

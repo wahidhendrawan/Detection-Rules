@@ -1,13 +1,13 @@
 {
-  "id": "7c586bbe-d305-428b-8427-3b88eb741d10",
+  "id": "ed96c378-7583-5347-b229-8df554cfd414",
   "name": "cb_childproc_creation_certutil_exe",
-  "description": "Detects childproc_creation involving certutil.exe",
+  "description": "Detects childproc creation involving certutil.exe (LoLBin file download/decode)",
   "mitre": [
     "T1140",
     "T1105"
   ],
   "query": "childproc_name:certutil.exe",
-  "severity": 5,
+  "severity": 6,
   "enabled": true,
   "category": "childproc_creation"
 }

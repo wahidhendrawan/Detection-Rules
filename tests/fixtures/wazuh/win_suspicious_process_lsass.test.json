@@ -1,0 +1,56 @@
+{
+  "rule": "wazuh/rules/win_suspicious_process_lsass.xml",
+  "description": "Wazuh: suspicious LSASS access (T1003.001) - high",
+  "match_condition": {
+    "event_id": { "equals": "10" },
+    "targetImage": { "regex": "lsass\\.exe$" },
+    "GrantedAccess": { "regex": "0x(1010|1410|143a|1fffff|1f0fff)" }
+  },
+  "test_cases": [
+    {
+      "name": "matches LSASS access with dump permissions",
+      "expected": "match",
+      "event": {
+        "event_id": "10",
+        "targetImage": "C:\\Windows\\System32\\lsass.exe",
+        "GrantedAccess": "0x1010"
+      }
+    },
+    {
+      "name": "matches PROCESS_ALL_ACCESS to LSASS",
+      "expected": "match",
+      "event": {
+        "event_id": "10",
+        "targetImage": "C:\\Windows\\System32\\lsass.exe",
+        "GrantedAccess": "0x1fffff"
+      }
+    },
+    {
+      "name": "does not match - different event ID",
+      "expected": "no_match",
+      "event": {
+        "event_id": "1",
+        "targetImage": "C:\\Windows\\System32\\lsass.exe",
+        "GrantedAccess": "0x1010"
+      }
+    },
+    {
+      "name": "does not match - target is not LSASS",
+      "expected": "no_match",
+      "event": {
+        "event_id": "10",
+        "targetImage": "C:\\Windows\\System32\\csrss.exe",
+        "GrantedAccess": "0x1010"
+      }
+    },
+    {
+      "name": "does not match - low permission",
+      "expected": "no_match",
+      "event": {
+        "event_id": "10",
+        "targetImage": "C:\\Windows\\System32\\lsass.exe",
+        "GrantedAccess": "0x0400"
+      }
+    }
+  ]
+}

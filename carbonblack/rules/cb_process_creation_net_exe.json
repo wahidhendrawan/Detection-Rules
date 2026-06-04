@@ -1,0 +1,14 @@
+{
+  "id": "fd4b1639-1f09-5500-92a9-f8a10fdbb064",
+  "name": "cb_process_creation_net_exe",
+  "description": "Detects process creation involving net.exe (account/group enumeration)",
+  "mitre": [
+    "T1087",
+    "T1136",
+    "T1098"
+  ],
+  "query": "process_name:net.exe",
+  "severity": 4,
+  "enabled": true,
+  "category": "process_creation"
+}

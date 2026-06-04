@@ -1,12 +1,12 @@
 {
-  "id": "ba72cdf4-0c64-4c58-8669-59f67a813195",
+  "id": "f0dd24c8-714a-557c-a8b5-613343cb9377",
   "name": "cb_childproc_creation_malicious-site_org",
-  "description": "Detects childproc_creation involving malicious-site.org",
+  "description": "Detects childproc creation involving malicious-site.org (known malicious domain)",
   "mitre": [
     "T1071.001"
   ],
   "query": "childproc_name:malicious-site.org",
-  "severity": 5,
+  "severity": 7,
   "enabled": true,
   "category": "childproc_creation"
 }

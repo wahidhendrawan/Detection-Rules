@@ -1,7 +1,7 @@
 {
-  "id": "6880dbb8-c6f1-407b-a996-cb77753f97e1",
+  "id": "08e8719a-08be-5595-a310-7da9bce25af1",
   "name": "cb_file_modification_bitsadmin_exe",
-  "description": "Detects file_modification involving bitsadmin.exe",
+  "description": "Detects file modification involving bitsadmin.exe (BITS abuse for persistence/download)",
   "mitre": [
     "T1197"
   ],

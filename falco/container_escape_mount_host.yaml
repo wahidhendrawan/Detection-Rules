@@ -1,0 +1,17 @@
+# Falco Rule: Container Escape via Host Mount
+# MITRE ATT&CK: T1611 - Escape to Host
+
+- rule: Container Escape via Host Filesystem Mount
+  desc: Detects a container mounting sensitive host paths, indicating potential container escape
+  condition: >
+    spawned_process and container and
+    (proc.name = mount) and
+    (proc.args contains "/host" or proc.args contains "/root" or proc.args contains "/etc")
+  output: >
+    Sensitive host path mounted in container
+    (user=%user.name command=%proc.cmdline container_id=%container.id image=%container.image.repository)
+  priority: CRITICAL
+  tags:
+    - container
+    - mitre_escape_to_host
+    - T1611

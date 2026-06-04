@@ -1,7 +1,7 @@
 {
-  "id": "bc9e6f7d-a0a7-4a6a-944c-54b266089535",
+  "id": "ad524bdf-db30-5406-973c-5e152c08a88f",
   "name": "cb_process_creation_powershell_exe",
-  "description": "Detects process_creation involving powershell.exe",
+  "description": "Detects process creation involving powershell.exe (scripting interpreter)",
   "mitre": [
     "T1059.001"
   ],

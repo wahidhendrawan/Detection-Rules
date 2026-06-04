@@ -1,0 +1,11 @@
+// SentinelOne Deep Visibility Query
+// Title: Suspicious LSASS Access (Credential Dumping)
+// MITRE ATT&CK: T1003.001 - OS Credential Dumping: LSASS Memory
+// Description: Detects processes accessing lsass.exe memory, indicative of credential dumping
+
+EventType = "Open Remote Process Handle" AND
+TgtProcName = "lsass.exe" AND
+SrcProcName != "csrss.exe" AND
+SrcProcName != "svchost.exe" AND
+SrcProcName != "lsass.exe" AND
+SrcProcName != "MsMpEng.exe"

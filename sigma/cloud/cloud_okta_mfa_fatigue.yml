@@ -5,19 +5,19 @@ description: Detects multiple denied MFA push notifications in Okta, indicative 
 author: Wahid Hendrawan
 date: 2026/06/04
 references:
-    - https://developer.okta.com/docs/reference/api/system-log/
+  - https://developer.okta.com/docs/reference/api/system-log/
 logsource:
-    product: okta
-    service: okta
+  product: okta
+  service: okta
 detection:
-    selection:
-        eventType: system.push.send_factor_verify_push
-        outcome.result: FAILURE
-    condition: selection | count(actor.alternateId) by actor.alternateId > 5
+  selection:
+    eventType: system.push.send_factor_verify_push
+    outcome.result: FAILURE
+  condition: selection
 falsepositives:
-    - Users accidentally denying push notifications multiple times
-    - Network connectivity issues causing repeated push attempts
+  - Users accidentally denying push notifications multiple times
+  - Network connectivity issues causing repeated push attempts
 level: high
 tags:
-    - attack.credential_access
-    - attack.t1621
+  - attack.credential-access
+  - attack.t1621

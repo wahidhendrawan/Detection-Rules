@@ -5,19 +5,19 @@ description: Detects Azure AD sign-in events flagged as originating from geograp
 author: Wahid Hendrawan
 date: 2026/06/04
 references:
-    - https://learn.microsoft.com/en-us/entra/id-protection/concept-identity-protection-risks
+  - https://learn.microsoft.com/en-us/entra/id-protection/concept-identity-protection-risks
 logsource:
-    product: azure
-    service: signinlogs
+  product: azure
+  service: signinlogs
 detection:
-    selection:
-        properties.message: Impossible travel
-        Status.errorCode: 0
-    condition: selection
+  selection:
+    properties.message: Impossible travel
+    Status.errorCode: 0
+  condition: selection
 falsepositives:
-    - Users with VPN connections that change geographic location
-    - Shared accounts used by team members in different regions
+  - Users with VPN connections that change geographic location
+  - Shared accounts used by team members in different regions
 level: high
 tags:
-    - attack.initial_access
-    - attack.t1078.004
+  - attack.initial-access
+  - attack.t1078.004

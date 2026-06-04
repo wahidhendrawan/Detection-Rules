@@ -5,18 +5,18 @@ description: Detects when a new member is added to a GitHub organization, which 
 author: Wahid Hendrawan
 date: 2026/06/04
 references:
-    - https://docs.github.com/en/organizations/managing-membership-in-your-organization
+  - https://docs.github.com/en/organizations/managing-membership-in-your-organization
 logsource:
-    product: github
-    service: audit
+  product: github
+  service: audit
 detection:
-    selection:
-        action: org.add_member
-    condition: selection
+  selection:
+    action: org.add_member
+  condition: selection
 falsepositives:
-    - Legitimate onboarding of new team members
-    - Automated provisioning via SCIM or identity providers
+  - Legitimate onboarding of new team members
+  - Automated provisioning via SCIM or identity providers
 level: medium
 tags:
-    - attack.persistence
-    - attack.t1136.003
+  - attack.persistence
+  - attack.t1136.003

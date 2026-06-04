@@ -199,7 +199,7 @@ jobs:
           PYTHONPATH=scripts python3 -m detection_rules navigator
           PYTHONPATH=scripts python3 -m detection_rules badges
       - name: Upload coverage + reports
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: mitre-coverage
           path: |

@@ -1,0 +1,33 @@
+title: Suspicious Web Protocol Communication
+id: a2f0cc87-b455-4e0b-b01d-d9ecac0212e7
+status: experimental
+description: |
+  Detects indicators of Suspicious Web Protocol Communication (T1071.001).
+author: Wahid Hendrawan
+date: 2026/06/04
+references:
+  - https://attack.mitre.org/techniques/T1071/001/
+logsource:
+  product: windows
+  category: network_connection
+detection:
+  selection:
+    DestinationPort:
+      - 80
+      - 443
+    Image|endswith:
+      - '\\rundll32.exe'
+      - '\\regsvr32.exe'
+      - '\\mshta.exe'
+      - '\\certutil.exe'
+  condition: selection
+fields:
+  - Image
+  - CommandLine
+  - User
+falsepositives:
+  - LOLBins should not make web connections in normal operation.
+level: high
+tags:
+  - attack.t1071.001
+  - attack.command-and-control

@@ -1,0 +1,36 @@
+title: Suspicious CMD Execution with Chained Commands
+id: 41e79396-e611-4ec7-9b7a-31cf2fdd095f
+status: experimental
+description: |
+  Detects indicators of Suspicious CMD Execution with Chained Commands (T1059.003).
+author: Wahid Hendrawan
+date: 2026/06/04
+references:
+  - https://attack.mitre.org/techniques/T1059/003/
+logsource:
+  product: windows
+  category: process_creation
+detection:
+  selection:
+    Image|endswith: '\\cmd.exe'
+    CommandLine|contains:
+      - '&&'
+      - '& echo'
+      - '| findstr'
+    CommandLine|contains:
+      - 'whoami'
+      - 'net user'
+      - 'net localgroup'
+      - 'tasklist'
+  condition: selection
+fields:
+  - Image
+  - CommandLine
+  - User
+falsepositives:
+  - Admin batch scripts.
+  - Troubleshooting one-liners.
+level: medium
+tags:
+  - attack.t1059.003
+  - attack.execution

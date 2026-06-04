@@ -1,0 +1,33 @@
+title: Firewall Rule Disabled or Modified
+id: 9bd085aa-e76a-4307-ae44-687a68bf0b37
+status: experimental
+description: |
+  Detects indicators of Firewall Rule Disabled or Modified (T1562.004).
+author: Wahid Hendrawan
+date: 2026/06/04
+references:
+  - https://attack.mitre.org/techniques/T1562/004/
+logsource:
+  product: windows
+  category: process_creation
+detection:
+  selection:
+    Image|endswith:
+      - '\\netsh.exe'
+      - '\\powershell.exe'
+    CommandLine|contains:
+      - 'advfirewall set.*state off'
+      - 'firewall set opmode disable'
+      - 'Set-NetFirewallProfile.*-Enabled False'
+  condition: selection
+fields:
+  - Image
+  - CommandLine
+  - User
+falsepositives:
+  - Admin troubleshooting network issues.
+  - GPO-managed firewall changes.
+level: high
+tags:
+  - attack.t1562.004
+  - attack.defense-evasion

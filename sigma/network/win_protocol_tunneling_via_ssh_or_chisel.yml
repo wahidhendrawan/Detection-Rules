@@ -1,0 +1,35 @@
+title: Protocol Tunneling via SSH or Chisel
+id: 0a8bb9cc-01da-47e4-8b98-18d781ac7af3
+status: experimental
+description: |
+  Detects indicators of Protocol Tunneling via SSH or Chisel (T1572).
+author: Wahid Hendrawan
+date: 2026/06/04
+references:
+  - https://attack.mitre.org/techniques/T1572/
+logsource:
+  product: windows
+  category: process_creation
+detection:
+  selection:
+    Image|endswith:
+      - '\\ssh.exe'
+      - '\\plink.exe'
+      - '\\chisel.exe'
+    CommandLine|contains:
+      - '-L'
+      - '-R'
+      - '-D'
+      - 'server'
+  condition: selection
+fields:
+  - Image
+  - CommandLine
+  - User
+falsepositives:
+  - Authorized SSH tunnel by developer.
+  - IT-approved bastion access.
+level: medium
+tags:
+  - attack.t1572
+  - attack.command-and-control

@@ -1,0 +1,33 @@
+title: System Time Discovery
+id: 5b6aeb38-e5a5-4715-920e-23590ad219f7
+status: experimental
+description: |
+  Detects indicators of System Time Discovery (T1124).
+author: Wahid Hendrawan
+date: 2026/06/04
+references:
+  - https://attack.mitre.org/techniques/T1124/
+logsource:
+  product: windows
+  category: process_creation
+detection:
+  selection:
+    Image|endswith:
+      - '\\w32tm.exe'
+      - '\\time.exe'
+      - '\\net.exe'
+    CommandLine|contains:
+      - 'time'
+      - '/query'
+  condition: selection
+fields:
+  - Image
+  - CommandLine
+  - User
+falsepositives:
+  - Time sync scripts.
+  - NTP troubleshooting.
+level: informational
+tags:
+  - attack.t1124
+  - attack.discovery

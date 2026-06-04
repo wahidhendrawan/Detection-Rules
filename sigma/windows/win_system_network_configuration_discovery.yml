@@ -1,0 +1,37 @@
+title: System Network Configuration Discovery
+id: 9188aaa7-09d8-4fb8-95cc-7de8c70fe061
+status: experimental
+description: |
+  Detects indicators of System Network Configuration Discovery (T1016).
+author: Wahid Hendrawan
+date: 2026/06/04
+references:
+  - https://attack.mitre.org/techniques/T1016/
+logsource:
+  product: windows
+  category: process_creation
+detection:
+  selection:
+    Image|endswith:
+      - '\\ipconfig.exe'
+      - '\\route.exe'
+      - '\\netsh.exe'
+      - '\\arp.exe'
+      - '\\nbtstat.exe'
+    CommandLine|contains:
+      - '/all'
+      - 'print'
+      - 'interface'
+      - '-a'
+  condition: selection
+fields:
+  - Image
+  - CommandLine
+  - User
+falsepositives:
+  - Admin network troubleshooting.
+  - Monitoring scripts.
+level: low
+tags:
+  - attack.t1016
+  - attack.discovery

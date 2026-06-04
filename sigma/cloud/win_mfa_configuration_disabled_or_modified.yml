@@ -1,0 +1,31 @@
+title: MFA Configuration Disabled or Modified
+id: fe25b406-a336-4e42-bf45-290501dcb87f
+status: experimental
+description: |
+  Detects indicators of MFA Configuration Disabled or Modified (T1556.006).
+author: Wahid Hendrawan
+date: 2026/06/04
+references:
+  - https://attack.mitre.org/techniques/T1556/006/
+logsource:
+  product: windows
+  category: process_creation
+detection:
+  selection:
+    CommandLine|contains:
+      - 'Set-MsolUser.*StrongAuth'
+      - 'Disable-MFA'
+      - 'Remove-MsolStrongAuthenticationRequirements'
+      - 'az account clear'
+  condition: selection
+fields:
+  - Image
+  - CommandLine
+  - User
+falsepositives:
+  - Authorized MFA reset by helpdesk.
+  - User self-service recovery.
+level: critical
+tags:
+  - attack.t1556.006
+  - attack.credential-access

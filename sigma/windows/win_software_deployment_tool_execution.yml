@@ -1,0 +1,32 @@
+title: Software Deployment Tool Execution
+id: 59feebd6-7245-4293-9573-870e3a215eb8
+status: experimental
+description: |
+  Detects indicators of Software Deployment Tool Execution (T1072).
+author: Wahid Hendrawan
+date: 2026/06/04
+references:
+  - https://attack.mitre.org/techniques/T1072/
+logsource:
+  product: windows
+  category: process_creation
+detection:
+  selection:
+    Image|endswith:
+      - '\\psexec.exe'
+      - '\\psexesvc.exe'
+      - '\\paexec.exe'
+      - '\\remcom.exe'
+      - '\\csexec.exe'
+  condition: selection
+fields:
+  - Image
+  - CommandLine
+  - User
+falsepositives:
+  - IT admin using PsExec for management.
+  - SCCM remote execution.
+level: medium
+tags:
+  - attack.t1072
+  - attack.execution

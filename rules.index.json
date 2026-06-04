@@ -1,9 +1,9 @@
 {
   "summary": {
-    "total_techniques": 149,
-    "total_rules": 612,
+    "total_techniques": 152,
+    "total_rules": 672,
     "rules_per_platform": {
-      "sigma": 144,
+      "sigma": 204,
       "elastic": 58,
       "splunk": 19,
       "microsoft-sentinel": 103,
@@ -14,7 +14,7 @@
       "falco": 2
     },
     "fully_covered": 0,
-    "single_platform_only": 58
+    "single_platform_only": 30
   },
   "techniques": {
     "T1003": {
@@ -22,6 +22,7 @@
       "tactic": "credential-access",
       "detections": {
         "sigma": [
+          "sigma/linux/lnx_access_to__etc_shadow_or__etc_passwd_for_credential_har.yml",
           "sigma/windows/win_credential_dump_indicators.yml",
           "sigma/windows/win_ntds_dit_access.yml",
           "sigma/windows/win_sam_registry_dump.yml"
@@ -157,7 +158,9 @@
       "name": "/etc/passwd and /etc/shadow",
       "tactic": "credential-access",
       "detections": {
-        "sigma": [],
+        "sigma": [
+          "sigma/linux/lnx_access_to__etc_shadow_or__etc_passwd_for_credential_har.yml"
+        ],
         "elastic": [],
         "splunk": [
           "splunk/linux/lnx_suspicious_passwd_mod.spl"
@@ -174,7 +177,6 @@
         "falco": []
       },
       "gaps": [
-        "sigma",
         "elastic",
         "microsoft-sentinel",
         "carbonblack",
@@ -182,7 +184,7 @@
         "sentinelone",
         "falco"
       ],
-      "coverage_count": 2
+      "coverage_count": 3
     },
     "T1005": {
       "name": "Data from Local System",
@@ -217,7 +219,9 @@
       "name": "Query Registry",
       "tactic": "discovery",
       "detections": {
-        "sigma": [],
+        "sigma": [
+          "sigma/windows/win_query_registry_for_system_information.yml"
+        ],
         "elastic": [
           "elastic/endpoint/general/Registry Manipulation via WMI Stdregprov.ndjson"
         ],
@@ -232,7 +236,6 @@
         "falco": []
       },
       "gaps": [
-        "sigma",
         "splunk",
         "wazuh",
         "carbonblack",
@@ -240,13 +243,15 @@
         "sentinelone",
         "falco"
       ],
-      "coverage_count": 2
+      "coverage_count": 3
     },
     "T1016": {
       "name": "System Network Configuration Discovery",
       "tactic": "discovery",
       "detections": {
-        "sigma": [],
+        "sigma": [
+          "sigma/windows/win_system_network_configuration_discovery.yml"
+        ],
         "elastic": [
           "elastic/endpoint/general/IOCs (ip) to detect Curly COMrades A New Threat Actor Targeting Geopolitical Hotbeds.ndjson"
         ],
@@ -259,7 +264,6 @@
         "falco": []
       },
       "gaps": [
-        "sigma",
         "splunk",
         "microsoft-sentinel",
         "wazuh",
@@ -268,7 +272,7 @@
         "sentinelone",
         "falco"
       ],
-      "coverage_count": 1
+      "coverage_count": 2
     },
     "T1021": {
       "name": "Remote Services",
@@ -276,7 +280,8 @@
       "detections": {
         "sigma": [
           "sigma/correlations/lateral_movement_spray.yml",
-          "sigma/linux/lnx_ssh_lateral_movement.yml"
+          "sigma/linux/lnx_ssh_lateral_movement.yml",
+          "sigma/windows/win_smb_windows_admin_share_access.yml"
         ],
         "elastic": [
           "elastic/endpoint/network/net_suspicious_rdp.ndjson"
@@ -340,7 +345,9 @@
       "name": "SMB/Windows Admin Shares",
       "tactic": "lateral-movement",
       "detections": {
-        "sigma": [],
+        "sigma": [
+          "sigma/windows/win_smb_windows_admin_share_access.yml"
+        ],
         "elastic": [],
         "splunk": [],
         "microsoft-sentinel": [
@@ -359,7 +366,6 @@
         "falco": []
       },
       "gaps": [
-        "sigma",
         "elastic",
         "splunk",
         "wazuh",
@@ -367,7 +373,7 @@
         "sentinelone",
         "falco"
       ],
-      "coverage_count": 2
+      "coverage_count": 3
     },
     "T1021.004": {
       "name": "SSH",
@@ -433,7 +439,9 @@
       "name": "Scheduled Transfer",
       "tactic": "exfiltration",
       "detections": {
-        "sigma": [],
+        "sigma": [
+          "sigma/windows/win_scheduled_data_transfer_to_external.yml"
+        ],
         "elastic": [
           "elastic/endpoint/general/Scheduled Transfer.ndjson",
           "elastic/endpoint/general/Time Based Evasion.ndjson"
@@ -447,7 +455,6 @@
         "falco": []
       },
       "gaps": [
-        "sigma",
         "splunk",
         "microsoft-sentinel",
         "wazuh",
@@ -456,13 +463,15 @@
         "sentinelone",
         "falco"
       ],
-      "coverage_count": 1
+      "coverage_count": 2
     },
     "T1033": {
       "name": "System Owner/User Discovery",
       "tactic": "discovery",
       "detections": {
-        "sigma": [],
+        "sigma": [
+          "sigma/windows/win_system_owner_user_discovery.yml"
+        ],
         "elastic": [],
         "splunk": [
           "splunk/windows/win_suspicious_whoami.spl"
@@ -475,7 +484,6 @@
         "falco": []
       },
       "gaps": [
-        "sigma",
         "elastic",
         "microsoft-sentinel",
         "wazuh",
@@ -484,13 +492,15 @@
         "sentinelone",
         "falco"
       ],
-      "coverage_count": 1
+      "coverage_count": 2
     },
     "T1036": {
       "name": "Masquerading",
       "tactic": "defense-evasion",
       "detections": {
-        "sigma": [],
+        "sigma": [
+          "sigma/windows/win_masquerading___executable_in_suspicious_path.yml"
+        ],
         "elastic": [
           "elastic/endpoint/general/Defense-Evasion-Dll-Sideloading.ndjson"
         ],
@@ -516,20 +526,21 @@
         "falco": []
       },
       "gaps": [
-        "sigma",
         "splunk",
         "wazuh",
         "falcon",
         "sentinelone",
         "falco"
       ],
-      "coverage_count": 3
+      "coverage_count": 4
     },
     "T1041": {
       "name": "Exfiltration Over C2 Channel",
       "tactic": "exfiltration",
       "detections": {
-        "sigma": [],
+        "sigma": [
+          "sigma/windows/win_data_exfiltration_over_c2_channel_indicators.yml"
+        ],
         "elastic": [
           "elastic/endpoint/general/IOCs (ip) to detect Curly COMrades A New Threat Actor Targeting Geopolitical Hotbeds.ndjson"
         ],
@@ -542,7 +553,6 @@
         "falco": []
       },
       "gaps": [
-        "sigma",
         "splunk",
         "microsoft-sentinel",
         "wazuh",
@@ -551,7 +561,7 @@
         "sentinelone",
         "falco"
       ],
-      "coverage_count": 1
+      "coverage_count": 2
     },
     "T1046": {
       "name": "Network Service Discovery",
@@ -621,7 +631,9 @@
       "name": "Exfiltration Over Alternative Protocol",
       "tactic": "exfiltration",
       "detections": {
-        "sigma": [],
+        "sigma": [
+          "sigma/network/win_exfiltration_over_alternative_protocol.yml"
+        ],
         "elastic": [
           "elastic/endpoint/general/IOCs (ip) to detect Curly COMrades A New Threat Actor Targeting Geopolitical Hotbeds.ndjson",
           "elastic/endpoint/network/net_dns_tunneling_entropy.ndjson",
@@ -636,7 +648,34 @@
         "falco": []
       },
       "gaps": [
-        "sigma",
+        "splunk",
+        "microsoft-sentinel",
+        "wazuh",
+        "carbonblack",
+        "falcon",
+        "sentinelone",
+        "falco"
+      ],
+      "coverage_count": 2
+    },
+    "T1053": {
+      "name": "Scheduled Task/Job",
+      "tactic": "persistence",
+      "detections": {
+        "sigma": [
+          "sigma/windows/win_at_job_creation.yml"
+        ],
+        "elastic": [],
+        "splunk": [],
+        "microsoft-sentinel": [],
+        "wazuh": [],
+        "carbonblack": [],
+        "falcon": [],
+        "sentinelone": [],
+        "falco": []
+      },
+      "gaps": [
+        "elastic",
         "splunk",
         "microsoft-sentinel",
         "wazuh",
@@ -651,7 +690,9 @@
       "name": "At",
       "tactic": "persistence",
       "detections": {
-        "sigma": [],
+        "sigma": [
+          "sigma/windows/win_at_job_creation.yml"
+        ],
         "elastic": [],
         "splunk": [],
         "microsoft-sentinel": [
@@ -670,7 +711,6 @@
         "falco": []
       },
       "gaps": [
-        "sigma",
         "elastic",
         "splunk",
         "wazuh",
@@ -678,7 +718,7 @@
         "sentinelone",
         "falco"
       ],
-      "coverage_count": 2
+      "coverage_count": 3
     },
     "T1053.003": {
       "name": "Cron",
@@ -761,6 +801,7 @@
       "tactic": "privilege-escalation",
       "detections": {
         "sigma": [
+          "sigma/windows/win_process_hollowing_indicators.yml",
           "sigma/windows/win_process_injection_createremotethread.yml"
         ],
         "elastic": [
@@ -789,7 +830,9 @@
       "name": "Process Hollowing",
       "tactic": "defense-evasion",
       "detections": {
-        "sigma": [],
+        "sigma": [
+          "sigma/windows/win_process_hollowing_indicators.yml"
+        ],
         "elastic": [
           "elastic/endpoint/general/HackTool - HollowReaper Execution.ndjson"
         ],
@@ -802,7 +845,6 @@
         "falco": []
       },
       "gaps": [
-        "sigma",
         "splunk",
         "microsoft-sentinel",
         "wazuh",
@@ -811,7 +853,7 @@
         "sentinelone",
         "falco"
       ],
-      "coverage_count": 1
+      "coverage_count": 2
     },
     "T1056": {
       "name": "Input Capture",
@@ -876,7 +918,9 @@
         "sigma": [
           "sigma/linux/lnx_base64_decoding.yml",
           "sigma/windows/win_powershell_suspicious_encoded_command.yml",
+          "sigma/windows/win_suspicious_cmd_execution_with_chained_commands.yml",
           "sigma/windows/win_suspicious_python_execution.yml",
+          "sigma/windows/win_suspicious_vbscript_execution.yml",
           "sigma/windows/win_suspicious_wscript_js.yml"
         ],
         "elastic": [
@@ -975,7 +1019,9 @@
       "name": "Windows Command Shell",
       "tactic": "execution",
       "detections": {
-        "sigma": [],
+        "sigma": [
+          "sigma/windows/win_suspicious_cmd_execution_with_chained_commands.yml"
+        ],
         "elastic": [
           "elastic/endpoint/general/Potential Exploitation of CrushFTP RCE Vulnerability (CVE-2025-54309).ndjson",
           "elastic/endpoint/general/Potential SAP NetWeaver Webshell Creation.ndjson",
@@ -1001,13 +1047,12 @@
         "falco": []
       },
       "gaps": [
-        "sigma",
         "splunk",
         "falcon",
         "sentinelone",
         "falco"
       ],
-      "coverage_count": 4
+      "coverage_count": 5
     },
     "T1059.004": {
       "name": "Unix Shell",
@@ -1046,7 +1091,9 @@
       "name": "Visual Basic",
       "tactic": "execution",
       "detections": {
-        "sigma": [],
+        "sigma": [
+          "sigma/windows/win_suspicious_vbscript_execution.yml"
+        ],
         "elastic": [],
         "splunk": [],
         "microsoft-sentinel": [
@@ -1073,7 +1120,6 @@
         "falco": []
       },
       "gaps": [
-        "sigma",
         "elastic",
         "splunk",
         "wazuh",
@@ -1081,7 +1127,7 @@
         "sentinelone",
         "falco"
       ],
-      "coverage_count": 2
+      "coverage_count": 3
     },
     "T1059.006": {
       "name": "Python",
@@ -1301,7 +1347,9 @@
       "tactic": "command-and-control",
       "detections": {
         "sigma": [
-          "sigma/network/net_dns_suspicious_tunnel.yml"
+          "sigma/network/net_dns_suspicious_tunnel.yml",
+          "sigma/network/win_ftp_connection_from_non_ftp_client.yml",
+          "sigma/network/win_suspicious_web_protocol_communication.yml"
         ],
         "elastic": [
           "elastic/endpoint/general/IOCs (ip) to detect Curly COMrades A New Threat Actor Targeting Geopolitical Hotbeds.ndjson",
@@ -1330,7 +1378,9 @@
       "name": "Web Protocols",
       "tactic": "command-and-control",
       "detections": {
-        "sigma": [],
+        "sigma": [
+          "sigma/network/win_suspicious_web_protocol_communication.yml"
+        ],
         "elastic": [],
         "splunk": [
           "splunk/network/net_suspicious_user_agent.spl"
@@ -1360,19 +1410,20 @@
         "falco": []
       },
       "gaps": [
-        "sigma",
         "elastic",
         "falcon",
         "sentinelone",
         "falco"
       ],
-      "coverage_count": 4
+      "coverage_count": 5
     },
     "T1071.002": {
       "name": "File Transfer Protocols",
       "tactic": "command-and-control",
       "detections": {
-        "sigma": [],
+        "sigma": [
+          "sigma/network/win_ftp_connection_from_non_ftp_client.yml"
+        ],
         "elastic": [],
         "splunk": [],
         "microsoft-sentinel": [
@@ -1385,7 +1436,6 @@
         "falco": []
       },
       "gaps": [
-        "sigma",
         "elastic",
         "splunk",
         "wazuh",
@@ -1394,7 +1444,7 @@
         "sentinelone",
         "falco"
       ],
-      "coverage_count": 1
+      "coverage_count": 2
     },
     "T1071.004": {
       "name": "DNS",
@@ -1436,7 +1486,9 @@
       "name": "Software Deployment Tools",
       "tactic": "execution",
       "detections": {
-        "sigma": [],
+        "sigma": [
+          "sigma/windows/win_software_deployment_tool_execution.yml"
+        ],
         "elastic": [
           "elastic/endpoint/general/Socket Filters.ndjson"
         ],
@@ -1452,7 +1504,6 @@
         "falco": []
       },
       "gaps": [
-        "sigma",
         "splunk",
         "microsoft-sentinel",
         "carbonblack",
@@ -1460,13 +1511,16 @@
         "sentinelone",
         "falco"
       ],
-      "coverage_count": 2
+      "coverage_count": 3
     },
     "T1078": {
       "name": "Valid Accounts",
       "tactic": "defense-evasion",
       "detections": {
-        "sigma": [],
+        "sigma": [
+          "sigma/windows/win_local_account_authentication.yml",
+          "sigma/windows/win_valid_account_login_at_unusual_time.yml"
+        ],
         "elastic": [
           "elastic/endpoint/general/Cloud Accounts.ndjson"
         ],
@@ -1501,20 +1555,21 @@
         "falco": []
       },
       "gaps": [
-        "sigma",
         "splunk",
         "carbonblack",
         "falcon",
         "sentinelone",
         "falco"
       ],
-      "coverage_count": 3
+      "coverage_count": 4
     },
     "T1078.003": {
       "name": "Local Accounts",
       "tactic": "defense-evasion",
       "detections": {
-        "sigma": [],
+        "sigma": [
+          "sigma/windows/win_local_account_authentication.yml"
+        ],
         "elastic": [],
         "splunk": [],
         "microsoft-sentinel": [],
@@ -1528,7 +1583,6 @@
         "falco": []
       },
       "gaps": [
-        "sigma",
         "elastic",
         "splunk",
         "microsoft-sentinel",
@@ -1537,7 +1591,7 @@
         "sentinelone",
         "falco"
       ],
-      "coverage_count": 1
+      "coverage_count": 2
     },
     "T1078.004": {
       "name": "Cloud Accounts",
@@ -1694,7 +1748,10 @@
       "name": "Proxy",
       "tactic": "command-and-control",
       "detections": {
-        "sigma": [],
+        "sigma": [
+          "sigma/windows/win_multi_hop_proxy_via_ssh_tunnel.yml",
+          "sigma/windows/win_proxy_tool_execution.yml"
+        ],
         "elastic": [],
         "splunk": [],
         "microsoft-sentinel": [
@@ -1707,7 +1764,6 @@
         "falco": []
       },
       "gaps": [
-        "sigma",
         "elastic",
         "splunk",
         "wazuh",
@@ -1716,13 +1772,15 @@
         "sentinelone",
         "falco"
       ],
-      "coverage_count": 1
+      "coverage_count": 2
     },
     "T1090.003": {
       "name": "Multi-hop Proxy",
       "tactic": "command-and-control",
       "detections": {
-        "sigma": [],
+        "sigma": [
+          "sigma/windows/win_multi_hop_proxy_via_ssh_tunnel.yml"
+        ],
         "elastic": [],
         "splunk": [],
         "microsoft-sentinel": [
@@ -1736,7 +1794,6 @@
         "falco": []
       },
       "gaps": [
-        "sigma",
         "elastic",
         "splunk",
         "wazuh",
@@ -1745,13 +1802,15 @@
         "sentinelone",
         "falco"
       ],
-      "coverage_count": 1
+      "coverage_count": 2
     },
     "T1095": {
       "name": "Non-Application Layer Protocol",
       "tactic": "command-and-control",
       "detections": {
-        "sigma": [],
+        "sigma": [
+          "sigma/network/win_non_application_layer_protocol_communication.yml"
+        ],
         "elastic": [],
         "splunk": [],
         "microsoft-sentinel": [],
@@ -1773,7 +1832,6 @@
         "falco": []
       },
       "gaps": [
-        "sigma",
         "elastic",
         "splunk",
         "microsoft-sentinel",
@@ -1782,7 +1840,7 @@
         "sentinelone",
         "falco"
       ],
-      "coverage_count": 1
+      "coverage_count": 2
     },
     "T1098": {
       "name": "Account Manipulation",
@@ -1790,8 +1848,10 @@
       "detections": {
         "sigma": [
           "sigma/cloud/cloud_aws_create_access_key.yml",
+          "sigma/cloud/cloud_cloud_admin_role_assigned.yml",
           "sigma/cloud/cloud_gcp_iam_suspicious_role_grant.yml",
-          "sigma/windows/win_local_admin_group_add.yml"
+          "sigma/windows/win_local_admin_group_add.yml",
+          "sigma/windows/win_user_added_to_privileged_group.yml"
         ],
         "elastic": [],
         "splunk": [
@@ -1863,7 +1923,9 @@
       "name": "Additional Cloud Roles",
       "tactic": "persistence",
       "detections": {
-        "sigma": [],
+        "sigma": [
+          "sigma/cloud/cloud_cloud_admin_role_assigned.yml"
+        ],
         "elastic": [],
         "splunk": [],
         "microsoft-sentinel": [
@@ -1876,7 +1938,6 @@
         "falco": []
       },
       "gaps": [
-        "sigma",
         "elastic",
         "splunk",
         "wazuh",
@@ -1885,7 +1946,7 @@
         "sentinelone",
         "falco"
       ],
-      "coverage_count": 1
+      "coverage_count": 2
     },
     "T1098.004": {
       "name": "SSH Authorized Keys",
@@ -1920,7 +1981,9 @@
       "name": "Additional Local or Domain Groups",
       "tactic": "persistence",
       "detections": {
-        "sigma": [],
+        "sigma": [
+          "sigma/windows/win_user_added_to_privileged_group.yml"
+        ],
         "elastic": [],
         "splunk": [],
         "microsoft-sentinel": [
@@ -1935,7 +1998,6 @@
         "falco": []
       },
       "gaps": [
-        "sigma",
         "elastic",
         "splunk",
         "carbonblack",
@@ -1943,7 +2005,7 @@
         "sentinelone",
         "falco"
       ],
-      "coverage_count": 2
+      "coverage_count": 3
     },
     "T1105": {
       "name": "Ingress Tool Transfer",
@@ -1997,7 +2059,9 @@
       "name": "Brute Force",
       "tactic": "credential-access",
       "detections": {
-        "sigma": [],
+        "sigma": [
+          "sigma/windows/win_multiple_failed_login_attempts.yml"
+        ],
         "elastic": [],
         "splunk": [
           "splunk/network/net_suspicious_ssh_brute.spl"
@@ -2018,14 +2082,13 @@
         "falco": []
       },
       "gaps": [
-        "sigma",
         "elastic",
         "carbonblack",
         "falcon",
         "sentinelone",
         "falco"
       ],
-      "coverage_count": 3
+      "coverage_count": 4
     },
     "T1110.001": {
       "name": "Password Guessing",
@@ -2064,7 +2127,9 @@
       "name": "Modify Registry",
       "tactic": "defense-evasion",
       "detections": {
-        "sigma": [],
+        "sigma": [
+          "sigma/windows/win_suspicious_registry_modification.yml"
+        ],
         "elastic": [
           "elastic/endpoint/general/Registry Manipulation via WMI Stdregprov.ndjson"
         ],
@@ -2086,20 +2151,21 @@
         "falco": []
       },
       "gaps": [
-        "sigma",
         "splunk",
         "wazuh",
         "falcon",
         "sentinelone",
         "falco"
       ],
-      "coverage_count": 3
+      "coverage_count": 4
     },
     "T1124": {
       "name": "System Time Discovery",
       "tactic": "discovery",
       "detections": {
-        "sigma": [],
+        "sigma": [
+          "sigma/windows/win_system_time_discovery.yml"
+        ],
         "elastic": [
           "elastic/endpoint/general/System Information Discovery via Registry Queries.ndjson"
         ],
@@ -2112,7 +2178,6 @@
         "falco": []
       },
       "gaps": [
-        "sigma",
         "splunk",
         "microsoft-sentinel",
         "wazuh",
@@ -2121,7 +2186,7 @@
         "sentinelone",
         "falco"
       ],
-      "coverage_count": 1
+      "coverage_count": 2
     },
     "T1127": {
       "name": "Trusted Developer Utilities Proxy Execution",
@@ -2337,7 +2402,9 @@
       "name": "Deobfuscate/Decode Files or Information",
       "tactic": "defense-evasion",
       "detections": {
-        "sigma": [],
+        "sigma": [
+          "sigma/windows/win_file_decode_deobfuscation_via_certutil_or_powershell.yml"
+        ],
         "elastic": [],
         "splunk": [],
         "microsoft-sentinel": [
@@ -2356,7 +2423,6 @@
         "falco": []
       },
       "gaps": [
-        "sigma",
         "elastic",
         "splunk",
         "wazuh",
@@ -2364,13 +2430,15 @@
         "sentinelone",
         "falco"
       ],
-      "coverage_count": 2
+      "coverage_count": 3
     },
     "T1190": {
       "name": "Exploit Public-Facing Application",
       "tactic": "initial-access",
       "detections": {
-        "sigma": [],
+        "sigma": [
+          "sigma/linux/lnx_web_application_exploit_indicators_in_logs.yml"
+        ],
         "elastic": [
           "elastic/endpoint/general/Potential Exploitation of CrushFTP RCE Vulnerability (CVE-2025-54309).ndjson",
           "elastic/endpoint/general/Potential SAP NetWeaver Webshell Creation.ndjson",
@@ -2391,7 +2459,6 @@
         "falco": []
       },
       "gaps": [
-        "sigma",
         "splunk",
         "microsoft-sentinel",
         "carbonblack",
@@ -2399,13 +2466,15 @@
         "sentinelone",
         "falco"
       ],
-      "coverage_count": 2
+      "coverage_count": 3
     },
     "T1197": {
       "name": "BITS Jobs",
       "tactic": "defense-evasion",
       "detections": {
-        "sigma": [],
+        "sigma": [
+          "sigma/windows/win_bits_job_creation_for_download.yml"
+        ],
         "elastic": [
           "elastic/endpoint/windows/win_suspicious_bitsadmin.ndjson"
         ],
@@ -2426,20 +2495,22 @@
         "falco": []
       },
       "gaps": [
-        "sigma",
         "splunk",
         "wazuh",
         "falcon",
         "sentinelone",
         "falco"
       ],
-      "coverage_count": 3
+      "coverage_count": 4
     },
     "T1205": {
       "name": "Traffic Signaling",
       "tactic": "command-and-control",
       "detections": {
-        "sigma": [],
+        "sigma": [
+          "sigma/linux/lnx_socket_filter___bpf_program_load.yml",
+          "sigma/network/lnx_traffic_signaling___port_knocking.yml"
+        ],
         "elastic": [
           "elastic/endpoint/general/Port Knocking.ndjson"
         ],
@@ -2452,7 +2523,6 @@
         "falco": []
       },
       "gaps": [
-        "sigma",
         "splunk",
         "microsoft-sentinel",
         "wazuh",
@@ -2461,13 +2531,15 @@
         "sentinelone",
         "falco"
       ],
-      "coverage_count": 1
+      "coverage_count": 2
     },
     "T1205.002": {
       "name": "Socket Filters",
       "tactic": "defense-evasion",
       "detections": {
-        "sigma": [],
+        "sigma": [
+          "sigma/linux/lnx_socket_filter___bpf_program_load.yml"
+        ],
         "elastic": [
           "elastic/endpoint/general/Port Knocking.ndjson"
         ],
@@ -2480,7 +2552,6 @@
         "falco": []
       },
       "gaps": [
-        "sigma",
         "splunk",
         "microsoft-sentinel",
         "wazuh",
@@ -2489,14 +2560,16 @@
         "sentinelone",
         "falco"
       ],
-      "coverage_count": 1
+      "coverage_count": 2
     },
     "T1218": {
       "name": "System Binary Proxy Execution",
       "tactic": "defense-evasion",
       "detections": {
         "sigma": [
-          "sigma/windows/win_installutil_suspicious.yml"
+          "sigma/windows/win_installutil_suspicious.yml",
+          "sigma/windows/win_regsvr32_suspicious_network_or_script_load.yml",
+          "sigma/windows/win_rundll32_suspicious_execution_pattern.yml"
         ],
         "elastic": [],
         "splunk": [],
@@ -2593,7 +2666,9 @@
       "name": "Regsvr32",
       "tactic": "defense-evasion",
       "detections": {
-        "sigma": [],
+        "sigma": [
+          "sigma/windows/win_regsvr32_suspicious_network_or_script_load.yml"
+        ],
         "elastic": [],
         "splunk": [
           "splunk/windows/win_suspicious_regsvr32.spl"
@@ -2614,20 +2689,21 @@
         "falco": []
       },
       "gaps": [
-        "sigma",
         "elastic",
         "wazuh",
         "falcon",
         "sentinelone",
         "falco"
       ],
-      "coverage_count": 3
+      "coverage_count": 4
     },
     "T1218.011": {
       "name": "Rundll32",
       "tactic": "defense-evasion",
       "detections": {
-        "sigma": [],
+        "sigma": [
+          "sigma/windows/win_rundll32_suspicious_execution_pattern.yml"
+        ],
         "elastic": [],
         "splunk": [
           "splunk/windows/win_suspicious_rundll32_net.spl"
@@ -2648,14 +2724,13 @@
         "falco": []
       },
       "gaps": [
-        "sigma",
         "elastic",
         "wazuh",
         "falcon",
         "sentinelone",
         "falco"
       ],
-      "coverage_count": 3
+      "coverage_count": 4
     },
     "T1219": {
       "name": "Remote Access Software",
@@ -2778,7 +2853,9 @@
       "name": "Service Stop",
       "tactic": "impact",
       "detections": {
-        "sigma": [],
+        "sigma": [
+          "sigma/windows/win_service_stop___critical_services.yml"
+        ],
         "elastic": [],
         "splunk": [],
         "microsoft-sentinel": [
@@ -2803,7 +2880,6 @@
         "falco": []
       },
       "gaps": [
-        "sigma",
         "elastic",
         "splunk",
         "carbonblack",
@@ -2811,7 +2887,7 @@
         "sentinelone",
         "falco"
       ],
-      "coverage_count": 2
+      "coverage_count": 3
     },
     "T1490": {
       "name": "Inhibit System Recovery",
@@ -2851,7 +2927,12 @@
       "name": "Virtualization/Sandbox Evasion",
       "tactic": "defense-evasion",
       "detections": {
-        "sigma": [],
+        "sigma": [
+          "sigma/windows/win_sandbox_evasion_check.yml",
+          "sigma/windows/win_sandbox_evasion_system_checks.yml",
+          "sigma/windows/win_sandbox_evasion_time_based.yml",
+          "sigma/windows/win_sandbox_evasion_user_activity.yml"
+        ],
         "elastic": [
           "elastic/endpoint/general/Software Deployment Tools.ndjson",
           "elastic/endpoint/general/System Checks.ndjson",
@@ -2867,7 +2948,6 @@
         "falco": []
       },
       "gaps": [
-        "sigma",
         "splunk",
         "microsoft-sentinel",
         "wazuh",
@@ -2876,13 +2956,15 @@
         "sentinelone",
         "falco"
       ],
-      "coverage_count": 1
+      "coverage_count": 2
     },
     "T1497.001": {
       "name": "System Checks",
       "tactic": "defense-evasion",
       "detections": {
-        "sigma": [],
+        "sigma": [
+          "sigma/windows/win_sandbox_evasion_system_checks.yml"
+        ],
         "elastic": [
           "elastic/endpoint/general/Virtualization Sandbox Evasion.ndjson"
         ],
@@ -2895,7 +2977,6 @@
         "falco": []
       },
       "gaps": [
-        "sigma",
         "splunk",
         "microsoft-sentinel",
         "wazuh",
@@ -2904,13 +2985,15 @@
         "sentinelone",
         "falco"
       ],
-      "coverage_count": 1
+      "coverage_count": 2
     },
     "T1497.002": {
       "name": "User Activity Based Checks",
       "tactic": "defense-evasion",
       "detections": {
-        "sigma": [],
+        "sigma": [
+          "sigma/windows/win_sandbox_evasion_user_activity.yml"
+        ],
         "elastic": [
           "elastic/endpoint/general/System Checks.ndjson"
         ],
@@ -2923,7 +3006,6 @@
         "falco": []
       },
       "gaps": [
-        "sigma",
         "splunk",
         "microsoft-sentinel",
         "wazuh",
@@ -2932,13 +3014,15 @@
         "sentinelone",
         "falco"
       ],
-      "coverage_count": 1
+      "coverage_count": 2
     },
     "T1497.003": {
       "name": "Time Based Evasion",
       "tactic": "defense-evasion",
       "detections": {
-        "sigma": [],
+        "sigma": [
+          "sigma/windows/win_sandbox_evasion_time_based.yml"
+        ],
         "elastic": [
           "elastic/endpoint/general/User Activity Based Checks.ndjson"
         ],
@@ -2951,7 +3035,6 @@
         "falco": []
       },
       "gaps": [
-        "sigma",
         "splunk",
         "microsoft-sentinel",
         "wazuh",
@@ -2960,13 +3043,15 @@
         "sentinelone",
         "falco"
       ],
-      "coverage_count": 1
+      "coverage_count": 2
     },
     "T1499": {
       "name": "Endpoint Denial of Service",
       "tactic": "impact",
       "detections": {
-        "sigma": [],
+        "sigma": [
+          "sigma/windows/win_denial_of_service_indicators.yml"
+        ],
         "elastic": [],
         "splunk": [],
         "microsoft-sentinel": [
@@ -3001,7 +3086,6 @@
         "falco": []
       },
       "gaps": [
-        "sigma",
         "elastic",
         "splunk",
         "carbonblack",
@@ -3009,13 +3093,15 @@
         "sentinelone",
         "falco"
       ],
-      "coverage_count": 2
+      "coverage_count": 3
     },
     "T1505": {
       "name": "Server Software Component",
       "tactic": "persistence",
       "detections": {
-        "sigma": [],
+        "sigma": [
+          "sigma/windows/win_web_shell_file_creation.yml"
+        ],
         "elastic": [
           "elastic/endpoint/general/Potential SAP NetWeaver Webshell Creation.ndjson"
         ],
@@ -3028,7 +3114,6 @@
         "falco": []
       },
       "gaps": [
-        "sigma",
         "splunk",
         "microsoft-sentinel",
         "wazuh",
@@ -3037,13 +3122,15 @@
         "sentinelone",
         "falco"
       ],
-      "coverage_count": 1
+      "coverage_count": 2
     },
     "T1505.003": {
       "name": "Web Shell",
       "tactic": "persistence",
       "detections": {
-        "sigma": [],
+        "sigma": [
+          "sigma/windows/win_web_shell_file_creation.yml"
+        ],
         "elastic": [
           "elastic/endpoint/general/Potential SAP NetWeaver Webshell Creation.ndjson"
         ],
@@ -3058,7 +3145,6 @@
         "falco": []
       },
       "gaps": [
-        "sigma",
         "splunk",
         "microsoft-sentinel",
         "carbonblack",
@@ -3066,13 +3152,15 @@
         "sentinelone",
         "falco"
       ],
-      "coverage_count": 2
+      "coverage_count": 3
     },
     "T1530": {
       "name": "Data from Cloud Storage",
       "tactic": "collection",
       "detections": {
-        "sigma": [],
+        "sigma": [
+          "sigma/cloud/win_access_to_cloud_storage_buckets_via_cli.yml"
+        ],
         "elastic": [],
         "splunk": [],
         "microsoft-sentinel": [
@@ -3085,7 +3173,6 @@
         "falco": []
       },
       "gaps": [
-        "sigma",
         "elastic",
         "splunk",
         "wazuh",
@@ -3094,13 +3181,15 @@
         "sentinelone",
         "falco"
       ],
-      "coverage_count": 1
+      "coverage_count": 2
     },
     "T1531": {
       "name": "Account Access Removal",
       "tactic": "impact",
       "detections": {
-        "sigma": [],
+        "sigma": [
+          "sigma/windows/win_account_deletion_or_disable.yml"
+        ],
         "elastic": [],
         "splunk": [],
         "microsoft-sentinel": [
@@ -3117,7 +3206,6 @@
         "falco": []
       },
       "gaps": [
-        "sigma",
         "elastic",
         "splunk",
         "carbonblack",
@@ -3125,13 +3213,16 @@
         "sentinelone",
         "falco"
       ],
-      "coverage_count": 2
+      "coverage_count": 3
     },
     "T1543": {
       "name": "Create or Modify System Process",
       "tactic": "persistence",
       "detections": {
-        "sigma": [],
+        "sigma": [
+          "sigma/windows/win_new_system_service_created.yml",
+          "sigma/windows/win_windows_service_with_suspicious_binary_path.yml"
+        ],
         "elastic": [],
         "splunk": [],
         "microsoft-sentinel": [
@@ -3165,7 +3256,6 @@
         "falco": []
       },
       "gaps": [
-        "sigma",
         "elastic",
         "splunk",
         "carbonblack",
@@ -3173,13 +3263,15 @@
         "sentinelone",
         "falco"
       ],
-      "coverage_count": 2
+      "coverage_count": 3
     },
     "T1543.003": {
       "name": "Windows Service",
       "tactic": "persistence",
       "detections": {
-        "sigma": [],
+        "sigma": [
+          "sigma/windows/win_windows_service_with_suspicious_binary_path.yml"
+        ],
         "elastic": [],
         "splunk": [
           "splunk/windows/win_suspicious_sc_create.spl"
@@ -3204,21 +3296,22 @@
         "falco": []
       },
       "gaps": [
-        "sigma",
         "elastic",
         "carbonblack",
         "falcon",
         "sentinelone",
         "falco"
       ],
-      "coverage_count": 3
+      "coverage_count": 4
     },
     "T1547": {
       "name": "Boot or Logon Autostart Execution",
       "tactic": "persistence",
       "detections": {
         "sigma": [
-          "sigma/linux/lnx_suspicious_kernel_module_load.yml"
+          "sigma/linux/lnx_suspicious_kernel_module_load.yml",
+          "sigma/windows/win_registry_run_key_modification_via_command_line.yml",
+          "sigma/windows/win_security_support_provider_dll_registration.yml"
         ],
         "elastic": [],
         "splunk": [],
@@ -3246,7 +3339,9 @@
       "name": "Registry Run Keys / Startup Folder",
       "tactic": "persistence",
       "detections": {
-        "sigma": [],
+        "sigma": [
+          "sigma/windows/win_registry_run_key_modification_via_command_line.yml"
+        ],
         "elastic": [],
         "splunk": [],
         "microsoft-sentinel": [
@@ -3263,7 +3358,6 @@
         "falco": []
       },
       "gaps": [
-        "sigma",
         "elastic",
         "splunk",
         "carbonblack",
@@ -3271,13 +3365,15 @@
         "sentinelone",
         "falco"
       ],
-      "coverage_count": 2
+      "coverage_count": 3
     },
     "T1547.005": {
       "name": "Security Support Provider",
       "tactic": "persistence",
       "detections": {
-        "sigma": [],
+        "sigma": [
+          "sigma/windows/win_security_support_provider_dll_registration.yml"
+        ],
         "elastic": [],
         "splunk": [],
         "microsoft-sentinel": [
@@ -3290,7 +3386,6 @@
         "falco": []
       },
       "gaps": [
-        "sigma",
         "elastic",
         "splunk",
         "wazuh",
@@ -3299,7 +3394,7 @@
         "sentinelone",
         "falco"
       ],
-      "coverage_count": 1
+      "coverage_count": 2
     },
     "T1547.006": {
       "name": "Kernel Modules and Extensions",
@@ -3334,7 +3429,9 @@
       "name": "Abuse Elevation Control Mechanism",
       "tactic": "privilege-escalation",
       "detections": {
-        "sigma": [],
+        "sigma": [
+          "sigma/windows/win_uac_bypass_via_fodhelper_or_eventviewer.yml"
+        ],
         "elastic": [
           "elastic/endpoint/windows/win_uac_bypass_fodhelper.ndjson"
         ],
@@ -3347,7 +3444,6 @@
         "falco": []
       },
       "gaps": [
-        "sigma",
         "splunk",
         "microsoft-sentinel",
         "wazuh",
@@ -3356,13 +3452,15 @@
         "sentinelone",
         "falco"
       ],
-      "coverage_count": 1
+      "coverage_count": 2
     },
     "T1548.002": {
       "name": "Bypass User Account Control",
       "tactic": "privilege-escalation",
       "detections": {
-        "sigma": [],
+        "sigma": [
+          "sigma/windows/win_uac_bypass_via_fodhelper_or_eventviewer.yml"
+        ],
         "elastic": [
           "elastic/endpoint/windows/win_uac_bypass_fodhelper.ndjson"
         ],
@@ -3377,7 +3475,6 @@
         "falco": []
       },
       "gaps": [
-        "sigma",
         "splunk",
         "wazuh",
         "carbonblack",
@@ -3385,7 +3482,7 @@
         "sentinelone",
         "falco"
       ],
-      "coverage_count": 2
+      "coverage_count": 3
     },
     "T1548.003": {
       "name": "Sudo and Sudo Caching",
@@ -3420,7 +3517,10 @@
       "name": "Unsecured Credentials",
       "tactic": "credential-access",
       "detections": {
-        "sigma": [],
+        "sigma": [
+          "sigma/windows/win_credentials_in_files___config_file_access.yml",
+          "sigma/windows/win_search_for_credentials_in_files.yml"
+        ],
         "elastic": [
           "elastic/endpoint/general/Potential PowerShell Console History Access Attempt via History File.ndjson"
         ],
@@ -3433,7 +3533,6 @@
         "falco": []
       },
       "gaps": [
-        "sigma",
         "splunk",
         "microsoft-sentinel",
         "wazuh",
@@ -3442,13 +3541,15 @@
         "sentinelone",
         "falco"
       ],
-      "coverage_count": 1
+      "coverage_count": 2
     },
     "T1552.001": {
       "name": "Credentials In Files",
       "tactic": "credential-access",
       "detections": {
-        "sigma": [],
+        "sigma": [
+          "sigma/windows/win_credentials_in_files___config_file_access.yml"
+        ],
         "elastic": [
           "elastic/endpoint/general/Potential PowerShell Console History Access Attempt via History File.ndjson"
         ],
@@ -3461,7 +3562,6 @@
         "falco": []
       },
       "gaps": [
-        "sigma",
         "splunk",
         "microsoft-sentinel",
         "wazuh",
@@ -3470,13 +3570,16 @@
         "sentinelone",
         "falco"
       ],
-      "coverage_count": 1
+      "coverage_count": 2
     },
     "T1556": {
       "name": "Modify Authentication Process",
       "tactic": "credential-access",
       "detections": {
-        "sigma": [],
+        "sigma": [
+          "sigma/cloud/win_mfa_configuration_disabled_or_modified.yml",
+          "sigma/linux/lnx_authentication_process_modification.yml"
+        ],
         "elastic": [],
         "splunk": [],
         "microsoft-sentinel": [
@@ -3491,7 +3594,6 @@
         "falco": []
       },
       "gaps": [
-        "sigma",
         "elastic",
         "splunk",
         "carbonblack",
@@ -3499,13 +3601,15 @@
         "sentinelone",
         "falco"
       ],
-      "coverage_count": 2
+      "coverage_count": 3
     },
     "T1556.006": {
       "name": "Multi-Factor Authentication",
       "tactic": "credential-access",
       "detections": {
-        "sigma": [],
+        "sigma": [
+          "sigma/cloud/win_mfa_configuration_disabled_or_modified.yml"
+        ],
         "elastic": [],
         "splunk": [],
         "microsoft-sentinel": [
@@ -3518,7 +3622,6 @@
         "falco": []
       },
       "gaps": [
-        "sigma",
         "elastic",
         "splunk",
         "wazuh",
@@ -3527,7 +3630,7 @@
         "sentinelone",
         "falco"
       ],
-      "coverage_count": 1
+      "coverage_count": 2
     },
     "T1560": {
       "name": "Archive Collected Data",
@@ -3595,7 +3698,9 @@
       "tactic": "defense-evasion",
       "detections": {
         "sigma": [
-          "sigma/windows/win_disable_event_logging.yml"
+          "sigma/windows/win_disable_event_logging.yml",
+          "sigma/windows/win_firewall_rule_disabled_or_modified.yml",
+          "sigma/windows/win_security_tool_disabled_or_killed.yml"
         ],
         "elastic": [
           "elastic/endpoint/windows/win_reg_disable_defender.ndjson"
@@ -3623,7 +3728,9 @@
       "name": "Disable or Modify Tools",
       "tactic": "defense-evasion",
       "detections": {
-        "sigma": [],
+        "sigma": [
+          "sigma/windows/win_security_tool_disabled_or_killed.yml"
+        ],
         "elastic": [
           "elastic/endpoint/windows/win_reg_disable_defender.ndjson"
         ],
@@ -3654,13 +3761,12 @@
         "falco": []
       },
       "gaps": [
-        "sigma",
         "carbonblack",
         "falcon",
         "sentinelone",
         "falco"
       ],
-      "coverage_count": 4
+      "coverage_count": 5
     },
     "T1562.002": {
       "name": "Disable Windows Event Logging",
@@ -3695,7 +3801,9 @@
       "name": "Disable or Modify System Firewall",
       "tactic": "defense-evasion",
       "detections": {
-        "sigma": [],
+        "sigma": [
+          "sigma/windows/win_firewall_rule_disabled_or_modified.yml"
+        ],
         "elastic": [],
         "splunk": [],
         "microsoft-sentinel": [
@@ -3713,7 +3821,6 @@
         "falco": []
       },
       "gaps": [
-        "sigma",
         "elastic",
         "splunk",
         "carbonblack",
@@ -3721,7 +3828,7 @@
         "sentinelone",
         "falco"
       ],
-      "coverage_count": 2
+      "coverage_count": 3
     },
     "T1562.008": {
       "name": "Disable or Modify Cloud Logs",
@@ -3755,7 +3862,9 @@
       "name": "Hide Artifacts",
       "tactic": "defense-evasion",
       "detections": {
-        "sigma": [],
+        "sigma": [
+          "sigma/windows/win_hidden_file_or_directory_creation.yml"
+        ],
         "elastic": [],
         "splunk": [],
         "microsoft-sentinel": [
@@ -3768,7 +3877,6 @@
         "falco": []
       },
       "gaps": [
-        "sigma",
         "elastic",
         "splunk",
         "wazuh",
@@ -3777,13 +3885,15 @@
         "sentinelone",
         "falco"
       ],
-      "coverage_count": 1
+      "coverage_count": 2
     },
     "T1564.001": {
       "name": "Hidden Files and Directories",
       "tactic": "defense-evasion",
       "detections": {
-        "sigma": [],
+        "sigma": [
+          "sigma/windows/win_hidden_file_or_directory_creation.yml"
+        ],
         "elastic": [],
         "splunk": [
           "splunk/windows/win_suspicious_attrib_hidden.spl"
@@ -3796,8 +3906,35 @@
         "falco": []
       },
       "gaps": [
-        "sigma",
         "elastic",
+        "microsoft-sentinel",
+        "wazuh",
+        "carbonblack",
+        "falcon",
+        "sentinelone",
+        "falco"
+      ],
+      "coverage_count": 2
+    },
+    "T1565": {
+      "name": "Unknown / Custom",
+      "tactic": "uncategorized",
+      "detections": {
+        "sigma": [
+          "sigma/windows/win_hosts_file_modification.yml"
+        ],
+        "elastic": [],
+        "splunk": [],
+        "microsoft-sentinel": [],
+        "wazuh": [],
+        "carbonblack": [],
+        "falcon": [],
+        "sentinelone": [],
+        "falco": []
+      },
+      "gaps": [
+        "elastic",
+        "splunk",
         "microsoft-sentinel",
         "wazuh",
         "carbonblack",
@@ -3811,7 +3948,9 @@
       "name": "Stored Data Manipulation",
       "tactic": "impact",
       "detections": {
-        "sigma": [],
+        "sigma": [
+          "sigma/windows/win_hosts_file_modification.yml"
+        ],
         "elastic": [],
         "splunk": [],
         "microsoft-sentinel": [
@@ -3824,7 +3963,6 @@
         "falco": []
       },
       "gaps": [
-        "sigma",
         "elastic",
         "splunk",
         "wazuh",
@@ -3833,7 +3971,7 @@
         "sentinelone",
         "falco"
       ],
-      "coverage_count": 1
+      "coverage_count": 2
     },
     "T1566": {
       "name": "Phishing",
@@ -4044,7 +4182,9 @@
       "name": "Non-Standard Port",
       "tactic": "command-and-control",
       "detections": {
-        "sigma": [],
+        "sigma": [
+          "sigma/network/win_connection_to_non_standard_port.yml"
+        ],
         "elastic": [],
         "splunk": [],
         "microsoft-sentinel": [
@@ -4059,7 +4199,6 @@
         "falco": []
       },
       "gaps": [
-        "sigma",
         "elastic",
         "splunk",
         "carbonblack",
@@ -4067,13 +4206,15 @@
         "sentinelone",
         "falco"
       ],
-      "coverage_count": 2
+      "coverage_count": 3
     },
     "T1572": {
       "name": "Protocol Tunneling",
       "tactic": "command-and-control",
       "detections": {
-        "sigma": [],
+        "sigma": [
+          "sigma/network/win_protocol_tunneling_via_ssh_or_chisel.yml"
+        ],
         "elastic": [],
         "splunk": [],
         "microsoft-sentinel": [
@@ -4091,21 +4232,21 @@
         "falco": []
       },
       "gaps": [
-        "sigma",
         "elastic",
         "splunk",
         "falcon",
         "sentinelone",
         "falco"
       ],
-      "coverage_count": 3
+      "coverage_count": 4
     },
     "T1574": {
       "name": "Hijack Execution Flow",
       "tactic": "persistence",
       "detections": {
         "sigma": [
-          "sigma/windows/win_dll_search_order_hijack.yml"
+          "sigma/windows/win_dll_search_order_hijack.yml",
+          "sigma/windows/win_dll_side_loading_from_suspicious_directory.yml"
         ],
         "elastic": [
           "elastic/endpoint/general/Possible DLL Hijacking of cnmpaui.dll.ndjson",
@@ -4168,7 +4309,9 @@
       "name": "DLL Side-Loading",
       "tactic": "persistence",
       "detections": {
-        "sigma": [],
+        "sigma": [
+          "sigma/windows/win_dll_side_loading_from_suspicious_directory.yml"
+        ],
         "elastic": [],
         "splunk": [],
         "microsoft-sentinel": [
@@ -4187,7 +4330,6 @@
         "falco": []
       },
       "gaps": [
-        "sigma",
         "elastic",
         "splunk",
         "wazuh",
@@ -4195,13 +4337,44 @@
         "sentinelone",
         "falco"
       ],
-      "coverage_count": 2
+      "coverage_count": 3
+    },
+    "T1578": {
+      "name": "Modify Cloud Compute Infrastructure",
+      "tactic": "defense-evasion",
+      "detections": {
+        "sigma": [
+          "sigma/cloud/cloud_cloud_instance_created.yml",
+          "sigma/cloud/cloud_cloud_instance_deleted.yml"
+        ],
+        "elastic": [],
+        "splunk": [],
+        "microsoft-sentinel": [],
+        "wazuh": [],
+        "carbonblack": [],
+        "falcon": [],
+        "sentinelone": [],
+        "falco": []
+      },
+      "gaps": [
+        "elastic",
+        "splunk",
+        "microsoft-sentinel",
+        "wazuh",
+        "carbonblack",
+        "falcon",
+        "sentinelone",
+        "falco"
+      ],
+      "coverage_count": 1
     },
     "T1578.002": {
       "name": "Create Cloud Instance",
       "tactic": "defense-evasion",
       "detections": {
-        "sigma": [],
+        "sigma": [
+          "sigma/cloud/cloud_cloud_instance_created.yml"
+        ],
         "elastic": [],
         "splunk": [],
         "microsoft-sentinel": [
@@ -4214,7 +4387,6 @@
         "falco": []
       },
       "gaps": [
-        "sigma",
         "elastic",
         "splunk",
         "wazuh",
@@ -4223,13 +4395,15 @@
         "sentinelone",
         "falco"
       ],
-      "coverage_count": 1
+      "coverage_count": 2
     },
     "T1578.003": {
       "name": "Delete Cloud Instance",
       "tactic": "defense-evasion",
       "detections": {
-        "sigma": [],
+        "sigma": [
+          "sigma/cloud/cloud_cloud_instance_deleted.yml"
+        ],
         "elastic": [],
         "splunk": [],
         "microsoft-sentinel": [
@@ -4242,7 +4416,6 @@
         "falco": []
       },
       "gaps": [
-        "sigma",
         "elastic",
         "splunk",
         "wazuh",
@@ -4251,7 +4424,7 @@
         "sentinelone",
         "falco"
       ],
-      "coverage_count": 1
+      "coverage_count": 2
     },
     "T1586": {
       "name": "Compromise Accounts",

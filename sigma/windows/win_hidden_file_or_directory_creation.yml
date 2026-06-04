@@ -1,0 +1,31 @@
+title: Hidden File or Directory Creation
+id: c0e2f449-78b1-49e9-865d-bf30de2f0b9b
+status: experimental
+description: |
+  Detects indicators of Hidden File or Directory Creation (T1564.001).
+author: Wahid Hendrawan
+date: 2026/06/04
+references:
+  - https://attack.mitre.org/techniques/T1564/001/
+logsource:
+  product: windows
+  category: process_creation
+detection:
+  selection:
+    Image|endswith: '\\attrib.exe'
+    CommandLine|contains: '+h'
+  filter_system:
+    CommandLine|contains:
+      - '\\AppData\\'
+      - '\\ProgramData\\'
+  condition: selection and not filter_system
+fields:
+  - Image
+  - CommandLine
+  - User
+falsepositives:
+  - Software hiding configuration files.
+level: low
+tags:
+  - attack.t1564.001
+  - attack.defense-evasion

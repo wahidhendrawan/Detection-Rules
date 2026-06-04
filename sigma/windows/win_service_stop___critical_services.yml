@@ -1,0 +1,38 @@
+title: Service Stop - Critical Services
+id: 216911e6-8420-4afa-9b6c-2aa2dc517418
+status: experimental
+description: |
+  Detects indicators of Service Stop - Critical Services (T1489).
+author: Wahid Hendrawan
+date: 2026/06/04
+references:
+  - https://attack.mitre.org/techniques/T1489/
+logsource:
+  product: windows
+  category: process_creation
+detection:
+  selection:
+    Image|endswith:
+      - '\\net.exe'
+      - '\\sc.exe'
+      - '\\taskkill.exe'
+    CommandLine|contains:
+      - 'stop'
+      - '/f'
+    CommandLine|contains:
+      - 'MpsSvc'
+      - 'WinDefend'
+      - 'wuauserv'
+      - 'EventLog'
+      - 'VSS'
+  condition: selection
+fields:
+  - Image
+  - CommandLine
+  - User
+falsepositives:
+  - Admin disabling services for troubleshooting (should use GPO).
+level: high
+tags:
+  - attack.t1489
+  - attack.impact

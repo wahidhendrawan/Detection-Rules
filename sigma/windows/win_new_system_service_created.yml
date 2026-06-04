@@ -1,0 +1,30 @@
+title: New System Service Created
+id: d22a42f6-e5c8-4fa5-9cd3-2d2a759304ae
+status: experimental
+description: |
+  Detects indicators of New System Service Created (T1543).
+author: Wahid Hendrawan
+date: 2026/06/04
+references:
+  - https://attack.mitre.org/techniques/T1543/
+logsource:
+  product: windows
+  category: process_creation
+detection:
+  selection:
+    Image|endswith: '\\sc.exe'
+    CommandLine|contains|all:
+      - 'create'
+      - 'binPath'
+  condition: selection
+fields:
+  - Image
+  - CommandLine
+  - User
+falsepositives:
+  - Software installers.
+  - Admin creating services.
+level: medium
+tags:
+  - attack.t1543
+  - attack.persistence

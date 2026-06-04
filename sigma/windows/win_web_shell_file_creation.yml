@@ -1,0 +1,40 @@
+title: Web Shell File Creation
+id: 8077fc2a-f5f1-44a6-a4b4-fdd9e2e6803d
+status: experimental
+description: |
+  Detects indicators of Web Shell File Creation (T1505.003).
+author: Wahid Hendrawan
+date: 2026/06/04
+references:
+  - https://attack.mitre.org/techniques/T1505/003/
+logsource:
+  product: windows
+  category: file_event
+detection:
+  selection:
+    TargetFilename|endswith:
+      - '.aspx'
+      - '.asp'
+      - '.php'
+      - '.jsp'
+      - '.jspx'
+    TargetFilename|contains:
+      - '\\inetpub\\'
+      - '\\wwwroot\\'
+      - '\\htdocs\\'
+  filter_deploy:
+    Image|endswith:
+      - '\\msdeploy.exe'
+      - '\\w3wp.exe'
+  condition: selection and not filter_deploy
+fields:
+  - Image
+  - CommandLine
+  - User
+falsepositives:
+  - Legitimate web deployment.
+  - CMS plugin updates.
+level: critical
+tags:
+  - attack.t1505.003
+  - attack.persistence

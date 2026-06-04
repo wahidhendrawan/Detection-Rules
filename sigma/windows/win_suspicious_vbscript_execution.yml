@@ -1,0 +1,36 @@
+title: Suspicious VBScript Execution
+id: 2c88cc38-b3ac-4d1a-8d26-35a0b18cd660
+status: experimental
+description: |
+  Detects indicators of Suspicious VBScript Execution (T1059.005).
+author: Wahid Hendrawan
+date: 2026/06/04
+references:
+  - https://attack.mitre.org/techniques/T1059/005/
+logsource:
+  product: windows
+  category: process_creation
+detection:
+  selection:
+    Image|endswith:
+      - '\\wscript.exe'
+      - '\\cscript.exe'
+    CommandLine|endswith:
+      - '.vbs'
+      - '.vbe'
+    CommandLine|contains:
+      - '\\Temp\\'
+      - '\\AppData\\'
+      - '\\Downloads\\'
+  condition: selection
+fields:
+  - Image
+  - CommandLine
+  - User
+falsepositives:
+  - Internal VBScript automation (legacy).
+  - Login scripts.
+level: medium
+tags:
+  - attack.t1059.005
+  - attack.execution

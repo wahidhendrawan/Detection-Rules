@@ -1,0 +1,37 @@
+title: File Decode/Deobfuscation via certutil or PowerShell
+id: 3ec3884b-73f0-4493-ac13-b56411e5ff25
+status: experimental
+description: |
+  Detects indicators of File Decode/Deobfuscation via certutil or PowerShell (T1140).
+author: Wahid Hendrawan
+date: 2026/06/04
+references:
+  - https://attack.mitre.org/techniques/T1140/
+logsource:
+  product: windows
+  category: process_creation
+detection:
+  selection_certutil:
+    Image|endswith: '\\certutil.exe'
+    CommandLine|contains:
+      - '-decode'
+      - '-decodehex'
+  selection_ps:
+    Image|endswith:
+      - '\\powershell.exe'
+      - '\\pwsh.exe'
+    CommandLine|contains:
+      - 'FromBase64String'
+      - '[Convert]::'
+  condition: 1 of selection_*
+fields:
+  - Image
+  - CommandLine
+  - User
+falsepositives:
+  - Admin decode certificates.
+  - DevOps scripts encoding configs.
+level: medium
+tags:
+  - attack.t1140
+  - attack.defense-evasion

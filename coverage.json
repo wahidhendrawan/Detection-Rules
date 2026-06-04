@@ -50,8 +50,8 @@
     },
     {
       "techniqueID": "T1003.008",
-      "score": 2,
-      "comment": "Covered by: splunk, wazuh",
+      "score": 3,
+      "comment": "Covered by: sigma, splunk, wazuh",
       "enabled": true
     },
     {
@@ -62,14 +62,14 @@
     },
     {
       "techniqueID": "T1012",
-      "score": 2,
-      "comment": "Covered by: elastic, microsoft-sentinel",
+      "score": 3,
+      "comment": "Covered by: elastic, microsoft-sentinel, sigma",
       "enabled": true
     },
     {
       "techniqueID": "T1016",
-      "score": 1,
-      "comment": "Covered by: elastic",
+      "score": 2,
+      "comment": "Covered by: elastic, sigma",
       "enabled": true
     },
     {
@@ -86,8 +86,8 @@
     },
     {
       "techniqueID": "T1021.002",
-      "score": 2,
-      "comment": "Covered by: carbonblack, microsoft-sentinel",
+      "score": 3,
+      "comment": "Covered by: carbonblack, microsoft-sentinel, sigma",
       "enabled": true
     },
     {
@@ -104,26 +104,26 @@
     },
     {
       "techniqueID": "T1029",
-      "score": 1,
-      "comment": "Covered by: elastic",
+      "score": 2,
+      "comment": "Covered by: elastic, sigma",
       "enabled": true
     },
     {
       "techniqueID": "T1033",
-      "score": 1,
-      "comment": "Covered by: splunk",
+      "score": 2,
+      "comment": "Covered by: sigma, splunk",
       "enabled": true
     },
     {
       "techniqueID": "T1036",
-      "score": 3,
-      "comment": "Covered by: carbonblack, elastic, microsoft-sentinel",
+      "score": 4,
+      "comment": "Covered by: carbonblack, elastic, microsoft-sentinel, sigma",
       "enabled": true
     },
     {
       "techniqueID": "T1041",
-      "score": 1,
-      "comment": "Covered by: elastic",
+      "score": 2,
+      "comment": "Covered by: elastic, sigma",
       "enabled": true
     },
     {
@@ -140,14 +140,20 @@
     },
     {
       "techniqueID": "T1048",
+      "score": 2,
+      "comment": "Covered by: elastic, sigma",
+      "enabled": true
+    },
+    {
+      "techniqueID": "T1053",
       "score": 1,
-      "comment": "Covered by: elastic",
+      "comment": "Covered by: sigma",
       "enabled": true
     },
     {
       "techniqueID": "T1053.002",
-      "score": 2,
-      "comment": "Covered by: carbonblack, microsoft-sentinel",
+      "score": 3,
+      "comment": "Covered by: carbonblack, microsoft-sentinel, sigma",
       "enabled": true
     },
     {
@@ -170,8 +176,8 @@
     },
     {
       "techniqueID": "T1055.012",
-      "score": 1,
-      "comment": "Covered by: elastic",
+      "score": 2,
+      "comment": "Covered by: elastic, sigma",
       "enabled": true
     },
     {
@@ -200,8 +206,8 @@
     },
     {
       "techniqueID": "T1059.003",
-      "score": 4,
-      "comment": "Covered by: carbonblack, elastic, microsoft-sentinel, wazuh",
+      "score": 5,
+      "comment": "Covered by: carbonblack, elastic, microsoft-sentinel, sigma, wazuh",
       "enabled": true
     },
     {
@@ -212,8 +218,8 @@
     },
     {
       "techniqueID": "T1059.005",
-      "score": 2,
-      "comment": "Covered by: carbonblack, microsoft-sentinel",
+      "score": 3,
+      "comment": "Covered by: carbonblack, microsoft-sentinel, sigma",
       "enabled": true
     },
     {
@@ -266,14 +272,14 @@
     },
     {
       "techniqueID": "T1071.001",
-      "score": 4,
-      "comment": "Covered by: carbonblack, microsoft-sentinel, splunk, wazuh",
+      "score": 5,
+      "comment": "Covered by: carbonblack, microsoft-sentinel, sigma, splunk, wazuh",
       "enabled": true
     },
     {
       "techniqueID": "T1071.002",
-      "score": 1,
-      "comment": "Covered by: microsoft-sentinel",
+      "score": 2,
+      "comment": "Covered by: microsoft-sentinel, sigma",
       "enabled": true
     },
     {
@@ -284,20 +290,20 @@
     },
     {
       "techniqueID": "T1072",
-      "score": 2,
-      "comment": "Covered by: elastic, wazuh",
+      "score": 3,
+      "comment": "Covered by: elastic, sigma, wazuh",
       "enabled": true
     },
     {
       "techniqueID": "T1078",
-      "score": 2,
-      "comment": "Covered by: microsoft-sentinel, wazuh",
+      "score": 3,
+      "comment": "Covered by: microsoft-sentinel, sigma, wazuh",
       "enabled": true
     },
     {
       "techniqueID": "T1078.003",
-      "score": 1,
-      "comment": "Covered by: wazuh",
+      "score": 2,
+      "comment": "Covered by: sigma, wazuh",
       "enabled": true
     },
     {
@@ -332,20 +338,20 @@
     },
     {
       "techniqueID": "T1090",
-      "score": 1,
-      "comment": "Covered by: microsoft-sentinel",
+      "score": 2,
+      "comment": "Covered by: microsoft-sentinel, sigma",
       "enabled": true
     },
     {
       "techniqueID": "T1090.003",
-      "score": 1,
-      "comment": "Covered by: microsoft-sentinel",
+      "score": 2,
+      "comment": "Covered by: microsoft-sentinel, sigma",
       "enabled": true
     },
     {
       "techniqueID": "T1095",
-      "score": 1,
-      "comment": "Covered by: carbonblack",
+      "score": 2,
+      "comment": "Covered by: carbonblack, sigma",
       "enabled": true
     },
     {
@@ -362,8 +368,8 @@
     },
     {
       "techniqueID": "T1098.003",
-      "score": 1,
-      "comment": "Covered by: microsoft-sentinel",
+      "score": 2,
+      "comment": "Covered by: microsoft-sentinel, sigma",
       "enabled": true
     },
     {
@@ -374,8 +380,8 @@
     },
     {
       "techniqueID": "T1098.007",
-      "score": 2,
-      "comment": "Covered by: microsoft-sentinel, wazuh",
+      "score": 3,
+      "comment": "Covered by: microsoft-sentinel, sigma, wazuh",
       "enabled": true
     },
     {
@@ -386,8 +392,8 @@
     },
     {
       "techniqueID": "T1110",
-      "score": 3,
-      "comment": "Covered by: microsoft-sentinel, splunk, wazuh",
+      "score": 4,
+      "comment": "Covered by: microsoft-sentinel, sigma, splunk, wazuh",
       "enabled": true
     },
     {
@@ -398,8 +404,14 @@
     },
     {
       "techniqueID": "T1112",
-      "score": 3,
-      "comment": "Covered by: carbonblack, elastic, microsoft-sentinel",
+      "score": 4,
+      "comment": "Covered by: carbonblack, elastic, microsoft-sentinel, sigma",
+      "enabled": true
+    },
+    {
+      "techniqueID": "T1124",
+      "score": 1,
+      "comment": "Covered by: sigma",
       "enabled": true
     },
     {
@@ -446,26 +458,32 @@
     },
     {
       "techniqueID": "T1140",
-      "score": 2,
-      "comment": "Covered by: carbonblack, microsoft-sentinel",
+      "score": 3,
+      "comment": "Covered by: carbonblack, microsoft-sentinel, sigma",
       "enabled": true
     },
     {
       "techniqueID": "T1190",
-      "score": 2,
-      "comment": "Covered by: elastic, wazuh",
+      "score": 3,
+      "comment": "Covered by: elastic, sigma, wazuh",
       "enabled": true
     },
     {
       "techniqueID": "T1197",
-      "score": 3,
-      "comment": "Covered by: carbonblack, elastic, microsoft-sentinel",
+      "score": 4,
+      "comment": "Covered by: carbonblack, elastic, microsoft-sentinel, sigma",
+      "enabled": true
+    },
+    {
+      "techniqueID": "T1205",
+      "score": 1,
+      "comment": "Covered by: sigma",
       "enabled": true
     },
     {
       "techniqueID": "T1205.002",
-      "score": 1,
-      "comment": "Covered by: elastic",
+      "score": 2,
+      "comment": "Covered by: elastic, sigma",
       "enabled": true
     },
     {
@@ -488,14 +506,14 @@
     },
     {
       "techniqueID": "T1218.010",
-      "score": 3,
-      "comment": "Covered by: carbonblack, microsoft-sentinel, splunk",
+      "score": 4,
+      "comment": "Covered by: carbonblack, microsoft-sentinel, sigma, splunk",
       "enabled": true
     },
     {
       "techniqueID": "T1218.011",
-      "score": 3,
-      "comment": "Covered by: carbonblack, microsoft-sentinel, splunk",
+      "score": 4,
+      "comment": "Covered by: carbonblack, microsoft-sentinel, sigma, splunk",
       "enabled": true
     },
     {
@@ -524,8 +542,8 @@
     },
     {
       "techniqueID": "T1489",
-      "score": 2,
-      "comment": "Covered by: microsoft-sentinel, wazuh",
+      "score": 3,
+      "comment": "Covered by: microsoft-sentinel, sigma, wazuh",
       "enabled": true
     },
     {
@@ -536,62 +554,68 @@
     },
     {
       "techniqueID": "T1497",
-      "score": 1,
-      "comment": "Covered by: elastic",
+      "score": 2,
+      "comment": "Covered by: elastic, sigma",
       "enabled": true
     },
     {
       "techniqueID": "T1497.001",
-      "score": 1,
-      "comment": "Covered by: elastic",
+      "score": 2,
+      "comment": "Covered by: elastic, sigma",
       "enabled": true
     },
     {
       "techniqueID": "T1497.002",
-      "score": 1,
-      "comment": "Covered by: elastic",
+      "score": 2,
+      "comment": "Covered by: elastic, sigma",
       "enabled": true
     },
     {
       "techniqueID": "T1497.003",
-      "score": 1,
-      "comment": "Covered by: elastic",
+      "score": 2,
+      "comment": "Covered by: elastic, sigma",
       "enabled": true
     },
     {
       "techniqueID": "T1499",
-      "score": 2,
-      "comment": "Covered by: microsoft-sentinel, wazuh",
+      "score": 3,
+      "comment": "Covered by: microsoft-sentinel, sigma, wazuh",
+      "enabled": true
+    },
+    {
+      "techniqueID": "T1505",
+      "score": 1,
+      "comment": "Covered by: sigma",
       "enabled": true
     },
     {
       "techniqueID": "T1505.003",
-      "score": 2,
-      "comment": "Covered by: elastic, wazuh",
+      "score": 3,
+      "comment": "Covered by: elastic, sigma, wazuh",
       "enabled": true
     },
     {
       "techniqueID": "T1530",
-      "score": 1,
-      "comment": "Covered by: microsoft-sentinel",
+      "score": 2,
+      "comment": "Covered by: microsoft-sentinel, sigma",
       "enabled": true
     },
     {
       "techniqueID": "T1531",
-      "score": 2,
-      "comment": "Covered by: microsoft-sentinel, wazuh",
+      "score": 3,
+      "comment": "Covered by: microsoft-sentinel, sigma, wazuh",
       "enabled": true
     },
     {
       "techniqueID": "T1543",
-      "score": 2,
-      "comment": "Covered by: microsoft-sentinel, wazuh",
+      "score": 3,
+      "comment": "Covered by: microsoft-sentinel, sigma, wazuh",
       "enabled": true
     },
     {
       "techniqueID": "T1543.003",
-      "score": 3,
-      "comment": "Covered by: microsoft-sentinel, splunk, wazuh",
+      "score": 4,
+      "comment": "Covered by: microsoft-sentinel, sigma, splunk, wazuh",
       "enabled": true
     },
     {
@@ -602,14 +626,14 @@
     },
     {
       "techniqueID": "T1547.001",
-      "score": 2,
-      "comment": "Covered by: microsoft-sentinel, wazuh",
+      "score": 3,
+      "comment": "Covered by: microsoft-sentinel, sigma, wazuh",
       "enabled": true
     },
     {
       "techniqueID": "T1547.005",
-      "score": 1,
-      "comment": "Covered by: microsoft-sentinel",
+      "score": 2,
+      "comment": "Covered by: microsoft-sentinel, sigma",
       "enabled": true
     },
     {
@@ -619,9 +643,15 @@
       "enabled": true
     },
     {
+      "techniqueID": "T1548",
+      "score": 1,
+      "comment": "Covered by: sigma",
+      "enabled": true
+    },
+    {
       "techniqueID": "T1548.002",
-      "score": 2,
-      "comment": "Covered by: elastic, microsoft-sentinel",
+      "score": 3,
+      "comment": "Covered by: elastic, microsoft-sentinel, sigma",
       "enabled": true
     },
     {
@@ -631,21 +661,27 @@
       "enabled": true
     },
     {
-      "techniqueID": "T1552.001",
+      "techniqueID": "T1552",
       "score": 1,
-      "comment": "Covered by: elastic",
+      "comment": "Covered by: sigma",
+      "enabled": true
+    },
+    {
+      "techniqueID": "T1552.001",
+      "score": 2,
+      "comment": "Covered by: elastic, sigma",
       "enabled": true
     },
     {
       "techniqueID": "T1556",
-      "score": 2,
-      "comment": "Covered by: microsoft-sentinel, wazuh",
+      "score": 3,
+      "comment": "Covered by: microsoft-sentinel, sigma, wazuh",
       "enabled": true
     },
     {
       "techniqueID": "T1556.006",
-      "score": 1,
-      "comment": "Covered by: microsoft-sentinel",
+      "score": 2,
+      "comment": "Covered by: microsoft-sentinel, sigma",
       "enabled": true
     },
     {
@@ -668,8 +704,8 @@
     },
     {
       "techniqueID": "T1562.001",
-      "score": 4,
-      "comment": "Covered by: elastic, microsoft-sentinel, splunk, wazuh",
+      "score": 5,
+      "comment": "Covered by: elastic, microsoft-sentinel, sigma, splunk, wazuh",
       "enabled": true
     },
     {
@@ -680,8 +716,8 @@
     },
     {
       "techniqueID": "T1562.004",
-      "score": 2,
-      "comment": "Covered by: microsoft-sentinel, wazuh",
+      "score": 3,
+      "comment": "Covered by: microsoft-sentinel, sigma, wazuh",
       "enabled": true
     },
     {
@@ -692,20 +728,26 @@
     },
     {
       "techniqueID": "T1564",
-      "score": 1,
-      "comment": "Covered by: microsoft-sentinel",
+      "score": 2,
+      "comment": "Covered by: microsoft-sentinel, sigma",
       "enabled": true
     },
     {
       "techniqueID": "T1564.001",
+      "score": 2,
+      "comment": "Covered by: sigma, splunk",
+      "enabled": true
+    },
+    {
+      "techniqueID": "T1565",
       "score": 1,
-      "comment": "Covered by: splunk",
+      "comment": "Covered by: sigma",
       "enabled": true
     },
     {
       "techniqueID": "T1565.001",
-      "score": 1,
-      "comment": "Covered by: microsoft-sentinel",
+      "score": 2,
+      "comment": "Covered by: microsoft-sentinel, sigma",
       "enabled": true
     },
     {
@@ -752,14 +794,14 @@
     },
     {
       "techniqueID": "T1571",
-      "score": 2,
-      "comment": "Covered by: microsoft-sentinel, wazuh",
+      "score": 3,
+      "comment": "Covered by: microsoft-sentinel, sigma, wazuh",
       "enabled": true
     },
     {
       "techniqueID": "T1572",
-      "score": 3,
-      "comment": "Covered by: carbonblack, microsoft-sentinel, wazuh",
+      "score": 4,
+      "comment": "Covered by: carbonblack, microsoft-sentinel, sigma, wazuh",
       "enabled": true
     },
     {
@@ -776,20 +818,26 @@
     },
     {
       "techniqueID": "T1574.002",
-      "score": 2,
-      "comment": "Covered by: carbonblack, microsoft-sentinel",
+      "score": 3,
+      "comment": "Covered by: carbonblack, microsoft-sentinel, sigma",
+      "enabled": true
+    },
+    {
+      "techniqueID": "T1578",
+      "score": 1,
+      "comment": "Covered by: sigma",
       "enabled": true
     },
     {
       "techniqueID": "T1578.002",
-      "score": 1,
-      "comment": "Covered by: microsoft-sentinel",
+      "score": 2,
+      "comment": "Covered by: microsoft-sentinel, sigma",
       "enabled": true
     },
     {
       "techniqueID": "T1578.003",
-      "score": 1,
-      "comment": "Covered by: microsoft-sentinel",
+      "score": 2,
+      "comment": "Covered by: microsoft-sentinel, sigma",
       "enabled": true
     },
     {

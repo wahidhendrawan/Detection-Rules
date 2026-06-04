@@ -1,0 +1,32 @@
+title: Security Tool Disabled or Killed
+id: 715b3983-9875-4e78-9d2a-69c05546c161
+status: experimental
+description: |
+  Detects indicators of Security Tool Disabled or Killed (T1562.001).
+author: Wahid Hendrawan
+date: 2026/06/04
+references:
+  - https://attack.mitre.org/techniques/T1562/001/
+logsource:
+  product: windows
+  category: process_creation
+detection:
+  selection:
+    CommandLine|contains:
+      - 'Set-MpPreference -DisableRealtimeMonitoring'
+      - 'sc stop WinDefend'
+      - 'taskkill /F /IM MsMpEng'
+      - 'Uninstall-WindowsFeature'
+      - 'Remove-WindowsDefender'
+  condition: selection
+fields:
+  - Image
+  - CommandLine
+  - User
+falsepositives:
+  - Authorized security tool maintenance.
+  - AV migration.
+level: critical
+tags:
+  - attack.t1562.001
+  - attack.defense-evasion

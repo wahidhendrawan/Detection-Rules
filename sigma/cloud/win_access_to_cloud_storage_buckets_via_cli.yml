@@ -1,0 +1,32 @@
+title: Access to Cloud Storage Buckets via CLI
+id: f804abf4-c219-440b-b422-5121253fecac
+status: experimental
+description: |
+  Detects indicators of Access to Cloud Storage Buckets via CLI (T1530).
+author: Wahid Hendrawan
+date: 2026/06/04
+references:
+  - https://attack.mitre.org/techniques/T1530/
+logsource:
+  product: windows
+  category: process_creation
+detection:
+  selection:
+    CommandLine|contains:
+      - 'aws s3 cp'
+      - 'aws s3 sync'
+      - 'gsutil cp'
+      - 'az storage blob download'
+      - 'azcopy'
+  condition: selection
+fields:
+  - Image
+  - CommandLine
+  - User
+falsepositives:
+  - Cloud admin managing storage.
+  - CI/CD artifact download.
+level: low
+tags:
+  - attack.t1530
+  - attack.collection

@@ -1,0 +1,33 @@
+title: SMB/Windows Admin Share Access
+id: baa22afe-4dc0-4597-a7c4-8714efe5c45e
+status: experimental
+description: |
+  Detects indicators of SMB/Windows Admin Share Access (T1021.002).
+author: Wahid Hendrawan
+date: 2026/06/04
+references:
+  - https://attack.mitre.org/techniques/T1021/002/
+logsource:
+  product: windows
+  category: network_connection
+detection:
+  selection:
+    DestinationPort: 445
+    Initiated: 'true'
+  filter_system:
+    Image|endswith:
+      - '\\svchost.exe'
+      - '\\System'
+  condition: selection and not filter_system
+fields:
+  - Image
+  - CommandLine
+  - User
+falsepositives:
+  - Normal file sharing.
+  - Domain controller replication.
+  - SCCM distribution.
+level: low
+tags:
+  - attack.t1021.002
+  - attack.lateral-movement

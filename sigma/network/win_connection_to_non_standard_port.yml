@@ -1,0 +1,35 @@
+title: Connection to Non-Standard Port
+id: c38d4a31-c30f-4805-bf77-cf81d33f341a
+status: experimental
+description: |
+  Detects indicators of Connection to Non-Standard Port (T1571).
+author: Wahid Hendrawan
+date: 2026/06/04
+references:
+  - https://attack.mitre.org/techniques/T1571/
+logsource:
+  product: windows
+  category: network_connection
+detection:
+  selection:
+    DestinationPort:
+      - 4444
+      - 5555
+      - 6666
+      - 8888
+      - 9999
+      - 1337
+      - 31337
+    Initiated: 'true'
+  condition: selection
+fields:
+  - Image
+  - CommandLine
+  - User
+falsepositives:
+  - Development servers on custom ports.
+  - Custom applications.
+level: medium
+tags:
+  - attack.t1571
+  - attack.command-and-control

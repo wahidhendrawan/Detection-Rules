@@ -1,0 +1,26 @@
+title: Security Support Provider DLL Registration
+id: 23eb8793-ce4b-4ee3-be16-e9963b7a8749
+status: experimental
+description: |
+  Detects indicators of Security Support Provider DLL Registration (T1547.005).
+author: Wahid Hendrawan
+date: 2026/06/04
+references:
+  - https://attack.mitre.org/techniques/T1547/005/
+logsource:
+  product: windows
+  category: registry_event
+detection:
+  selection:
+    TargetObject|contains: '\\Control\\Lsa\\Security Packages'
+  condition: selection
+fields:
+  - Image
+  - CommandLine
+  - User
+falsepositives:
+  - Extremely rare - SSP changes indicate credential interception.
+level: critical
+tags:
+  - attack.t1547.005
+  - attack.persistence

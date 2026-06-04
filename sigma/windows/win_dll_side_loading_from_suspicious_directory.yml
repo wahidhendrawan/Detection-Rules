@@ -1,0 +1,36 @@
+title: DLL Side-Loading from Suspicious Directory
+id: e2c73ae4-273d-447a-a104-c9006adf45c0
+status: experimental
+description: |
+  Detects indicators of DLL Side-Loading from Suspicious Directory (T1574.002).
+author: Wahid Hendrawan
+date: 2026/06/04
+references:
+  - https://attack.mitre.org/techniques/T1574/002/
+logsource:
+  product: windows
+  category: image_load
+detection:
+  selection:
+    ImageLoaded|contains:
+      - '\\Users\\Public\\'
+      - '\\ProgramData\\'
+      - '\\AppData\\Local\\Temp\\'
+    ImageLoaded|endswith: '.dll'
+  filter_known:
+    ImageLoaded|contains:
+      - '\\WindowsApps\\'
+      - '\\WinSxS\\'
+      - '\\Microsoft\\'
+  condition: selection and not filter_known
+fields:
+  - Image
+  - CommandLine
+  - User
+falsepositives:
+  - Portable apps loading local DLLs.
+  - Installer temp files.
+level: medium
+tags:
+  - attack.t1574.002
+  - attack.persistence

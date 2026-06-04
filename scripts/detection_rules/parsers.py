@@ -192,6 +192,9 @@ HANDLERS = {
     "microsoft-sentinel": parse_sentinel,
     "wazuh":              parse_wazuh,
     "carbonblack":        parse_carbonblack,
+    "falcon":             parse_sentinel,      # FQL files use // comments like KQL
+    "sentinelone":        parse_sentinel,      # S1QL files use // comments like KQL
+    "falco":              parse_sigma,          # YAML format, same parser works
 }
 
 

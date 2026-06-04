@@ -1,0 +1,16 @@
+// Title: Cloud Account
+// Description: Detects indicators of Cloud Account (T1136.003)
+// MITRE ATT&CK: T1136.003
+// Severity: medium
+// Tactic: persistence
+// Author: Wahid Hendrawan
+// Date: 2026-06-04
+// References:
+//   - https://attack.mitre.org/techniques/T1136/003/
+
+DeviceProcessEvents
+| where Timestamp > ago(24h)
+| where eventName IN ('CreateUser','CreateServiceAccount')
+| project Timestamp, DeviceName, AccountName, FileName, ProcessCommandLine,
+          InitiatingProcessFileName, InitiatingProcessCommandLine
+| order by Timestamp desc

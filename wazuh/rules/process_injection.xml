@@ -1,0 +1,10 @@
+<group name="attack,privilege_escalation">
+  <rule id="100218" level="8">
+    <decoded_as>syslog</decoded_as>
+    <regex type="pcre2">CreateRemoteThread</regex>
+    <description>Process Injection (T1055)</description>
+    <mitre>
+      <id>T1055</id>
+    </mitre>
+  </rule>
+</group>

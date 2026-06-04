@@ -1,0 +1,10 @@
+<group name="attack,persistence">
+  <rule id="100217" level="8">
+    <decoded_as>syslog</decoded_as>
+    <regex type="pcre2">schtasks.*/create</regex>
+    <description>Scheduled Task/Job (T1053)</description>
+    <mitre>
+      <id>T1053</id>
+    </mitre>
+  </rule>
+</group>

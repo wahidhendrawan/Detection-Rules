@@ -1,0 +1,15 @@
+# Title: Non-Application Layer Protocol
+# MITRE ATT&CK: T1095
+# Tactic: command-and-control
+# Severity: medium
+# Author: Wahid Hendrawan
+# Date: 2026-06-04
+# References:
+#   - https://attack.mitre.org/techniques/T1095/
+
+index=windows OR index=endpoint
+sourcetype IN ("XmlWinEventLog:Microsoft-Windows-Sysmon/Operational", "WinEventLog:Security")
+ICMP from script host
+| stats count, values(CommandLine) as cmd, values(User) as user by _time, host, Image, ParentImage
+| where count > 0
+| sort - _time

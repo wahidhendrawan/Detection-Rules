@@ -1,0 +1,10 @@
+<group name="attack,defense_evasion">
+  <rule id="100219" level="8">
+    <decoded_as>syslog</decoded_as>
+    <regex type="pcre2">svchost.*parent.*cmd</regex>
+    <description>Process Hollowing (T1055.012)</description>
+    <mitre>
+      <id>T1055.012</id>
+    </mitre>
+  </rule>
+</group>

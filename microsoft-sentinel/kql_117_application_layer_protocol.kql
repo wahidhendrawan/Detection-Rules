@@ -1,0 +1,16 @@
+// Title: Application Layer Protocol
+// Description: Detects indicators of Application Layer Protocol (T1071)
+// MITRE ATT&CK: T1071
+// Severity: medium
+// Tactic: command-and-control
+// Author: Wahid Hendrawan
+// Date: 2026-06-04
+// References:
+//   - https://attack.mitre.org/techniques/T1071/
+
+DeviceProcessEvents
+| where Timestamp > ago(24h)
+| where FileName in~ ('rundll32.exe','regsvr32.exe','mshta.exe') and RemotePort in (80,443)
+| project Timestamp, DeviceName, AccountName, FileName, ProcessCommandLine,
+          InitiatingProcessFileName, InitiatingProcessCommandLine
+| order by Timestamp desc

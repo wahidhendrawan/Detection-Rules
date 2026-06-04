@@ -5,7 +5,7 @@
 
 ## Ringkasan
 
-- Total file rule         : **672**
+- Total file rule         : **786**
 - Total teknik unik       : **151**
 
 ### Per Platform
@@ -14,9 +14,9 @@
 |---|---:|---:|
 | sigma | 204 | 138 |
 | elastic | 58 | 55 |
-| splunk | 19 | 19 |
-| microsoft-sentinel | 103 | 66 |
-| wazuh | 140 | 42 |
+| splunk | 57 | 59 |
+| microsoft-sentinel | 141 | 104 |
+| wazuh | 178 | 80 |
 | carbonblack | 142 | 30 |
 
 ## Coverage Matrix
@@ -32,40 +32,40 @@ Tanda ✅ = ada minimal satu rule pada platform tersebut yang memetakan teknik.
 | `T1003.008` | ✅ | · | ✅ | · | ✅ | · |
 | `T1005` | ✅ | · | · | ✅ | · | · |
 | `T1012` | ✅ | ✅ | · | ✅ | · | · |
-| `T1016` | ✅ | ✅ | · | · | · | · |
+| `T1016` | ✅ | ✅ | ✅ | ✅ | ✅ | · |
 | `T1021` | ✅ | · | · | ✅ | · | · |
 | `T1021.001` | ✅ | ✅ | · | ✅ | ✅ | · |
 | `T1021.002` | ✅ | · | · | ✅ | · | ✅ |
 | `T1021.004` | ✅ | · | · | ✅ | · | · |
 | `T1027` | ✅ | · | · | ✅ | ✅ | · |
-| `T1029` | ✅ | ✅ | · | · | · | · |
+| `T1029` | ✅ | ✅ | ✅ | ✅ | ✅ | · |
 | `T1033` | ✅ | · | ✅ | · | · | · |
 | `T1036` | ✅ | ✅ | · | ✅ | · | ✅ |
-| `T1041` | ✅ | ✅ | · | · | · | · |
+| `T1041` | ✅ | ✅ | ✅ | ✅ | ✅ | · |
 | `T1046` | ✅ | · | · | · | ✅ | · |
-| `T1047` | ✅ | ✅ | · | · | · | ✅ |
-| `T1048` | ✅ | ✅ | · | · | · | · |
-| `T1053` | ✅ | · | · | · | · | · |
+| `T1047` | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+| `T1048` | ✅ | ✅ | ✅ | ✅ | ✅ | · |
+| `T1053` | ✅ | · | ✅ | ✅ | ✅ | · |
 | `T1053.002` | ✅ | · | · | ✅ | · | ✅ |
 | `T1053.003` | ✅ | · | ✅ | · | ✅ | · |
 | `T1053.005` | ✅ | · | · | ✅ | ✅ | ✅ |
-| `T1055` | ✅ | · | · | · | · | · |
-| `T1055.012` | ✅ | ✅ | · | · | · | · |
-| `T1056` | ✅ | · | · | · | · | · |
-| `T1056.001` | ✅ | · | · | · | · | · |
+| `T1055` | ✅ | · | ✅ | ✅ | ✅ | · |
+| `T1055.012` | ✅ | ✅ | ✅ | ✅ | ✅ | · |
+| `T1056` | ✅ | · | ✅ | ✅ | ✅ | · |
+| `T1056.001` | ✅ | · | ✅ | ✅ | ✅ | · |
 | `T1059` | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
 | `T1059.001` | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
 | `T1059.003` | ✅ | ✅ | · | ✅ | ✅ | ✅ |
 | `T1059.004` | ✅ | ✅ | · | · | ✅ | · |
 | `T1059.005` | ✅ | · | · | ✅ | · | ✅ |
-| `T1059.006` | ✅ | · | · | · | · | ✅ |
+| `T1059.006` | ✅ | · | ✅ | ✅ | ✅ | ✅ |
 | `T1059.007` | ✅ | · | · | ✅ | · | · |
 | `T1068` | ✅ | ✅ | ✅ | · | · | · |
-| `T1070` | ✅ | ✅ | · | · | · | · |
+| `T1070` | ✅ | ✅ | ✅ | ✅ | ✅ | · |
 | `T1070.001` | ✅ | ✅ | · | ✅ | · | · |
 | `T1070.003` | ✅ | · | · | · | ✅ | · |
-| `T1070.006` | ✅ | ✅ | · | · | · | · |
-| `T1071` | ✅ | ✅ | · | · | · | · |
+| `T1070.006` | ✅ | ✅ | ✅ | ✅ | ✅ | · |
+| `T1071` | ✅ | ✅ | ✅ | ✅ | ✅ | · |
 | `T1071.001` | ✅ | · | ✅ | ✅ | ✅ | ✅ |
 | `T1071.002` | ✅ | · | · | ✅ | · | · |
 | `T1071.004` | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
@@ -73,13 +73,13 @@ Tanda ✅ = ada minimal satu rule pada platform tersebut yang memetakan teknik.
 | `T1078` | ✅ | · | · | ✅ | ✅ | · |
 | `T1078.003` | ✅ | · | · | · | ✅ | · |
 | `T1078.004` | ✅ | ✅ | · | ✅ | · | · |
-| `T1082` | ✅ | ✅ | · | · | · | · |
-| `T1087` | ✅ | · | · | · | · | ✅ |
+| `T1082` | ✅ | ✅ | ✅ | ✅ | ✅ | · |
+| `T1087` | ✅ | · | ✅ | ✅ | ✅ | ✅ |
 | `T1087.001` | ✅ | · | · | · | · | · |
 | `T1087.002` | ✅ | · | · | · | · | · |
 | `T1090` | ✅ | · | · | ✅ | · | · |
 | `T1090.003` | ✅ | · | · | ✅ | · | · |
-| `T1095` | ✅ | · | · | · | · | ✅ |
+| `T1095` | ✅ | · | ✅ | ✅ | ✅ | ✅ |
 | `T1098` | ✅ | · | ✅ | ✅ | ✅ | ✅ |
 | `T1098.001` | ✅ | · | · | ✅ | · | · |
 | `T1098.003` | ✅ | · | · | ✅ | · | · |
@@ -89,36 +89,36 @@ Tanda ✅ = ada minimal satu rule pada platform tersebut yang memetakan teknik.
 | `T1110` | ✅ | · | ✅ | ✅ | ✅ | · |
 | `T1110.001` | ✅ | · | ✅ | ✅ | ✅ | · |
 | `T1112` | ✅ | ✅ | · | ✅ | · | ✅ |
-| `T1124` | ✅ | · | · | · | · | · |
-| `T1127` | ✅ | · | · | · | · | · |
-| `T1127.001` | ✅ | · | · | · | · | ✅ |
-| `T1133` | ✅ | · | · | · | · | · |
-| `T1136` | ✅ | · | · | ✅ | · | ✅ |
+| `T1124` | ✅ | · | ✅ | ✅ | ✅ | · |
+| `T1127` | ✅ | · | ✅ | ✅ | ✅ | · |
+| `T1127.001` | ✅ | · | ✅ | ✅ | ✅ | ✅ |
+| `T1133` | ✅ | · | ✅ | ✅ | ✅ | · |
+| `T1136` | ✅ | · | ✅ | ✅ | · | ✅ |
 | `T1136.001` | ✅ | · | · | ✅ | ✅ | · |
 | `T1136.002` | ✅ | · | · | · | ✅ | · |
-| `T1136.003` | ✅ | · | · | · | · | · |
+| `T1136.003` | ✅ | · | ✅ | ✅ | ✅ | · |
 | `T1140` | ✅ | · | · | ✅ | · | ✅ |
 | `T1190` | ✅ | ✅ | · | · | ✅ | · |
 | `T1197` | ✅ | ✅ | · | ✅ | · | ✅ |
-| `T1205` | ✅ | · | · | · | · | · |
-| `T1205.002` | ✅ | ✅ | · | · | · | · |
-| `T1218` | ✅ | · | · | ✅ | · | · |
-| `T1218.004` | ✅ | · | · | · | · | ✅ |
+| `T1205` | ✅ | · | ✅ | ✅ | ✅ | · |
+| `T1205.002` | ✅ | ✅ | ✅ | ✅ | ✅ | · |
+| `T1218` | ✅ | · | ✅ | ✅ | · | · |
+| `T1218.004` | ✅ | · | ✅ | ✅ | ✅ | ✅ |
 | `T1218.005` | ✅ | · | ✅ | · | · | ✅ |
 | `T1218.010` | ✅ | · | ✅ | ✅ | · | ✅ |
 | `T1218.011` | ✅ | · | ✅ | ✅ | · | ✅ |
-| `T1219` | ✅ | ✅ | · | · | · | · |
+| `T1219` | ✅ | ✅ | ✅ | ✅ | ✅ | · |
 | `T1484` | ✅ | · | · | ✅ | · | · |
 | `T1484.001` | ✅ | · | · | · | ✅ | · |
-| `T1486` | ✅ | ✅ | · | · | · | · |
+| `T1486` | ✅ | ✅ | ✅ | ✅ | ✅ | · |
 | `T1489` | ✅ | · | · | ✅ | ✅ | · |
 | `T1490` | ✅ | ✅ | ✅ | ✅ | · | · |
-| `T1497` | ✅ | ✅ | · | · | · | · |
-| `T1497.001` | ✅ | ✅ | · | · | · | · |
-| `T1497.002` | ✅ | ✅ | · | · | · | · |
-| `T1497.003` | ✅ | ✅ | · | · | · | · |
+| `T1497` | ✅ | ✅ | ✅ | ✅ | ✅ | · |
+| `T1497.001` | ✅ | ✅ | ✅ | ✅ | ✅ | · |
+| `T1497.002` | ✅ | ✅ | ✅ | ✅ | ✅ | · |
+| `T1497.003` | ✅ | ✅ | ✅ | ✅ | ✅ | · |
 | `T1499` | ✅ | · | · | ✅ | ✅ | · |
-| `T1505` | ✅ | · | · | · | · | · |
+| `T1505` | ✅ | · | ✅ | ✅ | ✅ | · |
 | `T1505.003` | ✅ | ✅ | · | · | ✅ | · |
 | `T1530` | ✅ | · | · | ✅ | · | · |
 | `T1531` | ✅ | · | · | ✅ | ✅ | · |
@@ -128,16 +128,16 @@ Tanda ✅ = ada minimal satu rule pada platform tersebut yang memetakan teknik.
 | `T1547.001` | ✅ | · | · | ✅ | ✅ | · |
 | `T1547.005` | ✅ | · | · | ✅ | · | · |
 | `T1547.006` | ✅ | · | · | · | ✅ | · |
-| `T1548` | ✅ | · | · | · | · | · |
+| `T1548` | ✅ | · | ✅ | ✅ | ✅ | · |
 | `T1548.002` | ✅ | ✅ | · | ✅ | · | · |
 | `T1548.003` | ✅ | · | · | · | ✅ | · |
-| `T1552` | ✅ | · | · | · | · | · |
-| `T1552.001` | ✅ | ✅ | · | · | · | · |
+| `T1552` | ✅ | · | ✅ | ✅ | ✅ | · |
+| `T1552.001` | ✅ | ✅ | ✅ | ✅ | ✅ | · |
 | `T1556` | ✅ | · | · | ✅ | ✅ | · |
 | `T1556.006` | ✅ | · | · | ✅ | · | · |
-| `T1560` | ✅ | · | · | · | · | · |
-| `T1560.001` | ✅ | · | · | · | · | ✅ |
-| `T1562` | ✅ | · | · | · | · | · |
+| `T1560` | ✅ | · | ✅ | ✅ | ✅ | · |
+| `T1560.001` | ✅ | · | ✅ | ✅ | ✅ | ✅ |
+| `T1562` | ✅ | · | ✅ | ✅ | ✅ | · |
 | `T1562.001` | ✅ | ✅ | ✅ | ✅ | ✅ | · |
 | `T1562.002` | ✅ | · | · | ✅ | · | · |
 | `T1562.004` | ✅ | · | · | ✅ | ✅ | · |
@@ -387,22 +387,62 @@ Tanda ✅ = ada minimal satu rule pada platform tersebut yang memetakan teknik.
 | Technique | Rule files |
 |---|---|
 | `T1003.008` | `splunk/linux/lnx_suspicious_passwd_mod.spl` |
+| `T1016` | `splunk/windows/win_system_network_configuration_discovery.spl` |
+| `T1029` | `splunk/windows/win_scheduled_transfer.spl` |
 | `T1033` | `splunk/windows/win_suspicious_whoami.spl` |
+| `T1041` | `splunk/windows/win_exfiltration_over_c2_channel.spl` |
+| `T1047` | `splunk/windows/win_windows_management_instrumentation.spl` |
+| `T1048` | `splunk/windows/win_exfiltration_over_alternative_protocol.spl` |
+| `T1053` | `splunk/windows/win_scheduled_task_job.spl` |
 | `T1053.003` | `splunk/linux/lnx_suspicious_cron_modification.spl` |
-| `T1059` | `splunk/windows/win_powershell_suspicious_encoded_command.spl` |
+| `T1055` | `splunk/windows/win_process_hollowing.spl`, `splunk/windows/win_process_injection.spl` |
+| `T1055.012` | `splunk/windows/win_process_hollowing.spl` |
+| `T1056` | `splunk/windows/win_input_capture.spl`, `splunk/windows/win_keylogging.spl` |
+| `T1056.001` | `splunk/windows/win_keylogging.spl` |
+| `T1059` | `splunk/windows/win_powershell_suspicious_encoded_command.spl`, `splunk/windows/win_python.spl` |
 | `T1059.001` | `splunk/windows/win_powershell_suspicious_encoded_command.spl` |
+| `T1059.006` | `splunk/windows/win_python.spl` |
 | `T1068` | `splunk/linux/lnx_suspicious_sudo_without_tty.spl` |
+| `T1070` | `splunk/windows/win_indicator_removal.spl`, `splunk/windows/win_timestomp.spl` |
+| `T1070.006` | `splunk/windows/win_timestomp.spl` |
+| `T1071` | `splunk/windows/win_application_layer_protocol.spl` |
 | `T1071.001` | `splunk/network/net_suspicious_user_agent.spl` |
 | `T1071.004` | `splunk/network/net_dns_suspicious_tunnel.spl` |
+| `T1082` | `splunk/windows/win_system_information_discovery.spl` |
+| `T1087` | `splunk/windows/win_account_discovery.spl` |
+| `T1095` | `splunk/windows/win_non_application_layer_protocol.spl` |
 | `T1098` | `splunk/cloud/cloud_gcp_iam_suspicious_role_grant.spl` |
 | `T1105` | `splunk/linux/lnx_suspicious_wget_curl.spl`, `splunk/windows/win_suspicious_certutil_download.spl` |
 | `T1110` | `splunk/network/net_suspicious_ssh_brute.spl` |
 | `T1110.001` | `splunk/windows/win_brute_force_correlation.spl` |
+| `T1124` | `splunk/windows/win_system_time_discovery.spl` |
+| `T1127` | `splunk/windows/win_msbuild.spl`, `splunk/windows/win_trusted_developer_utilities_proxy_execution.spl` |
+| `T1127.001` | `splunk/windows/win_msbuild.spl` |
+| `T1133` | `splunk/windows/win_external_remote_services.spl` |
+| `T1136` | `splunk/windows/win_cloud_account.spl` |
+| `T1136.003` | `splunk/windows/win_cloud_account.spl` |
+| `T1205` | `splunk/windows/win_socket_filters.spl`, `splunk/windows/win_traffic_signaling.spl` |
+| `T1205.002` | `splunk/windows/win_socket_filters.spl` |
+| `T1218` | `splunk/windows/win_installutil.spl` |
+| `T1218.004` | `splunk/windows/win_installutil.spl` |
 | `T1218.005` | `splunk/windows/win_suspicious_mshta_execution.spl` |
 | `T1218.010` | `splunk/windows/win_suspicious_regsvr32.spl` |
 | `T1218.011` | `splunk/windows/win_suspicious_rundll32_net.spl` |
+| `T1219` | `splunk/windows/win_remote_access_software.spl` |
+| `T1486` | `splunk/windows/win_data_encrypted_for_impact.spl` |
 | `T1490` | `splunk/windows/win_shadow_copies_deletion.spl` |
+| `T1497` | `splunk/windows/win_system_checks.spl`, `splunk/windows/win_time_based_evasion.spl`, `splunk/windows/win_user_activity_based_checks.spl`, `splunk/windows/win_virtualization_sandbox_evasion.spl` |
+| `T1497.001` | `splunk/windows/win_system_checks.spl` |
+| `T1497.002` | `splunk/windows/win_user_activity_based_checks.spl` |
+| `T1497.003` | `splunk/windows/win_time_based_evasion.spl` |
+| `T1505` | `splunk/windows/win_server_software_component.spl` |
 | `T1543.003` | `splunk/windows/win_suspicious_sc_create.spl` |
+| `T1548` | `splunk/windows/win_abuse_elevation_control_mechanism.spl` |
+| `T1552` | `splunk/windows/win_credentials_in_files.spl`, `splunk/windows/win_unsecured_credentials.spl` |
+| `T1552.001` | `splunk/windows/win_credentials_in_files.spl` |
+| `T1560` | `splunk/windows/win_archive_collected_data.spl`, `splunk/windows/win_archive_via_utility.spl` |
+| `T1560.001` | `splunk/windows/win_archive_via_utility.spl` |
+| `T1562` | `splunk/windows/win_impair_defenses.spl` |
 | `T1562.001` | `splunk/windows/win_suspicious_taskkill.spl` |
 | `T1564.001` | `splunk/windows/win_suspicious_attrib_hidden.spl` |
 
@@ -416,27 +456,44 @@ Tanda ✅ = ada minimal satu rule pada platform tersebut yang memetakan teknik.
 | `T1003.003` | `microsoft-sentinel/kql_087_obj_access_ntds.kql` |
 | `T1005` | `microsoft-sentinel/kql_081_obj_access_file.kql` |
 | `T1012` | `microsoft-sentinel/kql_082_obj_access_registry.kql` |
+| `T1016` | `microsoft-sentinel/kql_104_system_network_configuration_discovery.kql` |
 | `T1021` | `microsoft-sentinel/kql_015_net_conn_telnet.kql`, `microsoft-sentinel/kql_055_logon_rdp.kql`, `microsoft-sentinel/kql_056_logon_network.kql` |
 | `T1021.001` | `microsoft-sentinel/kql_012_net_conn_rdp.kql`, `microsoft-sentinel/kql_028_reg_mod_rdp.kql`, `microsoft-sentinel/kql_055_logon_rdp.kql` |
 | `T1021.002` | `microsoft-sentinel/kql_016_net_conn_smb.kql` |
 | `T1021.004` | `microsoft-sentinel/kql_013_net_conn_ssh.kql` |
 | `T1027` | `microsoft-sentinel/kql_endpoint_win_powershell_suspicious_encoded_command.kql` |
+| `T1029` | `microsoft-sentinel/kql_105_scheduled_transfer.kql` |
 | `T1036` | `microsoft-sentinel/kql_031_file_create_exe_temp.kql`, `microsoft-sentinel/kql_039_file_create_scr.kql`, `microsoft-sentinel/kql_040_file_create_pif.kql`, `microsoft-sentinel/kql_066_schtask_suspicious_name.kql`, `microsoft-sentinel/kql_076_service_suspicious_path.kql` ... |
+| `T1041` | `microsoft-sentinel/kql_106_exfiltration_over_c2_channel.kql` |
+| `T1047` | `microsoft-sentinel/kql_107_windows_management_instrumentation.kql` |
+| `T1048` | `microsoft-sentinel/kql_108_exfiltration_over_alternative_protocol.kql` |
+| `T1053` | `microsoft-sentinel/kql_109_scheduled_task_job.kql` |
 | `T1053.002` | `microsoft-sentinel/kql_010_proc_exec_at.kql` |
 | `T1053.005` | `microsoft-sentinel/kql_009_proc_exec_schtasks.kql`, `microsoft-sentinel/kql_061_schtask_created.kql`, `microsoft-sentinel/kql_062_schtask_deleted.kql`, `microsoft-sentinel/kql_063_schtask_enabled.kql`, `microsoft-sentinel/kql_064_schtask_disabled.kql` ... |
-| `T1059` | `microsoft-sentinel/kql_002_proc_exec_powershell.kql` |
+| `T1055` | `microsoft-sentinel/kql_110_process_injection.kql`, `microsoft-sentinel/kql_111_process_hollowing.kql` |
+| `T1055.012` | `microsoft-sentinel/kql_111_process_hollowing.kql` |
+| `T1056` | `microsoft-sentinel/kql_112_input_capture.kql`, `microsoft-sentinel/kql_113_keylogging.kql` |
+| `T1056.001` | `microsoft-sentinel/kql_113_keylogging.kql` |
+| `T1059` | `microsoft-sentinel/kql_002_proc_exec_powershell.kql`, `microsoft-sentinel/kql_114_python.kql` |
 | `T1059.001` | `microsoft-sentinel/kql_002_proc_exec_powershell.kql`, `microsoft-sentinel/kql_034_file_create_ps1.kql`, `microsoft-sentinel/kql_endpoint_win_powershell_suspicious_encoded_command.kql` |
 | `T1059.003` | `microsoft-sentinel/kql_001_proc_exec_cmd.kql`, `microsoft-sentinel/kql_036_file_create_bat.kql` |
 | `T1059.005` | `microsoft-sentinel/kql_003_proc_exec_wscript.kql`, `microsoft-sentinel/kql_004_proc_exec_cscript.kql`, `microsoft-sentinel/kql_035_file_create_vbs.kql`, `microsoft-sentinel/kql_038_file_create_wsf.kql` |
+| `T1059.006` | `microsoft-sentinel/kql_114_python.kql` |
 | `T1059.007` | `microsoft-sentinel/kql_037_file_create_js.kql` |
+| `T1070` | `microsoft-sentinel/kql_115_indicator_removal.kql`, `microsoft-sentinel/kql_116_timestomp.kql` |
 | `T1070.001` | `microsoft-sentinel/kql_089_obj_access_event_log.kql` |
+| `T1070.006` | `microsoft-sentinel/kql_116_timestomp.kql` |
+| `T1071` | `microsoft-sentinel/kql_117_application_layer_protocol.kql` |
 | `T1071.001` | `microsoft-sentinel/kql_018_net_conn_http_malicious.kql`, `microsoft-sentinel/kql_020_net_conn_darkweb.kql` |
 | `T1071.002` | `microsoft-sentinel/kql_014_net_conn_ftp.kql` |
 | `T1071.004` | `microsoft-sentinel/kql_017_net_conn_dns_tunnel.kql`, `microsoft-sentinel/kql_net_dns_suspicious_tunnel.kql` |
 | `T1078` | `microsoft-sentinel/kql_052_logon_success.kql`, `microsoft-sentinel/kql_053_logon_explicit.kql`, `microsoft-sentinel/kql_054_logon_special.kql`, `microsoft-sentinel/kql_055_logon_rdp.kql`, `microsoft-sentinel/kql_057_logon_batch.kql` ... |
 | `T1078.004` | `microsoft-sentinel/kql_091_misc_cloud_login.kql`, `microsoft-sentinel/kql_092_misc_cloud_failed_login.kql`, `microsoft-sentinel/kql_100_misc_cloud_suspicious_api.kql` |
+| `T1082` | `microsoft-sentinel/kql_118_system_information_discovery.kql` |
+| `T1087` | `microsoft-sentinel/kql_119_account_discovery.kql` |
 | `T1090` | `microsoft-sentinel/kql_027_reg_mod_proxy.kql` |
 | `T1090.003` | `microsoft-sentinel/kql_019_net_conn_tor.kql`, `microsoft-sentinel/kql_020_net_conn_darkweb.kql` |
+| `T1095` | `microsoft-sentinel/kql_120_non_application_layer_protocol.kql` |
 | `T1098` | `microsoft-sentinel/kql_042_acct_mgr_user_enabled.kql`, `microsoft-sentinel/kql_043_acct_mgr_user_pwd_reset.kql`, `microsoft-sentinel/kql_059_logon_unlock.kql` |
 | `T1098.001` | `microsoft-sentinel/kql_099_misc_cloud_api_key_created.kql` |
 | `T1098.003` | `microsoft-sentinel/kql_094_misc_cloud_admin_assigned.kql` |
@@ -445,17 +502,32 @@ Tanda ✅ = ada minimal satu rule pada platform tersebut yang memetakan teknik.
 | `T1110` | `microsoft-sentinel/kql_050_acct_mgr_acct_locked_out.kql`, `microsoft-sentinel/kql_051_logon_failed.kql`, `microsoft-sentinel/kql_092_misc_cloud_failed_login.kql` |
 | `T1110.001` | `microsoft-sentinel/kql_051_logon_failed.kql`, `microsoft-sentinel/kql_correlation_brute_force.kql` |
 | `T1112` | `microsoft-sentinel/kql_028_reg_mod_rdp.kql`, `microsoft-sentinel/kql_029_reg_mod_wdigest.kql` |
-| `T1136` | `microsoft-sentinel/kql_047_acct_mgr_group_created.kql` |
+| `T1124` | `microsoft-sentinel/kql_121_system_time_discovery.kql` |
+| `T1127` | `microsoft-sentinel/kql_122_trusted_developer_utilities_proxy_execut.kql`, `microsoft-sentinel/kql_123_msbuild.kql` |
+| `T1127.001` | `microsoft-sentinel/kql_123_msbuild.kql` |
+| `T1133` | `microsoft-sentinel/kql_124_external_remote_services.kql` |
+| `T1136` | `microsoft-sentinel/kql_047_acct_mgr_group_created.kql`, `microsoft-sentinel/kql_125_cloud_account.kql` |
 | `T1136.001` | `microsoft-sentinel/kql_041_acct_mgr_user_created.kql` |
+| `T1136.003` | `microsoft-sentinel/kql_125_cloud_account.kql` |
 | `T1140` | `microsoft-sentinel/kql_007_proc_exec_certutil.kql` |
 | `T1197` | `microsoft-sentinel/kql_008_proc_exec_bitsadmin.kql` |
-| `T1218` | `microsoft-sentinel/kql_005_proc_exec_rundll32.kql`, `microsoft-sentinel/kql_006_proc_exec_regsvr32.kql`, `microsoft-sentinel/kql_039_file_create_scr.kql` |
+| `T1205` | `microsoft-sentinel/kql_126_traffic_signaling.kql`, `microsoft-sentinel/kql_127_socket_filters.kql` |
+| `T1205.002` | `microsoft-sentinel/kql_127_socket_filters.kql` |
+| `T1218` | `microsoft-sentinel/kql_005_proc_exec_rundll32.kql`, `microsoft-sentinel/kql_006_proc_exec_regsvr32.kql`, `microsoft-sentinel/kql_039_file_create_scr.kql`, `microsoft-sentinel/kql_128_installutil.kql` |
+| `T1218.004` | `microsoft-sentinel/kql_128_installutil.kql` |
 | `T1218.010` | `microsoft-sentinel/kql_006_proc_exec_regsvr32.kql` |
 | `T1218.011` | `microsoft-sentinel/kql_005_proc_exec_rundll32.kql` |
+| `T1219` | `microsoft-sentinel/kql_129_remote_access_software.kql` |
 | `T1484` | `microsoft-sentinel/kql_049_acct_mgr_pwd_policy_changed.kql` |
+| `T1486` | `microsoft-sentinel/kql_130_data_encrypted_for_impact.kql` |
 | `T1489` | `microsoft-sentinel/kql_073_service_stopped.kql` |
 | `T1490` | `microsoft-sentinel/kql_085_obj_access_shadow_copy.kql`, `microsoft-sentinel/kql_086_obj_access_backup.kql` |
+| `T1497` | `microsoft-sentinel/kql_131_virtualization_sandbox_evasion.kql`, `microsoft-sentinel/kql_132_system_checks.kql`, `microsoft-sentinel/kql_133_user_activity_based_checks.kql`, `microsoft-sentinel/kql_134_time_based_evasion.kql` |
+| `T1497.001` | `microsoft-sentinel/kql_132_system_checks.kql` |
+| `T1497.002` | `microsoft-sentinel/kql_133_user_activity_based_checks.kql` |
+| `T1497.003` | `microsoft-sentinel/kql_134_time_based_evasion.kql` |
 | `T1499` | `microsoft-sentinel/kql_074_service_failed.kql`, `microsoft-sentinel/kql_075_service_crashed.kql` |
+| `T1505` | `microsoft-sentinel/kql_135_server_software_component.kql` |
 | `T1530` | `microsoft-sentinel/kql_098_misc_cloud_storage_public.kql` |
 | `T1531` | `microsoft-sentinel/kql_044_acct_mgr_user_deleted.kql`, `microsoft-sentinel/kql_046_acct_mgr_user_removed_from_group.kql`, `microsoft-sentinel/kql_048_acct_mgr_group_deleted.kql` |
 | `T1543` | `microsoft-sentinel/kql_071_service_installed.kql` |
@@ -463,9 +535,15 @@ Tanda ✅ = ada minimal satu rule pada platform tersebut yang memetakan teknik.
 | `T1547` | `microsoft-sentinel/kql_021_reg_mod_run_key.kql` |
 | `T1547.001` | `microsoft-sentinel/kql_021_reg_mod_run_key.kql`, `microsoft-sentinel/kql_022_reg_mod_runonce_key.kql` |
 | `T1547.005` | `microsoft-sentinel/kql_030_reg_mod_lsa.kql` |
+| `T1548` | `microsoft-sentinel/kql_136_abuse_elevation_control_mechanism.kql` |
 | `T1548.002` | `microsoft-sentinel/kql_026_reg_mod_uac.kql` |
+| `T1552` | `microsoft-sentinel/kql_137_unsecured_credentials.kql`, `microsoft-sentinel/kql_138_credentials_in_files.kql` |
+| `T1552.001` | `microsoft-sentinel/kql_138_credentials_in_files.kql` |
 | `T1556` | `microsoft-sentinel/kql_060_logon_cleartext.kql` |
 | `T1556.006` | `microsoft-sentinel/kql_093_misc_cloud_mfa_disabled.kql` |
+| `T1560` | `microsoft-sentinel/kql_139_archive_collected_data.kql`, `microsoft-sentinel/kql_140_archive_via_utility.kql` |
+| `T1560.001` | `microsoft-sentinel/kql_140_archive_via_utility.kql` |
+| `T1562` | `microsoft-sentinel/kql_141_impair_defenses.kql` |
 | `T1562.001` | `microsoft-sentinel/kql_025_reg_mod_defender.kql`, `microsoft-sentinel/kql_080_service_disabled.kql` |
 | `T1562.002` | `microsoft-sentinel/kql_088_obj_access_audit_policy.kql` |
 | `T1562.004` | `microsoft-sentinel/kql_024_reg_mod_firewall.kql`, `microsoft-sentinel/kql_095_misc_cloud_fw_changed.kql` |
@@ -483,41 +561,79 @@ Tanda ✅ = ada minimal satu rule pada platform tersebut yang memetakan teknik.
 |---|---|
 | `T1003.001` | `wazuh/rules/mimikatz_usage.xml`, `wazuh/rules/win_suspicious_process_lsass.xml` |
 | `T1003.008` | `wazuh/rules/lnx_passwd_file_modified.xml`, `wazuh/rules/lnx_shadow_file_modified.xml`, `wazuh/rules/shadow_file_access.xml` |
+| `T1016` | `wazuh/rules/system_network_configuration_discovery.xml` |
 | `T1021.001` | `wazuh/rules/net_suspicious_port_3389_outbound.xml` |
 | `T1027` | `wazuh/rules/base64_decoding.xml`, `wazuh/rules/win_suspicious_process_cmd_encoded.xml` |
+| `T1029` | `wazuh/rules/scheduled_transfer.xml` |
+| `T1041` | `wazuh/rules/exfiltration_over_c2_channel.xml` |
 | `T1046` | `wazuh/rules/nmap_scan_detected.xml` |
+| `T1047` | `wazuh/rules/windows_management_instrumentation.xml` |
+| `T1048` | `wazuh/rules/exfiltration_over_alternative_protocol.xml` |
+| `T1053` | `wazuh/rules/scheduled_task_job.xml` |
 | `T1053.003` | `wazuh/rules/cron_job_modification.xml`, `wazuh/rules/lnx_crontab_creation.xml` |
 | `T1053.005` | `wazuh/rules/schtasks_creation.xml` |
+| `T1055` | `wazuh/rules/process_injection.xml` |
+| `T1055.012` | `wazuh/rules/process_hollowing.xml` |
+| `T1056` | `wazuh/rules/input_capture.xml` |
+| `T1056.001` | `wazuh/rules/keylogging.xml` |
 | `T1059` | `wazuh/rules/php_code_injection.xml`, `wazuh/rules/wazuh_auth_bruteforce_many_fail.xml`, `wazuh/rules/wazuh_cloud_aws_stop_logging.xml`, `wazuh/rules/wazuh_lnx_curl_wget_to_shell.xml`, `wazuh/rules/wazuh_lnx_passwd_shadow_read.xml` ... |
 | `T1059.001` | `wazuh/rules/powershell_encoded_command.xml`, `wazuh/rules/win_suspicious_process_cmd_encoded.xml` |
 | `T1059.003` | `wazuh/rules/win_suspicious_process_cmd_encoded.xml` |
 | `T1059.004` | `wazuh/rules/netcat_reverse_shell.xml` |
+| `T1059.006` | `wazuh/rules/python.xml` |
+| `T1070` | `wazuh/rules/indicator_removal.xml` |
 | `T1070.003` | `wazuh/rules/clear_linux_history.xml`, `wazuh/rules/lnx_suspicious_history_deletion.xml` |
+| `T1070.006` | `wazuh/rules/timestomp.xml` |
+| `T1071` | `wazuh/rules/application_layer_protocol.xml` |
 | `T1071.001` | `wazuh/rules/net_suspicious_user_agent_curl.xml`, `wazuh/rules/net_suspicious_user_agent_wget.xml` |
 | `T1071.004` | `wazuh/rules/net_dns_tunneling_suspicion.xml` |
 | `T1072` | `wazuh/rules/lnx_apt_get_install.xml`, `wazuh/rules/lnx_yum_install.xml` |
 | `T1078` | `wazuh/rules/app_apache_unauthorized_access.xml`, `wazuh/rules/app_docker_unauthorized_access.xml`, `wazuh/rules/app_gitlab_unauthorized_access.xml`, `wazuh/rules/app_jenkins_unauthorized_access.xml`, `wazuh/rules/app_kubernetes_unauthorized_access.xml` ... |
 | `T1078.003` | `wazuh/rules/lnx_suspicious_su_usage.xml`, `wazuh/rules/net_ssh_root_login.xml` |
+| `T1082` | `wazuh/rules/system_information_discovery.xml` |
+| `T1087` | `wazuh/rules/account_discovery.xml` |
+| `T1095` | `wazuh/rules/non_application_layer_protocol.xml` |
 | `T1098` | `wazuh/rules/aws_iam_user_created.xml`, `wazuh/rules/gcp_iam_role_grant.xml`, `wazuh/rules/group_modification.xml`, `wazuh/rules/lnx_passwd_file_modified.xml`, `wazuh/rules/lnx_shadow_file_modified.xml` ... |
 | `T1098.004` | `wazuh/rules/lnx_sshd_config_modified.xml` |
 | `T1098.007` | `wazuh/rules/win_ad_user_added_to_admin_group.xml` |
 | `T1105` | `wazuh/rules/net_suspicious_user_agent_curl.xml`, `wazuh/rules/net_suspicious_user_agent_wget.xml`, `wazuh/rules/suspicious_curl_wget.xml` |
 | `T1110` | `wazuh/rules/lnx_failed_su_usage.xml`, `wazuh/rules/rdp_brute_force.xml`, `wazuh/rules/ssh_brute_force.xml` |
 | `T1110.001` | `wazuh/rules/net_ssh_failed_root_login.xml` |
+| `T1124` | `wazuh/rules/system_time_discovery.xml` |
+| `T1127` | `wazuh/rules/trusted_developer_utilities_proxy_execution.xml` |
+| `T1127.001` | `wazuh/rules/msbuild.xml` |
+| `T1133` | `wazuh/rules/external_remote_services.xml` |
 | `T1136.001` | `wazuh/rules/account_creation.xml` |
 | `T1136.002` | `wazuh/rules/win_ad_computer_account_created.xml` |
+| `T1136.003` | `wazuh/rules/cloud_account.xml` |
 | `T1190` | `wazuh/rules/apache_error_log_spike.xml`, `wazuh/rules/directory_traversal.xml`, `wazuh/rules/nginx_error_log_spike.xml`, `wazuh/rules/sql_injection_attempt.xml`, `wazuh/rules/xss_attempt.xml` |
+| `T1205` | `wazuh/rules/traffic_signaling.xml` |
+| `T1205.002` | `wazuh/rules/socket_filters.xml` |
+| `T1218.004` | `wazuh/rules/installutil.xml` |
+| `T1219` | `wazuh/rules/remote_access_software.xml` |
 | `T1484.001` | `wazuh/rules/win_ad_group_policy_modified.xml` |
+| `T1486` | `wazuh/rules/data_encrypted_for_impact.xml` |
 | `T1489` | `wazuh/rules/app_apache_stopped.xml`, `wazuh/rules/app_docker_stopped.xml`, `wazuh/rules/app_gitlab_stopped.xml`, `wazuh/rules/app_jenkins_stopped.xml`, `wazuh/rules/app_kubernetes_stopped.xml` ... |
+| `T1497` | `wazuh/rules/virtualization_sandbox_evasion.xml` |
+| `T1497.001` | `wazuh/rules/system_checks.xml` |
+| `T1497.002` | `wazuh/rules/user_activity_based_checks.xml` |
+| `T1497.003` | `wazuh/rules/time_based_evasion.xml` |
 | `T1499` | `wazuh/rules/app_apache_crashed.xml`, `wazuh/rules/app_apache_failed.xml`, `wazuh/rules/app_docker_crashed.xml`, `wazuh/rules/app_docker_failed.xml`, `wazuh/rules/app_gitlab_crashed.xml` ... |
+| `T1505` | `wazuh/rules/server_software_component.xml` |
 | `T1505.003` | `wazuh/rules/web_shell_upload.xml` |
 | `T1531` | `wazuh/rules/win_ad_user_deleted.xml` |
 | `T1543` | `wazuh/rules/app_apache_restarted.xml`, `wazuh/rules/app_apache_started.xml`, `wazuh/rules/app_docker_restarted.xml`, `wazuh/rules/app_docker_started.xml`, `wazuh/rules/app_gitlab_restarted.xml` ... |
 | `T1543.003` | `wazuh/rules/service_creation.xml` |
 | `T1547.001` | `wazuh/rules/win_registry_persistence_run.xml`, `wazuh/rules/win_registry_persistence_runonce.xml` |
 | `T1547.006` | `wazuh/rules/kernel_module_loading.xml` |
+| `T1548` | `wazuh/rules/abuse_elevation_control_mechanism.xml` |
 | `T1548.003` | `wazuh/rules/sudo_abuse.xml` |
+| `T1552` | `wazuh/rules/unsecured_credentials.xml` |
+| `T1552.001` | `wazuh/rules/credentials_in_files.xml` |
 | `T1556` | `wazuh/rules/lnx_sshd_config_modified.xml` |
+| `T1560` | `wazuh/rules/archive_collected_data.xml` |
+| `T1560.001` | `wazuh/rules/archive_via_utility.xml` |
+| `T1562` | `wazuh/rules/impair_defenses.xml` |
 | `T1562.001` | `wazuh/rules/app_apache_config_changed.xml`, `wazuh/rules/app_docker_config_changed.xml`, `wazuh/rules/app_gitlab_config_changed.xml`, `wazuh/rules/app_jenkins_config_changed.xml`, `wazuh/rules/app_kubernetes_config_changed.xml` ... |
 | `T1562.004` | `wazuh/rules/net_firewall_rule_added.xml`, `wazuh/rules/net_firewall_rule_deleted.xml`, `wazuh/rules/windows_firewall_modified.xml` |
 | `T1569.002` | `wazuh/rules/psexec_execution.xml` |

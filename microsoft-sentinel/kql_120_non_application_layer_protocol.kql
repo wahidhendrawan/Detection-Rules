@@ -1,0 +1,16 @@
+// Title: Non-Application Layer Protocol
+// Description: Detects indicators of Non-Application Layer Protocol (T1095)
+// MITRE ATT&CK: T1095
+// Severity: medium
+// Tactic: command-and-control
+// Author: Wahid Hendrawan
+// Date: 2026-06-04
+// References:
+//   - https://attack.mitre.org/techniques/T1095/
+
+DeviceProcessEvents
+| where Timestamp > ago(24h)
+| where Protocol == 'ICMP' and FileName in~ ('powershell.exe','cmd.exe')
+| project Timestamp, DeviceName, AccountName, FileName, ProcessCommandLine,
+          InitiatingProcessFileName, InitiatingProcessCommandLine
+| order by Timestamp desc

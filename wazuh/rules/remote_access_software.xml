@@ -1,0 +1,10 @@
+<group name="attack,command_and_control">
+  <rule id="100237" level="8">
+    <decoded_as>syslog</decoded_as>
+    <regex type="pcre2">FileName in~ ('AnyDesk.exe','TeamViewer.exe','ngrok.exe','meshagent.exe')</regex>
+    <description>Remote Access Software (T1219)</description>
+    <mitre>
+      <id>T1219</id>
+    </mitre>
+  </rule>
+</group>

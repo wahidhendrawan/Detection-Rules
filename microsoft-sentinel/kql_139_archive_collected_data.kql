@@ -1,0 +1,16 @@
+// Title: Archive Collected Data
+// Description: Detects indicators of Archive Collected Data (T1560)
+// MITRE ATT&CK: T1560
+// Severity: medium
+// Tactic: collection
+// Author: Wahid Hendrawan
+// Date: 2026-06-04
+// References:
+//   - https://attack.mitre.org/techniques/T1560/
+
+DeviceProcessEvents
+| where Timestamp > ago(24h)
+| where 7z OR rar archiving data
+| project Timestamp, DeviceName, AccountName, FileName, ProcessCommandLine,
+          InitiatingProcessFileName, InitiatingProcessCommandLine
+| order by Timestamp desc

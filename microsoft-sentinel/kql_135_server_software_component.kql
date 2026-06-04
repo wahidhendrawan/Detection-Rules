@@ -1,0 +1,16 @@
+// Title: Server Software Component
+// Description: Detects indicators of Server Software Component (T1505)
+// MITRE ATT&CK: T1505
+// Severity: medium
+// Tactic: persistence
+// Author: Wahid Hendrawan
+// Date: 2026-06-04
+// References:
+//   - https://attack.mitre.org/techniques/T1505/
+
+DeviceProcessEvents
+| where Timestamp > ago(24h)
+| where web server spawning cmd/powershell
+| project Timestamp, DeviceName, AccountName, FileName, ProcessCommandLine,
+          InitiatingProcessFileName, InitiatingProcessCommandLine
+| order by Timestamp desc

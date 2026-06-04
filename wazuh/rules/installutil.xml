@@ -1,0 +1,10 @@
+<group name="attack,defense_evasion">
+  <rule id="100236" level="8">
+    <decoded_as>syslog</decoded_as>
+    <regex type="pcre2">FileName =~ 'InstallUtil.exe' and ProcessCommandLine has_any ('Temp','AppData')</regex>
+    <description>InstallUtil (T1218.004)</description>
+    <mitre>
+      <id>T1218.004</id>
+    </mitre>
+  </rule>
+</group>

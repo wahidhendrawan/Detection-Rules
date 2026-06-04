@@ -1,0 +1,16 @@
+// Title: Traffic Signaling
+// Description: Detects indicators of Traffic Signaling (T1205)
+// MITRE ATT&CK: T1205
+// Severity: medium
+// Tactic: command-and-control
+// Author: Wahid Hendrawan
+// Date: 2026-06-04
+// References:
+//   - https://attack.mitre.org/techniques/T1205/
+
+DeviceProcessEvents
+| where Timestamp > ago(24h)
+| where DestPort IN (1337,31337,12345,65535)
+| project Timestamp, DeviceName, AccountName, FileName, ProcessCommandLine,
+          InitiatingProcessFileName, InitiatingProcessCommandLine
+| order by Timestamp desc

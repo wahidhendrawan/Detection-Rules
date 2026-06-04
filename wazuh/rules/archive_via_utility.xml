@@ -1,0 +1,10 @@
+<group name="attack,collection">
+  <rule id="100248" level="8">
+    <decoded_as>syslog</decoded_as>
+    <regex type="pcre2">FileName in~ ('7z.exe','rar.exe') and ProcessCommandLine has_any ('Finance','HR','.pst','.kdbx','Confidential')</regex>
+    <description>Archive via Utility (T1560.001)</description>
+    <mitre>
+      <id>T1560.001</id>
+    </mitre>
+  </rule>
+</group>

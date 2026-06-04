@@ -1,0 +1,16 @@
+// Title: User Activity Based Checks
+// Description: Detects indicators of User Activity Based Checks (T1497.002)
+// MITRE ATT&CK: T1497.002
+// Severity: medium
+// Tactic: defense-evasion
+// Author: Wahid Hendrawan
+// Date: 2026-06-04
+// References:
+//   - https://attack.mitre.org/techniques/T1497/002/
+
+DeviceProcessEvents
+| where Timestamp > ago(24h)
+| where GetCursorPos OR GetLastInputInfo
+| project Timestamp, DeviceName, AccountName, FileName, ProcessCommandLine,
+          InitiatingProcessFileName, InitiatingProcessCommandLine
+| order by Timestamp desc

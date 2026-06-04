@@ -1,0 +1,16 @@
+// Title: System Checks
+// Description: Detects indicators of System Checks (T1497.001)
+// MITRE ATT&CK: T1497.001
+// Severity: medium
+// Tactic: defense-evasion
+// Author: Wahid Hendrawan
+// Date: 2026-06-04
+// References:
+//   - https://attack.mitre.org/techniques/T1497/001/
+
+DeviceProcessEvents
+| where Timestamp > ago(24h)
+| where Win32_ComputerSystem OR BIOS check
+| project Timestamp, DeviceName, AccountName, FileName, ProcessCommandLine,
+          InitiatingProcessFileName, InitiatingProcessCommandLine
+| order by Timestamp desc

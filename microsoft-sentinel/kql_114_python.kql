@@ -1,0 +1,16 @@
+// Title: Python
+// Description: Detects indicators of Python (T1059.006)
+// MITRE ATT&CK: T1059.006
+// Severity: medium
+// Tactic: execution
+// Author: Wahid Hendrawan
+// Date: 2026-06-04
+// References:
+//   - https://attack.mitre.org/techniques/T1059/006/
+
+DeviceProcessEvents
+| where Timestamp > ago(24h)
+| where FileName in~ ('python.exe','python3.exe') and ProcessCommandLine has_any ('exec(','socket','subprocess','urllib')
+| project Timestamp, DeviceName, AccountName, FileName, ProcessCommandLine,
+          InitiatingProcessFileName, InitiatingProcessCommandLine
+| order by Timestamp desc

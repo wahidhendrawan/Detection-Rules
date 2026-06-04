@@ -1,0 +1,10 @@
+<group name="attack,command_and_control">
+  <rule id="100234" level="8">
+    <decoded_as>syslog</decoded_as>
+    <regex type="pcre2">RemotePort in (1337,31337,12345,65535)</regex>
+    <description>Traffic Signaling (T1205)</description>
+    <mitre>
+      <id>T1205</id>
+    </mitre>
+  </rule>
+</group>

@@ -1,0 +1,10 @@
+<group name="attack,defense_evasion">
+  <rule id="100241" level="8">
+    <decoded_as>syslog</decoded_as>
+    <regex type="pcre2">ProcessCommandLine has_any ('GetCursorPos','GetLastInputInfo','RecentDocs')</regex>
+    <description>User Activity Based Checks (T1497.002)</description>
+    <mitre>
+      <id>T1497.002</id>
+    </mitre>
+  </rule>
+</group>

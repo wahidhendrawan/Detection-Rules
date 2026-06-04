@@ -1,0 +1,16 @@
+// Title: Windows Management Instrumentation
+// Description: Detects indicators of Windows Management Instrumentation (T1047)
+// MITRE ATT&CK: T1047
+// Severity: medium
+// Tactic: execution
+// Author: Wahid Hendrawan
+// Date: 2026-06-04
+// References:
+//   - https://attack.mitre.org/techniques/T1047/
+
+DeviceProcessEvents
+| where Timestamp > ago(24h)
+| where InitiatingProcessFileName =~ 'WmiPrvSE.exe'
+| project Timestamp, DeviceName, AccountName, FileName, ProcessCommandLine,
+          InitiatingProcessFileName, InitiatingProcessCommandLine
+| order by Timestamp desc

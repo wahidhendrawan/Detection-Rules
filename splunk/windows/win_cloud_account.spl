@@ -1,0 +1,15 @@
+# Title: Cloud Account
+# MITRE ATT&CK: T1136.003
+# Tactic: persistence
+# Severity: medium
+# Author: Wahid Hendrawan
+# Date: 2026-06-04
+# References:
+#   - https://attack.mitre.org/techniques/T1136/003/
+
+index=windows OR index=endpoint
+sourcetype IN ("XmlWinEventLog:Microsoft-Windows-Sysmon/Operational", "WinEventLog:Security")
+cloud account creation
+| stats count, values(CommandLine) as cmd, values(User) as user by _time, host, Image, ParentImage
+| where count > 0
+| sort - _time

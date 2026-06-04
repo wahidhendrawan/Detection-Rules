@@ -1,0 +1,10 @@
+<group name="attack,persistence">
+  <rule id="100233" level="8">
+    <decoded_as>syslog</decoded_as>
+    <regex type="pcre2">OperationName has_any ('CreateUser','CreateServiceAccount')</regex>
+    <description>Cloud Account (T1136.003)</description>
+    <mitre>
+      <id>T1136.003</id>
+    </mitre>
+  </rule>
+</group>

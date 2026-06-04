@@ -1,0 +1,10 @@
+<group name="attack,execution">
+  <rule id="100215" level="8">
+    <decoded_as>syslog</decoded_as>
+    <regex type="pcre2">WmiPrvSE</regex>
+    <description>Windows Management Instrumentation (T1047)</description>
+    <mitre>
+      <id>T1047</id>
+    </mitre>
+  </rule>
+</group>

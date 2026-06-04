@@ -1,0 +1,16 @@
+// Title: System Information Discovery
+// Description: Detects indicators of System Information Discovery (T1082)
+// MITRE ATT&CK: T1082
+// Severity: medium
+// Tactic: discovery
+// Author: Wahid Hendrawan
+// Date: 2026-06-04
+// References:
+//   - https://attack.mitre.org/techniques/T1082/
+
+DeviceProcessEvents
+| where Timestamp > ago(24h)
+| where ProcessName='systeminfo.exe' OR (ProcessName='hostname.exe')
+| project Timestamp, DeviceName, AccountName, FileName, ProcessCommandLine,
+          InitiatingProcessFileName, InitiatingProcessCommandLine
+| order by Timestamp desc

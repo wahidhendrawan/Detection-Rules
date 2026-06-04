@@ -1,0 +1,15 @@
+# Title: Exfiltration Over Alternative Protocol
+# MITRE ATT&CK: T1048
+# Tactic: exfiltration
+# Severity: medium
+# Author: Wahid Hendrawan
+# Date: 2026-06-04
+# References:
+#   - https://attack.mitre.org/techniques/T1048/
+
+index=windows OR index=endpoint
+sourcetype IN ("XmlWinEventLog:Microsoft-Windows-Sysmon/Operational", "WinEventLog:Security")
+powershell OR cmd outbound 53/443 non-standard
+| stats count, values(CommandLine) as cmd, values(User) as user by _time, host, Image, ParentImage
+| where count > 0
+| sort - _time

@@ -1,0 +1,10 @@
+<group name="attack,defense_evasion">
+  <rule id="100230" level="8">
+    <decoded_as>syslog</decoded_as>
+    <regex type="pcre2">FileName in~ ('MSBuild.exe','InstallUtil.exe','RegAsm.exe')</regex>
+    <description>Trusted Developer Utilities Proxy Execution (T1127)</description>
+    <mitre>
+      <id>T1127</id>
+    </mitre>
+  </rule>
+</group>

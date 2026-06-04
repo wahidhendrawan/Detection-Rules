@@ -1,0 +1,10 @@
+<group name="attack,defense_evasion">
+  <rule id="100235" level="8">
+    <decoded_as>syslog</decoded_as>
+    <regex type="pcre2">ProcessCommandLine has_any ('bpftool','tc filter add','AF_PACKET')</regex>
+    <description>Socket Filters (T1205.002)</description>
+    <mitre>
+      <id>T1205.002</id>
+    </mitre>
+  </rule>
+</group>

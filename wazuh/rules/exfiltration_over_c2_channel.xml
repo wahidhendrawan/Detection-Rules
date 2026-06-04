@@ -1,0 +1,10 @@
+<group name="attack,exfiltration">
+  <rule id="100214" level="8">
+    <decoded_as>syslog</decoded_as>
+    <regex type="pcre2">curl.*--data</regex>
+    <description>Exfiltration Over C2 Channel (T1041)</description>
+    <mitre>
+      <id>T1041</id>
+    </mitre>
+  </rule>
+</group>

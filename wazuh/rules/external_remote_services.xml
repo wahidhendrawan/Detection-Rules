@@ -1,0 +1,10 @@
+<group name="attack,initial_access">
+  <rule id="100232" level="8">
+    <decoded_as>syslog</decoded_as>
+    <regex type="pcre2">EventID == 4624 and LogonType == 10</regex>
+    <description>External Remote Services (T1133)</description>
+    <mitre>
+      <id>T1133</id>
+    </mitre>
+  </rule>
+</group>

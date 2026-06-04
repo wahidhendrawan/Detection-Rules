@@ -1,0 +1,16 @@
+// Title: Indicator Removal
+// Description: Detects indicators of Indicator Removal (T1070)
+// MITRE ATT&CK: T1070
+// Severity: medium
+// Tactic: defense-evasion
+// Author: Wahid Hendrawan
+// Date: 2026-06-04
+// References:
+//   - https://attack.mitre.org/techniques/T1070/
+
+DeviceProcessEvents
+| where Timestamp > ago(24h)
+| where ProcessName IN ('wevtutil.exe','fsutil.exe') AND (CommandLine='*cl*' OR CommandLine='*usn deletejournal*')
+| project Timestamp, DeviceName, AccountName, FileName, ProcessCommandLine,
+          InitiatingProcessFileName, InitiatingProcessCommandLine
+| order by Timestamp desc

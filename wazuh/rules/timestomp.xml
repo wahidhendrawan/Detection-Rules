@@ -1,0 +1,10 @@
+<group name="attack,defense_evasion">
+  <rule id="100224" level="8">
+    <decoded_as>syslog</decoded_as>
+    <regex type="pcre2">CreationTime</regex>
+    <description>Timestomp (T1070.006)</description>
+    <mitre>
+      <id>T1070.006</id>
+    </mitre>
+  </rule>
+</group>

@@ -1,0 +1,10 @@
+<group name="attack,defense_evasion">
+  <rule id="100223" level="8">
+    <decoded_as>syslog</decoded_as>
+    <regex type="pcre2">FileName =~ 'wevtutil.exe' and ProcessCommandLine has 'cl'</regex>
+    <description>Indicator Removal (T1070)</description>
+    <mitre>
+      <id>T1070</id>
+    </mitre>
+  </rule>
+</group>

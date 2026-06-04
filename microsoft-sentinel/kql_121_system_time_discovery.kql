@@ -1,0 +1,16 @@
+// Title: System Time Discovery
+// Description: Detects indicators of System Time Discovery (T1124)
+// MITRE ATT&CK: T1124
+// Severity: medium
+// Tactic: discovery
+// Author: Wahid Hendrawan
+// Date: 2026-06-04
+// References:
+//   - https://attack.mitre.org/techniques/T1124/
+
+DeviceProcessEvents
+| where Timestamp > ago(24h)
+| where ProcessName IN ('w32tm.exe','net.exe') AND CommandLine='*time*'
+| project Timestamp, DeviceName, AccountName, FileName, ProcessCommandLine,
+          InitiatingProcessFileName, InitiatingProcessCommandLine
+| order by Timestamp desc

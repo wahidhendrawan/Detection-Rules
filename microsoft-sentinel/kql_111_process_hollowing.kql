@@ -1,0 +1,16 @@
+// Title: Process Hollowing
+// Description: Detects indicators of Process Hollowing (T1055.012)
+// MITRE ATT&CK: T1055.012
+// Severity: medium
+// Tactic: defense-evasion
+// Author: Wahid Hendrawan
+// Date: 2026-06-04
+// References:
+//   - https://attack.mitre.org/techniques/T1055/012/
+
+DeviceProcessEvents
+| where Timestamp > ago(24h)
+| where FileName in~ ('svchost.exe','RuntimeBroker.exe') and InitiatingProcessFileName in~ ('cmd.exe','powershell.exe','wscript.exe')
+| project Timestamp, DeviceName, AccountName, FileName, ProcessCommandLine,
+          InitiatingProcessFileName, InitiatingProcessCommandLine
+| order by Timestamp desc

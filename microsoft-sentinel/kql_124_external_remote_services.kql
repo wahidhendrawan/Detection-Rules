@@ -1,0 +1,16 @@
+// Title: External Remote Services
+// Description: Detects indicators of External Remote Services (T1133)
+// MITRE ATT&CK: T1133
+// Severity: medium
+// Tactic: initial-access
+// Author: Wahid Hendrawan
+// Date: 2026-06-04
+// References:
+//   - https://attack.mitre.org/techniques/T1133/
+
+DeviceProcessEvents
+| where Timestamp > ago(24h)
+| where EventID=4624 LogonType=10 SourceIP=external
+| project Timestamp, DeviceName, AccountName, FileName, ProcessCommandLine,
+          InitiatingProcessFileName, InitiatingProcessCommandLine
+| order by Timestamp desc

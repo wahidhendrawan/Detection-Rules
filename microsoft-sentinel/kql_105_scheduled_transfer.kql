@@ -1,0 +1,16 @@
+// Title: Scheduled Transfer
+// Description: Detects indicators of Scheduled Transfer (T1029)
+// MITRE ATT&CK: T1029
+// Severity: medium
+// Tactic: exfiltration
+// Author: Wahid Hendrawan
+// Date: 2026-06-04
+// References:
+//   - https://attack.mitre.org/techniques/T1029/
+
+DeviceProcessEvents
+| where Timestamp > ago(24h)
+| where ProcessCommandLine has_any ('ftp','http','scp','curl')
+| project Timestamp, DeviceName, AccountName, FileName, ProcessCommandLine,
+          InitiatingProcessFileName, InitiatingProcessCommandLine
+| order by Timestamp desc

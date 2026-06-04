@@ -29,6 +29,11 @@ fields:
 falsepositives:
   - Script administrasi yang sah menggunakan encoding untuk alasan kompatibilitas
 level: high
+custom:
+  effectiveness: 0.82
+  fp_rate: 0.18
+  last_tuned: 2026/05/15
+  alert_volume: high
 tags:
   - attack.t1059
   - attack.t1059.001

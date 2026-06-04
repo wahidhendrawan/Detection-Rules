@@ -37,6 +37,11 @@ falsepositives:
   - Legitimate forensic memory acquisition by authorized security teams.
   - Incident response activities using ProcDump for diagnostics.
 level: high
+custom:
+  effectiveness: 0.91
+  fp_rate: 0.09
+  last_tuned: 2026/05/01
+  alert_volume: low
 tags:
   - attack.t1003.001
   - attack.credential-access

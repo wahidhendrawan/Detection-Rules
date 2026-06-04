@@ -1,0 +1,17 @@
+title: Failed Windows Login Attempt
+id: b2c3d4e5-f6a7-4b8c-9d0e-1f2a3b4c5d6e
+status: experimental
+description: Detects failed Windows login attempts (base rule for brute force correlation).
+author: Wahid Hendrawan
+date: 2026/06/04
+logsource:
+  product: windows
+  service: security
+detection:
+  selection:
+    EventID: 4625
+  condition: selection
+level: informational
+tags:
+  - attack.credential-access
+  - attack.t1110.001

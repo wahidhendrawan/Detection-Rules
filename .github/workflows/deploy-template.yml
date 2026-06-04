@@ -1,4 +1,5 @@
 name: Deploy Rules to SIEM
+
 on:
   workflow_call:
     inputs:
@@ -19,20 +20,143 @@ on:
 
 permissions:
   contents: read
+
 jobs:
-  deploy:
+  confirm:
     runs-on: ubuntu-latest
+    steps:
+      - name: Confirm deployment
+        run: |
+          echo "::notice::Deploying detection rules to ${{ inputs.target }}"
+          echo "Target: ${{ inputs.target }}"
+          echo "Triggered by: ${{ github.actor }}"
+          echo "Ref: ${{ github.ref }}"
+
+  deploy:
+    needs: confirm
+    runs-on: ubuntu-latest
+    # Configure environment protection rules (required reviewers, wait timer)
+    # in GitHub repo Settings > Environments > production
+    environment: production
     steps:
       - uses: actions/checkout@v4
 
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: pip install requests
+
+      # --- Elastic Deployment ---
       - name: Deploy to Elastic
         if: ${{ inputs.target == 'elastic' }}
-        run: echo 'TODO POST elastic ndjson to Kibana saved_objects import API'
+        env:
+          ELASTIC_URL: ${{ secrets.ELASTIC_URL }}
+          ELASTIC_TOKEN: ${{ secrets.ELASTIC_TOKEN }}
+        run: |
+          echo "Deploying .ndjson rules to Elastic/Kibana..."
+          find elastic/ -name "*.ndjson" -type f | while read -r file; do
+            echo "Importing: $file"
+            response=$(curl -s -w "\n%{http_code}" -X POST \
+              "${{ secrets.ELASTIC_URL }}/api/saved_objects/_import?overwrite=true" \
+              -H "kbn-xsrf: true" \
+              -H "Authorization: ApiKey ${{ secrets.ELASTIC_TOKEN }}" \
+              -H "Content-Type: multipart/form-data" \
+              --form file=@"$file")
+            http_code=$(echo "$response" | tail -1)
+            body=$(echo "$response" | sed '$d')
+            if [ "$http_code" -ge 200 ] && [ "$http_code" -lt 300 ]; then
+              echo "  ✓ Success ($http_code)"
+            else
+              echo "  ✗ Failed ($http_code): $body"
+              exit 1
+            fi
+          done
 
+      # --- Splunk Deployment ---
       - name: Deploy to Splunk
         if: ${{ inputs.target == 'splunk' }}
-        run: echo 'TODO POST splunk conf to Splunk REST API'
+        env:
+          SPLUNK_URL: ${{ secrets.SPLUNK_URL }}
+          SPLUNK_TOKEN: ${{ secrets.SPLUNK_TOKEN }}
+        run: |
+          echo "Deploying .spl rules to Splunk as saved searches..."
+          find splunk/ -name "*.spl" -type f | while read -r file; do
+            rule_name=$(basename "$file" .spl)
+            search_content=$(cat "$file")
+            echo "Creating saved search: $rule_name"
+            response=$(curl -s -w "\n%{http_code}" -X POST \
+              "${{ secrets.SPLUNK_URL }}/servicesNS/admin/search/saved/searches" \
+              -H "Authorization: Bearer ${{ secrets.SPLUNK_TOKEN }}" \
+              -H "Content-Type: application/x-www-form-urlencoded" \
+              -d "name=${rule_name}&search=$(python3 -c "import urllib.parse; print(urllib.parse.quote('''${search_content}'''))")&is_scheduled=1&cron_schedule=*/15 * * * *")
+            http_code=$(echo "$response" | tail -1)
+            body=$(echo "$response" | sed '$d')
+            if [ "$http_code" -ge 200 ] && [ "$http_code" -lt 300 ]; then
+              echo "  ✓ Success ($http_code)"
+            else
+              echo "  ✗ Failed ($http_code): $body"
+              exit 1
+            fi
+          done
+
+      # --- Microsoft Sentinel Deployment ---
+      - name: Azure Login
+        if: ${{ inputs.target == 'sentinel' }}
+        uses: azure/login@v2
+        with:
+          creds: |
+            {
+              "clientId": "${{ secrets.SENTINEL_CLIENT_ID }}",
+              "clientSecret": "${{ secrets.SENTINEL_CLIENT_SECRET }}",
+              "tenantId": "${{ secrets.SENTINEL_TENANT_ID }}",
+              "subscriptionId": "${{ secrets.AZURE_SUBSCRIPTION_ID }}"
+            }
 
       - name: Deploy to Sentinel
         if: ${{ inputs.target == 'sentinel' }}
-        run: echo 'TODO PUT sentinel json to Azure Sentinel API'
+        env:
+          SENTINEL_WORKSPACE_ID: ${{ secrets.SENTINEL_WORKSPACE_ID }}
+          SENTINEL_CLIENT_ID: ${{ secrets.SENTINEL_CLIENT_ID }}
+          SENTINEL_CLIENT_SECRET: ${{ secrets.SENTINEL_CLIENT_SECRET }}
+          SENTINEL_TENANT_ID: ${{ secrets.SENTINEL_TENANT_ID }}
+        run: |
+          echo "Deploying KQL analytics rules to Microsoft Sentinel..."
+          find microsoft-sentinel/ -name "*.kql" -type f | while read -r file; do
+            rule_name=$(basename "$file" .kql | sed 's/_/ /g')
+            query=$(cat "$file")
+            rule_id=$(uuidgen)
+            echo "Creating analytics rule: $rule_name"
+            az sentinel alert-rule create \
+              --workspace-name "${{ secrets.SENTINEL_WORKSPACE_ID }}" \
+              --resource-group "${{ secrets.SENTINEL_RESOURCE_GROUP }}" \
+              --rule-id "$rule_id" \
+              --scheduled \
+              --name "$rule_name" \
+              --display-name "$rule_name" \
+              --query "$query" \
+              --query-frequency "PT5H" \
+              --query-period "PT5H" \
+              --severity "Medium" \
+              --trigger-operator "GreaterThan" \
+              --trigger-threshold 0 \
+              --enabled true \
+              || { echo "  ✗ Failed: $rule_name"; exit 1; }
+            echo "  ✓ Success: $rule_name"
+          done
+
+      # --- Python script deployment (alternative) ---
+      - name: Deploy via Python script
+        if: ${{ always() && inputs.target != '' }}
+        env:
+          ELASTIC_URL: ${{ secrets.ELASTIC_URL }}
+          ELASTIC_TOKEN: ${{ secrets.ELASTIC_TOKEN }}
+          SPLUNK_URL: ${{ secrets.SPLUNK_URL }}
+          SPLUNK_TOKEN: ${{ secrets.SPLUNK_TOKEN }}
+          SENTINEL_WORKSPACE_ID: ${{ secrets.SENTINEL_WORKSPACE_ID }}
+          SENTINEL_CLIENT_ID: ${{ secrets.SENTINEL_CLIENT_ID }}
+          SENTINEL_CLIENT_SECRET: ${{ secrets.SENTINEL_CLIENT_SECRET }}
+          SENTINEL_TENANT_ID: ${{ secrets.SENTINEL_TENANT_ID }}
+        run: python scripts/deploy_rules.py --target ${{ inputs.target }}

@@ -55,15 +55,15 @@ jobs:
           mkdir -p /tmp/sigma-out
           # ecs_windows pipeline normalises Windows fields to ECS — most rules in this
           # repo target Windows so this is the natural default for a smoke check.
-          sigma convert -t lucene -p ecs_windows -f json -o /tmp/sigma-out/elastic.json sigma/windows/ 2>&1 | tail -10 || true
-          test -s /tmp/sigma-out/elastic.json
+          sigma convert -t lucene -p ecs_windows -f default -o /tmp/sigma-out/elastic.lucene sigma/windows/ 2>&1 | tail -10 || true
+          test -s /tmp/sigma-out/elastic.lucene
       - name: Translate to Splunk (smoke)
         run: |
           sigma convert -t splunk -p splunk_windows -f default -o /tmp/sigma-out/splunk.spl sigma/windows/ 2>&1 | tail -10 || true
           test -s /tmp/sigma-out/splunk.spl
       - name: Translate to Kusto (smoke)
         run: |
-          sigma convert -t kusto -p microsoft_xdr -o /tmp/sigma-out/kusto.kql sigma/windows/ 2>&1 | tail -10 || true
+          sigma convert -t kusto -p microsoft_xdr -f default -o /tmp/sigma-out/kusto.kql sigma/windows/ 2>&1 | tail -10 || true
           test -s /tmp/sigma-out/kusto.kql
 
   xmllint:

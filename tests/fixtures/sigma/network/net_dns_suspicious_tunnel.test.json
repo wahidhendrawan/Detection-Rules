@@ -1,0 +1,30 @@
+{
+  "rule": "sigma/network/net_dns_suspicious_tunnel.yml",
+  "description": "DNS tunneling indicators — high entropy / abnormal length subdomain (T1071.004 / T1572)",
+  "match_condition": {
+    "dns_query": { "regex": "^[a-zA-Z0-9]{40,}\\." }
+  },
+  "test_cases": [
+    {
+      "name": "matches high-entropy long subdomain",
+      "expected": "match",
+      "event": {
+        "dns_query": "ZGVmZ2hpamtsbW5vcHFyc3R1dnd4eXowMTIzNDU2Nzg5.tun.example"
+      }
+    },
+    {
+      "name": "does not match normal subdomain",
+      "expected": "no_match",
+      "event": {
+        "dns_query": "api.github.com"
+      }
+    },
+    {
+      "name": "does not match medium-length CDN subdomain",
+      "expected": "no_match",
+      "event": {
+        "dns_query": "cdn-12345.cloudfront.net"
+      }
+    }
+  ]
+}

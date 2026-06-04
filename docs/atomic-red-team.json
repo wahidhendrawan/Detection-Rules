@@ -1,0 +1,2875 @@
+{
+  "summary": {
+    "rules_with_atomic_tests": 223,
+    "techniques_with_atomic_tests": 33,
+    "total_atomic_tests_referenced": 336
+  },
+  "by_rule": {
+    "sigma/cloud/cloud_aws_create_access_key.yml": [
+      {
+        "technique": "T1098",
+        "atomic_id": "T1098-1",
+        "name": "Admin Account Manipulate",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1098/T1098.md"
+      }
+    ],
+    "sigma/cloud/cloud_gcp_iam_suspicious_role_grant.yml": [
+      {
+        "technique": "T1098",
+        "atomic_id": "T1098-1",
+        "name": "Admin Account Manipulate",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1098/T1098.md"
+      }
+    ],
+    "sigma/linux/lnx_base64_decoding.yml": [
+      {
+        "technique": "T1027",
+        "atomic_id": "T1027-1",
+        "name": "Decode Base64 Data into Script",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1027/T1027.md"
+      }
+    ],
+    "sigma/linux/lnx_new_user_added.yml": [
+      {
+        "technique": "T1136.001",
+        "atomic_id": "T1136.001-1",
+        "name": "Create a new user in a command prompt",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1136.001/T1136.001.md"
+      }
+    ],
+    "sigma/linux/lnx_sudoers_modification.yml": [
+      {
+        "technique": "T1548.003",
+        "atomic_id": "T1548.003-1",
+        "name": "Sudo usage",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1548.003/T1548.003.md"
+      }
+    ],
+    "sigma/linux/lnx_suspicious_cron_modification.yml": [
+      {
+        "technique": "T1053.003",
+        "atomic_id": "T1053.003-1",
+        "name": "Cron \u2014 Add script to all cron subfolders",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1053.003/T1053.003.md"
+      }
+    ],
+    "sigma/linux/lnx_suspicious_curl_pipe_bash.yml": [
+      {
+        "technique": "T1059.004",
+        "atomic_id": "T1059.004-1",
+        "name": "Create and Execute Bash Shell Script",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1059.004/T1059.004.md"
+      }
+    ],
+    "sigma/linux/lnx_suspicious_wget_curl_to_tmp.yml": [
+      {
+        "technique": "T1105",
+        "atomic_id": "T1105-1",
+        "name": "rsync remote file copy (push)",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1105/T1105.md"
+      },
+      {
+        "technique": "T1105",
+        "atomic_id": "T1105-13",
+        "name": "Powershell Wget Execute",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1105/T1105.md"
+      }
+    ],
+    "sigma/network/net_dns_suspicious_tunnel.yml": [
+      {
+        "technique": "T1071.004",
+        "atomic_id": "T1071.004-1",
+        "name": "DNS Large Query Volume",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1071.004/T1071.004.md"
+      }
+    ],
+    "sigma/network/net_susp_dns_many_nxdomain.yml": [
+      {
+        "technique": "T1071.004",
+        "atomic_id": "T1071.004-1",
+        "name": "DNS Large Query Volume",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1071.004/T1071.004.md"
+      }
+    ],
+    "sigma/windows/win_local_admin_group_add.yml": [
+      {
+        "technique": "T1098",
+        "atomic_id": "T1098-1",
+        "name": "Admin Account Manipulate",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1098/T1098.md"
+      }
+    ],
+    "sigma/windows/win_lsass_dump_via_procdump.yml": [
+      {
+        "technique": "T1003.001",
+        "atomic_id": "T1003.001-1",
+        "name": "Dump LSASS.exe Memory using ProcDump",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1003.001/T1003.001.md"
+      },
+      {
+        "technique": "T1003.001",
+        "atomic_id": "T1003.001-2",
+        "name": "Dump LSASS.exe Memory using comsvcs.dll",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1003.001/T1003.001.md"
+      },
+      {
+        "technique": "T1003.001",
+        "atomic_id": "T1003.001-7",
+        "name": "Dump LSASS with Mimikatz",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1003.001/T1003.001.md"
+      }
+    ],
+    "sigma/windows/win_mimikatz_command.yml": [
+      {
+        "technique": "T1003.001",
+        "atomic_id": "T1003.001-1",
+        "name": "Dump LSASS.exe Memory using ProcDump",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1003.001/T1003.001.md"
+      },
+      {
+        "technique": "T1003.001",
+        "atomic_id": "T1003.001-2",
+        "name": "Dump LSASS.exe Memory using comsvcs.dll",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1003.001/T1003.001.md"
+      },
+      {
+        "technique": "T1003.001",
+        "atomic_id": "T1003.001-7",
+        "name": "Dump LSASS with Mimikatz",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1003.001/T1003.001.md"
+      }
+    ],
+    "sigma/windows/win_powershell_suspicious_download.yml": [
+      {
+        "technique": "T1059.001",
+        "atomic_id": "T1059.001-1",
+        "name": "Mimikatz via PowerShell",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1059.001/T1059.001.md"
+      },
+      {
+        "technique": "T1059.001",
+        "atomic_id": "T1059.001-7",
+        "name": "Powershell Invoke Mimikatz Reflection",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1059.001/T1059.001.md"
+      }
+    ],
+    "sigma/windows/win_powershell_suspicious_encoded_command.yml": [
+      {
+        "technique": "T1059.001",
+        "atomic_id": "T1059.001-1",
+        "name": "Mimikatz via PowerShell",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1059.001/T1059.001.md"
+      },
+      {
+        "technique": "T1059.001",
+        "atomic_id": "T1059.001-7",
+        "name": "Powershell Invoke Mimikatz Reflection",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1059.001/T1059.001.md"
+      }
+    ],
+    "sigma/windows/win_schtasks_create.yml": [
+      {
+        "technique": "T1053.005",
+        "atomic_id": "T1053.005-1",
+        "name": "Scheduled Task Startup Script",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1053.005/T1053.005.md"
+      }
+    ],
+    "sigma/windows/win_security_log_cleared.yml": [
+      {
+        "technique": "T1070.001",
+        "atomic_id": "T1070.001-1",
+        "name": "Clear Logs",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1070.001/T1070.001.md"
+      }
+    ],
+    "sigma/windows/win_shadow_copies_deletion.yml": [
+      {
+        "technique": "T1490",
+        "atomic_id": "T1490-1",
+        "name": "Windows \u2014 Delete Volume Shadow Copies via WMI with PowerShell",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1490/T1490.md"
+      }
+    ],
+    "sigma/windows/win_suspicious_certutil_download.yml": [
+      {
+        "technique": "T1105",
+        "atomic_id": "T1105-1",
+        "name": "rsync remote file copy (push)",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1105/T1105.md"
+      },
+      {
+        "technique": "T1105",
+        "atomic_id": "T1105-13",
+        "name": "Powershell Wget Execute",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1105/T1105.md"
+      }
+    ],
+    "sigma/windows/win_suspicious_comsvcs_lsass_dump.yml": [
+      {
+        "technique": "T1003.001",
+        "atomic_id": "T1003.001-1",
+        "name": "Dump LSASS.exe Memory using ProcDump",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1003.001/T1003.001.md"
+      },
+      {
+        "technique": "T1003.001",
+        "atomic_id": "T1003.001-2",
+        "name": "Dump LSASS.exe Memory using comsvcs.dll",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1003.001/T1003.001.md"
+      },
+      {
+        "technique": "T1003.001",
+        "atomic_id": "T1003.001-7",
+        "name": "Dump LSASS with Mimikatz",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1003.001/T1003.001.md"
+      }
+    ],
+    "sigma/windows/win_suspicious_mshta_execution.yml": [
+      {
+        "technique": "T1218.005",
+        "atomic_id": "T1218.005-1",
+        "name": "Mshta Executes JavaScript Scheme via FileProtocolHandler",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1218.005/T1218.005.md"
+      }
+    ],
+    "elastic/endpoint/general/Defense Evasion \u2013 Encoded PowerShell Command.ndjson": [
+      {
+        "technique": "T1059.001",
+        "atomic_id": "T1059.001-1",
+        "name": "Mimikatz via PowerShell",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1059.001/T1059.001.md"
+      },
+      {
+        "technique": "T1059.001",
+        "atomic_id": "T1059.001-7",
+        "name": "Powershell Invoke Mimikatz Reflection",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1059.001/T1059.001.md"
+      }
+    ],
+    "elastic/endpoint/general/Defense Evasion \u2013 Event Log Cleared Wevtutil.ndjson": [
+      {
+        "technique": "T1070.001",
+        "atomic_id": "T1070.001-1",
+        "name": "Clear Logs",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1070.001/T1070.001.md"
+      }
+    ],
+    "elastic/endpoint/general/FunkLocker Ransomware File Creation.ndjson": [
+      {
+        "technique": "T1486",
+        "atomic_id": "T1486-1",
+        "name": "Encrypt files using gpg (Linux)",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1486/T1486.md"
+      }
+    ],
+    "elastic/endpoint/general/IOCs (ip) to detect Curly COMrades A New Threat Actor Targeting Geopolitical Hotbeds.ndjson": [
+      {
+        "technique": "T1105",
+        "atomic_id": "T1105-1",
+        "name": "rsync remote file copy (push)",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1105/T1105.md"
+      },
+      {
+        "technique": "T1105",
+        "atomic_id": "T1105-13",
+        "name": "Powershell Wget Execute",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1105/T1105.md"
+      }
+    ],
+    "elastic/endpoint/general/Potential Exploitation of CrushFTP RCE Vulnerability (CVE-2025-54309).ndjson": [
+      {
+        "technique": "T1059.001",
+        "atomic_id": "T1059.001-1",
+        "name": "Mimikatz via PowerShell",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1059.001/T1059.001.md"
+      },
+      {
+        "technique": "T1059.001",
+        "atomic_id": "T1059.001-7",
+        "name": "Powershell Invoke Mimikatz Reflection",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1059.001/T1059.001.md"
+      },
+      {
+        "technique": "T1059.003",
+        "atomic_id": "T1059.003-1",
+        "name": "Create and Execute Batch Script",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1059.003/T1059.003.md"
+      },
+      {
+        "technique": "T1190",
+        "atomic_id": "T1190-1",
+        "name": "Exploit a public-facing app (synthetic)",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1190/T1190.md"
+      }
+    ],
+    "elastic/endpoint/general/Potential SAP NetWeaver Webshell Creation.ndjson": [
+      {
+        "technique": "T1059.003",
+        "atomic_id": "T1059.003-1",
+        "name": "Create and Execute Batch Script",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1059.003/T1059.003.md"
+      },
+      {
+        "technique": "T1190",
+        "atomic_id": "T1190-1",
+        "name": "Exploit a public-facing app (synthetic)",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1190/T1190.md"
+      }
+    ],
+    "elastic/endpoint/general/Remote Access Tool - TacticalRMM Agent Registration to Potentially Attacker-Controlled Server.ndjson": [
+      {
+        "technique": "T1105",
+        "atomic_id": "T1105-1",
+        "name": "rsync remote file copy (push)",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1105/T1105.md"
+      },
+      {
+        "technique": "T1105",
+        "atomic_id": "T1105-13",
+        "name": "Powershell Wget Execute",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1105/T1105.md"
+      }
+    ],
+    "elastic/endpoint/general/Suspicious Child Process of SAP NetWeaver - Linux.ndjson": [
+      {
+        "technique": "T1059.003",
+        "atomic_id": "T1059.003-1",
+        "name": "Create and Execute Batch Script",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1059.003/T1059.003.md"
+      },
+      {
+        "technique": "T1190",
+        "atomic_id": "T1190-1",
+        "name": "Exploit a public-facing app (synthetic)",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1190/T1190.md"
+      }
+    ],
+    "elastic/endpoint/general/Windows Recovery Environment Disabled Via Reagentc.ndjson": [
+      {
+        "technique": "T1490",
+        "atomic_id": "T1490-1",
+        "name": "Windows \u2014 Delete Volume Shadow Copies via WMI with PowerShell",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1490/T1490.md"
+      }
+    ],
+    "elastic/endpoint/general/endpoint_rules.ndjson": [
+      {
+        "technique": "T1059.001",
+        "atomic_id": "T1059.001-1",
+        "name": "Mimikatz via PowerShell",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1059.001/T1059.001.md"
+      },
+      {
+        "technique": "T1059.001",
+        "atomic_id": "T1059.001-7",
+        "name": "Powershell Invoke Mimikatz Reflection",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1059.001/T1059.001.md"
+      }
+    ],
+    "elastic/endpoint/linux/lnx_suspicious_curl_wget.ndjson": [
+      {
+        "technique": "T1059.004",
+        "atomic_id": "T1059.004-1",
+        "name": "Create and Execute Bash Shell Script",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1059.004/T1059.004.md"
+      },
+      {
+        "technique": "T1105",
+        "atomic_id": "T1105-1",
+        "name": "rsync remote file copy (push)",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1105/T1105.md"
+      },
+      {
+        "technique": "T1105",
+        "atomic_id": "T1105-13",
+        "name": "Powershell Wget Execute",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1105/T1105.md"
+      }
+    ],
+    "elastic/endpoint/linux/lnx_suspicious_netcat.ndjson": [
+      {
+        "technique": "T1059.004",
+        "atomic_id": "T1059.004-1",
+        "name": "Create and Execute Bash Shell Script",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1059.004/T1059.004.md"
+      }
+    ],
+    "elastic/endpoint/linux/lnx_suspicious_shell_meta.ndjson": [
+      {
+        "technique": "T1059.004",
+        "atomic_id": "T1059.004-1",
+        "name": "Create and Execute Bash Shell Script",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1059.004/T1059.004.md"
+      }
+    ],
+    "elastic/endpoint/network/net_dns_tunneling_entropy.ndjson": [
+      {
+        "technique": "T1071.004",
+        "atomic_id": "T1071.004-1",
+        "name": "DNS Large Query Volume",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1071.004/T1071.004.md"
+      }
+    ],
+    "elastic/endpoint/windows/win_ransomware_shadow_copy.ndjson": [
+      {
+        "technique": "T1490",
+        "atomic_id": "T1490-1",
+        "name": "Windows \u2014 Delete Volume Shadow Copies via WMI with PowerShell",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1490/T1490.md"
+      }
+    ],
+    "elastic/endpoint/windows/win_reg_disable_defender.ndjson": [
+      {
+        "technique": "T1562.001",
+        "atomic_id": "T1562.001-1",
+        "name": "Disable Microsoft Defender Firewall",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1562.001/T1562.001.md"
+      },
+      {
+        "technique": "T1562.001",
+        "atomic_id": "T1562.001-3",
+        "name": "Disable Windows Defender Realtime Monitoring",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1562.001/T1562.001.md"
+      }
+    ],
+    "elastic/endpoint/windows/win_suspicious_bitsadmin.ndjson": [
+      {
+        "technique": "T1197",
+        "atomic_id": "T1197-1",
+        "name": "Bitsadmin Download (cmd)",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1197/T1197.md"
+      }
+    ],
+    "elastic/endpoint/windows/win_suspicious_certutil_download.ndjson": [
+      {
+        "technique": "T1105",
+        "atomic_id": "T1105-1",
+        "name": "rsync remote file copy (push)",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1105/T1105.md"
+      },
+      {
+        "technique": "T1105",
+        "atomic_id": "T1105-13",
+        "name": "Powershell Wget Execute",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1105/T1105.md"
+      }
+    ],
+    "elastic/endpoint/windows/win_suspicious_powershell_download.ndjson": [
+      {
+        "technique": "T1059.001",
+        "atomic_id": "T1059.001-1",
+        "name": "Mimikatz via PowerShell",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1059.001/T1059.001.md"
+      },
+      {
+        "technique": "T1059.001",
+        "atomic_id": "T1059.001-7",
+        "name": "Powershell Invoke Mimikatz Reflection",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1059.001/T1059.001.md"
+      },
+      {
+        "technique": "T1105",
+        "atomic_id": "T1105-1",
+        "name": "rsync remote file copy (push)",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1105/T1105.md"
+      },
+      {
+        "technique": "T1105",
+        "atomic_id": "T1105-13",
+        "name": "Powershell Wget Execute",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1105/T1105.md"
+      }
+    ],
+    "elastic/endpoint/windows/win_uac_bypass_fodhelper.ndjson": [
+      {
+        "technique": "T1548.002",
+        "atomic_id": "T1548.002-1",
+        "name": "Bypass UAC using Event Viewer (cmd)",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1548.002/T1548.002.md"
+      }
+    ],
+    "elastic/network/network_rules.ndjson": [
+      {
+        "technique": "T1071.004",
+        "atomic_id": "T1071.004-1",
+        "name": "DNS Large Query Volume",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1071.004/T1071.004.md"
+      }
+    ],
+    "splunk/cloud/cloud_gcp_iam_suspicious_role_grant.spl": [
+      {
+        "technique": "T1098",
+        "atomic_id": "T1098-1",
+        "name": "Admin Account Manipulate",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1098/T1098.md"
+      }
+    ],
+    "splunk/linux/lnx_suspicious_cron_modification.spl": [
+      {
+        "technique": "T1053.003",
+        "atomic_id": "T1053.003-1",
+        "name": "Cron \u2014 Add script to all cron subfolders",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1053.003/T1053.003.md"
+      }
+    ],
+    "splunk/linux/lnx_suspicious_passwd_mod.spl": [
+      {
+        "technique": "T1003.008",
+        "atomic_id": "T1003.008-1",
+        "name": "Access /etc/shadow (Linux)",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1003.008/T1003.008.md"
+      }
+    ],
+    "splunk/linux/lnx_suspicious_wget_curl.spl": [
+      {
+        "technique": "T1105",
+        "atomic_id": "T1105-1",
+        "name": "rsync remote file copy (push)",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1105/T1105.md"
+      },
+      {
+        "technique": "T1105",
+        "atomic_id": "T1105-13",
+        "name": "Powershell Wget Execute",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1105/T1105.md"
+      }
+    ],
+    "splunk/network/net_dns_suspicious_tunnel.spl": [
+      {
+        "technique": "T1071.004",
+        "atomic_id": "T1071.004-1",
+        "name": "DNS Large Query Volume",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1071.004/T1071.004.md"
+      }
+    ],
+    "splunk/windows/win_powershell_suspicious_encoded_command.spl": [
+      {
+        "technique": "T1059.001",
+        "atomic_id": "T1059.001-1",
+        "name": "Mimikatz via PowerShell",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1059.001/T1059.001.md"
+      },
+      {
+        "technique": "T1059.001",
+        "atomic_id": "T1059.001-7",
+        "name": "Powershell Invoke Mimikatz Reflection",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1059.001/T1059.001.md"
+      }
+    ],
+    "splunk/windows/win_shadow_copies_deletion.spl": [
+      {
+        "technique": "T1490",
+        "atomic_id": "T1490-1",
+        "name": "Windows \u2014 Delete Volume Shadow Copies via WMI with PowerShell",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1490/T1490.md"
+      }
+    ],
+    "splunk/windows/win_suspicious_certutil_download.spl": [
+      {
+        "technique": "T1105",
+        "atomic_id": "T1105-1",
+        "name": "rsync remote file copy (push)",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1105/T1105.md"
+      },
+      {
+        "technique": "T1105",
+        "atomic_id": "T1105-13",
+        "name": "Powershell Wget Execute",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1105/T1105.md"
+      }
+    ],
+    "splunk/windows/win_suspicious_mshta_execution.spl": [
+      {
+        "technique": "T1218.005",
+        "atomic_id": "T1218.005-1",
+        "name": "Mshta Executes JavaScript Scheme via FileProtocolHandler",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1218.005/T1218.005.md"
+      }
+    ],
+    "splunk/windows/win_suspicious_regsvr32.spl": [
+      {
+        "technique": "T1218.010",
+        "atomic_id": "T1218.010-1",
+        "name": "Regsvr32 Local COM Scriptlet Execution",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1218.010/T1218.010.md"
+      }
+    ],
+    "splunk/windows/win_suspicious_rundll32_net.spl": [
+      {
+        "technique": "T1218.011",
+        "atomic_id": "T1218.011-1",
+        "name": "Rundll32 execute JavaScript Remote Payload",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1218.011/T1218.011.md"
+      }
+    ],
+    "splunk/windows/win_suspicious_sc_create.spl": [
+      {
+        "technique": "T1543.003",
+        "atomic_id": "T1543.003-1",
+        "name": "Modify Fax service to run PowerShell",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1543.003/T1543.003.md"
+      }
+    ],
+    "splunk/windows/win_suspicious_taskkill.spl": [
+      {
+        "technique": "T1562.001",
+        "atomic_id": "T1562.001-1",
+        "name": "Disable Microsoft Defender Firewall",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1562.001/T1562.001.md"
+      },
+      {
+        "technique": "T1562.001",
+        "atomic_id": "T1562.001-3",
+        "name": "Disable Windows Defender Realtime Monitoring",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1562.001/T1562.001.md"
+      }
+    ],
+    "microsoft-sentinel/kql_001_proc_exec_cmd.kql": [
+      {
+        "technique": "T1059.003",
+        "atomic_id": "T1059.003-1",
+        "name": "Create and Execute Batch Script",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1059.003/T1059.003.md"
+      }
+    ],
+    "microsoft-sentinel/kql_002_proc_exec_powershell.kql": [
+      {
+        "technique": "T1059.001",
+        "atomic_id": "T1059.001-1",
+        "name": "Mimikatz via PowerShell",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1059.001/T1059.001.md"
+      },
+      {
+        "technique": "T1059.001",
+        "atomic_id": "T1059.001-7",
+        "name": "Powershell Invoke Mimikatz Reflection",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1059.001/T1059.001.md"
+      }
+    ],
+    "microsoft-sentinel/kql_005_proc_exec_rundll32.kql": [
+      {
+        "technique": "T1218.011",
+        "atomic_id": "T1218.011-1",
+        "name": "Rundll32 execute JavaScript Remote Payload",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1218.011/T1218.011.md"
+      }
+    ],
+    "microsoft-sentinel/kql_006_proc_exec_regsvr32.kql": [
+      {
+        "technique": "T1218.010",
+        "atomic_id": "T1218.010-1",
+        "name": "Regsvr32 Local COM Scriptlet Execution",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1218.010/T1218.010.md"
+      }
+    ],
+    "microsoft-sentinel/kql_007_proc_exec_certutil.kql": [
+      {
+        "technique": "T1105",
+        "atomic_id": "T1105-1",
+        "name": "rsync remote file copy (push)",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1105/T1105.md"
+      },
+      {
+        "technique": "T1105",
+        "atomic_id": "T1105-13",
+        "name": "Powershell Wget Execute",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1105/T1105.md"
+      },
+      {
+        "technique": "T1140",
+        "atomic_id": "T1140-1",
+        "name": "Deobfuscate/Decode Files Using certutil",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1140/T1140.md"
+      }
+    ],
+    "microsoft-sentinel/kql_008_proc_exec_bitsadmin.kql": [
+      {
+        "technique": "T1105",
+        "atomic_id": "T1105-1",
+        "name": "rsync remote file copy (push)",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1105/T1105.md"
+      },
+      {
+        "technique": "T1105",
+        "atomic_id": "T1105-13",
+        "name": "Powershell Wget Execute",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1105/T1105.md"
+      },
+      {
+        "technique": "T1197",
+        "atomic_id": "T1197-1",
+        "name": "Bitsadmin Download (cmd)",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1197/T1197.md"
+      }
+    ],
+    "microsoft-sentinel/kql_009_proc_exec_schtasks.kql": [
+      {
+        "technique": "T1053.005",
+        "atomic_id": "T1053.005-1",
+        "name": "Scheduled Task Startup Script",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1053.005/T1053.005.md"
+      }
+    ],
+    "microsoft-sentinel/kql_011_net_conn_suspicious_port.kql": [
+      {
+        "technique": "T1571",
+        "atomic_id": "T1571-1",
+        "name": "Testing usage of uncommonly used port",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1571/T1571.md"
+      }
+    ],
+    "microsoft-sentinel/kql_017_net_conn_dns_tunnel.kql": [
+      {
+        "technique": "T1071.004",
+        "atomic_id": "T1071.004-1",
+        "name": "DNS Large Query Volume",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1071.004/T1071.004.md"
+      },
+      {
+        "technique": "T1572",
+        "atomic_id": "T1572-1",
+        "name": "DNS over HTTPS (DoH) Tunnel",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1572/T1572.md"
+      }
+    ],
+    "microsoft-sentinel/kql_021_reg_mod_run_key.kql": [
+      {
+        "technique": "T1547.001",
+        "atomic_id": "T1547.001-1",
+        "name": "Reg Key Run",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1547.001/T1547.001.md"
+      }
+    ],
+    "microsoft-sentinel/kql_022_reg_mod_runonce_key.kql": [
+      {
+        "technique": "T1547.001",
+        "atomic_id": "T1547.001-1",
+        "name": "Reg Key Run",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1547.001/T1547.001.md"
+      }
+    ],
+    "microsoft-sentinel/kql_023_reg_mod_services.kql": [
+      {
+        "technique": "T1543.003",
+        "atomic_id": "T1543.003-1",
+        "name": "Modify Fax service to run PowerShell",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1543.003/T1543.003.md"
+      }
+    ],
+    "microsoft-sentinel/kql_024_reg_mod_firewall.kql": [
+      {
+        "technique": "T1562.004",
+        "atomic_id": "T1562.004-1",
+        "name": "Disable Microsoft Defender Firewall",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1562.004/T1562.004.md"
+      }
+    ],
+    "microsoft-sentinel/kql_025_reg_mod_defender.kql": [
+      {
+        "technique": "T1562.001",
+        "atomic_id": "T1562.001-1",
+        "name": "Disable Microsoft Defender Firewall",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1562.001/T1562.001.md"
+      },
+      {
+        "technique": "T1562.001",
+        "atomic_id": "T1562.001-3",
+        "name": "Disable Windows Defender Realtime Monitoring",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1562.001/T1562.001.md"
+      }
+    ],
+    "microsoft-sentinel/kql_026_reg_mod_uac.kql": [
+      {
+        "technique": "T1548.002",
+        "atomic_id": "T1548.002-1",
+        "name": "Bypass UAC using Event Viewer (cmd)",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1548.002/T1548.002.md"
+      }
+    ],
+    "microsoft-sentinel/kql_029_reg_mod_wdigest.kql": [
+      {
+        "technique": "T1003.001",
+        "atomic_id": "T1003.001-1",
+        "name": "Dump LSASS.exe Memory using ProcDump",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1003.001/T1003.001.md"
+      },
+      {
+        "technique": "T1003.001",
+        "atomic_id": "T1003.001-2",
+        "name": "Dump LSASS.exe Memory using comsvcs.dll",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1003.001/T1003.001.md"
+      },
+      {
+        "technique": "T1003.001",
+        "atomic_id": "T1003.001-7",
+        "name": "Dump LSASS with Mimikatz",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1003.001/T1003.001.md"
+      }
+    ],
+    "microsoft-sentinel/kql_031_file_create_exe_temp.kql": [
+      {
+        "technique": "T1105",
+        "atomic_id": "T1105-1",
+        "name": "rsync remote file copy (push)",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1105/T1105.md"
+      },
+      {
+        "technique": "T1105",
+        "atomic_id": "T1105-13",
+        "name": "Powershell Wget Execute",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1105/T1105.md"
+      }
+    ],
+    "microsoft-sentinel/kql_033_file_create_sys.kql": [
+      {
+        "technique": "T1543.003",
+        "atomic_id": "T1543.003-1",
+        "name": "Modify Fax service to run PowerShell",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1543.003/T1543.003.md"
+      }
+    ],
+    "microsoft-sentinel/kql_034_file_create_ps1.kql": [
+      {
+        "technique": "T1059.001",
+        "atomic_id": "T1059.001-1",
+        "name": "Mimikatz via PowerShell",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1059.001/T1059.001.md"
+      },
+      {
+        "technique": "T1059.001",
+        "atomic_id": "T1059.001-7",
+        "name": "Powershell Invoke Mimikatz Reflection",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1059.001/T1059.001.md"
+      }
+    ],
+    "microsoft-sentinel/kql_036_file_create_bat.kql": [
+      {
+        "technique": "T1059.003",
+        "atomic_id": "T1059.003-1",
+        "name": "Create and Execute Batch Script",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1059.003/T1059.003.md"
+      }
+    ],
+    "microsoft-sentinel/kql_041_acct_mgr_user_created.kql": [
+      {
+        "technique": "T1136.001",
+        "atomic_id": "T1136.001-1",
+        "name": "Create a new user in a command prompt",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1136.001/T1136.001.md"
+      }
+    ],
+    "microsoft-sentinel/kql_042_acct_mgr_user_enabled.kql": [
+      {
+        "technique": "T1098",
+        "atomic_id": "T1098-1",
+        "name": "Admin Account Manipulate",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1098/T1098.md"
+      }
+    ],
+    "microsoft-sentinel/kql_043_acct_mgr_user_pwd_reset.kql": [
+      {
+        "technique": "T1098",
+        "atomic_id": "T1098-1",
+        "name": "Admin Account Manipulate",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1098/T1098.md"
+      }
+    ],
+    "microsoft-sentinel/kql_051_logon_failed.kql": [
+      {
+        "technique": "T1110.001",
+        "atomic_id": "T1110.001-1",
+        "name": "Brute Force Credentials of single Active Directory domain user",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1110.001/T1110.001.md"
+      }
+    ],
+    "microsoft-sentinel/kql_052_logon_success.kql": [
+      {
+        "technique": "T1078",
+        "atomic_id": "T1078-1",
+        "name": "Create local account with admin privileges",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1078/T1078.md"
+      }
+    ],
+    "microsoft-sentinel/kql_053_logon_explicit.kql": [
+      {
+        "technique": "T1078",
+        "atomic_id": "T1078-1",
+        "name": "Create local account with admin privileges",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1078/T1078.md"
+      }
+    ],
+    "microsoft-sentinel/kql_054_logon_special.kql": [
+      {
+        "technique": "T1078",
+        "atomic_id": "T1078-1",
+        "name": "Create local account with admin privileges",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1078/T1078.md"
+      }
+    ],
+    "microsoft-sentinel/kql_055_logon_rdp.kql": [
+      {
+        "technique": "T1078",
+        "atomic_id": "T1078-1",
+        "name": "Create local account with admin privileges",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1078/T1078.md"
+      }
+    ],
+    "microsoft-sentinel/kql_057_logon_batch.kql": [
+      {
+        "technique": "T1078",
+        "atomic_id": "T1078-1",
+        "name": "Create local account with admin privileges",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1078/T1078.md"
+      }
+    ],
+    "microsoft-sentinel/kql_058_logon_service.kql": [
+      {
+        "technique": "T1078",
+        "atomic_id": "T1078-1",
+        "name": "Create local account with admin privileges",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1078/T1078.md"
+      }
+    ],
+    "microsoft-sentinel/kql_059_logon_unlock.kql": [
+      {
+        "technique": "T1098",
+        "atomic_id": "T1098-1",
+        "name": "Admin Account Manipulate",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1098/T1098.md"
+      }
+    ],
+    "microsoft-sentinel/kql_061_schtask_created.kql": [
+      {
+        "technique": "T1053.005",
+        "atomic_id": "T1053.005-1",
+        "name": "Scheduled Task Startup Script",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1053.005/T1053.005.md"
+      }
+    ],
+    "microsoft-sentinel/kql_062_schtask_deleted.kql": [
+      {
+        "technique": "T1053.005",
+        "atomic_id": "T1053.005-1",
+        "name": "Scheduled Task Startup Script",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1053.005/T1053.005.md"
+      }
+    ],
+    "microsoft-sentinel/kql_063_schtask_enabled.kql": [
+      {
+        "technique": "T1053.005",
+        "atomic_id": "T1053.005-1",
+        "name": "Scheduled Task Startup Script",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1053.005/T1053.005.md"
+      }
+    ],
+    "microsoft-sentinel/kql_064_schtask_disabled.kql": [
+      {
+        "technique": "T1053.005",
+        "atomic_id": "T1053.005-1",
+        "name": "Scheduled Task Startup Script",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1053.005/T1053.005.md"
+      }
+    ],
+    "microsoft-sentinel/kql_065_schtask_updated.kql": [
+      {
+        "technique": "T1053.005",
+        "atomic_id": "T1053.005-1",
+        "name": "Scheduled Task Startup Script",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1053.005/T1053.005.md"
+      }
+    ],
+    "microsoft-sentinel/kql_066_schtask_suspicious_name.kql": [
+      {
+        "technique": "T1053.005",
+        "atomic_id": "T1053.005-1",
+        "name": "Scheduled Task Startup Script",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1053.005/T1053.005.md"
+      }
+    ],
+    "microsoft-sentinel/kql_067_schtask_suspicious_action.kql": [
+      {
+        "technique": "T1053.005",
+        "atomic_id": "T1053.005-1",
+        "name": "Scheduled Task Startup Script",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1053.005/T1053.005.md"
+      }
+    ],
+    "microsoft-sentinel/kql_068_schtask_hidden.kql": [
+      {
+        "technique": "T1053.005",
+        "atomic_id": "T1053.005-1",
+        "name": "Scheduled Task Startup Script",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1053.005/T1053.005.md"
+      }
+    ],
+    "microsoft-sentinel/kql_069_schtask_system_context.kql": [
+      {
+        "technique": "T1053.005",
+        "atomic_id": "T1053.005-1",
+        "name": "Scheduled Task Startup Script",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1053.005/T1053.005.md"
+      },
+      {
+        "technique": "T1078",
+        "atomic_id": "T1078-1",
+        "name": "Create local account with admin privileges",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1078/T1078.md"
+      }
+    ],
+    "microsoft-sentinel/kql_070_schtask_network_trigger.kql": [
+      {
+        "technique": "T1053.005",
+        "atomic_id": "T1053.005-1",
+        "name": "Scheduled Task Startup Script",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1053.005/T1053.005.md"
+      }
+    ],
+    "microsoft-sentinel/kql_071_service_installed.kql": [
+      {
+        "technique": "T1543.003",
+        "atomic_id": "T1543.003-1",
+        "name": "Modify Fax service to run PowerShell",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1543.003/T1543.003.md"
+      }
+    ],
+    "microsoft-sentinel/kql_072_service_started.kql": [
+      {
+        "technique": "T1543.003",
+        "atomic_id": "T1543.003-1",
+        "name": "Modify Fax service to run PowerShell",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1543.003/T1543.003.md"
+      }
+    ],
+    "microsoft-sentinel/kql_076_service_suspicious_path.kql": [
+      {
+        "technique": "T1543.003",
+        "atomic_id": "T1543.003-1",
+        "name": "Modify Fax service to run PowerShell",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1543.003/T1543.003.md"
+      }
+    ],
+    "microsoft-sentinel/kql_077_service_suspicious_name.kql": [
+      {
+        "technique": "T1543.003",
+        "atomic_id": "T1543.003-1",
+        "name": "Modify Fax service to run PowerShell",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1543.003/T1543.003.md"
+      }
+    ],
+    "microsoft-sentinel/kql_078_service_changed_config.kql": [
+      {
+        "technique": "T1543.003",
+        "atomic_id": "T1543.003-1",
+        "name": "Modify Fax service to run PowerShell",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1543.003/T1543.003.md"
+      }
+    ],
+    "microsoft-sentinel/kql_079_service_deleted.kql": [
+      {
+        "technique": "T1543.003",
+        "atomic_id": "T1543.003-1",
+        "name": "Modify Fax service to run PowerShell",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1543.003/T1543.003.md"
+      }
+    ],
+    "microsoft-sentinel/kql_080_service_disabled.kql": [
+      {
+        "technique": "T1543.003",
+        "atomic_id": "T1543.003-1",
+        "name": "Modify Fax service to run PowerShell",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1543.003/T1543.003.md"
+      },
+      {
+        "technique": "T1562.001",
+        "atomic_id": "T1562.001-1",
+        "name": "Disable Microsoft Defender Firewall",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1562.001/T1562.001.md"
+      },
+      {
+        "technique": "T1562.001",
+        "atomic_id": "T1562.001-3",
+        "name": "Disable Windows Defender Realtime Monitoring",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1562.001/T1562.001.md"
+      }
+    ],
+    "microsoft-sentinel/kql_084_obj_access_lsass.kql": [
+      {
+        "technique": "T1003.001",
+        "atomic_id": "T1003.001-1",
+        "name": "Dump LSASS.exe Memory using ProcDump",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1003.001/T1003.001.md"
+      },
+      {
+        "technique": "T1003.001",
+        "atomic_id": "T1003.001-2",
+        "name": "Dump LSASS.exe Memory using comsvcs.dll",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1003.001/T1003.001.md"
+      },
+      {
+        "technique": "T1003.001",
+        "atomic_id": "T1003.001-7",
+        "name": "Dump LSASS with Mimikatz",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1003.001/T1003.001.md"
+      }
+    ],
+    "microsoft-sentinel/kql_085_obj_access_shadow_copy.kql": [
+      {
+        "technique": "T1490",
+        "atomic_id": "T1490-1",
+        "name": "Windows \u2014 Delete Volume Shadow Copies via WMI with PowerShell",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1490/T1490.md"
+      }
+    ],
+    "microsoft-sentinel/kql_086_obj_access_backup.kql": [
+      {
+        "technique": "T1490",
+        "atomic_id": "T1490-1",
+        "name": "Windows \u2014 Delete Volume Shadow Copies via WMI with PowerShell",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1490/T1490.md"
+      }
+    ],
+    "microsoft-sentinel/kql_089_obj_access_event_log.kql": [
+      {
+        "technique": "T1070.001",
+        "atomic_id": "T1070.001-1",
+        "name": "Clear Logs",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1070.001/T1070.001.md"
+      }
+    ],
+    "microsoft-sentinel/kql_095_misc_cloud_fw_changed.kql": [
+      {
+        "technique": "T1562.004",
+        "atomic_id": "T1562.004-1",
+        "name": "Disable Microsoft Defender Firewall",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1562.004/T1562.004.md"
+      }
+    ],
+    "microsoft-sentinel/kql_endpoint_win_powershell_suspicious_encoded_command.kql": [
+      {
+        "technique": "T1027",
+        "atomic_id": "T1027-1",
+        "name": "Decode Base64 Data into Script",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1027/T1027.md"
+      },
+      {
+        "technique": "T1059.001",
+        "atomic_id": "T1059.001-1",
+        "name": "Mimikatz via PowerShell",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1059.001/T1059.001.md"
+      },
+      {
+        "technique": "T1059.001",
+        "atomic_id": "T1059.001-7",
+        "name": "Powershell Invoke Mimikatz Reflection",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1059.001/T1059.001.md"
+      }
+    ],
+    "microsoft-sentinel/kql_net_dns_suspicious_tunnel.kql": [
+      {
+        "technique": "T1071.004",
+        "atomic_id": "T1071.004-1",
+        "name": "DNS Large Query Volume",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1071.004/T1071.004.md"
+      },
+      {
+        "technique": "T1572",
+        "atomic_id": "T1572-1",
+        "name": "DNS over HTTPS (DoH) Tunnel",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1572/T1572.md"
+      }
+    ],
+    "wazuh/rules/account_creation.xml": [
+      {
+        "technique": "T1136.001",
+        "atomic_id": "T1136.001-1",
+        "name": "Create a new user in a command prompt",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1136.001/T1136.001.md"
+      }
+    ],
+    "wazuh/rules/apache_error_log_spike.xml": [
+      {
+        "technique": "T1190",
+        "atomic_id": "T1190-1",
+        "name": "Exploit a public-facing app (synthetic)",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1190/T1190.md"
+      }
+    ],
+    "wazuh/rules/app_apache_config_changed.xml": [
+      {
+        "technique": "T1562.001",
+        "atomic_id": "T1562.001-1",
+        "name": "Disable Microsoft Defender Firewall",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1562.001/T1562.001.md"
+      },
+      {
+        "technique": "T1562.001",
+        "atomic_id": "T1562.001-3",
+        "name": "Disable Windows Defender Realtime Monitoring",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1562.001/T1562.001.md"
+      }
+    ],
+    "wazuh/rules/app_apache_unauthorized_access.xml": [
+      {
+        "technique": "T1078",
+        "atomic_id": "T1078-1",
+        "name": "Create local account with admin privileges",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1078/T1078.md"
+      }
+    ],
+    "wazuh/rules/app_docker_config_changed.xml": [
+      {
+        "technique": "T1562.001",
+        "atomic_id": "T1562.001-1",
+        "name": "Disable Microsoft Defender Firewall",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1562.001/T1562.001.md"
+      },
+      {
+        "technique": "T1562.001",
+        "atomic_id": "T1562.001-3",
+        "name": "Disable Windows Defender Realtime Monitoring",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1562.001/T1562.001.md"
+      }
+    ],
+    "wazuh/rules/app_docker_unauthorized_access.xml": [
+      {
+        "technique": "T1078",
+        "atomic_id": "T1078-1",
+        "name": "Create local account with admin privileges",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1078/T1078.md"
+      }
+    ],
+    "wazuh/rules/app_gitlab_config_changed.xml": [
+      {
+        "technique": "T1562.001",
+        "atomic_id": "T1562.001-1",
+        "name": "Disable Microsoft Defender Firewall",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1562.001/T1562.001.md"
+      },
+      {
+        "technique": "T1562.001",
+        "atomic_id": "T1562.001-3",
+        "name": "Disable Windows Defender Realtime Monitoring",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1562.001/T1562.001.md"
+      }
+    ],
+    "wazuh/rules/app_gitlab_unauthorized_access.xml": [
+      {
+        "technique": "T1078",
+        "atomic_id": "T1078-1",
+        "name": "Create local account with admin privileges",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1078/T1078.md"
+      }
+    ],
+    "wazuh/rules/app_jenkins_config_changed.xml": [
+      {
+        "technique": "T1562.001",
+        "atomic_id": "T1562.001-1",
+        "name": "Disable Microsoft Defender Firewall",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1562.001/T1562.001.md"
+      },
+      {
+        "technique": "T1562.001",
+        "atomic_id": "T1562.001-3",
+        "name": "Disable Windows Defender Realtime Monitoring",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1562.001/T1562.001.md"
+      }
+    ],
+    "wazuh/rules/app_jenkins_unauthorized_access.xml": [
+      {
+        "technique": "T1078",
+        "atomic_id": "T1078-1",
+        "name": "Create local account with admin privileges",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1078/T1078.md"
+      }
+    ],
+    "wazuh/rules/app_kubernetes_config_changed.xml": [
+      {
+        "technique": "T1562.001",
+        "atomic_id": "T1562.001-1",
+        "name": "Disable Microsoft Defender Firewall",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1562.001/T1562.001.md"
+      },
+      {
+        "technique": "T1562.001",
+        "atomic_id": "T1562.001-3",
+        "name": "Disable Windows Defender Realtime Monitoring",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1562.001/T1562.001.md"
+      }
+    ],
+    "wazuh/rules/app_kubernetes_unauthorized_access.xml": [
+      {
+        "technique": "T1078",
+        "atomic_id": "T1078-1",
+        "name": "Create local account with admin privileges",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1078/T1078.md"
+      }
+    ],
+    "wazuh/rules/app_mongodb_config_changed.xml": [
+      {
+        "technique": "T1562.001",
+        "atomic_id": "T1562.001-1",
+        "name": "Disable Microsoft Defender Firewall",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1562.001/T1562.001.md"
+      },
+      {
+        "technique": "T1562.001",
+        "atomic_id": "T1562.001-3",
+        "name": "Disable Windows Defender Realtime Monitoring",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1562.001/T1562.001.md"
+      }
+    ],
+    "wazuh/rules/app_mongodb_unauthorized_access.xml": [
+      {
+        "technique": "T1078",
+        "atomic_id": "T1078-1",
+        "name": "Create local account with admin privileges",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1078/T1078.md"
+      }
+    ],
+    "wazuh/rules/app_mysql_config_changed.xml": [
+      {
+        "technique": "T1562.001",
+        "atomic_id": "T1562.001-1",
+        "name": "Disable Microsoft Defender Firewall",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1562.001/T1562.001.md"
+      },
+      {
+        "technique": "T1562.001",
+        "atomic_id": "T1562.001-3",
+        "name": "Disable Windows Defender Realtime Monitoring",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1562.001/T1562.001.md"
+      }
+    ],
+    "wazuh/rules/app_mysql_unauthorized_access.xml": [
+      {
+        "technique": "T1078",
+        "atomic_id": "T1078-1",
+        "name": "Create local account with admin privileges",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1078/T1078.md"
+      }
+    ],
+    "wazuh/rules/app_nginx_config_changed.xml": [
+      {
+        "technique": "T1562.001",
+        "atomic_id": "T1562.001-1",
+        "name": "Disable Microsoft Defender Firewall",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1562.001/T1562.001.md"
+      },
+      {
+        "technique": "T1562.001",
+        "atomic_id": "T1562.001-3",
+        "name": "Disable Windows Defender Realtime Monitoring",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1562.001/T1562.001.md"
+      }
+    ],
+    "wazuh/rules/app_nginx_unauthorized_access.xml": [
+      {
+        "technique": "T1078",
+        "atomic_id": "T1078-1",
+        "name": "Create local account with admin privileges",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1078/T1078.md"
+      }
+    ],
+    "wazuh/rules/app_postgres_config_changed.xml": [
+      {
+        "technique": "T1562.001",
+        "atomic_id": "T1562.001-1",
+        "name": "Disable Microsoft Defender Firewall",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1562.001/T1562.001.md"
+      },
+      {
+        "technique": "T1562.001",
+        "atomic_id": "T1562.001-3",
+        "name": "Disable Windows Defender Realtime Monitoring",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1562.001/T1562.001.md"
+      }
+    ],
+    "wazuh/rules/app_postgres_unauthorized_access.xml": [
+      {
+        "technique": "T1078",
+        "atomic_id": "T1078-1",
+        "name": "Create local account with admin privileges",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1078/T1078.md"
+      }
+    ],
+    "wazuh/rules/app_redis_config_changed.xml": [
+      {
+        "technique": "T1562.001",
+        "atomic_id": "T1562.001-1",
+        "name": "Disable Microsoft Defender Firewall",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1562.001/T1562.001.md"
+      },
+      {
+        "technique": "T1562.001",
+        "atomic_id": "T1562.001-3",
+        "name": "Disable Windows Defender Realtime Monitoring",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1562.001/T1562.001.md"
+      }
+    ],
+    "wazuh/rules/app_redis_unauthorized_access.xml": [
+      {
+        "technique": "T1078",
+        "atomic_id": "T1078-1",
+        "name": "Create local account with admin privileges",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1078/T1078.md"
+      }
+    ],
+    "wazuh/rules/aws_iam_user_created.xml": [
+      {
+        "technique": "T1098",
+        "atomic_id": "T1098-1",
+        "name": "Admin Account Manipulate",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1098/T1098.md"
+      }
+    ],
+    "wazuh/rules/aws_s3_bucket_public_access.xml": [
+      {
+        "technique": "T1078",
+        "atomic_id": "T1078-1",
+        "name": "Create local account with admin privileges",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1078/T1078.md"
+      }
+    ],
+    "wazuh/rules/base64_decoding.xml": [
+      {
+        "technique": "T1027",
+        "atomic_id": "T1027-1",
+        "name": "Decode Base64 Data into Script",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1027/T1027.md"
+      }
+    ],
+    "wazuh/rules/clear_linux_history.xml": [
+      {
+        "technique": "T1070.003",
+        "atomic_id": "T1070.003-1",
+        "name": "Clear bash history",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1070.003/T1070.003.md"
+      }
+    ],
+    "wazuh/rules/cron_job_modification.xml": [
+      {
+        "technique": "T1053.003",
+        "atomic_id": "T1053.003-1",
+        "name": "Cron \u2014 Add script to all cron subfolders",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1053.003/T1053.003.md"
+      }
+    ],
+    "wazuh/rules/directory_traversal.xml": [
+      {
+        "technique": "T1190",
+        "atomic_id": "T1190-1",
+        "name": "Exploit a public-facing app (synthetic)",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1190/T1190.md"
+      }
+    ],
+    "wazuh/rules/gcp_iam_role_grant.xml": [
+      {
+        "technique": "T1098",
+        "atomic_id": "T1098-1",
+        "name": "Admin Account Manipulate",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1098/T1098.md"
+      }
+    ],
+    "wazuh/rules/group_modification.xml": [
+      {
+        "technique": "T1098",
+        "atomic_id": "T1098-1",
+        "name": "Admin Account Manipulate",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1098/T1098.md"
+      }
+    ],
+    "wazuh/rules/lnx_crontab_creation.xml": [
+      {
+        "technique": "T1053.003",
+        "atomic_id": "T1053.003-1",
+        "name": "Cron \u2014 Add script to all cron subfolders",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1053.003/T1053.003.md"
+      }
+    ],
+    "wazuh/rules/lnx_failed_su_usage.xml": [
+      {
+        "technique": "T1078",
+        "atomic_id": "T1078-1",
+        "name": "Create local account with admin privileges",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1078/T1078.md"
+      }
+    ],
+    "wazuh/rules/lnx_passwd_file_modified.xml": [
+      {
+        "technique": "T1003.008",
+        "atomic_id": "T1003.008-1",
+        "name": "Access /etc/shadow (Linux)",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1003.008/T1003.008.md"
+      },
+      {
+        "technique": "T1098",
+        "atomic_id": "T1098-1",
+        "name": "Admin Account Manipulate",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1098/T1098.md"
+      }
+    ],
+    "wazuh/rules/lnx_shadow_file_modified.xml": [
+      {
+        "technique": "T1003.008",
+        "atomic_id": "T1003.008-1",
+        "name": "Access /etc/shadow (Linux)",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1003.008/T1003.008.md"
+      },
+      {
+        "technique": "T1098",
+        "atomic_id": "T1098-1",
+        "name": "Admin Account Manipulate",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1098/T1098.md"
+      }
+    ],
+    "wazuh/rules/lnx_suspicious_history_deletion.xml": [
+      {
+        "technique": "T1070.003",
+        "atomic_id": "T1070.003-1",
+        "name": "Clear bash history",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1070.003/T1070.003.md"
+      }
+    ],
+    "wazuh/rules/lnx_systemctl_disable_service.xml": [
+      {
+        "technique": "T1562.001",
+        "atomic_id": "T1562.001-1",
+        "name": "Disable Microsoft Defender Firewall",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1562.001/T1562.001.md"
+      },
+      {
+        "technique": "T1562.001",
+        "atomic_id": "T1562.001-3",
+        "name": "Disable Windows Defender Realtime Monitoring",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1562.001/T1562.001.md"
+      }
+    ],
+    "wazuh/rules/mimikatz_usage.xml": [
+      {
+        "technique": "T1003.001",
+        "atomic_id": "T1003.001-1",
+        "name": "Dump LSASS.exe Memory using ProcDump",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1003.001/T1003.001.md"
+      },
+      {
+        "technique": "T1003.001",
+        "atomic_id": "T1003.001-2",
+        "name": "Dump LSASS.exe Memory using comsvcs.dll",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1003.001/T1003.001.md"
+      },
+      {
+        "technique": "T1003.001",
+        "atomic_id": "T1003.001-7",
+        "name": "Dump LSASS with Mimikatz",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1003.001/T1003.001.md"
+      }
+    ],
+    "wazuh/rules/net_dns_tunneling_suspicion.xml": [
+      {
+        "technique": "T1071.004",
+        "atomic_id": "T1071.004-1",
+        "name": "DNS Large Query Volume",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1071.004/T1071.004.md"
+      },
+      {
+        "technique": "T1572",
+        "atomic_id": "T1572-1",
+        "name": "DNS over HTTPS (DoH) Tunnel",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1572/T1572.md"
+      }
+    ],
+    "wazuh/rules/net_firewall_rule_added.xml": [
+      {
+        "technique": "T1562.004",
+        "atomic_id": "T1562.004-1",
+        "name": "Disable Microsoft Defender Firewall",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1562.004/T1562.004.md"
+      }
+    ],
+    "wazuh/rules/net_firewall_rule_deleted.xml": [
+      {
+        "technique": "T1562.004",
+        "atomic_id": "T1562.004-1",
+        "name": "Disable Microsoft Defender Firewall",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1562.004/T1562.004.md"
+      }
+    ],
+    "wazuh/rules/net_ftp_anonymous_login.xml": [
+      {
+        "technique": "T1078",
+        "atomic_id": "T1078-1",
+        "name": "Create local account with admin privileges",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1078/T1078.md"
+      }
+    ],
+    "wazuh/rules/net_ssh_failed_root_login.xml": [
+      {
+        "technique": "T1110.001",
+        "atomic_id": "T1110.001-1",
+        "name": "Brute Force Credentials of single Active Directory domain user",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1110.001/T1110.001.md"
+      }
+    ],
+    "wazuh/rules/net_suspicious_port_4444.xml": [
+      {
+        "technique": "T1571",
+        "atomic_id": "T1571-1",
+        "name": "Testing usage of uncommonly used port",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1571/T1571.md"
+      }
+    ],
+    "wazuh/rules/net_suspicious_user_agent_curl.xml": [
+      {
+        "technique": "T1105",
+        "atomic_id": "T1105-1",
+        "name": "rsync remote file copy (push)",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1105/T1105.md"
+      },
+      {
+        "technique": "T1105",
+        "atomic_id": "T1105-13",
+        "name": "Powershell Wget Execute",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1105/T1105.md"
+      }
+    ],
+    "wazuh/rules/net_suspicious_user_agent_wget.xml": [
+      {
+        "technique": "T1105",
+        "atomic_id": "T1105-1",
+        "name": "rsync remote file copy (push)",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1105/T1105.md"
+      },
+      {
+        "technique": "T1105",
+        "atomic_id": "T1105-13",
+        "name": "Powershell Wget Execute",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1105/T1105.md"
+      }
+    ],
+    "wazuh/rules/netcat_reverse_shell.xml": [
+      {
+        "technique": "T1059.004",
+        "atomic_id": "T1059.004-1",
+        "name": "Create and Execute Bash Shell Script",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1059.004/T1059.004.md"
+      }
+    ],
+    "wazuh/rules/nginx_error_log_spike.xml": [
+      {
+        "technique": "T1190",
+        "atomic_id": "T1190-1",
+        "name": "Exploit a public-facing app (synthetic)",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1190/T1190.md"
+      }
+    ],
+    "wazuh/rules/powershell_encoded_command.xml": [
+      {
+        "technique": "T1059.001",
+        "atomic_id": "T1059.001-1",
+        "name": "Mimikatz via PowerShell",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1059.001/T1059.001.md"
+      },
+      {
+        "technique": "T1059.001",
+        "atomic_id": "T1059.001-7",
+        "name": "Powershell Invoke Mimikatz Reflection",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1059.001/T1059.001.md"
+      }
+    ],
+    "wazuh/rules/schtasks_creation.xml": [
+      {
+        "technique": "T1053.005",
+        "atomic_id": "T1053.005-1",
+        "name": "Scheduled Task Startup Script",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1053.005/T1053.005.md"
+      }
+    ],
+    "wazuh/rules/service_creation.xml": [
+      {
+        "technique": "T1543.003",
+        "atomic_id": "T1543.003-1",
+        "name": "Modify Fax service to run PowerShell",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1543.003/T1543.003.md"
+      }
+    ],
+    "wazuh/rules/shadow_file_access.xml": [
+      {
+        "technique": "T1003.008",
+        "atomic_id": "T1003.008-1",
+        "name": "Access /etc/shadow (Linux)",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1003.008/T1003.008.md"
+      }
+    ],
+    "wazuh/rules/sql_injection_attempt.xml": [
+      {
+        "technique": "T1190",
+        "atomic_id": "T1190-1",
+        "name": "Exploit a public-facing app (synthetic)",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1190/T1190.md"
+      }
+    ],
+    "wazuh/rules/sudo_abuse.xml": [
+      {
+        "technique": "T1548.003",
+        "atomic_id": "T1548.003-1",
+        "name": "Sudo usage",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1548.003/T1548.003.md"
+      }
+    ],
+    "wazuh/rules/suspicious_curl_wget.xml": [
+      {
+        "technique": "T1105",
+        "atomic_id": "T1105-1",
+        "name": "rsync remote file copy (push)",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1105/T1105.md"
+      },
+      {
+        "technique": "T1105",
+        "atomic_id": "T1105-13",
+        "name": "Powershell Wget Execute",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1105/T1105.md"
+      }
+    ],
+    "wazuh/rules/win_ad_password_reset.xml": [
+      {
+        "technique": "T1098",
+        "atomic_id": "T1098-1",
+        "name": "Admin Account Manipulate",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1098/T1098.md"
+      }
+    ],
+    "wazuh/rules/win_ad_user_unlocked.xml": [
+      {
+        "technique": "T1098",
+        "atomic_id": "T1098-1",
+        "name": "Admin Account Manipulate",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1098/T1098.md"
+      }
+    ],
+    "wazuh/rules/win_registry_persistence_run.xml": [
+      {
+        "technique": "T1547.001",
+        "atomic_id": "T1547.001-1",
+        "name": "Reg Key Run",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1547.001/T1547.001.md"
+      }
+    ],
+    "wazuh/rules/win_registry_persistence_runonce.xml": [
+      {
+        "technique": "T1547.001",
+        "atomic_id": "T1547.001-1",
+        "name": "Reg Key Run",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1547.001/T1547.001.md"
+      }
+    ],
+    "wazuh/rules/win_suspicious_process_cmd_encoded.xml": [
+      {
+        "technique": "T1027",
+        "atomic_id": "T1027-1",
+        "name": "Decode Base64 Data into Script",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1027/T1027.md"
+      },
+      {
+        "technique": "T1059.001",
+        "atomic_id": "T1059.001-1",
+        "name": "Mimikatz via PowerShell",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1059.001/T1059.001.md"
+      },
+      {
+        "technique": "T1059.001",
+        "atomic_id": "T1059.001-7",
+        "name": "Powershell Invoke Mimikatz Reflection",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1059.001/T1059.001.md"
+      },
+      {
+        "technique": "T1059.003",
+        "atomic_id": "T1059.003-1",
+        "name": "Create and Execute Batch Script",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1059.003/T1059.003.md"
+      }
+    ],
+    "wazuh/rules/win_suspicious_process_lsass.xml": [
+      {
+        "technique": "T1003.001",
+        "atomic_id": "T1003.001-1",
+        "name": "Dump LSASS.exe Memory using ProcDump",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1003.001/T1003.001.md"
+      },
+      {
+        "technique": "T1003.001",
+        "atomic_id": "T1003.001-2",
+        "name": "Dump LSASS.exe Memory using comsvcs.dll",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1003.001/T1003.001.md"
+      },
+      {
+        "technique": "T1003.001",
+        "atomic_id": "T1003.001-7",
+        "name": "Dump LSASS with Mimikatz",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1003.001/T1003.001.md"
+      }
+    ],
+    "wazuh/rules/windows_defender_disabled.xml": [
+      {
+        "technique": "T1562.001",
+        "atomic_id": "T1562.001-1",
+        "name": "Disable Microsoft Defender Firewall",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1562.001/T1562.001.md"
+      },
+      {
+        "technique": "T1562.001",
+        "atomic_id": "T1562.001-3",
+        "name": "Disable Windows Defender Realtime Monitoring",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1562.001/T1562.001.md"
+      }
+    ],
+    "wazuh/rules/windows_firewall_modified.xml": [
+      {
+        "technique": "T1562.004",
+        "atomic_id": "T1562.004-1",
+        "name": "Disable Microsoft Defender Firewall",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1562.004/T1562.004.md"
+      }
+    ],
+    "wazuh/rules/xss_attempt.xml": [
+      {
+        "technique": "T1190",
+        "atomic_id": "T1190-1",
+        "name": "Exploit a public-facing app (synthetic)",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1190/T1190.md"
+      }
+    ],
+    "carbonblack/rules/cb_childproc_creation_bitsadmin_exe.json": [
+      {
+        "technique": "T1197",
+        "atomic_id": "T1197-1",
+        "name": "Bitsadmin Download (cmd)",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1197/T1197.md"
+      }
+    ],
+    "carbonblack/rules/cb_childproc_creation_certutil_exe.json": [
+      {
+        "technique": "T1105",
+        "atomic_id": "T1105-1",
+        "name": "rsync remote file copy (push)",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1105/T1105.md"
+      },
+      {
+        "technique": "T1105",
+        "atomic_id": "T1105-13",
+        "name": "Powershell Wget Execute",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1105/T1105.md"
+      },
+      {
+        "technique": "T1140",
+        "atomic_id": "T1140-1",
+        "name": "Deobfuscate/Decode Files Using certutil",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1140/T1140.md"
+      }
+    ],
+    "carbonblack/rules/cb_childproc_creation_cmd_exe.json": [
+      {
+        "technique": "T1059.003",
+        "atomic_id": "T1059.003-1",
+        "name": "Create and Execute Batch Script",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1059.003/T1059.003.md"
+      }
+    ],
+    "carbonblack/rules/cb_childproc_creation_mimikatz_exe.json": [
+      {
+        "technique": "T1003.001",
+        "atomic_id": "T1003.001-1",
+        "name": "Dump LSASS.exe Memory using ProcDump",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1003.001/T1003.001.md"
+      },
+      {
+        "technique": "T1003.001",
+        "atomic_id": "T1003.001-2",
+        "name": "Dump LSASS.exe Memory using comsvcs.dll",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1003.001/T1003.001.md"
+      },
+      {
+        "technique": "T1003.001",
+        "atomic_id": "T1003.001-7",
+        "name": "Dump LSASS with Mimikatz",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1003.001/T1003.001.md"
+      }
+    ],
+    "carbonblack/rules/cb_childproc_creation_mshta_exe.json": [
+      {
+        "technique": "T1218.005",
+        "atomic_id": "T1218.005-1",
+        "name": "Mshta Executes JavaScript Scheme via FileProtocolHandler",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1218.005/T1218.005.md"
+      }
+    ],
+    "carbonblack/rules/cb_childproc_creation_net_exe.json": [
+      {
+        "technique": "T1098",
+        "atomic_id": "T1098-1",
+        "name": "Admin Account Manipulate",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1098/T1098.md"
+      }
+    ],
+    "carbonblack/rules/cb_childproc_creation_powershell_exe.json": [
+      {
+        "technique": "T1059.001",
+        "atomic_id": "T1059.001-1",
+        "name": "Mimikatz via PowerShell",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1059.001/T1059.001.md"
+      },
+      {
+        "technique": "T1059.001",
+        "atomic_id": "T1059.001-7",
+        "name": "Powershell Invoke Mimikatz Reflection",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1059.001/T1059.001.md"
+      }
+    ],
+    "carbonblack/rules/cb_childproc_creation_procdump_exe.json": [
+      {
+        "technique": "T1003.001",
+        "atomic_id": "T1003.001-1",
+        "name": "Dump LSASS.exe Memory using ProcDump",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1003.001/T1003.001.md"
+      },
+      {
+        "technique": "T1003.001",
+        "atomic_id": "T1003.001-2",
+        "name": "Dump LSASS.exe Memory using comsvcs.dll",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1003.001/T1003.001.md"
+      },
+      {
+        "technique": "T1003.001",
+        "atomic_id": "T1003.001-7",
+        "name": "Dump LSASS with Mimikatz",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1003.001/T1003.001.md"
+      }
+    ],
+    "carbonblack/rules/cb_childproc_creation_rclone_exe.json": [
+      {
+        "technique": "T1567.002",
+        "atomic_id": "T1567.002-1",
+        "name": "Exfiltration to Cloud Storage using Rclone",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1567.002/T1567.002.md"
+      }
+    ],
+    "carbonblack/rules/cb_childproc_creation_regsvr32_exe.json": [
+      {
+        "technique": "T1218.010",
+        "atomic_id": "T1218.010-1",
+        "name": "Regsvr32 Local COM Scriptlet Execution",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1218.010/T1218.010.md"
+      }
+    ],
+    "carbonblack/rules/cb_childproc_creation_rundll32_exe.json": [
+      {
+        "technique": "T1218.011",
+        "atomic_id": "T1218.011-1",
+        "name": "Rundll32 execute JavaScript Remote Payload",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1218.011/T1218.011.md"
+      }
+    ],
+    "carbonblack/rules/cb_childproc_creation_schtasks_exe.json": [
+      {
+        "technique": "T1053.005",
+        "atomic_id": "T1053.005-1",
+        "name": "Scheduled Task Startup Script",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1053.005/T1053.005.md"
+      }
+    ],
+    "carbonblack/rules/cb_file_modification_bitsadmin_exe.json": [
+      {
+        "technique": "T1197",
+        "atomic_id": "T1197-1",
+        "name": "Bitsadmin Download (cmd)",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1197/T1197.md"
+      }
+    ],
+    "carbonblack/rules/cb_file_modification_certutil_exe.json": [
+      {
+        "technique": "T1105",
+        "atomic_id": "T1105-1",
+        "name": "rsync remote file copy (push)",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1105/T1105.md"
+      },
+      {
+        "technique": "T1105",
+        "atomic_id": "T1105-13",
+        "name": "Powershell Wget Execute",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1105/T1105.md"
+      },
+      {
+        "technique": "T1140",
+        "atomic_id": "T1140-1",
+        "name": "Deobfuscate/Decode Files Using certutil",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1140/T1140.md"
+      }
+    ],
+    "carbonblack/rules/cb_file_modification_cmd_exe.json": [
+      {
+        "technique": "T1059.003",
+        "atomic_id": "T1059.003-1",
+        "name": "Create and Execute Batch Script",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1059.003/T1059.003.md"
+      }
+    ],
+    "carbonblack/rules/cb_file_modification_mimikatz_exe.json": [
+      {
+        "technique": "T1003.001",
+        "atomic_id": "T1003.001-1",
+        "name": "Dump LSASS.exe Memory using ProcDump",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1003.001/T1003.001.md"
+      },
+      {
+        "technique": "T1003.001",
+        "atomic_id": "T1003.001-2",
+        "name": "Dump LSASS.exe Memory using comsvcs.dll",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1003.001/T1003.001.md"
+      },
+      {
+        "technique": "T1003.001",
+        "atomic_id": "T1003.001-7",
+        "name": "Dump LSASS with Mimikatz",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1003.001/T1003.001.md"
+      }
+    ],
+    "carbonblack/rules/cb_file_modification_powershell_exe.json": [
+      {
+        "technique": "T1059.001",
+        "atomic_id": "T1059.001-1",
+        "name": "Mimikatz via PowerShell",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1059.001/T1059.001.md"
+      },
+      {
+        "technique": "T1059.001",
+        "atomic_id": "T1059.001-7",
+        "name": "Powershell Invoke Mimikatz Reflection",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1059.001/T1059.001.md"
+      }
+    ],
+    "carbonblack/rules/cb_file_modification_procdump_exe.json": [
+      {
+        "technique": "T1003.001",
+        "atomic_id": "T1003.001-1",
+        "name": "Dump LSASS.exe Memory using ProcDump",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1003.001/T1003.001.md"
+      },
+      {
+        "technique": "T1003.001",
+        "atomic_id": "T1003.001-2",
+        "name": "Dump LSASS.exe Memory using comsvcs.dll",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1003.001/T1003.001.md"
+      },
+      {
+        "technique": "T1003.001",
+        "atomic_id": "T1003.001-7",
+        "name": "Dump LSASS with Mimikatz",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1003.001/T1003.001.md"
+      }
+    ],
+    "carbonblack/rules/cb_file_modification_regsvr32_exe.json": [
+      {
+        "technique": "T1218.010",
+        "atomic_id": "T1218.010-1",
+        "name": "Regsvr32 Local COM Scriptlet Execution",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1218.010/T1218.010.md"
+      }
+    ],
+    "carbonblack/rules/cb_file_modification_rundll32_exe.json": [
+      {
+        "technique": "T1218.011",
+        "atomic_id": "T1218.011-1",
+        "name": "Rundll32 execute JavaScript Remote Payload",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1218.011/T1218.011.md"
+      }
+    ],
+    "carbonblack/rules/cb_file_modification_schtasks_exe.json": [
+      {
+        "technique": "T1053.005",
+        "atomic_id": "T1053.005-1",
+        "name": "Scheduled Task Startup Script",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1053.005/T1053.005.md"
+      }
+    ],
+    "carbonblack/rules/cb_filemod_lsass_dump_dmp.json": [
+      {
+        "technique": "T1003.001",
+        "atomic_id": "T1003.001-1",
+        "name": "Dump LSASS.exe Memory using ProcDump",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1003.001/T1003.001.md"
+      },
+      {
+        "technique": "T1003.001",
+        "atomic_id": "T1003.001-2",
+        "name": "Dump LSASS.exe Memory using comsvcs.dll",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1003.001/T1003.001.md"
+      },
+      {
+        "technique": "T1003.001",
+        "atomic_id": "T1003.001-7",
+        "name": "Dump LSASS with Mimikatz",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1003.001/T1003.001.md"
+      }
+    ],
+    "carbonblack/rules/cb_netconn_dns_tunnel_like.json": [
+      {
+        "technique": "T1071.004",
+        "atomic_id": "T1071.004-1",
+        "name": "DNS Large Query Volume",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1071.004/T1071.004.md"
+      },
+      {
+        "technique": "T1572",
+        "atomic_id": "T1572-1",
+        "name": "DNS over HTTPS (DoH) Tunnel",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1572/T1572.md"
+      }
+    ],
+    "carbonblack/rules/cb_network_connection_bitsadmin_exe.json": [
+      {
+        "technique": "T1197",
+        "atomic_id": "T1197-1",
+        "name": "Bitsadmin Download (cmd)",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1197/T1197.md"
+      }
+    ],
+    "carbonblack/rules/cb_network_connection_certutil_exe.json": [
+      {
+        "technique": "T1105",
+        "atomic_id": "T1105-1",
+        "name": "rsync remote file copy (push)",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1105/T1105.md"
+      },
+      {
+        "technique": "T1105",
+        "atomic_id": "T1105-13",
+        "name": "Powershell Wget Execute",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1105/T1105.md"
+      },
+      {
+        "technique": "T1140",
+        "atomic_id": "T1140-1",
+        "name": "Deobfuscate/Decode Files Using certutil",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1140/T1140.md"
+      }
+    ],
+    "carbonblack/rules/cb_network_connection_cmd_exe.json": [
+      {
+        "technique": "T1059.003",
+        "atomic_id": "T1059.003-1",
+        "name": "Create and Execute Batch Script",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1059.003/T1059.003.md"
+      }
+    ],
+    "carbonblack/rules/cb_network_connection_mimikatz_exe.json": [
+      {
+        "technique": "T1003.001",
+        "atomic_id": "T1003.001-1",
+        "name": "Dump LSASS.exe Memory using ProcDump",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1003.001/T1003.001.md"
+      },
+      {
+        "technique": "T1003.001",
+        "atomic_id": "T1003.001-2",
+        "name": "Dump LSASS.exe Memory using comsvcs.dll",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1003.001/T1003.001.md"
+      },
+      {
+        "technique": "T1003.001",
+        "atomic_id": "T1003.001-7",
+        "name": "Dump LSASS with Mimikatz",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1003.001/T1003.001.md"
+      }
+    ],
+    "carbonblack/rules/cb_network_connection_powershell_exe.json": [
+      {
+        "technique": "T1059.001",
+        "atomic_id": "T1059.001-1",
+        "name": "Mimikatz via PowerShell",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1059.001/T1059.001.md"
+      },
+      {
+        "technique": "T1059.001",
+        "atomic_id": "T1059.001-7",
+        "name": "Powershell Invoke Mimikatz Reflection",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1059.001/T1059.001.md"
+      }
+    ],
+    "carbonblack/rules/cb_network_connection_procdump_exe.json": [
+      {
+        "technique": "T1003.001",
+        "atomic_id": "T1003.001-1",
+        "name": "Dump LSASS.exe Memory using ProcDump",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1003.001/T1003.001.md"
+      },
+      {
+        "technique": "T1003.001",
+        "atomic_id": "T1003.001-2",
+        "name": "Dump LSASS.exe Memory using comsvcs.dll",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1003.001/T1003.001.md"
+      },
+      {
+        "technique": "T1003.001",
+        "atomic_id": "T1003.001-7",
+        "name": "Dump LSASS with Mimikatz",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1003.001/T1003.001.md"
+      }
+    ],
+    "carbonblack/rules/cb_network_connection_regsvr32_exe.json": [
+      {
+        "technique": "T1218.010",
+        "atomic_id": "T1218.010-1",
+        "name": "Regsvr32 Local COM Scriptlet Execution",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1218.010/T1218.010.md"
+      }
+    ],
+    "carbonblack/rules/cb_network_connection_rundll32_exe.json": [
+      {
+        "technique": "T1218.011",
+        "atomic_id": "T1218.011-1",
+        "name": "Rundll32 execute JavaScript Remote Payload",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1218.011/T1218.011.md"
+      }
+    ],
+    "carbonblack/rules/cb_network_connection_schtasks_exe.json": [
+      {
+        "technique": "T1053.005",
+        "atomic_id": "T1053.005-1",
+        "name": "Scheduled Task Startup Script",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1053.005/T1053.005.md"
+      }
+    ],
+    "carbonblack/rules/cb_process_creation_bitsadmin_exe.json": [
+      {
+        "technique": "T1197",
+        "atomic_id": "T1197-1",
+        "name": "Bitsadmin Download (cmd)",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1197/T1197.md"
+      }
+    ],
+    "carbonblack/rules/cb_process_creation_certutil_exe.json": [
+      {
+        "technique": "T1105",
+        "atomic_id": "T1105-1",
+        "name": "rsync remote file copy (push)",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1105/T1105.md"
+      },
+      {
+        "technique": "T1105",
+        "atomic_id": "T1105-13",
+        "name": "Powershell Wget Execute",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1105/T1105.md"
+      },
+      {
+        "technique": "T1140",
+        "atomic_id": "T1140-1",
+        "name": "Deobfuscate/Decode Files Using certutil",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1140/T1140.md"
+      }
+    ],
+    "carbonblack/rules/cb_process_creation_cmd_exe.json": [
+      {
+        "technique": "T1059.003",
+        "atomic_id": "T1059.003-1",
+        "name": "Create and Execute Batch Script",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1059.003/T1059.003.md"
+      }
+    ],
+    "carbonblack/rules/cb_process_creation_mimikatz_exe.json": [
+      {
+        "technique": "T1003.001",
+        "atomic_id": "T1003.001-1",
+        "name": "Dump LSASS.exe Memory using ProcDump",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1003.001/T1003.001.md"
+      },
+      {
+        "technique": "T1003.001",
+        "atomic_id": "T1003.001-2",
+        "name": "Dump LSASS.exe Memory using comsvcs.dll",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1003.001/T1003.001.md"
+      },
+      {
+        "technique": "T1003.001",
+        "atomic_id": "T1003.001-7",
+        "name": "Dump LSASS with Mimikatz",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1003.001/T1003.001.md"
+      }
+    ],
+    "carbonblack/rules/cb_process_creation_powershell_exe.json": [
+      {
+        "technique": "T1059.001",
+        "atomic_id": "T1059.001-1",
+        "name": "Mimikatz via PowerShell",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1059.001/T1059.001.md"
+      },
+      {
+        "technique": "T1059.001",
+        "atomic_id": "T1059.001-7",
+        "name": "Powershell Invoke Mimikatz Reflection",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1059.001/T1059.001.md"
+      }
+    ],
+    "carbonblack/rules/cb_process_creation_procdump_exe.json": [
+      {
+        "technique": "T1003.001",
+        "atomic_id": "T1003.001-1",
+        "name": "Dump LSASS.exe Memory using ProcDump",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1003.001/T1003.001.md"
+      },
+      {
+        "technique": "T1003.001",
+        "atomic_id": "T1003.001-2",
+        "name": "Dump LSASS.exe Memory using comsvcs.dll",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1003.001/T1003.001.md"
+      },
+      {
+        "technique": "T1003.001",
+        "atomic_id": "T1003.001-7",
+        "name": "Dump LSASS with Mimikatz",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1003.001/T1003.001.md"
+      }
+    ],
+    "carbonblack/rules/cb_process_creation_regsvr32_exe.json": [
+      {
+        "technique": "T1218.010",
+        "atomic_id": "T1218.010-1",
+        "name": "Regsvr32 Local COM Scriptlet Execution",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1218.010/T1218.010.md"
+      }
+    ],
+    "carbonblack/rules/cb_process_creation_rundll32_exe.json": [
+      {
+        "technique": "T1218.011",
+        "atomic_id": "T1218.011-1",
+        "name": "Rundll32 execute JavaScript Remote Payload",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1218.011/T1218.011.md"
+      }
+    ],
+    "carbonblack/rules/cb_process_creation_schtasks_exe.json": [
+      {
+        "technique": "T1053.005",
+        "atomic_id": "T1053.005-1",
+        "name": "Scheduled Task Startup Script",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1053.005/T1053.005.md"
+      }
+    ],
+    "carbonblack/rules/cb_registry_modification_bitsadmin_exe.json": [
+      {
+        "technique": "T1197",
+        "atomic_id": "T1197-1",
+        "name": "Bitsadmin Download (cmd)",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1197/T1197.md"
+      }
+    ],
+    "carbonblack/rules/cb_registry_modification_certutil_exe.json": [
+      {
+        "technique": "T1105",
+        "atomic_id": "T1105-1",
+        "name": "rsync remote file copy (push)",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1105/T1105.md"
+      },
+      {
+        "technique": "T1105",
+        "atomic_id": "T1105-13",
+        "name": "Powershell Wget Execute",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1105/T1105.md"
+      },
+      {
+        "technique": "T1140",
+        "atomic_id": "T1140-1",
+        "name": "Deobfuscate/Decode Files Using certutil",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1140/T1140.md"
+      }
+    ],
+    "carbonblack/rules/cb_registry_modification_cmd_exe.json": [
+      {
+        "technique": "T1059.003",
+        "atomic_id": "T1059.003-1",
+        "name": "Create and Execute Batch Script",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1059.003/T1059.003.md"
+      }
+    ],
+    "carbonblack/rules/cb_registry_modification_mimikatz_exe.json": [
+      {
+        "technique": "T1003.001",
+        "atomic_id": "T1003.001-1",
+        "name": "Dump LSASS.exe Memory using ProcDump",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1003.001/T1003.001.md"
+      },
+      {
+        "technique": "T1003.001",
+        "atomic_id": "T1003.001-2",
+        "name": "Dump LSASS.exe Memory using comsvcs.dll",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1003.001/T1003.001.md"
+      },
+      {
+        "technique": "T1003.001",
+        "atomic_id": "T1003.001-7",
+        "name": "Dump LSASS with Mimikatz",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1003.001/T1003.001.md"
+      }
+    ],
+    "carbonblack/rules/cb_registry_modification_powershell_exe.json": [
+      {
+        "technique": "T1059.001",
+        "atomic_id": "T1059.001-1",
+        "name": "Mimikatz via PowerShell",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1059.001/T1059.001.md"
+      },
+      {
+        "technique": "T1059.001",
+        "atomic_id": "T1059.001-7",
+        "name": "Powershell Invoke Mimikatz Reflection",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1059.001/T1059.001.md"
+      }
+    ],
+    "carbonblack/rules/cb_registry_modification_procdump_exe.json": [
+      {
+        "technique": "T1003.001",
+        "atomic_id": "T1003.001-1",
+        "name": "Dump LSASS.exe Memory using ProcDump",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1003.001/T1003.001.md"
+      },
+      {
+        "technique": "T1003.001",
+        "atomic_id": "T1003.001-2",
+        "name": "Dump LSASS.exe Memory using comsvcs.dll",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1003.001/T1003.001.md"
+      },
+      {
+        "technique": "T1003.001",
+        "atomic_id": "T1003.001-7",
+        "name": "Dump LSASS with Mimikatz",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1003.001/T1003.001.md"
+      }
+    ],
+    "carbonblack/rules/cb_registry_modification_regsvr32_exe.json": [
+      {
+        "technique": "T1218.010",
+        "atomic_id": "T1218.010-1",
+        "name": "Regsvr32 Local COM Scriptlet Execution",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1218.010/T1218.010.md"
+      }
+    ],
+    "carbonblack/rules/cb_registry_modification_rundll32_exe.json": [
+      {
+        "technique": "T1218.011",
+        "atomic_id": "T1218.011-1",
+        "name": "Rundll32 execute JavaScript Remote Payload",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1218.011/T1218.011.md"
+      }
+    ],
+    "carbonblack/rules/cb_registry_modification_schtasks_exe.json": [
+      {
+        "technique": "T1053.005",
+        "atomic_id": "T1053.005-1",
+        "name": "Scheduled Task Startup Script",
+        "url": "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1053.005/T1053.005.md"
+      }
+    ]
+  },
+  "by_technique": {
+    "T1098": [
+      "sigma/cloud/cloud_aws_create_access_key.yml",
+      "sigma/cloud/cloud_gcp_iam_suspicious_role_grant.yml",
+      "sigma/windows/win_local_admin_group_add.yml",
+      "splunk/cloud/cloud_gcp_iam_suspicious_role_grant.spl",
+      "microsoft-sentinel/kql_042_acct_mgr_user_enabled.kql",
+      "microsoft-sentinel/kql_043_acct_mgr_user_pwd_reset.kql",
+      "microsoft-sentinel/kql_059_logon_unlock.kql",
+      "wazuh/rules/aws_iam_user_created.xml",
+      "wazuh/rules/gcp_iam_role_grant.xml",
+      "wazuh/rules/group_modification.xml",
+      "wazuh/rules/lnx_passwd_file_modified.xml",
+      "wazuh/rules/lnx_shadow_file_modified.xml",
+      "wazuh/rules/win_ad_password_reset.xml",
+      "wazuh/rules/win_ad_user_unlocked.xml",
+      "carbonblack/rules/cb_childproc_creation_net_exe.json"
+    ],
+    "T1027": [
+      "sigma/linux/lnx_base64_decoding.yml",
+      "microsoft-sentinel/kql_endpoint_win_powershell_suspicious_encoded_command.kql",
+      "wazuh/rules/base64_decoding.xml",
+      "wazuh/rules/win_suspicious_process_cmd_encoded.xml"
+    ],
+    "T1136.001": [
+      "sigma/linux/lnx_new_user_added.yml",
+      "microsoft-sentinel/kql_041_acct_mgr_user_created.kql",
+      "wazuh/rules/account_creation.xml"
+    ],
+    "T1548.003": [
+      "sigma/linux/lnx_sudoers_modification.yml",
+      "wazuh/rules/sudo_abuse.xml"
+    ],
+    "T1053.003": [
+      "sigma/linux/lnx_suspicious_cron_modification.yml",
+      "splunk/linux/lnx_suspicious_cron_modification.spl",
+      "wazuh/rules/cron_job_modification.xml",
+      "wazuh/rules/lnx_crontab_creation.xml"
+    ],
+    "T1059.004": [
+      "sigma/linux/lnx_suspicious_curl_pipe_bash.yml",
+      "elastic/endpoint/linux/lnx_suspicious_curl_wget.ndjson",
+      "elastic/endpoint/linux/lnx_suspicious_netcat.ndjson",
+      "elastic/endpoint/linux/lnx_suspicious_shell_meta.ndjson",
+      "wazuh/rules/netcat_reverse_shell.xml"
+    ],
+    "T1105": [
+      "sigma/linux/lnx_suspicious_wget_curl_to_tmp.yml",
+      "sigma/linux/lnx_suspicious_wget_curl_to_tmp.yml",
+      "sigma/windows/win_suspicious_certutil_download.yml",
+      "sigma/windows/win_suspicious_certutil_download.yml",
+      "elastic/endpoint/general/IOCs (ip) to detect Curly COMrades A New Threat Actor Targeting Geopolitical Hotbeds.ndjson",
+      "elastic/endpoint/general/IOCs (ip) to detect Curly COMrades A New Threat Actor Targeting Geopolitical Hotbeds.ndjson",
+      "elastic/endpoint/general/Remote Access Tool - TacticalRMM Agent Registration to Potentially Attacker-Controlled Server.ndjson",
+      "elastic/endpoint/general/Remote Access Tool - TacticalRMM Agent Registration to Potentially Attacker-Controlled Server.ndjson",
+      "elastic/endpoint/linux/lnx_suspicious_curl_wget.ndjson",
+      "elastic/endpoint/linux/lnx_suspicious_curl_wget.ndjson",
+      "elastic/endpoint/windows/win_suspicious_certutil_download.ndjson",
+      "elastic/endpoint/windows/win_suspicious_certutil_download.ndjson",
+      "elastic/endpoint/windows/win_suspicious_powershell_download.ndjson",
+      "elastic/endpoint/windows/win_suspicious_powershell_download.ndjson",
+      "splunk/linux/lnx_suspicious_wget_curl.spl",
+      "splunk/linux/lnx_suspicious_wget_curl.spl",
+      "splunk/windows/win_suspicious_certutil_download.spl",
+      "splunk/windows/win_suspicious_certutil_download.spl",
+      "microsoft-sentinel/kql_007_proc_exec_certutil.kql",
+      "microsoft-sentinel/kql_007_proc_exec_certutil.kql",
+      "microsoft-sentinel/kql_008_proc_exec_bitsadmin.kql",
+      "microsoft-sentinel/kql_008_proc_exec_bitsadmin.kql",
+      "microsoft-sentinel/kql_031_file_create_exe_temp.kql",
+      "microsoft-sentinel/kql_031_file_create_exe_temp.kql",
+      "wazuh/rules/net_suspicious_user_agent_curl.xml",
+      "wazuh/rules/net_suspicious_user_agent_curl.xml",
+      "wazuh/rules/net_suspicious_user_agent_wget.xml",
+      "wazuh/rules/net_suspicious_user_agent_wget.xml",
+      "wazuh/rules/suspicious_curl_wget.xml",
+      "wazuh/rules/suspicious_curl_wget.xml",
+      "carbonblack/rules/cb_childproc_creation_certutil_exe.json",
+      "carbonblack/rules/cb_childproc_creation_certutil_exe.json",
+      "carbonblack/rules/cb_file_modification_certutil_exe.json",
+      "carbonblack/rules/cb_file_modification_certutil_exe.json",
+      "carbonblack/rules/cb_network_connection_certutil_exe.json",
+      "carbonblack/rules/cb_network_connection_certutil_exe.json",
+      "carbonblack/rules/cb_process_creation_certutil_exe.json",
+      "carbonblack/rules/cb_process_creation_certutil_exe.json",
+      "carbonblack/rules/cb_registry_modification_certutil_exe.json",
+      "carbonblack/rules/cb_registry_modification_certutil_exe.json"
+    ],
+    "T1071.004": [
+      "sigma/network/net_dns_suspicious_tunnel.yml",
+      "sigma/network/net_susp_dns_many_nxdomain.yml",
+      "elastic/endpoint/network/net_dns_tunneling_entropy.ndjson",
+      "elastic/network/network_rules.ndjson",
+      "splunk/network/net_dns_suspicious_tunnel.spl",
+      "microsoft-sentinel/kql_017_net_conn_dns_tunnel.kql",
+      "microsoft-sentinel/kql_net_dns_suspicious_tunnel.kql",
+      "wazuh/rules/net_dns_tunneling_suspicion.xml",
+      "carbonblack/rules/cb_netconn_dns_tunnel_like.json"
+    ],
+    "T1003.001": [
+      "sigma/windows/win_lsass_dump_via_procdump.yml",
+      "sigma/windows/win_lsass_dump_via_procdump.yml",
+      "sigma/windows/win_lsass_dump_via_procdump.yml",
+      "sigma/windows/win_mimikatz_command.yml",
+      "sigma/windows/win_mimikatz_command.yml",
+      "sigma/windows/win_mimikatz_command.yml",
+      "sigma/windows/win_suspicious_comsvcs_lsass_dump.yml",
+      "sigma/windows/win_suspicious_comsvcs_lsass_dump.yml",
+      "sigma/windows/win_suspicious_comsvcs_lsass_dump.yml",
+      "microsoft-sentinel/kql_029_reg_mod_wdigest.kql",
+      "microsoft-sentinel/kql_029_reg_mod_wdigest.kql",
+      "microsoft-sentinel/kql_029_reg_mod_wdigest.kql",
+      "microsoft-sentinel/kql_084_obj_access_lsass.kql",
+      "microsoft-sentinel/kql_084_obj_access_lsass.kql",
+      "microsoft-sentinel/kql_084_obj_access_lsass.kql",
+      "wazuh/rules/mimikatz_usage.xml",
+      "wazuh/rules/mimikatz_usage.xml",
+      "wazuh/rules/mimikatz_usage.xml",
+      "wazuh/rules/win_suspicious_process_lsass.xml",
+      "wazuh/rules/win_suspicious_process_lsass.xml",
+      "wazuh/rules/win_suspicious_process_lsass.xml",
+      "carbonblack/rules/cb_childproc_creation_mimikatz_exe.json",
+      "carbonblack/rules/cb_childproc_creation_mimikatz_exe.json",
+      "carbonblack/rules/cb_childproc_creation_mimikatz_exe.json",
+      "carbonblack/rules/cb_childproc_creation_procdump_exe.json",
+      "carbonblack/rules/cb_childproc_creation_procdump_exe.json",
+      "carbonblack/rules/cb_childproc_creation_procdump_exe.json",
+      "carbonblack/rules/cb_file_modification_mimikatz_exe.json",
+      "carbonblack/rules/cb_file_modification_mimikatz_exe.json",
+      "carbonblack/rules/cb_file_modification_mimikatz_exe.json",
+      "carbonblack/rules/cb_file_modification_procdump_exe.json",
+      "carbonblack/rules/cb_file_modification_procdump_exe.json",
+      "carbonblack/rules/cb_file_modification_procdump_exe.json",
+      "carbonblack/rules/cb_filemod_lsass_dump_dmp.json",
+      "carbonblack/rules/cb_filemod_lsass_dump_dmp.json",
+      "carbonblack/rules/cb_filemod_lsass_dump_dmp.json",
+      "carbonblack/rules/cb_network_connection_mimikatz_exe.json",
+      "carbonblack/rules/cb_network_connection_mimikatz_exe.json",
+      "carbonblack/rules/cb_network_connection_mimikatz_exe.json",
+      "carbonblack/rules/cb_network_connection_procdump_exe.json",
+      "carbonblack/rules/cb_network_connection_procdump_exe.json",
+      "carbonblack/rules/cb_network_connection_procdump_exe.json",
+      "carbonblack/rules/cb_process_creation_mimikatz_exe.json",
+      "carbonblack/rules/cb_process_creation_mimikatz_exe.json",
+      "carbonblack/rules/cb_process_creation_mimikatz_exe.json",
+      "carbonblack/rules/cb_process_creation_procdump_exe.json",
+      "carbonblack/rules/cb_process_creation_procdump_exe.json",
+      "carbonblack/rules/cb_process_creation_procdump_exe.json",
+      "carbonblack/rules/cb_registry_modification_mimikatz_exe.json",
+      "carbonblack/rules/cb_registry_modification_mimikatz_exe.json",
+      "carbonblack/rules/cb_registry_modification_mimikatz_exe.json",
+      "carbonblack/rules/cb_registry_modification_procdump_exe.json",
+      "carbonblack/rules/cb_registry_modification_procdump_exe.json",
+      "carbonblack/rules/cb_registry_modification_procdump_exe.json"
+    ],
+    "T1059.001": [
+      "sigma/windows/win_powershell_suspicious_download.yml",
+      "sigma/windows/win_powershell_suspicious_download.yml",
+      "sigma/windows/win_powershell_suspicious_encoded_command.yml",
+      "sigma/windows/win_powershell_suspicious_encoded_command.yml",
+      "elastic/endpoint/general/Defense Evasion \u2013 Encoded PowerShell Command.ndjson",
+      "elastic/endpoint/general/Defense Evasion \u2013 Encoded PowerShell Command.ndjson",
+      "elastic/endpoint/general/Potential Exploitation of CrushFTP RCE Vulnerability (CVE-2025-54309).ndjson",
+      "elastic/endpoint/general/Potential Exploitation of CrushFTP RCE Vulnerability (CVE-2025-54309).ndjson",
+      "elastic/endpoint/general/endpoint_rules.ndjson",
+      "elastic/endpoint/general/endpoint_rules.ndjson",
+      "elastic/endpoint/windows/win_suspicious_powershell_download.ndjson",
+      "elastic/endpoint/windows/win_suspicious_powershell_download.ndjson",
+      "splunk/windows/win_powershell_suspicious_encoded_command.spl",
+      "splunk/windows/win_powershell_suspicious_encoded_command.spl",
+      "microsoft-sentinel/kql_002_proc_exec_powershell.kql",
+      "microsoft-sentinel/kql_002_proc_exec_powershell.kql",
+      "microsoft-sentinel/kql_034_file_create_ps1.kql",
+      "microsoft-sentinel/kql_034_file_create_ps1.kql",
+      "microsoft-sentinel/kql_endpoint_win_powershell_suspicious_encoded_command.kql",
+      "microsoft-sentinel/kql_endpoint_win_powershell_suspicious_encoded_command.kql",
+      "wazuh/rules/powershell_encoded_command.xml",
+      "wazuh/rules/powershell_encoded_command.xml",
+      "wazuh/rules/win_suspicious_process_cmd_encoded.xml",
+      "wazuh/rules/win_suspicious_process_cmd_encoded.xml",
+      "carbonblack/rules/cb_childproc_creation_powershell_exe.json",
+      "carbonblack/rules/cb_childproc_creation_powershell_exe.json",
+      "carbonblack/rules/cb_file_modification_powershell_exe.json",
+      "carbonblack/rules/cb_file_modification_powershell_exe.json",
+      "carbonblack/rules/cb_network_connection_powershell_exe.json",
+      "carbonblack/rules/cb_network_connection_powershell_exe.json",
+      "carbonblack/rules/cb_process_creation_powershell_exe.json",
+      "carbonblack/rules/cb_process_creation_powershell_exe.json",
+      "carbonblack/rules/cb_registry_modification_powershell_exe.json",
+      "carbonblack/rules/cb_registry_modification_powershell_exe.json"
+    ],
+    "T1053.005": [
+      "sigma/windows/win_schtasks_create.yml",
+      "microsoft-sentinel/kql_009_proc_exec_schtasks.kql",
+      "microsoft-sentinel/kql_061_schtask_created.kql",
+      "microsoft-sentinel/kql_062_schtask_deleted.kql",
+      "microsoft-sentinel/kql_063_schtask_enabled.kql",
+      "microsoft-sentinel/kql_064_schtask_disabled.kql",
+      "microsoft-sentinel/kql_065_schtask_updated.kql",
+      "microsoft-sentinel/kql_066_schtask_suspicious_name.kql",
+      "microsoft-sentinel/kql_067_schtask_suspicious_action.kql",
+      "microsoft-sentinel/kql_068_schtask_hidden.kql",
+      "microsoft-sentinel/kql_069_schtask_system_context.kql",
+      "microsoft-sentinel/kql_070_schtask_network_trigger.kql",
+      "wazuh/rules/schtasks_creation.xml",
+      "carbonblack/rules/cb_childproc_creation_schtasks_exe.json",
+      "carbonblack/rules/cb_file_modification_schtasks_exe.json",
+      "carbonblack/rules/cb_network_connection_schtasks_exe.json",
+      "carbonblack/rules/cb_process_creation_schtasks_exe.json",
+      "carbonblack/rules/cb_registry_modification_schtasks_exe.json"
+    ],
+    "T1070.001": [
+      "sigma/windows/win_security_log_cleared.yml",
+      "elastic/endpoint/general/Defense Evasion \u2013 Event Log Cleared Wevtutil.ndjson",
+      "microsoft-sentinel/kql_089_obj_access_event_log.kql"
+    ],
+    "T1490": [
+      "sigma/windows/win_shadow_copies_deletion.yml",
+      "elastic/endpoint/general/Windows Recovery Environment Disabled Via Reagentc.ndjson",
+      "elastic/endpoint/windows/win_ransomware_shadow_copy.ndjson",
+      "splunk/windows/win_shadow_copies_deletion.spl",
+      "microsoft-sentinel/kql_085_obj_access_shadow_copy.kql",
+      "microsoft-sentinel/kql_086_obj_access_backup.kql"
+    ],
+    "T1218.005": [
+      "sigma/windows/win_suspicious_mshta_execution.yml",
+      "splunk/windows/win_suspicious_mshta_execution.spl",
+      "carbonblack/rules/cb_childproc_creation_mshta_exe.json"
+    ],
+    "T1486": [
+      "elastic/endpoint/general/FunkLocker Ransomware File Creation.ndjson"
+    ],
+    "T1059.003": [
+      "elastic/endpoint/general/Potential Exploitation of CrushFTP RCE Vulnerability (CVE-2025-54309).ndjson",
+      "elastic/endpoint/general/Potential SAP NetWeaver Webshell Creation.ndjson",
+      "elastic/endpoint/general/Suspicious Child Process of SAP NetWeaver - Linux.ndjson",
+      "microsoft-sentinel/kql_001_proc_exec_cmd.kql",
+      "microsoft-sentinel/kql_036_file_create_bat.kql",
+      "wazuh/rules/win_suspicious_process_cmd_encoded.xml",
+      "carbonblack/rules/cb_childproc_creation_cmd_exe.json",
+      "carbonblack/rules/cb_file_modification_cmd_exe.json",
+      "carbonblack/rules/cb_network_connection_cmd_exe.json",
+      "carbonblack/rules/cb_process_creation_cmd_exe.json",
+      "carbonblack/rules/cb_registry_modification_cmd_exe.json"
+    ],
+    "T1190": [
+      "elastic/endpoint/general/Potential Exploitation of CrushFTP RCE Vulnerability (CVE-2025-54309).ndjson",
+      "elastic/endpoint/general/Potential SAP NetWeaver Webshell Creation.ndjson",
+      "elastic/endpoint/general/Suspicious Child Process of SAP NetWeaver - Linux.ndjson",
+      "wazuh/rules/apache_error_log_spike.xml",
+      "wazuh/rules/directory_traversal.xml",
+      "wazuh/rules/nginx_error_log_spike.xml",
+      "wazuh/rules/sql_injection_attempt.xml",
+      "wazuh/rules/xss_attempt.xml"
+    ],
+    "T1562.001": [
+      "elastic/endpoint/windows/win_reg_disable_defender.ndjson",
+      "elastic/endpoint/windows/win_reg_disable_defender.ndjson",
+      "splunk/windows/win_suspicious_taskkill.spl",
+      "splunk/windows/win_suspicious_taskkill.spl",
+      "microsoft-sentinel/kql_025_reg_mod_defender.kql",
+      "microsoft-sentinel/kql_025_reg_mod_defender.kql",
+      "microsoft-sentinel/kql_080_service_disabled.kql",
+      "microsoft-sentinel/kql_080_service_disabled.kql",
+      "wazuh/rules/app_apache_config_changed.xml",
+      "wazuh/rules/app_apache_config_changed.xml",
+      "wazuh/rules/app_docker_config_changed.xml",
+      "wazuh/rules/app_docker_config_changed.xml",
+      "wazuh/rules/app_gitlab_config_changed.xml",
+      "wazuh/rules/app_gitlab_config_changed.xml",
+      "wazuh/rules/app_jenkins_config_changed.xml",
+      "wazuh/rules/app_jenkins_config_changed.xml",
+      "wazuh/rules/app_kubernetes_config_changed.xml",
+      "wazuh/rules/app_kubernetes_config_changed.xml",
+      "wazuh/rules/app_mongodb_config_changed.xml",
+      "wazuh/rules/app_mongodb_config_changed.xml",
+      "wazuh/rules/app_mysql_config_changed.xml",
+      "wazuh/rules/app_mysql_config_changed.xml",
+      "wazuh/rules/app_nginx_config_changed.xml",
+      "wazuh/rules/app_nginx_config_changed.xml",
+      "wazuh/rules/app_postgres_config_changed.xml",
+      "wazuh/rules/app_postgres_config_changed.xml",
+      "wazuh/rules/app_redis_config_changed.xml",
+      "wazuh/rules/app_redis_config_changed.xml",
+      "wazuh/rules/lnx_systemctl_disable_service.xml",
+      "wazuh/rules/lnx_systemctl_disable_service.xml",
+      "wazuh/rules/windows_defender_disabled.xml",
+      "wazuh/rules/windows_defender_disabled.xml"
+    ],
+    "T1197": [
+      "elastic/endpoint/windows/win_suspicious_bitsadmin.ndjson",
+      "microsoft-sentinel/kql_008_proc_exec_bitsadmin.kql",
+      "carbonblack/rules/cb_childproc_creation_bitsadmin_exe.json",
+      "carbonblack/rules/cb_file_modification_bitsadmin_exe.json",
+      "carbonblack/rules/cb_network_connection_bitsadmin_exe.json",
+      "carbonblack/rules/cb_process_creation_bitsadmin_exe.json",
+      "carbonblack/rules/cb_registry_modification_bitsadmin_exe.json"
+    ],
+    "T1548.002": [
+      "elastic/endpoint/windows/win_uac_bypass_fodhelper.ndjson",
+      "microsoft-sentinel/kql_026_reg_mod_uac.kql"
+    ],
+    "T1003.008": [
+      "splunk/linux/lnx_suspicious_passwd_mod.spl",
+      "wazuh/rules/lnx_passwd_file_modified.xml",
+      "wazuh/rules/lnx_shadow_file_modified.xml",
+      "wazuh/rules/shadow_file_access.xml"
+    ],
+    "T1218.010": [
+      "splunk/windows/win_suspicious_regsvr32.spl",
+      "microsoft-sentinel/kql_006_proc_exec_regsvr32.kql",
+      "carbonblack/rules/cb_childproc_creation_regsvr32_exe.json",
+      "carbonblack/rules/cb_file_modification_regsvr32_exe.json",
+      "carbonblack/rules/cb_network_connection_regsvr32_exe.json",
+      "carbonblack/rules/cb_process_creation_regsvr32_exe.json",
+      "carbonblack/rules/cb_registry_modification_regsvr32_exe.json"
+    ],
+    "T1218.011": [
+      "splunk/windows/win_suspicious_rundll32_net.spl",
+      "microsoft-sentinel/kql_005_proc_exec_rundll32.kql",
+      "carbonblack/rules/cb_childproc_creation_rundll32_exe.json",
+      "carbonblack/rules/cb_file_modification_rundll32_exe.json",
+      "carbonblack/rules/cb_network_connection_rundll32_exe.json",
+      "carbonblack/rules/cb_process_creation_rundll32_exe.json",
+      "carbonblack/rules/cb_registry_modification_rundll32_exe.json"
+    ],
+    "T1543.003": [
+      "splunk/windows/win_suspicious_sc_create.spl",
+      "microsoft-sentinel/kql_023_reg_mod_services.kql",
+      "microsoft-sentinel/kql_033_file_create_sys.kql",
+      "microsoft-sentinel/kql_071_service_installed.kql",
+      "microsoft-sentinel/kql_072_service_started.kql",
+      "microsoft-sentinel/kql_076_service_suspicious_path.kql",
+      "microsoft-sentinel/kql_077_service_suspicious_name.kql",
+      "microsoft-sentinel/kql_078_service_changed_config.kql",
+      "microsoft-sentinel/kql_079_service_deleted.kql",
+      "microsoft-sentinel/kql_080_service_disabled.kql",
+      "wazuh/rules/service_creation.xml"
+    ],
+    "T1140": [
+      "microsoft-sentinel/kql_007_proc_exec_certutil.kql",
+      "carbonblack/rules/cb_childproc_creation_certutil_exe.json",
+      "carbonblack/rules/cb_file_modification_certutil_exe.json",
+      "carbonblack/rules/cb_network_connection_certutil_exe.json",
+      "carbonblack/rules/cb_process_creation_certutil_exe.json",
+      "carbonblack/rules/cb_registry_modification_certutil_exe.json"
+    ],
+    "T1571": [
+      "microsoft-sentinel/kql_011_net_conn_suspicious_port.kql",
+      "wazuh/rules/net_suspicious_port_4444.xml"
+    ],
+    "T1572": [
+      "microsoft-sentinel/kql_017_net_conn_dns_tunnel.kql",
+      "microsoft-sentinel/kql_net_dns_suspicious_tunnel.kql",
+      "wazuh/rules/net_dns_tunneling_suspicion.xml",
+      "carbonblack/rules/cb_netconn_dns_tunnel_like.json"
+    ],
+    "T1547.001": [
+      "microsoft-sentinel/kql_021_reg_mod_run_key.kql",
+      "microsoft-sentinel/kql_022_reg_mod_runonce_key.kql",
+      "wazuh/rules/win_registry_persistence_run.xml",
+      "wazuh/rules/win_registry_persistence_runonce.xml"
+    ],
+    "T1562.004": [
+      "microsoft-sentinel/kql_024_reg_mod_firewall.kql",
+      "microsoft-sentinel/kql_095_misc_cloud_fw_changed.kql",
+      "wazuh/rules/net_firewall_rule_added.xml",
+      "wazuh/rules/net_firewall_rule_deleted.xml",
+      "wazuh/rules/windows_firewall_modified.xml"
+    ],
+    "T1110.001": [
+      "microsoft-sentinel/kql_051_logon_failed.kql",
+      "wazuh/rules/net_ssh_failed_root_login.xml"
+    ],
+    "T1078": [
+      "microsoft-sentinel/kql_052_logon_success.kql",
+      "microsoft-sentinel/kql_053_logon_explicit.kql",
+      "microsoft-sentinel/kql_054_logon_special.kql",
+      "microsoft-sentinel/kql_055_logon_rdp.kql",
+      "microsoft-sentinel/kql_057_logon_batch.kql",
+      "microsoft-sentinel/kql_058_logon_service.kql",
+      "microsoft-sentinel/kql_069_schtask_system_context.kql",
+      "wazuh/rules/app_apache_unauthorized_access.xml",
+      "wazuh/rules/app_docker_unauthorized_access.xml",
+      "wazuh/rules/app_gitlab_unauthorized_access.xml",
+      "wazuh/rules/app_jenkins_unauthorized_access.xml",
+      "wazuh/rules/app_kubernetes_unauthorized_access.xml",
+      "wazuh/rules/app_mongodb_unauthorized_access.xml",
+      "wazuh/rules/app_mysql_unauthorized_access.xml",
+      "wazuh/rules/app_nginx_unauthorized_access.xml",
+      "wazuh/rules/app_postgres_unauthorized_access.xml",
+      "wazuh/rules/app_redis_unauthorized_access.xml",
+      "wazuh/rules/aws_s3_bucket_public_access.xml",
+      "wazuh/rules/lnx_failed_su_usage.xml",
+      "wazuh/rules/net_ftp_anonymous_login.xml"
+    ],
+    "T1070.003": [
+      "wazuh/rules/clear_linux_history.xml",
+      "wazuh/rules/lnx_suspicious_history_deletion.xml"
+    ],
+    "T1567.002": [
+      "carbonblack/rules/cb_childproc_creation_rclone_exe.json"
+    ]
+  }
+}

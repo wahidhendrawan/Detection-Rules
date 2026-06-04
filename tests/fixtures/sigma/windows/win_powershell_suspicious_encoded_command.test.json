@@ -1,0 +1,50 @@
+{
+  "rule": "sigma/windows/win_powershell_suspicious_encoded_command.yml",
+  "description": "PowerShell -EncodedCommand abuse (T1059.001 / T1027)",
+  "match_condition": {
+    "Image":       { "endswith": "\\powershell.exe" },
+    "CommandLine": { "regex": "(?i)(-enc(?:odedcommand)?\\s)" }
+  },
+  "test_cases": [
+    {
+      "name": "matches -EncodedCommand",
+      "expected": "match",
+      "event": {
+        "Image": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+        "CommandLine": "powershell.exe -EncodedCommand JABwAGEAcwBzAA=="
+      }
+    },
+    {
+      "name": "matches short -enc",
+      "expected": "match",
+      "event": {
+        "Image": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+        "CommandLine": "powershell -enc JABwAA=="
+      }
+    },
+    {
+      "name": "does not match plain powershell usage",
+      "expected": "no_match",
+      "event": {
+        "Image": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+        "CommandLine": "powershell.exe Get-Process"
+      }
+    },
+    {
+      "name": "does not match an unrelated binary",
+      "expected": "no_match",
+      "event": {
+        "Image": "C:\\Windows\\System32\\cmd.exe",
+        "CommandLine": "cmd.exe /c dir"
+      }
+    },
+    {
+      "name": "fp-lookalike: legitimate Microsoft scheduled task running powershell",
+      "expected": "no_match",
+      "event": {
+        "Image": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+        "CommandLine": "powershell.exe -ExecutionPolicy Bypass -File C:\\ProgramData\\MicrosoftEdgeUpdate\\update.ps1"
+      }
+    }
+  ]
+}

@@ -1,0 +1,5811 @@
+{
+  "summary": {
+    "total_rules": 533,
+    "average_quality": 58.9,
+    "rules_with_attack_mapping": 451,
+    "rules_without_attack_mapping": 82,
+    "high_fp_risk": 0,
+    "per_platform": {
+      "sigma": {
+        "count": 105,
+        "avg_quality": 58.9
+      },
+      "elastic": {
+        "count": 58,
+        "avg_quality": 34.1
+      },
+      "splunk": {
+        "count": 18,
+        "avg_quality": 64.7
+      },
+      "microsoft-sentinel": {
+        "count": 102,
+        "avg_quality": 70.3
+      },
+      "wazuh": {
+        "count": 140,
+        "avg_quality": 77.6
+      },
+      "carbonblack": {
+        "count": 110,
+        "avg_quality": 36.5
+      }
+    }
+  },
+  "rules": [
+    {
+      "title": "AWS IAM Access Key Created",
+      "severity": "medium",
+      "techniques": [
+        "T1098"
+      ],
+      "fp_risk": 0,
+      "quality_score": 76.0,
+      "platform": "sigma",
+      "file": "sigma/cloud/cloud_aws_create_access_key.yml"
+    },
+    {
+      "title": "AWS CloudTrail Trail Stopped or Deleted",
+      "severity": "high",
+      "techniques": [
+        "T1562.008"
+      ],
+      "fp_risk": 0,
+      "quality_score": 80.0,
+      "platform": "sigma",
+      "file": "sigma/cloud/cloud_aws_suspicious_disable_cloudtrail.yml"
+    },
+    {
+      "title": "GCP IAM Suspicious Role Grant (Owner / Admin)",
+      "severity": "high",
+      "techniques": [
+        "T1098"
+      ],
+      "fp_risk": 0,
+      "quality_score": 80.0,
+      "platform": "sigma",
+      "file": "sigma/cloud/cloud_gcp_iam_suspicious_role_grant.yml"
+    },
+    {
+      "title": "Suspicious Cloud Action AuthorizeSecurityGroupIngress",
+      "severity": "high",
+      "techniques": [],
+      "fp_risk": 0,
+      "quality_score": 56.0,
+      "platform": "sigma",
+      "file": "sigma/cloud/cloud_susp_AuthorizeSecurityGroupIngress.yml"
+    },
+    {
+      "title": "Suspicious Cloud Action CreateAccessKey",
+      "severity": "high",
+      "techniques": [],
+      "fp_risk": 0,
+      "quality_score": 56.0,
+      "platform": "sigma",
+      "file": "sigma/cloud/cloud_susp_CreateAccessKey.yml"
+    },
+    {
+      "title": "Suspicious Cloud Action CreateBucket",
+      "severity": "high",
+      "techniques": [],
+      "fp_risk": 0,
+      "quality_score": 56.0,
+      "platform": "sigma",
+      "file": "sigma/cloud/cloud_susp_CreateBucket.yml"
+    },
+    {
+      "title": "Suspicious Cloud Action CreateUser",
+      "severity": "high",
+      "techniques": [],
+      "fp_risk": 0,
+      "quality_score": 56.0,
+      "platform": "sigma",
+      "file": "sigma/cloud/cloud_susp_CreateUser.yml"
+    },
+    {
+      "title": "Suspicious Cloud Action DeleteAccessKey",
+      "severity": "high",
+      "techniques": [],
+      "fp_risk": 0,
+      "quality_score": 56.0,
+      "platform": "sigma",
+      "file": "sigma/cloud/cloud_susp_DeleteAccessKey.yml"
+    },
+    {
+      "title": "Suspicious Cloud Action DeleteBucket",
+      "severity": "high",
+      "techniques": [],
+      "fp_risk": 0,
+      "quality_score": 56.0,
+      "platform": "sigma",
+      "file": "sigma/cloud/cloud_susp_DeleteBucket.yml"
+    },
+    {
+      "title": "Suspicious Cloud Action DeleteUser",
+      "severity": "high",
+      "techniques": [],
+      "fp_risk": 0,
+      "quality_score": 56.0,
+      "platform": "sigma",
+      "file": "sigma/cloud/cloud_susp_DeleteUser.yml"
+    },
+    {
+      "title": "Suspicious Cloud Action RevokeSecurityGroupIngress",
+      "severity": "high",
+      "techniques": [],
+      "fp_risk": 0,
+      "quality_score": 56.0,
+      "platform": "sigma",
+      "file": "sigma/cloud/cloud_susp_RevokeSecurityGroupIngress.yml"
+    },
+    {
+      "title": "Suspicious Cloud Action RunInstances",
+      "severity": "high",
+      "techniques": [],
+      "fp_risk": 0,
+      "quality_score": 56.0,
+      "platform": "sigma",
+      "file": "sigma/cloud/cloud_susp_RunInstances.yml"
+    },
+    {
+      "title": "Suspicious Cloud Action StopInstances",
+      "severity": "high",
+      "techniques": [],
+      "fp_risk": 0,
+      "quality_score": 56.0,
+      "platform": "sigma",
+      "file": "sigma/cloud/cloud_susp_StopInstances.yml"
+    },
+    {
+      "title": "Base64 Decoding in Shell",
+      "severity": "medium",
+      "techniques": [
+        "T1027",
+        "T1059"
+      ],
+      "fp_risk": 0,
+      "quality_score": 80.0,
+      "platform": "sigma",
+      "file": "sigma/linux/lnx_base64_decoding.yml"
+    },
+    {
+      "title": "New User Account Added",
+      "severity": "medium",
+      "techniques": [
+        "T1136.001"
+      ],
+      "fp_risk": 0,
+      "quality_score": 76.0,
+      "platform": "sigma",
+      "file": "sigma/linux/lnx_new_user_added.yml"
+    },
+    {
+      "title": "SSH Authorized Keys Modification",
+      "severity": "medium",
+      "techniques": [
+        "T1098.004"
+      ],
+      "fp_risk": 0,
+      "quality_score": 76.0,
+      "platform": "sigma",
+      "file": "sigma/linux/lnx_ssh_authorized_keys_modification.yml"
+    },
+    {
+      "title": "Sudoers File Modification",
+      "severity": "high",
+      "techniques": [
+        "T1548.003"
+      ],
+      "fp_risk": 0,
+      "quality_score": 80.0,
+      "platform": "sigma",
+      "file": "sigma/linux/lnx_sudoers_modification.yml"
+    },
+    {
+      "title": "Suspicious Usage of curl",
+      "severity": "medium",
+      "techniques": [],
+      "fp_risk": 0,
+      "quality_score": 52.0,
+      "platform": "sigma",
+      "file": "sigma/linux/lnx_susp_usage_curl.yml"
+    },
+    {
+      "title": "Suspicious Usage of g++",
+      "severity": "medium",
+      "techniques": [],
+      "fp_risk": 0,
+      "quality_score": 52.0,
+      "platform": "sigma",
+      "file": "sigma/linux/lnx_susp_usage_g++.yml"
+    },
+    {
+      "title": "Suspicious Usage of gcc",
+      "severity": "medium",
+      "techniques": [],
+      "fp_risk": 0,
+      "quality_score": 52.0,
+      "platform": "sigma",
+      "file": "sigma/linux/lnx_susp_usage_gcc.yml"
+    },
+    {
+      "title": "Suspicious Usage of groupadd",
+      "severity": "medium",
+      "techniques": [],
+      "fp_risk": 0,
+      "quality_score": 52.0,
+      "platform": "sigma",
+      "file": "sigma/linux/lnx_susp_usage_groupadd.yml"
+    },
+    {
+      "title": "Suspicious Usage of insmod",
+      "severity": "medium",
+      "techniques": [],
+      "fp_risk": 0,
+      "quality_score": 52.0,
+      "platform": "sigma",
+      "file": "sigma/linux/lnx_susp_usage_insmod.yml"
+    },
+    {
+      "title": "Suspicious Usage of lsmod",
+      "severity": "medium",
+      "techniques": [],
+      "fp_risk": 0,
+      "quality_score": 52.0,
+      "platform": "sigma",
+      "file": "sigma/linux/lnx_susp_usage_lsmod.yml"
+    },
+    {
+      "title": "Suspicious Usage of make",
+      "severity": "medium",
+      "techniques": [],
+      "fp_risk": 0,
+      "quality_score": 52.0,
+      "platform": "sigma",
+      "file": "sigma/linux/lnx_susp_usage_make.yml"
+    },
+    {
+      "title": "Suspicious Usage of modprobe",
+      "severity": "medium",
+      "techniques": [],
+      "fp_risk": 0,
+      "quality_score": 52.0,
+      "platform": "sigma",
+      "file": "sigma/linux/lnx_susp_usage_modprobe.yml"
+    },
+    {
+      "title": "Suspicious Usage of nc",
+      "severity": "medium",
+      "techniques": [],
+      "fp_risk": 0,
+      "quality_score": 52.0,
+      "platform": "sigma",
+      "file": "sigma/linux/lnx_susp_usage_nc.yml"
+    },
+    {
+      "title": "Suspicious Usage of ncat",
+      "severity": "medium",
+      "techniques": [],
+      "fp_risk": 0,
+      "quality_score": 52.0,
+      "platform": "sigma",
+      "file": "sigma/linux/lnx_susp_usage_ncat.yml"
+    },
+    {
+      "title": "Suspicious Usage of netcat",
+      "severity": "medium",
+      "techniques": [],
+      "fp_risk": 0,
+      "quality_score": 52.0,
+      "platform": "sigma",
+      "file": "sigma/linux/lnx_susp_usage_netcat.yml"
+    },
+    {
+      "title": "Suspicious Usage of passwd",
+      "severity": "medium",
+      "techniques": [],
+      "fp_risk": 0,
+      "quality_score": 52.0,
+      "platform": "sigma",
+      "file": "sigma/linux/lnx_susp_usage_passwd.yml"
+    },
+    {
+      "title": "Suspicious Usage of perl",
+      "severity": "medium",
+      "techniques": [],
+      "fp_risk": 0,
+      "quality_score": 52.0,
+      "platform": "sigma",
+      "file": "sigma/linux/lnx_susp_usage_perl.yml"
+    },
+    {
+      "title": "Suspicious Usage of python",
+      "severity": "medium",
+      "techniques": [],
+      "fp_risk": 0,
+      "quality_score": 52.0,
+      "platform": "sigma",
+      "file": "sigma/linux/lnx_susp_usage_python.yml"
+    },
+    {
+      "title": "Suspicious Usage of rmmod",
+      "severity": "medium",
+      "techniques": [],
+      "fp_risk": 0,
+      "quality_score": 52.0,
+      "platform": "sigma",
+      "file": "sigma/linux/lnx_susp_usage_rmmod.yml"
+    },
+    {
+      "title": "Suspicious Usage of ruby",
+      "severity": "medium",
+      "techniques": [],
+      "fp_risk": 0,
+      "quality_score": 52.0,
+      "platform": "sigma",
+      "file": "sigma/linux/lnx_susp_usage_ruby.yml"
+    },
+    {
+      "title": "Suspicious Usage of useradd",
+      "severity": "medium",
+      "techniques": [],
+      "fp_risk": 0,
+      "quality_score": 52.0,
+      "platform": "sigma",
+      "file": "sigma/linux/lnx_susp_usage_useradd.yml"
+    },
+    {
+      "title": "Suspicious Usage of usermod",
+      "severity": "medium",
+      "techniques": [],
+      "fp_risk": 0,
+      "quality_score": 52.0,
+      "platform": "sigma",
+      "file": "sigma/linux/lnx_susp_usage_usermod.yml"
+    },
+    {
+      "title": "Suspicious Usage of visudo",
+      "severity": "medium",
+      "techniques": [],
+      "fp_risk": 0,
+      "quality_score": 52.0,
+      "platform": "sigma",
+      "file": "sigma/linux/lnx_susp_usage_visudo.yml"
+    },
+    {
+      "title": "Suspicious Usage of wget",
+      "severity": "medium",
+      "techniques": [],
+      "fp_risk": 0,
+      "quality_score": 52.0,
+      "platform": "sigma",
+      "file": "sigma/linux/lnx_susp_usage_wget.yml"
+    },
+    {
+      "title": "Suspicious Cron File Modification",
+      "severity": "medium",
+      "techniques": [
+        "T1053.003"
+      ],
+      "fp_risk": 0,
+      "quality_score": 76.0,
+      "platform": "sigma",
+      "file": "sigma/linux/lnx_suspicious_cron_modification.yml"
+    },
+    {
+      "title": "Suspicious Curl or Wget Piped to Shell",
+      "severity": "high",
+      "techniques": [
+        "T1059.004"
+      ],
+      "fp_risk": 0,
+      "quality_score": 80.0,
+      "platform": "sigma",
+      "file": "sigma/linux/lnx_suspicious_curl_pipe_bash.yml"
+    },
+    {
+      "title": "Linux Suspicious Sudo Without TTY",
+      "severity": "medium",
+      "techniques": [
+        "T1068"
+      ],
+      "fp_risk": 0,
+      "quality_score": 76.0,
+      "platform": "sigma",
+      "file": "sigma/linux/lnx_suspicious_sudo_without_tty.yml"
+    },
+    {
+      "title": "Suspicious Download to /tmp",
+      "severity": "medium",
+      "techniques": [
+        "T1105"
+      ],
+      "fp_risk": 0,
+      "quality_score": 76.0,
+      "platform": "sigma",
+      "file": "sigma/linux/lnx_suspicious_wget_curl_to_tmp.yml"
+    },
+    {
+      "title": "Suspicious DNS Tunnel-Like Queries",
+      "severity": "high",
+      "techniques": [
+        "T1071",
+        "T1071.004"
+      ],
+      "fp_risk": 0,
+      "quality_score": 84.0,
+      "platform": "sigma",
+      "file": "sigma/network/net_dns_suspicious_tunnel.yml"
+    },
+    {
+      "title": "Nmap Scanning Pattern",
+      "severity": "medium",
+      "techniques": [
+        "T1046"
+      ],
+      "fp_risk": 0,
+      "quality_score": 76.0,
+      "platform": "sigma",
+      "file": "sigma/network/net_nmap_scan_pattern.yml"
+    },
+    {
+      "title": "Suspicious DNS Traffic",
+      "severity": "medium",
+      "techniques": [],
+      "fp_risk": 0,
+      "quality_score": 52.0,
+      "platform": "sigma",
+      "file": "sigma/network/net_susp_dns.yml"
+    },
+    {
+      "title": "High Volume NXDOMAIN DNS Responses",
+      "severity": "medium",
+      "techniques": [
+        "T1071.004"
+      ],
+      "fp_risk": 0,
+      "quality_score": 76.0,
+      "platform": "sigma",
+      "file": "sigma/network/net_susp_dns_many_nxdomain.yml"
+    },
+    {
+      "title": "Suspicious FTP Traffic",
+      "severity": "medium",
+      "techniques": [],
+      "fp_risk": 0,
+      "quality_score": 52.0,
+      "platform": "sigma",
+      "file": "sigma/network/net_susp_ftp.yml"
+    },
+    {
+      "title": "Suspicious HTTP Traffic",
+      "severity": "medium",
+      "techniques": [],
+      "fp_risk": 0,
+      "quality_score": 52.0,
+      "platform": "sigma",
+      "file": "sigma/network/net_susp_http.yml"
+    },
+    {
+      "title": "Suspicious HTTPS Traffic",
+      "severity": "medium",
+      "techniques": [],
+      "fp_risk": 0,
+      "quality_score": 52.0,
+      "platform": "sigma",
+      "file": "sigma/network/net_susp_https.yml"
+    },
+    {
+      "title": "Suspicious IMAP Traffic",
+      "severity": "medium",
+      "techniques": [],
+      "fp_risk": 0,
+      "quality_score": 52.0,
+      "platform": "sigma",
+      "file": "sigma/network/net_susp_imap.yml"
+    },
+    {
+      "title": "Suspicious POP3 Traffic",
+      "severity": "medium",
+      "techniques": [],
+      "fp_risk": 0,
+      "quality_score": 52.0,
+      "platform": "sigma",
+      "file": "sigma/network/net_susp_pop3.yml"
+    },
+    {
+      "title": "Suspicious SMTP Traffic",
+      "severity": "medium",
+      "techniques": [],
+      "fp_risk": 0,
+      "quality_score": 52.0,
+      "platform": "sigma",
+      "file": "sigma/network/net_susp_smtp.yml"
+    },
+    {
+      "title": "Suspicious SNMP Traffic",
+      "severity": "medium",
+      "techniques": [],
+      "fp_risk": 0,
+      "quality_score": 52.0,
+      "platform": "sigma",
+      "file": "sigma/network/net_susp_snmp.yml"
+    },
+    {
+      "title": "Suspicious SSH Traffic",
+      "severity": "medium",
+      "techniques": [],
+      "fp_risk": 0,
+      "quality_score": 52.0,
+      "platform": "sigma",
+      "file": "sigma/network/net_susp_ssh.yml"
+    },
+    {
+      "title": "Suspicious TELNET Traffic",
+      "severity": "medium",
+      "techniques": [],
+      "fp_risk": 0,
+      "quality_score": 52.0,
+      "platform": "sigma",
+      "file": "sigma/network/net_susp_telnet.yml"
+    },
+    {
+      "title": "User Added to Local Administrators",
+      "severity": "high",
+      "techniques": [
+        "T1098"
+      ],
+      "fp_risk": 0,
+      "quality_score": 80.0,
+      "platform": "sigma",
+      "file": "sigma/windows/win_local_admin_group_add.yml"
+    },
+    {
+      "title": "LSASS Dumping via ProcDump",
+      "severity": "high",
+      "techniques": [
+        "T1003.001"
+      ],
+      "fp_risk": 0,
+      "quality_score": 80.0,
+      "platform": "sigma",
+      "file": "sigma/windows/win_lsass_dump_via_procdump.yml"
+    },
+    {
+      "title": "Mimikatz Command Execution",
+      "severity": "critical",
+      "techniques": [
+        "T1003.001"
+      ],
+      "fp_risk": 0,
+      "quality_score": 84.0,
+      "platform": "sigma",
+      "file": "sigma/windows/win_mimikatz_command.yml"
+    },
+    {
+      "title": "RDP Tunneling via Plink",
+      "severity": "high",
+      "techniques": [
+        "T1021.001"
+      ],
+      "fp_risk": 0,
+      "quality_score": 80.0,
+      "platform": "sigma",
+      "file": "sigma/windows/win_plink_rdp_tunnel.yml"
+    },
+    {
+      "title": "Suspicious PowerShell Download",
+      "severity": "medium",
+      "techniques": [
+        "T1059.001"
+      ],
+      "fp_risk": 1,
+      "quality_score": 74.0,
+      "platform": "sigma",
+      "file": "sigma/windows/win_powershell_suspicious_download.yml"
+    },
+    {
+      "title": "Suspicious PowerShell EncodedCommand",
+      "severity": "high",
+      "techniques": [
+        "T1059",
+        "T1059.001"
+      ],
+      "fp_risk": 1,
+      "quality_score": 82.0,
+      "platform": "sigma",
+      "file": "sigma/windows/win_powershell_suspicious_encoded_command.yml"
+    },
+    {
+      "title": "Scheduled Task Creation",
+      "severity": "medium",
+      "techniques": [
+        "T1053.005"
+      ],
+      "fp_risk": 1,
+      "quality_score": 74.0,
+      "platform": "sigma",
+      "file": "sigma/windows/win_schtasks_create.yml"
+    },
+    {
+      "title": "Security Event Log Cleared",
+      "severity": "high",
+      "techniques": [
+        "T1070.001"
+      ],
+      "fp_risk": 0,
+      "quality_score": 80.0,
+      "platform": "sigma",
+      "file": "sigma/windows/win_security_log_cleared.yml"
+    },
+    {
+      "title": "Shadow Copies Deletion",
+      "severity": "critical",
+      "techniques": [
+        "T1490"
+      ],
+      "fp_risk": 0,
+      "quality_score": 84.0,
+      "platform": "sigma",
+      "file": "sigma/windows/win_shadow_copies_deletion.yml"
+    },
+    {
+      "title": "Suspicious Execution of at.exe",
+      "severity": "medium",
+      "techniques": [],
+      "fp_risk": 0,
+      "quality_score": 52.0,
+      "platform": "sigma",
+      "file": "sigma/windows/win_susp_exec_at_exe.yml"
+    },
+    {
+      "title": "Suspicious Execution of attrib.exe",
+      "severity": "medium",
+      "techniques": [],
+      "fp_risk": 0,
+      "quality_score": 52.0,
+      "platform": "sigma",
+      "file": "sigma/windows/win_susp_exec_attrib_exe.yml"
+    },
+    {
+      "title": "Suspicious Execution of bitsadmin.exe",
+      "severity": "medium",
+      "techniques": [],
+      "fp_risk": 0,
+      "quality_score": 52.0,
+      "platform": "sigma",
+      "file": "sigma/windows/win_susp_exec_bitsadmin_exe.yml"
+    },
+    {
+      "title": "Suspicious Execution of calc.exe",
+      "severity": "medium",
+      "techniques": [],
+      "fp_risk": 0,
+      "quality_score": 52.0,
+      "platform": "sigma",
+      "file": "sigma/windows/win_susp_exec_calc_exe.yml"
+    },
+    {
+      "title": "Suspicious Execution of certutil.exe",
+      "severity": "medium",
+      "techniques": [],
+      "fp_risk": 0,
+      "quality_score": 52.0,
+      "platform": "sigma",
+      "file": "sigma/windows/win_susp_exec_certutil_exe.yml"
+    },
+    {
+      "title": "Suspicious Execution of cipher.exe",
+      "severity": "medium",
+      "techniques": [],
+      "fp_risk": 0,
+      "quality_score": 52.0,
+      "platform": "sigma",
+      "file": "sigma/windows/win_susp_exec_cipher_exe.yml"
+    },
+    {
+      "title": "Suspicious Execution of cmd.exe",
+      "severity": "medium",
+      "techniques": [],
+      "fp_risk": 1,
+      "quality_score": 50.0,
+      "platform": "sigma",
+      "file": "sigma/windows/win_susp_exec_cmd_exe.yml"
+    },
+    {
+      "title": "Suspicious Execution of cmstp.exe",
+      "severity": "medium",
+      "techniques": [],
+      "fp_risk": 0,
+      "quality_score": 52.0,
+      "platform": "sigma",
+      "file": "sigma/windows/win_susp_exec_cmstp_exe.yml"
+    },
+    {
+      "title": "Suspicious Execution of csc.exe",
+      "severity": "medium",
+      "techniques": [],
+      "fp_risk": 0,
+      "quality_score": 52.0,
+      "platform": "sigma",
+      "file": "sigma/windows/win_susp_exec_csc_exe.yml"
+    },
+    {
+      "title": "Suspicious Execution of cscript.exe",
+      "severity": "medium",
+      "techniques": [],
+      "fp_risk": 0,
+      "quality_score": 52.0,
+      "platform": "sigma",
+      "file": "sigma/windows/win_susp_exec_cscript_exe.yml"
+    },
+    {
+      "title": "Suspicious Execution of fsutil.exe",
+      "severity": "medium",
+      "techniques": [],
+      "fp_risk": 0,
+      "quality_score": 52.0,
+      "platform": "sigma",
+      "file": "sigma/windows/win_susp_exec_fsutil_exe.yml"
+    },
+    {
+      "title": "Suspicious Execution of hh.exe",
+      "severity": "medium",
+      "techniques": [],
+      "fp_risk": 0,
+      "quality_score": 52.0,
+      "platform": "sigma",
+      "file": "sigma/windows/win_susp_exec_hh_exe.yml"
+    },
+    {
+      "title": "Suspicious Execution of installutil.exe",
+      "severity": "medium",
+      "techniques": [],
+      "fp_risk": 0,
+      "quality_score": 52.0,
+      "platform": "sigma",
+      "file": "sigma/windows/win_susp_exec_installutil_exe.yml"
+    },
+    {
+      "title": "Suspicious Execution of ipconfig.exe",
+      "severity": "medium",
+      "techniques": [],
+      "fp_risk": 0,
+      "quality_score": 52.0,
+      "platform": "sigma",
+      "file": "sigma/windows/win_susp_exec_ipconfig_exe.yml"
+    },
+    {
+      "title": "Suspicious Execution of jsc.exe",
+      "severity": "medium",
+      "techniques": [],
+      "fp_risk": 0,
+      "quality_score": 52.0,
+      "platform": "sigma",
+      "file": "sigma/windows/win_susp_exec_jsc_exe.yml"
+    },
+    {
+      "title": "Suspicious Execution of msbuild.exe",
+      "severity": "medium",
+      "techniques": [],
+      "fp_risk": 0,
+      "quality_score": 52.0,
+      "platform": "sigma",
+      "file": "sigma/windows/win_susp_exec_msbuild_exe.yml"
+    },
+    {
+      "title": "Suspicious Execution of mshta.exe",
+      "severity": "medium",
+      "techniques": [],
+      "fp_risk": 0,
+      "quality_score": 52.0,
+      "platform": "sigma",
+      "file": "sigma/windows/win_susp_exec_mshta_exe.yml"
+    },
+    {
+      "title": "Suspicious Execution of mspaint.exe",
+      "severity": "medium",
+      "techniques": [],
+      "fp_risk": 0,
+      "quality_score": 52.0,
+      "platform": "sigma",
+      "file": "sigma/windows/win_susp_exec_mspaint_exe.yml"
+    },
+    {
+      "title": "Suspicious Execution of net1.exe",
+      "severity": "medium",
+      "techniques": [],
+      "fp_risk": 0,
+      "quality_score": 52.0,
+      "platform": "sigma",
+      "file": "sigma/windows/win_susp_exec_net1_exe.yml"
+    },
+    {
+      "title": "Suspicious Execution of net.exe",
+      "severity": "medium",
+      "techniques": [],
+      "fp_risk": 0,
+      "quality_score": 52.0,
+      "platform": "sigma",
+      "file": "sigma/windows/win_susp_exec_net_exe.yml"
+    },
+    {
+      "title": "Suspicious Execution of notepad.exe",
+      "severity": "medium",
+      "techniques": [],
+      "fp_risk": 0,
+      "quality_score": 52.0,
+      "platform": "sigma",
+      "file": "sigma/windows/win_susp_exec_notepad_exe.yml"
+    },
+    {
+      "title": "Suspicious Execution of powershell.exe",
+      "severity": "medium",
+      "techniques": [],
+      "fp_risk": 1,
+      "quality_score": 50.0,
+      "platform": "sigma",
+      "file": "sigma/windows/win_susp_exec_powershell_exe.yml"
+    },
+    {
+      "title": "Suspicious Execution of quser.exe",
+      "severity": "medium",
+      "techniques": [],
+      "fp_risk": 0,
+      "quality_score": 52.0,
+      "platform": "sigma",
+      "file": "sigma/windows/win_susp_exec_quser_exe.yml"
+    },
+    {
+      "title": "Suspicious Execution of qwinsta.exe",
+      "severity": "medium",
+      "techniques": [],
+      "fp_risk": 0,
+      "quality_score": 52.0,
+      "platform": "sigma",
+      "file": "sigma/windows/win_susp_exec_qwinsta_exe.yml"
+    },
+    {
+      "title": "Suspicious Execution of regasm.exe",
+      "severity": "medium",
+      "techniques": [],
+      "fp_risk": 0,
+      "quality_score": 52.0,
+      "platform": "sigma",
+      "file": "sigma/windows/win_susp_exec_regasm_exe.yml"
+    },
+    {
+      "title": "Suspicious Execution of regsvcs.exe",
+      "severity": "medium",
+      "techniques": [],
+      "fp_risk": 0,
+      "quality_score": 52.0,
+      "platform": "sigma",
+      "file": "sigma/windows/win_susp_exec_regsvcs_exe.yml"
+    },
+    {
+      "title": "Suspicious Execution of regsvr32.exe",
+      "severity": "medium",
+      "techniques": [],
+      "fp_risk": 1,
+      "quality_score": 50.0,
+      "platform": "sigma",
+      "file": "sigma/windows/win_susp_exec_regsvr32_exe.yml"
+    },
+    {
+      "title": "Suspicious Execution of rundll32.exe",
+      "severity": "medium",
+      "techniques": [],
+      "fp_risk": 1,
+      "quality_score": 50.0,
+      "platform": "sigma",
+      "file": "sigma/windows/win_susp_exec_rundll32_exe.yml"
+    },
+    {
+      "title": "Suspicious Execution of sc.exe",
+      "severity": "medium",
+      "techniques": [],
+      "fp_risk": 0,
+      "quality_score": 52.0,
+      "platform": "sigma",
+      "file": "sigma/windows/win_susp_exec_sc_exe.yml"
+    },
+    {
+      "title": "Suspicious Execution of schtasks.exe",
+      "severity": "medium",
+      "techniques": [],
+      "fp_risk": 1,
+      "quality_score": 50.0,
+      "platform": "sigma",
+      "file": "sigma/windows/win_susp_exec_schtasks_exe.yml"
+    },
+    {
+      "title": "Suspicious Execution of systeminfo.exe",
+      "severity": "medium",
+      "techniques": [],
+      "fp_risk": 0,
+      "quality_score": 52.0,
+      "platform": "sigma",
+      "file": "sigma/windows/win_susp_exec_systeminfo_exe.yml"
+    },
+    {
+      "title": "Suspicious Execution of taskkill.exe",
+      "severity": "medium",
+      "techniques": [],
+      "fp_risk": 0,
+      "quality_score": 52.0,
+      "platform": "sigma",
+      "file": "sigma/windows/win_susp_exec_taskkill_exe.yml"
+    },
+    {
+      "title": "Suspicious Execution of tasklist.exe",
+      "severity": "medium",
+      "techniques": [],
+      "fp_risk": 0,
+      "quality_score": 52.0,
+      "platform": "sigma",
+      "file": "sigma/windows/win_susp_exec_tasklist_exe.yml"
+    },
+    {
+      "title": "Suspicious Execution of vbc.exe",
+      "severity": "medium",
+      "techniques": [],
+      "fp_risk": 0,
+      "quality_score": 52.0,
+      "platform": "sigma",
+      "file": "sigma/windows/win_susp_exec_vbc_exe.yml"
+    },
+    {
+      "title": "Suspicious Execution of vssadmin.exe",
+      "severity": "medium",
+      "techniques": [],
+      "fp_risk": 0,
+      "quality_score": 52.0,
+      "platform": "sigma",
+      "file": "sigma/windows/win_susp_exec_vssadmin_exe.yml"
+    },
+    {
+      "title": "Suspicious Execution of wevtutil.exe",
+      "severity": "medium",
+      "techniques": [],
+      "fp_risk": 0,
+      "quality_score": 52.0,
+      "platform": "sigma",
+      "file": "sigma/windows/win_susp_exec_wevtutil_exe.yml"
+    },
+    {
+      "title": "Suspicious Execution of whoami.exe",
+      "severity": "medium",
+      "techniques": [],
+      "fp_risk": 0,
+      "quality_score": 52.0,
+      "platform": "sigma",
+      "file": "sigma/windows/win_susp_exec_whoami_exe.yml"
+    },
+    {
+      "title": "Suspicious Execution of wmic.exe",
+      "severity": "medium",
+      "techniques": [],
+      "fp_risk": 1,
+      "quality_score": 50.0,
+      "platform": "sigma",
+      "file": "sigma/windows/win_susp_exec_wmic_exe.yml"
+    },
+    {
+      "title": "Suspicious Execution of wscript.exe",
+      "severity": "medium",
+      "techniques": [],
+      "fp_risk": 0,
+      "quality_score": 52.0,
+      "platform": "sigma",
+      "file": "sigma/windows/win_susp_exec_wscript_exe.yml"
+    },
+    {
+      "title": "Suspicious Certutil Download",
+      "severity": "high",
+      "techniques": [
+        "T1105"
+      ],
+      "fp_risk": 0,
+      "quality_score": 80.0,
+      "platform": "sigma",
+      "file": "sigma/windows/win_suspicious_certutil_download.yml"
+    },
+    {
+      "title": "Suspicious Comsvcs DLL MiniDump of LSASS",
+      "severity": "high",
+      "techniques": [
+        "T1003.001"
+      ],
+      "fp_risk": 0,
+      "quality_score": 80.0,
+      "platform": "sigma",
+      "file": "sigma/windows/win_suspicious_comsvcs_lsass_dump.yml"
+    },
+    {
+      "title": "Suspicious Mshta Execution",
+      "severity": "high",
+      "techniques": [
+        "T1218.005"
+      ],
+      "fp_risk": 0,
+      "quality_score": 80.0,
+      "platform": "sigma",
+      "file": "sigma/windows/win_suspicious_mshta_execution.yml"
+    },
+    {
+      "title": "Cloud Accounts",
+      "severity": null,
+      "techniques": [],
+      "fp_risk": 0,
+      "quality_score": 10.0,
+      "platform": "elastic",
+      "file": "elastic/endpoint/general/Cloud Accounts.ndjson"
+    },
+    {
+      "title": "Compromise Accounts (General)",
+      "severity": null,
+      "techniques": [
+        "T1586.001"
+      ],
+      "fp_risk": 0,
+      "quality_score": 34.0,
+      "platform": "elastic",
+      "file": "elastic/endpoint/general/Compromise Accounts (General).ndjson"
+    },
+    {
+      "title": "Defense Evasion \u2013 Disable Antivirus or Security Services",
+      "severity": null,
+      "techniques": [
+        "T1592"
+      ],
+      "fp_risk": 0,
+      "quality_score": 34.0,
+      "platform": "elastic",
+      "file": "elastic/endpoint/general/Defense Evasion \u2013 Disable Antivirus or Security Services.ndjson"
+    },
+    {
+      "title": "Defense Evasion \u2013 Encoded PowerShell Command",
+      "severity": null,
+      "techniques": [
+        "T1059.001"
+      ],
+      "fp_risk": 1,
+      "quality_score": 32.0,
+      "platform": "elastic",
+      "file": "elastic/endpoint/general/Defense Evasion \u2013 Encoded PowerShell Command.ndjson"
+    },
+    {
+      "title": "Defense Evasion \u2013 Event Log Cleared Wevtutil",
+      "severity": null,
+      "techniques": [
+        "T1070.001"
+      ],
+      "fp_risk": 0,
+      "quality_score": 34.0,
+      "platform": "elastic",
+      "file": "elastic/endpoint/general/Defense Evasion \u2013 Event Log Cleared Wevtutil.ndjson"
+    },
+    {
+      "title": "Defense-Evasion-Dll-Sideloading",
+      "severity": null,
+      "techniques": [
+        "T1036"
+      ],
+      "fp_risk": 0,
+      "quality_score": 34.0,
+      "platform": "elastic",
+      "file": "elastic/endpoint/general/Defense-Evasion-Dll-Sideloading.ndjson"
+    },
+    {
+      "title": "Defense-Evasion-Signed-Binary-Temp",
+      "severity": null,
+      "techniques": [
+        "T1070"
+      ],
+      "fp_risk": 0,
+      "quality_score": 34.0,
+      "platform": "elastic",
+      "file": "elastic/endpoint/general/Defense-Evasion-Signed-Binary-Temp.ndjson"
+    },
+    {
+      "title": "Defense-Evasion-Timestomp-Suspect",
+      "severity": null,
+      "techniques": [],
+      "fp_risk": 0,
+      "quality_score": 10.0,
+      "platform": "elastic",
+      "file": "elastic/endpoint/general/Defense-Evasion-Timestomp-Suspect.ndjson"
+    },
+    {
+      "title": "Email Accounts",
+      "severity": null,
+      "techniques": [
+        "T1586.003"
+      ],
+      "fp_risk": 0,
+      "quality_score": 34.0,
+      "platform": "elastic",
+      "file": "elastic/endpoint/general/Email Accounts.ndjson"
+    },
+    {
+      "title": "FunkLocker Ransomware File Creation",
+      "severity": null,
+      "techniques": [
+        "T1486"
+      ],
+      "fp_risk": 0,
+      "quality_score": 34.0,
+      "platform": "elastic",
+      "file": "elastic/endpoint/general/FunkLocker Ransomware File Creation.ndjson"
+    },
+    {
+      "title": "Gather Victim Host Information",
+      "severity": null,
+      "techniques": [
+        "T1589"
+      ],
+      "fp_risk": 0,
+      "quality_score": 34.0,
+      "platform": "elastic",
+      "file": "elastic/endpoint/general/Gather Victim Host Information.ndjson"
+    },
+    {
+      "title": "Gather Victim Identity Information",
+      "severity": null,
+      "techniques": [
+        "T1590"
+      ],
+      "fp_risk": 0,
+      "quality_score": 34.0,
+      "platform": "elastic",
+      "file": "elastic/endpoint/general/Gather Victim Identity Information.ndjson"
+    },
+    {
+      "title": "Gather Victim Network Information",
+      "severity": null,
+      "techniques": [
+        "T1591"
+      ],
+      "fp_risk": 0,
+      "quality_score": 34.0,
+      "platform": "elastic",
+      "file": "elastic/endpoint/general/Gather Victim Network Information.ndjson"
+    },
+    {
+      "title": "Gather Victim Org Information",
+      "severity": null,
+      "techniques": [
+        "T1598"
+      ],
+      "fp_risk": 0,
+      "quality_score": 34.0,
+      "platform": "elastic",
+      "file": "elastic/endpoint/general/Gather Victim Org Information.ndjson"
+    },
+    {
+      "title": "HackTool - HollowReaper Execution",
+      "severity": null,
+      "techniques": [
+        "T1055.012"
+      ],
+      "fp_risk": 0,
+      "quality_score": 34.0,
+      "platform": "elastic",
+      "file": "elastic/endpoint/general/HackTool - HollowReaper Execution.ndjson"
+    },
+    {
+      "title": "IOCs (ip) to detect Curly COMrades A New Threat Actor Targeting Geopolitical Hotbeds",
+      "severity": null,
+      "techniques": [
+        "T1016",
+        "T1041",
+        "T1048",
+        "T1071",
+        "T1105",
+        "T1567"
+      ],
+      "fp_risk": 0,
+      "quality_score": 50.0,
+      "platform": "elastic",
+      "file": "elastic/endpoint/general/IOCs (ip) to detect Curly COMrades A New Threat Actor Targeting Geopolitical Hotbeds.ndjson"
+    },
+    {
+      "title": "IOCs (ip) to detect UNC3944 Targets SaaS Applications",
+      "severity": null,
+      "techniques": [],
+      "fp_risk": 0,
+      "quality_score": 10.0,
+      "platform": "elastic",
+      "file": "elastic/endpoint/general/IOCs (ip) to detect UNC3944 Targets SaaS Applications.ndjson"
+    },
+    {
+      "title": "Phishing for Information",
+      "severity": null,
+      "techniques": [
+        "T1597"
+      ],
+      "fp_risk": 0,
+      "quality_score": 34.0,
+      "platform": "elastic",
+      "file": "elastic/endpoint/general/Phishing for Information.ndjson"
+    },
+    {
+      "title": "Port Knocking",
+      "severity": null,
+      "techniques": [
+        "T1205.002"
+      ],
+      "fp_risk": 0,
+      "quality_score": 34.0,
+      "platform": "elastic",
+      "file": "elastic/endpoint/general/Port Knocking.ndjson"
+    },
+    {
+      "title": "Possible DLL Hijacking of cnmpaui.dll",
+      "severity": null,
+      "techniques": [
+        "T1574",
+        "T1574.001"
+      ],
+      "fp_risk": 0,
+      "quality_score": 38.0,
+      "platform": "elastic",
+      "file": "elastic/endpoint/general/Possible DLL Hijacking of cnmpaui.dll.ndjson"
+    },
+    {
+      "title": "Possible DLL Hijacking of sentinelagentcore.dll",
+      "severity": null,
+      "techniques": [
+        "T1574",
+        "T1574.001"
+      ],
+      "fp_risk": 0,
+      "quality_score": 38.0,
+      "platform": "elastic",
+      "file": "elastic/endpoint/general/Possible DLL Hijacking of sentinelagentcore.dll.ndjson"
+    },
+    {
+      "title": "Possible DLL Hijacking of tsmsisrv.dll",
+      "severity": null,
+      "techniques": [
+        "T1574",
+        "T1574.001"
+      ],
+      "fp_risk": 0,
+      "quality_score": 38.0,
+      "platform": "elastic",
+      "file": "elastic/endpoint/general/Possible DLL Hijacking of tsmsisrv.dll.ndjson"
+    },
+    {
+      "title": "Possible DLL Hijacking of tsvipsrv.dll",
+      "severity": null,
+      "techniques": [
+        "T1574",
+        "T1574.001"
+      ],
+      "fp_risk": 0,
+      "quality_score": 38.0,
+      "platform": "elastic",
+      "file": "elastic/endpoint/general/Possible DLL Hijacking of tsvipsrv.dll.ndjson"
+    },
+    {
+      "title": "Potential Exploitation of CrushFTP RCE Vulnerability (CVE-2025-54309)",
+      "severity": null,
+      "techniques": [
+        "T1059",
+        "T1059.001",
+        "T1059.003",
+        "T1068",
+        "T1190"
+      ],
+      "fp_risk": 0,
+      "quality_score": 50.0,
+      "platform": "elastic",
+      "file": "elastic/endpoint/general/Potential Exploitation of CrushFTP RCE Vulnerability (CVE-2025-54309).ndjson"
+    },
+    {
+      "title": "Potential PowerShell Console History Access Attempt via History File",
+      "severity": null,
+      "techniques": [
+        "T1552.001"
+      ],
+      "fp_risk": 1,
+      "quality_score": 32.0,
+      "platform": "elastic",
+      "file": "elastic/endpoint/general/Potential PowerShell Console History Access Attempt via History File.ndjson"
+    },
+    {
+      "title": "Potential SAP NetWeaver Webshell Creation",
+      "severity": null,
+      "techniques": [
+        "T1059.003",
+        "T1190"
+      ],
+      "fp_risk": 0,
+      "quality_score": 38.0,
+      "platform": "elastic",
+      "file": "elastic/endpoint/general/Potential SAP NetWeaver Webshell Creation.ndjson"
+    },
+    {
+      "title": "Registry Manipulation via WMI Stdregprov",
+      "severity": null,
+      "techniques": [
+        "T1012",
+        "T1047",
+        "T1112"
+      ],
+      "fp_risk": 0,
+      "quality_score": 42.0,
+      "platform": "elastic",
+      "file": "elastic/endpoint/general/Registry Manipulation via WMI Stdregprov.ndjson"
+    },
+    {
+      "title": "Remote Access Tool - TacticalRMM Agent Registration to Potentially Attacker-Controlled Server",
+      "severity": null,
+      "techniques": [
+        "T1105",
+        "T1219"
+      ],
+      "fp_risk": 0,
+      "quality_score": 38.0,
+      "platform": "elastic",
+      "file": "elastic/endpoint/general/Remote Access Tool - TacticalRMM Agent Registration to Potentially Attacker-Controlled Server.ndjson"
+    },
+    {
+      "title": "Scheduled Transfer",
+      "severity": null,
+      "techniques": [
+        "T1029"
+      ],
+      "fp_risk": 0,
+      "quality_score": 34.0,
+      "platform": "elastic",
+      "file": "elastic/endpoint/general/Scheduled Transfer.ndjson"
+    },
+    {
+      "title": "Search Closed Sources",
+      "severity": null,
+      "techniques": [
+        "T1596"
+      ],
+      "fp_risk": 0,
+      "quality_score": 34.0,
+      "platform": "elastic",
+      "file": "elastic/endpoint/general/Search Closed Sources.ndjson"
+    },
+    {
+      "title": "Search Open Technical Databases",
+      "severity": null,
+      "techniques": [
+        "T1593"
+      ],
+      "fp_risk": 0,
+      "quality_score": 34.0,
+      "platform": "elastic",
+      "file": "elastic/endpoint/general/Search Open Technical Databases.ndjson"
+    },
+    {
+      "title": "Search Open Websites Domains",
+      "severity": null,
+      "techniques": [
+        "T1594"
+      ],
+      "fp_risk": 0,
+      "quality_score": 34.0,
+      "platform": "elastic",
+      "file": "elastic/endpoint/general/Search Open Websites Domains.ndjson"
+    },
+    {
+      "title": "Search Victim-Owned Websites",
+      "severity": null,
+      "techniques": [
+        "T1650"
+      ],
+      "fp_risk": 0,
+      "quality_score": 34.0,
+      "platform": "elastic",
+      "file": "elastic/endpoint/general/Search Victim-Owned Websites.ndjson"
+    },
+    {
+      "title": "Social Media Accounts",
+      "severity": null,
+      "techniques": [
+        "T1586.002"
+      ],
+      "fp_risk": 0,
+      "quality_score": 34.0,
+      "platform": "elastic",
+      "file": "elastic/endpoint/general/Social Media Accounts.ndjson"
+    },
+    {
+      "title": "Socket Filters",
+      "severity": null,
+      "techniques": [
+        "T1072"
+      ],
+      "fp_risk": 0,
+      "quality_score": 34.0,
+      "platform": "elastic",
+      "file": "elastic/endpoint/general/Socket Filters.ndjson"
+    },
+    {
+      "title": "Software Deployment Tools",
+      "severity": null,
+      "techniques": [
+        "T1497"
+      ],
+      "fp_risk": 0,
+      "quality_score": 34.0,
+      "platform": "elastic",
+      "file": "elastic/endpoint/general/Software Deployment Tools.ndjson"
+    },
+    {
+      "title": "Suspicious Child Process of SAP NetWeaver - Linux",
+      "severity": null,
+      "techniques": [
+        "T1059.003",
+        "T1190"
+      ],
+      "fp_risk": 0,
+      "quality_score": 38.0,
+      "platform": "elastic",
+      "file": "elastic/endpoint/general/Suspicious Child Process of SAP NetWeaver - Linux.ndjson"
+    },
+    {
+      "title": "Suspicious Velociraptor Child Process",
+      "severity": null,
+      "techniques": [
+        "T1219"
+      ],
+      "fp_risk": 0,
+      "quality_score": 34.0,
+      "platform": "elastic",
+      "file": "elastic/endpoint/general/Suspicious Velociraptor Child Process.ndjson"
+    },
+    {
+      "title": "System Checks",
+      "severity": null,
+      "techniques": [
+        "T1497.002"
+      ],
+      "fp_risk": 0,
+      "quality_score": 34.0,
+      "platform": "elastic",
+      "file": "elastic/endpoint/general/System Checks.ndjson"
+    },
+    {
+      "title": "System Information Discovery via Registry Queries",
+      "severity": null,
+      "techniques": [
+        "T1082"
+      ],
+      "fp_risk": 0,
+      "quality_score": 34.0,
+      "platform": "elastic",
+      "file": "elastic/endpoint/general/System Information Discovery via Registry Queries.ndjson"
+    },
+    {
+      "title": "Time Based Evasion",
+      "severity": null,
+      "techniques": [
+        "T1029"
+      ],
+      "fp_risk": 0,
+      "quality_score": 34.0,
+      "platform": "elastic",
+      "file": "elastic/endpoint/general/Time Based Evasion.ndjson"
+    },
+    {
+      "title": "User Activity Based Checks",
+      "severity": null,
+      "techniques": [
+        "T1497.003"
+      ],
+      "fp_risk": 0,
+      "quality_score": 34.0,
+      "platform": "elastic",
+      "file": "elastic/endpoint/general/User Activity Based Checks.ndjson"
+    },
+    {
+      "title": "Virtualization Sandbox Evasion",
+      "severity": null,
+      "techniques": [
+        "T1497.001"
+      ],
+      "fp_risk": 0,
+      "quality_score": 34.0,
+      "platform": "elastic",
+      "file": "elastic/endpoint/general/Virtualization Sandbox Evasion.ndjson"
+    },
+    {
+      "title": "Windows Recovery Environment Disabled Via Reagentc",
+      "severity": null,
+      "techniques": [
+        "T1490"
+      ],
+      "fp_risk": 0,
+      "quality_score": 34.0,
+      "platform": "elastic",
+      "file": "elastic/endpoint/general/Windows Recovery Environment Disabled Via Reagentc.ndjson"
+    },
+    {
+      "title": "endpoint_rules",
+      "severity": null,
+      "techniques": [
+        "T1059",
+        "T1059.001"
+      ],
+      "fp_risk": 0,
+      "quality_score": 38.0,
+      "platform": "elastic",
+      "file": "elastic/endpoint/general/endpoint_rules.ndjson"
+    },
+    {
+      "title": "lnx_suspicious_curl_wget",
+      "severity": null,
+      "techniques": [
+        "T1059.004",
+        "T1105"
+      ],
+      "fp_risk": 0,
+      "quality_score": 38.0,
+      "platform": "elastic",
+      "file": "elastic/endpoint/linux/lnx_suspicious_curl_wget.ndjson"
+    },
+    {
+      "title": "lnx_suspicious_netcat",
+      "severity": null,
+      "techniques": [
+        "T1059.004"
+      ],
+      "fp_risk": 0,
+      "quality_score": 34.0,
+      "platform": "elastic",
+      "file": "elastic/endpoint/linux/lnx_suspicious_netcat.ndjson"
+    },
+    {
+      "title": "lnx_suspicious_shell_meta",
+      "severity": null,
+      "techniques": [
+        "T1059.004"
+      ],
+      "fp_risk": 0,
+      "quality_score": 34.0,
+      "platform": "elastic",
+      "file": "elastic/endpoint/linux/lnx_suspicious_shell_meta.ndjson"
+    },
+    {
+      "title": "net_dns_tunneling_entropy",
+      "severity": null,
+      "techniques": [
+        "T1071.004"
+      ],
+      "fp_risk": 0,
+      "quality_score": 34.0,
+      "platform": "elastic",
+      "file": "elastic/endpoint/network/net_dns_tunneling_entropy.ndjson"
+    },
+    {
+      "title": "net_suspicious_rdp",
+      "severity": null,
+      "techniques": [
+        "T1021.001"
+      ],
+      "fp_risk": 0,
+      "quality_score": 34.0,
+      "platform": "elastic",
+      "file": "elastic/endpoint/network/net_suspicious_rdp.ndjson"
+    },
+    {
+      "title": "win_ransomware_shadow_copy",
+      "severity": null,
+      "techniques": [
+        "T1490"
+      ],
+      "fp_risk": 0,
+      "quality_score": 34.0,
+      "platform": "elastic",
+      "file": "elastic/endpoint/windows/win_ransomware_shadow_copy.ndjson"
+    },
+    {
+      "title": "win_reg_disable_defender",
+      "severity": null,
+      "techniques": [
+        "T1562.001"
+      ],
+      "fp_risk": 0,
+      "quality_score": 34.0,
+      "platform": "elastic",
+      "file": "elastic/endpoint/windows/win_reg_disable_defender.ndjson"
+    },
+    {
+      "title": "win_suspicious_bitsadmin",
+      "severity": null,
+      "techniques": [
+        "T1197"
+      ],
+      "fp_risk": 0,
+      "quality_score": 34.0,
+      "platform": "elastic",
+      "file": "elastic/endpoint/windows/win_suspicious_bitsadmin.ndjson"
+    },
+    {
+      "title": "win_suspicious_certutil_download",
+      "severity": null,
+      "techniques": [
+        "T1105"
+      ],
+      "fp_risk": 0,
+      "quality_score": 34.0,
+      "platform": "elastic",
+      "file": "elastic/endpoint/windows/win_suspicious_certutil_download.ndjson"
+    },
+    {
+      "title": "win_suspicious_powershell_download",
+      "severity": null,
+      "techniques": [
+        "T1059.001",
+        "T1105"
+      ],
+      "fp_risk": 1,
+      "quality_score": 36.0,
+      "platform": "elastic",
+      "file": "elastic/endpoint/windows/win_suspicious_powershell_download.ndjson"
+    },
+    {
+      "title": "win_suspicious_wmic_process",
+      "severity": null,
+      "techniques": [
+        "T1047"
+      ],
+      "fp_risk": 1,
+      "quality_score": 32.0,
+      "platform": "elastic",
+      "file": "elastic/endpoint/windows/win_suspicious_wmic_process.ndjson"
+    },
+    {
+      "title": "win_uac_bypass_fodhelper",
+      "severity": null,
+      "techniques": [
+        "T1548.002"
+      ],
+      "fp_risk": 0,
+      "quality_score": 34.0,
+      "platform": "elastic",
+      "file": "elastic/endpoint/windows/win_uac_bypass_fodhelper.ndjson"
+    },
+    {
+      "title": "network_rules",
+      "severity": null,
+      "techniques": [
+        "T1071",
+        "T1071.004"
+      ],
+      "fp_risk": 0,
+      "quality_score": 38.0,
+      "platform": "elastic",
+      "file": "elastic/network/network_rules.ndjson"
+    },
+    {
+      "title": "cloud_gcp_iam_suspicious_role_grant",
+      "severity": "high",
+      "techniques": [
+        "T1098"
+      ],
+      "fp_risk": 0,
+      "quality_score": 65.0,
+      "platform": "splunk",
+      "file": "splunk/cloud/cloud_gcp_iam_suspicious_role_grant.spl"
+    },
+    {
+      "title": "lnx_suspicious_cron_modification",
+      "severity": "medium",
+      "techniques": [
+        "T1053.003"
+      ],
+      "fp_risk": 0,
+      "quality_score": 61.0,
+      "platform": "splunk",
+      "file": "splunk/linux/lnx_suspicious_cron_modification.spl"
+    },
+    {
+      "title": "lnx_suspicious_passwd_mod",
+      "severity": "high",
+      "techniques": [
+        "T1003.008"
+      ],
+      "fp_risk": 0,
+      "quality_score": 65.0,
+      "platform": "splunk",
+      "file": "splunk/linux/lnx_suspicious_passwd_mod.spl"
+    },
+    {
+      "title": "lnx_suspicious_sudo_without_tty",
+      "severity": "medium",
+      "techniques": [
+        "T1068"
+      ],
+      "fp_risk": 0,
+      "quality_score": 61.0,
+      "platform": "splunk",
+      "file": "splunk/linux/lnx_suspicious_sudo_without_tty.spl"
+    },
+    {
+      "title": "lnx_suspicious_wget_curl",
+      "severity": "high",
+      "techniques": [
+        "T1105"
+      ],
+      "fp_risk": 0,
+      "quality_score": 65.0,
+      "platform": "splunk",
+      "file": "splunk/linux/lnx_suspicious_wget_curl.spl"
+    },
+    {
+      "title": "net_dns_suspicious_tunnel",
+      "severity": "high",
+      "techniques": [
+        "T1071.004"
+      ],
+      "fp_risk": 0,
+      "quality_score": 65.0,
+      "platform": "splunk",
+      "file": "splunk/network/net_dns_suspicious_tunnel.spl"
+    },
+    {
+      "title": "net_suspicious_ssh_brute",
+      "severity": "high",
+      "techniques": [
+        "T1110"
+      ],
+      "fp_risk": 0,
+      "quality_score": 65.0,
+      "platform": "splunk",
+      "file": "splunk/network/net_suspicious_ssh_brute.spl"
+    },
+    {
+      "title": "net_suspicious_user_agent",
+      "severity": "high",
+      "techniques": [
+        "T1071.001"
+      ],
+      "fp_risk": 0,
+      "quality_score": 65.0,
+      "platform": "splunk",
+      "file": "splunk/network/net_suspicious_user_agent.spl"
+    },
+    {
+      "title": "win_powershell_suspicious_encoded_command",
+      "severity": "high",
+      "techniques": [
+        "T1059",
+        "T1059.001"
+      ],
+      "fp_risk": 1,
+      "quality_score": 67.0,
+      "platform": "splunk",
+      "file": "splunk/windows/win_powershell_suspicious_encoded_command.spl"
+    },
+    {
+      "title": "win_shadow_copies_deletion",
+      "severity": "critical",
+      "techniques": [
+        "T1490"
+      ],
+      "fp_risk": 0,
+      "quality_score": 69.0,
+      "platform": "splunk",
+      "file": "splunk/windows/win_shadow_copies_deletion.spl"
+    },
+    {
+      "title": "win_suspicious_attrib_hidden",
+      "severity": "high",
+      "techniques": [
+        "T1564.001"
+      ],
+      "fp_risk": 0,
+      "quality_score": 65.0,
+      "platform": "splunk",
+      "file": "splunk/windows/win_suspicious_attrib_hidden.spl"
+    },
+    {
+      "title": "win_suspicious_certutil_download",
+      "severity": "high",
+      "techniques": [
+        "T1105"
+      ],
+      "fp_risk": 0,
+      "quality_score": 65.0,
+      "platform": "splunk",
+      "file": "splunk/windows/win_suspicious_certutil_download.spl"
+    },
+    {
+      "title": "win_suspicious_mshta_execution",
+      "severity": "high",
+      "techniques": [
+        "T1218.005"
+      ],
+      "fp_risk": 0,
+      "quality_score": 65.0,
+      "platform": "splunk",
+      "file": "splunk/windows/win_suspicious_mshta_execution.spl"
+    },
+    {
+      "title": "win_suspicious_regsvr32",
+      "severity": "high",
+      "techniques": [
+        "T1218.010"
+      ],
+      "fp_risk": 1,
+      "quality_score": 63.0,
+      "platform": "splunk",
+      "file": "splunk/windows/win_suspicious_regsvr32.spl"
+    },
+    {
+      "title": "win_suspicious_rundll32_net",
+      "severity": "high",
+      "techniques": [
+        "T1218.011"
+      ],
+      "fp_risk": 1,
+      "quality_score": 63.0,
+      "platform": "splunk",
+      "file": "splunk/windows/win_suspicious_rundll32_net.spl"
+    },
+    {
+      "title": "win_suspicious_sc_create",
+      "severity": "high",
+      "techniques": [
+        "T1543.003"
+      ],
+      "fp_risk": 0,
+      "quality_score": 65.0,
+      "platform": "splunk",
+      "file": "splunk/windows/win_suspicious_sc_create.spl"
+    },
+    {
+      "title": "win_suspicious_taskkill",
+      "severity": "high",
+      "techniques": [
+        "T1562.001"
+      ],
+      "fp_risk": 0,
+      "quality_score": 65.0,
+      "platform": "splunk",
+      "file": "splunk/windows/win_suspicious_taskkill.spl"
+    },
+    {
+      "title": "win_suspicious_whoami",
+      "severity": "high",
+      "techniques": [
+        "T1033"
+      ],
+      "fp_risk": 0,
+      "quality_score": 65.0,
+      "platform": "splunk",
+      "file": "splunk/windows/win_suspicious_whoami.spl"
+    },
+    {
+      "title": "Proc Exec Cmd",
+      "severity": "informational",
+      "techniques": [
+        "T1059.003"
+      ],
+      "fp_risk": 1,
+      "quality_score": 66.0,
+      "platform": "microsoft-sentinel",
+      "file": "microsoft-sentinel/kql_001_proc_exec_cmd.kql"
+    },
+    {
+      "title": "Suspicious PowerShell Execution",
+      "severity": "medium",
+      "techniques": [
+        "T1059",
+        "T1059.001"
+      ],
+      "fp_risk": 1,
+      "quality_score": 78.0,
+      "platform": "microsoft-sentinel",
+      "file": "microsoft-sentinel/kql_002_proc_exec_powershell.kql"
+    },
+    {
+      "title": "Proc Exec Wscript",
+      "severity": "informational",
+      "techniques": [
+        "T1059.005"
+      ],
+      "fp_risk": 0,
+      "quality_score": 68.0,
+      "platform": "microsoft-sentinel",
+      "file": "microsoft-sentinel/kql_003_proc_exec_wscript.kql"
+    },
+    {
+      "title": "Proc Exec Cscript",
+      "severity": "informational",
+      "techniques": [
+        "T1059.005"
+      ],
+      "fp_risk": 0,
+      "quality_score": 68.0,
+      "platform": "microsoft-sentinel",
+      "file": "microsoft-sentinel/kql_004_proc_exec_cscript.kql"
+    },
+    {
+      "title": "Suspicious Rundll32 Execution",
+      "severity": "medium",
+      "techniques": [
+        "T1218",
+        "T1218.011"
+      ],
+      "fp_risk": 1,
+      "quality_score": 78.0,
+      "platform": "microsoft-sentinel",
+      "file": "microsoft-sentinel/kql_005_proc_exec_rundll32.kql"
+    },
+    {
+      "title": "Suspicious Regsvr32 Execution (Squiblydoo)",
+      "severity": "high",
+      "techniques": [
+        "T1218",
+        "T1218.010"
+      ],
+      "fp_risk": 1,
+      "quality_score": 82.0,
+      "platform": "microsoft-sentinel",
+      "file": "microsoft-sentinel/kql_006_proc_exec_regsvr32.kql"
+    },
+    {
+      "title": "Certutil Used for Download or Decode",
+      "severity": "high",
+      "techniques": [
+        "T1105",
+        "T1140"
+      ],
+      "fp_risk": 0,
+      "quality_score": 84.0,
+      "platform": "microsoft-sentinel",
+      "file": "microsoft-sentinel/kql_007_proc_exec_certutil.kql"
+    },
+    {
+      "title": "Bitsadmin Suspicious Download/Transfer",
+      "severity": "high",
+      "techniques": [
+        "T1105",
+        "T1197"
+      ],
+      "fp_risk": 0,
+      "quality_score": 84.0,
+      "platform": "microsoft-sentinel",
+      "file": "microsoft-sentinel/kql_008_proc_exec_bitsadmin.kql"
+    },
+    {
+      "title": "Proc Exec Schtasks",
+      "severity": "informational",
+      "techniques": [
+        "T1053.005"
+      ],
+      "fp_risk": 1,
+      "quality_score": 66.0,
+      "platform": "microsoft-sentinel",
+      "file": "microsoft-sentinel/kql_009_proc_exec_schtasks.kql"
+    },
+    {
+      "title": "Proc Exec At",
+      "severity": "informational",
+      "techniques": [
+        "T1053.002"
+      ],
+      "fp_risk": 0,
+      "quality_score": 68.0,
+      "platform": "microsoft-sentinel",
+      "file": "microsoft-sentinel/kql_010_proc_exec_at.kql"
+    },
+    {
+      "title": "Net Conn Suspicious Port",
+      "severity": "low",
+      "techniques": [
+        "T1571"
+      ],
+      "fp_risk": 0,
+      "quality_score": 72.0,
+      "platform": "microsoft-sentinel",
+      "file": "microsoft-sentinel/kql_011_net_conn_suspicious_port.kql"
+    },
+    {
+      "title": "Net Conn Rdp",
+      "severity": "informational",
+      "techniques": [
+        "T1021.001"
+      ],
+      "fp_risk": 0,
+      "quality_score": 68.0,
+      "platform": "microsoft-sentinel",
+      "file": "microsoft-sentinel/kql_012_net_conn_rdp.kql"
+    },
+    {
+      "title": "Net Conn Ssh",
+      "severity": "informational",
+      "techniques": [
+        "T1021.004"
+      ],
+      "fp_risk": 0,
+      "quality_score": 68.0,
+      "platform": "microsoft-sentinel",
+      "file": "microsoft-sentinel/kql_013_net_conn_ssh.kql"
+    },
+    {
+      "title": "Net Conn Ftp",
+      "severity": "informational",
+      "techniques": [
+        "T1071.002"
+      ],
+      "fp_risk": 0,
+      "quality_score": 68.0,
+      "platform": "microsoft-sentinel",
+      "file": "microsoft-sentinel/kql_014_net_conn_ftp.kql"
+    },
+    {
+      "title": "Net Conn Telnet",
+      "severity": "informational",
+      "techniques": [
+        "T1021"
+      ],
+      "fp_risk": 0,
+      "quality_score": 68.0,
+      "platform": "microsoft-sentinel",
+      "file": "microsoft-sentinel/kql_015_net_conn_telnet.kql"
+    },
+    {
+      "title": "Net Conn Smb",
+      "severity": "informational",
+      "techniques": [
+        "T1021.002"
+      ],
+      "fp_risk": 0,
+      "quality_score": 68.0,
+      "platform": "microsoft-sentinel",
+      "file": "microsoft-sentinel/kql_016_net_conn_smb.kql"
+    },
+    {
+      "title": "Net Conn Dns Tunnel",
+      "severity": "low",
+      "techniques": [
+        "T1071.004",
+        "T1572"
+      ],
+      "fp_risk": 0,
+      "quality_score": 76.0,
+      "platform": "microsoft-sentinel",
+      "file": "microsoft-sentinel/kql_017_net_conn_dns_tunnel.kql"
+    },
+    {
+      "title": "Net Conn Http Malicious",
+      "severity": "low",
+      "techniques": [
+        "T1071.001"
+      ],
+      "fp_risk": 0,
+      "quality_score": 72.0,
+      "platform": "microsoft-sentinel",
+      "file": "microsoft-sentinel/kql_018_net_conn_http_malicious.kql"
+    },
+    {
+      "title": "Net Conn Tor",
+      "severity": "low",
+      "techniques": [
+        "T1090.003"
+      ],
+      "fp_risk": 0,
+      "quality_score": 72.0,
+      "platform": "microsoft-sentinel",
+      "file": "microsoft-sentinel/kql_019_net_conn_tor.kql"
+    },
+    {
+      "title": "Net Conn Darkweb",
+      "severity": "low",
+      "techniques": [
+        "T1071.001",
+        "T1090.003"
+      ],
+      "fp_risk": 0,
+      "quality_score": 76.0,
+      "platform": "microsoft-sentinel",
+      "file": "microsoft-sentinel/kql_020_net_conn_darkweb.kql"
+    },
+    {
+      "title": "Registry Run Key Modification (Persistence)",
+      "severity": "medium",
+      "techniques": [
+        "T1547",
+        "T1547.001"
+      ],
+      "fp_risk": 0,
+      "quality_score": 80.0,
+      "platform": "microsoft-sentinel",
+      "file": "microsoft-sentinel/kql_021_reg_mod_run_key.kql"
+    },
+    {
+      "title": "Reg Mod Runonce Key",
+      "severity": "informational",
+      "techniques": [
+        "T1547.001"
+      ],
+      "fp_risk": 0,
+      "quality_score": 68.0,
+      "platform": "microsoft-sentinel",
+      "file": "microsoft-sentinel/kql_022_reg_mod_runonce_key.kql"
+    },
+    {
+      "title": "Reg Mod Services",
+      "severity": "informational",
+      "techniques": [
+        "T1543.003"
+      ],
+      "fp_risk": 0,
+      "quality_score": 68.0,
+      "platform": "microsoft-sentinel",
+      "file": "microsoft-sentinel/kql_023_reg_mod_services.kql"
+    },
+    {
+      "title": "Reg Mod Firewall",
+      "severity": "informational",
+      "techniques": [
+        "T1562.004"
+      ],
+      "fp_risk": 0,
+      "quality_score": 68.0,
+      "platform": "microsoft-sentinel",
+      "file": "microsoft-sentinel/kql_024_reg_mod_firewall.kql"
+    },
+    {
+      "title": "Reg Mod Defender",
+      "severity": "low",
+      "techniques": [
+        "T1562.001"
+      ],
+      "fp_risk": 0,
+      "quality_score": 72.0,
+      "platform": "microsoft-sentinel",
+      "file": "microsoft-sentinel/kql_025_reg_mod_defender.kql"
+    },
+    {
+      "title": "Reg Mod Uac",
+      "severity": "informational",
+      "techniques": [
+        "T1548.002"
+      ],
+      "fp_risk": 0,
+      "quality_score": 68.0,
+      "platform": "microsoft-sentinel",
+      "file": "microsoft-sentinel/kql_026_reg_mod_uac.kql"
+    },
+    {
+      "title": "Reg Mod Proxy",
+      "severity": "informational",
+      "techniques": [
+        "T1090"
+      ],
+      "fp_risk": 0,
+      "quality_score": 68.0,
+      "platform": "microsoft-sentinel",
+      "file": "microsoft-sentinel/kql_027_reg_mod_proxy.kql"
+    },
+    {
+      "title": "Reg Mod Rdp",
+      "severity": "informational",
+      "techniques": [
+        "T1021.001",
+        "T1112"
+      ],
+      "fp_risk": 0,
+      "quality_score": 72.0,
+      "platform": "microsoft-sentinel",
+      "file": "microsoft-sentinel/kql_028_reg_mod_rdp.kql"
+    },
+    {
+      "title": "Reg Mod Wdigest",
+      "severity": "low",
+      "techniques": [
+        "T1003.001",
+        "T1112"
+      ],
+      "fp_risk": 0,
+      "quality_score": 76.0,
+      "platform": "microsoft-sentinel",
+      "file": "microsoft-sentinel/kql_029_reg_mod_wdigest.kql"
+    },
+    {
+      "title": "Reg Mod Lsa",
+      "severity": "low",
+      "techniques": [
+        "T1547.005"
+      ],
+      "fp_risk": 0,
+      "quality_score": 72.0,
+      "platform": "microsoft-sentinel",
+      "file": "microsoft-sentinel/kql_030_reg_mod_lsa.kql"
+    },
+    {
+      "title": "File Create Exe Temp",
+      "severity": "informational",
+      "techniques": [
+        "T1036",
+        "T1105"
+      ],
+      "fp_risk": 0,
+      "quality_score": 72.0,
+      "platform": "microsoft-sentinel",
+      "file": "microsoft-sentinel/kql_031_file_create_exe_temp.kql"
+    },
+    {
+      "title": "File Create Dll Temp",
+      "severity": "informational",
+      "techniques": [
+        "T1574.002"
+      ],
+      "fp_risk": 0,
+      "quality_score": 68.0,
+      "platform": "microsoft-sentinel",
+      "file": "microsoft-sentinel/kql_032_file_create_dll_temp.kql"
+    },
+    {
+      "title": "File Create Sys",
+      "severity": "informational",
+      "techniques": [
+        "T1543.003"
+      ],
+      "fp_risk": 0,
+      "quality_score": 68.0,
+      "platform": "microsoft-sentinel",
+      "file": "microsoft-sentinel/kql_033_file_create_sys.kql"
+    },
+    {
+      "title": "File Create Ps1",
+      "severity": "informational",
+      "techniques": [
+        "T1059.001"
+      ],
+      "fp_risk": 0,
+      "quality_score": 68.0,
+      "platform": "microsoft-sentinel",
+      "file": "microsoft-sentinel/kql_034_file_create_ps1.kql"
+    },
+    {
+      "title": "File Create Vbs",
+      "severity": "informational",
+      "techniques": [
+        "T1059.005"
+      ],
+      "fp_risk": 0,
+      "quality_score": 68.0,
+      "platform": "microsoft-sentinel",
+      "file": "microsoft-sentinel/kql_035_file_create_vbs.kql"
+    },
+    {
+      "title": "File Create Bat",
+      "severity": "informational",
+      "techniques": [
+        "T1059.003"
+      ],
+      "fp_risk": 0,
+      "quality_score": 68.0,
+      "platform": "microsoft-sentinel",
+      "file": "microsoft-sentinel/kql_036_file_create_bat.kql"
+    },
+    {
+      "title": "File Create Js",
+      "severity": "informational",
+      "techniques": [
+        "T1059.007"
+      ],
+      "fp_risk": 0,
+      "quality_score": 68.0,
+      "platform": "microsoft-sentinel",
+      "file": "microsoft-sentinel/kql_037_file_create_js.kql"
+    },
+    {
+      "title": "File Create Wsf",
+      "severity": "informational",
+      "techniques": [
+        "T1059.005"
+      ],
+      "fp_risk": 0,
+      "quality_score": 68.0,
+      "platform": "microsoft-sentinel",
+      "file": "microsoft-sentinel/kql_038_file_create_wsf.kql"
+    },
+    {
+      "title": "File Create Scr",
+      "severity": "informational",
+      "techniques": [
+        "T1036",
+        "T1218"
+      ],
+      "fp_risk": 0,
+      "quality_score": 72.0,
+      "platform": "microsoft-sentinel",
+      "file": "microsoft-sentinel/kql_039_file_create_scr.kql"
+    },
+    {
+      "title": "File Create Pif",
+      "severity": "informational",
+      "techniques": [
+        "T1036"
+      ],
+      "fp_risk": 0,
+      "quality_score": 68.0,
+      "platform": "microsoft-sentinel",
+      "file": "microsoft-sentinel/kql_040_file_create_pif.kql"
+    },
+    {
+      "title": "Acct Mgr User Created",
+      "severity": "informational",
+      "techniques": [
+        "T1136.001"
+      ],
+      "fp_risk": 0,
+      "quality_score": 68.0,
+      "platform": "microsoft-sentinel",
+      "file": "microsoft-sentinel/kql_041_acct_mgr_user_created.kql"
+    },
+    {
+      "title": "Acct Mgr User Enabled",
+      "severity": "informational",
+      "techniques": [
+        "T1098"
+      ],
+      "fp_risk": 0,
+      "quality_score": 68.0,
+      "platform": "microsoft-sentinel",
+      "file": "microsoft-sentinel/kql_042_acct_mgr_user_enabled.kql"
+    },
+    {
+      "title": "Acct Mgr User Pwd Reset",
+      "severity": "informational",
+      "techniques": [
+        "T1098"
+      ],
+      "fp_risk": 0,
+      "quality_score": 68.0,
+      "platform": "microsoft-sentinel",
+      "file": "microsoft-sentinel/kql_043_acct_mgr_user_pwd_reset.kql"
+    },
+    {
+      "title": "Acct Mgr User Deleted",
+      "severity": "informational",
+      "techniques": [
+        "T1531"
+      ],
+      "fp_risk": 0,
+      "quality_score": 68.0,
+      "platform": "microsoft-sentinel",
+      "file": "microsoft-sentinel/kql_044_acct_mgr_user_deleted.kql"
+    },
+    {
+      "title": "Acct Mgr User Added To Group",
+      "severity": "informational",
+      "techniques": [
+        "T1098.007"
+      ],
+      "fp_risk": 0,
+      "quality_score": 68.0,
+      "platform": "microsoft-sentinel",
+      "file": "microsoft-sentinel/kql_045_acct_mgr_user_added_to_group.kql"
+    },
+    {
+      "title": "Acct Mgr User Removed From Group",
+      "severity": "informational",
+      "techniques": [
+        "T1531"
+      ],
+      "fp_risk": 0,
+      "quality_score": 68.0,
+      "platform": "microsoft-sentinel",
+      "file": "microsoft-sentinel/kql_046_acct_mgr_user_removed_from_group.kql"
+    },
+    {
+      "title": "Acct Mgr Group Created",
+      "severity": "informational",
+      "techniques": [
+        "T1136"
+      ],
+      "fp_risk": 0,
+      "quality_score": 68.0,
+      "platform": "microsoft-sentinel",
+      "file": "microsoft-sentinel/kql_047_acct_mgr_group_created.kql"
+    },
+    {
+      "title": "Acct Mgr Group Deleted",
+      "severity": "informational",
+      "techniques": [
+        "T1531"
+      ],
+      "fp_risk": 0,
+      "quality_score": 68.0,
+      "platform": "microsoft-sentinel",
+      "file": "microsoft-sentinel/kql_048_acct_mgr_group_deleted.kql"
+    },
+    {
+      "title": "Acct Mgr Pwd Policy Changed",
+      "severity": "informational",
+      "techniques": [
+        "T1484"
+      ],
+      "fp_risk": 0,
+      "quality_score": 68.0,
+      "platform": "microsoft-sentinel",
+      "file": "microsoft-sentinel/kql_049_acct_mgr_pwd_policy_changed.kql"
+    },
+    {
+      "title": "Acct Mgr Acct Locked Out",
+      "severity": "informational",
+      "techniques": [
+        "T1110"
+      ],
+      "fp_risk": 0,
+      "quality_score": 68.0,
+      "platform": "microsoft-sentinel",
+      "file": "microsoft-sentinel/kql_050_acct_mgr_acct_locked_out.kql"
+    },
+    {
+      "title": "Failed Logon Brute Force (Threshold-Based)",
+      "severity": "medium",
+      "techniques": [
+        "T1110",
+        "T1110.001"
+      ],
+      "fp_risk": 0,
+      "quality_score": 80.0,
+      "platform": "microsoft-sentinel",
+      "file": "microsoft-sentinel/kql_051_logon_failed.kql"
+    },
+    {
+      "title": "Logon Success",
+      "severity": "informational",
+      "techniques": [
+        "T1078"
+      ],
+      "fp_risk": 0,
+      "quality_score": 68.0,
+      "platform": "microsoft-sentinel",
+      "file": "microsoft-sentinel/kql_052_logon_success.kql"
+    },
+    {
+      "title": "Logon Explicit",
+      "severity": "informational",
+      "techniques": [
+        "T1078"
+      ],
+      "fp_risk": 0,
+      "quality_score": 68.0,
+      "platform": "microsoft-sentinel",
+      "file": "microsoft-sentinel/kql_053_logon_explicit.kql"
+    },
+    {
+      "title": "Logon Special",
+      "severity": "informational",
+      "techniques": [
+        "T1078"
+      ],
+      "fp_risk": 0,
+      "quality_score": 68.0,
+      "platform": "microsoft-sentinel",
+      "file": "microsoft-sentinel/kql_054_logon_special.kql"
+    },
+    {
+      "title": "Suspicious RDP Logon (Lateral Movement Indicator)",
+      "severity": "medium",
+      "techniques": [
+        "T1021",
+        "T1021.001",
+        "T1078"
+      ],
+      "fp_risk": 0,
+      "quality_score": 84.0,
+      "platform": "microsoft-sentinel",
+      "file": "microsoft-sentinel/kql_055_logon_rdp.kql"
+    },
+    {
+      "title": "Logon Network",
+      "severity": "informational",
+      "techniques": [
+        "T1021"
+      ],
+      "fp_risk": 0,
+      "quality_score": 68.0,
+      "platform": "microsoft-sentinel",
+      "file": "microsoft-sentinel/kql_056_logon_network.kql"
+    },
+    {
+      "title": "Logon Batch",
+      "severity": "informational",
+      "techniques": [
+        "T1078"
+      ],
+      "fp_risk": 0,
+      "quality_score": 68.0,
+      "platform": "microsoft-sentinel",
+      "file": "microsoft-sentinel/kql_057_logon_batch.kql"
+    },
+    {
+      "title": "Logon Service",
+      "severity": "informational",
+      "techniques": [
+        "T1078"
+      ],
+      "fp_risk": 0,
+      "quality_score": 68.0,
+      "platform": "microsoft-sentinel",
+      "file": "microsoft-sentinel/kql_058_logon_service.kql"
+    },
+    {
+      "title": "Logon Unlock",
+      "severity": "informational",
+      "techniques": [
+        "T1098"
+      ],
+      "fp_risk": 0,
+      "quality_score": 68.0,
+      "platform": "microsoft-sentinel",
+      "file": "microsoft-sentinel/kql_059_logon_unlock.kql"
+    },
+    {
+      "title": "Logon Cleartext",
+      "severity": "informational",
+      "techniques": [
+        "T1556"
+      ],
+      "fp_risk": 0,
+      "quality_score": 68.0,
+      "platform": "microsoft-sentinel",
+      "file": "microsoft-sentinel/kql_060_logon_cleartext.kql"
+    },
+    {
+      "title": "Schtask Created",
+      "severity": "informational",
+      "techniques": [
+        "T1053.005"
+      ],
+      "fp_risk": 0,
+      "quality_score": 68.0,
+      "platform": "microsoft-sentinel",
+      "file": "microsoft-sentinel/kql_061_schtask_created.kql"
+    },
+    {
+      "title": "Schtask Deleted",
+      "severity": "informational",
+      "techniques": [
+        "T1053.005"
+      ],
+      "fp_risk": 0,
+      "quality_score": 68.0,
+      "platform": "microsoft-sentinel",
+      "file": "microsoft-sentinel/kql_062_schtask_deleted.kql"
+    },
+    {
+      "title": "Schtask Enabled",
+      "severity": "informational",
+      "techniques": [
+        "T1053.005"
+      ],
+      "fp_risk": 0,
+      "quality_score": 68.0,
+      "platform": "microsoft-sentinel",
+      "file": "microsoft-sentinel/kql_063_schtask_enabled.kql"
+    },
+    {
+      "title": "Schtask Disabled",
+      "severity": "informational",
+      "techniques": [
+        "T1053.005"
+      ],
+      "fp_risk": 0,
+      "quality_score": 68.0,
+      "platform": "microsoft-sentinel",
+      "file": "microsoft-sentinel/kql_064_schtask_disabled.kql"
+    },
+    {
+      "title": "Schtask Updated",
+      "severity": "informational",
+      "techniques": [
+        "T1053.005"
+      ],
+      "fp_risk": 0,
+      "quality_score": 68.0,
+      "platform": "microsoft-sentinel",
+      "file": "microsoft-sentinel/kql_065_schtask_updated.kql"
+    },
+    {
+      "title": "Schtask Suspicious Name",
+      "severity": "informational",
+      "techniques": [
+        "T1036",
+        "T1053.005"
+      ],
+      "fp_risk": 0,
+      "quality_score": 72.0,
+      "platform": "microsoft-sentinel",
+      "file": "microsoft-sentinel/kql_066_schtask_suspicious_name.kql"
+    },
+    {
+      "title": "Schtask Suspicious Action",
+      "severity": "informational",
+      "techniques": [
+        "T1053.005"
+      ],
+      "fp_risk": 0,
+      "quality_score": 68.0,
+      "platform": "microsoft-sentinel",
+      "file": "microsoft-sentinel/kql_067_schtask_suspicious_action.kql"
+    },
+    {
+      "title": "Schtask Hidden",
+      "severity": "informational",
+      "techniques": [
+        "T1053.005",
+        "T1564"
+      ],
+      "fp_risk": 0,
+      "quality_score": 72.0,
+      "platform": "microsoft-sentinel",
+      "file": "microsoft-sentinel/kql_068_schtask_hidden.kql"
+    },
+    {
+      "title": "Schtask System Context",
+      "severity": "low",
+      "techniques": [
+        "T1053.005",
+        "T1078"
+      ],
+      "fp_risk": 0,
+      "quality_score": 76.0,
+      "platform": "microsoft-sentinel",
+      "file": "microsoft-sentinel/kql_069_schtask_system_context.kql"
+    },
+    {
+      "title": "Schtask Network Trigger",
+      "severity": "informational",
+      "techniques": [
+        "T1053.005"
+      ],
+      "fp_risk": 0,
+      "quality_score": 68.0,
+      "platform": "microsoft-sentinel",
+      "file": "microsoft-sentinel/kql_070_schtask_network_trigger.kql"
+    },
+    {
+      "title": "Suspicious Service Installation (Persistence)",
+      "severity": "high",
+      "techniques": [
+        "T1543",
+        "T1543.003"
+      ],
+      "fp_risk": 0,
+      "quality_score": 84.0,
+      "platform": "microsoft-sentinel",
+      "file": "microsoft-sentinel/kql_071_service_installed.kql"
+    },
+    {
+      "title": "Service Started",
+      "severity": "informational",
+      "techniques": [
+        "T1543.003"
+      ],
+      "fp_risk": 0,
+      "quality_score": 68.0,
+      "platform": "microsoft-sentinel",
+      "file": "microsoft-sentinel/kql_072_service_started.kql"
+    },
+    {
+      "title": "Service Stopped",
+      "severity": "informational",
+      "techniques": [
+        "T1489"
+      ],
+      "fp_risk": 0,
+      "quality_score": 68.0,
+      "platform": "microsoft-sentinel",
+      "file": "microsoft-sentinel/kql_073_service_stopped.kql"
+    },
+    {
+      "title": "Service Failed",
+      "severity": "informational",
+      "techniques": [
+        "T1499"
+      ],
+      "fp_risk": 0,
+      "quality_score": 68.0,
+      "platform": "microsoft-sentinel",
+      "file": "microsoft-sentinel/kql_074_service_failed.kql"
+    },
+    {
+      "title": "Service Crashed",
+      "severity": "informational",
+      "techniques": [
+        "T1499"
+      ],
+      "fp_risk": 0,
+      "quality_score": 68.0,
+      "platform": "microsoft-sentinel",
+      "file": "microsoft-sentinel/kql_075_service_crashed.kql"
+    },
+    {
+      "title": "Service Suspicious Path",
+      "severity": "informational",
+      "techniques": [
+        "T1036",
+        "T1543.003"
+      ],
+      "fp_risk": 0,
+      "quality_score": 72.0,
+      "platform": "microsoft-sentinel",
+      "file": "microsoft-sentinel/kql_076_service_suspicious_path.kql"
+    },
+    {
+      "title": "Service Suspicious Name",
+      "severity": "informational",
+      "techniques": [
+        "T1036",
+        "T1543.003"
+      ],
+      "fp_risk": 0,
+      "quality_score": 72.0,
+      "platform": "microsoft-sentinel",
+      "file": "microsoft-sentinel/kql_077_service_suspicious_name.kql"
+    },
+    {
+      "title": "Service Changed Config",
+      "severity": "informational",
+      "techniques": [
+        "T1543.003"
+      ],
+      "fp_risk": 0,
+      "quality_score": 68.0,
+      "platform": "microsoft-sentinel",
+      "file": "microsoft-sentinel/kql_078_service_changed_config.kql"
+    },
+    {
+      "title": "Service Deleted",
+      "severity": "informational",
+      "techniques": [
+        "T1543.003"
+      ],
+      "fp_risk": 0,
+      "quality_score": 68.0,
+      "platform": "microsoft-sentinel",
+      "file": "microsoft-sentinel/kql_079_service_deleted.kql"
+    },
+    {
+      "title": "Service Disabled",
+      "severity": "informational",
+      "techniques": [
+        "T1543.003",
+        "T1562.001"
+      ],
+      "fp_risk": 0,
+      "quality_score": 72.0,
+      "platform": "microsoft-sentinel",
+      "file": "microsoft-sentinel/kql_080_service_disabled.kql"
+    },
+    {
+      "title": "Obj Access File",
+      "severity": "informational",
+      "techniques": [
+        "T1005"
+      ],
+      "fp_risk": 0,
+      "quality_score": 68.0,
+      "platform": "microsoft-sentinel",
+      "file": "microsoft-sentinel/kql_081_obj_access_file.kql"
+    },
+    {
+      "title": "Obj Access Registry",
+      "severity": "informational",
+      "techniques": [
+        "T1012"
+      ],
+      "fp_risk": 0,
+      "quality_score": 68.0,
+      "platform": "microsoft-sentinel",
+      "file": "microsoft-sentinel/kql_082_obj_access_registry.kql"
+    },
+    {
+      "title": "Obj Access Sam",
+      "severity": "informational",
+      "techniques": [
+        "T1003.002"
+      ],
+      "fp_risk": 0,
+      "quality_score": 68.0,
+      "platform": "microsoft-sentinel",
+      "file": "microsoft-sentinel/kql_083_obj_access_sam.kql"
+    },
+    {
+      "title": "LSASS Access for Credential Dumping",
+      "severity": "critical",
+      "techniques": [
+        "T1003",
+        "T1003.001"
+      ],
+      "fp_risk": 0,
+      "quality_score": 88.0,
+      "platform": "microsoft-sentinel",
+      "file": "microsoft-sentinel/kql_084_obj_access_lsass.kql"
+    },
+    {
+      "title": "Obj Access Shadow Copy",
+      "severity": "low",
+      "techniques": [
+        "T1490"
+      ],
+      "fp_risk": 0,
+      "quality_score": 72.0,
+      "platform": "microsoft-sentinel",
+      "file": "microsoft-sentinel/kql_085_obj_access_shadow_copy.kql"
+    },
+    {
+      "title": "Obj Access Backup",
+      "severity": "informational",
+      "techniques": [
+        "T1490"
+      ],
+      "fp_risk": 0,
+      "quality_score": 68.0,
+      "platform": "microsoft-sentinel",
+      "file": "microsoft-sentinel/kql_086_obj_access_backup.kql"
+    },
+    {
+      "title": "Obj Access Ntds",
+      "severity": "low",
+      "techniques": [
+        "T1003.003"
+      ],
+      "fp_risk": 0,
+      "quality_score": 72.0,
+      "platform": "microsoft-sentinel",
+      "file": "microsoft-sentinel/kql_087_obj_access_ntds.kql"
+    },
+    {
+      "title": "Obj Access Audit Policy",
+      "severity": "informational",
+      "techniques": [
+        "T1562.002"
+      ],
+      "fp_risk": 0,
+      "quality_score": 68.0,
+      "platform": "microsoft-sentinel",
+      "file": "microsoft-sentinel/kql_088_obj_access_audit_policy.kql"
+    },
+    {
+      "title": "Obj Access Event Log",
+      "severity": "low",
+      "techniques": [
+        "T1070.001"
+      ],
+      "fp_risk": 0,
+      "quality_score": 72.0,
+      "platform": "microsoft-sentinel",
+      "file": "microsoft-sentinel/kql_089_obj_access_event_log.kql"
+    },
+    {
+      "title": "Obj Access Host File",
+      "severity": "informational",
+      "techniques": [
+        "T1565.001"
+      ],
+      "fp_risk": 0,
+      "quality_score": 68.0,
+      "platform": "microsoft-sentinel",
+      "file": "microsoft-sentinel/kql_090_obj_access_host_file.kql"
+    },
+    {
+      "title": "Misc Cloud Login",
+      "severity": "informational",
+      "techniques": [
+        "T1078.004"
+      ],
+      "fp_risk": 0,
+      "quality_score": 68.0,
+      "platform": "microsoft-sentinel",
+      "file": "microsoft-sentinel/kql_091_misc_cloud_login.kql"
+    },
+    {
+      "title": "Misc Cloud Failed Login",
+      "severity": "informational",
+      "techniques": [
+        "T1078.004",
+        "T1110"
+      ],
+      "fp_risk": 0,
+      "quality_score": 72.0,
+      "platform": "microsoft-sentinel",
+      "file": "microsoft-sentinel/kql_092_misc_cloud_failed_login.kql"
+    },
+    {
+      "title": "Misc Cloud Mfa Disabled",
+      "severity": "low",
+      "techniques": [
+        "T1556.006"
+      ],
+      "fp_risk": 0,
+      "quality_score": 72.0,
+      "platform": "microsoft-sentinel",
+      "file": "microsoft-sentinel/kql_093_misc_cloud_mfa_disabled.kql"
+    },
+    {
+      "title": "Misc Cloud Admin Assigned",
+      "severity": "low",
+      "techniques": [
+        "T1098.003"
+      ],
+      "fp_risk": 0,
+      "quality_score": 72.0,
+      "platform": "microsoft-sentinel",
+      "file": "microsoft-sentinel/kql_094_misc_cloud_admin_assigned.kql"
+    },
+    {
+      "title": "Misc Cloud Fw Changed",
+      "severity": "informational",
+      "techniques": [
+        "T1562.004"
+      ],
+      "fp_risk": 0,
+      "quality_score": 68.0,
+      "platform": "microsoft-sentinel",
+      "file": "microsoft-sentinel/kql_095_misc_cloud_fw_changed.kql"
+    },
+    {
+      "title": "Misc Cloud Vm Created",
+      "severity": "informational",
+      "techniques": [
+        "T1578.002"
+      ],
+      "fp_risk": 0,
+      "quality_score": 68.0,
+      "platform": "microsoft-sentinel",
+      "file": "microsoft-sentinel/kql_096_misc_cloud_vm_created.kql"
+    },
+    {
+      "title": "Misc Cloud Vm Deleted",
+      "severity": "informational",
+      "techniques": [
+        "T1578.003"
+      ],
+      "fp_risk": 0,
+      "quality_score": 68.0,
+      "platform": "microsoft-sentinel",
+      "file": "microsoft-sentinel/kql_097_misc_cloud_vm_deleted.kql"
+    },
+    {
+      "title": "Misc Cloud Storage Public",
+      "severity": "low",
+      "techniques": [
+        "T1530"
+      ],
+      "fp_risk": 0,
+      "quality_score": 72.0,
+      "platform": "microsoft-sentinel",
+      "file": "microsoft-sentinel/kql_098_misc_cloud_storage_public.kql"
+    },
+    {
+      "title": "Misc Cloud Api Key Created",
+      "severity": "low",
+      "techniques": [
+        "T1098.001"
+      ],
+      "fp_risk": 0,
+      "quality_score": 72.0,
+      "platform": "microsoft-sentinel",
+      "file": "microsoft-sentinel/kql_099_misc_cloud_api_key_created.kql"
+    },
+    {
+      "title": "Misc Cloud Suspicious Api",
+      "severity": "informational",
+      "techniques": [
+        "T1078.004"
+      ],
+      "fp_risk": 0,
+      "quality_score": 68.0,
+      "platform": "microsoft-sentinel",
+      "file": "microsoft-sentinel/kql_100_misc_cloud_suspicious_api.kql"
+    },
+    {
+      "title": "kql_endpoint_win_powershell_suspicious_encoded_command",
+      "severity": "low",
+      "techniques": [
+        "T1027",
+        "T1059.001"
+      ],
+      "fp_risk": 1,
+      "quality_score": 59.0,
+      "platform": "microsoft-sentinel",
+      "file": "microsoft-sentinel/kql_endpoint_win_powershell_suspicious_encoded_command.kql"
+    },
+    {
+      "title": "kql_net_dns_suspicious_tunnel",
+      "severity": "low",
+      "techniques": [
+        "T1071.004",
+        "T1572"
+      ],
+      "fp_risk": 0,
+      "quality_score": 61.0,
+      "platform": "microsoft-sentinel",
+      "file": "microsoft-sentinel/kql_net_dns_suspicious_tunnel.kql"
+    },
+    {
+      "title": "Detects user account creation.",
+      "severity": "medium",
+      "techniques": [
+        "T1136.001"
+      ],
+      "fp_risk": 0,
+      "quality_score": 76.0,
+      "platform": "wazuh",
+      "file": "wazuh/rules/account_creation.xml"
+    },
+    {
+      "title": "Detects Apache error log entry.",
+      "severity": "medium",
+      "techniques": [
+        "T1190"
+      ],
+      "fp_risk": 0,
+      "quality_score": 76.0,
+      "platform": "wazuh",
+      "file": "wazuh/rules/apache_error_log_spike.xml"
+    },
+    {
+      "title": "Application apache config_changed",
+      "severity": "medium",
+      "techniques": [
+        "T1562.001"
+      ],
+      "fp_risk": 0,
+      "quality_score": 76.0,
+      "platform": "wazuh",
+      "file": "wazuh/rules/app_apache_config_changed.xml"
+    },
+    {
+      "title": "Application apache crashed",
+      "severity": "medium",
+      "techniques": [
+        "T1499"
+      ],
+      "fp_risk": 0,
+      "quality_score": 76.0,
+      "platform": "wazuh",
+      "file": "wazuh/rules/app_apache_crashed.xml"
+    },
+    {
+      "title": "Application apache failed",
+      "severity": "medium",
+      "techniques": [
+        "T1499"
+      ],
+      "fp_risk": 0,
+      "quality_score": 76.0,
+      "platform": "wazuh",
+      "file": "wazuh/rules/app_apache_failed.xml"
+    },
+    {
+      "title": "Application apache restarted",
+      "severity": "medium",
+      "techniques": [
+        "T1543"
+      ],
+      "fp_risk": 0,
+      "quality_score": 76.0,
+      "platform": "wazuh",
+      "file": "wazuh/rules/app_apache_restarted.xml"
+    },
+    {
+      "title": "Application apache started",
+      "severity": "medium",
+      "techniques": [
+        "T1543"
+      ],
+      "fp_risk": 0,
+      "quality_score": 76.0,
+      "platform": "wazuh",
+      "file": "wazuh/rules/app_apache_started.xml"
+    },
+    {
+      "title": "Application apache stopped",
+      "severity": "medium",
+      "techniques": [
+        "T1489"
+      ],
+      "fp_risk": 0,
+      "quality_score": 76.0,
+      "platform": "wazuh",
+      "file": "wazuh/rules/app_apache_stopped.xml"
+    },
+    {
+      "title": "Application apache unauthorized_access",
+      "severity": "medium",
+      "techniques": [
+        "T1078"
+      ],
+      "fp_risk": 0,
+      "quality_score": 76.0,
+      "platform": "wazuh",
+      "file": "wazuh/rules/app_apache_unauthorized_access.xml"
+    },
+    {
+      "title": "Application docker config_changed",
+      "severity": "medium",
+      "techniques": [
+        "T1562.001"
+      ],
+      "fp_risk": 0,
+      "quality_score": 76.0,
+      "platform": "wazuh",
+      "file": "wazuh/rules/app_docker_config_changed.xml"
+    },
+    {
+      "title": "Application docker crashed",
+      "severity": "medium",
+      "techniques": [
+        "T1499"
+      ],
+      "fp_risk": 0,
+      "quality_score": 76.0,
+      "platform": "wazuh",
+      "file": "wazuh/rules/app_docker_crashed.xml"
+    },
+    {
+      "title": "Application docker failed",
+      "severity": "medium",
+      "techniques": [
+        "T1499"
+      ],
+      "fp_risk": 0,
+      "quality_score": 76.0,
+      "platform": "wazuh",
+      "file": "wazuh/rules/app_docker_failed.xml"
+    },
+    {
+      "title": "Application docker restarted",
+      "severity": "medium",
+      "techniques": [
+        "T1543"
+      ],
+      "fp_risk": 0,
+      "quality_score": 76.0,
+      "platform": "wazuh",
+      "file": "wazuh/rules/app_docker_restarted.xml"
+    },
+    {
+      "title": "Application docker started",
+      "severity": "medium",
+      "techniques": [
+        "T1543"
+      ],
+      "fp_risk": 0,
+      "quality_score": 76.0,
+      "platform": "wazuh",
+      "file": "wazuh/rules/app_docker_started.xml"
+    },
+    {
+      "title": "Application docker stopped",
+      "severity": "medium",
+      "techniques": [
+        "T1489"
+      ],
+      "fp_risk": 0,
+      "quality_score": 76.0,
+      "platform": "wazuh",
+      "file": "wazuh/rules/app_docker_stopped.xml"
+    },
+    {
+      "title": "Application docker unauthorized_access",
+      "severity": "medium",
+      "techniques": [
+        "T1078"
+      ],
+      "fp_risk": 0,
+      "quality_score": 76.0,
+      "platform": "wazuh",
+      "file": "wazuh/rules/app_docker_unauthorized_access.xml"
+    },
+    {
+      "title": "Application gitlab config_changed",
+      "severity": "medium",
+      "techniques": [
+        "T1562.001"
+      ],
+      "fp_risk": 0,
+      "quality_score": 76.0,
+      "platform": "wazuh",
+      "file": "wazuh/rules/app_gitlab_config_changed.xml"
+    },
+    {
+      "title": "Application gitlab crashed",
+      "severity": "medium",
+      "techniques": [
+        "T1499"
+      ],
+      "fp_risk": 0,
+      "quality_score": 76.0,
+      "platform": "wazuh",
+      "file": "wazuh/rules/app_gitlab_crashed.xml"
+    },
+    {
+      "title": "Application gitlab failed",
+      "severity": "medium",
+      "techniques": [
+        "T1499"
+      ],
+      "fp_risk": 0,
+      "quality_score": 76.0,
+      "platform": "wazuh",
+      "file": "wazuh/rules/app_gitlab_failed.xml"
+    },
+    {
+      "title": "Application gitlab restarted",
+      "severity": "medium",
+      "techniques": [
+        "T1543"
+      ],
+      "fp_risk": 0,
+      "quality_score": 76.0,
+      "platform": "wazuh",
+      "file": "wazuh/rules/app_gitlab_restarted.xml"
+    },
+    {
+      "title": "Application gitlab started",
+      "severity": "medium",
+      "techniques": [
+        "T1543"
+      ],
+      "fp_risk": 0,
+      "quality_score": 76.0,
+      "platform": "wazuh",
+      "file": "wazuh/rules/app_gitlab_started.xml"
+    },
+    {
+      "title": "Application gitlab stopped",
+      "severity": "medium",
+      "techniques": [
+        "T1489"
+      ],
+      "fp_risk": 0,
+      "quality_score": 76.0,
+      "platform": "wazuh",
+      "file": "wazuh/rules/app_gitlab_stopped.xml"
+    },
+    {
+      "title": "Application gitlab unauthorized_access",
+      "severity": "medium",
+      "techniques": [
+        "T1078"
+      ],
+      "fp_risk": 0,
+      "quality_score": 76.0,
+      "platform": "wazuh",
+      "file": "wazuh/rules/app_gitlab_unauthorized_access.xml"
+    },
+    {
+      "title": "Application jenkins config_changed",
+      "severity": "medium",
+      "techniques": [
+        "T1562.001"
+      ],
+      "fp_risk": 0,
+      "quality_score": 76.0,
+      "platform": "wazuh",
+      "file": "wazuh/rules/app_jenkins_config_changed.xml"
+    },
+    {
+      "title": "Application jenkins crashed",
+      "severity": "medium",
+      "techniques": [
+        "T1499"
+      ],
+      "fp_risk": 0,
+      "quality_score": 76.0,
+      "platform": "wazuh",
+      "file": "wazuh/rules/app_jenkins_crashed.xml"
+    },
+    {
+      "title": "Application jenkins failed",
+      "severity": "medium",
+      "techniques": [
+        "T1499"
+      ],
+      "fp_risk": 0,
+      "quality_score": 76.0,
+      "platform": "wazuh",
+      "file": "wazuh/rules/app_jenkins_failed.xml"
+    },
+    {
+      "title": "Application jenkins restarted",
+      "severity": "medium",
+      "techniques": [
+        "T1543"
+      ],
+      "fp_risk": 0,
+      "quality_score": 76.0,
+      "platform": "wazuh",
+      "file": "wazuh/rules/app_jenkins_restarted.xml"
+    },
+    {
+      "title": "Application jenkins started",
+      "severity": "medium",
+      "techniques": [
+        "T1543"
+      ],
+      "fp_risk": 0,
+      "quality_score": 76.0,
+      "platform": "wazuh",
+      "file": "wazuh/rules/app_jenkins_started.xml"
+    },
+    {
+      "title": "Application jenkins stopped",
+      "severity": "medium",
+      "techniques": [
+        "T1489"
+      ],
+      "fp_risk": 0,
+      "quality_score": 76.0,
+      "platform": "wazuh",
+      "file": "wazuh/rules/app_jenkins_stopped.xml"
+    },
+    {
+      "title": "Application jenkins unauthorized_access",
+      "severity": "medium",
+      "techniques": [
+        "T1078"
+      ],
+      "fp_risk": 0,
+      "quality_score": 76.0,
+      "platform": "wazuh",
+      "file": "wazuh/rules/app_jenkins_unauthorized_access.xml"
+    },
+    {
+      "title": "Application kubernetes config_changed",
+      "severity": "medium",
+      "techniques": [
+        "T1562.001"
+      ],
+      "fp_risk": 0,
+      "quality_score": 76.0,
+      "platform": "wazuh",
+      "file": "wazuh/rules/app_kubernetes_config_changed.xml"
+    },
+    {
+      "title": "Application kubernetes crashed",
+      "severity": "medium",
+      "techniques": [
+        "T1499"
+      ],
+      "fp_risk": 0,
+      "quality_score": 76.0,
+      "platform": "wazuh",
+      "file": "wazuh/rules/app_kubernetes_crashed.xml"
+    },
+    {
+      "title": "Application kubernetes failed",
+      "severity": "medium",
+      "techniques": [
+        "T1499"
+      ],
+      "fp_risk": 0,
+      "quality_score": 76.0,
+      "platform": "wazuh",
+      "file": "wazuh/rules/app_kubernetes_failed.xml"
+    },
+    {
+      "title": "Application kubernetes restarted",
+      "severity": "medium",
+      "techniques": [
+        "T1543"
+      ],
+      "fp_risk": 0,
+      "quality_score": 76.0,
+      "platform": "wazuh",
+      "file": "wazuh/rules/app_kubernetes_restarted.xml"
+    },
+    {
+      "title": "Application kubernetes started",
+      "severity": "medium",
+      "techniques": [
+        "T1543"
+      ],
+      "fp_risk": 0,
+      "quality_score": 76.0,
+      "platform": "wazuh",
+      "file": "wazuh/rules/app_kubernetes_started.xml"
+    },
+    {
+      "title": "Application kubernetes stopped",
+      "severity": "medium",
+      "techniques": [
+        "T1489"
+      ],
+      "fp_risk": 0,
+      "quality_score": 76.0,
+      "platform": "wazuh",
+      "file": "wazuh/rules/app_kubernetes_stopped.xml"
+    },
+    {
+      "title": "Application kubernetes unauthorized_access",
+      "severity": "medium",
+      "techniques": [
+        "T1078"
+      ],
+      "fp_risk": 0,
+      "quality_score": 76.0,
+      "platform": "wazuh",
+      "file": "wazuh/rules/app_kubernetes_unauthorized_access.xml"
+    },
+    {
+      "title": "Application mongodb config_changed",
+      "severity": "medium",
+      "techniques": [
+        "T1562.001"
+      ],
+      "fp_risk": 0,
+      "quality_score": 76.0,
+      "platform": "wazuh",
+      "file": "wazuh/rules/app_mongodb_config_changed.xml"
+    },
+    {
+      "title": "Application mongodb crashed",
+      "severity": "medium",
+      "techniques": [
+        "T1499"
+      ],
+      "fp_risk": 0,
+      "quality_score": 76.0,
+      "platform": "wazuh",
+      "file": "wazuh/rules/app_mongodb_crashed.xml"
+    },
+    {
+      "title": "Application mongodb failed",
+      "severity": "medium",
+      "techniques": [
+        "T1499"
+      ],
+      "fp_risk": 0,
+      "quality_score": 76.0,
+      "platform": "wazuh",
+      "file": "wazuh/rules/app_mongodb_failed.xml"
+    },
+    {
+      "title": "Application mongodb restarted",
+      "severity": "medium",
+      "techniques": [
+        "T1543"
+      ],
+      "fp_risk": 0,
+      "quality_score": 76.0,
+      "platform": "wazuh",
+      "file": "wazuh/rules/app_mongodb_restarted.xml"
+    },
+    {
+      "title": "Application mongodb started",
+      "severity": "medium",
+      "techniques": [
+        "T1543"
+      ],
+      "fp_risk": 0,
+      "quality_score": 76.0,
+      "platform": "wazuh",
+      "file": "wazuh/rules/app_mongodb_started.xml"
+    },
+    {
+      "title": "Application mongodb stopped",
+      "severity": "medium",
+      "techniques": [
+        "T1489"
+      ],
+      "fp_risk": 0,
+      "quality_score": 76.0,
+      "platform": "wazuh",
+      "file": "wazuh/rules/app_mongodb_stopped.xml"
+    },
+    {
+      "title": "Application mongodb unauthorized_access",
+      "severity": "medium",
+      "techniques": [
+        "T1078"
+      ],
+      "fp_risk": 0,
+      "quality_score": 76.0,
+      "platform": "wazuh",
+      "file": "wazuh/rules/app_mongodb_unauthorized_access.xml"
+    },
+    {
+      "title": "Application mysql config_changed",
+      "severity": "medium",
+      "techniques": [
+        "T1562.001"
+      ],
+      "fp_risk": 0,
+      "quality_score": 76.0,
+      "platform": "wazuh",
+      "file": "wazuh/rules/app_mysql_config_changed.xml"
+    },
+    {
+      "title": "Application mysql crashed",
+      "severity": "medium",
+      "techniques": [
+        "T1499"
+      ],
+      "fp_risk": 0,
+      "quality_score": 76.0,
+      "platform": "wazuh",
+      "file": "wazuh/rules/app_mysql_crashed.xml"
+    },
+    {
+      "title": "Application mysql failed",
+      "severity": "medium",
+      "techniques": [
+        "T1499"
+      ],
+      "fp_risk": 0,
+      "quality_score": 76.0,
+      "platform": "wazuh",
+      "file": "wazuh/rules/app_mysql_failed.xml"
+    },
+    {
+      "title": "Application mysql restarted",
+      "severity": "medium",
+      "techniques": [
+        "T1543"
+      ],
+      "fp_risk": 0,
+      "quality_score": 76.0,
+      "platform": "wazuh",
+      "file": "wazuh/rules/app_mysql_restarted.xml"
+    },
+    {
+      "title": "Application mysql started",
+      "severity": "medium",
+      "techniques": [
+        "T1543"
+      ],
+      "fp_risk": 0,
+      "quality_score": 76.0,
+      "platform": "wazuh",
+      "file": "wazuh/rules/app_mysql_started.xml"
+    },
+    {
+      "title": "Application mysql stopped",
+      "severity": "medium",
+      "techniques": [
+        "T1489"
+      ],
+      "fp_risk": 0,
+      "quality_score": 76.0,
+      "platform": "wazuh",
+      "file": "wazuh/rules/app_mysql_stopped.xml"
+    },
+    {
+      "title": "Application mysql unauthorized_access",
+      "severity": "medium",
+      "techniques": [
+        "T1078"
+      ],
+      "fp_risk": 0,
+      "quality_score": 76.0,
+      "platform": "wazuh",
+      "file": "wazuh/rules/app_mysql_unauthorized_access.xml"
+    },
+    {
+      "title": "Application nginx config_changed",
+      "severity": "medium",
+      "techniques": [
+        "T1562.001"
+      ],
+      "fp_risk": 0,
+      "quality_score": 76.0,
+      "platform": "wazuh",
+      "file": "wazuh/rules/app_nginx_config_changed.xml"
+    },
+    {
+      "title": "Application nginx crashed",
+      "severity": "medium",
+      "techniques": [
+        "T1499"
+      ],
+      "fp_risk": 0,
+      "quality_score": 76.0,
+      "platform": "wazuh",
+      "file": "wazuh/rules/app_nginx_crashed.xml"
+    },
+    {
+      "title": "Application nginx failed",
+      "severity": "medium",
+      "techniques": [
+        "T1499"
+      ],
+      "fp_risk": 0,
+      "quality_score": 76.0,
+      "platform": "wazuh",
+      "file": "wazuh/rules/app_nginx_failed.xml"
+    },
+    {
+      "title": "Application nginx restarted",
+      "severity": "medium",
+      "techniques": [
+        "T1543"
+      ],
+      "fp_risk": 0,
+      "quality_score": 76.0,
+      "platform": "wazuh",
+      "file": "wazuh/rules/app_nginx_restarted.xml"
+    },
+    {
+      "title": "Application nginx started",
+      "severity": "medium",
+      "techniques": [
+        "T1543"
+      ],
+      "fp_risk": 0,
+      "quality_score": 76.0,
+      "platform": "wazuh",
+      "file": "wazuh/rules/app_nginx_started.xml"
+    },
+    {
+      "title": "Application nginx stopped",
+      "severity": "medium",
+      "techniques": [
+        "T1489"
+      ],
+      "fp_risk": 0,
+      "quality_score": 76.0,
+      "platform": "wazuh",
+      "file": "wazuh/rules/app_nginx_stopped.xml"
+    },
+    {
+      "title": "Application nginx unauthorized_access",
+      "severity": "medium",
+      "techniques": [
+        "T1078"
+      ],
+      "fp_risk": 0,
+      "quality_score": 76.0,
+      "platform": "wazuh",
+      "file": "wazuh/rules/app_nginx_unauthorized_access.xml"
+    },
+    {
+      "title": "Application postgres config_changed",
+      "severity": "medium",
+      "techniques": [
+        "T1562.001"
+      ],
+      "fp_risk": 0,
+      "quality_score": 76.0,
+      "platform": "wazuh",
+      "file": "wazuh/rules/app_postgres_config_changed.xml"
+    },
+    {
+      "title": "Application postgres crashed",
+      "severity": "medium",
+      "techniques": [
+        "T1499"
+      ],
+      "fp_risk": 0,
+      "quality_score": 76.0,
+      "platform": "wazuh",
+      "file": "wazuh/rules/app_postgres_crashed.xml"
+    },
+    {
+      "title": "Application postgres failed",
+      "severity": "medium",
+      "techniques": [
+        "T1499"
+      ],
+      "fp_risk": 0,
+      "quality_score": 76.0,
+      "platform": "wazuh",
+      "file": "wazuh/rules/app_postgres_failed.xml"
+    },
+    {
+      "title": "Application postgres restarted",
+      "severity": "medium",
+      "techniques": [
+        "T1543"
+      ],
+      "fp_risk": 0,
+      "quality_score": 76.0,
+      "platform": "wazuh",
+      "file": "wazuh/rules/app_postgres_restarted.xml"
+    },
+    {
+      "title": "Application postgres started",
+      "severity": "medium",
+      "techniques": [
+        "T1543"
+      ],
+      "fp_risk": 0,
+      "quality_score": 76.0,
+      "platform": "wazuh",
+      "file": "wazuh/rules/app_postgres_started.xml"
+    },
+    {
+      "title": "Application postgres stopped",
+      "severity": "medium",
+      "techniques": [
+        "T1489"
+      ],
+      "fp_risk": 0,
+      "quality_score": 76.0,
+      "platform": "wazuh",
+      "file": "wazuh/rules/app_postgres_stopped.xml"
+    },
+    {
+      "title": "Application postgres unauthorized_access",
+      "severity": "medium",
+      "techniques": [
+        "T1078"
+      ],
+      "fp_risk": 0,
+      "quality_score": 76.0,
+      "platform": "wazuh",
+      "file": "wazuh/rules/app_postgres_unauthorized_access.xml"
+    },
+    {
+      "title": "Application redis config_changed",
+      "severity": "medium",
+      "techniques": [
+        "T1562.001"
+      ],
+      "fp_risk": 0,
+      "quality_score": 76.0,
+      "platform": "wazuh",
+      "file": "wazuh/rules/app_redis_config_changed.xml"
+    },
+    {
+      "title": "Application redis crashed",
+      "severity": "medium",
+      "techniques": [
+        "T1499"
+      ],
+      "fp_risk": 0,
+      "quality_score": 76.0,
+      "platform": "wazuh",
+      "file": "wazuh/rules/app_redis_crashed.xml"
+    },
+    {
+      "title": "Application redis failed",
+      "severity": "medium",
+      "techniques": [
+        "T1499"
+      ],
+      "fp_risk": 0,
+      "quality_score": 76.0,
+      "platform": "wazuh",
+      "file": "wazuh/rules/app_redis_failed.xml"
+    },
+    {
+      "title": "Application redis restarted",
+      "severity": "medium",
+      "techniques": [
+        "T1543"
+      ],
+      "fp_risk": 0,
+      "quality_score": 76.0,
+      "platform": "wazuh",
+      "file": "wazuh/rules/app_redis_restarted.xml"
+    },
+    {
+      "title": "Application redis started",
+      "severity": "medium",
+      "techniques": [
+        "T1543"
+      ],
+      "fp_risk": 0,
+      "quality_score": 76.0,
+      "platform": "wazuh",
+      "file": "wazuh/rules/app_redis_started.xml"
+    },
+    {
+      "title": "Application redis stopped",
+      "severity": "medium",
+      "techniques": [
+        "T1489"
+      ],
+      "fp_risk": 0,
+      "quality_score": 76.0,
+      "platform": "wazuh",
+      "file": "wazuh/rules/app_redis_stopped.xml"
+    },
+    {
+      "title": "Application redis unauthorized_access",
+      "severity": "medium",
+      "techniques": [
+        "T1078"
+      ],
+      "fp_risk": 0,
+      "quality_score": 76.0,
+      "platform": "wazuh",
+      "file": "wazuh/rules/app_redis_unauthorized_access.xml"
+    },
+    {
+      "title": "Detects creation of IAM user.",
+      "severity": "medium",
+      "techniques": [
+        "T1098"
+      ],
+      "fp_risk": 0,
+      "quality_score": 76.0,
+      "platform": "wazuh",
+      "file": "wazuh/rules/aws_iam_user_created.xml"
+    },
+    {
+      "title": "Detects S3 bucket public access setting.",
+      "severity": "high",
+      "techniques": [
+        "T1078"
+      ],
+      "fp_risk": 0,
+      "quality_score": 80.0,
+      "platform": "wazuh",
+      "file": "wazuh/rules/aws_s3_bucket_public_access.xml"
+    },
+    {
+      "title": "Detects base64 decoding.",
+      "severity": "medium",
+      "techniques": [
+        "T1027"
+      ],
+      "fp_risk": 0,
+      "quality_score": 76.0,
+      "platform": "wazuh",
+      "file": "wazuh/rules/base64_decoding.xml"
+    },
+    {
+      "title": "Detects clearing of command history.",
+      "severity": "high",
+      "techniques": [
+        "T1070.003"
+      ],
+      "fp_risk": 0,
+      "quality_score": 80.0,
+      "platform": "wazuh",
+      "file": "wazuh/rules/clear_linux_history.xml"
+    },
+    {
+      "title": "Detects modification of cron jobs.",
+      "severity": "medium",
+      "techniques": [
+        "T1053.003"
+      ],
+      "fp_risk": 0,
+      "quality_score": 76.0,
+      "platform": "wazuh",
+      "file": "wazuh/rules/cron_job_modification.xml"
+    },
+    {
+      "title": "Detects directory traversal attempts.",
+      "severity": "high",
+      "techniques": [
+        "T1190"
+      ],
+      "fp_risk": 0,
+      "quality_score": 80.0,
+      "platform": "wazuh",
+      "file": "wazuh/rules/directory_traversal.xml"
+    },
+    {
+      "title": "Detects granting of IAM role.",
+      "severity": "medium",
+      "techniques": [
+        "T1098"
+      ],
+      "fp_risk": 0,
+      "quality_score": 76.0,
+      "platform": "wazuh",
+      "file": "wazuh/rules/gcp_iam_role_grant.xml"
+    },
+    {
+      "title": "Detects security group modification.",
+      "severity": "medium",
+      "techniques": [
+        "T1098"
+      ],
+      "fp_risk": 0,
+      "quality_score": 76.0,
+      "platform": "wazuh",
+      "file": "wazuh/rules/group_modification.xml"
+    },
+    {
+      "title": "Detects kernel module loading.",
+      "severity": "critical",
+      "techniques": [
+        "T1547.006"
+      ],
+      "fp_risk": 0,
+      "quality_score": 84.0,
+      "platform": "wazuh",
+      "file": "wazuh/rules/kernel_module_loading.xml"
+    },
+    {
+      "title": "Package installation via apt-get",
+      "severity": "low",
+      "techniques": [
+        "T1072"
+      ],
+      "fp_risk": 0,
+      "quality_score": 72.0,
+      "platform": "wazuh",
+      "file": "wazuh/rules/lnx_apt_get_install.xml"
+    },
+    {
+      "title": "User crontab created",
+      "severity": "medium",
+      "techniques": [
+        "T1053.003"
+      ],
+      "fp_risk": 0,
+      "quality_score": 76.0,
+      "platform": "wazuh",
+      "file": "wazuh/rules/lnx_crontab_creation.xml"
+    },
+    {
+      "title": "Failed su to root",
+      "severity": "medium",
+      "techniques": [
+        "T1078",
+        "T1110"
+      ],
+      "fp_risk": 0,
+      "quality_score": 80.0,
+      "platform": "wazuh",
+      "file": "wazuh/rules/lnx_failed_su_usage.xml"
+    },
+    {
+      "title": "/etc/passwd modified (potential account manipulation or credential dumping target)",
+      "severity": "high",
+      "techniques": [
+        "T1003.008",
+        "T1098"
+      ],
+      "fp_risk": 0,
+      "quality_score": 84.0,
+      "platform": "wazuh",
+      "file": "wazuh/rules/lnx_passwd_file_modified.xml"
+    },
+    {
+      "title": "/etc/shadow accessed or modified (potential credential dumping)",
+      "severity": "critical",
+      "techniques": [
+        "T1003.008",
+        "T1098"
+      ],
+      "fp_risk": 0,
+      "quality_score": 88.0,
+      "platform": "wazuh",
+      "file": "wazuh/rules/lnx_shadow_file_modified.xml"
+    },
+    {
+      "title": "Modification of sshd_config",
+      "severity": "high",
+      "techniques": [
+        "T1098.004",
+        "T1556"
+      ],
+      "fp_risk": 0,
+      "quality_score": 84.0,
+      "platform": "wazuh",
+      "file": "wazuh/rules/lnx_sshd_config_modified.xml"
+    },
+    {
+      "title": "Shell history tampering or deletion (rm, truncate, shred, history -c, unset HISTFILE)",
+      "severity": "high",
+      "techniques": [
+        "T1070.003"
+      ],
+      "fp_risk": 0,
+      "quality_score": 80.0,
+      "platform": "wazuh",
+      "file": "wazuh/rules/lnx_suspicious_history_deletion.xml"
+    },
+    {
+      "title": "Successful su to root",
+      "severity": "medium",
+      "techniques": [
+        "T1078.003"
+      ],
+      "fp_risk": 0,
+      "quality_score": 76.0,
+      "platform": "wazuh",
+      "file": "wazuh/rules/lnx_suspicious_su_usage.xml"
+    },
+    {
+      "title": "Service disabled via systemctl",
+      "severity": "medium",
+      "techniques": [
+        "T1489",
+        "T1562.001"
+      ],
+      "fp_risk": 0,
+      "quality_score": 80.0,
+      "platform": "wazuh",
+      "file": "wazuh/rules/lnx_systemctl_disable_service.xml"
+    },
+    {
+      "title": "Package installation via yum",
+      "severity": "low",
+      "techniques": [
+        "T1072"
+      ],
+      "fp_risk": 0,
+      "quality_score": 72.0,
+      "platform": "wazuh",
+      "file": "wazuh/rules/lnx_yum_install.xml"
+    },
+    {
+      "title": "Detects Mimikatz usage.",
+      "severity": "critical",
+      "techniques": [
+        "T1003.001"
+      ],
+      "fp_risk": 0,
+      "quality_score": 84.0,
+      "platform": "wazuh",
+      "file": "wazuh/rules/mimikatz_usage.xml"
+    },
+    {
+      "title": "Possible DNS tunneling: TXT query with long base64/hex-like subdomain",
+      "severity": "high",
+      "techniques": [
+        "T1071.004",
+        "T1572"
+      ],
+      "fp_risk": 0,
+      "quality_score": 84.0,
+      "platform": "wazuh",
+      "file": "wazuh/rules/net_dns_tunneling_suspicion.xml"
+    },
+    {
+      "title": "New firewall rule added",
+      "severity": "medium",
+      "techniques": [
+        "T1562.004"
+      ],
+      "fp_risk": 0,
+      "quality_score": 76.0,
+      "platform": "wazuh",
+      "file": "wazuh/rules/net_firewall_rule_added.xml"
+    },
+    {
+      "title": "Firewall rule deleted",
+      "severity": "medium",
+      "techniques": [
+        "T1562.004"
+      ],
+      "fp_risk": 0,
+      "quality_score": 76.0,
+      "platform": "wazuh",
+      "file": "wazuh/rules/net_firewall_rule_deleted.xml"
+    },
+    {
+      "title": "FTP Anonymous login successful",
+      "severity": "medium",
+      "techniques": [
+        "T1078"
+      ],
+      "fp_risk": 0,
+      "quality_score": 76.0,
+      "platform": "wazuh",
+      "file": "wazuh/rules/net_ftp_anonymous_login.xml"
+    },
+    {
+      "title": "SSH root login failed (single event)",
+      "severity": "medium",
+      "techniques": [
+        "T1110.001"
+      ],
+      "fp_risk": 0,
+      "quality_score": 76.0,
+      "platform": "wazuh",
+      "file": "wazuh/rules/net_ssh_failed_root_login.xml"
+    },
+    {
+      "title": "SSH Root Login Successful",
+      "severity": "high",
+      "techniques": [
+        "T1078.003"
+      ],
+      "fp_risk": 0,
+      "quality_score": 80.0,
+      "platform": "wazuh",
+      "file": "wazuh/rules/net_ssh_root_login.xml"
+    },
+    {
+      "title": "Outbound RDP connection detected",
+      "severity": "medium",
+      "techniques": [
+        "T1021.001"
+      ],
+      "fp_risk": 0,
+      "quality_score": 76.0,
+      "platform": "wazuh",
+      "file": "wazuh/rules/net_suspicious_port_3389_outbound.xml"
+    },
+    {
+      "title": "Suspicious outbound connection on port 4444",
+      "severity": "high",
+      "techniques": [
+        "T1571"
+      ],
+      "fp_risk": 0,
+      "quality_score": 80.0,
+      "platform": "wazuh",
+      "file": "wazuh/rules/net_suspicious_port_4444.xml"
+    },
+    {
+      "title": "Suspicious User-Agent curl",
+      "severity": "medium",
+      "techniques": [
+        "T1071.001",
+        "T1105"
+      ],
+      "fp_risk": 0,
+      "quality_score": 80.0,
+      "platform": "wazuh",
+      "file": "wazuh/rules/net_suspicious_user_agent_curl.xml"
+    },
+    {
+      "title": "Suspicious User-Agent wget",
+      "severity": "medium",
+      "techniques": [
+        "T1071.001",
+        "T1105"
+      ],
+      "fp_risk": 0,
+      "quality_score": 80.0,
+      "platform": "wazuh",
+      "file": "wazuh/rules/net_suspicious_user_agent_wget.xml"
+    },
+    {
+      "title": "Detects netcat reverse shell arguments.",
+      "severity": "critical",
+      "techniques": [
+        "T1059.004"
+      ],
+      "fp_risk": 0,
+      "quality_score": 84.0,
+      "platform": "wazuh",
+      "file": "wazuh/rules/netcat_reverse_shell.xml"
+    },
+    {
+      "title": "Detects Nginx error log entry.",
+      "severity": "medium",
+      "techniques": [
+        "T1190"
+      ],
+      "fp_risk": 0,
+      "quality_score": 76.0,
+      "platform": "wazuh",
+      "file": "wazuh/rules/nginx_error_log_spike.xml"
+    },
+    {
+      "title": "Detects potential Nmap scanning activity (Firewall Denied).",
+      "severity": "medium",
+      "techniques": [
+        "T1046"
+      ],
+      "fp_risk": 0,
+      "quality_score": 76.0,
+      "platform": "wazuh",
+      "file": "wazuh/rules/nmap_scan_detected.xml"
+    },
+    {
+      "title": "Detects PHP code injection.",
+      "severity": "critical",
+      "techniques": [
+        "T1059"
+      ],
+      "fp_risk": 0,
+      "quality_score": 84.0,
+      "platform": "wazuh",
+      "file": "wazuh/rules/php_code_injection.xml"
+    },
+    {
+      "title": "Detects encoded PowerShell commands.",
+      "severity": "medium",
+      "techniques": [
+        "T1059.001"
+      ],
+      "fp_risk": 1,
+      "quality_score": 74.0,
+      "platform": "wazuh",
+      "file": "wazuh/rules/powershell_encoded_command.xml"
+    },
+    {
+      "title": "Detects PsExec service execution.",
+      "severity": "critical",
+      "techniques": [
+        "T1569.002"
+      ],
+      "fp_risk": 0,
+      "quality_score": 84.0,
+      "platform": "wazuh",
+      "file": "wazuh/rules/psexec_execution.xml"
+    },
+    {
+      "title": "Detects RDP brute force attempts.",
+      "severity": "high",
+      "techniques": [
+        "T1110"
+      ],
+      "fp_risk": 0,
+      "quality_score": 80.0,
+      "platform": "wazuh",
+      "file": "wazuh/rules/rdp_brute_force.xml"
+    },
+    {
+      "title": "Detects scheduled task creation.",
+      "severity": "medium",
+      "techniques": [
+        "T1053.005"
+      ],
+      "fp_risk": 1,
+      "quality_score": 74.0,
+      "platform": "wazuh",
+      "file": "wazuh/rules/schtasks_creation.xml"
+    },
+    {
+      "title": "Detects service creation.",
+      "severity": "high",
+      "techniques": [
+        "T1543.003"
+      ],
+      "fp_risk": 0,
+      "quality_score": 80.0,
+      "platform": "wazuh",
+      "file": "wazuh/rules/service_creation.xml"
+    },
+    {
+      "title": "Detects access to /etc/shadow.",
+      "severity": "critical",
+      "techniques": [
+        "T1003.008"
+      ],
+      "fp_risk": 0,
+      "quality_score": 84.0,
+      "platform": "wazuh",
+      "file": "wazuh/rules/shadow_file_access.xml"
+    },
+    {
+      "title": "Detects potential SQL injection patterns.",
+      "severity": "critical",
+      "techniques": [
+        "T1190"
+      ],
+      "fp_risk": 0,
+      "quality_score": 84.0,
+      "platform": "wazuh",
+      "file": "wazuh/rules/sql_injection_attempt.xml"
+    },
+    {
+      "title": "Detects failed login attempt via SSH.",
+      "severity": "medium",
+      "techniques": [
+        "T1110"
+      ],
+      "fp_risk": 0,
+      "quality_score": 76.0,
+      "platform": "wazuh",
+      "file": "wazuh/rules/ssh_brute_force.xml"
+    },
+    {
+      "title": "Detects suspicious sudo usage.",
+      "severity": "high",
+      "techniques": [
+        "T1548.003"
+      ],
+      "fp_risk": 0,
+      "quality_score": 80.0,
+      "platform": "wazuh",
+      "file": "wazuh/rules/sudo_abuse.xml"
+    },
+    {
+      "title": "Detects curl or wget usage.",
+      "severity": "medium",
+      "techniques": [
+        "T1105"
+      ],
+      "fp_risk": 0,
+      "quality_score": 76.0,
+      "platform": "wazuh",
+      "file": "wazuh/rules/suspicious_curl_wget.xml"
+    },
+    {
+      "title": "Custom detection: wazuh_auth_bruteforce_many_fail",
+      "severity": "high",
+      "techniques": [
+        "T1059"
+      ],
+      "fp_risk": 0,
+      "quality_score": 80.0,
+      "platform": "wazuh",
+      "file": "wazuh/rules/wazuh_auth_bruteforce_many_fail.xml"
+    },
+    {
+      "title": "Custom detection: wazuh_cloud_aws_stop_logging",
+      "severity": "high",
+      "techniques": [
+        "T1059"
+      ],
+      "fp_risk": 0,
+      "quality_score": 80.0,
+      "platform": "wazuh",
+      "file": "wazuh/rules/wazuh_cloud_aws_stop_logging.xml"
+    },
+    {
+      "title": "Custom detection: wazuh_lnx_curl_wget_to_shell",
+      "severity": "high",
+      "techniques": [
+        "T1059"
+      ],
+      "fp_risk": 0,
+      "quality_score": 80.0,
+      "platform": "wazuh",
+      "file": "wazuh/rules/wazuh_lnx_curl_wget_to_shell.xml"
+    },
+    {
+      "title": "Custom detection: wazuh_lnx_passwd_shadow_read",
+      "severity": "high",
+      "techniques": [
+        "T1059"
+      ],
+      "fp_risk": 0,
+      "quality_score": 80.0,
+      "platform": "wazuh",
+      "file": "wazuh/rules/wazuh_lnx_passwd_shadow_read.xml"
+    },
+    {
+      "title": "Custom detection: wazuh_lnx_suspicious_cron_write",
+      "severity": "high",
+      "techniques": [
+        "T1059"
+      ],
+      "fp_risk": 0,
+      "quality_score": 80.0,
+      "platform": "wazuh",
+      "file": "wazuh/rules/wazuh_lnx_suspicious_cron_write.xml"
+    },
+    {
+      "title": "Custom detection: wazuh_net_dns_tunnel_pattern",
+      "severity": "high",
+      "techniques": [
+        "T1059"
+      ],
+      "fp_risk": 0,
+      "quality_score": 80.0,
+      "platform": "wazuh",
+      "file": "wazuh/rules/wazuh_net_dns_tunnel_pattern.xml"
+    },
+    {
+      "title": "Custom detection: wazuh_win_defender_disable",
+      "severity": "high",
+      "techniques": [
+        "T1059"
+      ],
+      "fp_risk": 0,
+      "quality_score": 80.0,
+      "platform": "wazuh",
+      "file": "wazuh/rules/wazuh_win_defender_disable.xml"
+    },
+    {
+      "title": "Custom detection: wazuh_win_lsass_access",
+      "severity": "high",
+      "techniques": [
+        "T1059"
+      ],
+      "fp_risk": 0,
+      "quality_score": 80.0,
+      "platform": "wazuh",
+      "file": "wazuh/rules/wazuh_win_lsass_access.xml"
+    },
+    {
+      "title": "Custom detection: wazuh_win_shadowcopy_delete",
+      "severity": "high",
+      "techniques": [
+        "T1059"
+      ],
+      "fp_risk": 0,
+      "quality_score": 80.0,
+      "platform": "wazuh",
+      "file": "wazuh/rules/wazuh_win_shadowcopy_delete.xml"
+    },
+    {
+      "title": "Custom detection: wazuh_win_suspicious_powershell_encoded",
+      "severity": "high",
+      "techniques": [
+        "T1059"
+      ],
+      "fp_risk": 1,
+      "quality_score": 78.0,
+      "platform": "wazuh",
+      "file": "wazuh/rules/wazuh_win_suspicious_powershell_encoded.xml"
+    },
+    {
+      "title": "Detects upload of web shell files.",
+      "severity": "critical",
+      "techniques": [
+        "T1505.003"
+      ],
+      "fp_risk": 0,
+      "quality_score": 84.0,
+      "platform": "wazuh",
+      "file": "wazuh/rules/web_shell_upload.xml"
+    },
+    {
+      "title": "Computer Account Created",
+      "severity": "medium",
+      "techniques": [
+        "T1136.002"
+      ],
+      "fp_risk": 0,
+      "quality_score": 76.0,
+      "platform": "wazuh",
+      "file": "wazuh/rules/win_ad_computer_account_created.xml"
+    },
+    {
+      "title": "Group Policy Object Modified",
+      "severity": "medium",
+      "techniques": [
+        "T1484.001"
+      ],
+      "fp_risk": 0,
+      "quality_score": 76.0,
+      "platform": "wazuh",
+      "file": "wazuh/rules/win_ad_group_policy_modified.xml"
+    },
+    {
+      "title": "Active Directory User Password Reset",
+      "severity": "medium",
+      "techniques": [
+        "T1098"
+      ],
+      "fp_risk": 0,
+      "quality_score": 76.0,
+      "platform": "wazuh",
+      "file": "wazuh/rules/win_ad_password_reset.xml"
+    },
+    {
+      "title": "User added to local Administrators group",
+      "severity": "medium",
+      "techniques": [
+        "T1098.007"
+      ],
+      "fp_risk": 0,
+      "quality_score": 76.0,
+      "platform": "wazuh",
+      "file": "wazuh/rules/win_ad_user_added_to_admin_group.xml"
+    },
+    {
+      "title": "Active Directory User Deleted",
+      "severity": "medium",
+      "techniques": [
+        "T1531"
+      ],
+      "fp_risk": 0,
+      "quality_score": 76.0,
+      "platform": "wazuh",
+      "file": "wazuh/rules/win_ad_user_deleted.xml"
+    },
+    {
+      "title": "User Account Unlocked",
+      "severity": "medium",
+      "techniques": [
+        "T1098"
+      ],
+      "fp_risk": 0,
+      "quality_score": 76.0,
+      "platform": "wazuh",
+      "file": "wazuh/rules/win_ad_user_unlocked.xml"
+    },
+    {
+      "title": "Registry Run/RunOnce key modified with suspicious value (autostart persistence)",
+      "severity": "high",
+      "techniques": [
+        "T1547.001"
+      ],
+      "fp_risk": 0,
+      "quality_score": 80.0,
+      "platform": "wazuh",
+      "file": "wazuh/rules/win_registry_persistence_run.xml"
+    },
+    {
+      "title": "Registry persistence via RunOnce key",
+      "severity": "high",
+      "techniques": [
+        "T1547.001"
+      ],
+      "fp_risk": 0,
+      "quality_score": 80.0,
+      "platform": "wazuh",
+      "file": "wazuh/rules/win_registry_persistence_runonce.xml"
+    },
+    {
+      "title": "Suspicious encoded command execution (powershell/cmd with base64 payload)",
+      "severity": "high",
+      "techniques": [
+        "T1027",
+        "T1059.001",
+        "T1059.003"
+      ],
+      "fp_risk": 1,
+      "quality_score": 86.0,
+      "platform": "wazuh",
+      "file": "wazuh/rules/win_suspicious_process_cmd_encoded.xml"
+    },
+    {
+      "title": "Suspicious LSASS access (possible credential dumping via Mimikatz/ProcDump)",
+      "severity": "critical",
+      "techniques": [
+        "T1003.001"
+      ],
+      "fp_risk": 0,
+      "quality_score": 84.0,
+      "platform": "wazuh",
+      "file": "wazuh/rules/win_suspicious_process_lsass.xml"
+    },
+    {
+      "title": "Detects disabling Windows Defender.",
+      "severity": "critical",
+      "techniques": [
+        "T1562.001"
+      ],
+      "fp_risk": 0,
+      "quality_score": 84.0,
+      "platform": "wazuh",
+      "file": "wazuh/rules/windows_defender_disabled.xml"
+    },
+    {
+      "title": "Detects modification of Windows Firewall.",
+      "severity": "high",
+      "techniques": [
+        "T1562.004"
+      ],
+      "fp_risk": 0,
+      "quality_score": 80.0,
+      "platform": "wazuh",
+      "file": "wazuh/rules/windows_firewall_modified.xml"
+    },
+    {
+      "title": "Detects potential XSS patterns.",
+      "severity": "high",
+      "techniques": [
+        "T1190"
+      ],
+      "fp_risk": 0,
+      "quality_score": 80.0,
+      "platform": "wazuh",
+      "file": "wazuh/rules/xss_attempt.xml"
+    },
+    {
+      "title": "cb_childproc_creation_7z_exe",
+      "severity": "high",
+      "techniques": [
+        "T1560.001"
+      ],
+      "fp_risk": 0,
+      "quality_score": 65.0,
+      "platform": "carbonblack",
+      "file": "carbonblack/rules/cb_childproc_creation_7z_exe.json"
+    },
+    {
+      "title": "cb_childproc_creation_at_exe",
+      "severity": "5",
+      "techniques": [
+        "T1053.002"
+      ],
+      "fp_risk": 0,
+      "quality_score": 34.0,
+      "platform": "carbonblack",
+      "file": "carbonblack/rules/cb_childproc_creation_at_exe.json"
+    },
+    {
+      "title": "cb_childproc_creation_bitsadmin_exe",
+      "severity": "5",
+      "techniques": [
+        "T1197"
+      ],
+      "fp_risk": 0,
+      "quality_score": 34.0,
+      "platform": "carbonblack",
+      "file": "carbonblack/rules/cb_childproc_creation_bitsadmin_exe.json"
+    },
+    {
+      "title": "cb_childproc_creation_certutil_exe",
+      "severity": "5",
+      "techniques": [
+        "T1105",
+        "T1140"
+      ],
+      "fp_risk": 0,
+      "quality_score": 38.0,
+      "platform": "carbonblack",
+      "file": "carbonblack/rules/cb_childproc_creation_certutil_exe.json"
+    },
+    {
+      "title": "cb_childproc_creation_cmd_exe",
+      "severity": "5",
+      "techniques": [
+        "T1059.003"
+      ],
+      "fp_risk": 1,
+      "quality_score": 32.0,
+      "platform": "carbonblack",
+      "file": "carbonblack/rules/cb_childproc_creation_cmd_exe.json"
+    },
+    {
+      "title": "cb_childproc_creation_cscript_exe",
+      "severity": "5",
+      "techniques": [
+        "T1059.005"
+      ],
+      "fp_risk": 0,
+      "quality_score": 34.0,
+      "platform": "carbonblack",
+      "file": "carbonblack/rules/cb_childproc_creation_cscript_exe.json"
+    },
+    {
+      "title": "cb_childproc_creation_evil_com",
+      "severity": "5",
+      "techniques": [
+        "T1071.001"
+      ],
+      "fp_risk": 0,
+      "quality_score": 34.0,
+      "platform": "carbonblack",
+      "file": "carbonblack/rules/cb_childproc_creation_evil_com.json"
+    },
+    {
+      "title": "cb_childproc_creation_hacker_tool_py",
+      "severity": "5",
+      "techniques": [
+        "T1059.006"
+      ],
+      "fp_risk": 0,
+      "quality_score": 34.0,
+      "platform": "carbonblack",
+      "file": "carbonblack/rules/cb_childproc_creation_hacker_tool_py.json"
+    },
+    {
+      "title": "cb_childproc_creation_installutil_exe",
+      "severity": "high",
+      "techniques": [
+        "T1218.004"
+      ],
+      "fp_risk": 0,
+      "quality_score": 65.0,
+      "platform": "carbonblack",
+      "file": "carbonblack/rules/cb_childproc_creation_installutil_exe.json"
+    },
+    {
+      "title": "cb_childproc_creation_malicious-site_org",
+      "severity": "5",
+      "techniques": [
+        "T1071.001"
+      ],
+      "fp_risk": 0,
+      "quality_score": 34.0,
+      "platform": "carbonblack",
+      "file": "carbonblack/rules/cb_childproc_creation_malicious-site_org.json"
+    },
+    {
+      "title": "cb_childproc_creation_malware_dll",
+      "severity": "5",
+      "techniques": [
+        "T1574.002"
+      ],
+      "fp_risk": 0,
+      "quality_score": 34.0,
+      "platform": "carbonblack",
+      "file": "carbonblack/rules/cb_childproc_creation_malware_dll.json"
+    },
+    {
+      "title": "cb_childproc_creation_mimikatz_exe",
+      "severity": "5",
+      "techniques": [
+        "T1003.001"
+      ],
+      "fp_risk": 0,
+      "quality_score": 34.0,
+      "platform": "carbonblack",
+      "file": "carbonblack/rules/cb_childproc_creation_mimikatz_exe.json"
+    },
+    {
+      "title": "cb_childproc_creation_msbuild_exe",
+      "severity": "5",
+      "techniques": [
+        "T1127.001"
+      ],
+      "fp_risk": 0,
+      "quality_score": 34.0,
+      "platform": "carbonblack",
+      "file": "carbonblack/rules/cb_childproc_creation_msbuild_exe.json"
+    },
+    {
+      "title": "cb_childproc_creation_mshta_exe",
+      "severity": "high",
+      "techniques": [
+        "T1218.005"
+      ],
+      "fp_risk": 0,
+      "quality_score": 65.0,
+      "platform": "carbonblack",
+      "file": "carbonblack/rules/cb_childproc_creation_mshta_exe.json"
+    },
+    {
+      "title": "cb_childproc_creation_nc_exe",
+      "severity": "5",
+      "techniques": [
+        "T1095"
+      ],
+      "fp_risk": 0,
+      "quality_score": 34.0,
+      "platform": "carbonblack",
+      "file": "carbonblack/rules/cb_childproc_creation_nc_exe.json"
+    },
+    {
+      "title": "cb_childproc_creation_ncat_exe",
+      "severity": "5",
+      "techniques": [
+        "T1095"
+      ],
+      "fp_risk": 0,
+      "quality_score": 34.0,
+      "platform": "carbonblack",
+      "file": "carbonblack/rules/cb_childproc_creation_ncat_exe.json"
+    },
+    {
+      "title": "cb_childproc_creation_net_exe",
+      "severity": "high",
+      "techniques": [
+        "T1087",
+        "T1098",
+        "T1136"
+      ],
+      "fp_risk": 0,
+      "quality_score": 73.0,
+      "platform": "carbonblack",
+      "file": "carbonblack/rules/cb_childproc_creation_net_exe.json"
+    },
+    {
+      "title": "cb_childproc_creation_powershell_exe",
+      "severity": "5",
+      "techniques": [
+        "T1059.001"
+      ],
+      "fp_risk": 1,
+      "quality_score": 32.0,
+      "platform": "carbonblack",
+      "file": "carbonblack/rules/cb_childproc_creation_powershell_exe.json"
+    },
+    {
+      "title": "cb_childproc_creation_procdump_exe",
+      "severity": "5",
+      "techniques": [
+        "T1003.001"
+      ],
+      "fp_risk": 0,
+      "quality_score": 34.0,
+      "platform": "carbonblack",
+      "file": "carbonblack/rules/cb_childproc_creation_procdump_exe.json"
+    },
+    {
+      "title": "cb_childproc_creation_psexec_exe",
+      "severity": "high",
+      "techniques": [
+        "T1021.002"
+      ],
+      "fp_risk": 0,
+      "quality_score": 65.0,
+      "platform": "carbonblack",
+      "file": "carbonblack/rules/cb_childproc_creation_psexec_exe.json"
+    },
+    {
+      "title": "cb_childproc_creation_rclone_exe",
+      "severity": "high",
+      "techniques": [
+        "T1567.002"
+      ],
+      "fp_risk": 0,
+      "quality_score": 65.0,
+      "platform": "carbonblack",
+      "file": "carbonblack/rules/cb_childproc_creation_rclone_exe.json"
+    },
+    {
+      "title": "cb_childproc_creation_reg_exe",
+      "severity": "high",
+      "techniques": [
+        "T1112"
+      ],
+      "fp_risk": 0,
+      "quality_score": 65.0,
+      "platform": "carbonblack",
+      "file": "carbonblack/rules/cb_childproc_creation_reg_exe.json"
+    },
+    {
+      "title": "cb_childproc_creation_regsvr32_exe",
+      "severity": "5",
+      "techniques": [
+        "T1218.010"
+      ],
+      "fp_risk": 1,
+      "quality_score": 32.0,
+      "platform": "carbonblack",
+      "file": "carbonblack/rules/cb_childproc_creation_regsvr32_exe.json"
+    },
+    {
+      "title": "cb_childproc_creation_rundll32_exe",
+      "severity": "5",
+      "techniques": [
+        "T1218.011"
+      ],
+      "fp_risk": 1,
+      "quality_score": 32.0,
+      "platform": "carbonblack",
+      "file": "carbonblack/rules/cb_childproc_creation_rundll32_exe.json"
+    },
+    {
+      "title": "cb_childproc_creation_schtasks_exe",
+      "severity": "5",
+      "techniques": [
+        "T1053.005"
+      ],
+      "fp_risk": 1,
+      "quality_score": 32.0,
+      "platform": "carbonblack",
+      "file": "carbonblack/rules/cb_childproc_creation_schtasks_exe.json"
+    },
+    {
+      "title": "cb_childproc_creation_suspicious_app_exe",
+      "severity": "5",
+      "techniques": [
+        "T1036",
+        "T1059"
+      ],
+      "fp_risk": 0,
+      "quality_score": 38.0,
+      "platform": "carbonblack",
+      "file": "carbonblack/rules/cb_childproc_creation_suspicious_app_exe.json"
+    },
+    {
+      "title": "cb_childproc_creation_wmic_exe",
+      "severity": "high",
+      "techniques": [
+        "T1047"
+      ],
+      "fp_risk": 1,
+      "quality_score": 63.0,
+      "platform": "carbonblack",
+      "file": "carbonblack/rules/cb_childproc_creation_wmic_exe.json"
+    },
+    {
+      "title": "cb_childproc_creation_wscript_exe",
+      "severity": "5",
+      "techniques": [
+        "T1059.005"
+      ],
+      "fp_risk": 0,
+      "quality_score": 34.0,
+      "platform": "carbonblack",
+      "file": "carbonblack/rules/cb_childproc_creation_wscript_exe.json"
+    },
+    {
+      "title": "cb_file_modification_at_exe",
+      "severity": "5",
+      "techniques": [
+        "T1053.002"
+      ],
+      "fp_risk": 0,
+      "quality_score": 34.0,
+      "platform": "carbonblack",
+      "file": "carbonblack/rules/cb_file_modification_at_exe.json"
+    },
+    {
+      "title": "cb_file_modification_bitsadmin_exe",
+      "severity": "5",
+      "techniques": [
+        "T1197"
+      ],
+      "fp_risk": 0,
+      "quality_score": 34.0,
+      "platform": "carbonblack",
+      "file": "carbonblack/rules/cb_file_modification_bitsadmin_exe.json"
+    },
+    {
+      "title": "cb_file_modification_certutil_exe",
+      "severity": "5",
+      "techniques": [
+        "T1105",
+        "T1140"
+      ],
+      "fp_risk": 0,
+      "quality_score": 38.0,
+      "platform": "carbonblack",
+      "file": "carbonblack/rules/cb_file_modification_certutil_exe.json"
+    },
+    {
+      "title": "cb_file_modification_cmd_exe",
+      "severity": "5",
+      "techniques": [
+        "T1059.003"
+      ],
+      "fp_risk": 1,
+      "quality_score": 32.0,
+      "platform": "carbonblack",
+      "file": "carbonblack/rules/cb_file_modification_cmd_exe.json"
+    },
+    {
+      "title": "cb_file_modification_cscript_exe",
+      "severity": "5",
+      "techniques": [
+        "T1059.005"
+      ],
+      "fp_risk": 0,
+      "quality_score": 34.0,
+      "platform": "carbonblack",
+      "file": "carbonblack/rules/cb_file_modification_cscript_exe.json"
+    },
+    {
+      "title": "cb_file_modification_evil_com",
+      "severity": "5",
+      "techniques": [
+        "T1071.001"
+      ],
+      "fp_risk": 0,
+      "quality_score": 34.0,
+      "platform": "carbonblack",
+      "file": "carbonblack/rules/cb_file_modification_evil_com.json"
+    },
+    {
+      "title": "cb_file_modification_hacker_tool_py",
+      "severity": "5",
+      "techniques": [
+        "T1059.006"
+      ],
+      "fp_risk": 0,
+      "quality_score": 34.0,
+      "platform": "carbonblack",
+      "file": "carbonblack/rules/cb_file_modification_hacker_tool_py.json"
+    },
+    {
+      "title": "cb_file_modification_malicious-site_org",
+      "severity": "5",
+      "techniques": [
+        "T1071.001"
+      ],
+      "fp_risk": 0,
+      "quality_score": 34.0,
+      "platform": "carbonblack",
+      "file": "carbonblack/rules/cb_file_modification_malicious-site_org.json"
+    },
+    {
+      "title": "cb_file_modification_malware_dll",
+      "severity": "5",
+      "techniques": [
+        "T1574.002"
+      ],
+      "fp_risk": 0,
+      "quality_score": 34.0,
+      "platform": "carbonblack",
+      "file": "carbonblack/rules/cb_file_modification_malware_dll.json"
+    },
+    {
+      "title": "cb_file_modification_mimikatz_exe",
+      "severity": "5",
+      "techniques": [
+        "T1003.001"
+      ],
+      "fp_risk": 0,
+      "quality_score": 34.0,
+      "platform": "carbonblack",
+      "file": "carbonblack/rules/cb_file_modification_mimikatz_exe.json"
+    },
+    {
+      "title": "cb_file_modification_msbuild_exe",
+      "severity": "5",
+      "techniques": [
+        "T1127.001"
+      ],
+      "fp_risk": 0,
+      "quality_score": 34.0,
+      "platform": "carbonblack",
+      "file": "carbonblack/rules/cb_file_modification_msbuild_exe.json"
+    },
+    {
+      "title": "cb_file_modification_nc_exe",
+      "severity": "5",
+      "techniques": [
+        "T1095"
+      ],
+      "fp_risk": 0,
+      "quality_score": 34.0,
+      "platform": "carbonblack",
+      "file": "carbonblack/rules/cb_file_modification_nc_exe.json"
+    },
+    {
+      "title": "cb_file_modification_ncat_exe",
+      "severity": "5",
+      "techniques": [
+        "T1095"
+      ],
+      "fp_risk": 0,
+      "quality_score": 34.0,
+      "platform": "carbonblack",
+      "file": "carbonblack/rules/cb_file_modification_ncat_exe.json"
+    },
+    {
+      "title": "cb_file_modification_powershell_exe",
+      "severity": "5",
+      "techniques": [
+        "T1059.001"
+      ],
+      "fp_risk": 1,
+      "quality_score": 32.0,
+      "platform": "carbonblack",
+      "file": "carbonblack/rules/cb_file_modification_powershell_exe.json"
+    },
+    {
+      "title": "cb_file_modification_procdump_exe",
+      "severity": "5",
+      "techniques": [
+        "T1003.001"
+      ],
+      "fp_risk": 0,
+      "quality_score": 34.0,
+      "platform": "carbonblack",
+      "file": "carbonblack/rules/cb_file_modification_procdump_exe.json"
+    },
+    {
+      "title": "cb_file_modification_regsvr32_exe",
+      "severity": "5",
+      "techniques": [
+        "T1218.010"
+      ],
+      "fp_risk": 1,
+      "quality_score": 32.0,
+      "platform": "carbonblack",
+      "file": "carbonblack/rules/cb_file_modification_regsvr32_exe.json"
+    },
+    {
+      "title": "cb_file_modification_rundll32_exe",
+      "severity": "5",
+      "techniques": [
+        "T1218.011"
+      ],
+      "fp_risk": 1,
+      "quality_score": 32.0,
+      "platform": "carbonblack",
+      "file": "carbonblack/rules/cb_file_modification_rundll32_exe.json"
+    },
+    {
+      "title": "cb_file_modification_schtasks_exe",
+      "severity": "5",
+      "techniques": [
+        "T1053.005"
+      ],
+      "fp_risk": 1,
+      "quality_score": 32.0,
+      "platform": "carbonblack",
+      "file": "carbonblack/rules/cb_file_modification_schtasks_exe.json"
+    },
+    {
+      "title": "cb_file_modification_suspicious_app_exe",
+      "severity": "5",
+      "techniques": [
+        "T1036",
+        "T1059"
+      ],
+      "fp_risk": 0,
+      "quality_score": 38.0,
+      "platform": "carbonblack",
+      "file": "carbonblack/rules/cb_file_modification_suspicious_app_exe.json"
+    },
+    {
+      "title": "cb_file_modification_wscript_exe",
+      "severity": "5",
+      "techniques": [
+        "T1059.005"
+      ],
+      "fp_risk": 0,
+      "quality_score": 34.0,
+      "platform": "carbonblack",
+      "file": "carbonblack/rules/cb_file_modification_wscript_exe.json"
+    },
+    {
+      "title": "cb_filemod_lsass_dump_dmp",
+      "severity": "high",
+      "techniques": [
+        "T1003.001"
+      ],
+      "fp_risk": 0,
+      "quality_score": 65.0,
+      "platform": "carbonblack",
+      "file": "carbonblack/rules/cb_filemod_lsass_dump_dmp.json"
+    },
+    {
+      "title": "cb_netconn_dns_tunnel_like",
+      "severity": "high",
+      "techniques": [
+        "T1071.004",
+        "T1572"
+      ],
+      "fp_risk": 0,
+      "quality_score": 69.0,
+      "platform": "carbonblack",
+      "file": "carbonblack/rules/cb_netconn_dns_tunnel_like.json"
+    },
+    {
+      "title": "cb_network_connection_at_exe",
+      "severity": "5",
+      "techniques": [
+        "T1053.002"
+      ],
+      "fp_risk": 0,
+      "quality_score": 34.0,
+      "platform": "carbonblack",
+      "file": "carbonblack/rules/cb_network_connection_at_exe.json"
+    },
+    {
+      "title": "cb_network_connection_bitsadmin_exe",
+      "severity": "5",
+      "techniques": [
+        "T1197"
+      ],
+      "fp_risk": 0,
+      "quality_score": 34.0,
+      "platform": "carbonblack",
+      "file": "carbonblack/rules/cb_network_connection_bitsadmin_exe.json"
+    },
+    {
+      "title": "cb_network_connection_certutil_exe",
+      "severity": "5",
+      "techniques": [
+        "T1105",
+        "T1140"
+      ],
+      "fp_risk": 0,
+      "quality_score": 38.0,
+      "platform": "carbonblack",
+      "file": "carbonblack/rules/cb_network_connection_certutil_exe.json"
+    },
+    {
+      "title": "cb_network_connection_cmd_exe",
+      "severity": "5",
+      "techniques": [
+        "T1059.003"
+      ],
+      "fp_risk": 1,
+      "quality_score": 32.0,
+      "platform": "carbonblack",
+      "file": "carbonblack/rules/cb_network_connection_cmd_exe.json"
+    },
+    {
+      "title": "cb_network_connection_cscript_exe",
+      "severity": "5",
+      "techniques": [
+        "T1059.005"
+      ],
+      "fp_risk": 0,
+      "quality_score": 34.0,
+      "platform": "carbonblack",
+      "file": "carbonblack/rules/cb_network_connection_cscript_exe.json"
+    },
+    {
+      "title": "cb_network_connection_evil_com",
+      "severity": "5",
+      "techniques": [
+        "T1071.001"
+      ],
+      "fp_risk": 0,
+      "quality_score": 34.0,
+      "platform": "carbonblack",
+      "file": "carbonblack/rules/cb_network_connection_evil_com.json"
+    },
+    {
+      "title": "cb_network_connection_hacker_tool_py",
+      "severity": "5",
+      "techniques": [
+        "T1059.006"
+      ],
+      "fp_risk": 0,
+      "quality_score": 34.0,
+      "platform": "carbonblack",
+      "file": "carbonblack/rules/cb_network_connection_hacker_tool_py.json"
+    },
+    {
+      "title": "cb_network_connection_malicious-site_org",
+      "severity": "5",
+      "techniques": [
+        "T1071.001"
+      ],
+      "fp_risk": 0,
+      "quality_score": 34.0,
+      "platform": "carbonblack",
+      "file": "carbonblack/rules/cb_network_connection_malicious-site_org.json"
+    },
+    {
+      "title": "cb_network_connection_malware_dll",
+      "severity": "5",
+      "techniques": [
+        "T1574.002"
+      ],
+      "fp_risk": 0,
+      "quality_score": 34.0,
+      "platform": "carbonblack",
+      "file": "carbonblack/rules/cb_network_connection_malware_dll.json"
+    },
+    {
+      "title": "cb_network_connection_mimikatz_exe",
+      "severity": "5",
+      "techniques": [
+        "T1003.001"
+      ],
+      "fp_risk": 0,
+      "quality_score": 34.0,
+      "platform": "carbonblack",
+      "file": "carbonblack/rules/cb_network_connection_mimikatz_exe.json"
+    },
+    {
+      "title": "cb_network_connection_msbuild_exe",
+      "severity": "5",
+      "techniques": [
+        "T1127.001"
+      ],
+      "fp_risk": 0,
+      "quality_score": 34.0,
+      "platform": "carbonblack",
+      "file": "carbonblack/rules/cb_network_connection_msbuild_exe.json"
+    },
+    {
+      "title": "cb_network_connection_nc_exe",
+      "severity": "5",
+      "techniques": [
+        "T1095"
+      ],
+      "fp_risk": 0,
+      "quality_score": 34.0,
+      "platform": "carbonblack",
+      "file": "carbonblack/rules/cb_network_connection_nc_exe.json"
+    },
+    {
+      "title": "cb_network_connection_ncat_exe",
+      "severity": "5",
+      "techniques": [
+        "T1095"
+      ],
+      "fp_risk": 0,
+      "quality_score": 34.0,
+      "platform": "carbonblack",
+      "file": "carbonblack/rules/cb_network_connection_ncat_exe.json"
+    },
+    {
+      "title": "cb_network_connection_powershell_exe",
+      "severity": "5",
+      "techniques": [
+        "T1059.001"
+      ],
+      "fp_risk": 1,
+      "quality_score": 32.0,
+      "platform": "carbonblack",
+      "file": "carbonblack/rules/cb_network_connection_powershell_exe.json"
+    },
+    {
+      "title": "cb_network_connection_procdump_exe",
+      "severity": "5",
+      "techniques": [
+        "T1003.001"
+      ],
+      "fp_risk": 0,
+      "quality_score": 34.0,
+      "platform": "carbonblack",
+      "file": "carbonblack/rules/cb_network_connection_procdump_exe.json"
+    },
+    {
+      "title": "cb_network_connection_regsvr32_exe",
+      "severity": "5",
+      "techniques": [
+        "T1218.010"
+      ],
+      "fp_risk": 1,
+      "quality_score": 32.0,
+      "platform": "carbonblack",
+      "file": "carbonblack/rules/cb_network_connection_regsvr32_exe.json"
+    },
+    {
+      "title": "cb_network_connection_rundll32_exe",
+      "severity": "5",
+      "techniques": [
+        "T1218.011"
+      ],
+      "fp_risk": 1,
+      "quality_score": 32.0,
+      "platform": "carbonblack",
+      "file": "carbonblack/rules/cb_network_connection_rundll32_exe.json"
+    },
+    {
+      "title": "cb_network_connection_schtasks_exe",
+      "severity": "5",
+      "techniques": [
+        "T1053.005"
+      ],
+      "fp_risk": 1,
+      "quality_score": 32.0,
+      "platform": "carbonblack",
+      "file": "carbonblack/rules/cb_network_connection_schtasks_exe.json"
+    },
+    {
+      "title": "cb_network_connection_suspicious_app_exe",
+      "severity": "5",
+      "techniques": [
+        "T1036",
+        "T1059"
+      ],
+      "fp_risk": 0,
+      "quality_score": 38.0,
+      "platform": "carbonblack",
+      "file": "carbonblack/rules/cb_network_connection_suspicious_app_exe.json"
+    },
+    {
+      "title": "cb_network_connection_wscript_exe",
+      "severity": "5",
+      "techniques": [
+        "T1059.005"
+      ],
+      "fp_risk": 0,
+      "quality_score": 34.0,
+      "platform": "carbonblack",
+      "file": "carbonblack/rules/cb_network_connection_wscript_exe.json"
+    },
+    {
+      "title": "cb_process_creation_at_exe",
+      "severity": "5",
+      "techniques": [
+        "T1053.002"
+      ],
+      "fp_risk": 1,
+      "quality_score": 32.0,
+      "platform": "carbonblack",
+      "file": "carbonblack/rules/cb_process_creation_at_exe.json"
+    },
+    {
+      "title": "cb_process_creation_bitsadmin_exe",
+      "severity": "5",
+      "techniques": [
+        "T1197"
+      ],
+      "fp_risk": 1,
+      "quality_score": 32.0,
+      "platform": "carbonblack",
+      "file": "carbonblack/rules/cb_process_creation_bitsadmin_exe.json"
+    },
+    {
+      "title": "cb_process_creation_certutil_exe",
+      "severity": "5",
+      "techniques": [
+        "T1105",
+        "T1140"
+      ],
+      "fp_risk": 1,
+      "quality_score": 36.0,
+      "platform": "carbonblack",
+      "file": "carbonblack/rules/cb_process_creation_certutil_exe.json"
+    },
+    {
+      "title": "cb_process_creation_cmd_exe",
+      "severity": "5",
+      "techniques": [
+        "T1059.003"
+      ],
+      "fp_risk": 2,
+      "quality_score": 30.0,
+      "platform": "carbonblack",
+      "file": "carbonblack/rules/cb_process_creation_cmd_exe.json"
+    },
+    {
+      "title": "cb_process_creation_cscript_exe",
+      "severity": "5",
+      "techniques": [
+        "T1059.005"
+      ],
+      "fp_risk": 1,
+      "quality_score": 32.0,
+      "platform": "carbonblack",
+      "file": "carbonblack/rules/cb_process_creation_cscript_exe.json"
+    },
+    {
+      "title": "cb_process_creation_evil_com",
+      "severity": "5",
+      "techniques": [
+        "T1071.001"
+      ],
+      "fp_risk": 1,
+      "quality_score": 32.0,
+      "platform": "carbonblack",
+      "file": "carbonblack/rules/cb_process_creation_evil_com.json"
+    },
+    {
+      "title": "cb_process_creation_hacker_tool_py",
+      "severity": "5",
+      "techniques": [
+        "T1059.006"
+      ],
+      "fp_risk": 1,
+      "quality_score": 32.0,
+      "platform": "carbonblack",
+      "file": "carbonblack/rules/cb_process_creation_hacker_tool_py.json"
+    },
+    {
+      "title": "cb_process_creation_malicious-site_org",
+      "severity": "5",
+      "techniques": [
+        "T1071.001"
+      ],
+      "fp_risk": 1,
+      "quality_score": 32.0,
+      "platform": "carbonblack",
+      "file": "carbonblack/rules/cb_process_creation_malicious-site_org.json"
+    },
+    {
+      "title": "cb_process_creation_malware_dll",
+      "severity": "5",
+      "techniques": [
+        "T1574.002"
+      ],
+      "fp_risk": 1,
+      "quality_score": 32.0,
+      "platform": "carbonblack",
+      "file": "carbonblack/rules/cb_process_creation_malware_dll.json"
+    },
+    {
+      "title": "cb_process_creation_mimikatz_exe",
+      "severity": "5",
+      "techniques": [
+        "T1003.001"
+      ],
+      "fp_risk": 1,
+      "quality_score": 32.0,
+      "platform": "carbonblack",
+      "file": "carbonblack/rules/cb_process_creation_mimikatz_exe.json"
+    },
+    {
+      "title": "cb_process_creation_msbuild_exe",
+      "severity": "5",
+      "techniques": [
+        "T1127.001"
+      ],
+      "fp_risk": 1,
+      "quality_score": 32.0,
+      "platform": "carbonblack",
+      "file": "carbonblack/rules/cb_process_creation_msbuild_exe.json"
+    },
+    {
+      "title": "cb_process_creation_nc_exe",
+      "severity": "5",
+      "techniques": [
+        "T1095"
+      ],
+      "fp_risk": 1,
+      "quality_score": 32.0,
+      "platform": "carbonblack",
+      "file": "carbonblack/rules/cb_process_creation_nc_exe.json"
+    },
+    {
+      "title": "cb_process_creation_ncat_exe",
+      "severity": "5",
+      "techniques": [
+        "T1095"
+      ],
+      "fp_risk": 1,
+      "quality_score": 32.0,
+      "platform": "carbonblack",
+      "file": "carbonblack/rules/cb_process_creation_ncat_exe.json"
+    },
+    {
+      "title": "cb_process_creation_powershell_exe",
+      "severity": "5",
+      "techniques": [
+        "T1059.001"
+      ],
+      "fp_risk": 2,
+      "quality_score": 30.0,
+      "platform": "carbonblack",
+      "file": "carbonblack/rules/cb_process_creation_powershell_exe.json"
+    },
+    {
+      "title": "cb_process_creation_procdump_exe",
+      "severity": "5",
+      "techniques": [
+        "T1003.001"
+      ],
+      "fp_risk": 1,
+      "quality_score": 32.0,
+      "platform": "carbonblack",
+      "file": "carbonblack/rules/cb_process_creation_procdump_exe.json"
+    },
+    {
+      "title": "cb_process_creation_regsvr32_exe",
+      "severity": "5",
+      "techniques": [
+        "T1218.010"
+      ],
+      "fp_risk": 2,
+      "quality_score": 30.0,
+      "platform": "carbonblack",
+      "file": "carbonblack/rules/cb_process_creation_regsvr32_exe.json"
+    },
+    {
+      "title": "cb_process_creation_rundll32_exe",
+      "severity": "5",
+      "techniques": [
+        "T1218.011"
+      ],
+      "fp_risk": 2,
+      "quality_score": 30.0,
+      "platform": "carbonblack",
+      "file": "carbonblack/rules/cb_process_creation_rundll32_exe.json"
+    },
+    {
+      "title": "cb_process_creation_schtasks_exe",
+      "severity": "5",
+      "techniques": [
+        "T1053.005"
+      ],
+      "fp_risk": 2,
+      "quality_score": 30.0,
+      "platform": "carbonblack",
+      "file": "carbonblack/rules/cb_process_creation_schtasks_exe.json"
+    },
+    {
+      "title": "cb_process_creation_suspicious_app_exe",
+      "severity": "5",
+      "techniques": [
+        "T1036",
+        "T1059"
+      ],
+      "fp_risk": 1,
+      "quality_score": 36.0,
+      "platform": "carbonblack",
+      "file": "carbonblack/rules/cb_process_creation_suspicious_app_exe.json"
+    },
+    {
+      "title": "cb_process_creation_wscript_exe",
+      "severity": "5",
+      "techniques": [
+        "T1059.005"
+      ],
+      "fp_risk": 1,
+      "quality_score": 32.0,
+      "platform": "carbonblack",
+      "file": "carbonblack/rules/cb_process_creation_wscript_exe.json"
+    },
+    {
+      "title": "cb_registry_modification_at_exe",
+      "severity": "5",
+      "techniques": [
+        "T1053.002"
+      ],
+      "fp_risk": 0,
+      "quality_score": 34.0,
+      "platform": "carbonblack",
+      "file": "carbonblack/rules/cb_registry_modification_at_exe.json"
+    },
+    {
+      "title": "cb_registry_modification_bitsadmin_exe",
+      "severity": "5",
+      "techniques": [
+        "T1197"
+      ],
+      "fp_risk": 0,
+      "quality_score": 34.0,
+      "platform": "carbonblack",
+      "file": "carbonblack/rules/cb_registry_modification_bitsadmin_exe.json"
+    },
+    {
+      "title": "cb_registry_modification_certutil_exe",
+      "severity": "5",
+      "techniques": [
+        "T1105",
+        "T1140"
+      ],
+      "fp_risk": 0,
+      "quality_score": 38.0,
+      "platform": "carbonblack",
+      "file": "carbonblack/rules/cb_registry_modification_certutil_exe.json"
+    },
+    {
+      "title": "cb_registry_modification_cmd_exe",
+      "severity": "5",
+      "techniques": [
+        "T1059.003"
+      ],
+      "fp_risk": 1,
+      "quality_score": 32.0,
+      "platform": "carbonblack",
+      "file": "carbonblack/rules/cb_registry_modification_cmd_exe.json"
+    },
+    {
+      "title": "cb_registry_modification_cscript_exe",
+      "severity": "5",
+      "techniques": [
+        "T1059.005"
+      ],
+      "fp_risk": 0,
+      "quality_score": 34.0,
+      "platform": "carbonblack",
+      "file": "carbonblack/rules/cb_registry_modification_cscript_exe.json"
+    },
+    {
+      "title": "cb_registry_modification_evil_com",
+      "severity": "5",
+      "techniques": [
+        "T1071.001"
+      ],
+      "fp_risk": 0,
+      "quality_score": 34.0,
+      "platform": "carbonblack",
+      "file": "carbonblack/rules/cb_registry_modification_evil_com.json"
+    },
+    {
+      "title": "cb_registry_modification_hacker_tool_py",
+      "severity": "5",
+      "techniques": [
+        "T1059.006"
+      ],
+      "fp_risk": 0,
+      "quality_score": 34.0,
+      "platform": "carbonblack",
+      "file": "carbonblack/rules/cb_registry_modification_hacker_tool_py.json"
+    },
+    {
+      "title": "cb_registry_modification_malicious-site_org",
+      "severity": "5",
+      "techniques": [
+        "T1071.001"
+      ],
+      "fp_risk": 0,
+      "quality_score": 34.0,
+      "platform": "carbonblack",
+      "file": "carbonblack/rules/cb_registry_modification_malicious-site_org.json"
+    },
+    {
+      "title": "cb_registry_modification_malware_dll",
+      "severity": "5",
+      "techniques": [
+        "T1574.002"
+      ],
+      "fp_risk": 0,
+      "quality_score": 34.0,
+      "platform": "carbonblack",
+      "file": "carbonblack/rules/cb_registry_modification_malware_dll.json"
+    },
+    {
+      "title": "cb_registry_modification_mimikatz_exe",
+      "severity": "5",
+      "techniques": [
+        "T1003.001"
+      ],
+      "fp_risk": 0,
+      "quality_score": 34.0,
+      "platform": "carbonblack",
+      "file": "carbonblack/rules/cb_registry_modification_mimikatz_exe.json"
+    },
+    {
+      "title": "cb_registry_modification_msbuild_exe",
+      "severity": "5",
+      "techniques": [
+        "T1127.001"
+      ],
+      "fp_risk": 0,
+      "quality_score": 34.0,
+      "platform": "carbonblack",
+      "file": "carbonblack/rules/cb_registry_modification_msbuild_exe.json"
+    },
+    {
+      "title": "cb_registry_modification_nc_exe",
+      "severity": "5",
+      "techniques": [
+        "T1095"
+      ],
+      "fp_risk": 0,
+      "quality_score": 34.0,
+      "platform": "carbonblack",
+      "file": "carbonblack/rules/cb_registry_modification_nc_exe.json"
+    },
+    {
+      "title": "cb_registry_modification_ncat_exe",
+      "severity": "5",
+      "techniques": [
+        "T1095"
+      ],
+      "fp_risk": 0,
+      "quality_score": 34.0,
+      "platform": "carbonblack",
+      "file": "carbonblack/rules/cb_registry_modification_ncat_exe.json"
+    },
+    {
+      "title": "cb_registry_modification_powershell_exe",
+      "severity": "5",
+      "techniques": [
+        "T1059.001"
+      ],
+      "fp_risk": 1,
+      "quality_score": 32.0,
+      "platform": "carbonblack",
+      "file": "carbonblack/rules/cb_registry_modification_powershell_exe.json"
+    },
+    {
+      "title": "cb_registry_modification_procdump_exe",
+      "severity": "5",
+      "techniques": [
+        "T1003.001"
+      ],
+      "fp_risk": 0,
+      "quality_score": 34.0,
+      "platform": "carbonblack",
+      "file": "carbonblack/rules/cb_registry_modification_procdump_exe.json"
+    },
+    {
+      "title": "cb_registry_modification_regsvr32_exe",
+      "severity": "5",
+      "techniques": [
+        "T1218.010"
+      ],
+      "fp_risk": 1,
+      "quality_score": 32.0,
+      "platform": "carbonblack",
+      "file": "carbonblack/rules/cb_registry_modification_regsvr32_exe.json"
+    },
+    {
+      "title": "cb_registry_modification_rundll32_exe",
+      "severity": "5",
+      "techniques": [
+        "T1218.011"
+      ],
+      "fp_risk": 1,
+      "quality_score": 32.0,
+      "platform": "carbonblack",
+      "file": "carbonblack/rules/cb_registry_modification_rundll32_exe.json"
+    },
+    {
+      "title": "cb_registry_modification_schtasks_exe",
+      "severity": "5",
+      "techniques": [
+        "T1053.005"
+      ],
+      "fp_risk": 1,
+      "quality_score": 32.0,
+      "platform": "carbonblack",
+      "file": "carbonblack/rules/cb_registry_modification_schtasks_exe.json"
+    },
+    {
+      "title": "cb_registry_modification_suspicious_app_exe",
+      "severity": "5",
+      "techniques": [
+        "T1036",
+        "T1059"
+      ],
+      "fp_risk": 0,
+      "quality_score": 38.0,
+      "platform": "carbonblack",
+      "file": "carbonblack/rules/cb_registry_modification_suspicious_app_exe.json"
+    },
+    {
+      "title": "cb_registry_modification_wscript_exe",
+      "severity": "5",
+      "techniques": [
+        "T1059.005"
+      ],
+      "fp_risk": 0,
+      "quality_score": 34.0,
+      "platform": "carbonblack",
+      "file": "carbonblack/rules/cb_registry_modification_wscript_exe.json"
+    }
+  ]
+}

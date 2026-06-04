@@ -38,10 +38,16 @@ jobs:
       - name: Install deps
         run: pip install pyyaml==6.0.2
 
-      - name: Generate coverage + index
+      - name: Generate coverage + index + reports + badges
         run: |
-          python3 scripts/generate_coverage.py
-          python3 scripts/generate_index.py
+          PYTHONPATH=scripts python3 -m detection_rules coverage
+          PYTHONPATH=scripts python3 -m detection_rules index
+          PYTHONPATH=scripts python3 -m detection_rules metrics
+          PYTHONPATH=scripts python3 -m detection_rules gap
+          PYTHONPATH=scripts python3 -m detection_rules cti
+          PYTHONPATH=scripts python3 -m detection_rules atomic
+          PYTHONPATH=scripts python3 -m detection_rules navigator
+          PYTHONPATH=scripts python3 -m detection_rules badges
 
       - name: Assemble site
         run: |
@@ -50,6 +56,12 @@ jobs:
           cp coverage.json site/
           cp rules.index.json site/
           cp COVERAGE.md site/
+          # Reports + Navigator layers
+          mkdir -p site/docs site/navigator-layers
+          cp -f docs/metrics.md docs/gap-analysis.md docs/threat-actors.md \
+                docs/threat-actors.json docs/atomic-red-team.md \
+                docs/atomic-red-team.json site/docs/ 2>/dev/null || true
+          cp -f navigator-layers/*.json site/navigator-layers/ 2>/dev/null || true
           # Stats for the landing page
           python3 - <<'PY'
           import json, pathlib

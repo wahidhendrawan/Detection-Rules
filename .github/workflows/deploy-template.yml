@@ -105,7 +105,7 @@ jobs:
       # --- Microsoft Sentinel Deployment ---
       - name: Azure Login
         if: ${{ inputs.target == 'sentinel' }}
-        uses: azure/login@v2
+        uses: azure/login@v3
         with:
           creds: |
             {

@@ -257,7 +257,7 @@ Boilerplate per platform tersedia di [`templates/`](templates/).
 
 ## Lisensi
 
-[MIT](LICENSE) © Wahid Hendrawan
+[GPL-3.0](LICENSE) © Wahid Hendrawan
 
 ---
 

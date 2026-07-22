@@ -3,6 +3,14 @@ name: Dependency Review
 on:
   pull_request:
     branches: [main]
+    paths:
+      - 'requirements*.txt'
+      - 'pyproject.toml'
+      - 'setup.py'
+      - 'setup.cfg'
+      - 'Dockerfile*'
+      - 'docker-compose*.yml'
+      - '.github/workflows/**'
 
 permissions:
   contents: read

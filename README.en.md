@@ -15,9 +15,11 @@
 > 🇬🇧 **English** · [🇮🇩 Bahasa Indonesia](README.md)
 
 > A cross-platform collection of **detection rules** and **hunting queries**
-> (Sigma, Elastic, Splunk, Microsoft Sentinel, Wazuh, and Carbon Black) with
-> MITRE ATT&CK mapping. The repository is intended as a *starter pack* for
-> *blue teams* and *detection engineers*.
+> across **9 platforms** (Sigma, Elastic, Splunk, Microsoft Sentinel, Wazuh,
+> Carbon Black, CrowdStrike Falcon, SentinelOne, and Falco) with MITRE ATT&CK
+> mapping — **836 rules, 152 techniques, zero single-platform gaps**. The
+> repository is intended as a *starter pack* for *blue teams* and *detection
+> engineers*.
 
 🌐 **Interactive landing page:** https://wahidhendrawan.github.io/Detection-Rules/
 📦 **Latest release (auto-translated):** https://github.com/wahidhendrawan/Detection-Rules/releases/latest
@@ -47,7 +49,10 @@
 | **Microsoft Sentinel** | `.kql` | 102 | hunting + analytics |
 | **Wazuh** | `.xml` | 140 | rules in `attack` group |
 | **Carbon Black** | `.json` | 110 | EDR queries |
-| **TOTAL** | — | **533** | — |
+| **CrowdStrike Falcon** | `.esf` | 85 | endpoint detection + scheduled queries |
+| **SentinelOne** | `.s1ql` | 95 | Deep Visibility + threat hunting |
+| **Falco** | `.falco` | 123 | syscall rules · container/k8s/cloud |
+| **TOTAL** | — | **836** | 9 platforms · 152 MITRE ATT&CK techniques |
 
 See [`COVERAGE.md`](COVERAGE.md) for the full MITRE ATT&CK mapping.
 
@@ -95,8 +100,14 @@ Detection-Rules/
 ├─ microsoft-sentinel/    # 102 KQL hunting queries
 ├─ wazuh/
 │  └─ rules/              # 140 XML rules (group "attack")
-└─ carbonblack/
-   └─ rules/              # 110 JSON EDR queries
+├─ carbonblack/
+│  └─ rules/              # 110 JSON EDR queries
+├─ falcon/
+│  └─ rules/              # 85 CrowdStrike Falcon
+├─ sentinelone/
+│  └─ rules/              # 95 SentinelOne
+└─ falco/
+   └─ rules/              # 123 Falco syscall rules
 ```
 
 ---
@@ -113,6 +124,9 @@ Detection-Rules/
 | Sentinel | `.kql` | Plain-text KQL with `//` header comments |
 | Wazuh | `.xml` | XML rule inside `<group name="attack">` with `<mitre>` tag |
 | Carbon Black | `.json` | Object with `name`, `description`, `query`, `severity` |
+| CrowdStrike Falcon | `.esf` | Event Search DSL. Inline header: `// MITRE:`, `// Severity:` |
+| SentinelOne | `.s1ql` | Deep Visibility query language. Schema-specific field names |
+| Falco | `.falco` | Syscall rules with `condition`, `output`, `priority` fields. Required: `condition`, `output`, `priority`, `tags` |
 
 ### Naming convention
 
@@ -125,6 +139,9 @@ Use a per-OS / per-domain prefix:
 - `app_*`   → Application logs (Wazuh)
 - `kql_NNN_*` → Sentinel (numbered)
 - `cb_*`    → Carbon Black
+- `cs_*`    → CrowdStrike Falcon
+- `s1_*`    → SentinelOne
+- `fc_*`    → Falco
 
 Examples:
 
@@ -194,6 +211,43 @@ jq '.query' carbonblack/rules/cb_childproc_creation_7z_exe.json
 
 Or bulk via API `POST /api/watchlists/{watchlist_id}/queries`.
 
+### CrowdStrike Falcon
+
+Import via Console → *Detections* → *Search* or use the API:
+
+```bash
+# Load ESF query and run via Falconpy
+cat falcon/rules/cs_persistence_registry_run_key.esf
+```
+
+Paste directly into the Falcon Event Search interface with schema `ProcessRollup2`, `ProcessRollup3`, `DnsRequest`, etc.
+
+### SentinelOne
+
+Import via Console → *Threat Hunting* → *Deep Visibility* → *New Query*:
+
+```bash
+# Preview a rule
+cat sentinelone/rules/s1_suspicious_wmi.s1ql
+```
+
+Select the correct data source schema — the `src.process.parent` and `tgt.process.imagePath` fields are commonly used.
+
+### Falco
+
+Copy rules into `/etc/falco/rules.d/`:
+
+```bash
+sudo cp falco/rules/*.falco /etc/falco/rules.d/
+sudo systemctl restart falco
+```
+
+Falco loads all `.falco` files from the rules directory. Test with:
+
+```bash
+falco --r falco/rules/fc_privileged_container.falco -L
+```
+
 ---
 
 ## MITRE ATT&CK Coverage
@@ -243,10 +297,14 @@ Per-platform boilerplate is available under [`templates/`](templates/).
 
 - ✅ Auto-translate Sigma → all backends (Elastic / Splunk / Kusto / CrowdStrike) on release.
 - ✅ ATT&CK Navigator JSON published per release.
+- ✅ 9-platform coverage (Sigma, Elastic, Splunk, Sentinel, Wazuh, Carbon Black, Falcon, SentinelOne, Falco).
+- ✅ 152 MITRE ATT&CK techniques mapped across all platforms.
 - ⬜ Coverage badge per tactic.
 - ⬜ Atomic Red Team mapping for end-to-end rule verification.
 - ⬜ Cross-platform rule severity normalization.
 - ⬜ CTI-driven tagging (link rules to threat actors / campaigns).
+- ⬜ Automated rule generation from CISA KEV / CVE feeds.
+- ⬜ Elastic Agents / Fleet integration packages.
 
 ---
 

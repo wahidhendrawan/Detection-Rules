@@ -13,6 +13,7 @@ on:
 
 permissions:
   contents: write
+  id-token: write
 
 jobs:
   translate-and-release:
@@ -163,6 +164,37 @@ jobs:
           sha256sum *.zip *.tar.gz > checksums.txt
           cat checksums.txt
 
+      - name: Generate SBOM (CycloneDX + SPDX)
+        uses: anchore/sbom-action@v0
+        with:
+          path: .
+          format: cyclonedx-json
+          output-file: dist/sbom.cyclonedx.json
+
+      - name: Generate SBOM (SPDX)
+        uses: anchore/sbom-action@v0
+        with:
+          path: .
+          format: spdx-json
+          output-file: dist/sbom.spdx.json
+
+      - name: Install Cosign
+        uses: sigstore/cosign-installer@v3
+
+      - name: Sign artifacts and SBOM (keyless)
+        working-directory: dist
+        env:
+          COSIGN_YES: "true"
+        run: |
+          for f in *.zip *.tar.gz checksums.txt sbom.cyclonedx.json sbom.spdx.json; do
+            [ -f "$f" ] || continue
+            echo "Signing $f"
+            cosign sign-blob --yes "$f" \
+              --output-signature "${f}.sig" \
+              --output-certificate "${f}.pem"
+          done
+          ls -la
+
       - name: Create / update GitHub Release
         uses: softprops/action-gh-release@v2
         with:
@@ -173,6 +205,10 @@ jobs:
             dist/*.zip
             dist/*.tar.gz
             dist/checksums.txt
+            dist/sbom.cyclonedx.json
+            dist/sbom.spdx.json
+            dist/*.sig
+            dist/*.pem
             dist/sigma-converted/*
             coverage.json
             rules.index.json

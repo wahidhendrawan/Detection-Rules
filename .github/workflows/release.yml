@@ -158,13 +158,7 @@ jobs:
           tar -czf "detection-rules-${TAG}.tar.gz" "$(basename "$BUNDLE_DIR")"
           ls -la
 
-      - name: Generate checksums
-        working-directory: dist
-        run: |
-          sha256sum *.zip *.tar.gz > checksums.txt
-          cat checksums.txt
-
-      - name: Generate SBOM (CycloneDX + SPDX)
+      - name: Generate SBOM (CycloneDX)
         uses: anchore/sbom-action@v0
         with:
           path: .
@@ -178,16 +172,37 @@ jobs:
           format: spdx-json
           output-file: dist/sbom.spdx.json
 
+      - name: Stage every published asset into dist/
+        run: |
+          # Collect all individually-published assets so checksums + signatures
+          # cover exactly what the release exposes (not just the archives).
+          cp coverage.json rules.index.json dist/ 2>/dev/null || true
+          # Flatten sigma-converted outputs with a prefix to avoid collisions.
+          if [ -d dist/sigma-converted ]; then
+            for f in dist/sigma-converted/*; do
+              [ -f "$f" ] || continue
+              cp "$f" "dist/sigma-converted-$(basename "$f")"
+            done
+          fi
+
+      - name: Generate checksums for all assets
+        working-directory: dist
+        run: |
+          # Checksum every regular file except signatures/certs (generated later).
+          find . -maxdepth 1 -type f \
+            ! -name 'checksums.txt' ! -name '*.sig' ! -name '*.pem' \
+            -printf '%f\n' | sort | xargs sha256sum > checksums.txt
+          cat checksums.txt
+
       - name: Install Cosign
         uses: sigstore/cosign-installer@v3
 
-      - name: Sign artifacts and SBOM (keyless)
+      - name: Sign every published asset (keyless)
         working-directory: dist
         env:
           COSIGN_YES: "true"
         run: |
-          for f in *.zip *.tar.gz checksums.txt sbom.cyclonedx.json sbom.spdx.json; do
-            [ -f "$f" ] || continue
+          for f in $(find . -maxdepth 1 -type f ! -name '*.sig' ! -name '*.pem' -printf '%f\n'); do
             echo "Signing $f"
             cosign sign-blob --yes "$f" \
               --output-signature "${f}.sig" \
@@ -207,10 +222,10 @@ jobs:
             dist/checksums.txt
             dist/sbom.cyclonedx.json
             dist/sbom.spdx.json
+            dist/coverage.json
+            dist/rules.index.json
+            dist/sigma-converted-*
             dist/*.sig
             dist/*.pem
-            dist/sigma-converted/*
-            coverage.json
-            rules.index.json
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

@@ -21,6 +21,7 @@ import sys
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
+from urllib.parse import urlparse
 from urllib.request import urlopen
 
 KEV_URL = "https://www.cisa.gov/sites/default/files/feeds/known_exploited_vulnerabilities.json"
@@ -28,7 +29,7 @@ REPO_ROOT = Path(__file__).resolve().parent.parent
 SIGMA_DIR = REPO_ROOT / "sigma"
 ELASTIC_DIR = REPO_ROOT / "elastic"
 SPLUNK_DIR = REPO_ROOT / "splunk"
-OUTPUT_DEFAULT = Path("/tmp/kev_generated")
+OUTPUT_DEFAULT = Path("kev_generated") if "CI" in os.environ else Path("/tmp/kev_generated")
 
 # CVE-ID pattern
 CVE_RE = re.compile(r"CVE-\d{4}-\d{4,}", re.IGNORECASE)
@@ -37,6 +38,10 @@ CVE_RE = re.compile(r"CVE-\d{4}-\d{4,}", re.IGNORECASE)
 def fetch_kev() -> list[dict[str, Any]]:
     """Fetch CISA KEV catalog. Returns list of vulnerability entries."""
     print(f"[*] Fetching CISA KEV catalog from {KEV_URL} ...")
+    parsed = urlparse(KEV_URL)
+    if parsed.scheme not in ("https", "http"):
+        print(f"[!] Unsupported URL scheme: {parsed.scheme}", file=sys.stderr)
+        sys.exit(1)
     try:
         resp = urlopen(KEV_URL, timeout=30)
         data = json.loads(resp.read())

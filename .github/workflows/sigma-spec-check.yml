@@ -16,7 +16,7 @@ jobs:
       - name: Run sigma check
         id: check
         run: |
-          sigma check rules/ > sigma-check-output.txt 2>&1 || echo "issues_found=true" >> "$GITHUB_OUTPUT"
+          sigma check sigma/ > sigma-check-output.txt 2>&1 || echo "issues_found=true" >> "$GITHUB_OUTPUT"
           cat sigma-check-output.txt
       - name: Create issue if problems found
         if: steps.check.outputs.issues_found == 'true'

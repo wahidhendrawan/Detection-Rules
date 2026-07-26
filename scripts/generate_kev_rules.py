@@ -1,0 +1,208 @@
+#!/usr/bin/env python3
+"""Generate detection rules from CISA Known Exploited Vulnerabilities catalog.
+
+Fetches the CISA KEV JSON feed, checks which CVEs are not yet covered by existing
+rules, and auto-generates Sigma + Sentinel KQL starter rules.
+
+Usage:
+    python scripts/generate_kev_rules.py              # fetch fresh KEV, generate all missing
+    python scripts/generate_kev_rules.py --dry-run    # preview only, no file writes
+    python scripts/generate_kev_rules.py --output /tmp/kev  # custom output dir
+
+Requires: requests (or falls back to urllib)
+"""
+
+from __future__ import annotations
+
+import json
+import os
+import re
+import sys
+from datetime import datetime, timezone
+from pathlib import Path
+from typing import Any
+from urllib.parse import urlparse
+from urllib.request import urlopen
+
+KEV_URL = "https://www.cisa.gov/sites/default/files/feeds/known_exploited_vulnerabilities.json"
+REPO_ROOT = Path(__file__).resolve().parent.parent
+SIGMA_DIR = REPO_ROOT / "sigma"
+ELASTIC_DIR = REPO_ROOT / "elastic"
+SPLUNK_DIR = REPO_ROOT / "splunk"
+OUTPUT_DEFAULT = Path("kev_generated") if "CI" in os.environ else Path("/tmp/kev_generated")
+
+# CVE-ID pattern
+CVE_RE = re.compile(r"CVE-\d{4}-\d{4,}", re.IGNORECASE)
+
+
+def fetch_kev() -> list[dict[str, Any]]:
+    """Fetch CISA KEV catalog. Returns list of vulnerability entries."""
+    print(f"[*] Fetching CISA KEV catalog from {KEV_URL} ...")
+    parsed = urlparse(KEV_URL)
+    if parsed.scheme not in ("https", "http"):
+        print(f"[!] Unsupported URL scheme: {parsed.scheme}", file=sys.stderr)
+        sys.exit(1)
+    try:
+        resp = urlopen(KEV_URL, timeout=30)
+        data = json.loads(resp.read())
+        return data.get("vulnerabilities", [])
+    except Exception as exc:
+        print(f"[!] Failed to fetch KEV: {exc}", file=sys.stderr)
+        sys.exit(1)
+
+
+def find_existing_cves() -> set[str]:
+    """Scan all rule directories for existing CVE references."""
+    existing: set[str] = set()
+    for root_dir in (SIGMA_DIR, ELASTIC_DIR, SPLUNK_DIR):
+        if not root_dir.exists():
+            continue
+        for fpath in root_dir.rglob("*"):
+            if fpath.suffix not in (".yml", ".yaml", ".ndjson", ".spl", ".kql"):
+                continue
+            try:
+                text = fpath.read_text(encoding="utf-8", errors="ignore")
+            except Exception:
+                continue
+            existing.update(cve.upper() for cve in CVE_RE.findall(text))
+    return existing
+
+
+def map_severity(cisa_required_action: str) -> str:
+    """Map CISA required action timeframe to Sigma severity level."""
+    if not cisa_required_action:
+        return "high"
+    lower = cisa_required_action.lower()
+    if "immediate" in lower or "asap" in lower:
+        return "critical"
+    if "timely" in lower:
+        return "high"
+    return "medium"
+
+
+def generate_sigma_rule(kev_entry: dict[str, Any]) -> str:
+    """Generate a Sigma detection rule for one CISA KEV entry."""
+    cve_id = kev_entry.get("cveID", "CVE-UNKNOWN")
+    vendor = kev_entry.get("vendorProject", "Unknown")
+    product = kev_entry.get("product", "Unknown")
+    description = kev_entry.get("shortDescription", "").strip() or "Known exploited vulnerability"
+    required_action = kev_entry.get("requiredAction", "")
+    date_added = kev_entry.get("dateAdded", datetime.now(timezone.utc).strftime("%Y-%m-%d"))
+    severity = map_severity(required_action)
+
+    cve_slug = cve_id.lower().replace("-", "_")
+    today = datetime.now(timezone.utc).strftime("%Y-%m-%d")
+
+    rule = f"""title: {cve_id}: {vendor} {product} - {description[:80]}
+id: auto-kev-{cve_slug}
+status: experimental
+description: |
+  Auto-generated detection rule for {cve_id} — {vendor} {product}.
+  {description}. This CVE is listed in CISA Known Exploited Vulnerabilities
+  catalog (added {date_added}).
+  Required action: {required_action}
+references:
+  - https://nvd.nist.gov/vuln/detail/{cve_id}
+  - https://www.cisa.gov/known-exploited-vulnerabilities-catalog
+author: CISA KEV Auto-Generator
+date: {today}
+tags:
+  - attack.execution
+  - cve.{cve_id.lower()}
+logsource:
+  category: process_creation
+  product: windows
+detection:
+  selection:
+    CommandLine|contains: "{cve_id}"
+  condition: selection
+falsepositives:
+  - Legitimate administrative tools referencing the CVE ID
+level: {severity}
+x_kev:
+  cve_id: {cve_id}
+  vendor_project: {vendor}
+  product: {product}
+  date_added_to_kev: {date_added}
+  required_action: {required_action}
+"""
+    return rule
+
+
+def generate_kql_rule(kev_entry: dict[str, Any]) -> str:
+    """Generate a Microsoft Sentinel KQL hunting query for one KEV entry."""
+    cve_id = kev_entry.get("cveID", "CVE-UNKNOWN")
+    vendor = kev_entry.get("vendorProject", "Unknown")
+    product = kev_entry.get("product", "Unknown")
+    date_added = kev_entry.get("dateAdded", "")
+
+    return f"""// {cve_id}: {vendor} {product}
+// CISA Known Exploited Vulnerability — added {date_added}
+// Auto-generated by CISA KEV generator
+DeviceProcessEvents
+| where ProcessCommandLine contains "{cve_id}"
+| project TimeGenerated, DeviceName, AccountName, ProcessCommandLine
+| order by TimeGenerated desc
+"""
+
+
+def main() -> int:
+    dry_run = "--dry-run" in sys.argv
+    output = OUTPUT_DEFAULT
+    for i, arg in enumerate(sys.argv[1:], 1):
+        if arg == "--output" and i < len(sys.argv) - 1:
+            output = Path(sys.argv[i + 1])
+
+    kev = fetch_kev()
+    existing_cves = find_existing_cves()
+    print(f"[*] Found {len(existing_cves)} existing CVEs in rules")
+    print(f"[*] CISA KEV catalog has {len(kev)} entries")
+
+    generated = 0
+    new_cves = []
+    for entry in kev:
+        cve_id = entry.get("cveID", "")
+        if not cve_id or cve_id.upper() in existing_cves:
+            continue
+        new_cves.append(entry)
+
+    print(f"[*] {len(new_cves)} new CVEs to generate rules for")
+    if dry_run:
+        for entry in new_cves[:10]:
+            print(f"    - {entry.get('cveID')}: {entry.get('vendorProject')} {entry.get('product')}")
+        print(f"    ... and {len(new_cves) - 10} more (showing first 10)")
+        return 0
+
+    sigma_out = output / "sigma"
+    kql_out = output / "microsoft-sentinel"
+    sigma_out.mkdir(parents=True, exist_ok=True)
+    kql_out.mkdir(parents=True, exist_ok=True)
+
+    for entry in new_cves:
+        cve_id = entry.get("cveID", "")
+        cve_slug = cve_id.lower().replace("-", "_")
+
+        # Sigma
+        sigma_rule = generate_sigma_rule(entry)
+        sigma_path = sigma_out / f"kev_{cve_slug}.yml"
+        sigma_path.write_text(sigma_rule, encoding="utf-8")
+
+        # KQL
+        kql_rule = generate_kql_rule(entry)
+        kql_path = kql_out / f"kev_{cve_slug}.kql"
+        kql_path.write_text(kql_rule, encoding="utf-8")
+
+        generated += 1
+        if generated % 50 == 0:
+            print(f"    ... {generated} rules generated")
+
+    print(f"\n✅ Generated {generated} new rules from {len(kev)} KEV entries")
+    print(f"   Sigma: {sigma_out}")
+    print(f"   KQL:   {kql_out}")
+    print(f"   Run: ln -s {sigma_out} {REPO_ROOT / 'sigma' / 'kev'}")
+    print(f"   Then commit and open a PR to add them to the Detection-Rules repo.")
+    return 0
+
+
+if __name__ == "__main__":
+    sys.exit(main())

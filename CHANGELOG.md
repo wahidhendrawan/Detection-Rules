@@ -9,6 +9,42 @@ versioning mengikuti [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [v1.4.0] - 2026-07-26
+
+### Added
+- CISA Known Exploited Vulnerabilities auto-generator script (`scripts/generate_kev_rules.py`).
+- Falcon, SentinelOne, and Falco platform support — 9 total platforms with 836 rules, 152 techniques.
+- Mega project README with comprehensive badges for all 10 platforms, new platform quick-start guides.
+- CITATION.cff and FUNDING.yml for academic and sponsor attribution.
+- GitHub Discussions enabled.
+
+### Changed
+- Export stats refreshed: 9 platforms, 836 rules, 152 MITRE ATT&CK techniques.
+
+## [v1.1.0] - 2026-07-26
+
+### Added
+- Scripts to fix and backfill MITRE ATT&CK techniques for Wazuh, Sentinel, and Carbon Black rules.
+- Governance files (`CONTRIBUTING.md`, `SECURITY.md`, etc.), issue/PR templates, and `CODEOWNERS`.
+- GitHub Actions for validation (`validate.yml`) and stale issue cleanup (`stale.yml`).
+- Coverage generation script and auto-generated `COVERAGE.md`.
+- Pre-commit hooks for local validation.
+- Rewritten `README.md` with comprehensive details.
+
+### Fixed
+- Replaced placeholder `T1000` MITRE technique in 100 Wazuh rules with valid techniques.
+- Corrected invalid Sigma tactic tags (`attack.defense_evasion` → `attack.defense-evasion`).
+- Backfilled missing MITRE techniques in 102 Sentinel KQL files and 110 Carbon Black JSON rules, significantly increasing coverage.
+- Fixed invalid `status` and `id` fields in several Sigma rules.
+
+### Changed
+- **BREAKING**: Renamed `Microsoft Sentinel/` to `microsoft-sentinel/`.
+- **BREAKING**: Restructured `splunk/` and `elastic/endpoint/` directories by category.
+- Regenerated `COVERAGE.md`, increasing unique cross-platform techniques from 77 to 124.
+
+[Unreleased]: https://github.com/wahidhendrawan/Detection-Rules/compare/v1.1.0...HEAD
+[v1.1.0]: https://github.com/wahidhendrawan/Detection-Rules/compare/v1.0.0...v1.1.0
+
 ### Added
 
 - Skrip `scripts/fix_wazuh_t1000.py` — replace placeholder `T1000`

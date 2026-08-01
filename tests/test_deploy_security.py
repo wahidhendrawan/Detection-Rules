@@ -11,7 +11,7 @@ import requests
 # Add scripts to path for imports
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "scripts"))
 
-from deploy_rules import _validate_url, _request_error, deploy_elastic, deploy_splunk, deploy_sentinel
+from deploy_rules import _request_error, _validate_url
 
 
 # ============================================================================
@@ -307,8 +307,11 @@ class TestDeploySentinelSecurity:
             from deploy_rules import deploy_sentinel
             deploy_sentinel(tmp_path)
 
-        # Verify auth endpoint is HTTPS
-        assert mock_post.call_args[0][0].startswith("https://login.microsoftonline.com")
+        # Verify the complete, expected HTTPS authentication endpoint.
+        assert (
+            mock_post.call_args.args[0]
+            == "https://login.microsoftonline.com/tenant-123/oauth2/v2.0/token"
+        )
 
     @patch("deploy_rules.requests.post")
     def test_timeout_applied_to_sentinel_auth(self, mock_post, tmp_path):

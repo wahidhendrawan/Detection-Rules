@@ -1,6 +1,6 @@
 # Detection Rules
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](LICENSE)
 [![GitHub Pages](https://img.shields.io/badge/landing%20page-live-brightgreen)](https://wahidhendrawan.github.io/Detection-Rules/)
 [![GitHub last commit](https://img.shields.io/github/last-commit/wahidhendrawan/Detection-Rules)](https://github.com/wahidhendrawan/Detection-Rules/commits/main)
 [![GitHub stars](https://img.shields.io/github/stars/wahidhendrawan/Detection-Rules?style=social)](https://github.com/wahidhendrawan/Detection-Rules/stargazers)
@@ -318,7 +318,7 @@ If you use this dataset in academic or industry research, please cite:
   title   = {Detection-Rules: Cross-Platform Detection Rules Library},
   year    = {2026},
   url     = {https://github.com/wahidhendrawan/Detection-Rules},
-  license = {MIT}
+  license = {GPL-3.0}
 }
 ```
 
@@ -328,7 +328,7 @@ A machine-readable [`CITATION.cff`](CITATION.cff) is also provided.
 
 ## License
 
-[MIT](LICENSE) © Wahid Hendrawan
+[GPL-3.0](LICENSE) © Wahid Hendrawan
 
 ---
 

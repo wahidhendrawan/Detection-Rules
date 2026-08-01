@@ -28,7 +28,7 @@ keywords:
   - blue-team
   - threat-hunting
   - siem
-license: MIT
+license: GPL-3.0
 repository-code: "https://github.com/wahidhendrawan/Detection-Rules"
 url: "https://wahidhendrawan.github.io/Detection-Rules/"
 identifiers:

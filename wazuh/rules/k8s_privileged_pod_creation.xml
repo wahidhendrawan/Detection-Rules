@@ -1,0 +1,21 @@
+<!--
+  Title: Kubernetes privileged pod creation detected
+  Description: Kubernetes privileged pod creation detected.
+  Author: Security Team
+  Date: 2026-08-01
+  MITRE ATT&CK: T1611
+  Tactic: privilege_escalation
+  Severity: 12
+  References:
+    - https://attack.mitre.org/techniques/T1611/
+-->
+<group name="attack,cloud,kubernetes,">
+  <rule id="100259" level="12">
+    <decoded_as>json</decoded_as>
+    <field name="requestObject.spec.containers.securityContext.privileged">true</field>
+    <description>Kubernetes privileged pod creation detected.</description>
+    <mitre>
+      <id>T1611</id>
+    </mitre>
+  </rule>
+</group>

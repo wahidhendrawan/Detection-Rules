@@ -1,0 +1,19 @@
+// Title: MFA Push Bombing
+// Description: Detects repeated denied MFA challenges followed by a success.
+// Author: Security Team
+// Date: 2026-08-01
+// MITRE ATT&CK: T1621
+// Tactic: CredentialAccess
+// Severity: High
+// DataConnector: Identity audit and sign-in logs
+// References:
+//   - https://attack.mitre.org/techniques/T1621/
+// False Positives:
+//   - Authorized identity administration or known automation.
+
+SigninLogs
+| where TimeGenerated > ago(1h)
+| where ResultDescription has "MFA"
+| summarize failures=countif(ResultType != 0), successes=countif(ResultType == 0), IPs=make_set(IPAddress) by UserPrincipalName, bin(TimeGenerated, 10m)
+| where failures >= 5 and successes >= 1
+| order by TimeGenerated desc

@@ -1,0 +1,15 @@
+// SentinelOne Deep Visibility Query
+// Title: Valid Account Anomalous Logon
+// Description: Detects successful remote logons from unusual processes or addresses.
+// Author: Security Team
+// Date: 2026-08-01
+// MITRE ATT&CK: T1078
+// Tactic: Initial Access, Persistence
+// Severity: High
+// References:
+//   - https://attack.mitre.org/techniques/T1078/
+
+EventType = "Login" AND
+LoginIsSuccessful = true AND
+(LoginType = "RemoteInteractive" OR LoginType = "Network") AND
+SrcIP != "127.0.0.1"

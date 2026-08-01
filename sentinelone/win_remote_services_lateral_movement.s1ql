@@ -1,0 +1,13 @@
+// SentinelOne Deep Visibility Query
+// Title: Remote Services Lateral Movement
+// Description: Detects common remote service clients used for lateral movement.
+// Author: Security Team
+// Date: 2026-08-01
+// MITRE ATT&CK: T1021
+// Tactic: Lateral Movement
+// Severity: High
+// References:
+//   - https://attack.mitre.org/techniques/T1021/
+
+EventType = "Process Creation" AND
+SrcProcName In Contains Anycase ("mstsc.exe", "ssh.exe", "psexec.exe", "winrs.exe")

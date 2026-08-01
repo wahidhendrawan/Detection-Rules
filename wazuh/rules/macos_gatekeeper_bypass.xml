@@ -1,0 +1,22 @@
+<!--
+  Title: macOS GateKeeper Bypass via xattr
+  Description: Detects removal of the quarantine attribute to bypass GateKeeper.
+  Author: Security Team
+  Date: 2026/08/01
+  MITRE ATT&CK: T1553.001
+  Tactic: DefenseEvasion
+  Severity: 8
+  References:
+    - https://attack.mitre.org/techniques/T1553.001/
+-->
+<group name="attack,macos,">
+  <rule id="100302" level="8">
+    <if_sid>592</if_sid>
+    <field name="audit.process.name">xattr</field>
+    <match> -d com.apple.quarantine</match>
+    <description>macOS GateKeeper bypass detected: $(audit.process.path) $(audit.process.arguments).</description>
+    <mitre>
+      <id>T1553.001</id>
+    </mitre>
+  </rule>
+</group>

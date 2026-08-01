@@ -1,0 +1,14 @@
+// SentinelOne Deep Visibility Query
+// Title: Suspicious Command Interpreter
+// Description: Detects command interpreters launched with encoded or download behavior.
+// Author: Security Team
+// Date: 2026-08-01
+// MITRE ATT&CK: T1059
+// Tactic: Execution
+// Severity: High
+// References:
+//   - https://attack.mitre.org/techniques/T1059/
+
+EventType = "Process Creation" AND
+SrcProcName In Contains Anycase ("cmd.exe", "powershell.exe", "pwsh.exe", "wscript.exe", "cscript.exe") AND
+SrcProcCmdLine Contains Anycase ("-enc", "EncodedCommand", "DownloadString", "IEX(", "frombase64")

@@ -1,0 +1,26 @@
+title: macOS LaunchDaemon Persistence
+id: 0db8b4d7-d779-439b-8858-f7967223d30c
+status: experimental
+description: |
+  Detects creation of LaunchDaemon plist files used for root persistence.
+author: Security Team
+date: 2026/08/01
+references:
+  - https://attack.mitre.org/techniques/T1543/
+logsource:
+  product: macos
+  category: file_event
+detection:
+  selection:
+    TargetFilename|contains: '/Library/LaunchDaemons/'
+    TargetFilename|endswith: '.plist'
+  condition: selection
+fields:
+  - TargetFilename
+  - User
+falsepositives:
+  - Authorized administrative activity matching this behavior.
+level: critical
+tags:
+  - attack.t1543.004
+  - attack.persistence

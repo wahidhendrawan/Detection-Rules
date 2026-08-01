@@ -1,0 +1,14 @@
+// CrowdStrike Falcon Query Language (FQL)
+// Title: Process Injection Indicators
+// Description: Detects process injection telemetry targeting sensitive processes.
+// Author: Security Team
+// Date: 2026-08-01
+// MITRE ATT&CK: T1055
+// Tactic: Privilege Escalation, Defense Evasion
+// Severity: High
+// References:
+//   - https://attack.mitre.org/techniques/T1055/
+
+event_simpleName=CreateRemoteThread OR event_simpleName=ProcessInjection
+| TargetProcessName=lsass.exe OR TargetProcessName=winlogon.exe OR TargetProcessName=explorer.exe
+| table aid, TargetProcessId, ParentProcessId, FileName, CommandLine, UserName, timestamp

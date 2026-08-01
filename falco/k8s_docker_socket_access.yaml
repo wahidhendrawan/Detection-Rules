@@ -1,0 +1,21 @@
+# Title: Docker Socket Access from Container
+# Description: Detects access to the host Docker API socket from a container.
+# Author: Security Team
+# Date: 2026-08-01
+# MITRE ATT&CK: T1611
+# Tactic: Privilege Escalation
+# Severity: Critical
+# References:
+#   - https://attack.mitre.org/techniques/T1611/
+
+- rule: Docker Socket Access from Container
+  desc: Detects access to the host Docker API socket from a container.
+  condition: >
+    evt.type in (connect, open, openat) and container and fd.name=/var/run/docker.sock
+  output: >
+    Docker socket accessed from container (user=%user.name command=%proc.cmdline container_id=%container.id image=%container.image.repository)
+  priority: CRITICAL
+  tags:
+    - container
+    - mitre_privilege_escalation
+    - T1611

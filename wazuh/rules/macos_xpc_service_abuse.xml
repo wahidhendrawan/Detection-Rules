@@ -1,0 +1,22 @@
+<!--
+  Title: macOS XPC Service Exploitation
+  Description: Detects potentially suspicious interaction with macOS XPC services spawning a shell.
+  Author: Security Team
+  Date: 2026/08/01
+  MITRE ATT&CK: T1218
+  Tactic: DefenseEvasion
+  Severity: 7
+  References:
+    - https://en.wikipedia.org/wiki/XPC
+-->
+<group name="attack,macos,">
+  <rule id="100307" level="7">
+    <if_sid>592</if_sid>
+    <match>xpc</match>
+    <field name="audit.process.name">sh|bash|zsh|python|perl|ruby|osascript</field>
+    <description>Suspicious XPC interaction spawning shell: $(audit.process.path) $(audit.process.arguments).</description>
+    <mitre>
+      <id>T1218</id>
+    </mitre>
+  </rule>
+</group>

@@ -40,16 +40,16 @@
 
 | Platform | Format | Total | Detail |
 |---|---|---:|---|
-| **Sigma** | `.yml` | 227 | windows: 127 · linux: 36 · network: 22 · cloud: 39 · correlations: 3 |
-| **Elastic** | `.ndjson` | 58 | endpoint/general: 45 · endpoint/windows: 7 · endpoint/linux: 3 · endpoint/network: 2 · network: 1 |
-| **Splunk** | `.spl` | 66 | windows: 58 · linux: 4 · network: 3 · cloud: 1 |
-| **Microsoft Sentinel** | `.kql` | 150 | hunting + analytics |
-| **Wazuh** | `.xml` | 187 | rules attack group |
+| **Sigma** | `.yml` | 251 | windows: 127 · linux: 36 · macos: 8 · network: 22 · cloud: 55 · correlations: 3 |
+| **Elastic** | `.ndjson` | 66 | endpoint/general: 45 · endpoint/windows: 7 · endpoint/linux: 3 · endpoint/macos: 8 · endpoint/network: 2 · network: 1 |
+| **Splunk** | `.spl` | 74 | windows: 58 · linux: 4 · macos: 8 · network: 3 · cloud: 1 |
+| **Microsoft Sentinel** | `.kql` | 158 | hunting + analytics |
+| **Wazuh** | `.xml` | 195 | rules attack group |
 | **Carbon Black** | `.json` | 142 | EDR queries (generated from `tools.yml`) |
-| **CrowdStrike Falcon** | `.fql` | 2 | Falcon Query Language |
-| **SentinelOne** | `.s1ql` | 2 | Deep Visibility queries |
-| **Falco** | `.yaml` | 2 | K8s/container runtime rules |
-| **TOTAL** | — | **836** | — |
+| **CrowdStrike Falcon** | `.fql` | 12 | Falcon Query Language |
+| **SentinelOne** | `.s1ql` | 12 | Deep Visibility queries |
+| **Falco** | `.yaml` | 12 | K8s/container runtime rules |
+| **TOTAL** | — | **922** | — |
 
 Lihat [`COVERAGE.md`](COVERAGE.md) untuk pemetaan ke MITRE ATT&CK.
 

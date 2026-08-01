@@ -1,0 +1,21 @@
+# Title: Admission Webhook Tampering
+# Description: Detects kubectl changes to admission webhook configurations.
+# Author: Security Team
+# Date: 2026-08-01
+# MITRE ATT&CK: T1562.001
+# Tactic: Defense Evasion
+# Severity: Critical
+# References:
+#   - https://attack.mitre.org/techniques/T1562/
+
+- rule: Admission Webhook Tampering
+  desc: Detects kubectl changes to admission webhook configurations.
+  condition: >
+    spawned_process and proc.name=kubectl and proc.args intersects (delete, patch, replace, edit) and proc.args contains webhookconfiguration
+  output: >
+    Admission webhook configuration modified (user=%user.name command=%proc.cmdline container_id=%container.id image=%container.image.repository)
+  priority: CRITICAL
+  tags:
+    - container
+    - mitre_defense_evasion
+    - T1562.001

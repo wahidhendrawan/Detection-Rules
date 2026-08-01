@@ -1,0 +1,29 @@
+title: Kubernetes Privileged Pod Created
+id: ccbabb91-f5fc-415b-9b3d-eb50d66e8e0b
+status: experimental
+description: |
+  Detects creation of a pod with privileged container security context.
+author: Security Team
+date: 2026/08/01
+references:
+  - https://attack.mitre.org/techniques/T1611/
+logsource:
+  product: kubernetes
+  service: audit
+detection:
+  selection:
+    verb: 'create'
+    objectRef.resource: 'pods'
+    requestObject.spec.containers.securityContext.privileged: 'true'
+  condition: selection
+fields:
+  - user.username
+  - sourceIPs
+  - objectRef.namespace
+  - objectRef.name
+falsepositives:
+  - Authorized administrative activity matching this behavior.
+level: critical
+tags:
+  - attack.t1611
+  - attack.privilege_escalation

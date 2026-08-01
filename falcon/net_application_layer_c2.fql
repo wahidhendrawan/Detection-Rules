@@ -1,0 +1,15 @@
+// CrowdStrike Falcon Query Language (FQL)
+// Title: Application Layer Protocol C2
+// Description: Detects suspicious processes making web connections.
+// Author: Security Team
+// Date: 2026-08-01
+// MITRE ATT&CK: T1071.001
+// Tactic: Command and Control
+// Severity: High
+// References:
+//   - https://attack.mitre.org/techniques/T1071/
+
+event_simpleName=NetworkConnectIP4
+| ContextBaseFileName=powershell.exe OR ContextBaseFileName=mshta.exe OR ContextBaseFileName=rundll32.exe
+| RemotePort=80 OR RemotePort=443 OR RemotePort=8080
+| table aid, TargetProcessId, ParentProcessId, FileName, CommandLine, UserName, timestamp

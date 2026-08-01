@@ -1,0 +1,31 @@
+title: macOS Defaults Security Tampering
+id: ecce1db9-ebfc-4cf9-a41e-36ec9cd3c38d
+status: experimental
+description: |
+  Detects defaults commands that weaken security or persistence settings.
+author: Security Team
+date: 2026/08/01
+references:
+  - https://attack.mitre.org/techniques/T1112/
+logsource:
+  product: macos
+  category: process_creation
+detection:
+  selection:
+    Image|endswith: '/defaults'
+    CommandLine|contains:
+      - 'com.apple.LaunchServices'
+      - 'LSQuarantine'
+      - 'DisableGatekeeper'
+      - 'AppleShowAllFiles'
+  condition: selection
+fields:
+  - Image
+  - CommandLine
+  - User
+falsepositives:
+  - Authorized administrative activity matching this behavior.
+level: medium
+tags:
+  - attack.t1112
+  - attack.defense_evasion

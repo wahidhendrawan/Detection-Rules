@@ -1,0 +1,33 @@
+title: Kubernetes Sensitive hostPath Mount
+id: 52880cf4-b3d6-485b-bd37-2b28491d8a73
+status: experimental
+description: |
+  Detects pods mounting sensitive host paths.
+author: Security Team
+date: 2026/08/01
+references:
+  - https://attack.mitre.org/techniques/T1611/
+logsource:
+  product: kubernetes
+  service: audit
+detection:
+  selection:
+    verb: 'create'
+    objectRef.resource: 'pods'
+    requestObject.spec.volumes.hostPath.path|contains:
+      - '/'
+      - '/etc'
+      - '/proc'
+      - '/var/lib/kubelet'
+  condition: selection
+fields:
+  - user.username
+  - sourceIPs
+  - objectRef.namespace
+  - objectRef.name
+falsepositives:
+  - Authorized administrative activity matching this behavior.
+level: critical
+tags:
+  - attack.t1611
+  - attack.privilege_escalation

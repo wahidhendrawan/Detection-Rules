@@ -1,0 +1,21 @@
+<!--
+  Title: Anomalous SAML token issuer detected
+  Description: Anomalous SAML token issuer detected.
+  Author: Security Team
+  Date: 2026-08-01
+  MITRE ATT&CK: T1606.002
+  Tactic: credential_access
+  Severity: 12
+  References:
+    - https://attack.mitre.org/techniques/T1606/
+-->
+<group name="attack,cloud,kubernetes,">
+  <rule id="100266" level="12">
+    <decoded_as>json</decoded_as>
+    <field name="authenticationProtocol">saml20</field>
+    <description>Anomalous SAML token issuer detected.</description>
+    <mitre>
+      <id>T1606.002</id>
+    </mitre>
+  </rule>
+</group>

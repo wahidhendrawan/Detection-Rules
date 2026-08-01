@@ -1,0 +1,13 @@
+// SentinelOne Deep Visibility Query
+// Title: Mass File Encryption Behavior
+// Description: Detects rapid creation of files with common ransomware extensions.
+// Author: Security Team
+// Date: 2026-08-01
+// MITRE ATT&CK: T1486
+// Tactic: Impact
+// Severity: Critical
+// References:
+//   - https://attack.mitre.org/techniques/T1486/
+
+EventType = "File Creation" AND
+TgtFileExtension In Contains Anycase (".locked", ".encrypted", ".crypt", ".ryk", ".lockbit")

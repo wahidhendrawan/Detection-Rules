@@ -1,0 +1,21 @@
+<!--
+  Title: Azure AD high-risk illicit consent grant detected
+  Description: Azure AD high-risk illicit consent grant detected.
+  Author: Security Team
+  Date: 2026-08-01
+  MITRE ATT&CK: T1528
+  Tactic: credential_access
+  Severity: 12
+  References:
+    - https://attack.mitre.org/techniques/T1528/
+-->
+<group name="attack,cloud,kubernetes,">
+  <rule id="100263" level="12">
+    <decoded_as>json</decoded_as>
+    <field name="operationName">Consent to application</field>
+    <description>Azure AD high-risk illicit consent grant detected.</description>
+    <mitre>
+      <id>T1528</id>
+    </mitre>
+  </rule>
+</group>

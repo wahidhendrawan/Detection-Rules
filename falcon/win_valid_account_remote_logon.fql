@@ -1,0 +1,15 @@
+// CrowdStrike Falcon Query Language (FQL)
+// Title: Valid Account Remote Logon
+// Description: Detects successful remote logons that warrant account validation.
+// Author: Security Team
+// Date: 2026-08-01
+// MITRE ATT&CK: T1078
+// Tactic: Initial Access, Persistence
+// Severity: High
+// References:
+//   - https://attack.mitre.org/techniques/T1078/
+
+event_simpleName=UserLogon
+| LogonType=3 OR LogonType=10
+| LogonDomain!=NT_AUTHORITY
+| table aid, TargetProcessId, ParentProcessId, FileName, CommandLine, UserName, timestamp

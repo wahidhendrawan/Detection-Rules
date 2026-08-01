@@ -1,0 +1,15 @@
+// CrowdStrike Falcon Query Language (FQL)
+// Title: Local Account Creation
+// Description: Detects commands that create local accounts.
+// Author: Security Team
+// Date: 2026-08-01
+// MITRE ATT&CK: T1136.001
+// Tactic: Persistence
+// Severity: High
+// References:
+//   - https://attack.mitre.org/techniques/T1136/
+
+event_simpleName=ProcessRollup2
+| FileName=net.exe OR FileName=net1.exe OR FileName=powershell.exe
+| CommandLine=*user* AND (CommandLine=*/add* OR CommandLine=*New-LocalUser*)
+| table aid, TargetProcessId, ParentProcessId, FileName, CommandLine, UserName, timestamp

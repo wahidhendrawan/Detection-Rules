@@ -1,0 +1,21 @@
+# Title: Shell in Privileged Container
+# Description: Detects a shell spawned in a privileged container.
+# Author: Security Team
+# Date: 2026-08-01
+# MITRE ATT&CK: T1611
+# Tactic: Privilege Escalation
+# Severity: Critical
+# References:
+#   - https://attack.mitre.org/techniques/T1611/
+
+- rule: Shell in Privileged Container
+  desc: Detects a shell spawned in a privileged container.
+  condition: >
+    spawned_process and container and container.privileged=true and proc.name in (bash, sh, dash, ash, zsh)
+  output: >
+    Shell spawned in privileged container (user=%user.name command=%proc.cmdline container_id=%container.id image=%container.image.repository)
+  priority: CRITICAL
+  tags:
+    - container
+    - mitre_privilege_escalation
+    - T1611

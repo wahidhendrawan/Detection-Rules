@@ -1,0 +1,31 @@
+title: Cloud API Token Abuse
+id: a672277c-1c83-4315-9463-b6a3de837ab2
+status: experimental
+description: |
+  Detects API token use from anonymizing infrastructure or unusual clients.
+author: Security Team
+date: 2026/08/01
+references:
+  - https://attack.mitre.org/techniques/T1550/
+logsource:
+  product: okta
+  service: audit
+detection:
+  selection:
+    eventType|contains:
+      - 'token'
+      - 'api'
+    securityContext.isProxy: 'true'
+    outcome.result: 'SUCCESS'
+  condition: selection
+fields:
+  - user
+  - source.ip
+  - eventType
+  - outcome.result
+falsepositives:
+  - Authorized administrative activity matching this behavior.
+level: high
+tags:
+  - attack.t1550.001
+  - attack.defense_evasion

@@ -1,0 +1,15 @@
+// SentinelOne Deep Visibility Query
+// Title: Local Account Creation
+// Description: Detects local user account creation through common utilities.
+// Author: Security Team
+// Date: 2026-08-01
+// MITRE ATT&CK: T1136.001
+// Tactic: Persistence
+// Severity: High
+// References:
+//   - https://attack.mitre.org/techniques/T1136/
+
+EventType = "Process Creation" AND
+SrcProcName In Contains Anycase ("net.exe", "net1.exe", "powershell.exe") AND
+SrcProcCmdLine Contains Anycase (" user ", "New-LocalUser") AND
+SrcProcCmdLine Contains Anycase (" /add", "New-LocalUser")

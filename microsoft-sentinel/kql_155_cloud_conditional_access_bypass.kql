@@ -1,0 +1,19 @@
+// Title: Conditional Access Bypass Attempt
+// Description: Detects successful single-factor sign-ins where conditional access was not applied.
+// Author: Security Team
+// Date: 2026-08-01
+// MITRE ATT&CK: T1556.006
+// Tactic: CredentialAccess
+// Severity: High
+// DataConnector: Identity audit and sign-in logs
+// References:
+//   - https://attack.mitre.org/techniques/T1556/
+// False Positives:
+//   - Authorized identity administration or known automation.
+
+SigninLogs
+| where TimeGenerated > ago(24h)
+| where ResultType == 0 and ConditionalAccessStatus in ("notApplied", "failure")
+| where AuthenticationRequirement == "singleFactorAuthentication"
+| project TimeGenerated, UserPrincipalName, IPAddress, AppDisplayName, ConditionalAccessStatus
+| order by TimeGenerated desc

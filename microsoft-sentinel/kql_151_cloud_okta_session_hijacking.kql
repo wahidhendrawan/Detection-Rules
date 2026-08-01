@@ -1,0 +1,19 @@
+// Title: Okta Session Hijacking Indicators
+// Description: Detects successful Okta admin session access through proxy infrastructure.
+// Author: Security Team
+// Date: 2026-08-01
+// MITRE ATT&CK: T1550.004
+// Tactic: DefenseEvasion
+// Severity: High
+// DataConnector: Identity audit and sign-in logs
+// References:
+//   - https://attack.mitre.org/techniques/T1550/
+// False Positives:
+//   - Authorized identity administration or known automation.
+
+OktaSystemLog_CL
+| where TimeGenerated > ago(24h)
+| where eventType_s == "user.session.access_admin_app" and outcome_result_s == "SUCCESS"
+| where securityContext_isProxy_b == true
+| project TimeGenerated, actor_alternateId_s, client_ipAddress_s, client_userAgent_rawUserAgent_s
+| order by TimeGenerated desc

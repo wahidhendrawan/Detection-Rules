@@ -1,0 +1,22 @@
+<!--
+  Title: macOS Defaults Security Tampering
+  Description: Detects tampering with system security settings via the defaults command.
+  Author: Security Team
+  Date: 2026/08/01
+  MITRE ATT&CK: T1562.001
+  Tactic: DefenseEvasion
+  Severity: 7
+  References:
+    - https://attack.mitre.org/techniques/T1562.001/
+-->
+<group name="attack,macos,">
+  <rule id="100305" level="7">
+    <if_sid>592</if_sid>
+    <field name="audit.process.name">defaults</field>
+    <match>write com.apple.security|DisableGatekeeper|AllowUntestedApps</match>
+    <description>macOS security settings tampered: $(audit.process.path) $(audit.process.arguments).</description>
+    <mitre>
+      <id>T1562.001</id>
+    </mitre>
+  </rule>
+</group>

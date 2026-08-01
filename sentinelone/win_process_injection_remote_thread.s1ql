@@ -1,0 +1,14 @@
+// SentinelOne Deep Visibility Query
+// Title: Process Injection via Remote Thread
+// Description: Detects remote thread creation in sensitive processes.
+// Author: Security Team
+// Date: 2026-08-01
+// MITRE ATT&CK: T1055
+// Tactic: Privilege Escalation, Defense Evasion
+// Severity: High
+// References:
+//   - https://attack.mitre.org/techniques/T1055/
+
+EventType = "Remote Thread Creation" AND
+TgtProcName In Contains Anycase ("lsass.exe", "winlogon.exe", "explorer.exe", "svchost.exe") AND
+SrcProcName Not In Contains Anycase ("csrss.exe", "MsMpEng.exe", "MsSense.exe")

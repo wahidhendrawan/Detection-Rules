@@ -1,0 +1,32 @@
+title: Azure AD Illicit Consent Grant
+id: 0c276d7a-d76f-47b4-96f5-e80ff25679ad
+status: experimental
+description: |
+  Detects high-risk OAuth application consent grants.
+author: Security Team
+date: 2026/08/01
+references:
+  - https://attack.mitre.org/techniques/T1528/
+logsource:
+  product: azure
+  service: audit
+detection:
+  selection:
+    operationName: 'Consent to application'
+    result: 'success'
+    targetResources.modifiedProperties.newValue|contains:
+      - 'offline_access'
+      - 'Mail.ReadWrite'
+      - 'Directory.ReadWrite.All'
+  condition: selection
+fields:
+  - user
+  - source.ip
+  - eventType
+  - outcome.result
+falsepositives:
+  - Authorized administrative activity matching this behavior.
+level: critical
+tags:
+  - attack.t1528
+  - attack.credential_access

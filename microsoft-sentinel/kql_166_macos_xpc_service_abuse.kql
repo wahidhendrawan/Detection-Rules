@@ -1,0 +1,15 @@
+// Title: macOS XPC Service Exploitation
+// Description: Detects potentially suspicious interaction with macOS XPC services.
+// Author: Security Team
+// Date: 2026-08-01
+// MITRE ATT&CK: T1218
+// Tactic: DefenseEvasion
+// Severity: Medium
+// DataConnector: Endpoint detection and response logs
+
+DeviceProcessEvents
+| where Timestamp > ago(24h)
+| where InitiatingProcessFileName == "launchd" and ProcessCommandLine has "xpc"
+| where FileName in ("bash", "sh", "python", "perl", "ruby", "osascript")
+| project Timestamp, DeviceName, AccountName, FileName, ProcessCommandLine
+| order by Timestamp desc

@@ -219,6 +219,20 @@ python3 scripts/generate_coverage.py
 
 Outputnya: `COVERAGE.md` (tabel) + `coverage.json` (Navigator-compatible).
 
+Untuk heatmap interaktif yang tetap berjalan offline, generate standalone HTML dan
+machine-readable JSON:
+
+```bash
+PYTHONPATH=scripts python3 -m detection_rules heatmap
+# Filter platform (opsional; ulangi --platform untuk beberapa platform)
+PYTHONPATH=scripts python3 -m detection_rules heatmap \\
+  --platform sigma --platform microsoft-sentinel
+```
+
+Output default: `public/heatmap.html` dan `public/heatmap.json`. HTML tidak
+memuat aset eksternal, mendukung keyboard, screen reader, pencarian, dan filter
+coverage; outputnya deterministik sehingga aman dipakai dalam CI.
+
 ---
 
 ## Kontribusi

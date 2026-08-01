@@ -13,19 +13,20 @@ from typing import Sequence
 
 from . import __version__
 from .commands import (
+    atomic,
     badges,
     coverage,
     cti,
     fix,
     gap,
+    heatmap,
     index,
     lint,
     lint_severity,
-    new,
     metrics,
     navigator,
+    new,
     test,
-    atomic,
 )
 
 COMMANDS = {
@@ -42,6 +43,7 @@ COMMANDS = {
     "atomic":         atomic,
     "test":           test,
     "badges":         badges,
+    "heatmap":        heatmap,
 }
 
 

@@ -23,6 +23,7 @@ Available commands:
   atomic      Map rules to Atomic Red Team tests for end-to-end verification.
   test        Run rule unit tests (event fixture based).
   badges      Emit shields.io endpoint JSONs for live README badges.
+  heatmap     Generate standalone accessible ATT&CK coverage heatmap HTML/JSON.
 """
 
 from __future__ import annotations

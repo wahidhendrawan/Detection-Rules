@@ -5,19 +5,18 @@ updates:
     schedule:
       interval: weekly
       day: monday
-    open-pull-requests-limit: 5
-    groups:
-      production:
-        dependency-type: production
-      development:
-        dependency-type: development
+    open-pull-requests-limit: 3
+    # No grouping - individual PRs prevent conflicts and allow granular review
 
   - package-ecosystem: docker
     directory: /
     schedule:
       interval: monthly
+    open-pull-requests-limit: 2
 
   - package-ecosystem: github-actions
     directory: /
     schedule:
       interval: weekly
+      day: thursday
+    open-pull-requests-limit: 3

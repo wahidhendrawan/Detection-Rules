@@ -1,0 +1,22 @@
+codecov:
+  require_ci_to_pass: true
+  max_report_delay: 24
+
+coverage:
+  precision: 2
+  round: down
+  range: [10, 100]
+  status:
+    project:
+      default:
+        target: 10%
+        threshold: 0%
+        base: auto
+    patch: false
+
+comment:
+  layout: "reach,diff,flags,tree"
+  behavior: default
+  require_changes: false
+  require_base: true
+  show_carryforward_flags: false

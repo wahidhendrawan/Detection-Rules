@@ -1,0 +1,14 @@
+// SentinelOne Deep Visibility Query
+// Title: Suspicious Application Layer Protocol
+// Description: Detects scripting processes communicating over web protocols.
+// Author: Security Team
+// Date: 2026-08-01
+// MITRE ATT&CK: T1071.001
+// Tactic: Command and Control
+// Severity: High
+// References:
+//   - https://attack.mitre.org/techniques/T1071/
+
+EventType = "IP Connect" AND
+SrcProcName In Contains Anycase ("powershell.exe", "wscript.exe", "rundll32.exe", "mshta.exe") AND
+DstPort In (80, 443, 8080, 8443)

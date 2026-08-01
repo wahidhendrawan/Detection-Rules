@@ -1,0 +1,31 @@
+title: Kubernetes Exec into Pod Anomaly
+id: 866d8281-7146-43ee-a563-2af82df1914a
+status: experimental
+description: |
+  Detects interactive exec requests into Kubernetes pods.
+author: Security Team
+date: 2026/08/01
+references:
+  - https://attack.mitre.org/techniques/T1059/
+logsource:
+  product: kubernetes
+  service: audit
+detection:
+  selection:
+    verb: 'create'
+    objectRef.subresource: 'exec'
+    requestURI|contains:
+      - 'stdin=true'
+      - 'tty=true'
+  condition: selection
+fields:
+  - user.username
+  - sourceIPs
+  - objectRef.namespace
+  - objectRef.name
+falsepositives:
+  - Authorized administrative activity matching this behavior.
+level: high
+tags:
+  - attack.t1059.004
+  - attack.execution

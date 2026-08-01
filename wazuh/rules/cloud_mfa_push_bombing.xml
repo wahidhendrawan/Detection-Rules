@@ -1,0 +1,21 @@
+<!--
+  Title: Identity provider MFA push bombing detected
+  Description: Identity provider MFA push bombing detected.
+  Author: Security Team
+  Date: 2026-08-01
+  MITRE ATT&CK: T1621
+  Tactic: credential_access
+  Severity: 10
+  References:
+    - https://attack.mitre.org/techniques/T1621/
+-->
+<group name="attack,cloud,kubernetes,">
+  <rule id="100264" level="10">
+    <decoded_as>json</decoded_as>
+    <field name="outcome.result">FAILURE</field>
+    <description>Identity provider MFA push bombing detected.</description>
+    <mitre>
+      <id>T1621</id>
+    </mitre>
+  </rule>
+</group>

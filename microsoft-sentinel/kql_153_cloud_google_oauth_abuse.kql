@@ -1,0 +1,19 @@
+// Title: Google Workspace OAuth Abuse
+// Description: Detects high-risk Google Workspace OAuth authorizations.
+// Author: Security Team
+// Date: 2026-08-01
+// MITRE ATT&CK: T1550.001
+// Tactic: DefenseEvasion
+// Severity: High
+// DataConnector: Identity audit and sign-in logs
+// References:
+//   - https://attack.mitre.org/techniques/T1550/
+// False Positives:
+//   - Authorized identity administration or known automation.
+
+GoogleWorkspaceActivity_CL
+| where TimeGenerated > ago(24h)
+| where event_name_s has_any ("authorize", "token")
+| where scope_s has_any ("https://mail.google.com", "admin.directory.user")
+| project TimeGenerated, actor_email_s, ip_address_s, client_id_s, scope_s
+| order by TimeGenerated desc

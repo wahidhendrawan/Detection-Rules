@@ -1,0 +1,15 @@
+// CrowdStrike Falcon Query Language (FQL)
+// Title: Scheduled Task Creation
+// Description: Detects scheduled task creation from command line utilities.
+// Author: Security Team
+// Date: 2026-08-01
+// MITRE ATT&CK: T1053.005
+// Tactic: Persistence, Execution
+// Severity: High
+// References:
+//   - https://attack.mitre.org/techniques/T1053/
+
+event_simpleName=ProcessRollup2
+| FileName=schtasks.exe OR FileName=at.exe
+| CommandLine=*/create* OR CommandLine=*/add*
+| table aid, TargetProcessId, ParentProcessId, FileName, CommandLine, UserName, timestamp

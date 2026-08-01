@@ -1,0 +1,15 @@
+// Title: macOS Defaults Security Tampering
+// Description: Detects tampering with system security settings via the defaults command.
+// Author: Security Team
+// Date: 2026-08-01
+// MITRE ATT&CK: T1562.001
+// Tactic: DefenseEvasion
+// Severity: Medium
+// DataConnector: Endpoint detection and response logs
+
+DeviceProcessEvents
+| where Timestamp > ago(24h)
+| where FileName == "defaults"
+| where ProcessCommandLine has "write" and ProcessCommandLine has_any ("com.apple.security", "DisableGatekeeper", "AllowUntestedApps")
+| project Timestamp, DeviceName, AccountName, ProcessCommandLine, InitiatingProcessFileName
+| order by Timestamp desc

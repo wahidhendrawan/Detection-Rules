@@ -1,0 +1,22 @@
+<!--
+  Title: macOS TCC Database Modification
+  Description: Detects direct modification of the TCC (Transparency, Consent, and Control) SQLite database.
+  Author: Security Team
+  Date: 2026/08/01
+  MITRE ATT&CK: T1562.001
+  Tactic: DefenseEvasion
+  Severity: 10
+  References:
+    - https://attack.mitre.org/techniques/T1562.001/
+-->
+<group name="attack,macos,">
+  <rule id="100303" level="10">
+    <if_sid>592</if_sid>
+    <field name="audit.process.name">sqlite3</field>
+    <match>/TCC.db</match>
+    <description>macOS TCC database modified: $(audit.process.path) $(audit.process.arguments).</description>
+    <mitre>
+      <id>T1562.001</id>
+    </mitre>
+  </rule>
+</group>

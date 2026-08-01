@@ -1,0 +1,15 @@
+// Title: macOS LaunchDaemon Persistence
+// Description: Detects creation of LaunchDaemon plist files used for system persistence.
+// Author: Security Team
+// Date: 2026-08-01
+// MITRE ATT&CK: T1543.004
+// Tactic: Persistence
+// Severity: High
+// DataConnector: Endpoint detection and response logs
+
+DeviceFileEvents
+| where Timestamp > ago(24h)
+| where FolderPath has "/Library/LaunchDaemons"
+| where FileName endswith ".plist"
+| project Timestamp, DeviceName, AccountName, FolderPath, FileName, ProcessCommandLine
+| order by Timestamp desc

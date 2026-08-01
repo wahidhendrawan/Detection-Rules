@@ -1,0 +1,21 @@
+# Title: Kubectl Exec into Pod
+# Description: Detects kubectl exec invocation from a workload or host.
+# Author: Security Team
+# Date: 2026-08-01
+# MITRE ATT&CK: T1059.004
+# Tactic: Execution
+# Severity: High
+# References:
+#   - https://attack.mitre.org/techniques/T1059/
+
+- rule: Kubectl Exec into Pod
+  desc: Detects kubectl exec invocation from a workload or host.
+  condition: >
+    spawned_process and proc.name=kubectl and proc.args contains exec
+  output: >
+    kubectl exec invoked (user=%user.name command=%proc.cmdline container_id=%container.id image=%container.image.repository)
+  priority: WARNING
+  tags:
+    - container
+    - mitre_execution
+    - T1059.004

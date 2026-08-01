@@ -1,0 +1,30 @@
+title: Kubernetes proc self exe Escape Command
+id: 7070dc81-c6a9-4f09-89ed-0e4e25f926fd
+status: experimental
+description: |
+  Detects pod exec commands referencing proc self exe overwrite primitives.
+author: Security Team
+date: 2026/08/01
+references:
+  - https://attack.mitre.org/techniques/T1611/
+logsource:
+  product: kubernetes
+  service: audit
+detection:
+  selection:
+    objectRef.subresource: 'exec'
+    requestURI|contains:
+      - '/proc/self/exe'
+      - '/proc/1/exe'
+  condition: selection
+fields:
+  - user.username
+  - sourceIPs
+  - objectRef.namespace
+  - objectRef.name
+falsepositives:
+  - Authorized administrative activity matching this behavior.
+level: critical
+tags:
+  - attack.t1611
+  - attack.privilege_escalation

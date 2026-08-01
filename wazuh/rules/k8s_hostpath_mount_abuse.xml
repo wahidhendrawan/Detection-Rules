@@ -1,0 +1,21 @@
+<!--
+  Title: Kubernetes sensitive hostPath mount detected
+  Description: Kubernetes sensitive hostPath mount detected.
+  Author: Security Team
+  Date: 2026-08-01
+  MITRE ATT&CK: T1611
+  Tactic: privilege_escalation
+  Severity: 12
+  References:
+    - https://attack.mitre.org/techniques/T1611/
+-->
+<group name="attack,cloud,kubernetes,">
+  <rule id="100260" level="12">
+    <decoded_as>json</decoded_as>
+    <field name="requestObject.spec.volumes.hostPath.path">^/$|^/etc|^/proc|^/var/lib/kubelet</field>
+    <description>Kubernetes sensitive hostPath mount detected.</description>
+    <mitre>
+      <id>T1611</id>
+    </mitre>
+  </rule>
+</group>

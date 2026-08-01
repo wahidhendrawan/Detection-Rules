@@ -1,0 +1,19 @@
+// Title: SAML Token Manipulation Indicators
+// Description: Detects successful SAML sign-ins with anomalous token issuer context.
+// Author: Security Team
+// Date: 2026-08-01
+// MITRE ATT&CK: T1606.002
+// Tactic: CredentialAccess
+// Severity: Critical
+// DataConnector: Identity audit and sign-in logs
+// References:
+//   - https://attack.mitre.org/techniques/T1606/
+// False Positives:
+//   - Authorized identity administration or known automation.
+
+SigninLogs
+| where TimeGenerated > ago(24h)
+| where AuthenticationProtocol =~ "saml20" and ResultType == 0
+| where TokenIssuerType !in ("AzureAD", "ADFederationServices")
+| project TimeGenerated, UserPrincipalName, IPAddress, AppDisplayName, TokenIssuerType
+| order by TimeGenerated desc

@@ -1,0 +1,14 @@
+// SentinelOne Deep Visibility Query
+// Title: Suspicious Scheduled Task Creation
+// Description: Detects schtasks or at commands creating scheduled execution.
+// Author: Security Team
+// Date: 2026-08-01
+// MITRE ATT&CK: T1053.005
+// Tactic: Persistence, Execution
+// Severity: High
+// References:
+//   - https://attack.mitre.org/techniques/T1053/
+
+EventType = "Process Creation" AND
+SrcProcName In Contains Anycase ("schtasks.exe", "at.exe") AND
+SrcProcCmdLine Contains Anycase ("/create", " /add ")

@@ -1,0 +1,19 @@
+// Title: Cloud API Token Abuse
+// Description: Detects service principal token use from unfamiliar networks.
+// Author: Security Team
+// Date: 2026-08-01
+// MITRE ATT&CK: T1550.001
+// Tactic: DefenseEvasion
+// Severity: High
+// DataConnector: Identity audit and sign-in logs
+// References:
+//   - https://attack.mitre.org/techniques/T1550/
+// False Positives:
+//   - Authorized identity administration or known automation.
+
+AADServicePrincipalSignInLogs
+| where TimeGenerated > ago(24h)
+| where ResultType == 0 and IPAddress !startswith "10."
+| summarize SignIns=count(), IPs=make_set(IPAddress), Apps=make_set(ResourceDisplayName) by ServicePrincipalName
+| where array_length(IPs) >= 3
+| order by TimeGenerated desc

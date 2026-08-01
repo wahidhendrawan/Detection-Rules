@@ -1,0 +1,29 @@
+title: Kubernetes CAP_SYS_ADMIN Added
+id: c3a069be-2997-41c1-bb4f-1308e8c4127d
+status: experimental
+description: |
+  Detects pods adding CAP_SYS_ADMIN capability.
+author: Security Team
+date: 2026/08/01
+references:
+  - https://attack.mitre.org/techniques/T1611/
+logsource:
+  product: kubernetes
+  service: audit
+detection:
+  selection:
+    verb: 'create'
+    objectRef.resource: 'pods'
+    requestObject.spec.containers.securityContext.capabilities.add|contains: 'SYS_ADMIN'
+  condition: selection
+fields:
+  - user.username
+  - sourceIPs
+  - objectRef.namespace
+  - objectRef.name
+falsepositives:
+  - Authorized administrative activity matching this behavior.
+level: critical
+tags:
+  - attack.t1611
+  - attack.privilege_escalation

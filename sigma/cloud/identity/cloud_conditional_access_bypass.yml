@@ -1,0 +1,31 @@
+title: Azure Conditional Access Bypass Attempt
+id: f53f2cdb-57e0-45e5-9a8f-38ba378fc11b
+status: experimental
+description: |
+  Detects successful sign-ins where conditional access was not applied.
+author: Security Team
+date: 2026/08/01
+references:
+  - https://attack.mitre.org/techniques/T1556/
+logsource:
+  product: azure
+  service: audit
+detection:
+  selection:
+    resultType: '0'
+    conditionalAccessStatus|contains:
+      - 'notApplied'
+      - 'failure'
+    authenticationRequirement: 'singleFactorAuthentication'
+  condition: selection
+fields:
+  - user
+  - source.ip
+  - eventType
+  - outcome.result
+falsepositives:
+  - Authorized administrative activity matching this behavior.
+level: high
+tags:
+  - attack.t1556.006
+  - attack.credential_access

@@ -1,0 +1,21 @@
+# Title: Sensitive HostPath Access
+# Description: Detects container access to sensitive host-mounted paths.
+# Author: Security Team
+# Date: 2026-08-01
+# MITRE ATT&CK: T1611
+# Tactic: Privilege Escalation
+# Severity: Critical
+# References:
+#   - https://attack.mitre.org/techniques/T1611/
+
+- rule: Sensitive HostPath Access
+  desc: Detects container access to sensitive host-mounted paths.
+  condition: >
+    open_read and container and (fd.name startswith /host/etc or fd.name startswith /host/proc or fd.name startswith /host/root)
+  output: >
+    Sensitive host path accessed from container (user=%user.name command=%proc.cmdline container_id=%container.id image=%container.image.repository)
+  priority: CRITICAL
+  tags:
+    - container
+    - mitre_privilege_escalation
+    - T1611

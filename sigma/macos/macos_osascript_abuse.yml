@@ -1,0 +1,32 @@
+title: macOS osascript Abuse
+id: b3d477ee-3c03-49f6-a22f-9a8f41db5425
+status: experimental
+description: |
+  Detects AppleScript execution with shell or download behavior.
+author: Security Team
+date: 2026/08/01
+references:
+  - https://attack.mitre.org/techniques/T1059/
+logsource:
+  product: macos
+  category: process_creation
+detection:
+  selection:
+    Image|endswith: '/osascript'
+    CommandLine|contains:
+      - 'do shell script'
+      - 'curl '
+      - 'wget '
+      - 'python -c'
+      - 'base64'
+  condition: selection
+fields:
+  - Image
+  - CommandLine
+  - User
+falsepositives:
+  - Authorized administrative activity matching this behavior.
+level: high
+tags:
+  - attack.t1059.002
+  - attack.execution

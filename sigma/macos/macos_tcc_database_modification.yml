@@ -1,0 +1,31 @@
+title: macOS TCC Database Modification
+id: 47853eb7-d9e1-4921-b9d0-a43d31b1933d
+status: experimental
+description: |
+  Detects direct writes or SQL operations against the TCC privacy database.
+author: Security Team
+date: 2026/08/01
+references:
+  - https://attack.mitre.org/techniques/T1562/
+logsource:
+  product: macos
+  category: process_creation
+detection:
+  selection:
+    CommandLine|contains:
+      - '/Library/Application Support/com.apple.TCC/TCC.db'
+      - '/Library/TCC/TCC.db'
+      - 'sqlite3'
+    CommandLine|contains|all:
+      - 'TCC.db'
+  condition: selection
+fields:
+  - Image
+  - CommandLine
+  - User
+falsepositives:
+  - Authorized administrative activity matching this behavior.
+level: critical
+tags:
+  - attack.t1562.001
+  - attack.defense_evasion

@@ -1,0 +1,21 @@
+<!--
+  Title: macOS LaunchDaemon Persistence
+  Description: Detects creation of LaunchDaemon plist files used for system persistence.
+  Author: Security Team
+  Date: 2026/08/01
+  MITRE ATT&CK: T1543.004
+  Tactic: Persistence
+  Severity: 8
+  References:
+    - https://attack.mitre.org/techniques/T1543.004/
+-->
+<group name="attack,macos,">
+  <rule id="100301" level="8">
+    <if_sid>657</if_sid>
+    <field name="audit.file.path">/Library/LaunchDaemons/.*\.plist$</field>
+    <description>macOS LaunchDaemon plist creation detected: $(audit.file.path).</description>
+    <mitre>
+      <id>T1543.004</id>
+    </mitre>
+  </rule>
+</group>

@@ -1,0 +1,32 @@
+title: Google Workspace OAuth Token Abuse
+id: 83afa6eb-7945-4dab-b527-d414613f4492
+status: experimental
+description: |
+  Detects suspicious OAuth token authorization or scope grants.
+author: Security Team
+date: 2026/08/01
+references:
+  - https://attack.mitre.org/techniques/T1550/
+logsource:
+  product: gcp
+  service: audit
+detection:
+  selection:
+    event_name|contains:
+      - 'authorize'
+      - 'token'
+    scope|contains:
+      - 'https://mail.google.com'
+      - 'admin.directory.user'
+  condition: selection
+fields:
+  - user
+  - source.ip
+  - eventType
+  - outcome.result
+falsepositives:
+  - Authorized administrative activity matching this behavior.
+level: high
+tags:
+  - attack.t1550.001
+  - attack.defense_evasion

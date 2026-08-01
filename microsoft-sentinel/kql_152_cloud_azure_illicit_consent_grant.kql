@@ -1,0 +1,19 @@
+// Title: Azure AD Illicit Consent Grant
+// Description: Detects consent grants containing high-risk OAuth permissions.
+// Author: Security Team
+// Date: 2026-08-01
+// MITRE ATT&CK: T1528
+// Tactic: CredentialAccess
+// Severity: Critical
+// DataConnector: Identity audit and sign-in logs
+// References:
+//   - https://attack.mitre.org/techniques/T1528/
+// False Positives:
+//   - Authorized identity administration or known automation.
+
+AuditLogs
+| where TimeGenerated > ago(24h)
+| where OperationName =~ "Consent to application" and Result =~ "success"
+| where tostring(TargetResources) has_any ("offline_access", "Mail.ReadWrite", "Directory.ReadWrite.All")
+| project TimeGenerated, InitiatedBy, TargetResources, CorrelationId
+| order by TimeGenerated desc

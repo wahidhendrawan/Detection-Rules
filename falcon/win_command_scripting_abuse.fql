@@ -1,0 +1,15 @@
+// CrowdStrike Falcon Query Language (FQL)
+// Title: Command and Scripting Interpreter Abuse
+// Description: Detects interpreters with encoded or download commands.
+// Author: Security Team
+// Date: 2026-08-01
+// MITRE ATT&CK: T1059
+// Tactic: Execution
+// Severity: High
+// References:
+//   - https://attack.mitre.org/techniques/T1059/
+
+event_simpleName=ProcessRollup2
+| FileName=cmd.exe OR FileName=powershell.exe OR FileName=pwsh.exe OR FileName=wscript.exe
+| CommandLine=*-enc* OR CommandLine=*DownloadString* OR CommandLine=*frombase64*
+| table aid, TargetProcessId, ParentProcessId, FileName, CommandLine, UserName, timestamp

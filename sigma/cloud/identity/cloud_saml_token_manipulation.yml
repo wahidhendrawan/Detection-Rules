@@ -1,0 +1,31 @@
+title: SAML Token Manipulation Indicators
+id: eed081bf-5b34-40f7-93b5-016305ee9247
+status: experimental
+description: |
+  Detects SAML assertions with anomalous issuer or authentication context.
+author: Security Team
+date: 2026/08/01
+references:
+  - https://attack.mitre.org/techniques/T1606/
+logsource:
+  product: azure
+  service: audit
+detection:
+  selection:
+    authenticationProtocol: 'saml20'
+    tokenIssuerType|contains:
+      - 'Unknown'
+      - 'External'
+    resultType: '0'
+  condition: selection
+fields:
+  - user
+  - source.ip
+  - eventType
+  - outcome.result
+falsepositives:
+  - Authorized administrative activity matching this behavior.
+level: critical
+tags:
+  - attack.t1606.002
+  - attack.credential_access

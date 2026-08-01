@@ -1,0 +1,15 @@
+// CrowdStrike Falcon Query Language (FQL)
+// Title: Privileged Account Manipulation
+// Description: Detects additions to privileged local groups.
+// Author: Security Team
+// Date: 2026-08-01
+// MITRE ATT&CK: T1098
+// Tactic: Persistence, Privilege Escalation
+// Severity: High
+// References:
+//   - https://attack.mitre.org/techniques/T1098/
+
+event_simpleName=ProcessRollup2
+| FileName=net.exe OR FileName=net1.exe OR FileName=powershell.exe
+| CommandLine=*administrators* OR CommandLine=*Add-LocalGroupMember*
+| table aid, TargetProcessId, ParentProcessId, FileName, CommandLine, UserName, timestamp

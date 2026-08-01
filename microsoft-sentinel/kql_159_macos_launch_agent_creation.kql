@@ -1,0 +1,16 @@
+// Title: macOS LaunchAgent Persistence
+// Description: Detects creation of LaunchAgent plist files used for user persistence.
+// Author: Security Team
+// Date: 2026-08-01
+// MITRE ATT&CK: T1543.001
+// Tactic: Persistence
+// Severity: High
+// DataConnector: Endpoint detection and response logs
+
+DeviceFileEvents
+| where Timestamp > ago(24h)
+| where InitiatingProcessFileName has_any ("launchd", "sandboxd", "bash", "sh", "zsh", "python")
+| where FileName has_any ("LaunchAgents")
+| where FileName endswith ".plist"
+| project Timestamp, DeviceName, AccountName, FileName, ProcessCommandLine
+| order by Timestamp desc

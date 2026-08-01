@@ -1,0 +1,14 @@
+// Title: macOS GateKeeper Bypass via xattr
+// Description: Detects removal of the quarantine attribute to bypass GateKeeper.
+// Author: Security Team
+// Date: 2026-08-01
+// MITRE ATT&CK: T1553.001
+// Tactic: DefenseEvasion
+// Severity: High
+// DataConnector: Endpoint detection and response logs
+
+DeviceProcessEvents
+| where Timestamp > ago(24h)
+| where FileName == "xattr" and ProcessCommandLine has "-d" and ProcessCommandLine has "com.apple.quarantine"
+| project Timestamp, DeviceName, AccountName, ProcessCommandLine, InitiatingProcessFileName
+| order by Timestamp desc

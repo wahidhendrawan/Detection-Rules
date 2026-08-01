@@ -1,0 +1,17 @@
+# Title: macOS XPC Service Abuse
+# Description: Detects suspicious launchctl XPC service operations.
+# Author: Security Team
+# Date: 2026-08-01
+# MITRE ATT&CK: T1543.001
+# Tactic: persistence
+# Severity: high
+# References:
+#   - https://attack.mitre.org/techniques/T1543/
+# False Positives:
+#   - Authorized macOS administration or software deployment.
+
+index=macos OR index=endpoint sourcetype IN ("osquery:results", "endpoint:process", "endpoint:file")
+process_name="launchctl" process_command_line="*xpc*" (process_command_line="*bootstrap*" OR process_command_line="*kickstart*" OR process_command_line="*submit*")
+| stats count, values(process_command_line) as command_line, values(user) as user by host, process_name, file_path
+| where count > 0
+| sort - _time

@@ -1,0 +1,15 @@
+// Title: macOS TCC Database Modification
+// Description: Detects direct modification or access to the TCC (Transparency, Consent, and Control) SQLite database.
+// Author: Security Team
+// Date: 2026-08-01
+// MITRE ATT&CK: T1562.001
+// Tactic: DefenseEvasion
+// Severity: High
+// DataConnector: Endpoint detection and response logs
+
+DeviceProcessEvents
+| where Timestamp > ago(24h)
+| where FileName == "sqlite3"
+| where ProcessCommandLine has_any ("/Library/Application Support/com.apple.TCC/TCC.db", "~/Library/Application Support/com.apple.TCC/TCC.db")
+| project Timestamp, DeviceName, AccountName, ProcessCommandLine, InitiatingProcessFileName
+| order by Timestamp desc

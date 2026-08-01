@@ -1,0 +1,21 @@
+<!--
+  Title: Kubernetes admission webhook configuration modified
+  Description: Kubernetes admission webhook configuration modified.
+  Author: Security Team
+  Date: 2026-08-01
+  MITRE ATT&CK: T1562.001
+  Tactic: defense_evasion
+  Severity: 12
+  References:
+    - https://attack.mitre.org/techniques/T1562/
+-->
+<group name="attack,cloud,kubernetes,">
+  <rule id="100262" level="12">
+    <decoded_as>json</decoded_as>
+    <field name="objectRef.resource">webhookconfigurations</field>
+    <description>Kubernetes admission webhook configuration modified.</description>
+    <mitre>
+      <id>T1562.001</id>
+    </mitre>
+  </rule>
+</group>

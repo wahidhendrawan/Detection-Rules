@@ -1,0 +1,29 @@
+title: Identity Provider MFA Push Bombing
+id: 332cce31-8b4d-426d-a534-3488e9cfad46
+status: experimental
+description: |
+  Detects repeated denied MFA challenges indicative of fatigue attacks.
+author: Security Team
+date: 2026/08/01
+references:
+  - https://attack.mitre.org/techniques/T1621/
+logsource:
+  product: okta
+  service: audit
+detection:
+  selection:
+    eventType: 'user.authentication.auth_via_mfa'
+    outcome.result: 'FAILURE'
+    debugContext.debugData.factor|contains: 'push'
+  condition: selection
+fields:
+  - user
+  - source.ip
+  - eventType
+  - outcome.result
+falsepositives:
+  - Authorized administrative activity matching this behavior.
+level: high
+tags:
+  - attack.t1621
+  - attack.credential_access

@@ -1,0 +1,14 @@
+// CrowdStrike Falcon Query Language (FQL)
+// Title: Mass File Encryption
+// Description: Detects ransomware-associated file extensions.
+// Author: Security Team
+// Date: 2026-08-01
+// MITRE ATT&CK: T1486
+// Tactic: Impact
+// Severity: Critical
+// References:
+//   - https://attack.mitre.org/techniques/T1486/
+
+event_simpleName=FileWritten
+| FileName=*.locked OR FileName=*.encrypted OR FileName=*.crypt OR FileName=*.lockbit
+| table aid, TargetProcessId, ParentProcessId, FileName, CommandLine, UserName, timestamp

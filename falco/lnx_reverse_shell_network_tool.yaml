@@ -1,0 +1,21 @@
+# Title: Reverse Shell Network Tool
+# Description: Detects common network tools launched with shell execution flags.
+# Author: Security Team
+# Date: 2026-08-01
+# MITRE ATT&CK: T1059.004
+# Tactic: Execution
+# Severity: High
+# References:
+#   - https://attack.mitre.org/techniques/T1059/
+
+- rule: Reverse Shell Network Tool
+  desc: Detects common network tools launched with shell execution flags.
+  condition: >
+    spawned_process and container and proc.name in (nc, ncat, netcat, socat) and proc.args intersects (-e, EXEC, SYSTEM)
+  output: >
+    Possible reverse shell launched (user=%user.name command=%proc.cmdline container_id=%container.id image=%container.image.repository)
+  priority: WARNING
+  tags:
+    - container
+    - mitre_execution
+    - T1059.004

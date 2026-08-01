@@ -1,0 +1,21 @@
+# Title: CAP_SYS_ADMIN Mount Abuse
+# Description: Detects mount or namespace operations from a container.
+# Author: Security Team
+# Date: 2026-08-01
+# MITRE ATT&CK: T1611
+# Tactic: Privilege Escalation
+# Severity: Critical
+# References:
+#   - https://attack.mitre.org/techniques/T1611/
+
+- rule: CAP_SYS_ADMIN Mount Abuse
+  desc: Detects mount or namespace operations from a container.
+  condition: >
+    spawned_process and container and proc.name in (mount, nsenter, unshare) and proc.args contains /proc
+  output: >
+    Privileged namespace utility executed (user=%user.name command=%proc.cmdline container_id=%container.id image=%container.image.repository)
+  priority: CRITICAL
+  tags:
+    - container
+    - mitre_privilege_escalation
+    - T1611

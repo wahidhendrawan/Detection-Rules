@@ -1,0 +1,29 @@
+title: Okta Session Hijacking Indicators
+id: cb9f671e-8825-486a-ab39-267d20c6a0af
+status: experimental
+description: |
+  Detects Okta session reuse after a network or device context change.
+author: Security Team
+date: 2026/08/01
+references:
+  - https://attack.mitre.org/techniques/T1550/
+logsource:
+  product: okta
+  service: audit
+detection:
+  selection:
+    eventType: 'user.session.access_admin_app'
+    securityContext.isProxy: 'true'
+    outcome.result: 'SUCCESS'
+  condition: selection
+fields:
+  - user
+  - source.ip
+  - eventType
+  - outcome.result
+falsepositives:
+  - Authorized administrative activity matching this behavior.
+level: high
+tags:
+  - attack.t1550.004
+  - attack.defense_evasion

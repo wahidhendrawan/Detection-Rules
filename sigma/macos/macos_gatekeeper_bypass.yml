@@ -1,0 +1,32 @@
+title: macOS Gatekeeper Bypass
+id: a2b82f45-568a-4771-b8e1-92358c56a556
+status: experimental
+description: |
+  Detects removal of quarantine attributes or disabling Gatekeeper.
+author: Security Team
+date: 2026/08/01
+references:
+  - https://attack.mitre.org/techniques/T1553/
+logsource:
+  product: macos
+  category: process_creation
+detection:
+  selection_image:
+    Image|endswith:
+      - '/xattr'
+      - '/spctl'
+  selection_cli:
+    CommandLine|contains:
+      - 'com.apple.quarantine'
+      - '--master-disable'
+  condition: selection_image and selection_cli
+fields:
+  - Image
+  - CommandLine
+  - User
+falsepositives:
+  - Authorized administrative activity matching this behavior.
+level: high
+tags:
+  - attack.t1553.001
+  - attack.defense_evasion

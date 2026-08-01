@@ -1,0 +1,14 @@
+// CrowdStrike Falcon Query Language (FQL)
+// Title: Remote Services Execution
+// Description: Detects utilities commonly used for remote service access.
+// Author: Security Team
+// Date: 2026-08-01
+// MITRE ATT&CK: T1021
+// Tactic: Lateral Movement
+// Severity: High
+// References:
+//   - https://attack.mitre.org/techniques/T1021/
+
+event_simpleName=ProcessRollup2
+| FileName=mstsc.exe OR FileName=ssh.exe OR FileName=psexec.exe OR FileName=winrs.exe
+| table aid, TargetProcessId, ParentProcessId, FileName, CommandLine, UserName, timestamp

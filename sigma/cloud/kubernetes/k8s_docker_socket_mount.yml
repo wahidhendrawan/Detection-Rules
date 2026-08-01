@@ -1,0 +1,29 @@
+title: Kubernetes Docker Socket Mount
+id: 7270a3c1-cd09-4b8c-bd50-9312eab04d98
+status: experimental
+description: |
+  Detects pods mounting the host Docker socket.
+author: Security Team
+date: 2026/08/01
+references:
+  - https://attack.mitre.org/techniques/T1611/
+logsource:
+  product: kubernetes
+  service: audit
+detection:
+  selection:
+    verb: 'create'
+    objectRef.resource: 'pods'
+    requestObject.spec.volumes.hostPath.path: '/var/run/docker.sock'
+  condition: selection
+fields:
+  - user.username
+  - sourceIPs
+  - objectRef.namespace
+  - objectRef.name
+falsepositives:
+  - Authorized administrative activity matching this behavior.
+level: critical
+tags:
+  - attack.t1611
+  - attack.privilege_escalation

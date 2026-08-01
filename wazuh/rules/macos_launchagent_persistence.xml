@@ -1,0 +1,22 @@
+<!--
+  Title: macOS LaunchAgent Persistence
+  Description: Detects creation of LaunchAgent plist files used for user persistence.
+  Author: Security Team
+  Date: 2026/08/01
+  MITRE ATT&CK: T1543.001
+  Tactic: Persistence
+  Severity: 8
+  References:
+    - https://attack.mitre.org/techniques/T1543.001/
+-->
+<group name="attack,macos,">
+  <rule id="100300" level="8">
+    <if_sid>657</if_sid>
+    <field name="audit.file.path">\.plist$</field>
+    <field name="audit.file.path">/Library/LaunchAgents/|/Users/.*/Library/LaunchAgents/</field>
+    <description>macOS LaunchAgent plist creation detected: $(audit.file.path).</description>
+    <mitre>
+      <id>T1543.001</id>
+    </mitre>
+  </rule>
+</group>

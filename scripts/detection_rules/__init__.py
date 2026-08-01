@@ -15,6 +15,7 @@ Available commands:
   coverage    Generate COVERAGE.md and coverage.json (ATT&CK Navigator).
   index       Generate rules.index.json / rules.index.yaml.
   fix         Backfill MITRE ATT&CK metadata in a given platform.
+  lint        Validate Sigma syntax, structure, and required metadata offline.
   metrics     Compute Detection-as-Code quality metrics (per rule + summary).
   navigator   Emit ATT&CK Navigator layers (overall + per platform).
   gap         Report top ATT&CK techniques NOT yet covered.

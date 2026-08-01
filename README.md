@@ -230,8 +230,9 @@ Lihat [`CONTRIBUTING.md`](CONTRIBUTING.md) untuk panduan lengkap. Ringkas:
 3. Pastikan rule punya: title, description, author, date, MITRE tag, references.
 4. Jalankan validator lokal:
    ```bash
-   pre-commit run --all-files       # YAML/XML/JSON lint
-   sigma check sigma/                # Sigma syntax
+   pre-commit run --all-files                         # YAML/XML/JSON lint
+   PYTHONPATH=scripts python -m detection_rules lint # Validasi Sigma offline
+   PYTHONPATH=scripts python -m detection_rules lint --sigma-cli # Tambahan sigma-cli
    ```
 5. Buka Pull Request ke `main`. CI akan menjalankan validator otomatis.
 

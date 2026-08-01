@@ -21,3 +21,4 @@ falsepositives:
 level: medium
 tags:
   - attack.execution
+  - attack.t1059

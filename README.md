@@ -4,6 +4,7 @@
 [![GitHub Pages](https://img.shields.io/badge/landing%20page-live-brightgreen)](https://wahidhendrawan.github.io/Detection-Rules/)
 [![GitHub last commit](https://img.shields.io/github/last-commit/wahidhendrawan/Detection-Rules)](https://github.com/wahidhendrawan/Detection-Rules/commits/main)
 [![Validate Rules](https://github.com/wahidhendrawan/Detection-Rules/actions/workflows/validate.yml/badge.svg)](https://github.com/wahidhendrawan/Detection-Rules/actions/workflows/validate.yml)
+[![Python coverage](https://codecov.io/gh/wahidhendrawan/Detection-Rules/branch/main/graph/badge.svg)](https://codecov.io/gh/wahidhendrawan/Detection-Rules)
 [![MITRE ATT&CK](https://img.shields.io/badge/MITRE%20ATT%26CK-mapped-red)](COVERAGE.md)
 [![Rules](https://img.shields.io/endpoint?url=https://wahidhendrawan.github.io/Detection-Rules/badges/rules-total.json)](#statistik-rule)
 [![ATT&CK Techniques](https://img.shields.io/endpoint?url=https://wahidhendrawan.github.io/Detection-Rules/badges/techniques.json)](COVERAGE.md)

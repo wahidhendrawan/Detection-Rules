@@ -31,5 +31,5 @@ falsepositives:
   - Employee onboarding to admin team.
 level: high
 tags:
-  - attack.t1098.007
+  - attack.t1098
   - attack.persistence

@@ -31,4 +31,4 @@ falsepositives:
 level: high
 tags:
   - attack.t1562.001
-  - attack.defense_evasion
+  - attack.defense-evasion

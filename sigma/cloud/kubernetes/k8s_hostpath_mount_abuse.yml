@@ -30,4 +30,4 @@ falsepositives:
 level: critical
 tags:
   - attack.t1611
-  - attack.privilege_escalation
+  - attack.privilege-escalation

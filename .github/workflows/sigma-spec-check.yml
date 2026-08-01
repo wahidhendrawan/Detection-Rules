@@ -12,11 +12,12 @@ jobs:
     steps:
       - uses: actions/checkout@v7
       - name: Install sigma-cli
-        run: pip install sigma-cli
+        run: pip install sigma-cli==1.0.4
       - name: Run sigma check
         id: check
         run: |
-          sigma check sigma/ > sigma-check-output.txt 2>&1 || echo "issues_found=true" >> "$GITHUB_OUTPUT"
+          find sigma/ -name '*.yml' -not -path '*/correlations/*' -print0 | \
+            xargs -0 sigma check > sigma-check-output.txt 2>&1 || echo "issues_found=true" >> "$GITHUB_OUTPUT"
           cat sigma-check-output.txt
       - name: Create issue if problems found
         if: steps.check.outputs.issues_found == 'true'

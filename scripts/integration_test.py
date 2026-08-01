@@ -4,6 +4,7 @@ import requests
 
 ES = "http://localhost:9200"
 INDEX = "logs-test"
+REQUEST_TIMEOUT = 10  # seconds
 
 MAPPING = {
     "mappings": {
@@ -63,41 +64,87 @@ RULES = [
 ]
 
 
-def main():
-    # Create index
-    r = requests.put(f"{ES}/{INDEX}", json=MAPPING)
-    if r.status_code not in (200, 201):
-        print(f"FAIL: create index: {r.text}")
-        return 1
+def cleanup_index() -> None:
+    """Guaranteed cleanup: delete the test index if it exists."""
+    try:
+        requests.delete(f"{ES}/{INDEX}", timeout=REQUEST_TIMEOUT)
+    except requests.RequestException:
+        pass  # Index may not exist; ignore cleanup errors
 
-    # Inject events
-    for i, event in enumerate(EVENTS):
-        r = requests.post(f"{ES}/{INDEX}/_doc", json=event)
-        if r.status_code not in (200, 201):
-            print(f"FAIL: inject event {i}: {r.text}")
+
+def main() -> int:
+    try:
+        # Create index
+        try:
+            response = requests.put(f"{ES}/{INDEX}", json=MAPPING, timeout=REQUEST_TIMEOUT)
+        except requests.RequestException as error:
+            print(f"FAIL: create index: {type(error).__name__}")
             return 1
 
-    # Refresh to make docs searchable
-    requests.post(f"{ES}/{INDEX}/_refresh")
-    time.sleep(1)
+        if response.status_code not in (200, 201):
+            print(f"FAIL: create index: status {response.status_code}")
+            return 1
 
-    # Verify rules match
-    failures = 0
-    for rule in RULES:
-        r = requests.post(f"{ES}/{INDEX}/_search", json={"query": rule["query"]})
-        hits = r.json().get("hits", {}).get("total", {}).get("value", 0)
-        if hits == 0:
-            print(f"FAIL: '{rule['name']}' matched 0 events")
-            failures += 1
-        else:
-            print(f"PASS: '{rule['name']}' matched {hits} event(s)")
+        # Inject events
+        for i, event in enumerate(EVENTS):
+            try:
+                response = requests.post(f"{ES}/{INDEX}/_doc", json=event, timeout=REQUEST_TIMEOUT)
+            except requests.RequestException as error:
+                print(f"FAIL: inject event {i}: {type(error).__name__}")
+                return 1
 
-    if failures:
-        print(f"\n{failures} rule(s) failed")
-        return 1
+            if response.status_code not in (200, 201):
+                print(f"FAIL: inject event {i}: status {response.status_code}")
+                return 1
 
-    print("\nAll integration tests passed")
-    return 0
+        # Refresh to make docs searchable
+        try:
+            requests.post(f"{ES}/{INDEX}/_refresh", timeout=REQUEST_TIMEOUT)
+        except requests.RequestException:
+            pass  # Refresh failures are non-fatal
+        time.sleep(1)
+
+        # Verify rules match
+        failures = 0
+        for rule in RULES:
+            try:
+                response = requests.post(
+                    f"{ES}/{INDEX}/_search",
+                    json={"query": rule["query"]},
+                    timeout=REQUEST_TIMEOUT,
+                )
+            except requests.RequestException as error:
+                print(f"FAIL: search for '{rule['name']}': {type(error).__name__}")
+                failures += 1
+                continue
+
+            if response.status_code != 200:
+                print(f"FAIL: search for '{rule['name']}': status {response.status_code}")
+                failures += 1
+                continue
+
+            try:
+                hits = response.json().get("hits", {}).get("total", {}).get("value", 0)
+            except ValueError:
+                print(f"FAIL: '{rule['name']}': invalid response JSON")
+                failures += 1
+                continue
+
+            if hits == 0:
+                print(f"FAIL: '{rule['name']}' matched 0 events")
+                failures += 1
+            else:
+                print(f"PASS: '{rule['name']}' matched {hits} event(s)")
+
+        if failures:
+            print(f"\n{failures} rule(s) failed")
+            return 1
+
+        print("\nAll integration tests passed")
+        return 0
+
+    finally:
+        cleanup_index()
 
 
 if __name__ == "__main__":

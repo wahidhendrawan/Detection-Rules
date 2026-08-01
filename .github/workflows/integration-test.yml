@@ -31,7 +31,9 @@ jobs:
           python-version: "3.11"
 
       - name: Install dependencies
-        run: pip install requests
+        # Pin to exact version to prevent unexpected behavior changes.
+        # Current version is v2.34.2 per recent verification.
+        run: pip install requests==2.34.2
 
       - name: Wait for Elasticsearch
         run: |

@@ -64,6 +64,10 @@ jobs:
         with:
           python-version: '3.11'
       - name: Install pip-audit
-        run: pip install pip-audit==2.8.0
+        run: pip install "pip-audit==2.8.0"
       - name: Audit pinned dependencies
-        run: pip-audit -r requirements-dev.txt --strict || true
+        # --strict fails on every vulnerability except PYSEC-2026-2447. That
+        # advisory affects diskcache, a transitive sigma-cli dependency, and
+        # has no upstream fixed release as of 2026-08-01. Revisit on every
+        # Dependabot update and remove this narrow exception once fixed.
+        run: pip-audit -r requirements-dev.txt --strict --ignore-vuln PYSEC-2026-2447

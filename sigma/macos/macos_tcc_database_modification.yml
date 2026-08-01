@@ -28,4 +28,4 @@ falsepositives:
 level: critical
 tags:
   - attack.t1562.001
-  - attack.defense_evasion
+  - attack.defense-evasion

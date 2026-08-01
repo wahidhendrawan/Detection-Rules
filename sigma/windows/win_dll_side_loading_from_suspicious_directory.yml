@@ -32,5 +32,5 @@ falsepositives:
   - Installer temp files.
 level: medium
 tags:
-  - attack.t1574.002
+  - attack.t1574
   - attack.persistence

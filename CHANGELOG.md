@@ -9,6 +9,9 @@ versioning mengikuti [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added
+- Offline `detection_rules lint` command for Sigma YAML syntax, required metadata, UUID, detection structure, ATT&CK technique, and duplicate-ID validation, with optional `sigma-cli` checks.
+
 ## [v1.4.0] - 2026-07-26
 
 ### Added

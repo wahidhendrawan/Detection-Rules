@@ -21,3 +21,4 @@ falsepositives:
 level: medium
 tags:
   - attack.command-and-control
+  - attack.t1059

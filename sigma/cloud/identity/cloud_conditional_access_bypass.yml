@@ -12,7 +12,7 @@ logsource:
   service: audit
 detection:
   selection:
-    resultType: '0'
+    resultType: 0
     conditionalAccessStatus|contains:
       - 'notApplied'
       - 'failure'
@@ -28,4 +28,4 @@ falsepositives:
 level: high
 tags:
   - attack.t1556.006
-  - attack.credential_access
+  - attack.credential-access

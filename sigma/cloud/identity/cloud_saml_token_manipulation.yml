@@ -16,7 +16,7 @@ detection:
     tokenIssuerType|contains:
       - 'Unknown'
       - 'External'
-    resultType: '0'
+    resultType: 0
   condition: selection
 fields:
   - user
@@ -28,4 +28,4 @@ falsepositives:
 level: critical
 tags:
   - attack.t1606.002
-  - attack.credential_access
+  - attack.credential-access

@@ -1,0 +1,2910 @@
+{
+  "domain": "enterprise-attack",
+  "platform_summary": [
+    {
+      "label": "Sigma",
+      "platform": "sigma",
+      "rule_count": 251,
+      "technique_count": 144
+    },
+    {
+      "label": "Elastic",
+      "platform": "elastic",
+      "rule_count": 66,
+      "technique_count": 64
+    }
+  ],
+  "platforms": [
+    {
+      "id": "sigma",
+      "label": "Sigma"
+    },
+    {
+      "id": "elastic",
+      "label": "Elastic"
+    }
+  ],
+  "schema_version": 1,
+  "summary": {
+    "max_rules_per_cell": 81,
+    "platform_count": 2,
+    "rule_count": 317,
+    "technique_count": 150
+  },
+  "techniques": [
+    {
+      "coverage_count": 1,
+      "coverage_percent": 50.0,
+      "name": "OS Credential Dumping",
+      "platforms": [
+        "sigma"
+      ],
+      "rule_count": 1,
+      "rules": {
+        "elastic": [],
+        "sigma": [
+          "sigma/windows/win_credential_dump_indicators.yml"
+        ]
+      },
+      "tactic": "credential-access",
+      "technique_id": "T1003"
+    },
+    {
+      "coverage_count": 1,
+      "coverage_percent": 50.0,
+      "name": "LSASS Memory",
+      "platforms": [
+        "sigma"
+      ],
+      "rule_count": 4,
+      "rules": {
+        "elastic": [],
+        "sigma": [
+          "sigma/windows/win_credential_dump_indicators.yml",
+          "sigma/windows/win_lsass_dump_via_procdump.yml",
+          "sigma/windows/win_mimikatz_command.yml",
+          "sigma/windows/win_suspicious_comsvcs_lsass_dump.yml"
+        ]
+      },
+      "tactic": "credential-access",
+      "technique_id": "T1003.001"
+    },
+    {
+      "coverage_count": 1,
+      "coverage_percent": 50.0,
+      "name": "Security Account Manager",
+      "platforms": [
+        "sigma"
+      ],
+      "rule_count": 1,
+      "rules": {
+        "elastic": [],
+        "sigma": [
+          "sigma/windows/win_sam_registry_dump.yml"
+        ]
+      },
+      "tactic": "credential-access",
+      "technique_id": "T1003.002"
+    },
+    {
+      "coverage_count": 1,
+      "coverage_percent": 50.0,
+      "name": "NTDS",
+      "platforms": [
+        "sigma"
+      ],
+      "rule_count": 1,
+      "rules": {
+        "elastic": [],
+        "sigma": [
+          "sigma/windows/win_ntds_dit_access.yml"
+        ]
+      },
+      "tactic": "credential-access",
+      "technique_id": "T1003.003"
+    },
+    {
+      "coverage_count": 1,
+      "coverage_percent": 50.0,
+      "name": "/etc/passwd and /etc/shadow",
+      "platforms": [
+        "sigma"
+      ],
+      "rule_count": 1,
+      "rules": {
+        "elastic": [],
+        "sigma": [
+          "sigma/linux/lnx_access_to__etc_shadow_or__etc_passwd_for_credential_har.yml"
+        ]
+      },
+      "tactic": "credential-access",
+      "technique_id": "T1003.008"
+    },
+    {
+      "coverage_count": 1,
+      "coverage_percent": 50.0,
+      "name": "Data from Local System",
+      "platforms": [
+        "sigma"
+      ],
+      "rule_count": 1,
+      "rules": {
+        "elastic": [],
+        "sigma": [
+          "sigma/windows/win_sensitive_file_access.yml"
+        ]
+      },
+      "tactic": "collection",
+      "technique_id": "T1005"
+    },
+    {
+      "coverage_count": 2,
+      "coverage_percent": 100.0,
+      "name": "Query Registry",
+      "platforms": [
+        "sigma",
+        "elastic"
+      ],
+      "rule_count": 2,
+      "rules": {
+        "elastic": [
+          "elastic/endpoint/general/Registry Manipulation via WMI Stdregprov.ndjson"
+        ],
+        "sigma": [
+          "sigma/windows/win_query_registry_for_system_information.yml"
+        ]
+      },
+      "tactic": "discovery",
+      "technique_id": "T1012"
+    },
+    {
+      "coverage_count": 2,
+      "coverage_percent": 100.0,
+      "name": "System Network Configuration Discovery",
+      "platforms": [
+        "sigma",
+        "elastic"
+      ],
+      "rule_count": 2,
+      "rules": {
+        "elastic": [
+          "elastic/endpoint/general/IOCs (ip) to detect Curly COMrades A New Threat Actor Targeting Geopolitical Hotbeds.ndjson"
+        ],
+        "sigma": [
+          "sigma/windows/win_system_network_configuration_discovery.yml"
+        ]
+      },
+      "tactic": "discovery",
+      "technique_id": "T1016"
+    },
+    {
+      "coverage_count": 1,
+      "coverage_percent": 50.0,
+      "name": "Remote Services",
+      "platforms": [
+        "sigma"
+      ],
+      "rule_count": 1,
+      "rules": {
+        "elastic": [],
+        "sigma": [
+          "sigma/correlations/lateral_movement_spray.yml"
+        ]
+      },
+      "tactic": "lateral-movement",
+      "technique_id": "T1021"
+    },
+    {
+      "coverage_count": 2,
+      "coverage_percent": 100.0,
+      "name": "Remote Desktop Protocol",
+      "platforms": [
+        "sigma",
+        "elastic"
+      ],
+      "rule_count": 2,
+      "rules": {
+        "elastic": [
+          "elastic/endpoint/network/net_suspicious_rdp.ndjson"
+        ],
+        "sigma": [
+          "sigma/windows/win_plink_rdp_tunnel.yml"
+        ]
+      },
+      "tactic": "lateral-movement",
+      "technique_id": "T1021.001"
+    },
+    {
+      "coverage_count": 1,
+      "coverage_percent": 50.0,
+      "name": "SMB/Windows Admin Shares",
+      "platforms": [
+        "sigma"
+      ],
+      "rule_count": 1,
+      "rules": {
+        "elastic": [],
+        "sigma": [
+          "sigma/windows/win_smb_windows_admin_share_access.yml"
+        ]
+      },
+      "tactic": "lateral-movement",
+      "technique_id": "T1021.002"
+    },
+    {
+      "coverage_count": 1,
+      "coverage_percent": 50.0,
+      "name": "SSH",
+      "platforms": [
+        "sigma"
+      ],
+      "rule_count": 1,
+      "rules": {
+        "elastic": [],
+        "sigma": [
+          "sigma/linux/lnx_ssh_lateral_movement.yml"
+        ]
+      },
+      "tactic": "lateral-movement",
+      "technique_id": "T1021.004"
+    },
+    {
+      "coverage_count": 1,
+      "coverage_percent": 50.0,
+      "name": "Obfuscated Files or Information",
+      "platforms": [
+        "sigma"
+      ],
+      "rule_count": 1,
+      "rules": {
+        "elastic": [],
+        "sigma": [
+          "sigma/linux/lnx_base64_decoding.yml"
+        ]
+      },
+      "tactic": "defense-evasion",
+      "technique_id": "T1027"
+    },
+    {
+      "coverage_count": 2,
+      "coverage_percent": 100.0,
+      "name": "Scheduled Transfer",
+      "platforms": [
+        "sigma",
+        "elastic"
+      ],
+      "rule_count": 3,
+      "rules": {
+        "elastic": [
+          "elastic/endpoint/general/Scheduled Transfer.ndjson",
+          "elastic/endpoint/general/Time Based Evasion.ndjson"
+        ],
+        "sigma": [
+          "sigma/windows/win_scheduled_data_transfer_to_external.yml"
+        ]
+      },
+      "tactic": "exfiltration",
+      "technique_id": "T1029"
+    },
+    {
+      "coverage_count": 1,
+      "coverage_percent": 50.0,
+      "name": "System Owner/User Discovery",
+      "platforms": [
+        "sigma"
+      ],
+      "rule_count": 1,
+      "rules": {
+        "elastic": [],
+        "sigma": [
+          "sigma/windows/win_system_owner_user_discovery.yml"
+        ]
+      },
+      "tactic": "discovery",
+      "technique_id": "T1033"
+    },
+    {
+      "coverage_count": 2,
+      "coverage_percent": 100.0,
+      "name": "Masquerading",
+      "platforms": [
+        "sigma",
+        "elastic"
+      ],
+      "rule_count": 2,
+      "rules": {
+        "elastic": [
+          "elastic/endpoint/general/Defense-Evasion-Dll-Sideloading.ndjson"
+        ],
+        "sigma": [
+          "sigma/windows/win_masquerading___executable_in_suspicious_path.yml"
+        ]
+      },
+      "tactic": "defense-evasion",
+      "technique_id": "T1036"
+    },
+    {
+      "coverage_count": 2,
+      "coverage_percent": 100.0,
+      "name": "Exfiltration Over C2 Channel",
+      "platforms": [
+        "sigma",
+        "elastic"
+      ],
+      "rule_count": 2,
+      "rules": {
+        "elastic": [
+          "elastic/endpoint/general/IOCs (ip) to detect Curly COMrades A New Threat Actor Targeting Geopolitical Hotbeds.ndjson"
+        ],
+        "sigma": [
+          "sigma/windows/win_data_exfiltration_over_c2_channel_indicators.yml"
+        ]
+      },
+      "tactic": "exfiltration",
+      "technique_id": "T1041"
+    },
+    {
+      "coverage_count": 1,
+      "coverage_percent": 50.0,
+      "name": "Network Service Discovery",
+      "platforms": [
+        "sigma"
+      ],
+      "rule_count": 1,
+      "rules": {
+        "elastic": [],
+        "sigma": [
+          "sigma/network/net_nmap_scan_pattern.yml"
+        ]
+      },
+      "tactic": "discovery",
+      "technique_id": "T1046"
+    },
+    {
+      "coverage_count": 2,
+      "coverage_percent": 100.0,
+      "name": "Windows Management Instrumentation",
+      "platforms": [
+        "sigma",
+        "elastic"
+      ],
+      "rule_count": 3,
+      "rules": {
+        "elastic": [
+          "elastic/endpoint/general/Registry Manipulation via WMI Stdregprov.ndjson",
+          "elastic/endpoint/windows/win_suspicious_wmic_process.ndjson"
+        ],
+        "sigma": [
+          "sigma/windows/win_wmi_process_creation.yml"
+        ]
+      },
+      "tactic": "execution",
+      "technique_id": "T1047"
+    },
+    {
+      "coverage_count": 2,
+      "coverage_percent": 100.0,
+      "name": "Exfiltration Over Alternative Protocol",
+      "platforms": [
+        "sigma",
+        "elastic"
+      ],
+      "rule_count": 4,
+      "rules": {
+        "elastic": [
+          "elastic/endpoint/general/IOCs (ip) to detect Curly COMrades A New Threat Actor Targeting Geopolitical Hotbeds.ndjson",
+          "elastic/endpoint/network/net_dns_tunneling_entropy.ndjson",
+          "elastic/network/network_rules.ndjson"
+        ],
+        "sigma": [
+          "sigma/network/win_exfiltration_over_alternative_protocol.yml"
+        ]
+      },
+      "tactic": "exfiltration",
+      "technique_id": "T1048"
+    },
+    {
+      "coverage_count": 1,
+      "coverage_percent": 50.0,
+      "name": "At",
+      "platforms": [
+        "sigma"
+      ],
+      "rule_count": 1,
+      "rules": {
+        "elastic": [],
+        "sigma": [
+          "sigma/windows/win_at_job_creation.yml"
+        ]
+      },
+      "tactic": "persistence",
+      "technique_id": "T1053.002"
+    },
+    {
+      "coverage_count": 1,
+      "coverage_percent": 50.0,
+      "name": "Cron",
+      "platforms": [
+        "sigma"
+      ],
+      "rule_count": 1,
+      "rules": {
+        "elastic": [],
+        "sigma": [
+          "sigma/linux/lnx_suspicious_cron_modification.yml"
+        ]
+      },
+      "tactic": "persistence",
+      "technique_id": "T1053.003"
+    },
+    {
+      "coverage_count": 1,
+      "coverage_percent": 50.0,
+      "name": "Scheduled Task",
+      "platforms": [
+        "sigma"
+      ],
+      "rule_count": 1,
+      "rules": {
+        "elastic": [],
+        "sigma": [
+          "sigma/windows/win_schtasks_create.yml"
+        ]
+      },
+      "tactic": "persistence",
+      "technique_id": "T1053.005"
+    },
+    {
+      "coverage_count": 1,
+      "coverage_percent": 50.0,
+      "name": "Process Injection",
+      "platforms": [
+        "sigma"
+      ],
+      "rule_count": 1,
+      "rules": {
+        "elastic": [],
+        "sigma": [
+          "sigma/windows/win_process_injection_createremotethread.yml"
+        ]
+      },
+      "tactic": "privilege-escalation",
+      "technique_id": "T1055"
+    },
+    {
+      "coverage_count": 2,
+      "coverage_percent": 100.0,
+      "name": "Process Hollowing",
+      "platforms": [
+        "sigma",
+        "elastic"
+      ],
+      "rule_count": 2,
+      "rules": {
+        "elastic": [
+          "elastic/endpoint/general/HackTool - HollowReaper Execution.ndjson"
+        ],
+        "sigma": [
+          "sigma/windows/win_process_hollowing_indicators.yml"
+        ]
+      },
+      "tactic": "defense-evasion",
+      "technique_id": "T1055.012"
+    },
+    {
+      "coverage_count": 1,
+      "coverage_percent": 50.0,
+      "name": "Keylogging",
+      "platforms": [
+        "sigma"
+      ],
+      "rule_count": 1,
+      "rules": {
+        "elastic": [],
+        "sigma": [
+          "sigma/windows/win_keylogger_setwindowshookex.yml"
+        ]
+      },
+      "tactic": "collection",
+      "technique_id": "T1056.001"
+    },
+    {
+      "coverage_count": 2,
+      "coverage_percent": 100.0,
+      "name": "Command and Scripting Interpreter",
+      "platforms": [
+        "sigma",
+        "elastic"
+      ],
+      "rule_count": 86,
+      "rules": {
+        "elastic": [
+          "elastic/endpoint/general/Potential Exploitation of CrushFTP RCE Vulnerability (CVE-2025-54309).ndjson",
+          "elastic/endpoint/general/Suspicious Child Process of SAP NetWeaver - Linux.ndjson",
+          "elastic/endpoint/general/Suspicious Velociraptor Child Process.ndjson",
+          "elastic/endpoint/general/endpoint_rules.ndjson",
+          "elastic/endpoint/macos/macos_osascript_abuse.ndjson"
+        ],
+        "sigma": [
+          "sigma/cloud/cloud_susp_AuthorizeSecurityGroupIngress.yml",
+          "sigma/cloud/cloud_susp_CreateAccessKey.yml",
+          "sigma/cloud/cloud_susp_CreateBucket.yml",
+          "sigma/cloud/cloud_susp_CreateUser.yml",
+          "sigma/cloud/cloud_susp_DeleteAccessKey.yml",
+          "sigma/cloud/cloud_susp_DeleteBucket.yml",
+          "sigma/cloud/cloud_susp_DeleteUser.yml",
+          "sigma/cloud/cloud_susp_RevokeSecurityGroupIngress.yml",
+          "sigma/cloud/cloud_susp_RunInstances.yml",
+          "sigma/cloud/cloud_susp_StopInstances.yml",
+          "sigma/linux/lnx_base64_decoding.yml",
+          "sigma/linux/lnx_susp_usage_curl.yml",
+          "sigma/linux/lnx_susp_usage_g++.yml",
+          "sigma/linux/lnx_susp_usage_gcc.yml",
+          "sigma/linux/lnx_susp_usage_groupadd.yml",
+          "sigma/linux/lnx_susp_usage_insmod.yml",
+          "sigma/linux/lnx_susp_usage_lsmod.yml",
+          "sigma/linux/lnx_susp_usage_make.yml",
+          "sigma/linux/lnx_susp_usage_modprobe.yml",
+          "sigma/linux/lnx_susp_usage_nc.yml",
+          "sigma/linux/lnx_susp_usage_ncat.yml",
+          "sigma/linux/lnx_susp_usage_netcat.yml",
+          "sigma/linux/lnx_susp_usage_passwd.yml",
+          "sigma/linux/lnx_susp_usage_perl.yml",
+          "sigma/linux/lnx_susp_usage_python.yml",
+          "sigma/linux/lnx_susp_usage_rmmod.yml",
+          "sigma/linux/lnx_susp_usage_ruby.yml",
+          "sigma/linux/lnx_susp_usage_useradd.yml",
+          "sigma/linux/lnx_susp_usage_usermod.yml",
+          "sigma/linux/lnx_susp_usage_visudo.yml",
+          "sigma/linux/lnx_susp_usage_wget.yml",
+          "sigma/network/net_susp_dns.yml",
+          "sigma/network/net_susp_ftp.yml",
+          "sigma/network/net_susp_http.yml",
+          "sigma/network/net_susp_https.yml",
+          "sigma/network/net_susp_imap.yml",
+          "sigma/network/net_susp_pop3.yml",
+          "sigma/network/net_susp_smtp.yml",
+          "sigma/network/net_susp_snmp.yml",
+          "sigma/network/net_susp_ssh.yml",
+          "sigma/network/net_susp_telnet.yml",
+          "sigma/windows/win_powershell_suspicious_encoded_command.yml",
+          "sigma/windows/win_susp_exec_at_exe.yml",
+          "sigma/windows/win_susp_exec_attrib_exe.yml",
+          "sigma/windows/win_susp_exec_bitsadmin_exe.yml",
+          "sigma/windows/win_susp_exec_calc_exe.yml",
+          "sigma/windows/win_susp_exec_certutil_exe.yml",
+          "sigma/windows/win_susp_exec_cipher_exe.yml",
+          "sigma/windows/win_susp_exec_cmd_exe.yml",
+          "sigma/windows/win_susp_exec_cmstp_exe.yml",
+          "sigma/windows/win_susp_exec_csc_exe.yml",
+          "sigma/windows/win_susp_exec_cscript_exe.yml",
+          "sigma/windows/win_susp_exec_fsutil_exe.yml",
+          "sigma/windows/win_susp_exec_hh_exe.yml",
+          "sigma/windows/win_susp_exec_installutil_exe.yml",
+          "sigma/windows/win_susp_exec_ipconfig_exe.yml",
+          "sigma/windows/win_susp_exec_jsc_exe.yml",
+          "sigma/windows/win_susp_exec_msbuild_exe.yml",
+          "sigma/windows/win_susp_exec_mshta_exe.yml",
+          "sigma/windows/win_susp_exec_mspaint_exe.yml",
+          "sigma/windows/win_susp_exec_net1_exe.yml",
+          "sigma/windows/win_susp_exec_net_exe.yml",
+          "sigma/windows/win_susp_exec_notepad_exe.yml",
+          "sigma/windows/win_susp_exec_powershell_exe.yml",
+          "sigma/windows/win_susp_exec_quser_exe.yml",
+          "sigma/windows/win_susp_exec_qwinsta_exe.yml",
+          "sigma/windows/win_susp_exec_regasm_exe.yml",
+          "sigma/windows/win_susp_exec_regsvcs_exe.yml",
+          "sigma/windows/win_susp_exec_regsvr32_exe.yml",
+          "sigma/windows/win_susp_exec_rundll32_exe.yml",
+          "sigma/windows/win_susp_exec_sc_exe.yml",
+          "sigma/windows/win_susp_exec_schtasks_exe.yml",
+          "sigma/windows/win_susp_exec_systeminfo_exe.yml",
+          "sigma/windows/win_susp_exec_taskkill_exe.yml",
+          "sigma/windows/win_susp_exec_tasklist_exe.yml",
+          "sigma/windows/win_susp_exec_vbc_exe.yml",
+          "sigma/windows/win_susp_exec_vssadmin_exe.yml",
+          "sigma/windows/win_susp_exec_wevtutil_exe.yml",
+          "sigma/windows/win_susp_exec_whoami_exe.yml",
+          "sigma/windows/win_susp_exec_wmic_exe.yml",
+          "sigma/windows/win_susp_exec_wscript_exe.yml"
+        ]
+      },
+      "tactic": "execution",
+      "technique_id": "T1059"
+    },
+    {
+      "coverage_count": 2,
+      "coverage_percent": 100.0,
+      "name": "PowerShell",
+      "platforms": [
+        "sigma",
+        "elastic"
+      ],
+      "rule_count": 6,
+      "rules": {
+        "elastic": [
+          "elastic/endpoint/general/Defense Evasion – Encoded PowerShell Command.ndjson",
+          "elastic/endpoint/general/Potential Exploitation of CrushFTP RCE Vulnerability (CVE-2025-54309).ndjson",
+          "elastic/endpoint/general/endpoint_rules.ndjson",
+          "elastic/endpoint/windows/win_suspicious_powershell_download.ndjson"
+        ],
+        "sigma": [
+          "sigma/windows/win_powershell_suspicious_download.yml",
+          "sigma/windows/win_powershell_suspicious_encoded_command.yml"
+        ]
+      },
+      "tactic": "execution",
+      "technique_id": "T1059.001"
+    },
+    {
+      "coverage_count": 2,
+      "coverage_percent": 100.0,
+      "name": "Unknown / Custom",
+      "platforms": [
+        "sigma",
+        "elastic"
+      ],
+      "rule_count": 2,
+      "rules": {
+        "elastic": [
+          "elastic/endpoint/macos/macos_osascript_abuse.ndjson"
+        ],
+        "sigma": [
+          "sigma/macos/macos_osascript_abuse.yml"
+        ]
+      },
+      "tactic": "uncategorized",
+      "technique_id": "T1059.002"
+    },
+    {
+      "coverage_count": 2,
+      "coverage_percent": 100.0,
+      "name": "Windows Command Shell",
+      "platforms": [
+        "sigma",
+        "elastic"
+      ],
+      "rule_count": 4,
+      "rules": {
+        "elastic": [
+          "elastic/endpoint/general/Potential Exploitation of CrushFTP RCE Vulnerability (CVE-2025-54309).ndjson",
+          "elastic/endpoint/general/Potential SAP NetWeaver Webshell Creation.ndjson",
+          "elastic/endpoint/general/Suspicious Child Process of SAP NetWeaver - Linux.ndjson"
+        ],
+        "sigma": [
+          "sigma/windows/win_suspicious_cmd_execution_with_chained_commands.yml"
+        ]
+      },
+      "tactic": "execution",
+      "technique_id": "T1059.003"
+    },
+    {
+      "coverage_count": 2,
+      "coverage_percent": 100.0,
+      "name": "Unix Shell",
+      "platforms": [
+        "sigma",
+        "elastic"
+      ],
+      "rule_count": 5,
+      "rules": {
+        "elastic": [
+          "elastic/endpoint/linux/lnx_suspicious_curl_wget.ndjson",
+          "elastic/endpoint/linux/lnx_suspicious_netcat.ndjson",
+          "elastic/endpoint/linux/lnx_suspicious_shell_meta.ndjson"
+        ],
+        "sigma": [
+          "sigma/cloud/kubernetes/k8s_kubectl_exec_anomaly.yml",
+          "sigma/linux/lnx_suspicious_curl_pipe_bash.yml"
+        ]
+      },
+      "tactic": "execution",
+      "technique_id": "T1059.004"
+    },
+    {
+      "coverage_count": 1,
+      "coverage_percent": 50.0,
+      "name": "Visual Basic",
+      "platforms": [
+        "sigma"
+      ],
+      "rule_count": 1,
+      "rules": {
+        "elastic": [],
+        "sigma": [
+          "sigma/windows/win_suspicious_vbscript_execution.yml"
+        ]
+      },
+      "tactic": "execution",
+      "technique_id": "T1059.005"
+    },
+    {
+      "coverage_count": 1,
+      "coverage_percent": 50.0,
+      "name": "Python",
+      "platforms": [
+        "sigma"
+      ],
+      "rule_count": 1,
+      "rules": {
+        "elastic": [],
+        "sigma": [
+          "sigma/windows/win_suspicious_python_execution.yml"
+        ]
+      },
+      "tactic": "execution",
+      "technique_id": "T1059.006"
+    },
+    {
+      "coverage_count": 1,
+      "coverage_percent": 50.0,
+      "name": "JavaScript",
+      "platforms": [
+        "sigma"
+      ],
+      "rule_count": 1,
+      "rules": {
+        "elastic": [],
+        "sigma": [
+          "sigma/windows/win_suspicious_wscript_js.yml"
+        ]
+      },
+      "tactic": "execution",
+      "technique_id": "T1059.007"
+    },
+    {
+      "coverage_count": 2,
+      "coverage_percent": 100.0,
+      "name": "Exploitation for Privilege Escalation",
+      "platforms": [
+        "sigma",
+        "elastic"
+      ],
+      "rule_count": 2,
+      "rules": {
+        "elastic": [
+          "elastic/endpoint/general/Potential Exploitation of CrushFTP RCE Vulnerability (CVE-2025-54309).ndjson"
+        ],
+        "sigma": [
+          "sigma/linux/lnx_suspicious_sudo_without_tty.yml"
+        ]
+      },
+      "tactic": "privilege-escalation",
+      "technique_id": "T1068"
+    },
+    {
+      "coverage_count": 1,
+      "coverage_percent": 50.0,
+      "name": "Indicator Removal",
+      "platforms": [
+        "elastic"
+      ],
+      "rule_count": 1,
+      "rules": {
+        "elastic": [
+          "elastic/endpoint/general/Defense-Evasion-Signed-Binary-Temp.ndjson"
+        ],
+        "sigma": []
+      },
+      "tactic": "defense-evasion",
+      "technique_id": "T1070"
+    },
+    {
+      "coverage_count": 2,
+      "coverage_percent": 100.0,
+      "name": "Clear Windows Event Logs",
+      "platforms": [
+        "sigma",
+        "elastic"
+      ],
+      "rule_count": 2,
+      "rules": {
+        "elastic": [
+          "elastic/endpoint/general/Defense Evasion – Event Log Cleared Wevtutil.ndjson"
+        ],
+        "sigma": [
+          "sigma/windows/win_security_log_cleared.yml"
+        ]
+      },
+      "tactic": "defense-evasion",
+      "technique_id": "T1070.001"
+    },
+    {
+      "coverage_count": 1,
+      "coverage_percent": 50.0,
+      "name": "Clear Command History",
+      "platforms": [
+        "sigma"
+      ],
+      "rule_count": 1,
+      "rules": {
+        "elastic": [],
+        "sigma": [
+          "sigma/linux/lnx_clear_command_history.yml"
+        ]
+      },
+      "tactic": "defense-evasion",
+      "technique_id": "T1070.003"
+    },
+    {
+      "coverage_count": 2,
+      "coverage_percent": 100.0,
+      "name": "Timestomp",
+      "platforms": [
+        "sigma",
+        "elastic"
+      ],
+      "rule_count": 2,
+      "rules": {
+        "elastic": [
+          "elastic/endpoint/general/Defense-Evasion-Timestomp-Suspect.ndjson"
+        ],
+        "sigma": [
+          "sigma/windows/win_timestomp_file_time_modification.yml"
+        ]
+      },
+      "tactic": "defense-evasion",
+      "technique_id": "T1070.006"
+    },
+    {
+      "coverage_count": 2,
+      "coverage_percent": 100.0,
+      "name": "Application Layer Protocol",
+      "platforms": [
+        "sigma",
+        "elastic"
+      ],
+      "rule_count": 3,
+      "rules": {
+        "elastic": [
+          "elastic/endpoint/general/IOCs (ip) to detect Curly COMrades A New Threat Actor Targeting Geopolitical Hotbeds.ndjson",
+          "elastic/network/network_rules.ndjson"
+        ],
+        "sigma": [
+          "sigma/network/net_dns_suspicious_tunnel.yml"
+        ]
+      },
+      "tactic": "command-and-control",
+      "technique_id": "T1071"
+    },
+    {
+      "coverage_count": 1,
+      "coverage_percent": 50.0,
+      "name": "Web Protocols",
+      "platforms": [
+        "sigma"
+      ],
+      "rule_count": 1,
+      "rules": {
+        "elastic": [],
+        "sigma": [
+          "sigma/network/win_suspicious_web_protocol_communication.yml"
+        ]
+      },
+      "tactic": "command-and-control",
+      "technique_id": "T1071.001"
+    },
+    {
+      "coverage_count": 1,
+      "coverage_percent": 50.0,
+      "name": "File Transfer Protocols",
+      "platforms": [
+        "sigma"
+      ],
+      "rule_count": 1,
+      "rules": {
+        "elastic": [],
+        "sigma": [
+          "sigma/network/win_ftp_connection_from_non_ftp_client.yml"
+        ]
+      },
+      "tactic": "command-and-control",
+      "technique_id": "T1071.002"
+    },
+    {
+      "coverage_count": 2,
+      "coverage_percent": 100.0,
+      "name": "DNS",
+      "platforms": [
+        "sigma",
+        "elastic"
+      ],
+      "rule_count": 4,
+      "rules": {
+        "elastic": [
+          "elastic/endpoint/network/net_dns_tunneling_entropy.ndjson",
+          "elastic/network/network_rules.ndjson"
+        ],
+        "sigma": [
+          "sigma/network/net_dns_suspicious_tunnel.yml",
+          "sigma/network/net_susp_dns_many_nxdomain.yml"
+        ]
+      },
+      "tactic": "command-and-control",
+      "technique_id": "T1071.004"
+    },
+    {
+      "coverage_count": 2,
+      "coverage_percent": 100.0,
+      "name": "Software Deployment Tools",
+      "platforms": [
+        "sigma",
+        "elastic"
+      ],
+      "rule_count": 2,
+      "rules": {
+        "elastic": [
+          "elastic/endpoint/general/Socket Filters.ndjson"
+        ],
+        "sigma": [
+          "sigma/windows/win_software_deployment_tool_execution.yml"
+        ]
+      },
+      "tactic": "execution",
+      "technique_id": "T1072"
+    },
+    {
+      "coverage_count": 1,
+      "coverage_percent": 50.0,
+      "name": "Valid Accounts",
+      "platforms": [
+        "sigma"
+      ],
+      "rule_count": 1,
+      "rules": {
+        "elastic": [],
+        "sigma": [
+          "sigma/windows/win_valid_account_login_at_unusual_time.yml"
+        ]
+      },
+      "tactic": "defense-evasion",
+      "technique_id": "T1078"
+    },
+    {
+      "coverage_count": 1,
+      "coverage_percent": 50.0,
+      "name": "Local Accounts",
+      "platforms": [
+        "sigma"
+      ],
+      "rule_count": 1,
+      "rules": {
+        "elastic": [],
+        "sigma": [
+          "sigma/windows/win_local_account_authentication.yml"
+        ]
+      },
+      "tactic": "defense-evasion",
+      "technique_id": "T1078.003"
+    },
+    {
+      "coverage_count": 2,
+      "coverage_percent": 100.0,
+      "name": "Cloud Accounts",
+      "platforms": [
+        "sigma",
+        "elastic"
+      ],
+      "rule_count": 3,
+      "rules": {
+        "elastic": [
+          "elastic/endpoint/general/Cloud Accounts.ndjson"
+        ],
+        "sigma": [
+          "sigma/cloud/cloud_aws_console_login_without_mfa.yml",
+          "sigma/cloud/cloud_azure_impossible_travel.yml"
+        ]
+      },
+      "tactic": "defense-evasion",
+      "technique_id": "T1078.004"
+    },
+    {
+      "coverage_count": 2,
+      "coverage_percent": 100.0,
+      "name": "System Information Discovery",
+      "platforms": [
+        "sigma",
+        "elastic"
+      ],
+      "rule_count": 2,
+      "rules": {
+        "elastic": [
+          "elastic/endpoint/general/System Information Discovery via Registry Queries.ndjson"
+        ],
+        "sigma": [
+          "sigma/windows/win_system_info_discovery.yml"
+        ]
+      },
+      "tactic": "discovery",
+      "technique_id": "T1082"
+    },
+    {
+      "coverage_count": 1,
+      "coverage_percent": 50.0,
+      "name": "Account Discovery",
+      "platforms": [
+        "sigma"
+      ],
+      "rule_count": 1,
+      "rules": {
+        "elastic": [],
+        "sigma": [
+          "sigma/windows/win_account_discovery_net.yml"
+        ]
+      },
+      "tactic": "discovery",
+      "technique_id": "T1087"
+    },
+    {
+      "coverage_count": 1,
+      "coverage_percent": 50.0,
+      "name": "Local Account Discovery",
+      "platforms": [
+        "sigma"
+      ],
+      "rule_count": 2,
+      "rules": {
+        "elastic": [],
+        "sigma": [
+          "sigma/windows/win_account_discovery_net.yml",
+          "sigma/windows/win_local_account_discovery.yml"
+        ]
+      },
+      "tactic": "discovery",
+      "technique_id": "T1087.001"
+    },
+    {
+      "coverage_count": 1,
+      "coverage_percent": 50.0,
+      "name": "Domain Account Discovery",
+      "platforms": [
+        "sigma"
+      ],
+      "rule_count": 2,
+      "rules": {
+        "elastic": [],
+        "sigma": [
+          "sigma/windows/win_account_discovery_net.yml",
+          "sigma/windows/win_domain_account_discovery.yml"
+        ]
+      },
+      "tactic": "discovery",
+      "technique_id": "T1087.002"
+    },
+    {
+      "coverage_count": 1,
+      "coverage_percent": 50.0,
+      "name": "Proxy",
+      "platforms": [
+        "sigma"
+      ],
+      "rule_count": 1,
+      "rules": {
+        "elastic": [],
+        "sigma": [
+          "sigma/windows/win_proxy_tool_execution.yml"
+        ]
+      },
+      "tactic": "command-and-control",
+      "technique_id": "T1090"
+    },
+    {
+      "coverage_count": 1,
+      "coverage_percent": 50.0,
+      "name": "Multi-hop Proxy",
+      "platforms": [
+        "sigma"
+      ],
+      "rule_count": 1,
+      "rules": {
+        "elastic": [],
+        "sigma": [
+          "sigma/windows/win_multi_hop_proxy_via_ssh_tunnel.yml"
+        ]
+      },
+      "tactic": "command-and-control",
+      "technique_id": "T1090.003"
+    },
+    {
+      "coverage_count": 1,
+      "coverage_percent": 50.0,
+      "name": "Non-Application Layer Protocol",
+      "platforms": [
+        "sigma"
+      ],
+      "rule_count": 1,
+      "rules": {
+        "elastic": [],
+        "sigma": [
+          "sigma/network/win_non_application_layer_protocol_communication.yml"
+        ]
+      },
+      "tactic": "command-and-control",
+      "technique_id": "T1095"
+    },
+    {
+      "coverage_count": 1,
+      "coverage_percent": 50.0,
+      "name": "Account Manipulation",
+      "platforms": [
+        "sigma"
+      ],
+      "rule_count": 4,
+      "rules": {
+        "elastic": [],
+        "sigma": [
+          "sigma/cloud/cloud_aws_create_access_key.yml",
+          "sigma/cloud/cloud_gcp_iam_suspicious_role_grant.yml",
+          "sigma/windows/win_local_admin_group_add.yml",
+          "sigma/windows/win_user_added_to_privileged_group.yml"
+        ]
+      },
+      "tactic": "persistence",
+      "technique_id": "T1098"
+    },
+    {
+      "coverage_count": 1,
+      "coverage_percent": 50.0,
+      "name": "Additional Cloud Credentials",
+      "platforms": [
+        "sigma"
+      ],
+      "rule_count": 2,
+      "rules": {
+        "elastic": [],
+        "sigma": [
+          "sigma/cloud/cloud_gcp_service_account_key_created.yml",
+          "sigma/cloud/identity/cloud_service_principal_credential_added.yml"
+        ]
+      },
+      "tactic": "persistence",
+      "technique_id": "T1098.001"
+    },
+    {
+      "coverage_count": 1,
+      "coverage_percent": 50.0,
+      "name": "Additional Cloud Roles",
+      "platforms": [
+        "sigma"
+      ],
+      "rule_count": 1,
+      "rules": {
+        "elastic": [],
+        "sigma": [
+          "sigma/cloud/cloud_cloud_admin_role_assigned.yml"
+        ]
+      },
+      "tactic": "persistence",
+      "technique_id": "T1098.003"
+    },
+    {
+      "coverage_count": 1,
+      "coverage_percent": 50.0,
+      "name": "SSH Authorized Keys",
+      "platforms": [
+        "sigma"
+      ],
+      "rule_count": 1,
+      "rules": {
+        "elastic": [],
+        "sigma": [
+          "sigma/linux/lnx_ssh_authorized_keys_modification.yml"
+        ]
+      },
+      "tactic": "persistence",
+      "technique_id": "T1098.004"
+    },
+    {
+      "coverage_count": 2,
+      "coverage_percent": 100.0,
+      "name": "Ingress Tool Transfer",
+      "platforms": [
+        "sigma",
+        "elastic"
+      ],
+      "rule_count": 7,
+      "rules": {
+        "elastic": [
+          "elastic/endpoint/general/IOCs (ip) to detect Curly COMrades A New Threat Actor Targeting Geopolitical Hotbeds.ndjson",
+          "elastic/endpoint/general/Remote Access Tool - TacticalRMM Agent Registration to Potentially Attacker-Controlled Server.ndjson",
+          "elastic/endpoint/linux/lnx_suspicious_curl_wget.ndjson",
+          "elastic/endpoint/windows/win_suspicious_certutil_download.ndjson",
+          "elastic/endpoint/windows/win_suspicious_powershell_download.ndjson"
+        ],
+        "sigma": [
+          "sigma/linux/lnx_suspicious_wget_curl_to_tmp.yml",
+          "sigma/windows/win_suspicious_certutil_download.yml"
+        ]
+      },
+      "tactic": "command-and-control",
+      "technique_id": "T1105"
+    },
+    {
+      "coverage_count": 1,
+      "coverage_percent": 50.0,
+      "name": "Brute Force",
+      "platforms": [
+        "sigma"
+      ],
+      "rule_count": 1,
+      "rules": {
+        "elastic": [],
+        "sigma": [
+          "sigma/windows/win_multiple_failed_login_attempts.yml"
+        ]
+      },
+      "tactic": "credential-access",
+      "technique_id": "T1110"
+    },
+    {
+      "coverage_count": 1,
+      "coverage_percent": 50.0,
+      "name": "Password Guessing",
+      "platforms": [
+        "sigma"
+      ],
+      "rule_count": 2,
+      "rules": {
+        "elastic": [],
+        "sigma": [
+          "sigma/correlations/brute_force_then_success.yml",
+          "sigma/windows/win_brute_force_failed_login.yml"
+        ]
+      },
+      "tactic": "credential-access",
+      "technique_id": "T1110.001"
+    },
+    {
+      "coverage_count": 2,
+      "coverage_percent": 100.0,
+      "name": "Modify Registry",
+      "platforms": [
+        "sigma",
+        "elastic"
+      ],
+      "rule_count": 4,
+      "rules": {
+        "elastic": [
+          "elastic/endpoint/general/Registry Manipulation via WMI Stdregprov.ndjson",
+          "elastic/endpoint/macos/macos_defaults_security_tampering.ndjson"
+        ],
+        "sigma": [
+          "sigma/macos/macos_defaults_security_tampering.yml",
+          "sigma/windows/win_suspicious_registry_modification.yml"
+        ]
+      },
+      "tactic": "defense-evasion",
+      "technique_id": "T1112"
+    },
+    {
+      "coverage_count": 1,
+      "coverage_percent": 50.0,
+      "name": "System Time Discovery",
+      "platforms": [
+        "sigma"
+      ],
+      "rule_count": 1,
+      "rules": {
+        "elastic": [],
+        "sigma": [
+          "sigma/windows/win_system_time_discovery.yml"
+        ]
+      },
+      "tactic": "discovery",
+      "technique_id": "T1124"
+    },
+    {
+      "coverage_count": 1,
+      "coverage_percent": 50.0,
+      "name": "MSBuild",
+      "platforms": [
+        "sigma"
+      ],
+      "rule_count": 1,
+      "rules": {
+        "elastic": [],
+        "sigma": [
+          "sigma/windows/win_msbuild_suspicious_execution.yml"
+        ]
+      },
+      "tactic": "defense-evasion",
+      "technique_id": "T1127.001"
+    },
+    {
+      "coverage_count": 1,
+      "coverage_percent": 50.0,
+      "name": "External Remote Services",
+      "platforms": [
+        "sigma"
+      ],
+      "rule_count": 1,
+      "rules": {
+        "elastic": [],
+        "sigma": [
+          "sigma/network/net_external_remote_services_anomalous.yml"
+        ]
+      },
+      "tactic": "initial-access",
+      "technique_id": "T1133"
+    },
+    {
+      "coverage_count": 1,
+      "coverage_percent": 50.0,
+      "name": "Local Account",
+      "platforms": [
+        "sigma"
+      ],
+      "rule_count": 1,
+      "rules": {
+        "elastic": [],
+        "sigma": [
+          "sigma/linux/lnx_new_user_added.yml"
+        ]
+      },
+      "tactic": "persistence",
+      "technique_id": "T1136.001"
+    },
+    {
+      "coverage_count": 1,
+      "coverage_percent": 50.0,
+      "name": "Domain Account",
+      "platforms": [
+        "sigma"
+      ],
+      "rule_count": 1,
+      "rules": {
+        "elastic": [],
+        "sigma": [
+          "sigma/windows/win_domain_account_creation.yml"
+        ]
+      },
+      "tactic": "persistence",
+      "technique_id": "T1136.002"
+    },
+    {
+      "coverage_count": 1,
+      "coverage_percent": 50.0,
+      "name": "Cloud Account",
+      "platforms": [
+        "sigma"
+      ],
+      "rule_count": 1,
+      "rules": {
+        "elastic": [],
+        "sigma": [
+          "sigma/cloud/cloud_github_org_member_added_external.yml"
+        ]
+      },
+      "tactic": "persistence",
+      "technique_id": "T1136.003"
+    },
+    {
+      "coverage_count": 1,
+      "coverage_percent": 50.0,
+      "name": "Deobfuscate/Decode Files or Information",
+      "platforms": [
+        "sigma"
+      ],
+      "rule_count": 1,
+      "rules": {
+        "elastic": [],
+        "sigma": [
+          "sigma/windows/win_file_decode_deobfuscation_via_certutil_or_powershell.yml"
+        ]
+      },
+      "tactic": "defense-evasion",
+      "technique_id": "T1140"
+    },
+    {
+      "coverage_count": 2,
+      "coverage_percent": 100.0,
+      "name": "Exploit Public-Facing Application",
+      "platforms": [
+        "sigma",
+        "elastic"
+      ],
+      "rule_count": 4,
+      "rules": {
+        "elastic": [
+          "elastic/endpoint/general/Potential Exploitation of CrushFTP RCE Vulnerability (CVE-2025-54309).ndjson",
+          "elastic/endpoint/general/Potential SAP NetWeaver Webshell Creation.ndjson",
+          "elastic/endpoint/general/Suspicious Child Process of SAP NetWeaver - Linux.ndjson"
+        ],
+        "sigma": [
+          "sigma/linux/lnx_web_application_exploit_indicators_in_logs.yml"
+        ]
+      },
+      "tactic": "initial-access",
+      "technique_id": "T1190"
+    },
+    {
+      "coverage_count": 2,
+      "coverage_percent": 100.0,
+      "name": "BITS Jobs",
+      "platforms": [
+        "sigma",
+        "elastic"
+      ],
+      "rule_count": 2,
+      "rules": {
+        "elastic": [
+          "elastic/endpoint/windows/win_suspicious_bitsadmin.ndjson"
+        ],
+        "sigma": [
+          "sigma/windows/win_bits_job_creation_for_download.yml"
+        ]
+      },
+      "tactic": "defense-evasion",
+      "technique_id": "T1197"
+    },
+    {
+      "coverage_count": 1,
+      "coverage_percent": 50.0,
+      "name": "Traffic Signaling",
+      "platforms": [
+        "sigma"
+      ],
+      "rule_count": 1,
+      "rules": {
+        "elastic": [],
+        "sigma": [
+          "sigma/network/lnx_traffic_signaling___port_knocking.yml"
+        ]
+      },
+      "tactic": "command-and-control",
+      "technique_id": "T1205"
+    },
+    {
+      "coverage_count": 2,
+      "coverage_percent": 100.0,
+      "name": "Socket Filters",
+      "platforms": [
+        "sigma",
+        "elastic"
+      ],
+      "rule_count": 2,
+      "rules": {
+        "elastic": [
+          "elastic/endpoint/general/Port Knocking.ndjson"
+        ],
+        "sigma": [
+          "sigma/linux/lnx_socket_filter___bpf_program_load.yml"
+        ]
+      },
+      "tactic": "defense-evasion",
+      "technique_id": "T1205.002"
+    },
+    {
+      "coverage_count": 1,
+      "coverage_percent": 50.0,
+      "name": "InstallUtil",
+      "platforms": [
+        "sigma"
+      ],
+      "rule_count": 1,
+      "rules": {
+        "elastic": [],
+        "sigma": [
+          "sigma/windows/win_installutil_suspicious.yml"
+        ]
+      },
+      "tactic": "defense-evasion",
+      "technique_id": "T1218.004"
+    },
+    {
+      "coverage_count": 1,
+      "coverage_percent": 50.0,
+      "name": "Mshta",
+      "platforms": [
+        "sigma"
+      ],
+      "rule_count": 1,
+      "rules": {
+        "elastic": [],
+        "sigma": [
+          "sigma/windows/win_suspicious_mshta_execution.yml"
+        ]
+      },
+      "tactic": "defense-evasion",
+      "technique_id": "T1218.005"
+    },
+    {
+      "coverage_count": 1,
+      "coverage_percent": 50.0,
+      "name": "Regsvr32",
+      "platforms": [
+        "sigma"
+      ],
+      "rule_count": 1,
+      "rules": {
+        "elastic": [],
+        "sigma": [
+          "sigma/windows/win_regsvr32_suspicious_network_or_script_load.yml"
+        ]
+      },
+      "tactic": "defense-evasion",
+      "technique_id": "T1218.010"
+    },
+    {
+      "coverage_count": 1,
+      "coverage_percent": 50.0,
+      "name": "Rundll32",
+      "platforms": [
+        "sigma"
+      ],
+      "rule_count": 1,
+      "rules": {
+        "elastic": [],
+        "sigma": [
+          "sigma/windows/win_rundll32_suspicious_execution_pattern.yml"
+        ]
+      },
+      "tactic": "defense-evasion",
+      "technique_id": "T1218.011"
+    },
+    {
+      "coverage_count": 2,
+      "coverage_percent": 100.0,
+      "name": "Remote Access Software",
+      "platforms": [
+        "sigma",
+        "elastic"
+      ],
+      "rule_count": 3,
+      "rules": {
+        "elastic": [
+          "elastic/endpoint/general/Remote Access Tool - TacticalRMM Agent Registration to Potentially Attacker-Controlled Server.ndjson",
+          "elastic/endpoint/general/Suspicious Velociraptor Child Process.ndjson"
+        ],
+        "sigma": [
+          "sigma/windows/win_remote_access_tool_execution.yml"
+        ]
+      },
+      "tactic": "command-and-control",
+      "technique_id": "T1219"
+    },
+    {
+      "coverage_count": 1,
+      "coverage_percent": 50.0,
+      "name": "Group Policy Modification",
+      "platforms": [
+        "sigma"
+      ],
+      "rule_count": 1,
+      "rules": {
+        "elastic": [],
+        "sigma": [
+          "sigma/windows/win_group_policy_modification.yml"
+        ]
+      },
+      "tactic": "privilege-escalation",
+      "technique_id": "T1484.001"
+    },
+    {
+      "coverage_count": 2,
+      "coverage_percent": 100.0,
+      "name": "Data Encrypted for Impact",
+      "platforms": [
+        "sigma",
+        "elastic"
+      ],
+      "rule_count": 2,
+      "rules": {
+        "elastic": [
+          "elastic/endpoint/general/FunkLocker Ransomware File Creation.ndjson"
+        ],
+        "sigma": [
+          "sigma/windows/win_ransomware_mass_file_rename.yml"
+        ]
+      },
+      "tactic": "impact",
+      "technique_id": "T1486"
+    },
+    {
+      "coverage_count": 1,
+      "coverage_percent": 50.0,
+      "name": "Service Stop",
+      "platforms": [
+        "sigma"
+      ],
+      "rule_count": 1,
+      "rules": {
+        "elastic": [],
+        "sigma": [
+          "sigma/windows/win_service_stop___critical_services.yml"
+        ]
+      },
+      "tactic": "impact",
+      "technique_id": "T1489"
+    },
+    {
+      "coverage_count": 2,
+      "coverage_percent": 100.0,
+      "name": "Inhibit System Recovery",
+      "platforms": [
+        "sigma",
+        "elastic"
+      ],
+      "rule_count": 3,
+      "rules": {
+        "elastic": [
+          "elastic/endpoint/general/Windows Recovery Environment Disabled Via Reagentc.ndjson",
+          "elastic/endpoint/windows/win_ransomware_shadow_copy.ndjson"
+        ],
+        "sigma": [
+          "sigma/windows/win_shadow_copies_deletion.yml"
+        ]
+      },
+      "tactic": "impact",
+      "technique_id": "T1490"
+    },
+    {
+      "coverage_count": 2,
+      "coverage_percent": 100.0,
+      "name": "Virtualization/Sandbox Evasion",
+      "platforms": [
+        "sigma",
+        "elastic"
+      ],
+      "rule_count": 2,
+      "rules": {
+        "elastic": [
+          "elastic/endpoint/general/Software Deployment Tools.ndjson"
+        ],
+        "sigma": [
+          "sigma/windows/win_sandbox_evasion_check.yml"
+        ]
+      },
+      "tactic": "defense-evasion",
+      "technique_id": "T1497"
+    },
+    {
+      "coverage_count": 2,
+      "coverage_percent": 100.0,
+      "name": "System Checks",
+      "platforms": [
+        "sigma",
+        "elastic"
+      ],
+      "rule_count": 2,
+      "rules": {
+        "elastic": [
+          "elastic/endpoint/general/Virtualization Sandbox Evasion.ndjson"
+        ],
+        "sigma": [
+          "sigma/windows/win_sandbox_evasion_system_checks.yml"
+        ]
+      },
+      "tactic": "defense-evasion",
+      "technique_id": "T1497.001"
+    },
+    {
+      "coverage_count": 2,
+      "coverage_percent": 100.0,
+      "name": "User Activity Based Checks",
+      "platforms": [
+        "sigma",
+        "elastic"
+      ],
+      "rule_count": 2,
+      "rules": {
+        "elastic": [
+          "elastic/endpoint/general/System Checks.ndjson"
+        ],
+        "sigma": [
+          "sigma/windows/win_sandbox_evasion_user_activity.yml"
+        ]
+      },
+      "tactic": "defense-evasion",
+      "technique_id": "T1497.002"
+    },
+    {
+      "coverage_count": 2,
+      "coverage_percent": 100.0,
+      "name": "Time Based Evasion",
+      "platforms": [
+        "sigma",
+        "elastic"
+      ],
+      "rule_count": 2,
+      "rules": {
+        "elastic": [
+          "elastic/endpoint/general/User Activity Based Checks.ndjson"
+        ],
+        "sigma": [
+          "sigma/windows/win_sandbox_evasion_time_based.yml"
+        ]
+      },
+      "tactic": "defense-evasion",
+      "technique_id": "T1497.003"
+    },
+    {
+      "coverage_count": 1,
+      "coverage_percent": 50.0,
+      "name": "Endpoint Denial of Service",
+      "platforms": [
+        "sigma"
+      ],
+      "rule_count": 1,
+      "rules": {
+        "elastic": [],
+        "sigma": [
+          "sigma/windows/win_denial_of_service_indicators.yml"
+        ]
+      },
+      "tactic": "impact",
+      "technique_id": "T1499"
+    },
+    {
+      "coverage_count": 2,
+      "coverage_percent": 100.0,
+      "name": "Web Shell",
+      "platforms": [
+        "sigma",
+        "elastic"
+      ],
+      "rule_count": 2,
+      "rules": {
+        "elastic": [
+          "elastic/endpoint/general/Potential SAP NetWeaver Webshell Creation.ndjson"
+        ],
+        "sigma": [
+          "sigma/windows/win_web_shell_file_creation.yml"
+        ]
+      },
+      "tactic": "persistence",
+      "technique_id": "T1505.003"
+    },
+    {
+      "coverage_count": 1,
+      "coverage_percent": 50.0,
+      "name": "Unknown / Custom",
+      "platforms": [
+        "sigma"
+      ],
+      "rule_count": 2,
+      "rules": {
+        "elastic": [],
+        "sigma": [
+          "sigma/cloud/identity/cloud_azure_illicit_consent_grant.yml",
+          "sigma/cloud/kubernetes/k8s_service_account_token_exfiltration.yml"
+        ]
+      },
+      "tactic": "uncategorized",
+      "technique_id": "T1528"
+    },
+    {
+      "coverage_count": 1,
+      "coverage_percent": 50.0,
+      "name": "Data from Cloud Storage",
+      "platforms": [
+        "sigma"
+      ],
+      "rule_count": 1,
+      "rules": {
+        "elastic": [],
+        "sigma": [
+          "sigma/cloud/win_access_to_cloud_storage_buckets_via_cli.yml"
+        ]
+      },
+      "tactic": "collection",
+      "technique_id": "T1530"
+    },
+    {
+      "coverage_count": 1,
+      "coverage_percent": 50.0,
+      "name": "Account Access Removal",
+      "platforms": [
+        "sigma"
+      ],
+      "rule_count": 1,
+      "rules": {
+        "elastic": [],
+        "sigma": [
+          "sigma/windows/win_account_deletion_or_disable.yml"
+        ]
+      },
+      "tactic": "impact",
+      "technique_id": "T1531"
+    },
+    {
+      "coverage_count": 2,
+      "coverage_percent": 100.0,
+      "name": "Create or Modify System Process",
+      "platforms": [
+        "sigma",
+        "elastic"
+      ],
+      "rule_count": 4,
+      "rules": {
+        "elastic": [
+          "elastic/endpoint/macos/macos_launch_agent_creation.ndjson",
+          "elastic/endpoint/macos/macos_launch_daemon_creation.ndjson",
+          "elastic/endpoint/macos/macos_xpc_service_abuse.ndjson"
+        ],
+        "sigma": [
+          "sigma/windows/win_new_system_service_created.yml"
+        ]
+      },
+      "tactic": "persistence",
+      "technique_id": "T1543"
+    },
+    {
+      "coverage_count": 2,
+      "coverage_percent": 100.0,
+      "name": "Unknown / Custom",
+      "platforms": [
+        "sigma",
+        "elastic"
+      ],
+      "rule_count": 4,
+      "rules": {
+        "elastic": [
+          "elastic/endpoint/macos/macos_launch_agent_creation.ndjson",
+          "elastic/endpoint/macos/macos_xpc_service_abuse.ndjson"
+        ],
+        "sigma": [
+          "sigma/macos/macos_launch_agent_creation.yml",
+          "sigma/macos/macos_xpc_service_abuse.yml"
+        ]
+      },
+      "tactic": "uncategorized",
+      "technique_id": "T1543.001"
+    },
+    {
+      "coverage_count": 1,
+      "coverage_percent": 50.0,
+      "name": "Windows Service",
+      "platforms": [
+        "sigma"
+      ],
+      "rule_count": 1,
+      "rules": {
+        "elastic": [],
+        "sigma": [
+          "sigma/windows/win_windows_service_with_suspicious_binary_path.yml"
+        ]
+      },
+      "tactic": "persistence",
+      "technique_id": "T1543.003"
+    },
+    {
+      "coverage_count": 2,
+      "coverage_percent": 100.0,
+      "name": "Unknown / Custom",
+      "platforms": [
+        "sigma",
+        "elastic"
+      ],
+      "rule_count": 2,
+      "rules": {
+        "elastic": [
+          "elastic/endpoint/macos/macos_launch_daemon_creation.ndjson"
+        ],
+        "sigma": [
+          "sigma/macos/macos_launch_daemon_creation.yml"
+        ]
+      },
+      "tactic": "uncategorized",
+      "technique_id": "T1543.004"
+    },
+    {
+      "coverage_count": 1,
+      "coverage_percent": 50.0,
+      "name": "Registry Run Keys / Startup Folder",
+      "platforms": [
+        "sigma"
+      ],
+      "rule_count": 1,
+      "rules": {
+        "elastic": [],
+        "sigma": [
+          "sigma/windows/win_registry_run_key_modification_via_command_line.yml"
+        ]
+      },
+      "tactic": "persistence",
+      "technique_id": "T1547.001"
+    },
+    {
+      "coverage_count": 1,
+      "coverage_percent": 50.0,
+      "name": "Security Support Provider",
+      "platforms": [
+        "sigma"
+      ],
+      "rule_count": 1,
+      "rules": {
+        "elastic": [],
+        "sigma": [
+          "sigma/windows/win_security_support_provider_dll_registration.yml"
+        ]
+      },
+      "tactic": "persistence",
+      "technique_id": "T1547.005"
+    },
+    {
+      "coverage_count": 1,
+      "coverage_percent": 50.0,
+      "name": "Kernel Modules and Extensions",
+      "platforms": [
+        "sigma"
+      ],
+      "rule_count": 1,
+      "rules": {
+        "elastic": [],
+        "sigma": [
+          "sigma/linux/lnx_suspicious_kernel_module_load.yml"
+        ]
+      },
+      "tactic": "persistence",
+      "technique_id": "T1547.006"
+    },
+    {
+      "coverage_count": 2,
+      "coverage_percent": 100.0,
+      "name": "Bypass User Account Control",
+      "platforms": [
+        "sigma",
+        "elastic"
+      ],
+      "rule_count": 2,
+      "rules": {
+        "elastic": [
+          "elastic/endpoint/windows/win_uac_bypass_fodhelper.ndjson"
+        ],
+        "sigma": [
+          "sigma/windows/win_uac_bypass_via_fodhelper_or_eventviewer.yml"
+        ]
+      },
+      "tactic": "privilege-escalation",
+      "technique_id": "T1548.002"
+    },
+    {
+      "coverage_count": 1,
+      "coverage_percent": 50.0,
+      "name": "Sudo and Sudo Caching",
+      "platforms": [
+        "sigma"
+      ],
+      "rule_count": 1,
+      "rules": {
+        "elastic": [],
+        "sigma": [
+          "sigma/linux/lnx_sudoers_modification.yml"
+        ]
+      },
+      "tactic": "privilege-escalation",
+      "technique_id": "T1548.003"
+    },
+    {
+      "coverage_count": 1,
+      "coverage_percent": 50.0,
+      "name": "Unknown / Custom",
+      "platforms": [
+        "sigma"
+      ],
+      "rule_count": 2,
+      "rules": {
+        "elastic": [],
+        "sigma": [
+          "sigma/cloud/identity/cloud_api_token_abuse.yml",
+          "sigma/cloud/identity/cloud_google_workspace_oauth_abuse.yml"
+        ]
+      },
+      "tactic": "uncategorized",
+      "technique_id": "T1550.001"
+    },
+    {
+      "coverage_count": 1,
+      "coverage_percent": 50.0,
+      "name": "Unknown / Custom",
+      "platforms": [
+        "sigma"
+      ],
+      "rule_count": 1,
+      "rules": {
+        "elastic": [],
+        "sigma": [
+          "sigma/cloud/identity/cloud_okta_session_hijacking.yml"
+        ]
+      },
+      "tactic": "uncategorized",
+      "technique_id": "T1550.004"
+    },
+    {
+      "coverage_count": 1,
+      "coverage_percent": 50.0,
+      "name": "Unsecured Credentials",
+      "platforms": [
+        "sigma"
+      ],
+      "rule_count": 1,
+      "rules": {
+        "elastic": [],
+        "sigma": [
+          "sigma/windows/win_search_for_credentials_in_files.yml"
+        ]
+      },
+      "tactic": "credential-access",
+      "technique_id": "T1552"
+    },
+    {
+      "coverage_count": 2,
+      "coverage_percent": 100.0,
+      "name": "Credentials In Files",
+      "platforms": [
+        "sigma",
+        "elastic"
+      ],
+      "rule_count": 2,
+      "rules": {
+        "elastic": [
+          "elastic/endpoint/general/Potential PowerShell Console History Access Attempt via History File.ndjson"
+        ],
+        "sigma": [
+          "sigma/windows/win_credentials_in_files___config_file_access.yml"
+        ]
+      },
+      "tactic": "credential-access",
+      "technique_id": "T1552.001"
+    },
+    {
+      "coverage_count": 1,
+      "coverage_percent": 50.0,
+      "name": "Unknown / Custom",
+      "platforms": [
+        "elastic"
+      ],
+      "rule_count": 1,
+      "rules": {
+        "elastic": [
+          "elastic/endpoint/macos/macos_gatekeeper_bypass.ndjson"
+        ],
+        "sigma": []
+      },
+      "tactic": "uncategorized",
+      "technique_id": "T1553"
+    },
+    {
+      "coverage_count": 2,
+      "coverage_percent": 100.0,
+      "name": "Unknown / Custom",
+      "platforms": [
+        "sigma",
+        "elastic"
+      ],
+      "rule_count": 2,
+      "rules": {
+        "elastic": [
+          "elastic/endpoint/macos/macos_gatekeeper_bypass.ndjson"
+        ],
+        "sigma": [
+          "sigma/macos/macos_gatekeeper_bypass.yml"
+        ]
+      },
+      "tactic": "uncategorized",
+      "technique_id": "T1553.001"
+    },
+    {
+      "coverage_count": 1,
+      "coverage_percent": 50.0,
+      "name": "Unknown / Custom",
+      "platforms": [
+        "elastic"
+      ],
+      "rule_count": 1,
+      "rules": {
+        "elastic": [
+          "elastic/endpoint/macos/macos_keychain_credential_access.ndjson"
+        ],
+        "sigma": []
+      },
+      "tactic": "uncategorized",
+      "technique_id": "T1555"
+    },
+    {
+      "coverage_count": 2,
+      "coverage_percent": 100.0,
+      "name": "Unknown / Custom",
+      "platforms": [
+        "sigma",
+        "elastic"
+      ],
+      "rule_count": 2,
+      "rules": {
+        "elastic": [
+          "elastic/endpoint/macos/macos_keychain_credential_access.ndjson"
+        ],
+        "sigma": [
+          "sigma/macos/macos_keychain_credential_access.yml"
+        ]
+      },
+      "tactic": "uncategorized",
+      "technique_id": "T1555.001"
+    },
+    {
+      "coverage_count": 1,
+      "coverage_percent": 50.0,
+      "name": "Modify Authentication Process",
+      "platforms": [
+        "sigma"
+      ],
+      "rule_count": 1,
+      "rules": {
+        "elastic": [],
+        "sigma": [
+          "sigma/linux/lnx_authentication_process_modification.yml"
+        ]
+      },
+      "tactic": "credential-access",
+      "technique_id": "T1556"
+    },
+    {
+      "coverage_count": 1,
+      "coverage_percent": 50.0,
+      "name": "Multi-Factor Authentication",
+      "platforms": [
+        "sigma"
+      ],
+      "rule_count": 2,
+      "rules": {
+        "elastic": [],
+        "sigma": [
+          "sigma/cloud/identity/cloud_conditional_access_bypass.yml",
+          "sigma/cloud/win_mfa_configuration_disabled_or_modified.yml"
+        ]
+      },
+      "tactic": "credential-access",
+      "technique_id": "T1556.006"
+    },
+    {
+      "coverage_count": 1,
+      "coverage_percent": 50.0,
+      "name": "Archive via Utility",
+      "platforms": [
+        "sigma"
+      ],
+      "rule_count": 1,
+      "rules": {
+        "elastic": [],
+        "sigma": [
+          "sigma/windows/win_archive_sensitive_data.yml"
+        ]
+      },
+      "tactic": "collection",
+      "technique_id": "T1560.001"
+    },
+    {
+      "coverage_count": 1,
+      "coverage_percent": 50.0,
+      "name": "Impair Defenses",
+      "platforms": [
+        "elastic"
+      ],
+      "rule_count": 1,
+      "rules": {
+        "elastic": [
+          "elastic/endpoint/macos/macos_tcc_database_modification.ndjson"
+        ],
+        "sigma": []
+      },
+      "tactic": "defense-evasion",
+      "technique_id": "T1562"
+    },
+    {
+      "coverage_count": 2,
+      "coverage_percent": 100.0,
+      "name": "Disable or Modify Tools",
+      "platforms": [
+        "sigma",
+        "elastic"
+      ],
+      "rule_count": 5,
+      "rules": {
+        "elastic": [
+          "elastic/endpoint/macos/macos_tcc_database_modification.ndjson",
+          "elastic/endpoint/windows/win_reg_disable_defender.ndjson"
+        ],
+        "sigma": [
+          "sigma/cloud/kubernetes/k8s_admission_webhook_tampering.yml",
+          "sigma/macos/macos_tcc_database_modification.yml",
+          "sigma/windows/win_security_tool_disabled_or_killed.yml"
+        ]
+      },
+      "tactic": "defense-evasion",
+      "technique_id": "T1562.001"
+    },
+    {
+      "coverage_count": 1,
+      "coverage_percent": 50.0,
+      "name": "Disable Windows Event Logging",
+      "platforms": [
+        "sigma"
+      ],
+      "rule_count": 1,
+      "rules": {
+        "elastic": [],
+        "sigma": [
+          "sigma/windows/win_disable_event_logging.yml"
+        ]
+      },
+      "tactic": "defense-evasion",
+      "technique_id": "T1562.002"
+    },
+    {
+      "coverage_count": 1,
+      "coverage_percent": 50.0,
+      "name": "Disable or Modify System Firewall",
+      "platforms": [
+        "sigma"
+      ],
+      "rule_count": 1,
+      "rules": {
+        "elastic": [],
+        "sigma": [
+          "sigma/windows/win_firewall_rule_disabled_or_modified.yml"
+        ]
+      },
+      "tactic": "defense-evasion",
+      "technique_id": "T1562.004"
+    },
+    {
+      "coverage_count": 1,
+      "coverage_percent": 50.0,
+      "name": "Disable or Modify Cloud Logs",
+      "platforms": [
+        "sigma"
+      ],
+      "rule_count": 2,
+      "rules": {
+        "elastic": [],
+        "sigma": [
+          "sigma/cloud/cloud_aws_suspicious_disable_cloudtrail.yml",
+          "sigma/cloud/cloud_disable_or_modify_cloud_logs.yml"
+        ]
+      },
+      "tactic": "defense-evasion",
+      "technique_id": "T1562.008"
+    },
+    {
+      "coverage_count": 1,
+      "coverage_percent": 50.0,
+      "name": "Hidden Files and Directories",
+      "platforms": [
+        "sigma"
+      ],
+      "rule_count": 1,
+      "rules": {
+        "elastic": [],
+        "sigma": [
+          "sigma/windows/win_hidden_file_or_directory_creation.yml"
+        ]
+      },
+      "tactic": "defense-evasion",
+      "technique_id": "T1564.001"
+    },
+    {
+      "coverage_count": 1,
+      "coverage_percent": 50.0,
+      "name": "Data Manipulation",
+      "platforms": [
+        "sigma"
+      ],
+      "rule_count": 1,
+      "rules": {
+        "elastic": [],
+        "sigma": [
+          "sigma/windows/win_data_manipulation.yml"
+        ]
+      },
+      "tactic": "impact",
+      "technique_id": "T1565"
+    },
+    {
+      "coverage_count": 1,
+      "coverage_percent": 50.0,
+      "name": "Stored Data Manipulation",
+      "platforms": [
+        "sigma"
+      ],
+      "rule_count": 1,
+      "rules": {
+        "elastic": [],
+        "sigma": [
+          "sigma/windows/win_hosts_file_modification.yml"
+        ]
+      },
+      "tactic": "impact",
+      "technique_id": "T1565.001"
+    },
+    {
+      "coverage_count": 1,
+      "coverage_percent": 50.0,
+      "name": "Phishing",
+      "platforms": [
+        "elastic"
+      ],
+      "rule_count": 1,
+      "rules": {
+        "elastic": [
+          "elastic/endpoint/general/IOCs (ip) to detect UNC3944 Targets SaaS Applications.ndjson"
+        ],
+        "sigma": []
+      },
+      "tactic": "initial-access",
+      "technique_id": "T1566"
+    },
+    {
+      "coverage_count": 1,
+      "coverage_percent": 50.0,
+      "name": "Spearphishing Attachment",
+      "platforms": [
+        "sigma"
+      ],
+      "rule_count": 2,
+      "rules": {
+        "elastic": [],
+        "sigma": [
+          "sigma/windows/win_office_macro_spawn_process.yml",
+          "sigma/windows/win_spearphishing_attachment.yml"
+        ]
+      },
+      "tactic": "initial-access",
+      "technique_id": "T1566.001"
+    },
+    {
+      "coverage_count": 1,
+      "coverage_percent": 50.0,
+      "name": "Spearphishing Link",
+      "platforms": [
+        "sigma"
+      ],
+      "rule_count": 2,
+      "rules": {
+        "elastic": [],
+        "sigma": [
+          "sigma/network/net_proxy_newly_registered_domain.yml",
+          "sigma/windows/win_spearphishing_link.yml"
+        ]
+      },
+      "tactic": "initial-access",
+      "technique_id": "T1566.002"
+    },
+    {
+      "coverage_count": 1,
+      "coverage_percent": 50.0,
+      "name": "Exfiltration Over Web Service",
+      "platforms": [
+        "elastic"
+      ],
+      "rule_count": 1,
+      "rules": {
+        "elastic": [
+          "elastic/endpoint/general/IOCs (ip) to detect Curly COMrades A New Threat Actor Targeting Geopolitical Hotbeds.ndjson"
+        ],
+        "sigma": []
+      },
+      "tactic": "exfiltration",
+      "technique_id": "T1567"
+    },
+    {
+      "coverage_count": 1,
+      "coverage_percent": 50.0,
+      "name": "Exfiltration to Cloud Storage",
+      "platforms": [
+        "sigma"
+      ],
+      "rule_count": 1,
+      "rules": {
+        "elastic": [],
+        "sigma": [
+          "sigma/windows/win_exfil_cloud_storage_tool.yml"
+        ]
+      },
+      "tactic": "exfiltration",
+      "technique_id": "T1567.002"
+    },
+    {
+      "coverage_count": 1,
+      "coverage_percent": 50.0,
+      "name": "System Services",
+      "platforms": [
+        "sigma"
+      ],
+      "rule_count": 1,
+      "rules": {
+        "elastic": [],
+        "sigma": [
+          "sigma/windows/win_system_services_execution.yml"
+        ]
+      },
+      "tactic": "execution",
+      "technique_id": "T1569"
+    },
+    {
+      "coverage_count": 1,
+      "coverage_percent": 50.0,
+      "name": "Service Execution",
+      "platforms": [
+        "sigma"
+      ],
+      "rule_count": 1,
+      "rules": {
+        "elastic": [],
+        "sigma": [
+          "sigma/windows/win_service_execution_suspicious.yml"
+        ]
+      },
+      "tactic": "execution",
+      "technique_id": "T1569.002"
+    },
+    {
+      "coverage_count": 1,
+      "coverage_percent": 50.0,
+      "name": "Non-Standard Port",
+      "platforms": [
+        "sigma"
+      ],
+      "rule_count": 1,
+      "rules": {
+        "elastic": [],
+        "sigma": [
+          "sigma/network/win_connection_to_non_standard_port.yml"
+        ]
+      },
+      "tactic": "command-and-control",
+      "technique_id": "T1571"
+    },
+    {
+      "coverage_count": 1,
+      "coverage_percent": 50.0,
+      "name": "Protocol Tunneling",
+      "platforms": [
+        "sigma"
+      ],
+      "rule_count": 1,
+      "rules": {
+        "elastic": [],
+        "sigma": [
+          "sigma/network/win_protocol_tunneling_via_ssh_or_chisel.yml"
+        ]
+      },
+      "tactic": "command-and-control",
+      "technique_id": "T1572"
+    },
+    {
+      "coverage_count": 2,
+      "coverage_percent": 100.0,
+      "name": "Hijack Execution Flow",
+      "platforms": [
+        "sigma",
+        "elastic"
+      ],
+      "rule_count": 5,
+      "rules": {
+        "elastic": [
+          "elastic/endpoint/general/Possible DLL Hijacking of cnmpaui.dll.ndjson",
+          "elastic/endpoint/general/Possible DLL Hijacking of sentinelagentcore.dll.ndjson",
+          "elastic/endpoint/general/Possible DLL Hijacking of tsmsisrv.dll.ndjson",
+          "elastic/endpoint/general/Possible DLL Hijacking of tsvipsrv.dll.ndjson"
+        ],
+        "sigma": [
+          "sigma/windows/win_dll_side_loading_from_suspicious_directory.yml"
+        ]
+      },
+      "tactic": "persistence",
+      "technique_id": "T1574"
+    },
+    {
+      "coverage_count": 2,
+      "coverage_percent": 100.0,
+      "name": "DLL Search Order Hijacking",
+      "platforms": [
+        "sigma",
+        "elastic"
+      ],
+      "rule_count": 5,
+      "rules": {
+        "elastic": [
+          "elastic/endpoint/general/Possible DLL Hijacking of cnmpaui.dll.ndjson",
+          "elastic/endpoint/general/Possible DLL Hijacking of sentinelagentcore.dll.ndjson",
+          "elastic/endpoint/general/Possible DLL Hijacking of tsmsisrv.dll.ndjson",
+          "elastic/endpoint/general/Possible DLL Hijacking of tsvipsrv.dll.ndjson"
+        ],
+        "sigma": [
+          "sigma/windows/win_dll_search_order_hijack.yml"
+        ]
+      },
+      "tactic": "persistence",
+      "technique_id": "T1574.001"
+    },
+    {
+      "coverage_count": 1,
+      "coverage_percent": 50.0,
+      "name": "Modify Cloud Compute Infrastructure",
+      "platforms": [
+        "sigma"
+      ],
+      "rule_count": 1,
+      "rules": {
+        "elastic": [],
+        "sigma": [
+          "sigma/cloud/cloud_modify_cloud_compute_infrastructure.yml"
+        ]
+      },
+      "tactic": "defense-evasion",
+      "technique_id": "T1578"
+    },
+    {
+      "coverage_count": 1,
+      "coverage_percent": 50.0,
+      "name": "Create Cloud Instance",
+      "platforms": [
+        "sigma"
+      ],
+      "rule_count": 1,
+      "rules": {
+        "elastic": [],
+        "sigma": [
+          "sigma/cloud/cloud_cloud_instance_created.yml"
+        ]
+      },
+      "tactic": "defense-evasion",
+      "technique_id": "T1578.002"
+    },
+    {
+      "coverage_count": 1,
+      "coverage_percent": 50.0,
+      "name": "Delete Cloud Instance",
+      "platforms": [
+        "sigma"
+      ],
+      "rule_count": 1,
+      "rules": {
+        "elastic": [],
+        "sigma": [
+          "sigma/cloud/cloud_cloud_instance_deleted.yml"
+        ]
+      },
+      "tactic": "defense-evasion",
+      "technique_id": "T1578.003"
+    },
+    {
+      "coverage_count": 1,
+      "coverage_percent": 50.0,
+      "name": "Compromise Accounts",
+      "platforms": [
+        "sigma"
+      ],
+      "rule_count": 1,
+      "rules": {
+        "elastic": [],
+        "sigma": [
+          "sigma/cloud/cloud_compromise_accounts.yml"
+        ]
+      },
+      "tactic": "resource-development",
+      "technique_id": "T1586"
+    },
+    {
+      "coverage_count": 2,
+      "coverage_percent": 100.0,
+      "name": "Social Media Accounts",
+      "platforms": [
+        "sigma",
+        "elastic"
+      ],
+      "rule_count": 2,
+      "rules": {
+        "elastic": [
+          "elastic/endpoint/general/Compromise Accounts (General).ndjson"
+        ],
+        "sigma": [
+          "sigma/cloud/cloud_social_media_account_compromise.yml"
+        ]
+      },
+      "tactic": "resource-development",
+      "technique_id": "T1586.001"
+    },
+    {
+      "coverage_count": 2,
+      "coverage_percent": 100.0,
+      "name": "Email Accounts",
+      "platforms": [
+        "sigma",
+        "elastic"
+      ],
+      "rule_count": 2,
+      "rules": {
+        "elastic": [
+          "elastic/endpoint/general/Social Media Accounts.ndjson"
+        ],
+        "sigma": [
+          "sigma/cloud/cloud_email_account_compromise.yml"
+        ]
+      },
+      "tactic": "resource-development",
+      "technique_id": "T1586.002"
+    },
+    {
+      "coverage_count": 2,
+      "coverage_percent": 100.0,
+      "name": "Cloud Accounts",
+      "platforms": [
+        "sigma",
+        "elastic"
+      ],
+      "rule_count": 2,
+      "rules": {
+        "elastic": [
+          "elastic/endpoint/general/Email Accounts.ndjson"
+        ],
+        "sigma": [
+          "sigma/cloud/cloud_cloud_account_compromise.yml"
+        ]
+      },
+      "tactic": "resource-development",
+      "technique_id": "T1586.003"
+    },
+    {
+      "coverage_count": 2,
+      "coverage_percent": 100.0,
+      "name": "Gather Victim Identity Information",
+      "platforms": [
+        "sigma",
+        "elastic"
+      ],
+      "rule_count": 2,
+      "rules": {
+        "elastic": [
+          "elastic/endpoint/general/Gather Victim Host Information.ndjson"
+        ],
+        "sigma": [
+          "sigma/cloud/cloud_gather_victim_identity_information.yml"
+        ]
+      },
+      "tactic": "reconnaissance",
+      "technique_id": "T1589"
+    },
+    {
+      "coverage_count": 2,
+      "coverage_percent": 100.0,
+      "name": "Gather Victim Network Information",
+      "platforms": [
+        "sigma",
+        "elastic"
+      ],
+      "rule_count": 2,
+      "rules": {
+        "elastic": [
+          "elastic/endpoint/general/Gather Victim Identity Information.ndjson"
+        ],
+        "sigma": [
+          "sigma/cloud/cloud_gather_victim_network_information.yml"
+        ]
+      },
+      "tactic": "reconnaissance",
+      "technique_id": "T1590"
+    },
+    {
+      "coverage_count": 2,
+      "coverage_percent": 100.0,
+      "name": "Gather Victim Org Information",
+      "platforms": [
+        "sigma",
+        "elastic"
+      ],
+      "rule_count": 2,
+      "rules": {
+        "elastic": [
+          "elastic/endpoint/general/Gather Victim Network Information.ndjson"
+        ],
+        "sigma": [
+          "sigma/cloud/cloud_gather_victim_org_information.yml"
+        ]
+      },
+      "tactic": "reconnaissance",
+      "technique_id": "T1591"
+    },
+    {
+      "coverage_count": 2,
+      "coverage_percent": 100.0,
+      "name": "Gather Victim Host Information",
+      "platforms": [
+        "sigma",
+        "elastic"
+      ],
+      "rule_count": 2,
+      "rules": {
+        "elastic": [
+          "elastic/endpoint/general/Defense Evasion – Disable Antivirus or Security Services.ndjson"
+        ],
+        "sigma": [
+          "sigma/cloud/cloud_gather_victim_host_information.yml"
+        ]
+      },
+      "tactic": "reconnaissance",
+      "technique_id": "T1592"
+    },
+    {
+      "coverage_count": 2,
+      "coverage_percent": 100.0,
+      "name": "Search Open Websites/Domains",
+      "platforms": [
+        "sigma",
+        "elastic"
+      ],
+      "rule_count": 2,
+      "rules": {
+        "elastic": [
+          "elastic/endpoint/general/Search Open Technical Databases.ndjson"
+        ],
+        "sigma": [
+          "sigma/cloud/cloud_search_open_websites_domains.yml"
+        ]
+      },
+      "tactic": "reconnaissance",
+      "technique_id": "T1593"
+    },
+    {
+      "coverage_count": 2,
+      "coverage_percent": 100.0,
+      "name": "Search Victim-Owned Websites",
+      "platforms": [
+        "sigma",
+        "elastic"
+      ],
+      "rule_count": 2,
+      "rules": {
+        "elastic": [
+          "elastic/endpoint/general/Search Open Websites Domains.ndjson"
+        ],
+        "sigma": [
+          "sigma/cloud/cloud_search_victim_owned_websites.yml"
+        ]
+      },
+      "tactic": "reconnaissance",
+      "technique_id": "T1594"
+    },
+    {
+      "coverage_count": 2,
+      "coverage_percent": 100.0,
+      "name": "Search Open Technical Databases",
+      "platforms": [
+        "sigma",
+        "elastic"
+      ],
+      "rule_count": 2,
+      "rules": {
+        "elastic": [
+          "elastic/endpoint/general/Search Closed Sources.ndjson"
+        ],
+        "sigma": [
+          "sigma/cloud/cloud_search_open_technical_databases.yml"
+        ]
+      },
+      "tactic": "reconnaissance",
+      "technique_id": "T1596"
+    },
+    {
+      "coverage_count": 2,
+      "coverage_percent": 100.0,
+      "name": "Search Closed Sources",
+      "platforms": [
+        "sigma",
+        "elastic"
+      ],
+      "rule_count": 2,
+      "rules": {
+        "elastic": [
+          "elastic/endpoint/general/Phishing for Information.ndjson"
+        ],
+        "sigma": [
+          "sigma/cloud/cloud_search_closed_sources.yml"
+        ]
+      },
+      "tactic": "reconnaissance",
+      "technique_id": "T1597"
+    },
+    {
+      "coverage_count": 2,
+      "coverage_percent": 100.0,
+      "name": "Phishing for Information",
+      "platforms": [
+        "sigma",
+        "elastic"
+      ],
+      "rule_count": 2,
+      "rules": {
+        "elastic": [
+          "elastic/endpoint/general/Gather Victim Org Information.ndjson"
+        ],
+        "sigma": [
+          "sigma/cloud/cloud_phishing_for_information.yml"
+        ]
+      },
+      "tactic": "reconnaissance",
+      "technique_id": "T1598"
+    },
+    {
+      "coverage_count": 1,
+      "coverage_percent": 50.0,
+      "name": "Unknown / Custom",
+      "platforms": [
+        "sigma"
+      ],
+      "rule_count": 1,
+      "rules": {
+        "elastic": [],
+        "sigma": [
+          "sigma/cloud/identity/cloud_saml_token_manipulation.yml"
+        ]
+      },
+      "tactic": "uncategorized",
+      "technique_id": "T1606.002"
+    },
+    {
+      "coverage_count": 1,
+      "coverage_percent": 50.0,
+      "name": "Escape to Host",
+      "platforms": [
+        "sigma"
+      ],
+      "rule_count": 6,
+      "rules": {
+        "elastic": [],
+        "sigma": [
+          "sigma/cloud/kubernetes/k8s_cap_sys_admin_added.yml",
+          "sigma/cloud/kubernetes/k8s_docker_socket_mount.yml",
+          "sigma/cloud/kubernetes/k8s_hostpath_mount_abuse.yml",
+          "sigma/cloud/kubernetes/k8s_privileged_pod_creation.yml",
+          "sigma/cloud/kubernetes/k8s_proc_self_exe_escape.yml",
+          "sigma/linux/lnx_container_escape_host_access.yml"
+        ]
+      },
+      "tactic": "privilege-escalation",
+      "technique_id": "T1611"
+    },
+    {
+      "coverage_count": 1,
+      "coverage_percent": 50.0,
+      "name": "Multi-Factor Authentication Request Generation",
+      "platforms": [
+        "sigma"
+      ],
+      "rule_count": 4,
+      "rules": {
+        "elastic": [],
+        "sigma": [
+          "sigma/cloud/cloud_okta_mfa_fatigue.yml",
+          "sigma/cloud/identity/cloud_mfa_push_bombing.yml",
+          "sigma/correlations/mfa_fatigue_correlation.yml",
+          "sigma/windows/win_mfa_fatigue___prompt_bombing.yml"
+        ]
+      },
+      "tactic": "credential-access",
+      "technique_id": "T1621"
+    },
+    {
+      "coverage_count": 2,
+      "coverage_percent": 100.0,
+      "name": "Acquire Access",
+      "platforms": [
+        "sigma",
+        "elastic"
+      ],
+      "rule_count": 2,
+      "rules": {
+        "elastic": [
+          "elastic/endpoint/general/Search Victim-Owned Websites.ndjson"
+        ],
+        "sigma": [
+          "sigma/cloud/cloud_acquire_access.yml"
+        ]
+      },
+      "tactic": "resource-development",
+      "technique_id": "T1650"
+    }
+  ],
+  "title": "Detection-Rules MITRE ATT&CK Coverage Heatmap"
+}

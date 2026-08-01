@@ -14,7 +14,7 @@ yamllint==1.38.0
 sigma-cli==3.1.0
 pysigma-backend-elasticsearch==2.1.0
 pysigma-backend-splunk==2.1.0
-pysigma-backend-kusto==1.0.5
+pysigma-backend-kusto==1.0.1
 
 # Pre-commit (local development)
 pre-commit==4.6.1

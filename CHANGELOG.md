@@ -9,7 +9,11 @@ versioning mengikuti [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [v1.5.0] - 2026-08-01
+
 ### Added
+- **ATT&CK coverage heatmap generator** — `detection_rules heatmap` command generates standalone HTML and machine-readable JSON showing rule coverage per technique and platform. Features deterministic output, platform filtering, keyboard navigation, and accessibility support.
+- **Architecture guide** at `docs/architecture.md` documenting CLI structure, rule validation pipeline, and extension points.
 - Offline `detection_rules lint` command for Sigma YAML syntax, required metadata, UUID, detection structure, ATT&CK technique, and duplicate-ID validation, with optional `sigma-cli` checks.
 
 ## [v1.4.0] - 2026-07-26

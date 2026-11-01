@@ -13,7 +13,7 @@ requests==2.34.2
 yamllint==1.38.0
 
 # Sigma + backends (used by release.yml and the sigma-cross-translate CI job)
-sigma-cli==3.1.0
+sigma-cli==4.0.0
 pysigma-backend-elasticsearch==2.1.0
 pysigma-backend-splunk==2.1.0
 pysigma-backend-kusto==1.0.1

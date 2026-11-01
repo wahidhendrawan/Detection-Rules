@@ -39,10 +39,10 @@ jobs:
     # in GitHub repo Settings > Environments > production
     environment: production
     steps:
-      - uses: actions/checkout@v7
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
 
       - name: Set up Python
-        uses: actions/setup-python@v7
+        uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
         with:
           python-version: "3.11"
 
@@ -60,9 +60,9 @@ jobs:
           find elastic/ -name "*.ndjson" -type f | while read -r file; do
             echo "Importing: $file"
             response=$(curl -s -w "\n%{http_code}" -X POST \
-              "${{ secrets.ELASTIC_URL }}/api/saved_objects/_import?overwrite=true" \
+              "${ELASTIC_URL}/api/saved_objects/_import?overwrite=true" \
               -H "kbn-xsrf: true" \
-              -H "Authorization: ApiKey ${{ secrets.ELASTIC_TOKEN }}" \
+              -H "Authorization: ApiKey ${ELASTIC_TOKEN}" \
               -H "Content-Type: multipart/form-data" \
               --form file=@"$file")
             http_code=$(echo "$response" | tail -1)
@@ -88,8 +88,8 @@ jobs:
             search_content=$(cat "$file")
             echo "Creating saved search: $rule_name"
             response=$(curl -s -w "\n%{http_code}" -X POST \
-              "${{ secrets.SPLUNK_URL }}/servicesNS/admin/search/saved/searches" \
-              -H "Authorization: Bearer ${{ secrets.SPLUNK_TOKEN }}" \
+              "${SPLUNK_URL}/servicesNS/admin/search/saved/searches" \
+              -H "Authorization: Bearer ${SPLUNK_TOKEN}" \
               -H "Content-Type: application/x-www-form-urlencoded" \
               -d "name=${rule_name}&search=$(python3 -c "import urllib.parse; print(urllib.parse.quote('''${search_content}'''))")&is_scheduled=1&cron_schedule=*/15 * * * *")
             http_code=$(echo "$response" | tail -1)
@@ -105,7 +105,7 @@ jobs:
       # --- Microsoft Sentinel Deployment ---
       - name: Azure Login
         if: ${{ inputs.target == 'sentinel' }}
-        uses: azure/login@v2
+        uses: azure/login@7184910d9eb2b1c5e48f7073824a90609bb9b6d6 # v2.3.1
         with:
           creds: |
             {
@@ -122,6 +122,7 @@ jobs:
           SENTINEL_CLIENT_ID: ${{ secrets.SENTINEL_CLIENT_ID }}
           SENTINEL_CLIENT_SECRET: ${{ secrets.SENTINEL_CLIENT_SECRET }}
           SENTINEL_TENANT_ID: ${{ secrets.SENTINEL_TENANT_ID }}
+          SENTINEL_RESOURCE_GROUP: ${{ secrets.SENTINEL_RESOURCE_GROUP }}
         run: |
           echo "Deploying KQL analytics rules to Microsoft Sentinel..."
           find microsoft-sentinel/ -name "*.kql" -type f | while read -r file; do
@@ -130,8 +131,8 @@ jobs:
             rule_id=$(uuidgen)
             echo "Creating analytics rule: $rule_name"
             az sentinel alert-rule create \
-              --workspace-name "${{ secrets.SENTINEL_WORKSPACE_ID }}" \
-              --resource-group "${{ secrets.SENTINEL_RESOURCE_GROUP }}" \
+              --workspace-name "${SENTINEL_WORKSPACE_ID}" \
+              --resource-group "${SENTINEL_RESOURCE_GROUP}" \
               --rule-id "$rule_id" \
               --scheduled \
               --name "$rule_name" \

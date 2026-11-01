@@ -1,9 +1,11 @@
 # Detection Rules
 
-[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](LICENSE)
+[![CI](https://github.com/wahidhendrawan/Detection-Rules/actions/workflows/validate.yml/badge.svg)](https://github.com/wahidhendrawan/Detection-Rules/actions/workflows/validate.yml)
+[![Release](https://img.shields.io/github/v/release/wahidhendrawan/Detection-Rules?sort=semver)](https://github.com/wahidhendrawan/Detection-Rules/releases/latest)
+[![License](https://img.shields.io/github/license/wahidhendrawan/Detection-Rules)](LICENSE)
+[![OpenSSF Scorecard](https://api.scorecard.dev/projects/github.com/wahidhendrawan/Detection-Rules/badge)](https://scorecard.dev/viewer/?uri=github.com/wahidhendrawan/Detection-Rules)
 [![GitHub Pages](https://img.shields.io/badge/landing%20page-live-brightgreen)](https://wahidhendrawan.github.io/Detection-Rules/)
 [![GitHub last commit](https://img.shields.io/github/last-commit/wahidhendrawan/Detection-Rules)](https://github.com/wahidhendrawan/Detection-Rules/commits/main)
-[![Validate Rules](https://github.com/wahidhendrawan/Detection-Rules/actions/workflows/validate.yml/badge.svg)](https://github.com/wahidhendrawan/Detection-Rules/actions/workflows/validate.yml)
 [![Python coverage](https://codecov.io/gh/wahidhendrawan/Detection-Rules/branch/main/graph/badge.svg)](https://codecov.io/gh/wahidhendrawan/Detection-Rules)
 [![MITRE ATT&CK](https://img.shields.io/badge/MITRE%20ATT%26CK-mapped-red)](COVERAGE.md)
 [![Rules](https://img.shields.io/endpoint?url=https://wahidhendrawan.github.io/Detection-Rules/badges/rules-total.json)](#statistik-rule)
@@ -270,6 +272,10 @@ Boilerplate per platform tersedia di [`templates/`](templates/).
 - ⬜ Community monthly rule sprint program.
 
 ---
+
+## Keamanan
+
+Laporkan kerentanan secara privat sesuai [SECURITY.md](SECURITY.md), jangan lewat issue publik.
 
 ## Lisensi
 

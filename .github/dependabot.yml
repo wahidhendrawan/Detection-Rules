@@ -8,12 +8,6 @@ updates:
     open-pull-requests-limit: 3
     # No grouping - individual PRs prevent conflicts and allow granular review
 
-  - package-ecosystem: docker
-    directory: /
-    schedule:
-      interval: monthly
-    open-pull-requests-limit: 2
-
   - package-ecosystem: github-actions
     directory: /
     schedule:

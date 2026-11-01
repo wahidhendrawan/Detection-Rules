@@ -1,85 +1,34 @@
 # Security Policy
 
-Terima kasih sudah meluangkan waktu untuk meningkatkan keamanan project ini.
+## Supported versions
 
-## Lingkup
+Only the latest release of Detection-Rules gets security fixes. Please check that the problem still exists there before reporting.
 
-Repository ini berisi **detection rules**. Yang dimaksud "vulnerability"
-dalam konteks repo ini bisa berupa:
+## Reporting a vulnerability
 
-1. **Tooling/CI vulnerability**: bug di skrip `scripts/`, GitHub Actions
-   workflow, atau pre-commit config yang bisa dimanipulasi attacker.
-2. **Rule yang berbahaya**: rule yang **bocor** PII pada output, bisa
-   menyebabkan DoS pada SIEM (regex katastropik), atau secara tidak sengaja
-   mengekspos data sensitif.
-3. **Supply-chain risk**: dependensi atau action pihak ketiga yang
-   ter-typosquat / di-pin tidak aman.
+Report privately through GitHub: **Security → Report a vulnerability** on this repository ([direct link](https://github.com/wahidhendrawan/Detection-Rules/security/advisories/new)). Do not open a public issue, discussion or pull request, and do not post exploit details or credentials anywhere public.
 
-Bug **detection** (false negative / false positive) **bukan** vulnerability,
-laporkan via [GitHub Issue → False Positive / Bug Report](https://github.com/wahidhendrawan/Detection-Rules/issues/new/choose).
+Please include:
 
----
+- the version or commit you tested, and which platform/query language
+- the smallest steps or input that reproduce the problem
+- what an attacker gains (data exposure, code execution, privilege escalation, denial of service, …)
 
-## Versi yang Didukung
+Remove real credentials, customer data and sensitive logs from any evidence you share.
 
-Karena repo ini bersifat *rolling*, hanya branch `main` yang aktif disupport.
+You should get a first reply within 7 days. Fixed issues are credited in the release notes unless you ask otherwise.
 
-| Branch | Status |
-|---|---|
-| `main` | ✅ Supported |
-| Tag rilis (`v1.x`) | ✅ Supported (60 hari setelah rilis) |
-| Branch lainnya | ❌ Tidak disupport |
+## In scope
 
----
+- Scripts under `scripts/` (for example token handling in `deploy_rules.py`, the KEV rule generator)
+- GitHub Actions workflows: secret exposure, script injection, unsafe triggers
+- Rule content that would run code or leak data when imported into a supported platform
 
-## Cara Melaporkan
+## Out of scope
 
-**Jangan** buka GitHub Issue publik untuk vulnerability. Sebagai gantinya:
+- Missed detections and false positives: open a normal issue so the rule can be tuned
+- Vulnerabilities in the SIEM/EDR platforms themselves: report them to the vendor
 
-1. **Preferred**: gunakan [GitHub Private Vulnerability Reporting](https://github.com/wahidhendrawan/Detection-Rules/security/advisories/new).
-2. **Alternatif**: kirim email ke maintainer melalui kontak yang tertera di profil GitHub.
+## Safe harbor
 
-Cantumkan:
-
-- Deskripsi vulnerability.
-- Komponen / file yang terdampak.
-- Steps to reproduce (PoC kalau ada).
-- Dampak potensial.
-- Versi / commit hash yang Anda uji.
-- Saran mitigasi (opsional).
-
----
-
-## Response SLA
-
-| Tahap | Target |
-|---|---|
-| Acknowledgement laporan | 72 jam |
-| Initial assessment | 7 hari |
-| Patch / mitigasi | 30 hari (severity high/critical), 90 hari (low/medium) |
-| Public disclosure | Setelah patch tersedia, dengan kredit kepada reporter |
-
----
-
-## Disclosure Policy
-
-Kami mengikuti **coordinated disclosure**. Reporter diharapkan tidak
-mempublikasikan detail vulnerability sampai patch tersedia (atau 90 hari
-sejak laporan, mana yang lebih dulu).
-
-Reporter akan disebutkan di [`CHANGELOG.md`](CHANGELOG.md) dan rilis notes
-(kecuali memilih anonim).
-
----
-
-## Out-of-Scope
-
-- Rule false positive / false negative — gunakan Issue biasa.
-- Saran improvement umum — buka Discussion atau Issue.
-- Vulnerability di SIEM/EDR vendor (Elastic, Splunk, Microsoft, Wazuh,
-  Carbon Black) — laporkan ke vendor masing-masing.
-- Permintaan support deployment / integrasi.
-
----
-
-Terima kasih sudah membantu menjaga ekosistem ini tetap aman 🛡️
+Good-faith research that follows this policy will not be treated as a violation of the license or of this policy. Only test against your own deployment, access no more data than needed to show the issue, and do not degrade services for other people.

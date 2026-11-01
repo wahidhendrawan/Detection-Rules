@@ -7,6 +7,7 @@ from unittest.mock import MagicMock, Mock, patch
 
 import pytest
 import requests
+import yaml
 
 # Add scripts to path for imports
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "scripts"))
@@ -392,6 +393,22 @@ class TestIntegrationTestCleanup:
         # Should not raise despite cleanup error
         result = integration_test.main()
         assert result == 1
+
+
+
+# ============================================================================
+# Tests for the deploy workflow
+# ============================================================================
+
+class TestDeployWorkflow:
+    """Secrets must reach run: scripts via env, never via ${{ }} interpolation."""
+
+    def test_no_secret_interpolation_in_run_scripts(self):
+        workflow_path = Path(__file__).resolve().parent.parent / ".github" / "workflows" / "deploy-template.yml"
+        workflow = yaml.safe_load(workflow_path.read_text(encoding="utf-8"))
+        for job in workflow["jobs"].values():
+            for step in job["steps"]:
+                assert "secrets." not in step.get("run", ""), step.get("name")
 
 
 if __name__ == "__main__":

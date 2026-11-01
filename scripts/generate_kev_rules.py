@@ -34,6 +34,11 @@ OUTPUT_DEFAULT = Path("kev_generated") if "CI" in os.environ else Path(tempfile.
 
 # CVE-ID pattern
 CVE_RE = re.compile(r"CVE-\d{4}-\d{4,}", re.IGNORECASE)
+DATE_RE = re.compile(r"\d{4}-\d{2}-\d{2}")
+CONTROL_CHARS_RE = re.compile(r"[\x00-\x1f\x7f]")
+TEXT_FIELDS = ("vendorProject", "product", "shortDescription", "requiredAction")
+MAX_KEV_BYTES = 16 * 1024 * 1024  # live feed is ~2 MB
+MAX_FIELD_LEN = 2000
 
 
 def fetch_kev() -> list[dict[str, Any]]:
@@ -44,12 +49,37 @@ def fetch_kev() -> list[dict[str, Any]]:
         print(f"[!] Unsupported URL scheme: {parsed.scheme}", file=sys.stderr)
         sys.exit(1)
     try:
-        resp = urlopen(KEV_URL, timeout=30)  # nosec B310
-        data = json.loads(resp.read())
-        return data.get("vulnerabilities", [])
+        with urlopen(KEV_URL, timeout=30) as resp:  # nosec B310
+            content_type = resp.headers.get_content_type()
+            if content_type != "application/json":
+                raise ValueError(f"unexpected content type {content_type!r}")
+            body = resp.read(MAX_KEV_BYTES + 1)
+        if len(body) > MAX_KEV_BYTES:
+            raise ValueError(f"feed exceeds {MAX_KEV_BYTES} bytes")
+        data = json.loads(body)
+        vulns = data.get("vulnerabilities") if isinstance(data, dict) else None
+        if not isinstance(vulns, list):
+            raise ValueError("feed has no 'vulnerabilities' list")
+        return vulns
     except Exception as exc:
         print(f"[!] Failed to fetch KEV: {exc}", file=sys.stderr)
         sys.exit(1)
+
+
+def is_valid_entry(entry: Any) -> bool:
+    """Reject entries whose fields are unsafe to put in a file name or rule body."""
+    if not isinstance(entry, dict):
+        return False
+    cve_id, date_added = entry.get("cveID"), entry.get("dateAdded")
+    if not isinstance(cve_id, str) or not CVE_RE.fullmatch(cve_id):
+        return False
+    if not isinstance(date_added, str) or not DATE_RE.fullmatch(date_added):
+        return False
+    for key in TEXT_FIELDS:
+        value = entry.get(key, "")
+        if not isinstance(value, str) or len(value) > MAX_FIELD_LEN or CONTROL_CHARS_RE.search(value):
+            return False
+    return True
 
 
 def find_existing_cves() -> set[str]:
@@ -94,7 +124,9 @@ def generate_sigma_rule(kev_entry: dict[str, Any]) -> str:
     cve_slug = cve_id.lower().replace("-", "_")
     today = datetime.now(timezone.utc).strftime("%Y-%m-%d")
 
-    rule = f"""title: {cve_id}: {vendor} {product} - {description[:80]}
+    title = f"{cve_id}: {vendor} {product} - {description[:80]}"
+    # json.dumps gives a valid YAML double-quoted scalar; plain scalars break on ": "
+    rule = f"""title: {json.dumps(title)}
 id: auto-kev-{cve_slug}
 status: experimental
 description: |
@@ -122,10 +154,10 @@ falsepositives:
 level: {severity}
 x_kev:
   cve_id: {cve_id}
-  vendor_project: {vendor}
-  product: {product}
+  vendor_project: {json.dumps(vendor)}
+  product: {json.dumps(product)}
   date_added_to_kev: {date_added}
-  required_action: {required_action}
+  required_action: {json.dumps(required_action)}
 """
     return rule
 
@@ -161,11 +193,16 @@ def main() -> int:
 
     generated = 0
     new_cves = []
+    malformed = 0
     for entry in kev:
-        cve_id = entry.get("cveID", "")
-        if not cve_id or cve_id.upper() in existing_cves:
+        if not is_valid_entry(entry):
+            malformed += 1
+            continue
+        if entry["cveID"].upper() in existing_cves:
             continue
         new_cves.append(entry)
+    if malformed:
+        print(f"[!] Skipped {malformed} malformed KEV entries", file=sys.stderr)
 
     print(f"[*] {len(new_cves)} new CVEs to generate rules for")
     if dry_run:
@@ -201,7 +238,7 @@ def main() -> int:
     print(f"   Sigma: {sigma_out}")
     print(f"   KQL:   {kql_out}")
     print(f"   Run: ln -s {sigma_out} {REPO_ROOT / 'sigma' / 'kev'}")
-    print(f"   Then commit and open a PR to add them to the Detection-Rules repo.")
+    print("   Then commit and open a PR to add them to the Detection-Rules repo.")
     return 0
 
 

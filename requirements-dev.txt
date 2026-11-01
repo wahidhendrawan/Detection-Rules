@@ -1,5 +1,5 @@
 # Development dependencies for the Detection-Rules toolchain.
-# Pinned versions are tracked by Dependabot (.github/dependabot.yml).
+# Versions are pinned; update them deliberately.
 
 # Core
 pyyaml==6.0.3

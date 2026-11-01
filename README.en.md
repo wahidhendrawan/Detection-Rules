@@ -78,8 +78,7 @@ Detection-Rules/
 │  ├─ workflows/          # CI: Sigma, YAML, XML, JSON validators + release
 │  ├─ ISSUE_TEMPLATE/
 │  ├─ PULL_REQUEST_TEMPLATE.md
-│  ├─ CODEOWNERS
-│  └─ dependabot.yml
+│  └─ CODEOWNERS
 ├─ scripts/               # tooling (coverage, index, CLI)
 ├─ tests/                 # detection logic unit tests
 ├─ templates/             # boilerplate per platform

@@ -15,7 +15,7 @@ jobs:
     name: YAML lint (Sigma & configs)
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v7
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
       - name: Install yamllint
         run: pip install yamllint==1.35.1
       - name: Run yamllint
@@ -25,12 +25,13 @@ jobs:
     name: Sigma syntax check
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v7
-      - uses: actions/setup-python@v7
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
         with:
           python-version: '3.11'
       - name: Install sigma-cli
-        run: pip install sigma-cli==1.0.4
+        # keep in sync with requirements-dev.txt; 1.0.4 (pySigma 0.11) breaks on pyparsing 3.3
+        run: pip install sigma-cli==3.1.0
       - name: Validate Sigma rules
         run: |
           find sigma/ -name '*.yml' -not -path '*/correlations/*' -print0 | \
@@ -40,8 +41,8 @@ jobs:
     name: Sigma cross-translate smoke check
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v7
-      - uses: actions/setup-python@v7
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
         with:
           python-version: '3.11'
       - name: Install sigma-cli + backends
@@ -76,7 +77,7 @@ jobs:
     name: XML lint (Wazuh)
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v7
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
       - name: Install libxml2-utils
         run: sudo apt-get update && sudo apt-get install -y libxml2-utils
       - name: Validate Wazuh XML
@@ -105,7 +106,7 @@ jobs:
     name: JSON validate (Carbon Black + Elastic NDJSON)
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v7
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
       - name: Install jq
         run: sudo apt-get update && sudo apt-get install -y jq
       - name: Validate Carbon Black JSON
@@ -134,7 +135,7 @@ jobs:
     name: KQL smoke check (Sentinel)
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v7
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
       - name: Smoke check KQL files non-empty & header present
         run: |
           fail=0
@@ -152,7 +153,7 @@ jobs:
     name: Splunk SPL smoke check
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v7
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
       - name: Verify SPL files have header + a search statement
         run: |
           fail=0
@@ -170,8 +171,8 @@ jobs:
     name: Rule unit tests (fixture-based)
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v7
-      - uses: actions/setup-python@v7
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
         with:
           python-version: '3.11'
       - name: Install deps
@@ -179,7 +180,7 @@ jobs:
       - name: Run pytest with coverage floor
         run: PYTHONPATH=scripts pytest tests/ -v --cov=scripts --cov-report=xml --cov-report=term --cov-fail-under=10
       - name: Upload coverage to Codecov
-        uses: codecov/codecov-action@v7
+        uses: codecov/codecov-action@303a32d7a59b442fa8d48b6a1cc6825c09c847a5 # v7.1.1
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
           files: ./coverage.xml
@@ -191,8 +192,8 @@ jobs:
     runs-on: ubuntu-latest
     needs: [yamllint, sigma-validate, xmllint, json-validate]
     steps:
-      - uses: actions/checkout@v7
-      - uses: actions/setup-python@v7
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
         with:
           python-version: '3.11'
       - name: Install deps
@@ -208,7 +209,7 @@ jobs:
           PYTHONPATH=scripts python3 -m detection_rules navigator
           PYTHONPATH=scripts python3 -m detection_rules badges
       - name: Upload coverage + reports
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
         with:
           name: mitre-coverage
           path: |

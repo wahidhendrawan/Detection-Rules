@@ -10,7 +10,7 @@ jobs:
   sigma-check:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v7
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
       - name: Install sigma-cli
         run: pip install sigma-cli==1.0.4
       - name: Run sigma check
@@ -21,7 +21,7 @@ jobs:
           cat sigma-check-output.txt
       - name: Create or update tracking issue
         if: steps.check.outputs.issues_found == 'true'
-        uses: actions/github-script@v7
+        uses: actions/github-script@f28e40c7f34bde8b3046d885e986cb6290c5673b # v7.1.0
         with:
           script: |
             const fs = require('fs');
@@ -84,7 +84,7 @@ jobs:
 
       - name: Close tracking issue if now green
         if: steps.check.outputs.issues_found != 'true'
-        uses: actions/github-script@v7
+        uses: actions/github-script@f28e40c7f34bde8b3046d885e986cb6290c5673b # v7.1.0
         with:
           script: |
             const marker = '<!-- sigma-spec-check-tracking-issue -->';

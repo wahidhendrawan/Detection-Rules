@@ -1,0 +1,38 @@
+{
+  "title": "CISA Catalog of Known Exploited Vulnerabilities (test fixture)",
+  "vulnerabilities": [
+    {
+      "cveID": "CVE-2099-0001",
+      "vendorProject": "Example: Corp",
+      "product": "Widget \"Pro\"",
+      "shortDescription": "Example Widget contains a remote code execution vulnerability.",
+      "requiredAction": "Apply mitigations per vendor instructions: patch now.",
+      "dateAdded": "2099-01-02"
+    },
+    {
+      "cveID": "../../CVE-2099-0002",
+      "vendorProject": "PathTraversal",
+      "product": "Escape",
+      "shortDescription": "cveID tries to escape the output directory.",
+      "requiredAction": "None.",
+      "dateAdded": "2099-01-02"
+    },
+    {
+      "cveID": "CVE-2099-0003",
+      "vendorProject": "Injected\nlevel: informational",
+      "product": "Newline",
+      "shortDescription": "Vendor field smuggles a YAML key.",
+      "requiredAction": "None.",
+      "dateAdded": "2099-01-02"
+    },
+    {
+      "cveID": "CVE-2099-0004",
+      "vendorProject": "BadDate",
+      "product": "Widget",
+      "shortDescription": "dateAdded is not YYYY-MM-DD.",
+      "requiredAction": "None.",
+      "dateAdded": "soon"
+    },
+    "not-an-object"
+  ]
+}
